@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Models\UserProfile;
-
+namespace App\Models\Inventory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PermissionCategories extends Model
-{
+class Category extends Model{
     use HasFactory;
 }
