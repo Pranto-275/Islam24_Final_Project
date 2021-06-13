@@ -41,7 +41,7 @@
                         <span>Inventory</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/member/inventory/category">Category</a></li>
+                        <li><a href="{{route('product.category')}}">Category</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/member/inventory/sub-category">Sub-Category</a></li>
@@ -64,7 +64,7 @@
                     <ul class="sub-menu" area-expanded="false">
                         <li><a href="/member/inventory/nsupplier">NSupplier</a></li>
                     </ul>
-                  
+
             </ul>
         </div>
         <!-- Sidebar -->
