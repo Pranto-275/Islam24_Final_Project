@@ -40,30 +40,64 @@
                         <i class="bx bx-list-ul"></i>
                         <span>Inventory</span>
                     </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('inventory.invoice')}}">Invoice</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('inventory.stock-adjustment')}}">Stock Adjustment</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('inventory.stock-manager')}}">Stock Manager</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
+                        <span>Product Info</span>
+                    </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.category')}}">Category</a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/member/inventory/sub-category">Sub-Category</a></li>
+                        <li><a href="{{route('product.brand')}}">Brand</a></li>
                     </ul>
+
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/member/inventory/sub-sub-category">Sub-Sub-Category</a></li>
+                        <li><a href="{{route('product.product')}}">Product</a></li>
                     </ul>
+
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/member/inventory/brand">Brand</a></li>
+                        <li><a href="{{route('product.product-image')}}">Product Image</a></li>
                     </ul>
+
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/member/inventory/product">Product</a></li>
+                        <li><a href="{{route('product.product-properties')}}">Product Properties</a></li>
                     </ul>
+
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/member/inventory/customer">Customer</a></li>
+                        <li><a href="{{route('product.sub-sub-category')}}">Product Sub Sub Category Info</a></li>
                     </ul>
+
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/member/inventory/supplier">Supplier</a></li>
+                        <li><a href="{{route('product.unit')}}">Unit Info</a></li>
                     </ul>
-                    <ul class="sub-menu" area-expanded="false">
-                        <li><a href="/member/inventory/nsupplier">NSupplier</a></li>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
+                        <span>ContactInfo</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('contact-info.contact')}}">Contact</a></li>
                     </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
+                    </ul>
+                </li>
 
             </ul>
         </div>

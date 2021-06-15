@@ -4,7 +4,6 @@
     <x-slot name="title">
         CATEGORY
     </x-slot>
-
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -96,12 +95,51 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-
-
-
-
 </div>
 @push('scripts')
+    <script>
 
+        $(document).ready(function () {
+            var datatable = $('#CategoryTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{route('data.category_table')}}",
+                columns: [
+                    {
+                        title: 'SL',
+                        data: 'id'
+                    },
+                    {
+                        title: 'Category Code',
+                        data: 'code',
+                        name:'code'
+                    },
+                    {
+                        title: 'Image',
+                        data: 'image',
+                        name:'image'
+                    },
+                    {
+                        title: 'Name',
+                        data: 'name',
+                        name:'name'
+                    },
+                    {
+                        title: 'Status',
+                        data: 'Status',
+                        name:'Status'
+                    },
+                    {
+                        title: 'Action',
+                        data: 'action',
+                        name:'action'
+                    },
+                ]
+            });
 
-     @endpush
+            window.livewire.on('success', message => {
+                datatable.draw(true);
+            });
+        });
+    </script>
+@endpush
