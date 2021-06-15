@@ -8,6 +8,7 @@ use App\Http\Livewire\Backend\Inventory\StockAdjustment;
 use App\Http\Livewire\Backend\Inventory\StockManager;
 use App\Http\Livewire\Backend\ProductInfo\Brand;
 use App\Http\Livewire\Backend\ProductInfo\Category;
+use App\Http\Livewire\Backend\ProductInfo\SubCategory;
 use App\Http\Livewire\Backend\ProductInfo\Product;
 use App\Http\Livewire\Backend\ProductInfo\ProductImage;
 use App\Http\Livewire\Backend\ProductInfo\ProductProperties;
@@ -58,6 +59,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
         Route::get('category', Category::class)->name('category');
+        Route::get('sub-category',SubCategory::class)->name('sub-category');
         Route::get('brand', Brand::class)->name('brand');
         Route::get('product', Product::class)->name('product');
         Route::get('product-image', ProductImage::class)->name('product-image');

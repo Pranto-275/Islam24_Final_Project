@@ -163,7 +163,7 @@
             var datatable = $('#ContactTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.contact_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

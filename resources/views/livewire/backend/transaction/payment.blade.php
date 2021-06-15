@@ -70,7 +70,7 @@
             var datatable = $('#PaymentInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.PaymentInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

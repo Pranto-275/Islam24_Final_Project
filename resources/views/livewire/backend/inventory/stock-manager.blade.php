@@ -70,7 +70,7 @@
             var datatable = $('#StockManagerTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.stockManager_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

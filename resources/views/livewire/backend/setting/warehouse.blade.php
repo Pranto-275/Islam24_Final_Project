@@ -70,7 +70,7 @@
             var datatable = $('#WarehouseTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.WarehouseInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

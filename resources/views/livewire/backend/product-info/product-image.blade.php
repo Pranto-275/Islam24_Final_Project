@@ -47,9 +47,9 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Brand Code">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Product ID</label>
+                                    <input class="form-control" type="text" wire:model.lazy="product_id" placeholder="Enter Brand Code">
+                                    @error('product_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -75,13 +75,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Description</label>
-                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter Brand Description">
-                                    @error('description') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -100,7 +93,7 @@
             var datatable = $('#productImageInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.productImageInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

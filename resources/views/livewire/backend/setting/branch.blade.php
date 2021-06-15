@@ -71,7 +71,7 @@
             var datatable = $('#BranchInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.branchInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

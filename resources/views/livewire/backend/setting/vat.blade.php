@@ -71,7 +71,7 @@
             var datatable = $('#VatTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.VatInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

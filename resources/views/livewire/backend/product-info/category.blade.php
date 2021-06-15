@@ -72,6 +72,16 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label for="basicpill-lastname-input">Description</label>
+                                                <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter Name">
+                                                @error('description') <span class="error">{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+
+
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="basicpill-lastname-input">Status</label>
@@ -79,8 +89,7 @@
                                                     <option value="">Select Status</option>
                                                     <option value="Active">Active</option>
                                                     <option value="Inactive">Inactive</option>
-
-                                             </select>
+                                                </select>
                                                 @error('status') <span class="error">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
@@ -111,28 +120,28 @@
                     },
                     {
                         title: 'Category Code',
-                        data: 'code',
-                        name:'code'
+                        data:   'code',
+                        name:   'code'
                     },
                     {
                         title: 'Image',
-                        data: 'image',
-                        name:'image'
+                        data:  'image',
+                        name:  'image'
                     },
                     {
                         title: 'Name',
-                        data: 'name',
-                        name:'name'
+                        data:  'name',
+                        name:  'name'
                     },
                     {
                         title: 'Status',
-                        data: 'status',
-                        name:'status'
+                        data:  'status',
+                        name:  'status'
                     },
                     {
                         title: 'Action',
-                        data: 'action',
-                        name:'action'
+                        data:  'action',
+                        name:  'action'
                     },
                 ]
             });

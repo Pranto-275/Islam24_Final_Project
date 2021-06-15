@@ -70,7 +70,7 @@
             var datatable = $('#StockAdjustmentTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.stockAdjustment_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

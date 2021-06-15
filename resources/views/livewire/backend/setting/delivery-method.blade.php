@@ -71,7 +71,7 @@
             var datatable = $('#DeliveryMethodInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.deliveryMethodInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

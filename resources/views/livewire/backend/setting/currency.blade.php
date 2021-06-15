@@ -71,7 +71,7 @@
             var datatable = $('#CurrencyInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.currencyInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

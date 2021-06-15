@@ -91,6 +91,14 @@
                                 </div>
                             </div>
 
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Description</label>
+                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter sale price">
+                                    @error('description') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
 
                             <div class="col-lg-12">
                                 <div class="form-group">
@@ -118,7 +126,7 @@
             var datatable = $('#ProductSubSubCategoryInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.productSubSubCategoryInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

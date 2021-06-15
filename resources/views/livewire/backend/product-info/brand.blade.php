@@ -82,6 +82,19 @@
                                     @error('description') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                    @error('status') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">

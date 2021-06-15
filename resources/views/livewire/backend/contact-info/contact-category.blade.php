@@ -100,7 +100,7 @@
             var datatable = $('#ContactCategoryTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.contact_category_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

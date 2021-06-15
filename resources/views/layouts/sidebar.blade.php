@@ -58,9 +58,20 @@
                         <i class="bx bx-list-ul"></i>
                         <span>Product Info</span>
                     </a>
+
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.category')}}">Category</a></li>
                     </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('product.sub-category')}}">Sub Category</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('product.sub-sub-category')}}">Sub Sub Category</a></li>
+                    </ul>
+
+
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.brand')}}">Brand</a></li>
                     </ul>
@@ -75,10 +86,6 @@
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.product-properties')}}">Product Properties</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('product.sub-sub-category')}}">Product Sub Sub Category Info</a></li>
                     </ul>
 
                     <ul class="sub-menu" aria-expanded="false">

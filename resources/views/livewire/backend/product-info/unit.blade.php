@@ -94,7 +94,7 @@
             var datatable = $('#ProductUnitInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.productUnitInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

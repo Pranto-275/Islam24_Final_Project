@@ -55,6 +55,22 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label for="basicpill-firstname-input">Sub Sub Category ID</label>
+                                    <input class="form-control" type="text" wire:model.lazy="sub_sub_category_id" placeholder="Enter Sub Sub Category">
+                                    @error('sub_sub_category_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Contact ID</label>
+                                    <input class="form-control" type="text" wire:model.lazy="contact_id" placeholder="Enter Contact id">
+                                    @error('contact_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
                                     <label for="basicpill-firstname-input">Name</label>
                                     <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter product name">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
@@ -96,7 +112,11 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Status</label>
-                                    <input class="form-control" type="text" wire:model.lazy="status" placeholder="Enter statuss">
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
                                     @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>

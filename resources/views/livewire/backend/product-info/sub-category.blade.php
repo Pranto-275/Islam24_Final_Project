@@ -1,9 +1,8 @@
 @push('css')
-
 @endpush
 <div>
     <x-slot name="title">
-        PRODUCT PROPERTIES INFO
+       PRODUCT SUB CATEGORY
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -13,19 +12,20 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Product Properties Info</h4>
+                                    <h4>Sub Category List</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ProductPropertiesInfoModal"><i class="mdi mdi-plus mr-1"></i>Product Properties Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="SubCategoryModal"><i class="mdi mdi-plus mr-1"></i> SubCategory</button>
+
                             </div>
                         </div><!-- end col-->
                     </div>
                     <div wire:ignore class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="ProductPropertiesInfoTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="SubCategoryTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                 </div>
@@ -33,70 +33,73 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="ProductPropertiesInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="SubCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Product properties Info</h5>
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">SubCategory</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="productPropertiesInfoSave">
+                <form wire:submit.prevent="SubCategorySave">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter product Code">
+                                    <label for="basicpill-firstname-input">Sub Category Code</label>
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Cost code">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Name</label>
-                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter product name">
+                                    <label for="basicpill-lastname-input">Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Name">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sale Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="sale_price" placeholder="Enter sale price">
-                                    @error('sale_price') <span class="error">{{ $message }}</span> @enderror
+                                    <label class="control-label">Image (517.38*492 jpg)</label>
+                                    <div class="custom-file">
+                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+
+                                        <input type="file" wire:model.lazy="image" x-ref="image">
+
+                                        {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                        @error('image') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Whole Sales Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
-                                    @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-lastname-input">Category ID</label>
+                                    <input class="form-control" type="text" wire:model.lazy="category_id" placeholder="Enter Category id">
+                                    @error('category_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Purchase Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">
-                                    @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-lastname-input">Description</label>
+                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter Category id">
+                                    @error('description') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Low alert Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="low_alert" placeholder="Enter low alert price">
-                                    @error('low_alert') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Status</label>
-                                    <input class="form-control" type="text" wire:model.lazy="status" placeholder="Enter statuss">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
                                     @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -116,7 +119,7 @@
     <script>
 
         $(document).ready(function () {
-            var datatable = $('#ProductPropertiesInfoTable').DataTable({
+            var datatable = $('#SubCategoryTable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{route('data.index')}}",
@@ -126,27 +129,24 @@
                         data: 'id'
                     },
                     {
-                        title: 'Product ID',
-                        data: 'product id',
-                        name: 'product id'
+                        title: 'Sub Category Code',
+                        data:   'code',
+                        name:   'code'
                     },
-
                     {
-                        title: 'Size',
-                        data:  'size',
-                        name:  'size'
+                        title: 'Image',
+                        data:  'image',
+                        name:  'image'
                     },
-
                     {
-                        title: 'Color',
-                        data:  'color',
-                        name:  'color'
+                        title: 'Category Id',
+                        data:  'category id',
+                        name:  'category id'
                     },
-
                     {
-                        title: 'Branch ID',
-                        data: 'branch id',
-                        name: 'branch id'
+                        title: 'Description',
+                        data:  'description',
+                        name:  'description'
                     },
 
                     {
@@ -154,23 +154,10 @@
                         data:  'status',
                         name:  'status'
                     },
-
-                    {
-                        title: 'Law alert',
-                        data: 'law alert',
-                        name: 'law alert'
-                    },
-
-                    {
-                        title: 'Status',
-                        data: 'status',
-                        name: 'status'
-                    },
-
                     {
                         title: 'Action',
-                        data: 'action',
-                        name:'action'
+                        data:  'action',
+                        name:  'action'
                     },
                 ]
             });
@@ -181,4 +168,3 @@
         });
     </script>
 @endpush
-

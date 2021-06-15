@@ -71,7 +71,7 @@
             var datatable = $('#InvoiceSettingTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.invoiceSettingInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',
