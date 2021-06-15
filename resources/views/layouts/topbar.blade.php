@@ -12,7 +12,6 @@
                         <img src="{{URL::asset('assets/images/logo-dark.png')}}" alt="" height="17">
                     </span>
                 </a>
-
                 <a href="{{url('/dashboard')}}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{URL::asset('public/assets/images/logo.svg')}}" alt="" height="22">

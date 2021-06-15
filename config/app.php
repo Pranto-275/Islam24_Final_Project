@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -26,7 +25,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'RESTAURENT'),
+    'env' => env('APP_ENV', 'Shomikaron E-Commerce'),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +118,7 @@ return [
     |
     */
 
-	'key' => env('APP_KEY','base64:wov7CDb4kPhPumuD5OkKEL6SAFW8rIS95+pBEXfhul8='),
+    'key' => env('APP_KEY', 'base64:wov7CDb4kPhPumuD5OkKEL6SAFW8rIS95+pBEXfhul8='),
 
     'cipher' => 'AES-256-CBC',
 
@@ -135,7 +134,6 @@ return [
     */
 
     'providers' => [
-
         /*
          * Laravel Framework Service Providers...
          */
@@ -191,7 +189,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -229,7 +226,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
-
 ];
