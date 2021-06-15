@@ -100,7 +100,7 @@
             var datatable = $('#BrandInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.brandInfo_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',

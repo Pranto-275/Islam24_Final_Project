@@ -103,7 +103,7 @@
             var datatable = $('#CategoryTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.category_table')}}",
+                ajax: "{{route('data.index')}}",
                 columns: [
                     {
                         title: 'SL',
@@ -126,8 +126,8 @@
                     },
                     {
                         title: 'Status',
-                        data: 'Status',
-                        name:'Status'
+                        data: 'status',
+                        name:'status'
                     },
                     {
                         title: 'Action',
