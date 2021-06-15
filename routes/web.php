@@ -26,13 +26,9 @@ use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
 use App\Http\Livewire\UserProfile\ProfileSettings;
-use App\Http\Livewire\Inventory\Category;
-use App\Http\Livewire\Inventory\Currency;
 use App\Http\Livewire\Inventory\Language;
 use App\Http\Livewire\Inventory\PointPolicy;
 use App\Http\Livewire\Inventory\DelieveryMethod;
-use App\Http\Livewire\Inventory\WareHouse;
-
 
 
 
@@ -114,4 +110,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
         Route::get('user-table', [DatatableController::class, 'UserTable'])->name('user_table');
     });
+
+    Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
+        Route::get('category_table', [DatatableController::class, 'CategoryTable'])->name('category_table');
+    });
+
 });

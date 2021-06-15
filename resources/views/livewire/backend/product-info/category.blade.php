@@ -75,15 +75,6 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label for="basicpill-lastname-input">Description</label>
-                                                <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter Name">
-                                                @error('description') <span class="error">{{ $message }}</span> @enderror
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
                                                 <label for="basicpill-lastname-input">Status</label>
                                                 <select class="form-control" wire:model.lazy="status">
                                                     <option value="">Select Status</option>
@@ -107,12 +98,17 @@
 </div>
 @push('scripts')
     <script>
-
+    function callEdit(id) {
+        @this.call('CategoryEdit', id);
+    }
+    function callDelete(id) {
+        @this.call('CategoryDelete', id);
+    }
         $(document).ready(function () {
             var datatable = $('#CategoryTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.category_table')}}",
                 columns: [
                     {
                         title: 'SL',
@@ -124,14 +120,14 @@
                         name:   'code'
                     },
                     {
-                        title: 'Image',
-                        data:  'image',
-                        name:  'image'
-                    },
-                    {
                         title: 'Name',
                         data:  'name',
                         name:  'name'
+                    },
+                    {
+                        title: 'Image',
+                        data:  'image',
+                        name:  'image'
                     },
                     {
                         title: 'Status',
