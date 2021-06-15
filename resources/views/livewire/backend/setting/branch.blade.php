@@ -3,7 +3,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        PRODUCT UNIT INFO
+        BRANCH INFO
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -13,19 +13,19 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Product Unit Info</h4>
+                                    <h4>Branch Info</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ProductUnitInfoModal"><i class="mdi mdi-plus mr-1"></i>Unit Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="BranchInfoModal"><i class="mdi mdi-plus mr-1"></i>Branch Info</button>
                             </div>
                         </div><!-- end col-->
                     </div>
                     <div wire:ignore class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="ProductUnitInfoTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="BranchInfoTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="ProductUnitInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="BranchInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -42,37 +42,14 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="productUnitInfoSave">
+                <form wire:submit.prevent="BranchInfoSave">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Unit Code</label>
+                                    <label for="basicpill-firstname-input">Branch ID</label>
                                     <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Unit Code">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Unit Name</label>
-                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Unit Name">
-                                    @error('name') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Rate</label>
-                                    <input class="form-control" type="text" wire:model.lazy="rate" placeholder="Enter Unit rate">
-                                    @error('rate') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Status</label>
-                                    <input class="form-control" type="text" wire:model.lazy="status" placeholder="Enter status">
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -91,37 +68,19 @@
     <script>
 
         $(document).ready(function () {
-            var datatable = $('#ProductUnitInfoTable').DataTable({
+            var datatable = $('#BranchInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.productUnitInfo_table')}}",
+                ajax: "{{route('data.branchInfo_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Code',
-                        data:  'code',
-                        name:  'code'
-                    },
-
-                    {
-                        title: 'Name',
-                        data:  'name',
-                        name:  'name'
-                    },
-
-                    {
-                        title: 'Rate',
-                        data:  'rate',
-                        name:  'rate'
-                    },
-
-                    {
-                        title: 'Status',
-                        data:  'status',
-                        name:  'status'
+                        title: 'Branch ID',
+                        data:  'branch id',
+                        name:  'branch id'
                     },
 
                     {

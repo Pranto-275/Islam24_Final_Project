@@ -71,6 +71,20 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label class="control-label">Image (517.38*492 jpg)</label>
+                                    <div class="custom-file">
+                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+
+                                        <input type="file" wire:model.lazy="image" x-ref="image">
+
+                                        {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                        @error('image') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
                                     <label for="basicpill-firstname-input">Sale Price</label>
                                     <input class="form-control" type="text" wire:model.lazy="sale_price" placeholder="Enter sale price">
                                     @error('sale_price') <span class="error">{{ $message }}</span> @enderror

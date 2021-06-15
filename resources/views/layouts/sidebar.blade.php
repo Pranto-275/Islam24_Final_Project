@@ -85,6 +85,53 @@
                         <li><a href="{{route('product.unit')}}">Unit Info</a></li>
                     </ul>
                 </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
+                        <span>Setting</span>
+                    </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.branch')}}">Branch</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.currency')}}">Currency</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.delivery-method')}}">Delivery Method</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.invoice-setting')}}">Invoice Setting</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.payment-method')}}">Payment Method</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.vat')}}">Vat Info</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
+                        <span>Transaction</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('transaction.payment')}}">Payment Info</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>

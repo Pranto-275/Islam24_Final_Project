@@ -13,6 +13,14 @@ use App\Http\Livewire\Backend\ProductInfo\ProductImage;
 use App\Http\Livewire\Backend\ProductInfo\ProductProperties;
 use App\Http\Livewire\Backend\ProductInfo\SubSubCategory;
 use App\Http\Livewire\Backend\ProductInfo\Unit;
+use App\Http\Livewire\Backend\setting\Branch;
+use App\Http\Livewire\Backend\setting\Currency;
+use App\Http\Livewire\Backend\Setting\DeliveryMethod;
+use App\Http\Livewire\Backend\Setting\InvoiceSetting;
+use App\Http\Livewire\Backend\Setting\PaymentMethod;
+use App\Http\Livewire\Backend\Setting\Vat;
+use App\Http\Livewire\Backend\Setting\Warehouse;
+use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
@@ -63,6 +71,20 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('stock-adjustment',StockAdjustment::class)->name('stock-adjustment');
         Route::get('stock-manager',StockManager::class)->name('stock-manager');
     });
+    Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
+        Route::get('branch', Branch::class)->name('branch');
+        Route::get('currency',Currency::class)->name('currency');
+        Route::get('delivery-method',DeliveryMethod::class)->name('delivery-method');
+        Route::get('invoice-setting',InvoiceSetting::class)->name('invoice-setting');
+        Route::get('payment-method',PaymentMethod::class)->name('payment-method');
+        Route::get('vat',Vat::class)->name('vat');
+        Route::get('warehouse',Warehouse::class)->name('warehouse');
+    });
+
+    Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
+        Route::get('payment',Payment::class)->name('payment');
+    });
+
 
     Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
         Route::get('contact', Contact::class)->name('contact');
@@ -84,6 +106,13 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('productPropertiesInfo_table', [DatatableController::class, 'ProductPropertiesInfoTable'])->name('productPropertiesInfo_table');
         Route::get('productSubSubCategoryInfo_table', [DatatableController::class, 'ProductSubSubCategoryInfoTable'])->name('productSubSubCategoryInfo_table');
         Route::get('productUnitInfo_table', [DatatableController::class, 'ProductUnitTable'])->name('productUnitInfo_table');
-
+        Route::get('branchInfo_table', [DatatableController::class, 'BranchInfoTable'])->name('branchInfo_table');
+        Route::get('currencyInfo_table', [DatatableController::class, 'CurrencyInfoTable'])->name('currencyInfo_table');
+        Route::get('deliveryMethodInfo_table', [DatatableController::class, 'DeliveryMethodInfoTable'])->name('deliveryMethodInfo_table');
+        Route::get('invoiceSettingInfo_table', [DatatableController::class, 'InvoiceSettingTable'])->name('invoiceSettingInfo_table');
+        Route::get('paymentMethod_table', [DatatableController::class, 'PaymentMethodTable'])->name('paymentMethod_table');
+        Route::get('VatInfo_table', [DatatableController::class, 'VatInfoTable'])->name('VatInfo_table');
+        Route::get('WarehouseInfo_table', [DatatableController::class, 'WarehouseInfoTable'])->name('WarehouseInfo_table');
+        Route::get('PaymentInfo_table', [DatatableController::class, 'PaymentMethodInfoTable'])->name('PaymentInfo_table');
     });
 });

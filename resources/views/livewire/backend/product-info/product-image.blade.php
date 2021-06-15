@@ -63,9 +63,15 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Image</label>
-                                    <input class="form-control" type="text" wire:model.lazy="image" placeholder="Enter Brand Image">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    <label class="control-label">Image (517.38*492 jpg)</label>
+                                    <div class="custom-file">
+                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+
+                                        <input type="file" wire:model.lazy="image" x-ref="image">
+
+                                        {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                        @error('image') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                                 </div>
                             </div>
 
