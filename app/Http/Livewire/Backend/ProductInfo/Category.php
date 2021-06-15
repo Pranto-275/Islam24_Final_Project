@@ -19,8 +19,8 @@ class Category extends Component
     public $QueryUpdate=NULL;
     public function CategoryEdit($id){
         $this->QueryUpdate = ProductInfoCategory::find($id);
-        $this->code = $this->QueryUpdate->code;
         $this->CategoryId = $this->QueryUpdate->id;
+        $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
         $this->status = $this->QueryUpdate->status;
 
@@ -42,6 +42,12 @@ class Category extends Component
 
     public function CategorySave()
     {
+        $this->validate([
+            'code' => 'required',
+            'name' => 'required',
+            'status' => 'required',
+        ]);
+
         if($this->CategoryId){
             $Query = ProductInfoCategory::find($this->CategoryId);
         }else{
@@ -50,8 +56,10 @@ class Category extends Component
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
+        if($this->image){
         $path = $this->image->store('/public/photo');
         $Query->image = basename($path);
+        }
         $Query->branch_id = 1;
         $Query->status = $this->status;
         $Query->save();
