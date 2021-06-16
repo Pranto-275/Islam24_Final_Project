@@ -26,6 +26,12 @@ use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
 use App\Http\Livewire\UserProfile\ProfileSettings;
+use App\Http\Livewire\Inventory\Language;
+use App\Http\Livewire\Inventory\PointPolicy;
+use App\Http\Livewire\Inventory\DelieveryMethod;
+
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +56,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
         Route::get('user-list', UserList::class)->name('user-list');
+    });
+    Route::group(['prefix'=>'Inventory', 'as'=>'Inventory.'], function (){
+        Route::get('category', Category::class)->name('category');
+        Route::get('currency',Currency::class)->name('currency');
+        Route::get('language',Language::class)->name('language');
+        Route::get('pointPolicy', PointPolicy::class)->name('pointPolicy');
+        Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
+        Route::get('ware-house',WareHouse::class)->name('ware-house');
     });
     Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
         Route::get('profile-settings', ProfileSettings::class)->name('profile-settings');
@@ -96,4 +110,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
         Route::get('user-table', [DatatableController::class, 'UserTable'])->name('user_table');
     });
+
+    Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
+        Route::get('category_table', [DatatableController::class, 'CategoryTable'])->name('category_table');
+    });
+
 });

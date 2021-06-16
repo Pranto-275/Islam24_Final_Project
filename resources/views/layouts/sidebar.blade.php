@@ -25,6 +25,12 @@
                         <span>Supplier Accounts</span>
                     </a>
                 </li>
+{{--                <li>--}}
+{{--                    <a href="" class=" waves-effect">--}}
+{{--                        <i class="bx bx-calendar"></i>--}}
+{{--                        <span>Customer Accounts</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="bx bxs-eraser"></i>
