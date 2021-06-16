@@ -3,7 +3,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        PRODUCT UNIT INFO
+        PRODUCT UNITS INFO
     </x-slot>
     <div class="row">
         <div class="col-12">
