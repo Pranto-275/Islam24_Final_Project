@@ -18,29 +18,29 @@ class Category extends Component
     public $CategoryId=NULL;
     public $QueryUpdate=NULL;
 
-    public function CategoryEdit($id){
+    public function categoryEdit($id){
         $this->QueryUpdate = ProductInfoCategory::find($id);
         $this->CategoryId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
         $this->status = $this->QueryUpdate->status;
 
-        $this->emit('modal', 'CategoryModal');
+        $this->emit('modal', 'categoryModal');
     }
-    public function CategoryDelete($id){
+    public function categoryDelete($id){
         ProductInfoCategory::find($id)->delete();
 
         $this->emit('success', [
             'text' => 'Category Deleted Successfully',
         ]);
     }
-    public function CategoryModal()
+    public function categoryModal()
     {
         $this->code = 'C'.floor(time() - 999999999);
-        $this->emit('modal', 'CategoryModal');
+        $this->emit('modal', 'categoryModal');
     }
 
-    public function CategorySave()
+    public function categorySave()
     {
         $this->validate([
             'code' => 'required',

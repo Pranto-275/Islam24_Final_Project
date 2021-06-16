@@ -19,13 +19,13 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="DeliveryMethodInfoModal"><i class="mdi mdi-plus mr-1"></i>Currency Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="deliveryMethodModal"><i class="mdi mdi-plus mr-1"></i>Delivery Info</button>
                             </div>
                         </div><!-- end col-->
                     </div>
                     <div wire:ignore class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="DeliveryMethodInfoTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="deliveryMethodInfoTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                 </div>
@@ -33,26 +33,45 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="DeliveryMethodInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="deliveryMethodInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Product Unit Info</h5>
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Delivery Method Info</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="DeliveryMethodInfoSave">
+                <form wire:submit.prevent="deliveryMethodSave">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Currency ID</label>
+                                    <label for="basicpill-firstname-input">Code</label>
                                     <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Currency ID">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Delivery Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Branch Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="branch_name" placeholder="Branch Name">
+                                    @error('branch_name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Address</label>
+                                    <input class="form-control" type="text" wire:model.lazy="address" placeholder="Address">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -66,21 +85,42 @@
 </div>
 @push('scripts')
     <script>
+        function callEdit(id) {
+            @this.call('deliveryMethodEdit', id);
+        }
+        function callDelete(id) {
+            @this.call('deliveryMethodDelete', id);
+        }
 
         $(document).ready(function () {
-            var datatable = $('#DeliveryMethodInfoTable').DataTable({
+            var datatable = $('#deliveryMethodInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.delivery_method_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Delivery ID',
-                        data:  'delivery id',
-                        name:  'delivery id'
+                        title: 'Code',
+                        data:  'code',
+                        name:  'code'
+                    },
+                    {
+                        title: 'Name',
+                        data:  'name',
+                        name:  'name'
+                    },
+                    {
+                        title: 'Branch Name',
+                        data:  'branch_name',
+                        name:  'branch_name'
+                    },
+                    {
+                        title: 'Address',
+                        data:  'address',
+                        name:  'address'
                     },
                     {
                         title: 'Action',

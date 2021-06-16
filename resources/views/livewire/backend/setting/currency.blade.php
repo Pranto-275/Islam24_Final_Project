@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="CurrencyInfoModal"><i class="mdi mdi-plus mr-1"></i>Currency Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="currencyInfoModal"><i class="mdi mdi-plus mr-1"></i>Currency Info</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="CurrencyInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="currencyInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -42,18 +42,97 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="CurrencyInfoSave">
+                <form wire:submit.prevent="currencySave">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Currency ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Currency ID">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Currency Code</label>
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Vat Code">
+                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Currency Title</label>
+                                    <input class="form-control" type="text" wire:model.lazy="title" placeholder="Enter Currency Title">
+                                     @error('title') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Symbol</label>
+                                    <input class="form-control" type="text" wire:model.lazy="symbol" placeholder="Enter Symbol">
+                                     @error('symbol') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Symbol Position</label>
+                                    <input class="form-control" type="text" wire:model.lazy="symbol_position" placeholder="Enter Symbol Position">
+                                    @error('symbol_position') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Symbol Position</label>
+                                    <select class="form-control" wire:model.lazy="symbol_position">
+                                        <option>Select Branch</option>
+                                        <option value="Prefix">Prefix</option>
+                                        <option value="Surfix">Surfix</option>
+                                    </select>
+                                     @error('symbol_position') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">In Word Prefix</label>
+                                    <input class="form-control" type="text" wire:model.lazy="in_word_prefix" placeholder="Enter In Word Prefix">
+                                    @error('in_word_prefix') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">In Word Surfix</label>
+                                    <input class="form-control" type="text" wire:model.lazy="in_word_surfix" placeholder="Enter In Word Surfix">
+                                    @error('in_word_surfix') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">In Word Prefix Position</label>
+                                    <select class="form-control" wire:model.lazy="in_word_prefix_position">
+                                        <option>Select Branch</option>
+                                        <option value="Prefix">Prefix</option>
+                                        <option value="Surfix">Surfix</option>
+                                    </select>
+                                     @error('in_word_prefix_position') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">In Word Surfix Position</label>
+                                    <select class="form-control" wire:model.lazy="in_word_surfix_position">
+                                        <option>Select Option</option>
+                                        <option value="Prefix">Prefix</option>
+                                        <option value="Surfix">Surfix</option>
+                                    </select>
+                                     @error('in_word_surfix_position') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option>Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                     @error('in_word_surfix_position') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -66,28 +145,47 @@
 </div>
 @push('scripts')
     <script>
-
+    function callEdit(id) {
+        @this.call('currencyEdit', id);
+    }
+    function callDelete(id) {
+        @this.call('currencyDelete', id);
+    }
         $(document).ready(function () {
             var datatable = $('#CurrencyInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.currency_table')}}",
                 columns: [
                     {
-                        title: 'SL',
-                        data: 'id'
-                    },
-                    {
-                        title: 'Currency ID',
-                        data:  'currency id',
-                        name:  'currency id'
-                    },
-
-                    {
-                        title: 'Action',
-                        data: 'action',
-                        name:'action'
-                    },
+                    title: 'SL',
+                    data: 'id'
+                },
+                {
+                    title: 'Currency Code',
+                    data: 'code',
+                    name:'code'
+                },
+                {
+                    title: 'Title',
+                    data: 'title',
+                    name:'title'
+                },
+                {
+                    title: 'Symbol',
+                    data: 'symbol',
+                    name:'symbol'
+                },
+                {
+                    title: 'Symbol Position',
+                    data: 'symbol_position',
+                    name:'symbol_position'
+                },
+                {
+                    title: 'Action',
+                    data: 'action',
+                    name:'action'
+                },
                 ]
             });
 

@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ProductInfoModal"><i class="mdi mdi-plus mr-1"></i>Product Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="productInfoModal"><i class="mdi mdi-plus mr-1"></i>Product Info</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="ProductInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -59,7 +59,7 @@
                                     <select class="form-control" wire:model.lazy="sub_sub_category_id">
                                        <option value=""> Select Sub-sub Category </option>
                                        @foreach ($subSubCategories as $subSubCategory)
-                                          <option wire:model.lazy="{{ $subSubCategory->id }}">{{ $subSubCategory->name }}</option>
+                                          <option value="{{ $subSubCategory->id }}">{{ $subSubCategory->name }}</option>
                                        @endforeach
                                     </select>
                                     @error('sub_sub_category_id') <span class="error">{{ $message }}</span> @enderror
@@ -91,7 +91,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Sale Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="sale_price" placeholder="Enter sale price">
-                                    @error('sale_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -99,7 +98,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Whole Sales Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
-                                    @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -107,7 +105,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Purchase Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">
-                                    @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -115,7 +112,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Low alert Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="low_alert" placeholder="Enter low alert price">
-                                    @error('low_alert') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -127,7 +123,6 @@
                                         <option value="Active">Active</option>
                                         <option value="Inactive">Inactive</option>
                                     </select>
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -144,12 +139,17 @@
 </div>
 @push('scripts')
     <script>
-
+    function callEdit(id) {
+        @this.call('productEdit', id);
+    }
+    function callDelete(id) {
+        @this.call('productDelete', id);
+    }
         $(document).ready(function () {
             var datatable = $('#ProductInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.product_table')}}",
                 columns: [
                     {
                         title: 'SL',
@@ -157,8 +157,8 @@
                     },
                     {
                         title: 'Code',
-                        data: 'Code',
-                        name: 'Code'
+                        data: 'code',
+                        name: 'code'
                     },
 
                     {
@@ -169,34 +169,21 @@
 
                     {
                         title: 'Sales Price',
-                        data:  'sales price',
-                        name:  'sales price'
+                        data:  'sale_price',
+                        name:  'sale_price'
                     },
 
                     {
                         title: 'Whole sales Price',
-                        data: 'whole sale price',
-                        name:'whole sale price'
+                        data: 'wholesale_price',
+                        name:'wholesale_price'
                     },
 
                     {
                         title: 'Purchase Price',
-                        data: 'purchase price',
-                        name:'purchase price'
+                        data: 'purchase_price',
+                        name:'purchase_price'
                     },
-
-                    {
-                        title: 'Law alert',
-                        data: 'law alert',
-                        name: 'law alert'
-                    },
-
-                    {
-                        title: 'Status',
-                        data: 'status',
-                        name: 'status'
-                    },
-
                     {
                         title: 'Action',
                         data: 'action',

@@ -26,9 +26,15 @@ class Product extends Component
         $this->ProductId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
+        $this->sale_price = $this->QueryUpdate->sale_price;
+        $this->wholesale_price = $this->QueryUpdate->wholesale_price;
+        $this->purchase_price = $this->QueryUpdate->purchase_price;
+        $this->sub_sub_category_id = $this->QueryUpdate->sub_sub_category_id;
+        $this->low_alert = $this->QueryUpdate->low_alert;
+        $this->contact_id = $this->QueryUpdate->contact_id;
         $this->status = $this->QueryUpdate->status;
 
-        $this->emit('modal', 'CategoryModal');
+        $this->emit('modal', 'productInfoModal');
     }
     public function productDelete($id){
         ProductInfo::find($id)->delete();
@@ -43,10 +49,12 @@ class Product extends Component
         $this->validate([
             'code' => 'required',
             'name' => 'required',
+            'sub_sub_category_id' => 'required',
+            'contact_id' => 'required',
         ]);
 
         if($this->ProductId){
-            $Query = ProductInfo::find($this->CategoryId);
+            $Query = ProductInfo::find($this->ProductId);
         }else{
             $Query = new ProductInfo();
             $Query->user_id = Auth::user()->id;
@@ -64,15 +72,15 @@ class Product extends Component
         $Query->save();
 
         $this->reset();
-        $this->ProductInfoModal();
+        $this->productInfoModal();
         $this->emit('success', [
             'text' => 'Product C/U Successfully',
         ]);
     }
 
-    public function ProductInfoModal(){
+    public function productInfoModal(){
         $this->code = 'C'.floor(time() - 999999999);
-        $this->emit('modal','ProductInfoModal');
+        $this->emit('modal','productInfoModal');
     }
     public function render()
     {

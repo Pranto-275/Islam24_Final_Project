@@ -19,13 +19,13 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="WarehouseModal"><i class="mdi mdi-plus mr-1"></i>Warehouse Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="warehouseModal"><i class="mdi mdi-plus mr-1"></i>Warehouse Info</button>
                             </div>
                         </div><!-- end col-->
                     </div>
                     <div wire:ignore class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="WarehouseTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="warehouseTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="WarehouseModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="warehouseModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -42,14 +42,28 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="WarehouseInfoSave">
+                <form wire:submit.prevent="warehouseSave">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input"> Warehouse ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Warehouse ID">
+                                    <label for="basicpill-firstname-input">Code</label>
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Code">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Address</label>
+                                    <input class="form-control" type="text" wire:model.lazy="address" placeholder="Address">
+                                    @error('address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -65,21 +79,36 @@
 </div>
 @push('scripts')
     <script>
-
+    function callEdit(id) {
+        @this.call('warehouseEdit', id);
+    }
+    function callDelete(id) {
+        @this.call('warehouseDelete', id);
+    }
         $(document).ready(function () {
-            var datatable = $('#WarehouseTable').DataTable({
+            var datatable = $('#warehouseTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.warehouse_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Warehouse',
-                        data:  'warehouse id',
-                        name:  'warehouse id'
+                        title: 'Code',
+                        data:  'code',
+                        name:  'code'
+                    },
+                    {
+                        title: 'Name',
+                        data:  'name',
+                        name:  'name'
+                    },
+                    {
+                        title: 'Address',
+                        data:  'address',
+                        name:  'address'
                     },
                     {
                         title: 'Action',

@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ProductPropertiesInfoModal"><i class="mdi mdi-plus mr-1"></i>Product Properties Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="productPropertiesInfoModal"><i class="mdi mdi-plus mr-1"></i>Product Properties Info</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="ProductPropertiesInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="productPropertiesInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -42,61 +42,47 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="productPropertiesInfoSave">
+                <form wire:submit.prevent="productPropertiesSave">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter product Code">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                        <div class="form-group">
+                                            <label for="basicpill-firstname-input">Product</label>
+                                            <select class="form-control" wire:model.lazy="product_id">
+                                              <option value="">Select Product</option>
+                                              @foreach ($products as $product)
+                                                  <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                              @endforeach
+                                            </select>
+                                            @error('product_id') <span class="error">{{ $message }}</span> @enderror
+
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Name</label>
-                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter product name">
-                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Size</label>
+                                    <input class="form-control" type="text" wire:model.lazy="size" placeholder="Size">
+                                    @error('size') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sale Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="sale_price" placeholder="Enter sale price">
-                                    @error('sale_price') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Whole Sales Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
-                                    @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Purchase Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">
-                                    @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Low alert Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="low_alert" placeholder="Enter low alert price">
-                                    @error('low_alert') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Color</label>
+                                    <input class="form-control" type="text" wire:model.lazy="color" placeholder="Color">
+                                    @error('color') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Status</label>
-                                    <input class="form-control" type="text" wire:model.lazy="status" placeholder="Enter statuss">
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
                                     @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -114,21 +100,27 @@
 </div>
 @push('scripts')
     <script>
+          function callEdit(id) {
+            @this.call('productPropertiesEdit', id);
+          }
+        function callDelete(id) {
+           @this.call('productPropertiesDelete', id);
+        }
 
         $(document).ready(function () {
             var datatable = $('#ProductPropertiesInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.product_properties_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Product ID',
-                        data: 'product id',
-                        name: 'product id'
+                        title: 'Product',
+                        data: 'product_id',
+                        name: 'product_id'
                     },
 
                     {
@@ -142,31 +134,11 @@
                         data:  'color',
                         name:  'color'
                     },
-
-                    {
-                        title: 'Branch ID',
-                        data: 'branch id',
-                        name: 'branch id'
-                    },
-
                     {
                         title: 'Status',
                         data:  'status',
                         name:  'status'
                     },
-
-                    {
-                        title: 'Law alert',
-                        data: 'law alert',
-                        name: 'law alert'
-                    },
-
-                    {
-                        title: 'Status',
-                        data: 'status',
-                        name: 'status'
-                    },
-
                     {
                         title: 'Action',
                         data: 'action',

@@ -42,25 +42,21 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="productImageInfoSave">
+                <form wire:submit.prevent="productImageSave">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Product ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="product_id" placeholder="Enter Brand Code">
+                                    <label for="basicpill-firstname-input">Product</label>
+                                    <select class="form-control" wire:model.lazy="product_id">
+                                      <option value="">Select Product</option>
+                                      @foreach ($products as $product)
+                                          <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                      @endforeach
+                                    </select>
                                     @error('product_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Name</label>
-                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Brand name">
-                                    @error('name') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="control-label">Image (517.38*492 jpg)</label>
@@ -68,13 +64,31 @@
                                         {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
                                         <input type="file" wire:model.lazy="image" x-ref="image">
+                                        @if (!$image)
+                                        @if($QueryUpdate)
+                                        <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
+                                        @endif
+                                        @if ($image)
+                                        <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
+                                        <br>
+                                    @error('image') <span class="error">{{ $message }}</span> @enderror
 
                                         {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
-                                        @error('image') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -88,21 +102,27 @@
 </div>
 @push('scripts')
     <script>
+       function callEdit(id) {
+          @this.call('productImageEdit', id);
+       }
+       function callDelete(id) {
+          @this.call('productImageDelete', id);
+       }
 
         $(document).ready(function () {
             var datatable = $('#productImageInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.product_image_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Product ID',
-                        data:  'product id',
-                        name:  'product id'
+                        title: 'Product',
+                        data:  'product_id',
+                        name:  'product_id'
                     },
 
                     {
@@ -110,19 +130,6 @@
                         data:  'image',
                         name:  'image'
                     },
-
-                    {
-                        title: 'User ID',
-                        data:  'user id',
-                        name:  'user id'
-                    },
-
-                    {
-                        title: 'Branch ID',
-                        data:  'branch id',
-                        name:  'branch id'
-                    },
-
                     {
                         title: 'Status',
                         data: 'status',
