@@ -3,7 +3,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        PRODUCT SUB SUB CATEGORY INFO
+        SUB-SUB CATEGORY INFO
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -13,13 +13,13 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Product Sub Sub Category Info</h4>
+                                    <h4>Sub-sub Category Info</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ProductSubSubCategoryInfoModal"><i class="mdi mdi-plus mr-1"></i>Product Sub Sub Category Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ProductSubSubCategoryInfoModal"><i class="mdi mdi-plus mr-1"></i>Sub-sub Category</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -37,27 +37,31 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Product Sub Sub Category Info</h5>
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Sub-sub Category Info</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="productSubSubCategoryInfoSave">
+                <form wire:submit.prevent="saveSubSubCategory">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter sub sub Category Code">
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Code">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sub Category ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="sub_category_id" placeholder="Enter sub sub Category id">
-                                    @error('sub_category_id') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Sub Category</label>
+                                    <select class="form-control" wire:model.lazy="sub_category_id">
+                                        <option value="">Select Sub-Category</option>
+                                        @foreach ($subCategories as $subCategory)
+                                            <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -76,35 +80,35 @@
                                         {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
                                         <input type="file" wire:model.lazy="image" x-ref="image">
-
+                                        @if (!$image)
+                                        @if($QueryUpdate)
+                                        <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
+                                        @endif
+                                        @if ($image)
+                                        <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
                                         {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
-                                        @error('image') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sale Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="sale_price" placeholder="Enter sale price">
-                                    @error('sale_price') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
                                     <label for="basicpill-firstname-input">Description</label>
-                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter sale price">
-                                    @error('description') <span class="error">{{ $message }}</span> @enderror
+                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Description">
                                 </div>
                             </div>
 
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Status</label>
-                                    <input class="form-control" type="text" wire:model.lazy="status" placeholder="Enter status">
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
+                                        <label for="basicpill-lastname-input">Status</label>
+                                        <select class="form-control" wire:model.lazy="status">
+                                            <option value="">Select Status</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                        </select>
                                 </div>
                             </div>
 
@@ -121,41 +125,47 @@
 </div>
 @push('scripts')
     <script>
-
+ function callEdit(id) {
+        @this.call('subSubCategoryEdit', id);
+    }
+    function callDelete(id) {
+        @this.call('subSubCategoryDelete', id);
+    }
         $(document).ready(function () {
             var datatable = $('#ProductSubSubCategoryInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.sub_sub_category_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Sub sub code',
-                        data:  'sub sub code',
-                        name:  'sub sub code'
+                        title: 'Code',
+                        data:  'code',
+                        name:  'code'
                     },
-
                     {
                         title: 'Name',
                         data:  'name',
                         name:  'name'
                     },
-
                     {
-                        title: 'Image',
-                        data:  'image',
-                        name:  'image'
+                        title: 'Sub Category',
+                        data:  'sub_category_id',
+                        name:  'sub_category_id'
                     },
-
                     {
                         title: 'Description',
                         data:  'description',
                         name:  'description'
                     },
-
+                    {
+                        title: 'Image',
+                        data:  'image',
+                        name:  'image'
+                    },
                     {
                         title: 'Status',
                         data:  'status',

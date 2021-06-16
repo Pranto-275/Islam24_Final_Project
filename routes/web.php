@@ -113,6 +113,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
         Route::get('category_table', [DatatableController::class, 'CategoryTable'])->name('category_table');
+        Route::get('sub_category_table', [DatatableController::class, 'SubCategoryTable'])->name('sub_category_table');
+        Route::get('sub_sub_category_table', [DatatableController::class, 'SubSubCategoryTable'])->name('sub_sub_category_table');
     });
 
 });

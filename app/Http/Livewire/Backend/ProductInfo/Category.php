@@ -17,6 +17,7 @@ class Category extends Component
     public $status;
     public $CategoryId=NULL;
     public $QueryUpdate=NULL;
+
     public function CategoryEdit($id){
         $this->QueryUpdate = ProductInfoCategory::find($id);
         $this->CategoryId = $this->QueryUpdate->id;
@@ -33,7 +34,6 @@ class Category extends Component
             'text' => 'Category Deleted Successfully',
         ]);
     }
-
     public function CategoryModal()
     {
         $this->code = 'C'.floor(time() - 999999999);
@@ -45,7 +45,6 @@ class Category extends Component
         $this->validate([
             'code' => 'required',
             'name' => 'required',
-            'status' => 'required',
         ]);
 
         if($this->CategoryId){

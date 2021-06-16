@@ -66,7 +66,14 @@
                                                     {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
                                                     <input type="file" wire:model.lazy="image" x-ref="image">
-
+                                                    @if (!$image)
+                                                    @if($QueryUpdate)
+                                                    <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    @endif
+                                                    @endif
+                                                    @if ($image)
+                                                    <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    @endif
                                                     {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
                                                 </div>
                                             </div>
@@ -80,7 +87,6 @@
                                                     <option value="Active">Active</option>
                                                     <option value="Inactive">Inactive</option>
                                                 </select>
-                                                @error('status') <span class="error">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
 

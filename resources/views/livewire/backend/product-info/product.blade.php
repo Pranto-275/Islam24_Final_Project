@@ -42,7 +42,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="productInfoSave">
+                <form wire:submit.prevent="productSave">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
@@ -55,16 +55,26 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sub Sub Category ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="sub_sub_category_id" placeholder="Enter Sub Sub Category">
+                                    <label for="basicpill-firstname-input">Sub Sub Category</label>
+                                    <select class="form-control" wire:model.lazy="sub_sub_category_id">
+                                       <option value=""> Select Sub-sub Category </option>
+                                       @foreach ($subSubCategories as $subSubCategory)
+                                          <option wire:model.lazy="{{ $subSubCategory->id }}">{{ $subSubCategory->name }}</option>
+                                       @endforeach
+                                    </select>
                                     @error('sub_sub_category_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Contact ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="contact_id" placeholder="Enter Contact id">
+                                    <label for="basicpill-firstname-input">Contact</label>
+                                    <select class="form-control" wire:model.lazy="contact_id">
+                                        <option value="">Select Contact</option>
+                                        @foreach ($contacts as $contact)
+                                            <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('contact_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -80,7 +90,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Sale Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="sale_price" placeholder="Enter sale price">
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="sale_price" placeholder="Enter sale price">
                                     @error('sale_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -88,7 +98,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Whole Sales Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
                                     @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -96,7 +106,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Purchase Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">
                                     @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -104,7 +114,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Low alert Price</label>
-                                    <input class="form-control" type="text" wire:model.lazy="low_alert" placeholder="Enter low alert price">
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="low_alert" placeholder="Enter low alert price">
                                     @error('low_alert') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
