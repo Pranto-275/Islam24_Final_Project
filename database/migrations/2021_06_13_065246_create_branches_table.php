@@ -15,7 +15,14 @@ class CreateBranchesTable extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
+            $table->string('code',100);
+            $table->string('name',100)->nullable();
+            $table->string('address',100)->nullable();
+            $table->string('mobile',100)->nullable();
+            $table->enum('status', ['Active', 'Inactive']);
+            $table->foreignId('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

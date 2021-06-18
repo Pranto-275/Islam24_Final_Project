@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="CategoryModal"><i class="mdi mdi-plus mr-1"></i> New Category</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="categoryModal"><i class="mdi mdi-plus mr-1"></i> New Category</button>
 
                             </div>
                         </div><!-- end col-->
@@ -33,7 +33,7 @@
         </div>
     </div>
                 <!--  Modal content for the above example -->
-                <div wire:ignore.self class="modal fade" id="CategoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div wire:ignore.self class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -42,7 +42,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form wire:submit.prevent="CategorySave">
+                            <form wire:submit.prevent="categorySave">
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -66,7 +66,14 @@
                                                     {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
                                                     <input type="file" wire:model.lazy="image" x-ref="image">
-
+                                                    @if (!$image)
+                                                    @if($QueryUpdate)
+                                                    <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    @endif
+                                                    @endif
+                                                    @if ($image)
+                                                    <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    @endif
                                                     {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
                                                 </div>
                                             </div>
@@ -80,7 +87,6 @@
                                                     <option value="Active">Active</option>
                                                     <option value="Inactive">Inactive</option>
                                                 </select>
-                                                @error('status') <span class="error">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
 
@@ -98,10 +104,10 @@
 @push('scripts')
     <script>
     function callEdit(id) {
-        @this.call('CategoryEdit', id);
+        @this.call('categoryEdit', id);
     }
     function callDelete(id) {
-        @this.call('CategoryDelete', id);
+        @this.call('categoryDelete', id);
     }
         $(document).ready(function () {
             var datatable = $('#CategoryTable').DataTable({

@@ -3,16 +3,155 @@
 namespace App\Http\Controllers;
 use App\Models\User as UserMm;
 use App\Models\Inventory\Category;
+use App\Models\Backend\ProductInfo\SubCategory;
+use App\Models\Backend\ProductInfo\SubSubCategory;
+use App\Models\Backend\ProductInfo\Product;
+use App\Models\Backend\ProductInfo\ProductImage;
+use App\Models\Backend\ProductInfo\ProductProperties;
+use App\Models\Backend\Setting\Branch;
+use App\Models\Inventory\Currency;
+use App\Models\Inventory\DeliveryMethod;
+use App\Models\Backend\Setting\Warehouse;
 use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
+    public function WarehouseTable(){
+        $Query = Warehouse::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action'])
+        ->toJSON();
+    }
+    public function DeliveryMethodTable(){
+        $Query = DeliveryMethod::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action'])
+        ->toJSON();
+    }
+    public function CurrencyTable(){
+        $Query = Currency::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action'])
+        ->toJSON();
+    }
+    public function BranchTable(){
+        $Query = Branch::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action'])
+        ->toJSON();
+    }
+    public function ProductPropertiesTable(){
+        $Query = ProductProperties::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('product_id', function ($data) {
+            return $data->Product ? $data->Product->name : '';
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['product_id', 'action'])
+        ->toJSON();
+    }
+    public function ProductImageTable(){
+        $Query = ProductImage::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('product_id', function ($data) {
+            return $data->Product ? $data->Product->name : '';
+        })
+        ->addColumn('image', function ($data) {
+            $url = asset('storage/photo/'.$data->image);
+
+            return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['sub_category_id', 'image', 'action'])
+        ->toJSON();
+    }
+    public function ProductTable(){
+        $Query = Product::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('sub_sub_category_id', function ($data) {
+            return $data->SubSubCategory ? $data->SubSubCategory->name : '';
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['sub_sub_category_id', 'action'])
+        ->toJSON();
+    }
+    public function SubSubCategoryTable(){
+        $Query = SubSubCategory::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('sub_category_id', function ($data) {
+            return $data->SubCategory ? $data->SubCategory->name : '';
+        })
+        ->addColumn('image', function ($data) {
+            $url = asset('storage/photo/'.$data->image);
+
+            return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['sub_category_id', 'image', 'action'])
+        ->toJSON();
+    }
+
+    public function SubCategoryTable(){
+        $Query = SubCategory::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('category_id', function ($data) {
+            return $data->Category ? $data->Category->name : '';
+        })
+        ->addColumn('image', function ($data) {
+            $url = asset('storage/photo/'.$data->image);
+
+            return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['category_id', 'image', 'action'])
+        ->toJSON();
+    }
     public function CategoryTable(){
         $Query = Category::query()->orderBy('id', 'desc');
 
         return Datatables::of($Query)
         ->addColumn('image', function ($data) {
-            $url = asset('public/storage/photo/'.$data->image);
+            $url = asset('storage/photo/'.$data->image);
 
             return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
         })

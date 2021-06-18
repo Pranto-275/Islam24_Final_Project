@@ -2,7 +2,7 @@
 @endpush
 <div>
     <x-slot name="title">
-       PRODUCT SUB CATEGORY
+       SUB CATEGORY
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -42,13 +42,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="SubCategorySave">
+                <form wire:submit.prevent="saveSubCategory">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Sub Category Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Cost code">
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Code">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -68,17 +68,27 @@
                                         {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
                                         <input type="file" wire:model.lazy="image" x-ref="image">
-
+                                        @if (!$image)
+                                        @if($QueryUpdate)
+                                        <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
+                                        @endif
+                                        @if ($image)
+                                        <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
                                         {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
-                                        @error('image') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-lastname-input">Category ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="category_id" placeholder="Enter Category id">
+                                    <select class="form-control" wire:model.lazy="category_id">
+                                       <option value="">Select Category</option>
+                                       @foreach ($categories as $category)
+                                           <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                       @endforeach
+                                    </select>
                                     @error('category_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -86,8 +96,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Description</label>
-                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter Category id">
-                                    @error('description') <span class="error">{{ $message }}</span> @enderror
+                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Description">
                                 </div>
                             </div>
 
@@ -100,7 +109,6 @@
                                         <option value="Active">Active</option>
                                         <option value="Inactive">Inactive</option>
                                     </select>
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -117,38 +125,47 @@
 </div>
 @push('scripts')
     <script>
-
+    function callEdit(id) {
+        @this.call('SubCategoryEdit', id);
+    }
+    function callDelete(id) {
+        @this.call('SubCategoryDelete', id);
+    }
         $(document).ready(function () {
             var datatable = $('#SubCategoryTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.sub_category_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Sub Category Code',
+                        title: 'Code',
                         data:   'code',
                         name:   'code'
                     },
                     {
-                        title: 'Image',
-                        data:  'image',
-                        name:  'image'
+                        title: 'Name',
+                        data:  'name',
+                        name:  'name'
                     },
                     {
-                        title: 'Category Id',
-                        data:  'category id',
-                        name:  'category id'
+                        title: 'Category',
+                        data:  'category_id',
+                        name:  'category_id'
                     },
                     {
                         title: 'Description',
                         data:  'description',
                         name:  'description'
                     },
-
+                    {
+                        title: 'Image',
+                        data:  'image',
+                        name:  'image'
+                    },
                     {
                         title: 'Status',
                         data:  'status',

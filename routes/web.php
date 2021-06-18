@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\DatatableController;
+use App\Http\Livewire\Frontend\Home;
+use App\Http\Livewire\Frontend\ProductView;
+use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Backend\ContactInfo\Contact;
 use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
 use App\Http\Livewire\Backend\Inventory\Invoice;
@@ -45,13 +48,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/login', function () {
     return view('auth.login');
 });
+
+
+Route::get('/', Home::class)->name('home');
+Route::get('product-view', ProductView::class)->name('product-view');
+Route::get('category', FrontEndCategory::class)->name('category');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('livewire.dashboard');
 })->name('dashboard');
+
+
 
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
@@ -113,6 +124,15 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
         Route::get('category_table', [DatatableController::class, 'CategoryTable'])->name('category_table');
+        Route::get('sub_category_table', [DatatableController::class, 'SubCategoryTable'])->name('sub_category_table');
+        Route::get('sub_sub_category_table', [DatatableController::class, 'SubSubCategoryTable'])->name('sub_sub_category_table');
+        Route::get('product_table', [DatatableController::class, 'ProductTable'])->name('product_table');
+        Route::get('product_image_table', [DatatableController::class, 'ProductImageTable'])->name('product_image_table');
+        Route::get('product_properties_table', [DatatableController::class, 'ProductPropertiesTable'])->name('product_properties_table');
+        Route::get('branch_table', [DatatableController::class, 'BranchTable'])->name('branch_table');
+        Route::get('currency_table', [DatatableController::class, 'CurrencyTable'])->name('currency_table');
+        Route::get('delivery_method_table', [DatatableController::class, 'DeliveryMethodTable'])->name('delivery_method_table');
+        Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
     });
 
 });
