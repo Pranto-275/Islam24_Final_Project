@@ -15,6 +15,7 @@ class Category extends Component
     public $name;
     public $image;
     public $status;
+    public $top_show;
     public $CategoryId=NULL;
     public $QueryUpdate=NULL;
 
@@ -24,6 +25,7 @@ class Category extends Component
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
         $this->status = $this->QueryUpdate->status;
+        $this->top_show = $this->QueryUpdate->top_show;
 
         $this->emit('modal', 'categoryModal');
     }
@@ -61,6 +63,11 @@ class Category extends Component
         }
         $Query->branch_id = 1;
         $Query->status = $this->status;
+        if($this->top_show){
+           $Query->top_show = 1;
+        }else{
+           $Query->top_show = 0;
+        }
         $Query->save();
         $this->reset();
         $this->CategoryModal();

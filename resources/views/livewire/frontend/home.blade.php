@@ -20,9 +20,11 @@
                         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col2">
                             <div class="module sohomepage-slider ">
                                 <div class="yt-content-slider"  data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column00="1" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                    <div class="yt-content-slide">
-                                        <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/slideshow/home1/slider-1.jpg" alt="slider1" class="img-responsive"></a>
-                                    </div>
+                                    @foreach ($sliderImages as $sliderImage)
+                                      <div class="yt-content-slide">
+                                        <a href="#"><img src="{{ asset('storage/photo/'.$sliderImage->image) }}" alt="slider1" class="img-responsive" style="width:1090px;height:450px;"></a>
+                                      </div>
+                                    @endforeach
                                 </div>
 
                                 <div class="loadeding"></div>
@@ -531,25 +533,17 @@
                 <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 main-right">
 
 
-                    {{-- <div class="static-cates"> --}}
+                    <div class="static-cates">
                         <ul>
+                            @foreach ($topTategories as $topTategory)
+
                             <li>
-                                <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/banners/cat1.jpg" alt="image"></a>
+                                <a href="#"><img src="{{ asset('storage/photo/'.$topTategory->image) }}" alt="image" style="height:120px;"></a>
                             </li>
-                            <li>
-                                {{-- <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/banners/cat2.jpg" alt="image"></a> --}}
-                            </li>
-                            <li>
-                                {{-- <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/banners/cat3.jpg" alt="image"></a> --}}
-                            </li>
-                            <li>
-                                {{-- <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/banners/cat4.jpg" alt="image"></a> --}}
-                            </li>
-                            <li>
-                                {{-- <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/banners/cat5.jpg" alt="image"></a> --}}
-                            </li>
+
+                            @endforeach
                         </ul>
-                    {{-- </div> --}}
+                    </div>
 
                     <!-- Deals -->
                     <div class="module deals-layout1">
@@ -574,7 +568,7 @@
                         <div class="modcontent">
                             <div id="so_deal_1" class="so-deal style1">
                                 <div class="extraslider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="6" data-items_column0="5" data-items_column1="3" data-items_column2="2"  data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes">
-
+                                @foreach ($products as $product)
                                     <div class="item">
                                         <div class="item-inner product-layout transition product-grid">
                                             <div class="product-item-container">
@@ -584,8 +578,9 @@
                                                     </div>
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Pastrami bacon">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/h1.jpg" class="img-1 img-responsive" alt="image1">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/h2.jpg" class="img-2 img-responsive" alt="image2">
+                                                            @foreach ($product->ProductImage as $productImage)
+                                                               <img src="{{ asset('storage/photo/'.$productImage->image) }}" class="img-1 img-responsive" alt="image1">
+                                                            @endforeach
                                                         </a>
                                                     </div>
                                                     <!--quickview-->
@@ -617,12 +612,11 @@
                                                             </div>
                                                             <span class="rating-num">( 2 )</span>
                                                         </div>
-                                                        <h4><a href="product.html" title="Pastrami bacon" target="_self">Pastrami bacon</a></h4>
+                                                        <h4><a href="product.html" title="Pastrami bacon" target="_self">{{ $product->name  }}</a></h4>
 
                                                     </div>
                                                     <p class="price">
-                                                        <span class="price-new">$85.00</span>
-                                                        <span class="price-old">$96.00</span>
+                                                        <span class="price-new">{{ $product->sale_price  }}</span>
                                                     </p>
                                                 </div>
 
@@ -635,6 +629,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
 
                                 </div>
                             </div>
@@ -673,7 +668,7 @@
                                     </a>
                                 </div>
                                 <div class="slider category-slider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="4" data-items_column0="4" data-items_column1="2" data-items_column2="1"  data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes">
-
+                                    @foreach($categories as $category)
                                         <div class="item">
                                             <div class="item-inner product-layout transition product-grid">
                                                 <div class="product-item-container">
@@ -681,8 +676,8 @@
 
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Lastrami bacon">
-                                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e1.jpg" class="img-1 img-responsive" alt="image1">
-                                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e10.jpg" class="img-2 img-responsive" alt="image2">
+                                                                <img src="{{ asset('storage/photo/'.$category->image) }}" class="img-1 img-responsive" alt="image1">
+                                                                <img src="{{ asset('storage/photo/'.$category->image) }}" class="img-2 img-responsive" alt="image2">
                                                             </a>
                                                         </div>
                                                         <!--quickview-->
@@ -726,7 +721,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

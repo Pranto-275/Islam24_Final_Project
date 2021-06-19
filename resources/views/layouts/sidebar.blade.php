@@ -125,6 +125,9 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.slider')}}">Slider</a></li>
+                    </ul>
                 </li>
 
                 <li>

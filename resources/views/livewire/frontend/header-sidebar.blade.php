@@ -35,11 +35,13 @@
                                         <div class="megamenu-pattern">
                                             <div class="container-mega">
                                                 <ul class="megamenu">
+                                                    @foreach ($categories as $category)
+
                                                     <li class="item-vertical  with-sub-menu hover">
                                                         <p class="close-menu"></p>
                                                         <a href="#" class="clearfix">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/menu/icons/ico10.png" alt="icon">
-                                                            <span>Gifts & Toys</span>
+                                                            <img src="{{ asset('supermarke/') }}/image/catalog/menu/icons/ico10.png" alt="Image">
+                                                            <span>{{ $category->name }}</span>
                                                             <b class="fa-angle-right"></b>
                                                         </a>
                                                         <div class="sub-menu" data-subwidth="60"  >
@@ -53,31 +55,15 @@
                                                                                         <li>
                                                                                             <a href="#"  class="main-menu">Apparel</a>
                                                                                             <ul>
-                                                                                                <li><a href="#" >Accessories for Tablet PC</a></li>
-                                                                                                <li><a href="#" >Accessories for i Pad</a></li>
-                                                                                                <li><a  href="#" >Accessories for iPhone</a></li>
-                                                                                                <li><a href="#" >Bags, Holiday Supplies</a></li>
-                                                                                                <li><a href="#" >Car Alarms and Security</a></li>
-                                                                                                <li><a href="#" >Car Audio &amp; Speakers</a></li>
+                                                                                                @foreach ($category->SubCategory as $subCategory)
+                                                                                                    <li><a href="#" >{{ $subCategory->name }}</a></li>
+                                                                                                @endforeach
                                                                                             </ul>
                                                                                         </li>
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-4 static-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
 
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-4 static-menu">
-                                                                                <div class="menu">
-                                                                                    <ul>
-
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -85,6 +71,7 @@
                                                         </div>
                                                     </li>
 
+                                                    @endforeach
                                                     <li class="loadmore">
                                                         <i class="fa fa-plus-square-o"></i>
                                                         <span class="more-view">More Categories</span>
@@ -119,34 +106,8 @@
                                     <div class="megamenu-pattern">
                                         <div class="container-mega">
                                             <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                <li class="home hover">
-                                                    <a href="index.html">Home <b class="caret"></b></a>
-                                                    <div class="sub-menu" style="width:100%;" >
-                                                        <div class="content" >
-                                                            <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <a href="index.html" class="image-link">
-                                                                        <span class="thumbnail">
-                                                                            <img class="img-responsive img-border" src="{{ asset('supermarke/') }}/image/catalog/menu/home-1.jpg" alt="">
-
-                                                                        </span>
-                                                                        <h3 class="figcaption">Home page - (Default)</h3>
-                                                                    </a>
-
-                                                                </div>
-                                                                <!-- <div class="col-md-15">
-                                                                    <a href="#" class="image-link">
-                                                                        <span class="thumbnail">
-                                                                            <img class="img-responsive img-border" src="image/demo/feature/comming-soon.png" alt="">
-
-                                                                        </span>
-                                                                        <h3 class="figcaption">Comming soon</h3>
-                                                                    </a>
-
-                                                                </div> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <li class="home hover m-0 p-0">
+                                                    <button class="btn btn-danger">Home</button>
                                                 </li>
                                                 <li class="with-sub-menu hover">
                                                     <p class="close-menu"></p>
@@ -158,19 +119,69 @@
                                                     <div class="sub-menu" style="width: 100%; right: auto;">
                                                         <div class="content" >
                                                             <div class="row">
+                                                                {{-- Start Category List --}}
                                                                 <div class="col-md-3">
                                                                     <div class="column">
-                                                                        <a href="#" class="title-submenu">Listing pages</a>
+                                                                        <br>
+                                                                        <a href="#" class="title-submenu">Category</a>
                                                                         <div>
                                                                             <ul class="row-list">
-                                                                                <li><a href="category.html">Category Page 1 </a></li>
-                                                                                <li><a href="category-v2.html">Category Page 2</a></li>
-                                                                                <li><a href="category-v3.html">Category Page 3</a></li>
+                                                                                @foreach($categories as $category)
+                                                                                <li><a href="category.html">{{ $category->name }} </a></li>
+                                                                                @endforeach
                                                                             </ul>
 
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                {{-- End Category List --}}
+                                                                {{-- Start SubCategory List --}}
+                                                                <div class="col-md-3">
+                                                                    <div class="column">
+                                                                        <a href="#" class="title-submenu">Sub Category</a>
+                                                                        <div>
+                                                                            <ul class="row-list">
+                                                                                @foreach($subCategories as $subCategory)
+                                                                                <li><a href="category.html">{{ $subCategory->name }} </a></li>
+                                                                                @endforeach
+                                                                            </ul>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {{-- End SubCategory List --}}
+                                                                {{-- Start SubCategory List --}}
+                                                                <div class="col-md-3">
+                                                                    <div class="column">
+                                                                        <a href="#" class="title-submenu">Sub-sub Category</a>
+                                                                        <div>
+                                                                            <ul class="row-list">
+                                                                                @foreach($subSubCategories as $subSubCategory)
+                                                                                <li><a href="category.html">{{ $subSubCategory->name }} </a></li>
+                                                                                @endforeach
+                                                                            </ul>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {{-- End SubCategory List --}}
+                                                                {{-- Start Product List --}}
+                                                                <div class="col-md-3">
+                                                                    <div class="column">
+                                                                        <br>
+                                                                        <a href="#" class="title-submenu">Product</a>
+                                                                        <div>
+                                                                            <ul class="row-list">
+                                                                                @foreach($products as $product)
+                                                                                <li><a href="category.html">{{ $product->name }} </a></li>
+                                                                                @endforeach
+                                                                            </ul>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {{-- End Product List --}}
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -208,30 +219,25 @@
                                                     <div class="sub-menu" style="width: 100%; display: none;">
                                                         <div class="content">
                                                             <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <div class="row">
-                                                                        <div class="col-md-3 img img1">
-                                                                            <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/menu/megabanner/image-1.jpg" alt="banner1"></a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
+                                                                @foreach ($categories as $category)
+
                                                                 <div class="col-md-3">
-                                                                    <a href="#" class="title-submenu">Automotive</a>
+                                                                    <a href="#"><img src="{{ asset('storage/photo/'.$category->image) }}" alt="banner1"></a>
+
+                                                                    <a href="#" class="title-submenu">{{ $category->name }}</a>
                                                                     <div class="row">
                                                                         <div class="col-md-12 hover-menu">
                                                                             <div class="menu">
                                                                                 <ul>
-                                                                                    <li><a href="#"  class="main-menu">Car Alarms and Security</a></li>
-                                                                                    <li><a href="#"  class="main-menu">Car Audio &amp; Speakers</a></li>
-                                                                                    <li><a href="#"  class="main-menu">Gadgets &amp; Auto Parts</a></li>
-                                                                                    <li><a href="#"  class="main-menu">More Car Accessories</a></li>
+                                                                                    @foreach ($category->SubCategory as $subCategory)
+                                                                                    <li><a href="#"  class="main-menu">{{ $subCategory->name  }}</a></li>
+                                                                                    @endforeach
                                                                                 </ul>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
@@ -269,7 +275,7 @@
                     <div class="telephone hidden-xs hidden-sm hidden-md">
                         <ul class="blank">
                             <li><a href="#"><i class="fa fa-truck"></i>track your order</a></li>
-                            <li><a href="#"><i class="fa fa-phone-square"></i>Hotline (+123)4 567 890</a></li>
+                            <li><a href="#"><i class="fa fa-phone-square"></i>Hotline @if($companyInfo){{ $companyInfo->hotline}} @endif</a></li>
                         </ul>
                     </div>
                     <div class="signin-w hidden-md hidden-sm hidden-xs">

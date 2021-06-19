@@ -19,9 +19,12 @@ class CreateCompanyInfosTable extends Migration
             $table->string('phone', 100)->nullable();
             $table->string('mobile', 100)->nullable();
             $table->string('address', 191)->nullable();
+            $table->string('hotline', 191)->nullable();
             $table->string('email', 191)->nullable();
             $table->string('web', 191)->nullable();
             $table->text('logo')->nullable();
+            $table->text('facebook_link')->nullable();
+            $table->text('youtube_link')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('branch_id');
             $table->enum('status', ['Active', 'Inactive']);

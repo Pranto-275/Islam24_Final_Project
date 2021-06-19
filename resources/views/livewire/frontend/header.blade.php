@@ -66,7 +66,7 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="navbar-logo col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                        <div class="logo"><a href="index.html"><img src="{{ asset('supermarke/') }}/image/catalog/logo.png" title="Your Store" alt="Your Store" /></a></div>
+                        <div class="logo"><a href="index.html"><img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" title="Your Store" alt="Logo" style="width: 180px;height:50px;"/></a></div>
                     </div>
                     <!-- //end Logo -->
                     <!-- Search -->
@@ -80,7 +80,9 @@
                                         <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
                                             <select class="no-border" name="category_id">
                                                 <option value="0">All Categories</option>
-                                                <option value="78">Apparel</option>
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
