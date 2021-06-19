@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\DatatableController;
-use App\Http\Livewire\Frontend\Home;
-use App\Http\Livewire\Frontend\ProductView;
-use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Backend\ContactInfo\Contact;
 use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
 use App\Http\Livewire\Backend\Inventory\Invoice;
@@ -11,10 +8,8 @@ use App\Http\Livewire\Backend\Inventory\StockAdjustment;
 use App\Http\Livewire\Backend\Inventory\StockManager;
 use App\Http\Livewire\Backend\ProductInfo\Brand;
 use App\Http\Livewire\Backend\ProductInfo\Category;
-use App\Http\Livewire\Backend\ProductInfo\SubCategory;
 use App\Http\Livewire\Backend\ProductInfo\Product;
-use App\Http\Livewire\Backend\ProductInfo\ProductImage;
-use App\Http\Livewire\Backend\ProductInfo\ProductProperties;
+use App\Http\Livewire\Backend\ProductInfo\SubCategory;
 use App\Http\Livewire\Backend\ProductInfo\SubSubCategory;
 use App\Http\Livewire\Backend\ProductInfo\Unit;
 use App\Http\Livewire\Backend\setting\Branch;
@@ -25,16 +20,16 @@ use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Transaction\Payment;
+use App\Http\Livewire\Frontend\Category as FrontEndCategory;
+use App\Http\Livewire\Frontend\Home;
+use App\Http\Livewire\Frontend\ProductView;
+use App\Http\Livewire\Inventory\DelieveryMethod;
+use App\Http\Livewire\Inventory\Language;
+use App\Http\Livewire\Inventory\PointPolicy;
 use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
 use App\Http\Livewire\UserProfile\ProfileSettings;
-use App\Http\Livewire\Inventory\Language;
-use App\Http\Livewire\Inventory\PointPolicy;
-use App\Http\Livewire\Inventory\DelieveryMethod;
-
-
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,11 +43,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 
 Route::get('/', Home::class)->name('home');
 Route::get('product-view', ProductView::class)->name('product-view');
@@ -62,19 +55,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('livewire.dashboard');
 })->name('dashboard');
 
-
-
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
         Route::get('user-list', UserList::class)->name('user-list');
     });
-    Route::group(['prefix'=>'Inventory', 'as'=>'Inventory.'], function (){
+    Route::group(['prefix' => 'Inventory', 'as' => 'Inventory.'], function () {
         Route::get('category', Category::class)->name('category');
-        Route::get('currency',Currency::class)->name('currency');
-        Route::get('language',Language::class)->name('language');
+        Route::get('currency', Currency::class)->name('currency');
+        Route::get('language', Language::class)->name('language');
         Route::get('pointPolicy', PointPolicy::class)->name('pointPolicy');
         Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
-        Route::get('ware-house',WareHouse::class)->name('ware-house');
+        Route::get('ware-house', WareHouse::class)->name('ware-house');
     });
     Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
         Route::get('profile-settings', ProfileSettings::class)->name('profile-settings');
@@ -84,7 +75,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
         Route::get('category', Category::class)->name('category');
-        Route::get('sub-category',SubCategory::class)->name('sub-category');
+        Route::get('sub-category', SubCategory::class)->name('sub-category');
         Route::get('brand', Brand::class)->name('brand');
         Route::get('product', Product::class)->name('product');
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
@@ -131,5 +122,4 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
         Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
     });
-
 });
