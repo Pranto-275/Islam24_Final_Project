@@ -87,14 +87,6 @@
                     </ul>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('product.product-image')}}">Product Image</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('product.product-properties')}}">Product Properties</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.unit')}}">Unit Info</a></li>
                     </ul>
                 </li>

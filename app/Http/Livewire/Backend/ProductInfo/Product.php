@@ -4,11 +4,17 @@ namespace App\Http\Livewire\Backend\ProductInfo;
 use App\Models\Backend\ProductInfo\Product as ProductInfo;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ProductInfo\SubSubCategory;
+use App\Models\Backend\ProductInfo\ProductImage;
+use App\models\Backend\ProductInfo\ProductProperties;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Product extends Component
 {
+    use WithFileUploads;
+
     public $code;
     public $name;
     public $sale_price;
@@ -18,6 +24,7 @@ class Product extends Component
     public $low_alert;
     public $contact_id;
     public $status;
+    public $images=[];
     public $ProductId=NULL;
     public $QueryUpdate=NULL;
 
@@ -53,6 +60,8 @@ class Product extends Component
             'contact_id' => 'required',
         ]);
 
+        DB::transaction(function(){
+        // Product
         if($this->ProductId){
             $Query = ProductInfo::find($this->ProductId);
         }else{
@@ -70,7 +79,25 @@ class Product extends Component
         $Query->status = $this->status;
         $Query->branch_id = 1;
         $Query->save();
-
+        //Product Image
+        foreach($this->images as $image){
+            $ImageInsert=new ProductImage();
+            $ImageInsert->product_id=$Query->id;
+            $path = $image->store('/public/photo');
+            $ImageInsert->image = basename($path);
+            $ImageInsert->user_id = Auth::user()->id;
+            $ImageInsert->branch_id = 1;
+            $ImageInsert->save();
+        }
+        //Product Properties
+        $ProductProperties=new ProductProperties();
+        $ProductProperties->product_id=$Query->id;
+        $ProductProperties->size="XL";
+        $ProductProperties->color="Yellow";
+        $ProductProperties->user_id = Auth::user()->id;
+        $ProductProperties->branch_id = 1;
+        $ProductProperties->save();
+     });
         $this->reset();
         $this->productInfoModal();
         $this->emit('success', [

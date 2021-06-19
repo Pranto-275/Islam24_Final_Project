@@ -11,12 +11,6 @@
                           <h2>Follow socials</h2>
                           <ul class="socials">
                             <li class="facebook"><a href="https://www.facebook.com/MagenTech" target="_blank"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
-                            <li class="twitter"><a href="https://twitter.com/smartaddons" target="_blank"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
-                            <li class="google_plus"><a href="https://plus.google.com/u/0/+Smartaddons/posts" target="_blank"><i class="fa fa-google-plus"></i><span>Google Plus</span></a></li>
-                            <li class="pinterest"><a href="https://www.pinterest.com/smartaddons/" target="_blank"><i class="fa fa-pinterest"></i><span>Pinterest</span></a></li>
-                            <li class="youtube"><a href="#" target="_blank"><i class="fa fa-youtube-play"></i><span>Youtube</span></a></li>
-                            <li class="linkedin"><a href="#" target="_blank"><i class="fa fa-linkedin"></i><span>linkedin</span></a></li>
-                            <li class="skype"><a href="#" target="_blank"><i class="fa fa-skype"></i><span>skype</span></a></li>
                           </ul>
                         </div>
 
@@ -73,15 +67,6 @@
                                 <li class="adres">
                                     San Luis potosí, centro historico, 78000 san luis potosí, SPL, Mexico
                                 </li>
-                                <li class="phone">
-                                    (+0214)0 315 215 - (+0214)0 315 215
-                                </li>
-                                <li class="mail">
-                                    <a href="mailto:contact@opencartworks.com">contact@opencartworks.com</a>
-                                </li>
-                                <li class="time">
-                                    Open time: 8:00AM - 6:00PM
-                                </li>
                             </ul>
                         </div>
 
@@ -94,11 +79,6 @@
                                 <div class="modcontent">
                                     <ul class="menu">
                                         <li><a href="#">About Us</a></li>
-                                        <li><a href="#">FAQ</a></li>
-                                        <li><a href="#">Warranty And Services</a></li>
-                                        <li><a href="#">Support 24/7 page</a></li>
-                                        <li><a href="#">Product Registration</a></li>
-                                        <li><a href="#">Product Support</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -112,11 +92,6 @@
                                 <div class="modcontent">
                                     <ul class="menu">
                                         <li><a href="#">Brands</a></li>
-                                        <li><a href="#">Gift Certificates</a></li>
-                                        <li><a href="#">Affiliates</a></li>
-                                        <li><a href="#">Specials</a></li>
-                                        <li><a href="#">FAQs</a></li>
-                                        <li><a href="#">Custom Link</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -129,11 +104,6 @@
                             <div class="modcontent">
                               <ul class="menu">
                                 <li><a href="#">Event & Party Supplies</a></li>
-                                <li><a href="#">Home Improvement</a></li>
-                                <li><a href="#">Lamps & Light Fixtures</a></li>
-                                <li><a href="#">Kitchen & Bath Fixtures</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Kitchen & Dining</a></li>
                               </ul>
                             </div>
                           </div>
@@ -146,11 +116,6 @@
                                 <div class="modcontent">
                                     <ul class="menu">
                                         <li><a href="#">Contact Us</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Support</a></li>
-                                        <li><a href="#">Site Map</a></li>
-                                        <li><a href="#">Customer Service</a></li>
-                                        <li><a href="#">Custom Link</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -164,11 +129,6 @@
                             <div class="modcontent">
                               <ul class="menu">
                                 <li><a href="#">Event & Party Supplies</a></li>
-                                <li><a href="#">Home Improvement</a></li>
-                                <li><a href="#">Lamps & Light Fixtures</a></li>
-                                <li><a href="#">Kitchen & Bath Fixtures</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Kitchen & Dining</a></li>
                               </ul>
                             </div>
                           </div>
@@ -187,11 +147,6 @@
                                 <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/demo/payment/pay1.jpg" alt="image"></a>
                                 <ul class="footer-links">
                                     <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Customer Service</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Site Map</a></li>
-                                    <li><a href="#">Orders and Returns</a></li>
-                                    <li><a href="#">Contact Us</a></li>
                                 </ul>
                                 <p>**$50 off orders $350+ with the code BOO50. $75 off orders $500+ with the code BOO75. $150 off orders $1000+ with the code BOO150. Valid from October 28, 2016 to October 31, 2016. Offer may not be combined with any other offers or promotions, is non-exchangeable and non-refundable. Offer valid within the US only.</p>
                             </div>
