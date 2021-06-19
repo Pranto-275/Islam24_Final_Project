@@ -574,7 +574,7 @@
                         <div class="modcontent">
                             <div id="so_deal_1" class="so-deal style1">
                                 <div class="extraslider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="6" data-items_column0="5" data-items_column1="3" data-items_column2="2"  data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes">
-
+                                @foreach ($products as $product)
                                     <div class="item">
                                         <div class="item-inner product-layout transition product-grid">
                                             <div class="product-item-container">
@@ -584,8 +584,9 @@
                                                     </div>
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Pastrami bacon">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/h1.jpg" class="img-1 img-responsive" alt="image1">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/h2.jpg" class="img-2 img-responsive" alt="image2">
+                                                            @foreach ($product->ProductImage as $productImage)
+                                                               <img src="{{ asset('storage/photo/'.$productImage->image) }}" class="img-1 img-responsive" alt="image1">
+                                                            @endforeach
                                                         </a>
                                                     </div>
                                                     <!--quickview-->
@@ -617,12 +618,11 @@
                                                             </div>
                                                             <span class="rating-num">( 2 )</span>
                                                         </div>
-                                                        <h4><a href="product.html" title="Pastrami bacon" target="_self">Pastrami bacon</a></h4>
+                                                        <h4><a href="product.html" title="Pastrami bacon" target="_self">{{ $product->name  }}</a></h4>
 
                                                     </div>
                                                     <p class="price">
-                                                        <span class="price-new">$85.00</span>
-                                                        <span class="price-old">$96.00</span>
+                                                        <span class="price-new">{{ $product->sale_price  }}Tk</span>
                                                     </p>
                                                 </div>
 
@@ -635,6 +635,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                @endforeach
 
                                 </div>
                             </div>
@@ -673,7 +674,7 @@
                                     </a>
                                 </div>
                                 <div class="slider category-slider-inner products-list yt-content-slider" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="4" data-items_column0="4" data-items_column1="2" data-items_column2="1"  data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="yes" data-hoverpause="yes">
-
+                                    @foreach($categories as $category)
                                         <div class="item">
                                             <div class="item-inner product-layout transition product-grid">
                                                 <div class="product-item-container">
@@ -681,8 +682,8 @@
 
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Lastrami bacon">
-                                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e1.jpg" class="img-1 img-responsive" alt="image1">
-                                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e10.jpg" class="img-2 img-responsive" alt="image2">
+                                                                <img src="{{ asset('storage/photo/'.$category->image) }}" class="img-1 img-responsive" alt="image1">
+                                                                <img src="{{ asset('storage/photo/'.$category->image) }}" class="img-2 img-responsive" alt="image2">
                                                             </a>
                                                         </div>
                                                         <!--quickview-->
@@ -726,7 +727,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

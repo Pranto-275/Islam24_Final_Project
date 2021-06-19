@@ -80,7 +80,9 @@
                                         <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
                                             <select class="no-border" name="category_id">
                                                 <option value="0">All Categories</option>
-                                                <option value="78">Apparel</option>
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
