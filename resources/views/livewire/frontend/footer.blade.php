@@ -10,14 +10,10 @@
                         <div class="socials-w">
                           <h2>Follow socials</h2>
                           <ul class="socials">
-                            <li class="facebook"><a href="https://www.facebook.com/MagenTech" target="_blank"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+                            <li class="facebook"><a href="@if($companyInfo) {{ $companyInfo->facebook_link }} @endif" target="_blank"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+                            <li class="youtube"><a href="@if($companyInfo) {{ $companyInfo->youtube_link }} @endif" target="_blank"><i class="fa fa-youtube-play"></i><span>Youtube</span></a></li>
                           </ul>
                         </div>
-
-
-
-
-
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="module newsletter-footer1">
@@ -62,10 +58,10 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-infos">
                         <div class="infos-footer">
-                            <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/logo-footer.png" alt="image"></a>
+                            <a href="#"><img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" alt="Logo" style="width: 180px;height:50px;"></a>
                             <ul class="menu">
                                 <li class="adres">
-                                    San Luis potosí, centro historico, 78000 san luis potosí, SPL, Mexico
+                                    {{ $companyInfo->address }}
                                 </li>
                             </ul>
                         </div>
@@ -103,7 +99,9 @@
                             <h3 class="modtitle">Categories</h3>
                             <div class="modcontent">
                               <ul class="menu">
-                                <li><a href="#">Event & Party Supplies</a></li>
+                                @foreach($categories as $category)
+                                <li><a href="#">{{ $category->name }}</a></li>
+                                @endforeach
                               </ul>
                             </div>
                           </div>
@@ -121,18 +119,6 @@
                             </div>
                         </div>
 
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
-                        <div class="box-service box-footer">
-                          <div class="module clearfix">
-                            <h3 class="modtitle">Categories</h3>
-                            <div class="modcontent">
-                              <ul class="menu">
-                                <li><a href="#">Event & Party Supplies</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
                     </div>
 
 

@@ -106,34 +106,8 @@
                                     <div class="megamenu-pattern">
                                         <div class="container-mega">
                                             <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                <li class="home hover">
-                                                    <a href="index.html">Home <b class="caret"></b></a>
-                                                    <div class="sub-menu" style="width:100%;" >
-                                                        <div class="content" >
-                                                            <div class="row">
-                                                                <div class="col-md-3">
-                                                                    <a href="index.html" class="image-link">
-                                                                        <span class="thumbnail">
-                                                                            <img class="img-responsive img-border" src="{{ asset('supermarke/') }}/image/catalog/menu/home-1.jpg" alt="">
-
-                                                                        </span>
-                                                                        <h3 class="figcaption">Home page - (Default)</h3>
-                                                                    </a>
-
-                                                                </div>
-                                                                <!-- <div class="col-md-15">
-                                                                    <a href="#" class="image-link">
-                                                                        <span class="thumbnail">
-                                                                            <img class="img-responsive img-border" src="image/demo/feature/comming-soon.png" alt="">
-
-                                                                        </span>
-                                                                        <h3 class="figcaption">Comming soon</h3>
-                                                                    </a>
-
-                                                                </div> -->
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <li class="home hover m-0 p-0">
+                                                    <button class="btn btn-danger">Home</button>
                                                 </li>
                                                 <li class="with-sub-menu hover">
                                                     <p class="close-menu"></p>
@@ -301,7 +275,7 @@
                     <div class="telephone hidden-xs hidden-sm hidden-md">
                         <ul class="blank">
                             <li><a href="#"><i class="fa fa-truck"></i>track your order</a></li>
-                            <li><a href="#"><i class="fa fa-phone-square"></i>Hotline (+123)4 567 890</a></li>
+                            <li><a href="#"><i class="fa fa-phone-square"></i>Hotline @if($companyInfo){{ $companyInfo->hotline}} @endif</a></li>
                         </ul>
                     </div>
                     <div class="signin-w hidden-md hidden-sm hidden-xs">

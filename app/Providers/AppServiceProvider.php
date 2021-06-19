@@ -8,6 +8,9 @@ use App\Models\Backend\ProductInfo\SubCategory;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\Setting\Slider;
+use App\Models\Setting\CompanyInfo;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\View;
 
 
@@ -38,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('products', Product::orderBy('id', 'desc')->get());
             $view->with('sliderImages', Slider::orderBy('position')->take(4)->get());
+            $view->with('companyInfo', CompanyInfo::whereUserId(Auth::id())->first());
         });
     }
 }
