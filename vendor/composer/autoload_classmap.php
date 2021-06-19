@@ -96,6 +96,7 @@ return array(
     'App\\Models\\Inventory\\wareHouse' => $baseDir . '/app/Models/Inventory/wareHouse.php',
     'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
     'App\\Models\\Setting\\CompanyInfo' => $baseDir . '/app/Models/Setting/CompanyInfo.php',
+    'App\\Models\\Setting\\CouponCode' => $baseDir . '/app/Models/Setting/CouponCode.php',
     'App\\Models\\Setting\\Slider' => $baseDir . '/app/Models/Setting/Slider.php',
     'App\\Models\\Team' => $baseDir . '/app/Models/Team.php',
     'App\\Models\\TeamInvitation' => $baseDir . '/app/Models/TeamInvitation.php',
