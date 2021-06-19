@@ -15,6 +15,7 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['Order', 'Sales', 'Purchase', 'Quate']);
             $table->timestamp('date');
             $table->string('code', 100)->nullable();
             $table->foreignId('contact_id')->nullable();
