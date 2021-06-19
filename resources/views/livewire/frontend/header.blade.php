@@ -12,8 +12,8 @@
                                 <a href="#" title="My Account " class="btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account </span>  <span class="fa fa-caret-down"></span>
                                 </a>
                                 <ul class="dropdown-menu ">
-                                    <li><a href="register.html"><i class="fa fa-user"></i> Register</a></li>
-                                    <li><a href="login.html"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                    <li><a href="register"><i class="fa fa-user"></i> Register</a></li>
+                                    <li><a href="login"><i class="fa fa-pencil-square-o"></i> Login</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -81,15 +81,6 @@
                                             <select class="no-border" name="category_id">
                                                 <option value="0">All Categories</option>
                                                 <option value="78">Apparel</option>
-                                                <option value="77">Cables &amp; Connectors</option>
-                                                <option value="82">Cameras &amp; Photo</option>
-                                                <option value="80">Flashlights &amp; Lamps</option>
-                                                <option value="81">Mobile Accessories</option>
-                                                <option value="79">Video Games</option>
-                                                <option value="20">Jewelry &amp; Watches</option>
-                                                <option value="76">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earings</option>
-                                                <option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding Rings</option>
-                                                <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
                                             </select>
                                         </div>
 

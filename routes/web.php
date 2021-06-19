@@ -87,8 +87,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sub-category',SubCategory::class)->name('sub-category');
         Route::get('brand', Brand::class)->name('brand');
         Route::get('product', Product::class)->name('product');
-        Route::get('product-image', ProductImage::class)->name('product-image');
-        Route::get('product-properties', ProductProperties::class)->name('product-properties');
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
         Route::get('unit', Unit::class)->name('unit');
     });
@@ -127,12 +125,11 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sub_category_table', [DatatableController::class, 'SubCategoryTable'])->name('sub_category_table');
         Route::get('sub_sub_category_table', [DatatableController::class, 'SubSubCategoryTable'])->name('sub_sub_category_table');
         Route::get('product_table', [DatatableController::class, 'ProductTable'])->name('product_table');
-        Route::get('product_image_table', [DatatableController::class, 'ProductImageTable'])->name('product_image_table');
-        Route::get('product_properties_table', [DatatableController::class, 'ProductPropertiesTable'])->name('product_properties_table');
         Route::get('branch_table', [DatatableController::class, 'BranchTable'])->name('branch_table');
         Route::get('currency_table', [DatatableController::class, 'CurrencyTable'])->name('currency_table');
         Route::get('delivery_method_table', [DatatableController::class, 'DeliveryMethodTable'])->name('delivery_method_table');
         Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
+        Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
     });
 
 });

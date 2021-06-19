@@ -12,10 +12,22 @@ use App\Models\Backend\Setting\Branch;
 use App\Models\Inventory\Currency;
 use App\Models\Inventory\DeliveryMethod;
 use App\Models\Backend\Setting\Warehouse;
+use App\Models\Backend\ProductInfo\Unit;
 use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
+    public function UnitTable(){
+        $Query = Unit::query()->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action'])
+        ->toJSON();
+    }
     public function WarehouseTable(){
         $Query = Warehouse::query()->orderBy('id', 'desc');
 

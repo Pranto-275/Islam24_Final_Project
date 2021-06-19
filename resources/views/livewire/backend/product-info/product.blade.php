@@ -45,7 +45,7 @@
                 <form wire:submit.prevent="productSave">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Code</label>
                                     <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter product Code">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Sub Sub Category</label>
                                     <select class="form-control" wire:model.lazy="sub_sub_category_id">
@@ -66,7 +66,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Contact</label>
                                     <select class="form-control" wire:model.lazy="contact_id">
@@ -79,43 +79,55 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Name</label>
                                     <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter product name">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="control-label">Image (517.38*492 jpg)</label>
+                                    <div class="custom-file">
+                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
-                            <div class="col-lg-12">
+                                        <input type="file" wire:model.lazy="images" x-ref="images" multiple>
+                                        @error('images') <span class="error">{{ $message }}</span> @enderror
+
+                                        {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Sale Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="sale_price" placeholder="Enter sale price">
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Whole Sales Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Purchase Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Low alert Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="low_alert" placeholder="Enter low alert price">
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Status</label>
                                     <select class="form-control" wire:model.lazy="status">

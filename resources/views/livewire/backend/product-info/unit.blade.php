@@ -19,13 +19,13 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ProductUnitInfoModal"><i class="mdi mdi-plus mr-1"></i>Unit Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="productUnitInfoModal"><i class="mdi mdi-plus mr-1"></i>Unit Info</button>
                             </div>
                         </div><!-- end col-->
                     </div>
                     <div wire:ignore class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="ProductUnitInfoTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="productUnitInfoTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="ProductUnitInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="productUnitInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -42,7 +42,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="productUnitInfoSave">
+                <form wire:submit.prevent="saveUnit">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-12">
@@ -64,14 +64,18 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Rate</label>
-                                    <input class="form-control" type="text" wire:model.lazy="rate" placeholder="Enter Unit rate">
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="rate" placeholder="Enter Unit rate">
                                     @error('rate') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Status</label>
-                                    <input class="form-control" type="text" wire:model.lazy="status" placeholder="Enter status">
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
                                     @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -89,12 +93,17 @@
 </div>
 @push('scripts')
     <script>
-
+ function callEdit(id) {
+        @this.call('unitEdit', id);
+    }
+    function callDelete(id) {
+        @this.call('unitDelete', id);
+    }
         $(document).ready(function () {
-            var datatable = $('#ProductUnitInfoTable').DataTable({
+            var datatable = $('#productUnitInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.unit_table')}}",
                 columns: [
                     {
                         title: 'SL',
