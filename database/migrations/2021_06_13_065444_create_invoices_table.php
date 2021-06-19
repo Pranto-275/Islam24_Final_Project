@@ -15,7 +15,23 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('date');
+            $table->string('code', 100)->nullable();
+            $table->foreignId('contact_id')->nullable();
+            $table->double('subtotal', 20, 4)->nullable();
+            $table->double('vat_total', 20, 4)->nullable();
+            $table->double('discount_value', 20, 4)->nullable();
+            $table->double('discount', 20, 4)->nullable();
+            $table->double('earn_point', 20, 4)->nullable();
+            $table->double('earn_point_amount', 20, 4)->nullable();
+            $table->double('expense_point', 20, 4)->nullable();
+            $table->double('expense_point_amount', 20, 4)->nullable();
+            $table->double('grand_total', 20, 4)->nullable();
+            $table->foreignId('user_id');
+            $table->foreignId('branch_id');
+            $table->enum('status', ['Pending', 'In Process', 'Delivered', 'Accepted', 'Rescheduled', 'Picked Up', 'Cancel', 'Return']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

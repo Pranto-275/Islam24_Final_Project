@@ -780,6 +780,7 @@ class ComposerStaticInit365e57c704888cbf2ef9c7c648fa07c5
         'App\\Models\\Inventory\\wareHouse' => __DIR__ . '/../..' . '/app/Models/Inventory/wareHouse.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Setting\\CompanyInfo' => __DIR__ . '/../..' . '/app/Models/Setting/CompanyInfo.php',
+        'App\\Models\\Setting\\CouponCode' => __DIR__ . '/../..' . '/app/Models/Setting/CouponCode.php',
         'App\\Models\\Setting\\Slider' => __DIR__ . '/../..' . '/app/Models/Setting/Slider.php',
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',
         'App\\Models\\TeamInvitation' => __DIR__ . '/../..' . '/app/Models/TeamInvitation.php',
