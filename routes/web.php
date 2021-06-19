@@ -19,6 +19,7 @@ use App\Http\Livewire\Backend\Setting\InvoiceSetting;
 use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
+use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
@@ -95,6 +96,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('payment-method', PaymentMethod::class)->name('payment-method');
         Route::get('vat', Vat::class)->name('vat');
         Route::get('warehouse', Warehouse::class)->name('warehouse');
+        Route::get('slider', Slider::class)->name('slider');
     });
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
@@ -121,5 +123,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('delivery_method_table', [DatatableController::class, 'DeliveryMethodTable'])->name('delivery_method_table');
         Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
         Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
+        Route::get('slider_table', [DatatableController::class, 'SliderTable'])->name('slider_table');
     });
 });

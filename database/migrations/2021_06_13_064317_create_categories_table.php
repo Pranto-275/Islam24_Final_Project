@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('branch_id');
             $table->enum('status', ['Active', 'Inactive'])->nullable();
+            $table->tinyInteger('top_show');
             $table->timestamps();
             $table->softDeletes();
         });
