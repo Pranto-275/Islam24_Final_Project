@@ -142,12 +142,13 @@
                         <i class="bx bx-list-ul"></i>
                         <span>ContactInfo</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('contact-info.contact')}}">Contact</a></li>
-                    </ul>
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('contact-info.contact')}}">Contact</a></li>
                     </ul>
                 </li>
 

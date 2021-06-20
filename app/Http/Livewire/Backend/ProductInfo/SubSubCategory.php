@@ -65,7 +65,6 @@ class SubSubCategory extends Component
         $Query->save();
         $this->reset();
         $this->ProductSubSubCategoryInfoModal();
-
         $this->emit('success', [
             'text' => 'Sub-Sub Category Created Successfully',
         ]);

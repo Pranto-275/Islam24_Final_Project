@@ -32,6 +32,7 @@ class ContactCategory extends Component
   }
 
     public function ContactCategoryModal(){
+        $this->code = 'C'.floor(time()- 999999);
         $this->emit('modal','ContactCategoryModal');
     }
     public function render()

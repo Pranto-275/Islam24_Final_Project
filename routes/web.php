@@ -121,5 +121,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('delivery_method_table', [DatatableController::class, 'DeliveryMethodTable'])->name('delivery_method_table');
         Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
         Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
+        Route::get('brand_table', [DatatableController::class, 'BrandTable'])->name('brand_table');
+        Route::get('vat_table', [DatatableController::class, 'VatTable'])->name('vat_table');
     });
 });

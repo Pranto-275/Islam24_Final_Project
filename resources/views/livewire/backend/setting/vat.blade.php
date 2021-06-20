@@ -47,9 +47,45 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Vat ID</label>
+                                    <label for="basicpill-firstname-input">Vat Code</label>
                                     <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Vat ID">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">percentage Rate</label>
+                                    <input class="form-control" type="text" wire:model.lazy="rate_percent" placeholder="Enter percentage rate">
+                                    @error('rate_percent') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Fixed Rate</label>
+                                    <input class="form-control" type="text" wire:model.lazy="rate_fixed" placeholder="Enter fixed rate">
+                                    @error('rate_fixed') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -57,7 +93,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" >Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -67,25 +103,59 @@
 @push('scripts')
     <script>
 
+
+        function callEdit(id) {
+        @this.call('vatEdit', id);
+        }
+        function callDelete(id) {
+        @this.call('vatDelete', id);
+        }
+
+
         $(document).ready(function () {
             var datatable = $('#VatTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.vat_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Vat ID',
-                        data:  'vat id',
-                        name:  'vat id'
+                        title: 'Code',
+                        data:  'code',
+                        name:  'code'
                     },
+
+                    {
+                        title: 'Name',
+                        data:  'name',
+                        name:  'name'
+                    },
+
+                    {
+                        title: 'Rate percent',
+                        data:  'rate_percent',
+                        name:  'rate_percent'
+                    },
+
+                    {
+                        title: 'Fixed Rate',
+                        data:  'rate_fixed',
+                        name:  'rate_fixed'
+                    },
+
+                    {
+                        title: 'Status',
+                        data:  'status',
+                        name:  'status'
+                    },
+
                     {
                         title: 'Action',
-                        data: 'action',
-                        name:'action'
+                        data:  'action',
+                        name:  'action'
                     },
                 ]
             });

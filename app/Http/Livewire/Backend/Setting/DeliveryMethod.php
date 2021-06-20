@@ -15,12 +15,12 @@ class DeliveryMethod extends Component
 
     public function deliveryMethodEdit($id)
     {
-        $Query = DeliveryMethodInfo::find($id);
-        $this->DeliveryId = $Query->id;
-        $this->code = $Query->code;
-        $this->name = $Query->name;
-        $this->branch_name = $Query->branch_name;
-        $this->address = $Query->address;
+        $this->Query = DeliveryMethodInfo::find($id);
+        $this->DeliveryId = $this->Query->id;
+        $this->code = $this->Query->code;
+        $this->name = $this->Query->name;
+        $this->branch_name = $this->Query->branch_name;
+        $this->address = $this->Query->address;
 		$this->emit('modal', 'deliveryMethodInfoModal');
     }
     public function deliveryMethodDelete($id)

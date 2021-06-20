@@ -109,11 +109,18 @@
 @push('scripts')
     <script>
 
+        function callEdit(id) {
+        @this.call('brandEdit', id);
+        }
+        function callDelete(id) {
+        @this.call('brandDelete', id);
+        }
+
         $(document).ready(function () {
             var datatable = $('#BrandInfoTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.brand_table')}}",
                 columns: [
                     {
                         title: 'SL',
@@ -121,38 +128,38 @@
                     },
                     {
                         title: 'Code',
-                        data: 'Code',
-                        name:'Code'
+                        data:  'code',
+                        name:  'code'
                     },
 
                     {
                         title: 'Name',
-                        data: 'name',
-                        name:'name'
+                        data:  'name',
+                        name:  'name'
                     },
 
                     {
                         title: 'Image',
-                        data: 'image',
-                        name:'image'
+                        data:  'image',
+                        name:  'image'
                     },
 
                     {
                         title: 'Description',
-                        data: 'description',
-                        name:'description'
+                        data:  'description',
+                        name:  'description'
                     },
 
                     {
                         title: 'Status',
-                        data: 'status',
-                        name:'status'
+                        data:  'status',
+                        name:  'status'
                     },
 
                     {
                         title: 'Action',
-                        data: 'action',
-                        name:'action'
+                        data:  'action',
+                        name:  'action'
                     },
                 ]
             });
