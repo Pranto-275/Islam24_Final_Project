@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Backend\ContactInfo;
-use App\Models\Backend\ContactInfo\ContactCategory as ContactCategoryA;
+use App\Models\Backend\ContactInfo\ContactCategory as ContactCategoryInfo;
 use Illuminate\Support\Facades\Auth;
 
 use Livewire\Component;
@@ -14,21 +14,46 @@ class ContactCategory extends Component
     public $name;
     public $status;
     public $branch_id;
+    public $contact_Category_id;
 
 
   public function ContactCategoryInfoSave(){
-  $contactCategory     =   new ContactCategoryA();
-  $contactCategory->type        = $this->type;
-  $contactCategory->code        = $this->code;
-  $contactCategory->name        = $this->name;
-  $contactCategory->status      = $this->status;
-  $contactCategory->user_id     = Auth::id();
-  $contactCategory->branch_id   = 1;
-  $contactCategory->save();
-  $this->reset();
-  $this->emit('success',[
-      'text' => 'Contact Category created successfully',
-     ]);
+      if ($this->contact_Category_id){
+          $Query  = ContactCategoryInfo::find($this->contact_Category_id);
+      }else{
+          $Query               = new ContactCategoryInfo();
+          $Query->user_id      = Auth::user()->id;
+      }
+
+          $Query->type        = $this->type;
+          $Query->code        = $this->code;
+          $Query->name        = $this->name;
+          $Query->status      = $this->status;
+          $Query->user_id     = Auth::id();
+          $Query->branch_id   = 1;
+          $Query->save();
+          $this->reset();
+          $this->emit('success',[
+              'text' => 'Contact Category created successfully',
+             ]);
+  }
+
+
+  public function contactCategoryEdit($id){
+     $this->QueryUpdate  = ContactCategoryInfo::find($id);
+     $this->contact_Category_id = $this->QueryUpdate->id;
+     $this->type                = $this->QueryUpdate->type;
+     $this->code                = $this->QueryUpdate->code;
+     $this->name                = $this->QueryUpdate->name;
+     $this->status              = $this->QueryUpdate->status;
+     $this->ContactCategoryModal();
+  }
+
+  public function contactCategoryDelete($id){
+      ContactCategoryInfo::find($id)->delete();
+      $this->emit('success',[
+         'text' => 'Contact CategoryInfo deleted Successfully',
+      ]);
   }
 
     public function ContactCategoryModal(){
@@ -37,8 +62,6 @@ class ContactCategory extends Component
     }
     public function render()
     {
-        return view('livewire.backend.contact-info.contact-category',[
-            'ConatactCategories'=> ContactCategoryA::get(),
-        ]);
+        return view('livewire.backend.contact-info.contact-category');
     }
 }

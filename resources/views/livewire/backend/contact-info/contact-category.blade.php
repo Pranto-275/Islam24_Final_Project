@@ -48,12 +48,12 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Type</label>
-                                    <select class="form-control" type="text" wire:model.lazy="type">
-                                        <option value="">Select Contact Category</option>
-                                        @foreach($ConatactCategories as $contactCategory)
-                                            <option value="{{$contactCategory->type}}">{{$contactCategory->type}}</option>
-                                        @endforeach
-                                    </select>
+                                        <select class="form-control" wire:model.lazy="type">
+                                            <option value="">Select Contact type</option>
+                                            <option value="customer">customer</option>
+                                            <option value="Staff">Staff</option>
+                                            <option value="Supplier">Supplier</option>
+                                        </select>
                                     @error('type') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -95,6 +95,13 @@
 </div>
 @push('scripts')
     <script>
+        function callEdit(id) {
+        @this.call('contactCategoryEdit', id);
+        }
+        function callDelete(id) {
+        @this.call('contactCategoryDelete', id);
+
+        }
 
         $(document).ready(function () {
             var datatable = $('#ContactCategoryTable').DataTable({
@@ -108,41 +115,30 @@
                     },
                     {
                         title: 'Type',
-                        data: 'type',
-                        name:'type'
+                        data:  'type',
+                        name:  'type'
+                    },
+                    {
+                        title: 'Code',
+                        data:  'code',
+                        name:  'code'
                     },
                     {
                         title: 'Name',
-                        data: 'name',
-                        name:'name'
-                    },
-                    {
-                        title: 'Address',
-                        data: 'address',
-                        name:'address'
-                    },
-                    {
-                        title: 'Shipping Address',
-                        data: 'shipping address',
-                        name:'shipping address'
+                        data:  'name',
+                        name:  'name'
                     },
 
                     {
-                        title: 'Email',
-                        data: 'email',
-                        name:'email'
-                    },
-
-                    {
-                        title: 'Phone',
-                        data: 'phone',
-                        name:'phone'
+                        title: 'Status',
+                        data: 'status',
+                        name: 'status'
                     },
 
                     {
                         title: 'Action',
-                        data: 'action',
-                        name:'action'
+                        data:  'action',
+                        name:  'action'
                     },
                 ]
             });

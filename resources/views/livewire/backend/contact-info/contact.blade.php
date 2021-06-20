@@ -48,8 +48,12 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Type</label>
-                                    <input class="form-control" type="text" wire:model.lazy="type" placeholder="Enter type">
+                                    <select class="form-control" wire:model.lazy="type">
+                                        <option value="">Select Contact Category</option>
+                                        @foreach($ContactCategories as $contactCategory)
+                                            <option value="{{$contactCategory->type}}">{{$contactCategory->type}}</option>
+                                        @endforeach
+                                    </select>
                                     @error('type') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -102,7 +106,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Due date</label>
-                                    <input class="form-control" type="text" wire:model.lazy="due_date" placeholder="Give Due date">
+                                    <input class="form-control" type="date" wire:model.lazy="due_date" placeholder="Give Due date">
                                     @error('due_date') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -110,7 +114,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Birth Day</label>
-                                    <input class="form-control" type="text" wire:model.lazy="birthday" placeholder="Enter birthdate">
+                                    <input class="form-control" type="date" wire:model.lazy="birthday" placeholder="Enter birthdate">
                                     @error('birthday') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -135,18 +139,6 @@
                                     @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-lastname-input">Contact Category</label>
-                                    <select class="form-control" wire:model.lazy="contact_category_id">
-                                        <option value="">Select Contact Category</option>
-                                        @foreach($ContactCategory as $contactCategory)
-                                        <option value="{{$contactCategory->type}}">{{$contactCategory->type}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -160,11 +152,19 @@
 </div>
 @push('scripts')
     <script>
+        function callEdit(id) {
+        @this.call('contactEdit', id);
+        }
+        function callDelete(id) {
+        @this.call('contactDelete', id);
+        }
+
+
         $(document).ready(function () {
             var datatable = $('#ContactTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.contact_table')}}",
                 columns: [
                     {
                         title: 'SL',
@@ -172,41 +172,41 @@
                     },
                     {
                         title: 'Type',
-                        data: 'type',
-                        name:'type'
+                        data:  'type',
+                        name:  'type'
                     },
                     {
                         title: 'Name',
-                        data: 'name',
-                        name:'name'
+                        data:  'name',
+                        name:  'name'
                     },
                     {
                         title: 'Address',
-                        data: 'address',
-                        name:'address'
+                        data:  'address',
+                        name:  'address'
                     },
                     {
                         title: 'Shipping Address',
-                        data: 'shipping address',
-                        name:'shipping address'
+                        data:  'shipping_address',
+                        name:  'shipping_address'
                     },
 
                     {
                         title: 'Email',
-                        data: 'email',
-                        name:'email'
+                        data:  'email',
+                        name:  'email'
                     },
 
                     {
                         title: 'Phone',
-                        data: 'phone',
-                        name:'phone'
+                        data:  'phone',
+                        name:  'phone'
                     },
 
                     {
                         title: 'Action',
-                        data: 'action',
-                        name:'action'
+                        data:  'action',
+                        name:  'action'
                     },
                 ]
             });
