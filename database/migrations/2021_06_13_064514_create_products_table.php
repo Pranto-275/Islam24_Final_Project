@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('code', 191);
             $table->string('name', 191);
+            $table->double('old_sale_price', 20, 4);
             $table->double('sale_price', 20, 4);
             $table->double('wholesale_price', 20, 4);
             $table->double('purchase_price', 20, 4)->default(0);
