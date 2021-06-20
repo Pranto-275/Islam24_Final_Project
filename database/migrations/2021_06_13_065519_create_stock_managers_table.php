@@ -25,6 +25,7 @@ class CreateStockManagersTable extends Migration
             $table->double('vat', 20, 4)->nullable();
             $table->double('discount', 20, 4)->nullable();
             $table->double('subtotal', 20, 4)->nullable();
+            $table->foreignId('warehouse_id');
             $table->foreignId('user_id');
             $table->foreignId('branch_id');
             $table->timestamps();
