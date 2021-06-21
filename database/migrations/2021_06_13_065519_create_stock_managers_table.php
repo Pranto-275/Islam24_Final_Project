@@ -17,6 +17,7 @@ class CreateStockManagersTable extends Migration
             $table->id();
             $table->timestamp('date');
             $table->string('code', 100)->nullable();
+            $table->foreignId('product_id')->nullable();
             $table->foreignId('invoice_id')->nullable();
             $table->foreignId('stock_adjustment_id')->nullable();
             $table->enum('flow', ['In', 'Out'])->nullable();
