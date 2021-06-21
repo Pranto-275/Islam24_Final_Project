@@ -76,8 +76,6 @@ class InvoiceSetting extends Component
     }
 
 
-
-
     public function invoiceSettingDelete($id){
         InvoiceSettingInfo::find($id)->delete();
         $this->emit('success', [
