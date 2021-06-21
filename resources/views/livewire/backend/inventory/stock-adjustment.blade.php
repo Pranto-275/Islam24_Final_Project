@@ -103,12 +103,60 @@
                       <div class="col-md-12">
                         <textarea placeholder="Note" class="form-control" wire:model.lazy="note"></textarea>
                       </div>
-                      <div class="col-md-12">
-                          <center>
-                            <button class="btn btn-success btn-lg mt-2" wire:click="saveStockAdjustment">Submit</button>
-                          </center>
-                      </div>
                      </div>
+                     <div class="row mt-2">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <livewire:component.product-search-dropdown/>
+                                @error('ProductName') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="table-responsive">
+                                <table class="table table-centered mb-0 table-nowrap">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>Product Code</th>
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Sale Price</th>
+                                            <th colspan="1">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($orderProductList as $key => $product)
+
+                                        <tr>
+                                            <td>
+                                                {{ $product['code'] }}
+                                            </td>
+                                            <td>
+                                                {{ $product['name'] }}
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" wire:model.debounce.500ms="product_quantity.{{$key}}" style="width: 100px;" placeholder="Quantity" step="any">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control"  value="{{ $product['sale_price'] }}" placeholder="Sale Rate">
+                                            </td>
+
+                                            <td>
+                                                <center><a href="#" class="btn btn-danger btn-sm" wire:click="removeProduct({{$key}})"><i class="fa fa-trash"></i></a></center>
+                                            </td>
+                                        </tr>
+
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <center>
+                              <button class="btn btn-success btn-lg mt-2" wire:click="saveStockAdjustment">Submit</button>
+                            </center>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
