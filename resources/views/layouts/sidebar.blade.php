@@ -162,6 +162,15 @@
                         <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
+                        <span>Stock</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('stock.stock-adjustment')}}">Stock Adjustments</a></li>
+                    </ul>
+                </li>
 
             </ul>
         </div>

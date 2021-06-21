@@ -67,6 +67,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
+
     Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
         Route::get('user-list', UserList::class)->name('user-list');
     });
