@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\UserProfile;
 
+namespace App\Http\Livewire\UserProfile;
 use App\Models\UserProfile\ProfileSetting;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+
 
 class ProfileSettings extends Component
 {

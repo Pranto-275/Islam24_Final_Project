@@ -20,6 +20,7 @@ use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Transaction\Payment;
+use App\Http\Livewire\Backend\Setting\CompanyInfo;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Frontend\ProductView;
@@ -95,6 +96,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('payment-method', PaymentMethod::class)->name('payment-method');
         Route::get('vat', Vat::class)->name('vat');
         Route::get('warehouse', Warehouse::class)->name('warehouse');
+        Route::get('company-info', CompanyInfo::class)->name('company-info');
     });
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
@@ -125,5 +127,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('vat_table', [DatatableController::class, 'VatTable'])->name('vat_table');
         Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
         Route::get('contact_table', [DatatableController::class, 'ContactTable'])->name('contact_table');
+        Route::get('companyInfo_table', [DatatableController::class, 'CompanyInfoTable'])->name('companyInfo_table');
+        Route::get('invoiceSetting_table', [DatatableController::class, 'InvoiceSettingTable'])->name('invoiceSetting_table');
     });
 });

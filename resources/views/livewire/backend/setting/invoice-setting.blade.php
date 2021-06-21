@@ -45,15 +45,144 @@
                 <form wire:submit.prevent="InvoiceSettingSave">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Invoice ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Currency ID">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-lastname-input">select Invoice Type</label>
+                                    <select class="form-control" wire:model.lazy="type">
+                                        <option value="">Select Currency</option>
+                                        <option value="Invoice">Invoice</option>
+                                        <option value="Receipt">Receipt</option>
+                                    </select>
                                 </div>
                             </div>
 
-                        </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Invoice Header</label>
+                                    <input class="form-control" type="text" wire:model.lazy="invoice_header" placeholder="Enter Invoice Header">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="control-label">Choose Logo</label>
+                                    <div class="custom-file">
+                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+
+                                        <input type="file" wire:model.lazy="logo" x-ref="logo">
+                                        {{--                                        @if (!$image)--}}
+                                        {{--                                            @if($QueryUpdate)--}}
+                                        {{--                                                <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">--}}
+                                        {{--                                            @endif--}}
+                                        {{--                                        @endif--}}
+                                        {{--                                        @if ($image)--}}
+                                        {{--                                            <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">--}}
+                                        {{--                                        @endif--}}
+                                        {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Invoice Title</label>
+                                    <input class="form-control" type="text" wire:model.lazy="invoice_title" placeholder="Enter Invoice Title">
+                                    @error('invoice_title') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Invoice Footer</label>
+                                    <input class="form-control" type="text" wire:model.lazy="invoice_footer" placeholder="Enter Invoice Footer">
+                                    @error('invoice_footer') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Vat Registration Number</label>
+                                    <input class="form-control" type="text" wire:model.lazy="vat_reg_no" placeholder="Enter Vat Registration Number">
+                                    @error('vat_reg_no') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Vat Area Code</label>
+                                    <input class="form-control" type="text" wire:model.lazy="vat_area_code" placeholder="Enter Vat Area Code">
+                                    @error('vat_area_code') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Vat Text</label>
+                                    <input class="form-control" type="text" wire:model.lazy="vat_text" placeholder="Enter Vat Text">
+                                    @error('vat_text') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Website</label>
+                                    <input class="form-control" type="text" wire:model.lazy="website" placeholder="Enter Website Name">
+                                    @error('website') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <select class="form-control"  wire:model.lazy="currency_id">
+                                        <option value="">Select Currency</option>
+                                        @foreach ($Currencies as $Currency)
+                                            <option value="{{ $Currency->id }}">{{ $Currency->symbol }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('currency_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+{{--                            <div class="col-lg-12">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <input type="checkbox" name="terms"  wire:model.lazy="top_show" @if($top_show) checked @endif>--}}
+{{--                                    <label>Top Show Image</label><br/><br/>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+
+                            <div class="col-lg-4">
+                                <div class="form-check">
+                                    <input class="form-check-input"  type="checkbox" wire:model.lazy="is_paid_due_hide" @if($is_paid_due_hide)  checked @endif>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        is_paid_due_hide
+                                    </label>
+                                </div>
+                                @error('is_paid_due_hide') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" wire:model.lazy="is_memo_no_hide" @if($is_memo_no_hide)checked @endif>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        is_memo_no_hide
+                                    </label>
+                                </div>
+                                    @error('is_paid_due_hide') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" wire.model.lazy="is_chalan_no_hide" @if($is_chalan_no_hide) checked @endif>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        is_chalan_no_hide
+                                    </label>
+                                </div>
+                                @error('is_chalan_no_hide') <span class="error">{{ $message }}</span> @enderror
+                            </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -66,26 +195,56 @@
 </div>
 @push('scripts')
     <script>
+        function callEdit(id) {
+        @this.call('invoiceSettingEdit', id);
+        }
+        function callDelete(id) {
+        @this.call('invoiceSettingDelete', id);
+        }
 
         $(document).ready(function () {
             var datatable = $('#InvoiceSettingTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.invoiceSetting_table')}}",
                 columns: [
                     {
                         title: 'SL',
-                        data: 'id'
+                        data:  'id'
                     },
                     {
-                        title: 'Invoice Setting ID',
-                        data:  'invoice setting id',
-                        name:  'invoice setting id'
+                        title: 'Type',
+                        data:  'type',
+                        name:  'type'
                     },
+                    {
+                        title:  'Logo',
+                        data:  'logo',
+                        name:  'logo'
+                    },
+
+                    {
+                        title: 'Invoice Title',
+                        data: 'invoice_title',
+                        name: 'invoice_title'
+                    },
+
+                    {
+                        title: 'Website',
+                        data: 'website',
+                        name: 'website'
+                    },
+
+                    {
+                        title: 'Currency',
+                        data: 'currency_id',
+                        name: 'currency_id'
+                    },
+
                     {
                         title: 'Action',
                         data: 'action',
-                        name:'action'
+                        name: 'action'
                     },
                 ]
             });

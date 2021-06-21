@@ -125,6 +125,10 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
                     </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.company-info')}}">Company Info</a></li>
+                    </ul>
                 </li>
 
                 <li>
