@@ -19,8 +19,8 @@ use App\Http\Livewire\Backend\Setting\InvoiceSetting;
 use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
+use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
-use App\Http\Livewire\Backend\Setting\CompanyInfo;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Frontend\ProductView;
@@ -31,6 +31,8 @@ use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
 use App\Http\Livewire\UserProfile\ProfileSettings;
+use App\Http\Livewire\Frontend\CategoryWiseProduct;
+use App\Http\Livewire\Frontend\Customer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +49,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('auth.login');
 // });
+Route::group(['prefix' => 'customer', 'middleware' => ['auth']], function () {
+    Route::get('customer_login', Customer::class)->name('customer_login');
+
+    Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
+    Route::get('product_view/{id?}', ProductView::class)->name('product_view');
+ });
 
 Route::get('/', Home::class)->name('home');
 Route::get('product-view', ProductView::class)->name('product-view');
@@ -96,7 +104,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('payment-method', PaymentMethod::class)->name('payment-method');
         Route::get('vat', Vat::class)->name('vat');
         Route::get('warehouse', Warehouse::class)->name('warehouse');
-        Route::get('company-info', CompanyInfo::class)->name('company-info');
+        Route::get('slider', Slider::class)->name('slider');
     });
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
@@ -123,11 +131,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('delivery_method_table', [DatatableController::class, 'DeliveryMethodTable'])->name('delivery_method_table');
         Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
         Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
-        Route::get('brand_table', [DatatableController::class, 'BrandTable'])->name('brand_table');
-        Route::get('vat_table', [DatatableController::class, 'VatTable'])->name('vat_table');
-        Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
-        Route::get('contact_table', [DatatableController::class, 'ContactTable'])->name('contact_table');
-        Route::get('companyInfo_table', [DatatableController::class, 'CompanyInfoTable'])->name('companyInfo_table');
-        Route::get('invoiceSetting_table', [DatatableController::class, 'InvoiceSettingTable'])->name('invoiceSetting_table');
+        Route::get('slider_table', [DatatableController::class, 'SliderTable'])->name('slider_table');
     });
+
+
 });

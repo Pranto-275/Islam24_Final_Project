@@ -125,9 +125,8 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
                     </ul>
-
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('setting.company-info')}}">Company Info</a></li>
+                        <li><a href="{{route('setting.slider')}}">Slider</a></li>
                     </ul>
                 </li>
 
@@ -146,13 +145,12 @@
                         <i class="bx bx-list-ul"></i>
                         <span>ContactInfo</span>
                     </a>
-
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
+                        <li><a href="{{route('contact-info.contact')}}">Contact</a></li>
                     </ul>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('contact-info.contact')}}">Contact</a></li>
+                        <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
                     </ul>
                 </li>
 

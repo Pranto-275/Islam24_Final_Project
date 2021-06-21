@@ -15,7 +15,16 @@ class CreateStockAdjustmentsTable extends Migration
     {
         Schema::create('stock_adjustments', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('date');
+            $table->enum('type',['Transfer','Decrease','Increase']);
+            $table->foreignId('contact_id')->nullable();
+            $table->foreignId('from_branch_id')->nullable();
+            $table->foreignId('to_branch_id')->nullable();
+            $table->foreignId('from_warehouse_id')->nullable();
+            $table->foreignId('to_warehouse_id')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

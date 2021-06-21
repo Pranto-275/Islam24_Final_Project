@@ -13,7 +13,7 @@
                                 </a>
                                 <ul class="dropdown-menu ">
                                     <li><a href="register"><i class="fa fa-user"></i> Register</a></li>
-                                    <li><a href="login"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                    <li><a href="{{ route('customer_login') }}"><i class="fa fa-pencil-square-o"></i> Login</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -66,7 +66,7 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="navbar-logo col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                        <div class="logo"><a href="index.html"><img src="{{ asset('supermarke/') }}/image/catalog/logo.png" title="Your Store" alt="Your Store" /></a></div>
+                        <div class="logo"><a href="index.html"><img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" title="Your Store" alt="Logo" style="width: 180px;height:50px;"/></a></div>
                     </div>
                     <!-- //end Logo -->
                     <!-- Search -->
@@ -80,7 +80,9 @@
                                         <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
                                             <select class="no-border" name="category_id">
                                                 <option value="0">All Categories</option>
-                                                <option value="78">Apparel</option>
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -196,7 +198,7 @@
                         <!--//cart-->
 
                         <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
-                            <li class="compare hidden-xs"><a href="#" class="top-link-compare" title="Compare "><i class="fa fa-refresh"></i></a>
+                            <li class="compare hidden-xs"><a onClick="window.location.href=window.location.href" class="top-link-compare" title="Compare "><i class="fa fa-refresh"></i></a>
                             </li>
                             <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="Wish List (0) "><i class="fa fa-heart"></i></a>
                             </li>
