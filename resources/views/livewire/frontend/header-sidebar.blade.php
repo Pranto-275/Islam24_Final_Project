@@ -27,7 +27,7 @@
                                     <div class="navbar-header">
                                         <button type="button" id="show-verticalmenu" data-toggle="collapse" class="navbar-toggle">
                                             <i class="fa fa-bars"></i>
-                                            <span>  All Categories     </span>
+                                            <span>  All Categories1     </span>
                                         </button>
                                     </div>
                                     <div class="vertical-wrapper" >
@@ -106,14 +106,16 @@
                                     <div class="megamenu-pattern">
                                         <div class="container-mega">
                                             <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                <li class="home hover m-0 p-0">
-                                                    <button class="btn btn-danger">Home</button>
+                                                <li class="">
+                                                    <a href="#" class="clearfix">
+                                                        <strong>Home</strong>
+                                                    </a>
                                                 </li>
                                                 <li class="with-sub-menu hover">
                                                     <p class="close-menu"></p>
-                                                    <a href="#" class="clearfix">
+                                                    <a href="" class="clearfix">
                                                         <strong>Features</strong>
-                                                        <img class="label-hot" src="{{ asset('supermarke/') }}/image/catalog/menu/new-icon.png" alt="icon items">
+                                                        <img class="label-hot" src="" alt="icon items">
                                                         <b class="caret"></b>
                                                     </a>
                                                     <div class="sub-menu" style="width: 100%; right: auto;">
@@ -127,7 +129,7 @@
                                                                         <div>
                                                                             <ul class="row-list">
                                                                                 @foreach($categories as $category)
-                                                                                <li><a href="category.html">{{ $category->name }} </a></li>
+                                                                                <li><a href="{{route('category_wise_product',['id'=>$category->id])}}">{{ $category->name }} </a></li>
                                                                                 @endforeach
                                                                             </ul>
 
@@ -173,7 +175,7 @@
                                                                         <div>
                                                                             <ul class="row-list">
                                                                                 @foreach($products as $product)
-                                                                                <li><a href="category.html">{{ $product->name }} </a></li>
+                                                                                <li><a href="{{route('product_view',['id'=>$product->id])}}">{{ $product->name }} </a></li>
                                                                                 @endforeach
                                                                             </ul>
 
@@ -280,7 +282,7 @@
                     </div>
                     <div class="signin-w hidden-md hidden-sm hidden-xs">
                         <ul class="signin-link blank">
-                            <li class="log login"><i class="fa fa-lock"></i> <a class="link-lg" href="login">Login </a> or <a href="register">Register</a></li>
+                            <li class="log login"><i class="fa fa-lock"></i> <a class="link-lg" href="{{ route('customer_login') }}">Login </a> or <a href="register">Register</a></li>
                         </ul>
                     </div>
                 </div>

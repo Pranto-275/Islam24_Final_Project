@@ -31,6 +31,8 @@ use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
 use App\Http\Livewire\UserProfile\ProfileSettings;
+use App\Http\Livewire\Frontend\CategoryWiseProduct;
+use App\Http\Livewire\Frontend\Customer;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +49,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('auth.login');
 // });
+Route::group(['prefix' => 'customer', 'middleware' => ['auth']], function () {
+    Route::get('customer_login', Customer::class)->name('customer_login');
+
+    Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
+    Route::get('product_view/{id?}', ProductView::class)->name('product_view');
+ });
 
 Route::get('/', Home::class)->name('home');
 Route::get('product-view', ProductView::class)->name('product-view');
@@ -125,4 +133,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
         Route::get('slider_table', [DatatableController::class, 'SliderTable'])->name('slider_table');
     });
+
+
 });

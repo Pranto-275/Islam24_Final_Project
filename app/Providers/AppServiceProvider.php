@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         //Categories
         View::composer('*', function($view){
             $view->with('categories', Category::orderBy('id', 'desc')->get());
-            $view->with('topTategories', Category::whereTopShow(1)->take(5)->get());
+            $view->with('topCategories', Category::whereTopShow(1)->take(5)->get());
             $view->with('subCategories', SubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('products', Product::orderBy('id', 'desc')->get());

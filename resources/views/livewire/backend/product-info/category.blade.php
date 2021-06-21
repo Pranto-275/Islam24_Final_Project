@@ -59,20 +59,40 @@
                                                  @error('name') <span class="error">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label class="control-label">Image (517.38*492 jpg)</label>
+                                                <label class="control-label">Image 1 (517.38*492 jpg)</label>
                                                 <div class="custom-file">
                                                     {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
-                                                    <input type="file" wire:model.lazy="image" x-ref="image">
-                                                    @if (!$image)
+                                                    <input type="file" wire:model.lazy="image1" x-ref="image1">
+                                                    @if (!$image1)
                                                     @if($QueryUpdate)
-                                                    <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image1 }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
                                                     @endif
                                                     @endif
-                                                    @if ($image)
-                                                    <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    @if ($image1)
+                                                    <img src="{{ $image1->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image1" class="img-circle img-fluid">
+                                                    @endif
+                                                    {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Image 2 (517.38*492 jpg)</label>
+                                                <div class="custom-file">
+                                                    {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+
+                                                    <input type="file" wire:model.lazy="image2" x-ref="image2">
+                                                    @if (!$image2)
+                                                    @if($QueryUpdate)
+                                                    <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image2 }}"  style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">
+                                                    @endif
+                                                    @endif
+                                                    @if ($image1)
+                                                    <img src="{{ $image2->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">
                                                     @endif
                                                     {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
                                                 </div>
@@ -137,9 +157,14 @@
                         name:  'name'
                     },
                     {
-                        title: 'Image',
-                        data:  'image',
-                        name:  'image'
+                        title: 'Image1',
+                        data:  'image1',
+                        name:  'image1'
+                    },
+                    {
+                        title: 'Image2',
+                        data:  'image2',
+                        name:  'image2'
                     },
                     {
                         title: 'Status',

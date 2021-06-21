@@ -178,16 +178,21 @@ class DatatableController extends Controller
         $Query = Category::query()->orderBy('id', 'desc');
 
         return Datatables::of($Query)
-        ->addColumn('image', function ($data) {
-            $url = asset('storage/photo/'.$data->image);
+        ->addColumn('image1', function ($data) {
+            $url = asset('storage/photo/'.$data->image1);
 
-            return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
+            return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image1" class="img-fluid mx-auto d-block"/>';
+        })
+        ->addColumn('image2', function ($data) {
+            $url = asset('storage/photo/'.$data->image2);
+
+            return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image2" class="img-fluid mx-auto d-block"/>';
         })
         ->addColumn('action', function ($data) {
             return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
         })
-        ->rawColumns(['image', 'action'])
+        ->rawColumns(['image1', 'image2', 'action'])
         ->toJSON();
     }
     public function index()

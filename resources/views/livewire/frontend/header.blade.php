@@ -13,7 +13,7 @@
                                 </a>
                                 <ul class="dropdown-menu ">
                                     <li><a href="register"><i class="fa fa-user"></i> Register</a></li>
-                                    <li><a href="login"><i class="fa fa-pencil-square-o"></i> Login</a></li>
+                                    <li><a href="{{ route('customer_login') }}"><i class="fa fa-pencil-square-o"></i> Login</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -198,7 +198,7 @@
                         <!--//cart-->
 
                         <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
-                            <li class="compare hidden-xs"><a href="#" class="top-link-compare" title="Compare "><i class="fa fa-refresh"></i></a>
+                            <li class="compare hidden-xs"><a onClick="window.location.href=window.location.href" class="top-link-compare" title="Compare "><i class="fa fa-refresh"></i></a>
                             </li>
                             <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="Wish List (0) "><i class="fa fa-heart"></i></a>
                             </li>

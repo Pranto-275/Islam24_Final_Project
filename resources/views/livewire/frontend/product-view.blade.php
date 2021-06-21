@@ -26,50 +26,18 @@
                 	<div class="modcontent">
                 		<div class="box-category">
                 			<ul id="cat_accordion" class="list-group">
-                				<li class="hadchild"><a href="category.html" class="cutom-parent">Smartphone & Tablets</a>   <span class="button-view  fa fa-plus-square-o"></span>
+                                @foreach($categories as $category)
+                				<li class="hadchild"><a href="category.html" class="cutom-parent">{{ $category->name }}</a>   <span class="button-view  fa fa-plus-square-o"></span>
                 					<ul style="display: block;">
-                						<li><a href="category.html">Men's Watches</a></li>
-                						<li><a href="category.html">Women's Watches</a></li>
-                						<li><a href="category.html">Kids' Watches</a></li>
-                						<li><a href="category.html">Accessories</a></li>
+                                         @foreach ($category->SubCategory as $subCategory)
+
+                						<li><a href="category.html">{{ $subCategory->name }}</a></li>
+
+                                        @endforeach
                 					</ul>
                 				</li>
-                				<li class="hadchild"><a class="cutom-parent" href="category.html">Electronics</a>   <span class="button-view  fa fa-plus-square-o"></span>
-                					<ul style="display: none;">
-                						<li><a href="category.html">Cycling</a></li>
-                						<li><a href="category.html">Running</a></li>
-                						<li><a href="category.html">Swimming</a></li>
-                						<li><a href="category.html">Football</a></li>
-                						<li><a href="category.html">Golf</a></li>
-                						<li><a href="category.html">Windsurfing</a></li>
-                					</ul>
-                				</li>
-                				<li class="hadchild"><a href="category.html" class="cutom-parent">Shoes</a>   <span class="button-view  fa fa-plus-square-o"></span>
-                					<ul style="display: none;">
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                					</ul>
-                				</li>
-                				<li class="hadchild"><a href="category.html" class="cutom-parent">Watches</a>  <span class="button-view  fa fa-plus-square-o"></span>
-                					<ul style="display: none;">
-                						<li><a href="category.html">Men's Watches</a></li>
-                						<li><a href="category.html">Women's Watches</a></li>
-                						<li><a href="category.html">Kids' Watches</a></li>
-                						<li><a href="category.html">Accessories</a></li>
-                					</ul>
-                				</li>
-                				<li class="hadchild"><a href="category.html" class="cutom-parent">Jewellery</a>    <span class="button-view  fa fa-plus-square-o"></span>
-                					<ul style="display: none;">
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                						<li><a href="category.html">Sub Categories</a></li>
-                					</ul>
-                				</li>
+                              @endforeach
+
                 				<li class=""><a href="category.html" class="cutom-parent">Health &amp; Beauty</a>  <span class="dcjq-icon"></span></li>
                 				<li class=""><a href="category.html" class="cutom-parent">Kids &amp; Babies</a>    <span class="dcjq-icon"></span></li>
                 				<li class=""><a href="category.html" class="cutom-parent">Sports</a>  <span class="dcjq-icon"></span></li>
@@ -264,15 +232,17 @@
 
 						<div class="content-product-left class-honizol col-md-5 col-sm-12 col-xs-12">
 							<div class="large-image  ">
-								<img itemprop="image" class="product-image-zoom" src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/1.jpg"  title="Chicken swinesha" alt="Chicken swinesha">
+								<img itemprop="image" class="product-image-zoom" src="{{ asset('storage/photo/'.$productMainImage->image) }}"  title="Chicken swinesha" alt="Chicken swinesha">
 							</div>
 							<a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
 
 							<div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+                                @foreach ($productImages as $productImage)
 								<a data-index="0" class="img thumbnail " data-image="image/catalog/demo/product/fashion/1.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/1.jpg" title="Chicken swinesha" alt="Chicken swinesha">
+									<img src="{{ asset('storage/photo/'.$productImage->image) }}" title="Chicken swinesha" alt="Chicken swinesha">
 								</a>
-								<a data-index="1" class="img thumbnail " data-image="image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha">
+                                @endforeach
+								{{-- <a data-index="1" class="img thumbnail " data-image="image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha">
 									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha" alt="Chicken swinesha">
 								</a>
 								<a data-index="2" class="img thumbnail " data-image="image/catalog/demo/product/fashion/3.jpg" title="Chicken swinesha">
@@ -283,7 +253,7 @@
 								</a>
 								<a data-index="4" class="img thumbnail " data-image="image/catalog/demo/product/fashion/5.jpg" title="Chicken swinesha">
 									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/5.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
+								</a> --}}
 							</div>
 
 						</div>

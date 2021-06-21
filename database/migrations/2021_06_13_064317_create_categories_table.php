@@ -17,7 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('code', 191);
             $table->string('name', 191);
-            $table->text('image')->nullable();
+            $table->text('image1')->nullable();
+            $table->text('image2')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('branch_id');

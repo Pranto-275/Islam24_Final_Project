@@ -22,7 +22,7 @@
                                 <div class="yt-content-slider"  data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column00="1" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
                                     @foreach ($sliderImages as $sliderImage)
                                       <div class="yt-content-slide">
-                                        <a href="#"><img src="{{ asset('public/photo/'.$sliderImage->image) }}" alt="slider1" class="img-responsive" style="width:1090px;height:450px;"></a>
+                                        <a href="#"><img src="{{ asset('storage/photo/'.$sliderImage->image) }}" alt="slider1" class="img-responsive" style="width:1090px;height:450px;"></a>
                                       </div>
                                     @endforeach
                                 </div>
@@ -535,10 +535,10 @@
 
                     <div class="static-cates">
                         <ul>
-                            @foreach ($topTategories as $topTategory)
+                            @foreach ($topCategories as $topCategory)
 
                             <li>
-                                <a href="#"><img src="{{ asset('storage/photo/'.$topTategory->image) }}" alt="image" style="height:120px;"></a>
+                                <a href="{{route('category_wise_product',['id'=>$topCategory->id])}}"><img src="{{ asset('storage/photo/'.$topCategory->image) }}" alt="image" style="height:120px;"></a>
                             </li>
 
                             @endforeach
@@ -577,7 +577,7 @@
                                                         <span class="label-product label-sale">-11%</span>
                                                     </div>
                                                     <div class="product-image-container second_img">
-                                                        <a href="product.html" target="_self" title="Pastrami bacon">
+                                                        <a href="{{route('product_view',['id'=>$product->id])}}" target="_self" title="Pastrami bacon">
                                                             @foreach ($product->ProductImage as $productImage)
                                                                <img src="{{ asset('storage/photo/'.$productImage->image) }}" class="img-1 img-responsive" alt="image1">
                                                             @endforeach
@@ -675,9 +675,9 @@
                                                     <div class="left-block left-b">
 
                                                         <div class="product-image-container second_img">
-                                                            <a href="product.html" target="_self" title="Lastrami bacon">
-                                                                <img src="{{ asset('storage/photo/'.$category->image) }}" class="img-1 img-responsive" alt="image1">
-                                                                <img src="{{ asset('storage/photo/'.$category->image) }}" class="img-2 img-responsive" alt="image2">
+                                                            <a href="{{route('category_wise_product',['id'=>$category->id])}}" target="_self" title="Lastrami bacon">
+                                                                <img src="{{ asset('storage/photo/'.$category->image1) }}" class="img-1 img-responsive" alt="image1">
+                                                                <img src="{{ asset('storage/photo/'.$category->image2) }}" class="img-2 img-responsive" alt="image2">
                                                             </a>
                                                         </div>
                                                         <!--quickview-->

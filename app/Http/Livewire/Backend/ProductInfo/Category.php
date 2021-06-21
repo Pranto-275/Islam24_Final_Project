@@ -13,7 +13,8 @@ class Category extends Component
 
     public $code;
     public $name;
-    public $image;
+    public $image1;
+    public $image2;
     public $status;
     public $top_show;
     public $CategoryId=NULL;
@@ -57,9 +58,13 @@ class Category extends Component
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
-        if($this->image){
-        $path = $this->image->store('/public/photo');
-        $Query->image = basename($path);
+        if($this->image1){
+        $path = $this->image1->store('/public/photo');
+        $Query->image1 = basename($path);
+        }
+        if($this->image2){
+            $path = $this->image2->store('/public/photo');
+            $Query->image2 = basename($path);
         }
         $Query->branch_id = 1;
         $Query->status = $this->status;
