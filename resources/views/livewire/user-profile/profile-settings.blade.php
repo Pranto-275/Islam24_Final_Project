@@ -22,24 +22,6 @@
                             </div>
                         </div><hr>
                         <div class="row">
-                            {{-- <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Profile Photo:</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="control-label">Profile Preview:</label>
-                                    <div class="custom-file">
-                                        <center><img class="rounded-circle header-profile-user" src="{{URL::asset('public/assets/images/users/avatar-1.jpg')}}"
-                                        alt="Header Avatar"></center>
-                                    </div>
-                                </div>
-                            </div> --}}
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Business Name:</label>
