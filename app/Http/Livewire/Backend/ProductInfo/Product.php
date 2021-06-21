@@ -76,6 +76,8 @@ class Product extends Component
         $Query->sub_sub_category_id = $this->sub_sub_category_id;
         $Query->low_alert = $this->low_alert;
         $Query->contact_id = $this->contact_id;
+        $Query->old_sale_price = 123;
+        $Query->vat_id = 1;
         $Query->status = $this->status;
         $Query->branch_id = 1;
         $Query->save();

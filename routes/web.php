@@ -21,6 +21,7 @@ use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
+use App\Http\Livewire\Backend\Inventory\Purchase;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Frontend\ProductView;
@@ -69,13 +70,14 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
         Route::get('user-list', UserList::class)->name('user-list');
     });
-    Route::group(['prefix' => 'Inventory', 'as' => 'Inventory.'], function () {
+    Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
         Route::get('category', Category::class)->name('category');
         Route::get('currency', Currency::class)->name('currency');
         Route::get('language', Language::class)->name('language');
         Route::get('pointPolicy', PointPolicy::class)->name('pointPolicy');
         Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
         Route::get('ware-house', WareHouse::class)->name('ware-house');
+        Route::get('purchase/{id?}', Purchase::class)->name('purchase');
     });
     Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
         Route::get('profile-settings', ProfileSettings::class)->name('profile-settings');
