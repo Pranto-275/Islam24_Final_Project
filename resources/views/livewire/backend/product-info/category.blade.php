@@ -1,4 +1,5 @@
 @push('css')
+
 @endpush
 <div>
     <x-slot name="title">

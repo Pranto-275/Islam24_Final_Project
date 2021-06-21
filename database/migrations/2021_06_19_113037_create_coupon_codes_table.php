@@ -17,7 +17,7 @@ class CreateCouponCodesTable extends Migration
             $table->id();
             $table->string('code', 100)->nullable();
             $table->timestamp('expired_date')->nullable();
-            $table->enum('offer_type', ['Percentense', 'Amount'])->nullable();
+            $table->enum('offer_type', ['Percentage', 'Amount'])->nullable();
             $table->double('amount', 20, 4)->nullable();
             $table->double('min_buy_amount', 20, 4)->nullable();
             $table->enum('status', ['Active', 'Inactive']);
