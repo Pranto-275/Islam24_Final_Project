@@ -48,9 +48,8 @@ class Branch extends Component
         $Query->mobile = $this->mobile;
         $Query->address = $this->address;
         $Query->save();
-
+        $this->reset();
         $this->branchInfoModal();
-
         $this->emit('success', [
             'text' => 'Branch C/U Successfully',
         ]);

@@ -21,6 +21,14 @@ class Vat extends Component
 
     public function VatInfoSave(){
 
+        $this->validate([
+            'code'            => 'required',
+            'name'            => 'required',
+            'rate_percent'    => 'required',
+            'rate_fixed'      => 'required',
+
+        ]);
+
         if ($this->vat_id){
             $Query  = VatInfo::find($this->vat_id);
         }else{

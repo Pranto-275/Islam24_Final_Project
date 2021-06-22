@@ -52,16 +52,17 @@ public function companyInfoSave(){
         $Query->user_id      = Auth::user()->id;
     }
 
-  $Query->name         = $this->name;
-  $Query->phone        = $this->phone;
-  $Query->mobile       = $this->mobile;
-  $Query->address      = $this->address;
-  $Query->web          = $this->email;
-  $Query->branch_id    = 1;
-  $Query->save();
-  $this->emit('success',[
-     'text' => 'CompanyInfo save successfully',
-  ]);
+          $Query->name         = $this->name;
+          $Query->phone        = $this->phone;
+          $Query->mobile       = $this->mobile;
+          $Query->address      = $this->address;
+          $Query->web          = $this->email;
+          $Query->branch_id    = 1;
+          $Query->save();
+          $this->reset();
+          $this->emit('success',[
+             'text' => 'CompanyInfo save successfully',
+          ]);
 }
 
     public function render()

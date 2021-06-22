@@ -167,11 +167,10 @@
                         <i class="bx bx-list-ul"></i>
                         <span>Stock</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('stock.stock-adjustment')}}">Stock Adjustments</a></li>
-                    </ul>
+{{--                    <ul class="sub-menu" aria-expanded="false">--}}
+{{--                        <li><a href="{{route('stock.stock-adjustment')}}">Stock Adjustments</a></li>--}}
+{{--                    </ul>--}}
                 </li>
-
             </ul>
         </div>
         <!-- Sidebar -->

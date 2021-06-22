@@ -32,6 +32,19 @@ class InvoiceSetting extends Component
 
 
     public function InvoiceSettingSave(){
+
+        $this->validate([
+           'type'              => 'required',
+           'logo'              => 'required',
+           'invoice_header'    => 'required',
+            'invoice_title'    => 'required',
+            'invoice_footer'   => 'required',
+            'vat_reg_no'       => 'required',
+            'vat_area_code'    => 'required',
+            'vat_text'         => 'required',
+            'website'          => 'required'
+        ]);
+
         if ($this->invoiceSetting_id){
             $Query = InvoiceSettingInfo::find($this->invoiceSetting_id);
         }else{

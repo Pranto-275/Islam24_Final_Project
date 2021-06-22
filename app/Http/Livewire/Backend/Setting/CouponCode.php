@@ -22,6 +22,15 @@ class CouponCode extends Component
 
 
 public function couponCodeSave(){
+    $this->validate([
+       'code'                 => 'required',
+       'expired_date'         => 'required',
+        'offer_type'          => 'required',
+        'amount'              => 'required',
+        'min_buy_amount'      => 'required'
+    ]);
+
+
     if ($this->couponCode_id){
         $Query = CouponCodeInfo::find($this->couponCode_id);
     }else{
@@ -37,6 +46,7 @@ public function couponCodeSave(){
     $Query->status             = $this->status;
     $Query->branch_id          = 1;
     $Query->save();
+    $this->reset();
     $this->emit('success',[
        'text' => 'Coupon code saved successfully',
     ]);
