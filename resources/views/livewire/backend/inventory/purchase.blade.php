@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" data-toggle="modal" data-target=".ContactsAccounts"><i class="mdi mdi-plus mr-1"></i> New Product</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" data-toggle="modal" data-target="productInfoModal"><i class="mdi mdi-plus mr-1"></i> New Product</button>
                                 {{-- <a href="{{route('inventory.purchase-list')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Purchase List</button></a> --}}
                             </div>
                         </div><!-- end col-->
@@ -266,6 +266,123 @@
     </div>
 
 
+
+    <!--  Product Add Modal -->
+    <div wire:ignore.self class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Product Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form wire:submit.prevent="productSave">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Code</label>
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter product Code">
+                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Sub Sub Category</label>
+                                    <select class="form-control" wire:model.lazy="sub_sub_category_id">
+                                       <option value=""> Select Sub-sub Category </option>
+                                       @foreach ($subSubCategories as $subSubCategory)
+                                          <option value="{{ $subSubCategory->id }}">{{ $subSubCategory->name }}</option>
+                                       @endforeach
+                                    </select>
+                                    @error('sub_sub_category_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Contact</label>
+                                    <select class="form-control" wire:model.lazy="contact_id">
+                                        <option value="">Select Contact</option>
+                                        @foreach ($contacts as $contact)
+                                            <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('contact_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter product name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="control-label">Image (517.38*492 jpg)</label>
+                                    <div class="custom-file">
+                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+
+                                        <input type="file" wire:model.lazy="images" x-ref="images" multiple>
+                                        @error('images') <span class="error">{{ $message }}</span> @enderror
+
+                                        {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Sale Price</label>
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="sale_price" placeholder="Enter sale price">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Whole Sales Price</label>
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Purchase Price</label>
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Low alert Price</label>
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="low_alert" placeholder="Enter low alert price">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" >Submit</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 
 </div>

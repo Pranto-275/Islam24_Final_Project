@@ -161,6 +161,19 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
                     </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
+                    </ul>
+                </li>
+                <li>
+                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
+                        <span>Report</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
