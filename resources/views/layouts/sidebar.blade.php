@@ -165,11 +165,30 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>
+                        <span>Order</span>
+                    </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('order.order-list')}}">Order List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
                         <span>Stock</span>
                     </a>
 {{--                    <ul class="sub-menu" aria-expanded="false">--}}
 {{--                        <li><a href="{{route('stock.stock-adjustment')}}">Stock Adjustments</a></li>--}}
 {{--                    </ul>--}}
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('report.stock-report')}}">Stock Report</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('report.order-report')}}">Order Report</a></li>
+                    </ul>
+
                 </li>
             </ul>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Backend\Setting;
 use App\Models\Backend\Setting\InvoiceSetting as InvoiceSettingInfo;
 use App\Models\Backend\Setting\Currency;
+use App\Models\Backend\Setting\Branch;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -27,11 +28,12 @@ class InvoiceSetting extends Component
     public $is_chalan_no_hide;
     public $user_id;
     public $invoiceSetting_id;
+    public $invoiceInfoDetails;
     public $branch_id;
 
 
 
-    public function InvoiceSettingSave(){
+    public function invoiceSettingSave(){
 
         $this->validate([
            'type'              => 'required',
@@ -74,34 +76,26 @@ class InvoiceSetting extends Component
         ]);
     }
 
-    public function invoiceSettingEdit($id){
-        $this->QueryUpdate          = InvoiceSettingInfo::find($id);
-        $this->invoiceSetting_id    = $this->QueryUpdate->id;
-        $this->type                 = $this->QueryUpdate->type;
-        $this->invoice_header       = $this->QueryUpdate->invoice_header;
-        $this->invoice_title        = $this->QueryUpdate->invoice_title;
-        $this->invoice_footer       = $this->QueryUpdate->invoice_footer;
-        $this->vat_reg_no           = $this->QueryUpdate->vat_reg_no;
-        $this->vat_area_code        = $this->QueryUpdate->vat_area_code;
-        $this->vat_text             = $this->QueryUpdate->vat_text;
-        $this->website              = $this->QueryUpdate->website;
-        $this->InvoiceSettingModal();
+    public function mount(){
+        $this->invoiceInfoDetails          = InvoiceSettingInfo::first();
+        if ($this->invoiceInfoDetails){
+            $this->type                 = $this->invoiceInfoDetails->type;
+            $this->invoice_header       = $this->invoiceInfoDetails->invoice_header;
+            $this->invoice_title        = $this->invoiceInfoDetails->invoice_title;
+            $this->invoice_footer       = $this->invoiceInfoDetails->invoice_footer;
+            $this->vat_reg_no           = $this->invoiceInfoDetails->vat_reg_no;
+            $this->vat_area_code        = $this->invoiceInfoDetails->vat_area_code;
+            $this->vat_text             = $this->invoiceInfoDetails->vat_text;
+            $this->website              = $this->invoiceInfoDetails->website;
+        }
     }
 
 
-    public function invoiceSettingDelete($id){
-        InvoiceSettingInfo::find($id)->delete();
-        $this->emit('success', [
-           'text' => 'InvoiceSetting deleted successfully',
-        ]);
-    }
-    public function InvoiceSettingModal(){
-        $this->emit('modal','InvoiceSettingModal');
-    }
     public function render()
     {
         return view('livewire.backend.setting.invoice-setting',[
             'Currencies' => Currency::get(),
+            'Branches'   => Branch::get(),
         ]);
     }
 }

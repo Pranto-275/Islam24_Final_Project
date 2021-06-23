@@ -26,6 +26,9 @@ use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Backend\Inventory\Purchase;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
+use App\Http\Livewire\Backend\Order\OrderList;
+use App\Http\Livewire\Backend\Report\StockReport;
+use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Inventory\DelieveryMethod;
 use App\Http\Livewire\Inventory\Language;
@@ -114,6 +117,10 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('slider', Slider::class)->name('slider');
     });
 
+    Route::group(['prefix' => 'order',  'as' => 'order.'], function (){
+       Route::get('order-list', OrderList::class)->name('order-list');
+    });
+
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
         Route::get('payment', Payment::class)->name('payment');
     });
@@ -122,6 +129,13 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('contact', Contact::class)->name('contact');
         Route::get('contact-category', ContactCategory::class)->name('contact-category');
     });
+
+    Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
+        Route::get('stock-report', StockReport::class)->name('stock-report');
+        Route::get('order-report', OrderReport::class)->name('order-report');
+    });
+
+
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
         Route::get('index', [DatatableController::class, 'index'])->name('index');
 

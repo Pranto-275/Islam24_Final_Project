@@ -74,11 +74,8 @@
                 				<li class=""><a href="category.html" class="cutom-parent">Wines &amp; Spirits</a>  <span class="dcjq-icon"></span></li>
                 			</ul>
                 		</div>
-
-
                 	</div>
                 </div>
-
 
             	<div class="module product-simple">
                     <h3 class="modtitle">
