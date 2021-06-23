@@ -18,6 +18,7 @@ use App\Http\Livewire\Backend\Setting\DeliveryMethod;
 use App\Http\Livewire\Backend\Setting\InvoiceSetting;
 use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\Vat;
+use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
@@ -122,6 +123,10 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('index', [DatatableController::class, 'index'])->name('index');
 
         Route::get('user-table', [DatatableController::class, 'UserTable'])->name('user_table');
+    });
+
+    Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
+        Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
