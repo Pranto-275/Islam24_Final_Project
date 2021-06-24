@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Backend\Report;
 
 
 use App\Models\Backend\Inventory\StockAdjustment;
+use Carbon\Carbon;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\Setting\Branch;
 use App\Models\Backend\Setting\Warehouse;
@@ -12,26 +13,35 @@ use Livewire\Component;
 
 class StockAdjustmentReport extends Component
 {
-    public $date;
+    public $to_date = Null;
+    public $from_date = Null;
+    public $second=NULL;
     public $type;
     public $contact_id;
     public $from_branch_id;
     public $to_branch_id;
     public $from_warehouse_id;
     public $to_warehouse_id;
+    public $Query;
     public $StockAdjustmentReportId=NULL;
     public $note;
+    public function dateFilter($model){
+        return $model->where('date', '>=', Carbon::parse($this->from_date)->format('Y-m-d'))->where('date', '<=', Carbon::parse($this->to_date)->format('Y-m-d'));
+    }
     public function saveStockAdjustmentReport()
     {
         // dd('$true');
 
         $this->validate([
-            'type' => 'required',
+
+            'date' => 'required',
+            'date1' => 'required',
+            // 'type' => 'required',
             // 'contact_id' => 'required',
-            'from_branch_id' => 'required',
-            'to_branch_id' => 'required',
-            'from_warehouse_id' => 'required',
-            'to_warehouse_id' => 'required',
+            // 'from_branch_id' => 'required',
+            // 'to_branch_id' => 'required',
+            // 'from_warehouse_id' => 'required',
+            // 'to_warehouse_id' => 'required',
         ]);
 
      
@@ -43,13 +53,14 @@ class StockAdjustmentReport extends Component
             }
   
             $Query->date=$this->date;
-            $Query->type=$this->type;
-            $Query->contact_id= $this->contact_id;
-            $Query->from_branch_id=$this->from_branch_id;
-            $Query->to_branch_id=$this->to_branch_id;
-            $Query->from_warehouse_id=$this->from_warehouse_id;
-            $Query->to_warehouse_id=$this->to_warehouse_id;
-            $Query->note=$this->note;
+            $Query->date=$this->date1;
+            // $Query->type=$this->type;
+            // $Query->contact_id= $this->contact_id;
+            // $Query->from_branch_id=$this->from_branch_id;
+            // $Query->to_branch_id=$this->to_branch_id;
+            // $Query->from_warehouse_id=$this->from_warehouse_id;
+            // $Query->to_warehouse_id=$this->to_warehouse_id;
+            // $Query->note=$this->note;
             $Query->save();
            //    Stock
            
@@ -61,21 +72,31 @@ class StockAdjustmentReport extends Component
         ]);
     }
 
-    public function deleteStock($id)
-    {
-        StockAdjustment::find($id)->delete();
-        $this->emit('success',[
-            'text' => 'stock delete successfully',
-        ]);
-    }
-
     public function render()
     {
+        // $Query->whereDate('created_at', '=', Carbon::today()->toDateString());
+
+        // if($this->date==NULL || $this->date1==NULL){
+        //     $stock=StockAdjustment::paginate(20);
+        //   }else if($this->date!=NULL && $this->date1!=NULL){
+        //      $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
+        //   }else{
+        //      if($this->date!=NULL && $this->date1!=NULL){
+        //          $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
+        //      }else if($this->date!=NULL && $this->date1!=NULL){
+        //      $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
+                
+        //      }else if($this->date!=NULL && $this->date1!=NULL){
+        //          $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
+        //      }
+        //   }
+
         return view('livewire.backend.report.stock-adjustment-report',[
             'stocks' => StockAdjustment::get(),
-            'contacts' => Contact::get(),
-            'branches' => Branch::get(),
-            'warehouses' => Warehouse::get(),
+            // 'dates' => StockAdjustment::get(),
+            // 'contacts' => Contact::get(),
+            // 'branches' => Branch::get(),
+            // 'warehouses' => Warehouse::get(),
         ]);
     }
 }
