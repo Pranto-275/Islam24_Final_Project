@@ -28,8 +28,8 @@
                                 <select class="form-control" wire:model.lazy="type">
                                      <option value="">Select Type</option>
                                      <option value="Transfer">Transfer</option>
-                                     <option value="Transfer">Increase</option>
-                                     <option value="Transfer">Decrease</option>
+                                     <option value="Increase">Increase</option>
+                                     <option value="Decrease">Decrease</option>
                                 </select>
                                 @error('type') <span class="error">{{ $message }}</span> @enderror
                               </div>
@@ -143,9 +143,7 @@
                                                 <center><a href="#" class="btn btn-danger btn-sm" wire:click="removeProduct({{$key}})"><i class="fa fa-trash"></i></a></center>
                                             </td>
                                         </tr>
-
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
