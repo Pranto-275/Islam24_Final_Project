@@ -25,6 +25,7 @@ class Invoice extends Component
     public $expense_point;
     public $expense_point_amount;
     public $grand_total;
+    public $invoice_id;
     public $user_id;
     public $branch_id;
     public $status;
@@ -32,9 +33,15 @@ class Invoice extends Component
 
 
 
-    public function invoiceSave(){
-//        dd('');
-       $invoiceInfo                           = new InvoiceInfo();
+    public function invoiceSave()
+    {
+        if ($this->invoice_id){
+          $invoiceInfo = invoiceInfo::find($this->invoice_id);
+        }else{
+        $invoiceInfo = new InvoiceInfo();
+        $invoiceInfo->user_id = Auth::user()->id;
+    }
+
        $invoiceInfo->type                     = $this->type;
        $invoiceInfo->date                     = $this->date;
        $invoiceInfo->code                     = $this->code;
@@ -48,7 +55,6 @@ class Invoice extends Component
        $invoiceInfo->expense_point            = $this->expense_point;
        $invoiceInfo->expense_point_amount     = $this->expense_point_amount;
        $invoiceInfo->grand_total              = $this->grand_total;
-       $invoiceInfo->user_id                  = Auth::user()->id;
        $invoiceInfo->branch_id                = 1;
        $invoiceInfo->status                   = $this->status;
        $invoiceInfo->save();
@@ -57,6 +63,30 @@ class Invoice extends Component
           'text' => 'InvoiceInfo Saved Successfully',
        ]);
     }
+
+
+    public function invoiceEdit($id){
+        $this->invoiceInfoUpdate     = InvoiceInfo::find($id);
+        $this->invoice_id            = $this->invoiceInfoUpdate->id;
+        $this->type                  = $this->invoiceInfoUpdate->type;
+        $this->date                  = $this->invoiceInfoUpdate->date;
+        $this->code                  = $this->invoiceInfoUpdate->code;
+        $this->contact_id            = $this->invoiceInfoUpdate->contact_id;
+        $this->subtotal              = $this->invoiceInfoUpdate->subtotal;
+        $this->vat_total             = $this->invoiceInfoUpdate->vat_total;
+        $this->discount_value        = $this->invoiceInfoUpdate->discount_value;
+        $this->discount              = $this->invoiceInfoUpdate->discount;
+        $this->earn_point            = $this->invoiceInfoUpdate->earn_point;
+        $this->earn_point_amount     = $this->invoiceInfoUpdate->earn_point_amount;
+        $this->expense_point         = $this->invoiceInfoUpdate->expense_point;
+        $this->expense_point_amount  = $this->invoiceInfoUpdate->expense_point_amount;
+        $this->grand_total           = $this->invoiceInfoUpdate->grand_total;
+        $this->status                = $this->invoiceInfoUpdate->status;
+        $this->InvoiceModal();
+    }
+
+
+
 
     public function invoiceDelete($id){
         InvoiceInfo::find($id)->delete();
