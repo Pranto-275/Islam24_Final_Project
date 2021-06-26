@@ -24,25 +24,57 @@
                         </div>
                     </div><hr>
                     <div class="row">
-                    <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">From Date</label>
-                                    <input type="date" class="form-control" wire:model.lazy="to_date"/>
+                                    <input id= "daterange" type="date" class="form-control" wire:model.lazy="to_date"/>
                                 </div>
                               </div>
 
-                              <div class="col-md-6">
+                              <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">To Date</label>
-                                    <input type="date" class="form-control" wire:model.lazy="from_date"/>
+                                    <input id= "daterange" type="date" class="form-control" wire:model.lazy="from_date"/>
                                 </div>
                               </div>
+
+                              <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Branch</label>
+                                                    <select class="form-control" wire:model.lazy="branch_id">
+                                                        <option value="">Select Branch</option>
+                                                       @foreach ($branches as $branch)
+                                                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                    @error('branch_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">Select Customer</label>
+                                <select class="form-control" placeholder="Customer" wire:model.lazy="contact_id">
+                                    <option>Select Customer</option>
+                                    @foreach ($contacts as $contact)
+                                    <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('contact_id') <span class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
+                            
+                            </div>
+                           
+                        </div>
+
+                           
                        
                     </div>
+
+                    
                 </div>
             </div>
         </div>
