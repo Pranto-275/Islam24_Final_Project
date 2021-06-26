@@ -20,7 +20,6 @@
                         <div class="col-sm-8">
                             <div class="text-sm-right">
                                 <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="categoryModal"><i class="mdi mdi-plus mr-1"></i> New Category</button>
-
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -117,7 +116,6 @@
                                                 <label>Top Show Image</label><br/><br/>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -179,7 +177,6 @@
                     },
                 ]
             });
-
             window.livewire.on('success', message => {
                 datatable.draw(true);
             });
