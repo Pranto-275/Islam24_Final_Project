@@ -159,6 +159,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('coupon_table', [DatatableController::class, 'CouponTable'])->name('coupon_table');
         Route::get('paymentMethod_table', [DatatableController::class, 'paymentMethodTable'])->name('paymentMethod_table');
         Route::get('invoiceSave', [DatatableController::class, 'InvoiceTable'])->name('invoiceSave');
+        Route::get('contact_table', [DatatableController::class, 'ContactTable'])->name('contact_table');
+        Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
     });
 
 });
