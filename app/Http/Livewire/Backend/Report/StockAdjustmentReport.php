@@ -5,10 +5,6 @@ namespace App\Http\Livewire\Backend\Report;
 
 use App\Models\Backend\Inventory\StockAdjustment;
 use Carbon\Carbon;
-use App\Models\Backend\ContactInfo\Contact;
-use App\Models\Backend\Setting\Branch;
-use App\Models\Backend\Setting\Warehouse;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class StockAdjustmentReport extends Component
@@ -16,15 +12,9 @@ class StockAdjustmentReport extends Component
     public $to_date = Null;
     public $from_date = Null;
     public $second=NULL;
-    public $type;
-    public $contact_id;
-    public $from_branch_id;
-    public $to_branch_id;
-    public $from_warehouse_id;
-    public $to_warehouse_id;
+   
     public $Query;
     public $StockAdjustmentReportId=NULL;
-    public $note;
     public function dateFilter($model){
         return $model->where('date', '>=', Carbon::parse($this->from_date)->format('Y-m-d'))->where('date', '<=', Carbon::parse($this->to_date)->format('Y-m-d'));
     }
@@ -34,14 +24,9 @@ class StockAdjustmentReport extends Component
 
         $this->validate([
 
-            'date' => 'required',
-            'date1' => 'required',
-            // 'type' => 'required',
-            // 'contact_id' => 'required',
-            // 'from_branch_id' => 'required',
-            // 'to_branch_id' => 'required',
-            // 'from_warehouse_id' => 'required',
-            // 'to_warehouse_id' => 'required',
+            'to_date' => 'required',
+            'from_date' => 'required',
+            
         ]);
 
      
@@ -52,20 +37,11 @@ class StockAdjustmentReport extends Component
                $Query=new StockAdjustment();
             }
   
-            $Query->date=$this->date;
-            $Query->date=$this->date1;
-            // $Query->type=$this->type;
-            // $Query->contact_id= $this->contact_id;
-            // $Query->from_branch_id=$this->from_branch_id;
-            // $Query->to_branch_id=$this->to_branch_id;
-            // $Query->from_warehouse_id=$this->from_warehouse_id;
-            // $Query->to_warehouse_id=$this->to_warehouse_id;
-            // $Query->note=$this->note;
+            $Query->to_date=$this->to_date;
+            $Query->from_date=$this->from_date;
+           
             $Query->save();
            //    Stock
-           
-   
-
         $this->reset();
         $this->emit('success', [
             'text' => 'Stock Adjustment C/U Successfully',
@@ -74,29 +50,10 @@ class StockAdjustmentReport extends Component
 
     public function render()
     {
-        // $Query->whereDate('created_at', '=', Carbon::today()->toDateString());
-
-        // if($this->date==NULL || $this->date1==NULL){
-        //     $stock=StockAdjustment::paginate(20);
-        //   }else if($this->date!=NULL && $this->date1!=NULL){
-        //      $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
-        //   }else{
-        //      if($this->date!=NULL && $this->date1!=NULL){
-        //          $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
-        //      }else if($this->date!=NULL && $this->date1!=NULL){
-        //      $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
-                
-        //      }else if($this->date!=NULL && $this->date1!=NULL){
-        //          $stock=StockAdjustment::whereBetween('date',[$this->date, $this->date1])->paginate(20);
-        //      }
-        //   }
+        
 
         return view('livewire.backend.report.stock-adjustment-report',[
             'stocks' => StockAdjustment::get(),
-            // 'dates' => StockAdjustment::get(),
-            // 'contacts' => Contact::get(),
-            // 'branches' => Branch::get(),
-            // 'warehouses' => Warehouse::get(),
         ]);
     }
 }
