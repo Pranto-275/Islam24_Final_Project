@@ -23,6 +23,7 @@ class CreateInvoicesTable extends Migration
             $table->double('vat_total', 20, 4)->nullable();
             $table->double('discount_value', 20, 4)->nullable();
             $table->double('discount', 20, 4)->nullable();
+            $table->double('shipping_charge', 20, 4)->nullable();
             $table->double('earn_point', 20, 4)->nullable();
             $table->double('earn_point_amount', 20, 4)->nullable();
             $table->double('expense_point', 20, 4)->nullable();

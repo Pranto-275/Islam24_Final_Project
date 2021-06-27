@@ -36,19 +36,15 @@ class InvoiceSetting extends Component
     public function invoiceSettingSave(){
 
         $this->validate([
-           'type'              => 'required',
-           'logo'              => 'required',
-           'invoice_header'    => 'required',
+            'type'              => 'required',
             'invoice_title'    => 'required',
-            'invoice_footer'   => 'required',
-            'vat_reg_no'       => 'required',
-            'vat_area_code'    => 'required',
-            'vat_text'         => 'required',
-            'website'          => 'required'
         ]);
-
+        $this->invoiceInfoDetails          = InvoiceSettingInfo::whereUserId(Auth::user()->id)->first();
+        if($this->invoiceInfoDetails){
+        $this->invoiceSetting_id    = $this->invoiceInfoDetails->id;
+        }
         if ($this->invoiceSetting_id){
-            $Query = InvoiceSettingInfo::find($this->invoiceSetting_id);
+            $Query = InvoiceSettingInfo::whereUserId(Auth::user()->id)->find($this->invoiceSetting_id);
         }else{
             $Query  = new InvoiceSettingInfo();
             $Query->user_id    = Auth::user()->id;
@@ -77,8 +73,10 @@ class InvoiceSetting extends Component
     }
 
     public function mount(){
-        $this->invoiceInfoDetails          = InvoiceSettingInfo::first();
+        $this->invoiceInfoDetails          = InvoiceSettingInfo::whereUserId(Auth::user()->id)->first();
         if ($this->invoiceInfoDetails){
+
+            $this->invoiceSetting_id    = $this->invoiceInfoDetails->id;
             $this->type                 = $this->invoiceInfoDetails->type;
             $this->invoice_header       = $this->invoiceInfoDetails->invoice_header;
             $this->invoice_title        = $this->invoiceInfoDetails->invoice_title;
@@ -87,9 +85,11 @@ class InvoiceSetting extends Component
             $this->vat_area_code        = $this->invoiceInfoDetails->vat_area_code;
             $this->vat_text             = $this->invoiceInfoDetails->vat_text;
             $this->website              = $this->invoiceInfoDetails->website;
+            $this->currency_id          = $this->invoiceInfoDetails->currency_id;
+            $this->branch_id            = $this->invoiceInfoDetails->branch_id;
         }
-    }
 
+    }
 
     public function render()
     {

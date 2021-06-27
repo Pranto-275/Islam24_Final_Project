@@ -79,6 +79,13 @@ class StockAdjustment extends Component
         $this->to_warehouse_id=$QueryUpdate->to_warehouse_id;
         $this->note=$QueryUpdate->note;
     }
+    public function deleteStockAdjustment($id){
+        StockAdjustmentInfo::find($id)->delete();
+        StockManager::where('stock_adjustment_id','=',$id)->delete();
+        $this->emit('success', [
+            'text' => 'Stock Adjustment Delete Successfully',
+        ]);
+    }
     public function saveStockAdjustment(){
         $this->validate([
             'type' => 'required',

@@ -20,7 +20,7 @@ class StockAdjustmentReport extends Component
     public $contact_id;
     public $branch_id;
 
-   
+
     public function dateFilter($model){
         return $model->where('date', '>=', Carbon::parse($this->from_date)->format('Y-m-d'))->where('date', '<=', Carbon::parse($this->to_date)->format('Y-m-d'));
     }
@@ -42,14 +42,14 @@ class StockAdjustmentReport extends Component
             // 'to_warehouse_id' => 'required',
         ]);
 
-     
+
             // Product
             if($this->StockAdjustmentReportId){
                $Query=StockAdjustment::find($this->StockAdjustmentReportId);
             }else{
                $Query=new StockAdjustment();
             }
-  
+
             $Query->date=$this->date;
             $Query->date=$this->date1;
             $Query->contact_id= $this->contact_id;
@@ -62,8 +62,8 @@ class StockAdjustmentReport extends Component
             // $Query->note=$this->note;
             $Query->save();
            //    Stock
-           
-   
+
+
 
         $this->reset();
         $this->emit('success', [

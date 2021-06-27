@@ -18,6 +18,11 @@ class ContactCategory extends Component
 
 
   public function ContactCategoryInfoSave(){
+    $this->validate([
+        'type'=> 'required',
+        'code'=> 'required',
+        'name'=> 'required',
+    ]);
       if ($this->contact_Category_id){
           $Query  = ContactCategoryInfo::find($this->contact_Category_id);
       }else{
@@ -29,12 +34,13 @@ class ContactCategory extends Component
           $Query->code        = $this->code;
           $Query->name        = $this->name;
           $Query->status      = $this->status;
-          $Query->user_id     = Auth::id();
           $Query->branch_id   = 1;
           $Query->save();
           $this->reset();
+          $this->ContactCategoryModal();
+
           $this->emit('success',[
-              'text' => 'Contact Category created successfully',
+              'text' => 'Contact Category C/U successfully',
              ]);
   }
 
@@ -52,7 +58,7 @@ class ContactCategory extends Component
   public function contactCategoryDelete($id){
       ContactCategoryInfo::find($id)->delete();
       $this->emit('success',[
-         'text' => 'Contact CategoryInfo deleted Successfully',
+         'text' => 'Contact Category Deleted Successfully',
       ]);
   }
 

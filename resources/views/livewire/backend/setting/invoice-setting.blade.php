@@ -44,8 +44,9 @@
                                     <select class="form-control" wire:model.lazy="type">
                                         <option value="">Select Type</option>
                                         <option value="Invoice">Invoice</option>
-                                        <option value="Recipt">Recipt</option>
+                                        <option value="Receipt">Receipt</option>
                                     </select>
+                                    @error('type') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -54,7 +55,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Invice Header:</label>
                                     <input class="form-control" type="text" wire:model.lazy="invoice_header" placeholder="Invoice Header">
-                                    @error('invoice_header') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -81,14 +81,12 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Invoice Footer:</label>
                                     <input class="form-control" type="text" wire:model.lazy="invoice_footer" placeholder="Invoice Footer:">
-                                    @error('invoice_footer') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Vat Registration Number:</label>
                                     <input class="form-control" type="text" wire:model.lazy="vat_reg_no" placeholder="Vat Registration Number">
-                                    @error('vat_reg_no') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -96,7 +94,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Vat Area Code:</label>
                                     <input class="form-control" type="text" wire:model.lazy="vat_area_code" placeholder="Vat Area code">
-                                    @error('vat_area_code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -104,7 +101,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Vat Text:</label>
                                     <input class="form-control" type="text" wire:model.lazy="vat_text" placeholder="Vat Text">
-                                    @error('vat_text') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -112,7 +108,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Web Site:</label>
                                     <input class="form-control" type="text" wire:model.lazy="website" placeholder="Website address">
-                                    @error('website') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -137,7 +132,6 @@
                                                     <option value="{{ $Branch->id }}">{{ $Branch->name }}</option>
                                                 @endforeach
                                     </select>
-                                    @error('branch_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
