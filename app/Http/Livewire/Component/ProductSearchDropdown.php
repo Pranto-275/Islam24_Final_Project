@@ -8,7 +8,6 @@ use Livewire\Component;
 class ProductSearchDropdown extends Component
 {
     public $search;
-    public $type;
 
     protected $queryString = ['search'];
 
@@ -21,11 +20,7 @@ class ProductSearchDropdown extends Component
     public function render()
     {
         $Product = Product::where('name', 'like', '%'.$this->search.'%');
-        if ($this->type) {
-            $Product->where('item_type', $this->type);
-        }
         $Product = $Product->get();
-
         return view('livewire.component.product-search-dropdown',
         [
             'search_list' => $Product,

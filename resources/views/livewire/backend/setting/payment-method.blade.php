@@ -47,14 +47,6 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="code">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
                                     <label for="basicpill-firstname-input">Name</label>
                                     <input class="form-control" type="text" wire:model.lazy="name" placeholder="Name">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
@@ -73,7 +65,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Account No</label>
                                     <input class="form-control" type="text" wire:model.lazy="account_no" placeholder="Account No">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    @error('account_no') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -106,12 +98,6 @@
                         title: 'SL',
                         data: 'id'
                     },
-                    {
-                        title: 'Code',
-                        data:  'code',
-                        name:  'code'
-                    },
-
                     {
                         title: 'Name',
                         data:  'name',

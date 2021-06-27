@@ -20,7 +20,6 @@ class PaymentMethod extends Component
 
     public function PaymentMethodSave(){
         $this->validate([
-           'code'                    => 'required',
             'name'                   => 'required',
             'account_holder_name'    => 'required',
             'account_no'             => 'required',
@@ -34,7 +33,6 @@ class PaymentMethod extends Component
             $Query->user_id  = Auth::user()->id;
         }
 
-      $Query->code                   = $this->code;
       $Query->name                   = $this->name;
       $Query->account_holder_name    = $this->account_holder_name;
       $Query->account_no             = $this->account_no;
@@ -43,7 +41,7 @@ class PaymentMethod extends Component
       $Query->save();
       $this->reset();
       $this->emit('success',[
-         'text' => 'paymentInfo save successfully',
+         'text' => 'Payment Method save successfully',
       ]);
     }
 
@@ -60,7 +58,7 @@ class PaymentMethod extends Component
     public function paymentMethodDelete($id){
         PaymentMethodInfo::find($id)->delete();
         $this->emit('success',[
-           'text' => 'paymentMethod deleted successfully',
+           'text' => 'Payment Method deleted successfully',
         ]);
     }
 

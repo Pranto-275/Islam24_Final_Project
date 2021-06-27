@@ -17,7 +17,6 @@ use App\Http\Livewire\Backend\setting\Currency;
 use App\Http\Livewire\Backend\Setting\DeliveryMethod;
 use App\Http\Livewire\Backend\Setting\InvoiceSetting;
 use App\Http\Livewire\Backend\Setting\PaymentMethod;
-use App\Http\Livewire\Backend\Setting\CompanyInfo;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Setting\Warehouse;
@@ -112,9 +111,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('invoice-setting', InvoiceSetting::class)->name('invoice-setting');
         Route::get('payment-method', PaymentMethod::class)->name('payment-method');
         Route::get('vat', Vat::class)->name('vat');
-        Route::get('company-info', CompanyInfo::class)->name('company-info');
+        // Route::get('company-info', CompanyInfo::class)->name('company-info');
         Route::get('warehouse', Warehouse::class)->name('warehouse');
-        Route::get('coupon-code', CouponCode::class)->name('coupon-code');
+        // Route::get('coupon-code', CouponCode::class)->name('coupon-code');
         Route::get('slider', Slider::class)->name('slider');
     });
 

@@ -58,6 +58,9 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('inventory.stock-manager')}}">Stock Manager</a></li>
                     </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('inventory.purchase')}}">Purchase</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -103,7 +106,7 @@
                     </ul>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('setting.company-info')}}">Company Info</a></li>
+                        {{-- <li><a href="{{route('setting.company-info')}}">Company Info</a></li> --}}
                     </ul>
 
                     <ul class="sub-menu" aria-expanded="false">
@@ -128,7 +131,7 @@
 
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('setting.coupon-code')}}">Coupon codes</a></li>
+                        {{-- <li><a href="{{route('setting.coupon-code')}}">Coupon codes</a></li> --}}
                     </ul>
 
                     <ul class="sub-menu" aria-expanded="false">
@@ -155,15 +158,11 @@
                         <span>ContactInfo</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
+                    </ul>
+
+                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('contact-info.contact')}}">Contact</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
                     </ul>
                 </li>
                 <li>

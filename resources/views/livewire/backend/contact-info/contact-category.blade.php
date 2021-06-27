@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactCategoryModal"><i class="mdi mdi-plus mr-1"></i>Add Contact Category Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactCategoryModal"><i class="mdi mdi-plus mr-1"></i>Contact Category</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -79,7 +79,6 @@
                                         <option value="Active">Active</option>
                                         <option value="Inactive">Inactive</option>
                                     </select>
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>

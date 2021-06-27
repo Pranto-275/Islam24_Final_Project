@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" data-toggle="modal" data-target="productInfoModal"><i class="mdi mdi-plus mr-1"></i> New Product</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" data-toggle="modal" data-target=".productModal"><i class="mdi mdi-plus mr-1"></i> New Product</button>
                                 {{-- <a href="{{route('inventory.purchase-list')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Purchase List</button></a> --}}
                             </div>
                         </div><!-- end col-->
@@ -44,6 +44,18 @@
                             </div>
 
                         </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label class="control-label">Warehouse</label>
+                                <select class="form-control" wire:model.lazy="warehouse_id" id="select2-dropdown">
+                                    <option>Select Warehouse</option>
+                                   @foreach ($warehouses as $warehouse)
+                                       <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
+                                   @endforeach
+                                </select>
+                                @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label class="control-label">Supplier</label>
@@ -56,7 +68,7 @@
                                 @error('contact_id') <span class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Search Product</label>
                                 <livewire:component.product-search-dropdown/>
@@ -268,7 +280,7 @@
 
 
     <!--  Product Add Modal -->
-    <div wire:ignore.self class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade productModal" id="productModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactModal"><i class="mdi mdi-plus mr-1"></i>Add ContactInfo</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactModal"><i class="mdi mdi-plus mr-1"></i>Contact</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -46,8 +46,9 @@
                 <form wire:submit.prevent="ContactInfoSave">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
+                                    <label for="basicpill-lastname-input">Contact Category</label>
                                     <select class="form-control" wire:model.lazy="type">
                                         <option value="">Select Contact Category</option>
                                         @foreach($ContactCategories as $contactCategory)
@@ -57,14 +58,14 @@
                                     @error('type') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Name</label>
                                     <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Name">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="address" placeholder="Enter Address">
@@ -72,7 +73,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Shipping Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="shipping_address" placeholder="Enter Shipping address">
@@ -80,7 +81,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Phone</label>
                                     <input class="form-control" type="text" wire:model.lazy="phone" placeholder="Enter Phone">
@@ -88,14 +89,14 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Mobile</label>
                                     <input class="form-control" type="text" wire:model.lazy="mobile" placeholder="Enter Mobile Number">
                                     @error('mobile') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Email</label>
                                     <input class="form-control" type="text" wire:model.lazy="email" placeholder="Enter email address">
@@ -103,7 +104,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Due date</label>
                                     <input class="form-control" type="date" wire:model.lazy="due_date" placeholder="Give Due date">
@@ -111,7 +112,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Birth Day</label>
                                     <input class="form-control" type="date" wire:model.lazy="birthday" placeholder="Enter birthdate">
@@ -119,7 +120,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">opening Balance</label>
                                     <input class="form-control" type="text" wire:model.lazy="opening_balance" placeholder="Enter opening balance">

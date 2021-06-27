@@ -211,7 +211,7 @@
                                         </td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" wire:click="editStockAdjustment({{$stockAdjustment->id}})"><i class="bx bx-edit font-size-18"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="bx bx-window-close font-size-18"></i></button>
+                                            <button class="btn btn-danger btn-sm" wire:click="deleteStockAdjustment({{$stockAdjustment->id}})"><i class="bx bx-window-close font-size-18"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach

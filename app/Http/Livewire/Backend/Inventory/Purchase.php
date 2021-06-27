@@ -12,16 +12,22 @@ use App\Models\Backend\ProductInfo\Product;
 use App\Models\Backend\ProductInfo\ProductImage;
 use App\Models\Backend\Inventory\Invoice;
 use App\Models\Backend\ProductInfo\ProductProperties;
+use App\Models\Backend\Inventory\StockManager;
+use App\Models\Backend\Setting\Warehouse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 
 
 class Purchase extends Component
 {
+    use WithFileUploads;
+
     public $code;
     public $date;
     public $contact_id;
+    public $warehouse_id;
     public $image;
     public $product_quantity;
     public $product_sale_price;
@@ -39,6 +45,14 @@ class Purchase extends Component
     public $payment_amount;
     public $payment_code;
     public $Invoice;
+    public $sub_sub_category_id;
+    public $name;
+    public $images;
+    public $sale_price;
+    public $wholesale_price;
+    public $purchase_price;
+    public $low_alert;
+    public $status;
     public $paymentMethodList = [];
     public $orderProductList = [];
     protected $listeners = [
@@ -65,37 +79,32 @@ class Purchase extends Component
         $Query->contact_id = $this->contact_id;
         $Query->subtotal = $this->subtotal;
         $Query->discount = $this->discount;
+        $Query->shipping_charge = $this->shipping_charge;
         $Query->grand_total = $this->grand_total;
         $Query->branch_id = '1';
         $Query->save();
 
         foreach ($this->orderProductList as $key => $value) {
             // dd($this->orderItemList);
-            $item = Product::find($key);
-            // $Stock = StockManager::whereProductId($key)->whereInvoiceId($Query->id)->first();
-            // if (!$Stock) {
-            //     $Stock = new StockManager();
-            //     $Stock->user_id = Auth::id();
-            //     $Stock->branch_id = 1;
-            // }
-            $Stock = new StockManager();
-            $Stock->user_id = Auth::id();
-            $Stock->branch_id = 1;
+            $product = Product::find($key);
+            $Stock = StockManager::whereProductId($key)->whereInvoiceId($Query->id)->first();
+            if (!$Stock) {
+                $Stock = new StockManager();
+                $Stock->user_id = Auth::id();
+                $Stock->branch_id = 1;
+            }
 
             $Stock->code = $this->code;
             $Stock->date = $this->date;
+            $Stock->product_id = $product->id;
             $Stock->invoice_id = $Query->id;
-            // $Stock->contact_id = $Query->contact_id;
-            // $Stock->item_id = $key;
-            // $Stock->unit_id = $item->unit_id;
-            // $Stock->vat_id = $item->vat_id;
+            $Stock->warehouse_id = $this->warehouse_id;
+            $Stock->flow = "Out";
             $Stock->quantity = $this->product_quantity[$key];
             $Stock->price = $this->product_rate[$key];
-            $Stock->purchase_price = $this->product_rate[$key];
             $Stock->discount = $this->product_discount[$key];
-            $Stock->purchase_subtotal = $this->product_rate[$key] * $this->product_quantity[$key];
-            $Stock->sale_subtotal = $this->product_rate[$key] * $this->product_quantity[$key];
-            // $Stock->save();
+            $Stock->subtotal = $this->product_rate[$key] * $this->product_quantity[$key];
+            $Stock->save();
         }
         foreach ($this->paymentMethodList as $key => $value) {
             if (isset($value['id']) && $value['id']) {
@@ -121,6 +130,8 @@ class Purchase extends Component
         if(!$this->Invoice){
          $this->reset();
         }
+        $this->payment_code = 'PM'.floor(time() - 999999999);
+        $this->code = 'PR'.floor(time() - 999999999);
     }
 
     public function removePaymentList($itemId)
@@ -150,6 +161,7 @@ class Purchase extends Component
         }
         $this->paid_amount = $payment_amount_total;
         $this->reset(['payment_method_id', 'payment_amount']);
+        $this->payment_code = 'PM'.floor(time() - 999999999);
         $this->updateProductCal();
 
     }
@@ -194,8 +206,8 @@ class Purchase extends Component
     }
 
     public function mount(){
-        $this->code = 'P'.floor(time() - 999999999);
-        $this->payment_code = 'P'.floor(time() - 999999999);
+        $this->code = 'PR'.floor(time() - 999999999);
+        $this->payment_code = 'PM'.floor(time() - 999999999);
     }
     public function productSave()
     {
@@ -207,13 +219,7 @@ class Purchase extends Component
         ]);
 
         DB::transaction(function(){
-        // Product
-        if($this->ProductId){
-            $Query = Product::find($this->ProductId);
-        }else{
-            $Query = new Product();
-            $Query->user_id = Auth::user()->id;
-        }
+        $Query = new Product();
         $Query->code = $this->code;
         $Query->name = $this->name;
         $Query->sale_price = $this->sale_price;
@@ -225,10 +231,12 @@ class Purchase extends Component
         $Query->old_sale_price = 123;
         $Query->vat_id = 1;
         $Query->status = $this->status;
+        $Query->user_id = Auth::user()->id;
         $Query->branch_id = 1;
         $Query->save();
         //Product Image
-        foreach($this->images as $image){
+        if($this->images){
+          foreach($this->images as $image){
             $ImageInsert=new ProductImage();
             $ImageInsert->product_id=$Query->id;
             $path = $image->store('/public/photo');
@@ -236,6 +244,7 @@ class Purchase extends Component
             $ImageInsert->user_id = Auth::user()->id;
             $ImageInsert->branch_id = 1;
             $ImageInsert->save();
+          }
         }
         //Product Properties
         $ProductProperties=new ProductProperties();
@@ -250,6 +259,9 @@ class Purchase extends Component
         $this->emit('success', [
             'text' => 'Product C/U Successfully',
         ]);
+
+        $this->code = 'PR'.floor(time() - 999999999);
+        $this->emit('modal','productModal');
     }
     public function render()
     {
@@ -260,6 +272,7 @@ class Purchase extends Component
             'Units' => Unit::all(),
             'vats'=> Vat::get(),
             'branches'=> Branch::get(),
+            'warehouses'=>Warehouse::get(),
         ]);
     }
 }

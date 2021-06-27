@@ -25,6 +25,11 @@ class Contact extends Component
 
 
     public function ContactInfoSave(){
+        $this->validate([
+            'type'                   => 'required',
+            'name'                   => 'required',
+        ]);
+
         if ($this->contact_category_id){
            $Query = Customer_Contact::find($this->contact_category_id);
         }else{
@@ -45,8 +50,9 @@ class Contact extends Component
         $Query->branch_id             = 1;
         $Query->save();
         $this->reset();
+        $this->ContactModal();
         $this->emit('success',[
-            'text' => 'Category Created Successfully',
+            'text' => 'Contact C/U Successfully',
         ]);
     }
 
