@@ -44,8 +44,35 @@
                                
                             </tr>
                             </thead>
-                           
-                            
+                            <tbody>
+                            <tr>
+                                <td><a href="javascript: void(0);" class="text-body font-weight-bold">1</a> </td>
+                                <td>Default Category</td>
+                                <td>
+                                    P5111168
+                                </td>
+                                <td>
+                                    diadent gp
+                                </td>
+                                <td>
+                                    100
+                                </td>
+                                <td>
+                                    30000
+                                </td>
+                                <td>
+                                    29100.00
+                                </td>
+                            </tr>
+                            </tbody>
+                            <thead>
+                            <tr>
+                                <th colspan="4"><center>Total</center></th>
+{{--                                <th>47600.00</th>--}}
+{{--                                <th>47600.00</th>--}}
+{{--                                <th>47600.00</th>--}}
+                            </tr>
+                            </thead>
                         </table>
                     </div>
                 </div>
