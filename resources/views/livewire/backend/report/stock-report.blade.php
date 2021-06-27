@@ -22,8 +22,46 @@
                             </div>
                         </div>
                     </div><hr>
-                   
-                        
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">Category</label>
+                                <Select class="form-control" wire:model.lazy="category_id">
+                                
+                                <option value="">Select Category</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                                </Select>
+                                @error('Category') <span class="error">{{ $message }}</span> @enderror
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">Brand</label>
+                                <select class="form-control" wire:model.lazy="brand">
+                                    <option value="">Select Brand</option>
+                                    @foreach($brands as $brand)
+                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('Brand') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="basicpill-lastname-input">Product</label>
+                                <select class="form-control" wire:model.lazy="product">
+                                <option value="">Select Product</option>
+                                @foreach($products as $product)
+                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                @endforeach
+                                </select>
+                                @error('Product') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,11 +75,11 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Category</th>
-                                <th>Brand</th>
+                                <th>Code</th>
                                 <th>Item Name</th>
-                                <th>Product Name</th>
                                 <th>In Qty</th>
-                               
+                                <th>Out Qty</th>
+                                <th>Closing Stock Qty</th>
                             </tr>
                             </thead>
                             <tbody>
