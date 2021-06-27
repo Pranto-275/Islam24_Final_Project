@@ -22,33 +22,8 @@
                             </div>
                         </div>
                     </div><hr>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">Select Date</label>
-                                <input type="text" name="daterange" id="daterange" class="form-control" placeholder="Enter Date" readonly>
-                                @error('Date') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">Stock Type</label>
-                                <select class="form-control" wire:model.lazy="type">
-                                    <option value="">Select Stock Type</option>
-                                    <option value="Available Stock">Available Stock</option>
-                                    <option value="Upcoming stock">Upcoming stock</option>
-                                    <option value="Upcoming stock">Low stock</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="basicpill-lastname-input">Item Name</label>
-                                <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Item Name">
-                                @error('name') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
+                   
+                        
                     </div>
                 </div>
             </div>
@@ -62,42 +37,15 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Category</th>
-                                <th>Code</th>
+                                <th>Brand</th>
                                 <th>Item Name</th>
+                                <th>Product Name</th>
                                 <th>In Qty</th>
-                                <th>Out Qty</th>
-                                <th>Closing Stock Qty</th>
+                               
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="javascript: void(0);" class="text-body font-weight-bold">1</a> </td>
-                                <td>Default Category</td>
-                                <td>
-                                    P5111168
-                                </td>
-                                <td>
-                                    diadent gp
-                                </td>
-                                <td>
-                                    100
-                                </td>
-                                <td>
-                                    30000
-                                </td>
-                                <td>
-                                    29100.00
-                                </td>
-                            </tr>
-                            </tbody>
-                            <thead>
-                            <tr>
-                                <th colspan="4"><center>Total</center></th>
-{{--                                <th>47600.00</th>--}}
-{{--                                <th>47600.00</th>--}}
-{{--                                <th>47600.00</th>--}}
-                            </tr>
-                            </thead>
+                           
+                            
                         </table>
                     </div>
                 </div>

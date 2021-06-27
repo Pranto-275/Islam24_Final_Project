@@ -174,9 +174,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
                     </ul>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('report.inventory-profit-loss)}}">Inventory Profit & Loss</a></li>
-                    </ul>
+                   
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
