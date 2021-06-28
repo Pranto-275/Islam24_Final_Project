@@ -29,6 +29,10 @@ use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Report\StockReport;
+use App\Http\Livewire\Backend\Report\PurchaseReport;
+use App\Http\Livewire\Backend\Report\PurchaseDetailsReport;
+use App\Http\Livewire\Backend\Report\SaleDetailsReport;
+use App\Http\Livewire\Backend\Report\SaleReport;
 use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Inventory\DelieveryMethod;
@@ -145,7 +149,10 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
-        
+        Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
+        Route::get('sale-report', SaleReport::class)->name('sale-report');
+        Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
+        Route::get('sale-details-report', SaleDetailsReport::class)->name('sale-details-report');
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {

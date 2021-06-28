@@ -173,7 +173,12 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
+                        <li><a href="{{route('report.purchase-report')}}">Purchase Report</a></li>
+                        <li><a href="{{route('report.sale-report')}}">Sale Report</a></li>
+                        <li><a href="{{route('report.purchase-details-report')}}">Purchase Details Report</a></li>
+                        <li><a href="{{route('report.sale-details-report')}}">Sale Details Report</a></li>
                     </ul>
+                    
                    
                 </li>
                 <li>
