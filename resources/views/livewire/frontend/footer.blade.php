@@ -58,10 +58,14 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-infos">
                         <div class="infos-footer">
+                            @if($companyInfo)
                             <a href="#"><img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" alt="Logo" style="width: 180px;height:50px;"></a>
+                            @endif
                             <ul class="menu">
                                 <li class="adres">
+                                @if($companyInfo)
                                     {{ $companyInfo->address }}
+                                @endif
                                 </li>
                             </ul>
                         </div>

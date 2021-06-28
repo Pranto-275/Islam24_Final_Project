@@ -137,6 +137,20 @@
                                     </select>
                                 </div>
                             </div>
+                            {{-- Product Properties --}}
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">ProductColor(Comma-separated values)</label>
+                                    <input class="form-control" type="text" wire:model.lazy="color" placeholder="Product Color">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">ProductSize(Comma-separated values)</label>
+                                    <input class="form-control" type="text" wire:model.lazy="size" placeholder="Product Size">
+                                </div>
+                            </div>
 
                         </div>
                     </div>

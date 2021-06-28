@@ -20,8 +20,8 @@
                             <a href="javascript:void(0)" class="list-group-item list-group-item-action" wire:click="searchSelect({{$product}})">{{$product->name}}</a>
                             @endforeach
                             @else
-                            <a href="javascript:void(0)" class="list-group-item list-group-item-action">No result found for {{$search}}</a>
-                        @endif
+                              <a href="javascript:void(0)" class="list-group-item list-group-item-action">No result found for {{$search}}</a>
+                            @endif
                     </div>
                 </div>
                 @endif

@@ -45,7 +45,7 @@ class Vat extends Component
        $this-> reset();
        $this-> VatModal();
        $this-> emit('success',[
-          'text' => 'Vat Info saved Successfully',
+          'text' => 'Vat Saved Successfully',
        ]);
     }
 
@@ -64,13 +64,13 @@ class Vat extends Component
     public function vatDelete($id){
         VatInfo::find($id)->delete();
         $this->emit('success',[
-           'text' => 'VatInfo deleted Successfully',
+           'text' => 'Vat Deleted Successfully',
         ]);
     }
 
 
     public function VatModal(){
-        $this->code = 'C'. floor(time()-999999);
+        $this->code = 'V'. floor(time()-999999);
         $this->emit('modal','VatModal');
     }
     public function render()

@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" data-toggle="modal" data-target=".productModal"><i class="mdi mdi-plus mr-1"></i> New Product</button>
+                                {{-- <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" data-toggle="modal" data-target=".productModal"><i class="mdi mdi-plus mr-1"></i> New Product</button> --}}
                                 {{-- <a href="{{route('inventory.purchase-list')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Purchase List</button></a> --}}
                             </div>
                         </div><!-- end col-->

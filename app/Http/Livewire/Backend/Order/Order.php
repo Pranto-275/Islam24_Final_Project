@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend\Inventory;
+namespace App\Http\Livewire\Backend\Order;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\Setting\PaymentMethod;
 use App\Models\Backend\Transaction\Payment;
@@ -20,7 +20,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 
 
-class Purchase extends Component
+class Order extends Component
 {
     use WithFileUploads;
 
@@ -265,7 +265,7 @@ class Purchase extends Component
     }
     public function render()
     {
-        return view('livewire.backend.inventory.purchase',[
+        return view('livewire.backend.order.order',[
             'contacts'=>Contact::get(),
             'payments'=>PaymentMethod::get(),
             'categories'=> Category::get(),

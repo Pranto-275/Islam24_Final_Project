@@ -66,7 +66,11 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="navbar-logo col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                        <div class="logo"><a href="index.html"><img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" title="Your Store" alt="Logo" style="width: 180px;height:50px;"/></a></div>
+                        <div class="logo"><a href="index.html">
+                            @if($companyInfo)
+                            <img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" title="Your Store" alt="Logo" style="width: 180px;height:50px;"/></a>
+                            @endif
+                        </div>
                     </div>
                     <!-- //end Logo -->
                     <!-- Search -->

@@ -20,7 +20,7 @@ class Brand extends Component
     public $branch_id;
     public $status;
     public $brand_id;
-
+    public $QueryUpdate;
 
 
     public function brandInfoSave(){
@@ -44,7 +44,6 @@ class Brand extends Component
             $path = $this->image->store('/public/photo');
             $Query->image = basename($path);
         }
-       $Query->image          =  $this->image;
        $Query->description    =  $this->description;
        $Query->branch_id      = 1;
        $Query->status         = $this->status;
@@ -61,7 +60,6 @@ class Brand extends Component
         $this->brand_id     =  $this->QueryUpdate->id;
         $this->code         =  $this->QueryUpdate->code;
         $this->name         =  $this->QueryUpdate->name;
-        $this->image        =  $this->QueryUpdate->image;
         $this->description  =  $this->QueryUpdate->description;
         $this->status       =  $this->QueryUpdate->status;
         $this->BrandAInfoModal();
