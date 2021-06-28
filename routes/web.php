@@ -31,8 +31,13 @@ use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Report\StockReport;
 use App\Http\Livewire\Backend\Report\PurchaseReport;
 use App\Http\Livewire\Backend\Report\PurchaseDetailsReport;
+use App\Http\Livewire\Backend\Report\PurchaseReturnReport;
 use App\Http\Livewire\Backend\Report\SaleDetailsReport;
+use App\Http\Livewire\Backend\Report\SalesReturnReport;
 use App\Http\Livewire\Backend\Report\SaleReport;
+use App\Http\Livewire\Backend\Report\SupplierLedger;
+use App\Http\Livewire\Backend\Report\CustomerLedger;
+use App\Http\Livewire\Backend\Report\ProfitLoss;
 use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Inventory\DelieveryMethod;
@@ -153,6 +158,11 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sale-report', SaleReport::class)->name('sale-report');
         Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
         Route::get('sale-details-report', SaleDetailsReport::class)->name('sale-details-report');
+        Route::get('purchase-return-report', PurchaseReturnReport::class)->name('purchase-return-report');
+        Route::get('sales-return-report', SalesReturnReport::class)->name('sales-return-report');
+        Route::get('supplier-ledger', SupplierLedger::class)->name('supplier-ledger');
+        Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
+        Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {

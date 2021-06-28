@@ -79,11 +79,11 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Date</th>
-                                <th>Sale Code</th>
+                                <th>Code</th>
                                 <th>Product Name</th>
                                 
                                 <th>VAT</th>
-                                <th>Discount</th>
+                                <th>Disount</th>
                                 <th>Qty</th>
                                 <th>Sale Price</th>
                                 <th>Sub Total</th>
@@ -98,16 +98,15 @@
                                     <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a></td>
                                     <td>{{ $salesDetail->date }}</td>
                                     <td>{{ $salesDetail->Contact->code }}</td>
+                                
                                     <td>
-                                        {{ $salesDetail->Contact->code }}
-                                    </td>
-                                    <td>
-                                        {{ $salesDetail->product_name }}
+                                        {{ $salesDetail->product_id }}
 
                                     </td>
                                     <td>
                                         0
                                     </td>
+                                   
                                     <td>
                                         0
                                     </td>
@@ -123,9 +122,7 @@
                                         {{ $salesDetail->sale_subtotal }}
                                         <?php $sale_subtotal += $salesDetail->sale_subtotal ?>
                                     </td>
-                                    <td>
-                                        {{ $salesDetail->Branch->name }}
-                                    </td>
+                                   
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -139,7 +136,7 @@
                                 </tr>
                                 </thead>
                         </table>
-                        
+                       
                     </div>
                 </div>
             </div>
