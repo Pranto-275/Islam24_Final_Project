@@ -93,6 +93,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
                     </ul>
+                   
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

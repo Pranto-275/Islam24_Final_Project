@@ -150,6 +150,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
+        
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
