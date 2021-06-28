@@ -24,6 +24,8 @@ class Product extends Component
     public $low_alert;
     public $contact_id;
     public $status;
+    public $size;
+    public $color;
     public $images=[];
     public $ProductId=NULL;
     public $QueryUpdate=NULL;
@@ -53,6 +55,7 @@ class Product extends Component
 
     public function productSave()
     {
+
         $this->validate([
             'code' => 'required',
             'name' => 'required',
@@ -92,13 +95,20 @@ class Product extends Component
             $ImageInsert->save();
         }
         //Product Properties
-        $ProductProperties=new ProductProperties();
-        $ProductProperties->product_id=$Query->id;
-        $ProductProperties->size="XL";
-        $ProductProperties->color="Yellow";
-        $ProductProperties->user_id = Auth::user()->id;
-        $ProductProperties->branch_id = 1;
-        $ProductProperties->save();
+        $colorArray = explode(',', $this->color);
+        $sizeArray = explode(',', $this->size);
+        foreach($colorArray as $color){
+            foreach($sizeArray as $size){
+               $ProductProperties=new ProductProperties();
+               $ProductProperties->product_id=$Query->id;
+               $ProductProperties->size=$size;
+               $ProductProperties->color=$color;
+               $ProductProperties->user_id = Auth::user()->id;
+               $ProductProperties->branch_id = 1;
+               $ProductProperties->save();
+            }
+        }
+
      });
         $this->reset();
         $this->productInfoModal();

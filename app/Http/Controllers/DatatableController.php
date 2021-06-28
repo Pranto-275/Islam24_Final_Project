@@ -211,8 +211,8 @@ class DatatableController extends Controller
             ->toJSON();
     }
 
-    public function ContactTable(){
-        $Query = Contact::query()->orderBy('id', 'desc');
+    public function CustomerTable(){
+        $Query = Contact::query()->whereType('Customer')->orderBy('id', 'desc');
 
         return Datatables::of($Query)
 
@@ -220,7 +220,33 @@ class DatatableController extends Controller
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
             })
-            ->rawColumns(['image', 'action'])
+            ->rawColumns(['action'])
+            ->toJSON();
+    }
+
+    public function SupplierTable(){
+        $Query = Contact::query()->whereType('Supplier')->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+
+            ->addColumn('action', function ($data) {
+                return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+            })
+            ->rawColumns(['action'])
+            ->toJSON();
+    }
+
+    public function StaffTable(){
+        $Query = Contact::query()->whereType('Staff')->orderBy('id', 'desc');
+
+        return Datatables::of($Query)
+
+            ->addColumn('action', function ($data) {
+                return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+            })
+            ->rawColumns(['action'])
             ->toJSON();
     }
 

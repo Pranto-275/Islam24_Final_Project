@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\DatatableController;
-use App\Http\Livewire\Backend\ContactInfo\Contact;
 use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
+use App\Http\Livewire\Backend\ContactInfo\Customer as CustomerInfo;
+use App\Http\Livewire\Backend\ContactInfo\Supplier;
+use App\Http\Livewire\Backend\ContactInfo\Staff;
 use App\Http\Livewire\Backend\Inventory\Invoice;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
 use App\Http\Livewire\Backend\Inventory\StockManager;
@@ -26,13 +28,15 @@ use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Backend\Inventory\Purchase;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
+use App\Http\Livewire\Backend\Order\Order;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Report\StockReport;
 use App\Http\Livewire\Backend\Report\OrderReport;
+use App\Http\Livewire\Backend\Setting\PointPolicy;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Inventory\DelieveryMethod;
 use App\Http\Livewire\Inventory\Language;
-use App\Http\Livewire\Inventory\PointPolicy;
+
 use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
@@ -79,7 +83,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('category', Category::class)->name('category');
         Route::get('currency', Currency::class)->name('currency');
         Route::get('language', Language::class)->name('language');
-        Route::get('pointPolicy', PointPolicy::class)->name('pointPolicy');
+        // Route::get('pointPolicy', PointPolicy::class)->name('pointPolicy');
         Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
         Route::get('ware-house', WareHouse::class)->name('ware-house');
         Route::get('purchase/{id?}', Purchase::class)->name('purchase');
@@ -111,13 +115,13 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('invoice-setting', InvoiceSetting::class)->name('invoice-setting');
         Route::get('payment-method', PaymentMethod::class)->name('payment-method');
         Route::get('vat', Vat::class)->name('vat');
-        // Route::get('company-info', CompanyInfo::class)->name('company-info');
         Route::get('warehouse', Warehouse::class)->name('warehouse');
-        // Route::get('coupon-code', CouponCode::class)->name('coupon-code');
         Route::get('slider', Slider::class)->name('slider');
+        Route::get('point-policy', PointPolicy::class)->name('point-policy');
     });
 
     Route::group(['prefix' => 'order',  'as' => 'order.'], function (){
+        Route::get('order/{id?}', Order::class)->name('order');
        Route::get('order-list', OrderList::class)->name('order-list');
     });
 
@@ -126,8 +130,10 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
-        Route::get('contact', Contact::class)->name('contact');
         Route::get('contact-category', ContactCategory::class)->name('contact-category');
+        Route::get('customer', CustomerInfo::class)->name('customer');
+        Route::get('supplier', Supplier::class)->name('supplier');
+        Route::get('staff', Staff::class)->name('staff');
     });
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
@@ -163,7 +169,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('coupon_table', [DatatableController::class, 'CouponTable'])->name('coupon_table');
         Route::get('paymentMethod_table', [DatatableController::class, 'paymentMethodTable'])->name('paymentMethod_table');
         Route::get('invoiceSave', [DatatableController::class, 'InvoiceTable'])->name('invoiceSave');
-        Route::get('contact_table', [DatatableController::class, 'ContactTable'])->name('contact_table');
+        Route::get('customer_table', [DatatableController::class, 'CustomerTable'])->name('customer_table');
+        Route::get('supplier_table', [DatatableController::class, 'SupplierTable'])->name('supplier_table');
+        Route::get('staff_table', [DatatableController::class, 'StaffTable'])->name('staff_table');
         Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
     });
 

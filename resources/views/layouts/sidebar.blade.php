@@ -13,34 +13,6 @@
                         <span>Dashboards</span>
                     </a>
                 </li>
-                <!-- <li>
-                    <a href="" class=" waves-effect">
-                        <i class="bx bx-calendar"></i>
-                        <span>Customer Accounts</span>
-                    </a>
-                </li>
-                <li>
-                    <a href=""  class=" waves-effect">
-                        <i class="dripicons-cart"></i>
-                        <span>Supplier Accounts</span>
-                    </a>
-                </li>
-{{--                <li>--}}
-{{--                    <a href="" class=" waves-effect">--}}
-{{--                        <i class="bx bx-calendar"></i>--}}
-{{--                        <span>Customer Accounts</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-                <li>
-                    <a href="javascript: void(0);" class="waves-effect">
-                        <i class="bx bxs-eraser"></i>
-                        <span class="badge badge-pill badge-danger float-right">05</span>
-                        <span>Accounts Setting</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="">Transaction Head</a></li>
-                    </ul>
-                </li> -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>
@@ -49,16 +21,8 @@
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('inventory.invoice')}}">Invoice</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('inventory.stock-adjustment')}}">Stock Adjustment</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('inventory.stock-manager')}}">Stock Manager</a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('inventory.purchase')}}">Purchase</a></li>
                     </ul>
                 </li>
@@ -70,26 +34,10 @@
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.category')}}">Category</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.sub-category')}}">Sub Category</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.sub-sub-category')}}">Sub Sub Category</a></li>
-                    </ul>
-
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.brand')}}">Brand</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.product')}}">Product</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('product.unit')}}">Unit Info</a></li>
                     </ul>
                 </li>
@@ -103,42 +51,15 @@
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.branch')}}">Branch</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        {{-- <li><a href="{{route('setting.company-info')}}">Company Info</a></li> --}}
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.currency')}}">Currency</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.delivery-method')}}">Delivery Method</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.invoice-setting')}}">Invoice Setting</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.payment-method')}}">Payment Method</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.vat')}}">Vat Info</a></li>
-                    </ul>
-
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        {{-- <li><a href="{{route('setting.coupon-code')}}">Coupon codes</a></li> --}}
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('setting.slider')}}">Slider</a></li>
+                        <li><a href="{{route('setting.point-policy')}}">Point Policy</a></li>
+
                     </ul>
                 </li>
 
@@ -159,10 +80,9 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('contact-info.contact-category')}}">Contact Category</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('contact-info.contact')}}">Contact</a></li>
+                        <li><a href="{{route('contact-info.customer')}}">Customer</a></li>
+                        <li><a href="{{route('contact-info.supplier')}}">Supplier</a></li>
+                        <li><a href="{{route('contact-info.staff')}}">Staff</a></li>
                     </ul>
                 </li>
                 <li>
@@ -179,8 +99,8 @@
                         <i class="bx bx-list-ul"></i>
                         <span>Order</span>
                     </a>
-
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('order.order')}}">Order</a></li>
                         <li><a href="{{route('order.order-list')}}">Order List</a></li>
                     </ul>
                 </li>
@@ -189,15 +109,9 @@
                         <i class="bx bx-list-ul"></i>
                         <span>Stock</span>
                     </a>
-{{--                    <ul class="sub-menu" aria-expanded="false">--}}
-{{--                        <li><a href="{{route('stock.stock-adjustment')}}">Stock Adjustments</a></li>--}}
-{{--                    </ul>--}}
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('report.stock-report')}}">Stock Report</a></li>
-                    </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('report.order-report')}}">Order Report</a></li>
                     </ul>
 

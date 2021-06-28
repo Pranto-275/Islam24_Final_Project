@@ -4,7 +4,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        CONTACT INFO
+        Supplier INFO
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -14,13 +14,13 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Contact Info</h4>
+                                    <h4>Supplier Info</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactModal"><i class="mdi mdi-plus mr-1"></i>Contact</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactModal"><i class="mdi mdi-plus mr-1"></i>Supplier</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -38,7 +38,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">ContactInfo</h5>
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Supplier</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -49,13 +49,13 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Contact Category</label>
-                                    <select class="form-control" wire:model.lazy="type">
+                                    <select class="form-control" wire:model.lazy="contact_category_id">
                                         <option value="">Select Contact Category</option>
-                                        @foreach($ContactCategories as $contactCategory)
-                                            <option value="{{$contactCategory->type}}">{{$contactCategory->type}}</option>
+                                        @foreach($supplierCategories as $supplierCategory)
+                                            <option value="{{$supplierCategory->id}}">{{$supplierCategory->name}}</option>
                                         @endforeach
                                     </select>
-                                    @error('type') <span class="error">{{ $message }}</span> @enderror
+                                    @error('contact_category_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -165,7 +165,7 @@
             var datatable = $('#ContactTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.contact_table')}}",
+                ajax: "{{route('data.supplier_table')}}",
                 columns: [
                     {
                         title: 'SL',
