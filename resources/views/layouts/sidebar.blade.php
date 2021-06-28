@@ -29,7 +29,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>
-                        <span>Product Info</span>
+                        <span>Products</span>
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
@@ -39,6 +39,7 @@
                         <li><a href="{{route('product.brand')}}">Brand</a></li>
                         <li><a href="{{route('product.product')}}">Product</a></li>
                         <li><a href="{{route('product.unit')}}">Unit Info</a></li>
+                        <li><a href="{{route('product.color')}}">Color</a></li>
                     </ul>
                 </li>
 
@@ -93,7 +94,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
                     </ul>
-                   
+
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

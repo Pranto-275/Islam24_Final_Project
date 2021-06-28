@@ -33,6 +33,7 @@ use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Report\StockReport;
 use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Backend\Setting\PointPolicy;
+use App\Http\Livewire\Backend\ProductInfo\Color;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Inventory\DelieveryMethod;
 use App\Http\Livewire\Inventory\Language;
@@ -101,6 +102,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('product', Product::class)->name('product');
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
         Route::get('unit', Unit::class)->name('unit');
+        Route::get('color', Color::class)->name('color');
     });
 
     Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
@@ -150,7 +152,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
-        
+
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {

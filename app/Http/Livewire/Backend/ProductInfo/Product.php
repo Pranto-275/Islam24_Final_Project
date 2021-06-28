@@ -97,6 +97,7 @@ class Product extends Component
         //Product Properties
         $colorArray = explode(',', $this->color);
         $sizeArray = explode(',', $this->size);
+
         foreach($colorArray as $color){
             foreach($sizeArray as $size){
                $ProductProperties=new ProductProperties();
