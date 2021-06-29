@@ -32,6 +32,16 @@ use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Backend\Order\Order;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Report\StockReport;
+use App\Http\Livewire\Backend\Report\PurchaseReport;
+use App\Http\Livewire\Backend\Report\PurchaseDetailsReport;
+use App\Http\Livewire\Backend\Report\PurchaseReturnReport;
+use App\Http\Livewire\Backend\Report\SaleDetailsReport;
+use App\Http\Livewire\Backend\Report\SalesReturnReport;
+use App\Http\Livewire\Backend\Report\SaleReport;
+use App\Http\Livewire\Backend\Report\SupplierLedger;
+use App\Http\Livewire\Backend\Report\CustomerLedger;
+use App\Http\Livewire\Backend\Report\CouponsReport;
+use App\Http\Livewire\Backend\Report\ProfitLoss;
 use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Backend\Setting\PointPolicy;
 use App\Http\Livewire\Backend\ProductInfo\Color;
@@ -154,7 +164,16 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
-
+        Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
+        Route::get('sale-report', SaleReport::class)->name('sale-report');
+        Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
+        Route::get('sale-details-report', SaleDetailsReport::class)->name('sale-details-report');
+        Route::get('purchase-return-report', PurchaseReturnReport::class)->name('purchase-return-report');
+        Route::get('sales-return-report', SalesReturnReport::class)->name('sales-return-report');
+        Route::get('supplier-ledger', SupplierLedger::class)->name('supplier-ledger');
+        Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
+        Route::get('coupons-report', CouponsReport::class)->name('coupons-report');
+        Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
