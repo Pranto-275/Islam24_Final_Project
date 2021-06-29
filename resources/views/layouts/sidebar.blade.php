@@ -40,6 +40,7 @@
                         <li><a href="{{route('product.product')}}">Product</a></li>
                         <li><a href="{{route('product.unit')}}">Unit Info</a></li>
                         <li><a href="{{route('product.color')}}">Color</a></li>
+                        <li><a href="{{route('product.size')}}">Size</a></li>
                     </ul>
                 </li>
 
@@ -105,10 +106,13 @@
                         <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li>
                     </ul>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     
                    
 =======
 
+>>>>>>> Nazmul
+=======
 >>>>>>> Nazmul
                 </li>
                 <li>

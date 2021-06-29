@@ -18,6 +18,7 @@ class CreateColorsTable extends Migration
             $table->string('color_name', 191);
             $table->string('color_code', 191);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

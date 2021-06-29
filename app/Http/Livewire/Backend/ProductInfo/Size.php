@@ -1,52 +1,56 @@
 <?php
 
 namespace App\Http\Livewire\Backend\ProductInfo;
-use App\Models\Backend\ProductInfo\Color as ColorInfo;
+use App\Models\Backend\ProductInfo\Size as SizeInfo;
 use Livewire\Component;
 
 class Size extends Component
 {
-    public $color_name;
-    public $color_code;
-    public $ColorId;
-    public function deleteColor($id){
-        ColorInfo::find($id)->delete();
+    public $code;
+    public $size_name;
+    public $SizeId;
+    public function deleteSize($id){
+        SizeInfo::find($id)->delete();
         $this->emit('success', [
-            'text' => 'Color Deleted Successfully',
+            'text' => 'Size Deleted Successfully',
         ]);
     }
-    public function editColor($id){
-       $QueryUpdate=ColorInfo::find($id);
-       $this->ColorId=$QueryUpdate->id;
-       $this->color_name=$QueryUpdate->color_name;
-       $this->color_code=$QueryUpdate->color_code;
+    public function editSize($id){
+       $QueryUpdate=SizeInfo::find($id);
+       $this->SizeId=$QueryUpdate->id;
+       $this->code=$QueryUpdate->code;
+       $this->size_name=$QueryUpdate->size_name;
     }
-    public function colorSave(){
+    public function sizeSave(){
         $this->validate([
-            'color_name' => 'required',
-            'color_code' => 'required',
+            'code' => 'required',
+            'size_name' => 'required',
         ]);
 
         // Insert Or Update Color
-        if($this->ColorId){
-           $Query=ColorInfo::find($this->ColorId);
+        if($this->SizeId){
+           $Query=SizeInfo::find($this->SizeId);
         }else{
-            $Query=new ColorInfo();
+            $Query=new SizeInfo();
         }
 
-        $Query->color_name=$this->color_name;
-        $Query->color_code=$this->color_code;
+        $Query->code=$this->code;
+        $Query->size_name=$this->size_name;
         $Query->save();
         $this->reset();
+        $this->code = 'S'.floor(time() - 999999999);
 
         $this->emit('success', [
-            'text' => 'Color U/P Successfully',
+            'text' => 'Size U/P Successfully',
         ]);
+    }
+    public function mount(){
+        $this->code = 'S'.floor(time() - 999999999);
     }
     public function render()
     {
         return view('livewire.backend.product-info.size',[
-            'colors'=>ColorInfo::get(),
+            'sizes'=>SizeInfo::get(),
         ]);
     }
 }

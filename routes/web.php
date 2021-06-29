@@ -26,6 +26,7 @@ use App\Http\Livewire\Backend\Setting\CouponCode;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Backend\Inventory\Purchase;
+use App\Http\Livewire\Backend\ProductInfo\Size;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Backend\Order\Order;
@@ -113,7 +114,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
         Route::get('unit', Unit::class)->name('unit');
         Route::get('color', Color::class)->name('color');
-        // Route::get('size', Size::class)->name('size');
+        Route::get('size', Size::class)->name('size');
     });
 
     Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
@@ -164,6 +165,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Nazmul
         Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
         Route::get('sale-report', SaleReport::class)->name('sale-report');
         Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
@@ -174,8 +178,11 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
         Route::get('coupons-report', CouponsReport::class)->name('coupons-report');
         Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
+<<<<<<< HEAD
 =======
 
+>>>>>>> Nazmul
+=======
 >>>>>>> Nazmul
     });
 

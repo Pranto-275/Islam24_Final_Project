@@ -7,7 +7,6 @@
     </x-slot>
     <h4 class="pb-2">Add New Product</h4>
     <div class="row">
-
             <div class="col-md-7">
              <div class="row">
             {{-- Start Add Products --}}
@@ -151,8 +150,10 @@
                                   <input class="form-control input-lg mb-1" value="Color" style="width: 140px;" disabled/>
                                </div>
                                <div class="col-md-8">
-                                  <select class="form-control form-control-lg inputBox">
+                                  <select class="form-control inputBox">
                                      <option value="">Nothing Selected</option>
+                                     <option value="red">Red</option>
+                                     <option value="red">Red</option>
                                      <option value="red">Red</option>
                                   </select>
                                </div>
@@ -180,7 +181,7 @@
                                   Description
                                </div>
                                <div class="col-md-8">
-                                <textarea>Next, get a free Tiny Cloud API key!</textarea>
+                                <textarea name="description" rows="5" cols="40" class="form-control tinymce-editor"></textarea>
                                </div>
                         {{-- End Input --}}
 
@@ -229,3 +230,9 @@
 
 </div>
 
+@push('scripts')
+<script>
+    $('select').selectpicker();
+</script>
+
+@endpush
