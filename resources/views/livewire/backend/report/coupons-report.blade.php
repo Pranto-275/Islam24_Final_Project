@@ -29,28 +29,28 @@
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="basicpill-firstname-input">Start Date</label>
-                                            <input id="daterange" type="date" class="form-control" wire:model.lazy="start_date"/>
+                                            <input id="daterange" type="date" class="form-control" wire:model.lazy="start_date">
                                             @error('Date') <span class="error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg=3">
+                                    <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="basicpill-firstname-input">End Date</label>
-                                            <input id="daterange" type="date" class="form-control" wire:model.lazy="end_date"/>
+                                            <input id="daterange" type="date" class="form-control" wire:model.lazy="end_date">
                                             @error('Date') <span class="error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="basicpill-firstname-input">Order Status</label>
-                                            <select type="text" name="order" class="form-control" placeholder="Order">
-                                                <option value="">All Order</option>
-                                                @foreach($orders as order)
-                                                <option value="{{ $order->id }}">{{ $order->name}}</option>
-                                                @endforeach
+                                            <select type="text" name="Order" class="form-control" placeholder="Order">
+                                            <option value="">All Order</option>
+                                            @foreach($orders as $order)
+                                            <option value="{{ $order->id }}">{{ $order->name }}</option>
+                                            @endforeach
                                             </select>
-                                            @error('Order') <span class="error">{{ $message }}</span>@enderror
-                                         </div>
+                                            @error('Order') <span class="error">{{ $message }}</span> @enderror
+                                        </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
@@ -62,20 +62,29 @@
                                 <hr>
                                     <h4 style="text-align:center">Coupons Report</h4>
                                     <h5 style="text-align:center">-----------to-----------</h5>
-                        </table>
+                        
+
                     </div>
                 </div>
             </div>
             <div class="col-xl-12">
-                <thead>
-                    <tr>
-                        <th>Coupon Name</th>
-                        <th>Coupon Code</th>
-                        <th>Orders</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                </thead>
+               <div class="card">
+                    <div class="card-body">
+                        <div wire:ignore class="table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Coupon Name</th>
+                                    <th>Coupon Code</th>
+                                    <th>Orders</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </div>
+
+                        </table>
+                    </div>
+               </div>
             </div>
         </div>
     </div>

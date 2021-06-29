@@ -164,10 +164,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Nazmul
+
+
         Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
         Route::get('sale-report', SaleReport::class)->name('sale-report');
         Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
@@ -178,12 +176,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
         Route::get('coupons-report', CouponsReport::class)->name('coupons-report');
         Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
-<<<<<<< HEAD
-=======
 
->>>>>>> Nazmul
-=======
->>>>>>> Nazmul
+
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
