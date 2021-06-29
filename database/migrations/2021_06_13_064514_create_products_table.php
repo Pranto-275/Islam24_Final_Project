@@ -28,6 +28,9 @@ class CreateProductsTable extends Migration
             $table->foreignId('brand_id')->nullable();
             $table->string('low_alert', 191);
             $table->text('youtube_link')->nullable();
+            $table->text('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keyword')->nullable();
             $table->foreignId('contact_id')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('branch_id')->nullable();
