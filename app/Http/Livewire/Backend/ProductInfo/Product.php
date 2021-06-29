@@ -97,6 +97,7 @@ class Product extends Component
         //Product Properties
         $colorArray = explode(',', $this->color);
         $sizeArray = explode(',', $this->size);
+
         foreach($colorArray as $color){
             foreach($sizeArray as $size){
                $ProductProperties=new ProductProperties();
@@ -120,6 +121,9 @@ class Product extends Component
     public function productInfoModal(){
         $this->code = 'C'.floor(time() - 999999999);
         $this->emit('modal','productInfoModal');
+    }
+    public function mount(){
+        $this->code = 'P'.floor(time() - 999999999);
     }
     public function render()
     {
