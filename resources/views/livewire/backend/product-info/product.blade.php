@@ -20,10 +20,18 @@
 
                     <div class="card-body">
                            <div class="row">
-                        {{-- Start Input --}}
-                               <div class="col-md-4">Product Name <sup class="text-danger">*</sup></div>
+                               {{-- Start Input --}}
+                               <div class="col-md-4">Product Code <sup class="text-danger">*</sup></div>
                                <div class="col-md-8">
-                                  <input type="text" class="form-control form-control-lg inputBox" placeholder="Color Name"/>
+                                  <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="code" placeholder="Product Code"/>
+                                  @error('code') <span class="error">{{ $message }}</span> @enderror
+                               </div>
+                               {{-- End Input --}}
+                        {{-- Start Input --}}
+                               <div class="col-md-4 mt-2">Product Name <sup class="text-danger">*</sup></div>
+                               <div class="col-md-8 mt-2">
+                                  <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="name" placeholder="Product Name"/>
+                                  @error('name') <span class="error">{{ $message }}</span> @enderror
                                </div>
                         {{-- End Input --}}
                         {{-- Start Input --}}
@@ -31,12 +39,24 @@
                         <div class="col-md-8 mt-2">
                            <select class="form-control form-control-lg inputBox">
                               <option value="">Select Category</option>
-                              <option value="1">Category1</option>
-                              <option value="2">Category2</option>
-                              <option value="3">Category3</option>
+                              @foreach ($subSubCategories as $subSubCategory)
+                                <option value="{{ $subSubCategory->id }}">{{ $subSubCategory->name}}</option>
+                              @endforeach
                            </select>
                         </div>
                         {{-- End Input --}}
+
+                         {{-- Start Input --}}
+                         <div class="col-md-4 mt-2">Contact <sup class="text-danger">*</sup></div>
+                         <div class="col-md-8 mt-2">
+                            <select class="form-control form-control-lg inputBox">
+                               <option value="">Select Contact</option>
+                               @foreach ($contacts as $contact)
+                                 <option value="{{ $contact->id }}">{{ $contact->name}}</option>
+                               @endforeach
+                            </select>
+                         </div>
+                         {{-- End Input --}}
 
                         {{-- Start Input --}}
                         <div class="col-md-4 mt-2">Brand</div>
@@ -56,10 +76,10 @@
                         </div>
                        {{-- End Input --}}
                        {{-- Start Input --}}
-                       <div class="col-md-4 mt-2">Maximum Purchase Qty <sup class="text-danger">*</sup></div>
+                       {{-- <div class="col-md-4 mt-2">Maximum Purchase Qty <sup class="text-danger">*</sup></div>
                        <div class="col-md-8 mt-2">
                           <input type="text" class="form-control form-control-lg inputBox" placeholder="Quantity"/>
-                       </div>
+                       </div> --}}
                        {{-- End Input --}}
                            </div>
                     </div>
@@ -81,7 +101,7 @@
                         {{-- Start Input --}}
                                <div class="col-md-4">Product Image (600*600) <sup class="text-danger">*</sup></div>
                                <div class="col-md-8">
-                                  <input type="file" class="form-control form-control-lg inputBox"/>
+                                  <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images" multiple/>
                                </div>
                         {{-- End Input --}}
 
@@ -105,7 +125,7 @@
                         {{-- Start Input --}}
                                <div class="col-md-4">Video Link</div>
                                <div class="col-md-8">
-                                  <input type="text" class="form-control form-control-lg inputBox" placeholder="Video Link"/>
+                                  <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="video_link" placeholder="Video Link"/>
                                </div>
                         {{-- End Input --}}
 
@@ -128,7 +148,7 @@
 
                         {{-- Start Input --}}
                                <div class="col-md-4">
-                                  <input class="form-control input-lg" value="Color" style="width: 140px;" disabled/>
+                                  <input class="form-control input-lg mb-1" value="Color" style="width: 140px;" disabled/>
                                </div>
                                <div class="col-md-8">
                                   <select class="form-control form-control-lg inputBox">

@@ -122,6 +122,9 @@ class Product extends Component
         $this->code = 'C'.floor(time() - 999999999);
         $this->emit('modal','productInfoModal');
     }
+    public function mount(){
+        $this->code = 'P'.floor(time() - 999999999);
+    }
     public function render()
     {
         return view('livewire.backend.product-info.product',[

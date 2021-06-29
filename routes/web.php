@@ -103,6 +103,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
         Route::get('unit', Unit::class)->name('unit');
         Route::get('color', Color::class)->name('color');
+        // Route::get('size', Size::class)->name('size');
     });
 
     Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {

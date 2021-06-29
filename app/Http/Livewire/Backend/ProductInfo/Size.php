@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Backend\ProductInfo;
 use App\Models\Backend\ProductInfo\Color as ColorInfo;
 use Livewire\Component;
 
-class Color extends Component
+class Size extends Component
 {
     public $color_name;
     public $color_code;
@@ -45,7 +45,7 @@ class Color extends Component
     }
     public function render()
     {
-        return view('livewire.backend.product-info.color',[
+        return view('livewire.backend.product-info.size',[
             'colors'=>ColorInfo::get(),
         ]);
     }
