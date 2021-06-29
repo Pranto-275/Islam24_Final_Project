@@ -70,7 +70,7 @@
                         {{-- Start Name Input --}}
                         <div class="form-outline mx-1 mt-3">
                             <label class="form-label" for="color_code">Color Code</label>
-                            <input type="text" id="color_code" class="form-control form-control-lg inputBox" wire:model.lazy="color_code" placeholder="Color Code"/>
+                            <input type="text" id="color_code" class="form-control form-control-lg inputBox" wire:model.lazy="color_code" placeholder="Ex. #1530F7"/>
                             @error('color_code') <span class="error">{{ $message }}</span> @enderror
                         </div>
                         {{-- End Name Input --}}
