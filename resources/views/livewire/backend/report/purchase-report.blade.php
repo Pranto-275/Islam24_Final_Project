@@ -36,7 +36,7 @@
                                 <select type="text" name="Supplier" class="form-control" placeholder="Supplier">
                                     <option value="">Select Supplier</option>
                                     @foreach($suppliers as $supplier)
-                                    <option value="{{ $supplier_.id }}">{{ $supplier->name }}</option>
+                                    <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('Supplier') <span class="error">{{ $message }}</span> @enderror

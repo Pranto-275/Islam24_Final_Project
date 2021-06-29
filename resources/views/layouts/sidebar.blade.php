@@ -92,6 +92,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('report.customer-ledger')}}">Customer Ledger</a></li>
+                        <li><a href="{{route('report.coupons-report')}}">Coupons Report</a></li>
                         <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
                         <li><a href="{{route('report.purchase-report')}}">Purchase Report</a></li>
                         <li><a href="{{route('report.sale-report')}}">Sales Report</a></li>

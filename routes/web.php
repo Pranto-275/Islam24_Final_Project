@@ -39,6 +39,7 @@ use App\Http\Livewire\Backend\Report\SalesReturnReport;
 use App\Http\Livewire\Backend\Report\SaleReport;
 use App\Http\Livewire\Backend\Report\SupplierLedger;
 use App\Http\Livewire\Backend\Report\CustomerLedger;
+use App\Http\Livewire\Backend\Report\CouponsReport;
 use App\Http\Livewire\Backend\Report\ProfitLoss;
 use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Backend\Setting\PointPolicy;
@@ -167,6 +168,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sales-return-report', SalesReturnReport::class)->name('sales-return-report');
         Route::get('supplier-ledger', SupplierLedger::class)->name('supplier-ledger');
         Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
+        Route::get('coupons-report', CouponsReport::class)->name('coupons-report');
         Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
     });
 
