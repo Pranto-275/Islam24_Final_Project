@@ -9,8 +9,6 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico')}}">
     <script src="{{ URL::asset('resources/js/app.js')}}"></script>
-    <script src="https://cdn.tiny.cloud/1/b2qovy93jo2d0jap667cre9etdekjvmq9gacl1leut0et700/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-  <script>tinymce.init({ selector:'textarea' });</script>
     @livewireStyles
 
     @include('layouts.head-scripts')
