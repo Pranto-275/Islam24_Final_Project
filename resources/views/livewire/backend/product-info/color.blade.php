@@ -75,7 +75,7 @@
                         </div>
                         {{-- End Name Input --}}
 
-                        <button type="submit" class="btn btn-primary float-right btn-lg mt-2">Submit</button>
+                        <button type="submit" class="btn btn-primary float-right btn-lg m-2">Submit</button>
                      </div>
                     </form>
                  </div>

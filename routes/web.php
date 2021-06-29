@@ -26,6 +26,7 @@ use App\Http\Livewire\Backend\Setting\CouponCode;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Backend\Inventory\Purchase;
+use App\Http\Livewire\Backend\ProductInfo\Size;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Backend\Order\Order;
@@ -103,7 +104,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
         Route::get('unit', Unit::class)->name('unit');
         Route::get('color', Color::class)->name('color');
-        // Route::get('size', Size::class)->name('size');
+        Route::get('size', Size::class)->name('size');
     });
 
     Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
