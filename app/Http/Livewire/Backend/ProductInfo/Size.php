@@ -41,7 +41,7 @@ class Size extends Component
         $this->code = 'S'.floor(time() - 999999999);
 
         $this->emit('success', [
-            'text' => 'Size U/P Successfully',
+            'text' => 'Size C/U Successfully',
         ]);
     }
     public function mount(){

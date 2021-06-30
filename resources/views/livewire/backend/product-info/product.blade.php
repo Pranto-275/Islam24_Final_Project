@@ -2,237 +2,231 @@
 
 @endpush
 <div>
+
     <x-slot name="title">
         Add New Product
     </x-slot>
-    <h4 class="pb-2">Add New Product</h4>
-    <div class="row">
-            <div class="col-md-7">
-             <div class="row">
-            {{-- Start Add Products --}}
-              <div class="col-md-12">
-               {{-- Card --}}
-               <div class="card">
-                    <div class="card-header" style="background-color: rgb(236, 239, 241);">
-                      <h4 class="text-dark pb mb-0">New Product</h4>
-                    </div>
+   <!-- start page title -->
+   <div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0 font-size-18">Add Product</h4>
 
-                    <div class="card-body">
-                           <div class="row">
-                               {{-- Start Input --}}
-                               <div class="col-md-4">Product Code <sup class="text-danger">*</sup></div>
-                               <div class="col-md-8">
-                                  <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="code" placeholder="Product Code"/>
-                                  @error('code') <span class="error">{{ $message }}</span> @enderror
-                               </div>
-                               {{-- End Input --}}
-                        {{-- Start Input --}}
-                               <div class="col-md-4 mt-2">Product Name <sup class="text-danger">*</sup></div>
-                               <div class="col-md-8 mt-2">
-                                  <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="name" placeholder="Product Name"/>
-                                  @error('name') <span class="error">{{ $message }}</span> @enderror
-                               </div>
-                        {{-- End Input --}}
-                        {{-- Start Input --}}
-                        <div class="col-md-4 mt-2">Category <sup class="text-danger">*</sup></div>
-                        <div class="col-md-8 mt-2">
-                           <select class="form-control form-control-lg inputBox">
-                              <option value="">Select Category</option>
-                              @foreach ($subSubCategories as $subSubCategory)
-                                <option value="{{ $subSubCategory->id }}">{{ $subSubCategory->name}}</option>
-                              @endforeach
-                           </select>
-                        </div>
-                        {{-- End Input --}}
-
-                         {{-- Start Input --}}
-                         <div class="col-md-4 mt-2">Contact <sup class="text-danger">*</sup></div>
-                         <div class="col-md-8 mt-2">
-                            <select class="form-control form-control-lg inputBox">
-                               <option value="">Select Contact</option>
-                               @foreach ($contacts as $contact)
-                                 <option value="{{ $contact->id }}">{{ $contact->name}}</option>
-                               @endforeach
-                            </select>
-                         </div>
-                         {{-- End Input --}}
-
-                        {{-- Start Input --}}
-                        <div class="col-md-4 mt-2">Brand</div>
-                        <div class="col-md-8 mt-2">
-                           <select class="form-control form-control-lg inputBox">
-                              <option value="">Select Brand</option>
-                              <option value="1">Brand1</option>
-                              <option value="2">Brand2</option>
-                              <option value="3">Brand3</option>
-                           </select>
-                        </div>
-                        {{-- End Input --}}
-                       {{-- Start Input --}}
-                        <div class="col-md-4 mt-2">Unit</div>
-                        <div class="col-md-8 mt-2">
-                           <input type="text" class="form-control form-control-lg inputBox" placeholder="Unit"/>
-                        </div>
-                       {{-- End Input --}}
-                       {{-- Start Input --}}
-                       {{-- <div class="col-md-4 mt-2">Maximum Purchase Qty <sup class="text-danger">*</sup></div>
-                       <div class="col-md-8 mt-2">
-                          <input type="text" class="form-control form-control-lg inputBox" placeholder="Quantity"/>
-                       </div> --}}
-                       {{-- End Input --}}
-                           </div>
-                    </div>
-               </div>
-              </div>
-            {{-- Start Add Products --}}
-
-            {{-- Start Product Imgae --}}
-            <div class="col-md-12">
-               {{-- Card --}}
-               <div class="card">
-                    <div class="card-header" style="background-color: rgb(236, 239, 241);">
-                      <h4 class="text-dark pb mb-0">Product Images</h4>
-                    </div>
-
-                    <div class="card-body">
-                           <div class="row">
-
-                        {{-- Start Input --}}
-                               <div class="col-md-4">Product Image (600*600) <sup class="text-danger">*</sup></div>
-                               <div class="col-md-8">
-                                  <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images" multiple/>
-                               </div>
-                        {{-- End Input --}}
-
-                           </div>
-                    </div>
-               </div>
-              </div>
-            {{-- End Product Imgae --}}
-
-            {{-- Start Product Video --}}
-            <div class="col-md-12">
-               {{-- Card --}}
-               <div class="card">
-                    <div class="card-header" style="background-color: rgb(236, 239, 241);">
-                      <h4 class="text-dark pb mb-0">Video Link</h4>
-                    </div>
-
-                    <div class="card-body">
-                           <div class="row">
-
-                        {{-- Start Input --}}
-                               <div class="col-md-4">Video Link</div>
-                               <div class="col-md-8">
-                                  <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="video_link" placeholder="Video Link"/>
-                               </div>
-                        {{-- End Input --}}
-
-                           </div>
-                    </div>
-               </div>
-              </div>
-            {{-- End Product Video --}}
-
-            {{-- Start Product Variation --}}
-            <div class="col-md-12">
-               {{-- Card --}}
-               <div class="card">
-                    <div class="card-header" style="background-color: rgb(236, 239, 241);">
-                      <h4 class="text-dark pb mb-0">Product Variation</h4>
-                    </div>
-
-                    <div class="card-body">
-                           <div class="row">
-
-                        {{-- Start Input --}}
-                               <div class="col-md-4">
-                                  <input class="form-control input-lg mb-1" value="Color" style="width: 140px;" disabled/>
-                               </div>
-                               <div class="col-md-8">
-                                  <select class="form-control inputBox">
-                                     <option value="">Nothing Selected</option>
-                                     <option value="red">Red</option>
-                                     <option value="red">Red</option>
-                                     <option value="red">Red</option>
-                                  </select>
-                               </div>
-                        {{-- End Input --}}
-
-                           </div>
-                    </div>
-               </div>
-              </div>
-            {{-- End Product Variation --}}
-
-            {{-- Start Product Variation --}}
-            <div class="col-md-12">
-               {{-- Card --}}
-               <div class="card">
-                    <div class="card-header" style="background-color: rgb(236, 239, 241);">
-                      <h4 class="text-dark pb mb-0">Product Description</h4>
-                    </div>
-
-                    <div class="card-body">
-                           <div class="row">
-
-                        {{-- Start Input --}}
-                               <div class="col-md-4">
-                                  Description
-                               </div>
-                               <div class="col-md-8">
-                                <textarea name="description" rows="5" cols="40" class="form-control tinymce-editor"></textarea>
-                               </div>
-                        {{-- End Input --}}
-
-                           </div>
-                    </div>
-               </div>
-              </div>
-            {{-- End Product Description --}}
-
-
-             </div>
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                    <li class="breadcrumb-item active">Add Product</li>
+                </ol>
             </div>
 
-
-            {{-- Start Add Color --}}
-            <div class="col-md-5">
-            <div class="row">
-                <div class="col-md-12">
-                {{-- Card --}}
-                  <div class="card">
-                     <div class="card-header" style="background-color: rgb(236, 239, 241);">
-                       <h4 class="text-dark pb mb-0">Add New Color</h4>
-                     </div>
-                     <div class="card-body">
-                        {{-- Start Name Input --}}
-                        <div class="form-outline mx-1">
-                            <label class="form-label" for="name">Name</label>
-                            <input type="text" id="name" class="form-control form-control-lg inputBox" placeholder="Color Name"/>
-                          </div>
-                        {{-- End Name Input --}}
-                        {{-- Start Name Input --}}
-                        <div class="form-outline mx-1 mt-3">
-                            <label class="form-label" for="color_code">Color Code</label>
-                            <input type="text" id="color_code" class="form-control form-control-lg inputBox" placeholder="Color Code"/>
-                        </div>
-                        {{-- End Name Input --}}
-
-                        <button class="btn btn-primary float-right btn-lg mt-2">Submit</button>
-                     </div>
-                  </div>
-                </div>
-            </div>
-                </div>
-            {{-- End Add Color --}}
+        </div>
     </div>
+</div>
+<!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+    <form wire:ignore.self wire:submit.prevent="productSave">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title">Basic Information</h4>
+                    <p class="card-title-desc">Fill all information below</p>
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="code">Product Code</label>
+                                    <input id="code" type="text" class="form-control" wire:model.lazy="code" placeholder="Product Code">
+                                     @error('code') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Product Name</label>
+                                    <input id="name" type="text" class="form-control" wire:model.lazy="name" placeholder="Name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Sub-sub Category</label>
+                                    <select class="form-control select2" wire:model.lazy="sub_sub_category_id">
+                                        <option>Select</option>
+                                        @foreach ($subSubCategories as $subSubCategory)
+                                           <option value="{{ $subSubCategory->id }}">{{ $subSubCategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('sub_sub_category_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Brand</label>
+                                    <select class="form-control" wire:model.lazy="brand_id" wire:model.lazy="brand_id">
+                                        <option>Select</option>
+                                        @foreach ($brands as $brand)
+                                           <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('brand_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div wire:ignore class="form-group">
+                                    <label class="control-label">Colors</label>
+                                    <select class="select2 form-control select2-multiple js-example-basic-multiple" wire:model.lazy="selectedColors" multiple="multiple" data-placeholder="Choose ...">
+                                        <option value="">Select</option>
+                                        @foreach ($colors as $color)
+                                           <option value="{{ $color->id }}">{{ $color->color_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div wire:ignore class="form-group">
+                                    <label class="control-label">Sizes</label>
+                                    <select class="select2 form-control select2-multiple js-example-basic-multiple" multiple="multiple" wire:model.lazy="selectedSizes" data-placeholder="Choose ...">
+                                        <option value="">Select</option>
+                                        @foreach ($sizes as $size)
+                                           <option value="{{ $size->id }}">{{ $size->size_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Vat</label>
+                                    <select class="select2 form-control" wire:model.lazy="vat_id">
+                                        <option value="">Select</option>
+                                        @foreach ($vats as $vat)
+                                           <option value="{{ $vat->id }}">{{ $vat->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="low_alert">Low Alert</label>
+                                    <input id="low_alert" type="number" step="any" class="form-control" wire:model.lazy="low_alert" placeholder="Low Alert">
+                                </div>
+                                <div class="form-group">
+                                    <label for="control-label">Contact</label>
+                                    <select class="select2 form-control" wire:model.lazy="contact_id">
+                                        <option value="">Select</option>
+                                        @foreach ($contacts as $contact)
+                                           <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="regular_price">Regular Price</label>
+                                    <input id="regular_price" type="number" step="any" class="form-control" wire:model.lazy="regular_price" placeholder="Regular Price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="special_price">Special Price</label>
+                                    <input id="special_price" type="number" step="any" class="form-control" wire:model.lazy="special_price" placeholder="Special Price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="wholesale_price">Wholesale Price</label>
+                                    <input id="wholesale_price" type="number" step="any" class="form-control" wire:model.lazy="wholesale_price" placeholder="Wholesale Price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="purchase_price">Purchase Price</label>
+                                    <input id="purchase_price" type="number" step="any" class="form-control" wire:model.lazy="purchase_price" placeholder="Purchase Price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="discount">Discount</label>
+                                    <input id="discount" type="number" step="any" class="form-control" wire:model.lazy="discount" placeholder="Discount">
+                                </div>
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="status">
+                                        <option value="">Select Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productdesc">Short Description</label>
+                                    <textarea class="form-control" id="short_description" rows="3" wire:model.lazy="short_description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productdesc">Long Description</label>
+                                    <textarea class="form-control" id="long_description" rows="3" wire:model.lazy="long_description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Save Changes</button>
+                        <button type="submit" class="btn btn-secondary waves-effect">Cancel</button> --}}
+
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+
+                     <div class="row">
+                        <div class="col-md-4">
+                            Product Image (600*600)
+                        </div>
+                        <div class="col-md-8">
+                           <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images" multiple/>
+                        </div>
+
+                        <div class="col-md-4 mt-2">
+                            Youtube Link
+                        </div>
+                        <div class="col-md-8 mt-2">
+                           <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="youtube_link" placeholder="Video Link"/>
+                        </div>
+
+                      </div>
+
+                </div>
+
+            </div> <!-- end card-->
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title">Meta Data</h4>
+                    <p class="card-title-desc">Fill all information below</p>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="metatitle">Meta title</label>
+                                    <input id="metatitle" name="productname" type="text" class="form-control" wire:model.lazy="meta_title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="metakeywords">Meta Keywords</label>
+                                    <input id="metakeywords" name="manufacturername" type="text" class="form-control" wire:model.lazy="meta_keyword">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="metadescription">Meta Description</label>
+                                    <textarea class="form-control" id="metadescription" rows="5" wire:model.lazy="meta_description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Save Changes</button>
+                        {{-- <button type="submit" class="btn btn-secondary waves-effect">Cancel</button> --}}
+
+
+                </div>
+            </div>
+    </form>
+
+        </div>
+
+    </div>
+    <!-- end row -->
 
 </div>
 
 @push('scripts')
-<script>
-    $('select').selectpicker();
-</script>
 
+<script>
+    // $(document).ready(function() {
+    //     $('.js-example-basic-multiple').select2();
+    // });
+</script>
 @endpush
