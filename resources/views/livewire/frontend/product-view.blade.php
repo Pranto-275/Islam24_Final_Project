@@ -14,7 +14,6 @@
 			<li><a href="#"><i class="fa fa-home"></i></a></li>
 			<li><a href="#">Smartphone & Tablets</a></li>
 			<li><a href="#">Chicken swinesha</a></li>
-
 		</ul>
 
 		<div class="row">
@@ -31,9 +30,9 @@
                 					<ul style="display: block;">
                                          @foreach ($category->SubCategory as $subCategory)
 
-                						<li><a href="category.html">{{ $subCategory->name }}</a></li>
+                						    <li><a href="category.html">{{ $subCategory->name }}</a></li>
 
-                                        @endforeach
+                                         @endforeach
                 					</ul>
                 				</li>
                               @endforeach
@@ -163,8 +162,8 @@
                                         <div class="item-image">
                                             <div class="item-img-info">
                                                 <a href="#" target="_self" title="Chicken swinesha ">
-                                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/4.jpg" alt="Chicken swinesha">
-                                                                </a>
+                                                    <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/4.jpg" alt="Chicken swinesha">
+                                                </a>
                                             </div>
 
                                         </div>
@@ -234,7 +233,7 @@
 							<div class="large-image  ">
 								<img itemprop="image" class="product-image-zoom" src="{{ asset('storage/photo/'.$productMainImage->image) }}"  title="Chicken swinesha" alt="Chicken swinesha">
 							</div>
-							<a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
+							<a class="thumb-video pull-left" href="{{$product->youtube_link}}"><i class="fa fa-youtube-play"></i></a>
 
 							<div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
                                 @foreach ($productImages as $productImage)
@@ -242,25 +241,14 @@
 									<img src="{{ asset('storage/photo/'.$productImage->image) }}" title="Chicken swinesha" alt="Chicken swinesha">
 								</a>
                                 @endforeach
-								{{-- <a data-index="1" class="img thumbnail " data-image="image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
-								<a data-index="2" class="img thumbnail " data-image="image/catalog/demo/product/fashion/3.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/3.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
-								<a data-index="3" class="img thumbnail " data-image="image/catalog/demo/product/fashion/4.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/4.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
-								<a data-index="4" class="img thumbnail " data-image="image/catalog/demo/product/fashion/5.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/5.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a> --}}
+
 							</div>
 
 						</div>
 
 						<div class="content-product-right col-md-7 col-sm-12 col-xs-12">
 							<div class="title-product">
-								<h1>Chicken swinesha</h1>
+								<h1> {{ $product->name }}</h1>
 							</div>
 							<!-- Review ---->
 							<div class="box-review form-group">
@@ -290,8 +278,8 @@
 								<div class="inner-box-desc">
 									<div class="price-tax"><span>Ex Tax:</span> $60.00</div>
 									<div class="reward"><span>Price in reward points:</span> 400</div>
-									<div class="brand"><span>Brand:</span><a href="#">Apple</a>		</div>
-									<div class="model"><span>Product Code:</span> Product 15</div>
+									<div class="brand"><span>Brand:</span><a href="#"> {{ $product->Brand->name }}</a>		</div>
+									<div class="model"><span>Product Code:</span>  {{ $product->code }}</div>
 									<div class="reward"><span>Reward Points:</span> 100</div>
 								</div>
 							</div>

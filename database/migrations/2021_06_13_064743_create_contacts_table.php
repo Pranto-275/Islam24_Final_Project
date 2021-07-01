@@ -16,9 +16,13 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['Customer', 'Supplier', 'Staff'])->nullable();
-            $table->string('name', 191)->nullable();
+            $table->string('first_name', 191)->nullable();
+            $table->string('last_name', 191)->nullable();
             $table->string('address', 191)->nullable();
             $table->string('shipping_address', 191)->nullable();
+            $table->string('post_code', 191)->nullable();
+            $table->string('state', 191)->nullable();
+            $table->foreignId('country_id')->nullable();
             $table->string('phone', 191)->nullable();
             $table->string('mobile', 191)->nullable();
             $table->string('email', 191)->nullable();
