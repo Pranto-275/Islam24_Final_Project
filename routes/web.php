@@ -20,6 +20,7 @@ use App\Http\Livewire\Backend\Setting\DeliveryMethod;
 use App\Http\Livewire\Backend\Setting\InvoiceSetting;
 use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\Vat;
+use App\Http\Livewire\Frontend\CustomerRegister;
 use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Setting\Slider;
@@ -62,8 +63,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('auth.login');
 // });
-Route::group(['prefix' => 'customer', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'customer'], function () {
     Route::get('customer_login', Customer::class)->name('customer_login');
+    Route::get('customer_register', CustomerRegister::class)->name('customer_register');
 
     Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
     Route::get('product_view/{id?}', ProductView::class)->name('product_view');

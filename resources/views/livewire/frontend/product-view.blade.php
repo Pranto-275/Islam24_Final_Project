@@ -14,7 +14,6 @@
 			<li><a href="#"><i class="fa fa-home"></i></a></li>
 			<li><a href="#">Smartphone & Tablets</a></li>
 			<li><a href="#">Chicken swinesha</a></li>
-
 		</ul>
 
 		<div class="row">
@@ -31,9 +30,9 @@
                 					<ul style="display: block;">
                                          @foreach ($category->SubCategory as $subCategory)
 
-                						<li><a href="category.html">{{ $subCategory->name }}</a></li>
+                						    <li><a href="category.html">{{ $subCategory->name }}</a></li>
 
-                                        @endforeach
+                                         @endforeach
                 					</ul>
                 				</li>
                               @endforeach
