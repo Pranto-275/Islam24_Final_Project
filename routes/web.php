@@ -20,9 +20,9 @@ use App\Http\Livewire\Backend\Setting\DeliveryMethod;
 use App\Http\Livewire\Backend\Setting\InvoiceSetting;
 use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\Vat;
+use App\Http\Livewire\Frontend\CustomerRegister;
 use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Setting\Warehouse;
-use App\Http\Livewire\Backend\Setting\CouponCode;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Backend\Inventory\Purchase;
@@ -45,7 +45,9 @@ use App\Http\Livewire\Backend\Report\ProfitLoss;
 use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Backend\Setting\PointPolicy;
 use App\Http\Livewire\Backend\ProductInfo\Color;
+use App\Http\Livewire\Backend\CheckOut\CheckOut;
 use App\Http\Livewire\Frontend\ProductView;
+use App\Http\Livewire\Backend\ProductInfo\ProductList;
 use App\Http\Livewire\Inventory\DelieveryMethod;
 use App\Http\Livewire\Inventory\Language;
 
@@ -71,8 +73,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('auth.login');
 // });
-Route::group(['prefix' => 'customer', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'customer'], function () {
     Route::get('customer_login', Customer::class)->name('customer_login');
+    Route::get('customer_register', CustomerRegister::class)->name('customer_register');
 
     Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
     Route::get('product_view/{id?}', ProductView::class)->name('product_view');
@@ -111,6 +114,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('sub-category', SubCategory::class)->name('sub-category');
         Route::get('brand', Brand::class)->name('brand');
         Route::get('product', Product::class)->name('product');
+        Route::get('product-list', ProductList::class)->name('product-list');
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
         Route::get('unit', Unit::class)->name('unit');
         Route::get('color', Color::class)->name('color');
@@ -141,6 +145,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
         Route::get('payment', Payment::class)->name('payment');
+    });
+    Route::group(['prefix' => 'checkout', 'as' => 'checkout.'], function () {
+        Route::get('checkout', CheckOut::class)->name('checkout');
     });
 
     Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {

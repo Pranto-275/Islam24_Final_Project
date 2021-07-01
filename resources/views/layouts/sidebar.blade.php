@@ -37,7 +37,8 @@
                         <li><a href="{{route('product.sub-category')}}">Sub Category</a></li>
                         <li><a href="{{route('product.sub-sub-category')}}">Sub Sub Category</a></li>
                         <li><a href="{{route('product.brand')}}">Brand</a></li>
-                        <li><a href="{{route('product.product')}}">Product</a></li>
+                        <li><a href="{{route('product.product')}}">Add Product</a></li>
+                        <li><a href="{{route('product.product-list')}}">Product List</a></li>
                         <li><a href="{{route('product.unit')}}">Unit Info</a></li>
                         <li><a href="{{route('product.color')}}">Color</a></li>
                         <li><a href="{{route('product.size')}}">Size</a></li>
@@ -74,7 +75,15 @@
                         <li><a href="{{route('transaction.payment')}}">Payment Info</a></li>
                     </ul>
                 </li>
-
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-list-ul"></i>
+                        <span>CheckOut</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('checkout.checkout')}}">CheckOut</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>

@@ -40,7 +40,7 @@ class Color extends Component
         $this->reset();
 
         $this->emit('success', [
-            'text' => 'Color U/P Successfully',
+            'text' => 'Color C/U Successfully',
         ]);
     }
     public function render()

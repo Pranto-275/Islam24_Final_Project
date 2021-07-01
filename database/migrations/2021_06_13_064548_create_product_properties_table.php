@@ -16,8 +16,8 @@ class CreateProductPropertiesTable extends Migration
         Schema::create('product_properties', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->string('size', 191)->nullable();
-            $table->string('color', 191)->nullable();
+            $table->foreignId('size_id', 191)->nullable();
+            $table->foreignId('color_id', 191)->nullable();
             $table->foreignId('user_id');
             $table->foreignId('branch_id');
             $table->enum('status', ['Active', 'Inactive'])->nullable();

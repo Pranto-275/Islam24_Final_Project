@@ -282,7 +282,7 @@
                     </div>
                     <div class="signin-w hidden-md hidden-sm hidden-xs">
                         <ul class="signin-link blank">
-                            <li class="log login"><i class="fa fa-lock"></i> <a class="link-lg" href="{{ route('customer_login') }}">Login </a> or <a href="register">Register</a></li>
+                            <li class="log login"><i class="fa fa-lock"></i> <a class="link-lg" href="{{ route('customer_login') }}">Login </a> or <a href="{{ route('customer_register') }}">Register</a></li>
                         </ul>
                     </div>
                 </div>
