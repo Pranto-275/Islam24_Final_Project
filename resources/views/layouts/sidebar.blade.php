@@ -78,15 +78,6 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>
-                        <span>CheckOut</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('checkout.checkout')}}">CheckOut</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-list-ul"></i>
                         <span>ContactInfo</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

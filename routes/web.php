@@ -114,7 +114,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('category', Category::class)->name('category');
         Route::get('sub-category', SubCategory::class)->name('sub-category');
         Route::get('brand', Brand::class)->name('brand');
-        Route::get('product', Product::class)->name('product');
+        Route::get('product/{id?}', Product::class)->name('product');
         Route::get('product-list', ProductList::class)->name('product-list');
         Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
         Route::get('unit', Unit::class)->name('unit');
