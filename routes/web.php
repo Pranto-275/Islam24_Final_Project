@@ -45,6 +45,7 @@ use App\Http\Livewire\Backend\Report\ProfitLoss;
 use App\Http\Livewire\Backend\Report\OrderReport;
 use App\Http\Livewire\Backend\Setting\PointPolicy;
 use App\Http\Livewire\Backend\ProductInfo\Color;
+use App\Http\Livewire\Backend\Setting\CouponCode;
 use App\Http\Livewire\Backend\CheckOut\CheckOut;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Backend\ProductInfo\ProductList;
@@ -70,9 +71,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('auth.login');
-// });
+ Route::get('/', function () {
+     return view('auth.login');
+ });
 Route::group(['prefix' => 'customer'], function () {
     Route::get('customer_login', Customer::class)->name('customer_login');
     Route::get('customer_register', CustomerRegister::class)->name('customer_register');
@@ -132,6 +133,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('delivery-method', DeliveryMethod::class)->name('delivery-method');
         Route::get('invoice-setting', InvoiceSetting::class)->name('invoice-setting');
         Route::get('payment-method', PaymentMethod::class)->name('payment-method');
+        Route::get('coupon-code',CouponCode::class)->name('coupon-code');
         Route::get('vat', Vat::class)->name('vat');
         Route::get('warehouse', Warehouse::class)->name('warehouse');
         Route::get('slider', Slider::class)->name('slider');

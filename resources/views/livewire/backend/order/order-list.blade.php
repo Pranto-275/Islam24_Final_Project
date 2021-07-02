@@ -43,10 +43,7 @@
                                             <th>Date</th>
                                             <th>Type</th>
                                             <th>Contact</th>
-                                            <th>Address</th>
-                                            <th>Order Date</th>
-                                            <th>Pick up Date</th>
-                                            <th>order status</th>
+                                            <th>Quantity</th>
                                             <th colspan="2">Action</th>
                                         </tr>
                                         </thead>
@@ -54,36 +51,30 @@
                                         @php
                                             $i=0;
                                         @endphp
-                                        {{--                                            @foreach ($stockAdjustments as $stockAdjustment)--}}
+
+                                         @foreach ($invoices as $invoice)
 
                                         <tr>
-                                            {{--                                                    <td>--}}
-                                            {{--                                                        <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>--}}
-                                            {{--                                                    </td>--}}
                                             <td>
-                                                1
+                                                <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
                                             </td>
                                             <td>
-                                                {{--                                                        {{ $stockAdjustment->date }}--}}
+                                                {{$invoice->date}}
                                             </td>
                                             <td>
-                                                {{--                                                        {{ $stockAdjustment->type }}--}}
+                                                {{$invoice->type}}
                                             </td>
+
                                             <td>
-                                                {{--                                                        {{ $stockAdjustment->Contact->name }}--}}
+{{--                                               {{$invoice->ContactName->name}}--}}
                                             </td>
+
                                             <td>
-                                                {{--                                                        {{ $stockAdjustment->FromBranch->name }}--}}
+                                                @if($invoice->StockManager)
+                                                    {{$invoice->StockManager->sum('quantity')}}
+                                                @endif
                                             </td>
-                                            <td>
-                                                {{--                                                        {{ $stockAdjustment->ToBranch->name }}--}}
-                                            </td>
-                                            <td>
-                                                {{--                                                        {{ $stockAdjustment->FromWarehouse->name }}--}}
-                                            </td>
-                                            <td>
-                                                {{--                                                        {{ $stockAdjustment->ToWarehouse->name }}--}}
-                                            </td>
+
                                             <td>
                                                 <button class="btn btn-primary btn-sm" wire:click="popupInvoice()"><i
                                                         class="fas fa-check font-size-18"></i></button>
@@ -93,7 +84,7 @@
                                                         class="bx bx-window-close font-size-18"></i></button>
                                             </td>
                                         </tr>
-                                        {{--                                            @endforeach--}}
+                                         @endforeach
                                         </tbody>
                                     </table>
                                 </div>
