@@ -32,6 +32,7 @@ class CreateContactsTable extends Migration
             $table->foreignId('contact_category_id')->nullable();
             $table->foreignId('user_id');
             $table->foreignId('branch_id');
+            $table->string('password');
             $table->enum('status', ['Active', 'Inactive'])->nullable();
             $table->timestamps();
             $table->softDeletes();

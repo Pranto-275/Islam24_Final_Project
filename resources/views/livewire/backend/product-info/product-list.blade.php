@@ -29,6 +29,7 @@
                                         <thead>
 
                                         <tr>
+                                            <th>Sr.</th>
                                             <th>Code</th>
                                             <th>Name</th>
                                             <th>Category</th>
@@ -44,28 +45,32 @@
 
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $p=0;
+                                            @endphp
                                             @foreach($products as $product)
                                               <tr>
+                                                  <td>{{ ++$p }}</td>
                                                  <td>{{ $product->code }}</td>
                                                  <td>{{ $product->name }}</td>
                                                  <td>
                                                     @if($product->SubSubCategory)
-                                                      {{ $product->SubSubCategory->name }}
+                                                      @if($product->SubSubCategory) {{ $product->SubSubCategory->name }} @endif
                                                     @endif
                                                  </td>
                                                  <td>
                                                      @if($product->Brand)
-                                                         {{ $product->Brand->name }}
+                                                         @if($product->Brand) {{ $product->Brand->name }} @endif
                                                      @endif
                                                  </td>
                                                  <td>
-                                                     @foreach($product->ProductProperties as $color)
-                                                       {{ $color->Color->color_name }}
+                                                     @foreach($product->ProductProperties->unique('color_id') as $color)
+                                                       @if($color->Color) {{ $color->Color->name }} @endif
                                                      @endforeach
                                                  </td>
                                                  <td>
-                                                    @foreach($product->ProductProperties as $size)
-                                                      {{ $size->Size->size_name }}
+                                                    @foreach($product->ProductProperties->unique('size_id') as $size)
+                                                      @if($size->Size) {{ $size->Size->name }} @endif
                                                     @endforeach
 
                                                  </td>
@@ -74,8 +79,8 @@
                                                  <td>{{ $product->wholesale_price }}</td>
                                                  <td>{{ $product->purchase_price }}</td>
                                                  <td>
-                                                    <button class="btn btn-primary btn-sm"><i class="bx bx-edit font-size-12"></i></button>
-                                                    <button class="btn btn-danger btn-sm"><i class="bx bx-window-close font-size-12"></i></button>
+                                                    <a href="{{ route('product.product', ['id'=>$product->id]) }}" class="btn btn-primary btn-sm"><i class="bx bx-edit font-size-12"></i></a>
+                                                    <button class="btn btn-danger btn-sm" wire:click="deleteProduct({{ $product->id }})"><i class="bx bx-window-close font-size-12"></i></button>
                                                  </td>
                                               </tr>
                                             @endforeach

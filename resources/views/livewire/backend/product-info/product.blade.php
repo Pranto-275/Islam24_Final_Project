@@ -70,18 +70,16 @@
                                 <div wire:ignore class="form-group">
                                     <label class="control-label">Colors</label>
                                     <select class="select2 form-control select2-multiple js-example-basic-multiple" wire:model.lazy="selectedColors" multiple="multiple" data-placeholder="Choose ...">
-                                        <option value="">Select</option>
                                         @foreach ($colors as $color)
-                                           <option value="{{ $color->id }}">{{ $color->color_name }}</option>
+                                           <option value="{{ $color->id }}">{{ $color->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div wire:ignore class="form-group">
                                     <label class="control-label">Sizes</label>
                                     <select class="select2 form-control select2-multiple js-example-basic-multiple" multiple="multiple" wire:model.lazy="selectedSizes" data-placeholder="Choose ...">
-                                        <option value="">Select</option>
                                         @foreach ($sizes as $size)
-                                           <option value="{{ $size->id }}">{{ $size->size_name }}</option>
+                                           <option value="{{ $size->id }}">{{ $size->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -165,6 +163,11 @@
                             Product Image (600*600)
                         </div>
                         <div class="col-md-8">
+                            @if($QueryUpdate)
+                                @foreach ($QueryUpdate->ProductImageTop4 as $image)
+                                <img class="rounded mb-1" src="{{ asset('storage/photo/'.$image->image) }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                @endforeach
+                            @endif
                            <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images" multiple/>
                         </div>
 
