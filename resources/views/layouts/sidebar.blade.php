@@ -114,15 +114,7 @@
                         <li><a href="{{route('report.supplier-ledger')}}">Supplier Ledger</a></li>
                         <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li>
                     </ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    
-                   
-=======
 
->>>>>>> Nazmul
-=======
->>>>>>> Nazmul
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
