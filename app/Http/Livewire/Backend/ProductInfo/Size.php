@@ -7,7 +7,7 @@ use Livewire\Component;
 class Size extends Component
 {
     public $code;
-    public $size_name;
+    public $name;
     public $SizeId;
     public function deleteSize($id){
         SizeInfo::find($id)->delete();
@@ -19,12 +19,12 @@ class Size extends Component
        $QueryUpdate=SizeInfo::find($id);
        $this->SizeId=$QueryUpdate->id;
        $this->code=$QueryUpdate->code;
-       $this->size_name=$QueryUpdate->size_name;
+       $this->name=$QueryUpdate->name;
     }
     public function sizeSave(){
         $this->validate([
             'code' => 'required',
-            'size_name' => 'required',
+            'name' => 'required',
         ]);
 
         // Insert Or Update Color
@@ -35,7 +35,7 @@ class Size extends Component
         }
 
         $Query->code=$this->code;
-        $Query->size_name=$this->size_name;
+        $Query->name=$this->name;
         $Query->save();
         $this->reset();
         $this->code = 'S'.floor(time() - 999999999);

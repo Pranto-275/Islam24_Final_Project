@@ -34,7 +34,7 @@
                             @foreach ($colors as $color)
                               <tr>
                                 <th scope="row">{{ ++$i }}</th>
-                                <td>{{ $color->color_name }}</td>
+                                <td>{{ $color->name }}</td>
                                 <td>
                                     <div class="float-right">
                                         <button class="rounded-circle btn-sm border-0 p-2 editButton" style="background-color: rgb(148, 170, 243);" wire:click="editColor({{ $color->id }})"><i class="fas fa-edit"></i></button>
@@ -63,8 +63,8 @@
                         {{-- Start Name Input --}}
                         <div class="form-outline mx-1">
                             <label class="form-label" for="name">Name</label>
-                            <input type="text" id="name" class="form-control form-control-lg inputBox" wire:model.lazy="color_name" placeholder="Color Name"/>
-                            @error('color_name') <span class="error">{{ $message }}</span> @enderror
+                            <input type="text" id="name" class="form-control form-control-lg inputBox" wire:model.lazy="name" placeholder="Color Name"/>
+                            @error('name') <span class="error">{{ $message }}</span> @enderror
                         </div>
                         {{-- End Name Input --}}
                         {{-- Start Name Input --}}
