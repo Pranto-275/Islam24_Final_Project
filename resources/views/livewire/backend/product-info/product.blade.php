@@ -71,7 +71,7 @@
                                     <label class="control-label">Colors</label>
                                     <select class="select2 form-control select2-multiple js-example-basic-multiple" wire:model.lazy="selectedColors" multiple="multiple" data-placeholder="Choose ...">
                                         @foreach ($colors as $color)
-                                           <option value="{{ $color->id }}">{{ $color->color_name }}</option>
+                                           <option value="{{ $color->id }}">{{ $color->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -79,7 +79,7 @@
                                     <label class="control-label">Sizes</label>
                                     <select class="select2 form-control select2-multiple js-example-basic-multiple" multiple="multiple" wire:model.lazy="selectedSizes" data-placeholder="Choose ...">
                                         @foreach ($sizes as $size)
-                                           <option value="{{ $size->id }}">{{ $size->size_name }}</option>
+                                           <option value="{{ $size->id }}">{{ $size->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
