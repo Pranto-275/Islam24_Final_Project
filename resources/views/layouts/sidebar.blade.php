@@ -73,6 +73,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('transaction.payment')}}">Payment Info</a></li>
+                        <li><a href="{{route('transaction.customer-payment')}}">Customer Payment</a></li>
+                        <li><a href="{{route('transaction.customer-payment-report')}}">Customer Payment Report</a></li>
                     </ul>
                 </li>
                 <li>

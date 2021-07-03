@@ -25,6 +25,8 @@ use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
+use App\Http\Livewire\Backend\Transaction\CustomerPayment;
+use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
 use App\Http\Livewire\Backend\Inventory\Purchase;
 use App\Http\Livewire\Backend\ProductInfo\Size;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
@@ -145,6 +147,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
         Route::get('payment', Payment::class)->name('payment');
+        Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
+        Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
     });
     Route::group(['prefix' => 'checkout', 'as' => 'checkout.'], function () {
         Route::get('checkout', CheckOut::class)->name('checkout');

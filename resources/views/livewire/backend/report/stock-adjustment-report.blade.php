@@ -36,7 +36,7 @@
                               <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">To Date</label>
-                                    <input id= "daterange" type="date" class="form-control" wire:model.lazy="from_date"/>
+                                    <input id= "daterange" type="date" class="form-control" wire:model.lazy="to_date"/>
                                 </div>
                               </div>
 
