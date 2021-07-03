@@ -64,12 +64,12 @@
                                                      @endif
                                                  </td>
                                                  <td>
-                                                     @foreach($product->ProductProperties as $color)
+                                                     @foreach($product->ProductProperties->unique('color_id') as $color)
                                                        @if($color->Color) {{ $color->Color->name }} @endif
                                                      @endforeach
                                                  </td>
                                                  <td>
-                                                    @foreach($product->ProductProperties as $size)
+                                                    @foreach($product->ProductProperties->unique('size_id') as $size)
                                                       @if($size->Size) {{ $size->Size->name }} @endif
                                                     @endforeach
 
