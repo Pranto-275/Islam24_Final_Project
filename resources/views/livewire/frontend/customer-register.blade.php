@@ -21,7 +21,12 @@
                 <div id="content" class="col-sm-12">
                     <h2 class="title">Register Account</h2>
                     <p>If you already have an account with us, please login at the <a href="#">login page</a>.</p>
-                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal account-register clearfix">
+                    @if($message)
+                    <div class="alert alert-success text-center" role="alert">
+                        <h3>{{ $message }}</h3>
+                    </div>
+                    @endif
+                    <form wire:submit.prevent="contactSave" class="form-horizontal account-register clearfix">
                         <fieldset id="account">
                             <legend>Your Personal Details</legend>
                             <div class="form-group required" style="display: none;">
@@ -37,91 +42,88 @@
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="firstname" value="" placeholder="First Name" id="input-firstname" class="form-control">
+                                    <input type="text" wire:model.lazy="first_name" placeholder="First Name" id="input-firstname" class="form-control">
+                                    @error('first_name') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="lastname" value="" placeholder="Last Name" id="input-lastname" class="form-control">
+                                    <input type="text" wire:model.lazy="last_name" placeholder="Last Name" id="input-lastname" class="form-control">
+                                    @error('last_name') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
                                 <div class="col-sm-10">
-                                    <input type="email" name="email" value="" placeholder="E-Mail" id="input-email" class="form-control">
+                                    <input type="email" wire:model.lazy="email" placeholder="E-Mail" id="input-email" class="form-control">
+                                    @error('email') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
+                                <label class="col-sm-2 control-label" for="input-telephone">Phone</label>
                                 <div class="col-sm-10">
-                                    <input type="tel" name="telephone" value="" placeholder="Telephone" id="input-telephone" class="form-control">
+                                    <input type="text" wire:model.lazy="phone" placeholder="Telephone" id="input-telephone" class="form-control">
+                                    @error('phone') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-fax">Fax</label>
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-telephone">Mobile</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="fax" value="" placeholder="Fax" id="input-fax" class="form-control">
+                                    <input type="text" wire:model.lazy="mobile" placeholder="Mobile" id="input-mobile" class="form-control">
+                                    @error('mobile') <span class="error text-danger">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-telephone">Contact Category</label>
+                                <div class="col-sm-10">
+                                    <select wire:model.lazy="contact_category_id" class="form-control">
+                                        <option value=""> --- Please Select --- </option>
+                                        @foreach ($contactCategories as $contactCategory)
+                                           <option value="{{ $contactCategory->id }}">{{ $contactCategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('contact_category_id') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset id="address">
                             <legend>Your Address</legend>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-company">Company</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="company" value="" placeholder="Company" id="input-company" class="form-control">
-                                </div>
-                            </div>
                             <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-address-1">Address 1</label>
+                                <label class="col-sm-2 control-label" for="input-address">Address</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="address_1" value="" placeholder="Address 1" id="input-address-1" class="form-control">
+                                    <input type="text" wire:model.lazy="address" placeholder="Address" id="input-address" class="form-control">
+                                    @error('address') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-address-2">Address 2</label>
+                                <label class="col-sm-2 control-label" for="input-shipping-address">Shipping Address</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="address_2" value="" placeholder="Address 2" id="input-address-2" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-city">City</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="city" value="" placeholder="City" id="input-city" class="form-control">
+                                    <input type="text" wire:model.lazy="shipping_address" placeholder="Shipping Address" id="input-shipping-address" class="form-control">
+                                    @error('shipping_address') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-postcode">Post Code</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="postcode" value="" placeholder="Post Code" id="input-postcode" class="form-control">
+                                    <input type="text" wire:model.lazy="post_code" placeholder="Post Code" id="input-postcode" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-country">Country</label>
                                 <div class="col-sm-10">
-                                    <select name="country_id" id="input-country" class="form-control">
+                                    <select wire:model.lazy="country_id" class="form-control">
                                         <option value=""> --- Please Select --- </option>
-                                        <option value="244">Aaland Islands</option>
-                                        <option value="1">Afghanistan</option>
-                                        <option value="2">Albania</option>
-                                        <option value="3">Algeria</option>
-                                        <option value="4">American Samoa</option>
-                                        <option value="5">Andorra</option>
-                                        <option value="6">Angola</option>
+                                        <option value="1">Bangladesh</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group required">
-                                <label class="col-sm-2 control-label" for="input-zone">Region / State</label>
+                                <label class="col-sm-2 control-label" for="input-zone">State</label>
                                 <div class="col-sm-10">
-                                    <select name="zone_id" id="input-zone" class="form-control">
+                                    <select wire:model.lazy="state" class="form-control">
                                         <option value=""> --- Please Select --- </option>
-                                        <option value="3513">Aberdeen</option>
-                                        <option value="3514">Aberdeenshire</option>
-                                        <option value="3515">Anglesey</option>
-                                        <option value="3516">Angus</option>
-
+                                        <option value="1">Dhaka</option>
                                     </select>
                                 </div>
                             </div>
@@ -131,13 +133,15 @@
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-password">Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="password" value="" placeholder="Password" id="input-password" class="form-control">
+                                    <input type="password" wire:model.lazy="password" placeholder="Password" id="input-password" class="form-control">
+                                    @error('password') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="confirm" value="" placeholder="Password Confirm" id="input-confirm" class="form-control">
+                                    <input type="password" wire:model.lazy="password_confirmation" placeholder="Confirm Password" id="input-confirm" class="form-control">
+                                    @error('password_confirmation') <span class="error text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </fieldset>

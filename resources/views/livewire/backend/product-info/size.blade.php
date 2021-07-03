@@ -36,7 +36,7 @@
                               <tr>
                                 <th scope="row">{{ ++$i }}</th>
                                 <td>{{ $size->code }}</td>
-                                <td>{{ $size->size_name }}</td>
+                                <td>{{ $size->name }}</td>
                                 <td>
                                     <div class="float-right">
                                         <button class="rounded-circle btn-sm border-0 p-2 editButton" style="background-color: rgb(148, 170, 243);" wire:click="editSize({{ $size->id }})"><i class="fas fa-edit"></i></button>
@@ -73,8 +73,8 @@
                         {{-- Start Name Input --}}
                         <div class="form-outline mx-1">
                             <label class="form-label" for="name">Size Name</label>
-                            <input type="text" id="name" class="form-control form-control-lg inputBox" wire:model.lazy="size_name" placeholder="Size Name"/>
-                            @error('size_name') <span class="error">{{ $message }}</span> @enderror
+                            <input type="text" id="name" class="form-control form-control-lg inputBox" wire:model.lazy="name" placeholder="Size Name"/>
+                            @error('name') <span class="error">{{ $message }}</span> @enderror
                         </div>
                         {{-- End Name Input --}}
 

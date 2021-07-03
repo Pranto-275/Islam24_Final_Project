@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Color extends Component
 {
-    public $color_name;
+    public $name;
     public $color_code;
     public $ColorId;
     public function deleteColor($id){
@@ -18,12 +18,12 @@ class Color extends Component
     public function editColor($id){
        $QueryUpdate=ColorInfo::find($id);
        $this->ColorId=$QueryUpdate->id;
-       $this->color_name=$QueryUpdate->color_name;
+       $this->name=$QueryUpdate->name;
        $this->color_code=$QueryUpdate->color_code;
     }
     public function colorSave(){
         $this->validate([
-            'color_name' => 'required',
+            'name' => 'required',
             'color_code' => 'required',
         ]);
 
@@ -34,7 +34,7 @@ class Color extends Component
             $Query=new ColorInfo();
         }
 
-        $Query->color_name=$this->color_name;
+        $Query->name=$this->name;
         $Query->color_code=$this->color_code;
         $Query->save();
         $this->reset();

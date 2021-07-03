@@ -578,9 +578,12 @@
                                                     </div>
                                                     <div class="product-image-container second_img">
                                                         <a href="{{route('product_view',['id'=>$product->id])}}" target="_self" title="Pastrami bacon">
-                                                            @foreach ($product->ProductImage as $productImage)
-                                                               <img src="{{ asset('storage/photo/'.$productImage->image) }}" class="img-1 img-responsive" alt="image1">
-                                                            @endforeach
+                                                            {{-- @foreach ($product->ProductImage as $productImage) --}}
+                                                            @if($product->ProductImageFirst)
+                                                               <img src="{{ asset('storage/photo/'.$product->ProductImageFirst->image) }}" class="img-1 img-responsive" alt="image1" style="height: 100px;">
+                                                               <img src="{{ asset('storage/photo/'.$product->ProductImageLast->image) }}" class="img-2 img-responsive" alt="image2" style="height: 100px;">
+                                                            @endif
+                                                            {{-- @endforeach --}}
                                                         </a>
                                                     </div>
                                                     <!--quickview-->

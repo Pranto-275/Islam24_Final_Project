@@ -43,8 +43,49 @@ class Product extends Component
     public $selectedColors=[];
     public $selectedSizes=[];
     public $ProductId=NULL;
-    public $QueryUpdate=NULL;
+    public $QueryUpdate;
+    public function mount($id=NULL){
+        if($id){
+        // Update Product
+        $this->QueryUpdate=ProductInfo::find($id);
+        $this->ProductId=$this->QueryUpdate->id;
+        $this->code=$this->QueryUpdate->code;
+        $this->name=$this->QueryUpdate->name;
+        $this->short_description=$this->QueryUpdate->short_description;
+        $this->long_description=$this->QueryUpdate->long_description;
+        $this->regular_price=$this->QueryUpdate->regular_price;
+        $this->special_price=$this->QueryUpdate->special_price;
+        $this->wholesale_price=$this->QueryUpdate->wholesale_price;
+        $this->purchase_price=$this->QueryUpdate->purchase_price;
+        $this->discount=$this->QueryUpdate->discount;
+        $this->sub_sub_category_id=$this->QueryUpdate->sub_sub_category_id;
+        $this->brand_id=$this->QueryUpdate->brand_id;
+        $this->contact_id=$this->QueryUpdate->contact_id;
+        $this->low_alert=$this->QueryUpdate->low_alert;
+        $this->youtube_link=$this->QueryUpdate->youtube_link;
+        $this->meta_title=$this->QueryUpdate->meta_title;
+        $this->meta_description=$this->QueryUpdate->meta_description;
+        $this->meta_keyword=$this->QueryUpdate->meta_keyword;
+        $this->vat_id=$this->QueryUpdate->vat_id;
+        $this->status=$this->QueryUpdate->status;
+        $this->branch_id=1;
 
+        $i=0;
+        $j=0;
+        foreach($this->QueryUpdate->ProductProperties as $product){
+            if($product->size_id){
+               $this->selectedSizes[$i++]=$product->size_id;
+            }
+            if($product->color_id){
+                $this->selectedColors[$j++]=$product->color_id;
+             }
+        }
+        $this->selectedSizes=array_unique($this->selectedSizes);
+        $this->selectedColors=array_unique($this->selectedColors);
+        }
+        // Product Code
+        $this->code = 'P'.floor(time() - 999999999);
+    }
     public function productSave(){
 
         $this->validate([
@@ -84,7 +125,10 @@ class Product extends Component
         $Query->save();
 
         if($this->images){
-            ProductImage::whereProductId($Query->id)->delete();
+          if($this->ProductId){
+              // Delete Old Image
+            ProductImage::whereProductId($this->ProductId)->delete();
+          }
         //   Image Save
           foreach($this->images as $image){
             $QueryImage=new ProductImage();
@@ -97,6 +141,9 @@ class Product extends Component
           }
         }
 
+        if($this->ProductId){
+            $QueryProperty=ProductProperties::whereProductId($this->ProductId)->delete();
+        }
         // Product Property Save
         if($this->selectedColors && !$this->selectedSizes){
             foreach($this->selectedColors as $color){
@@ -106,7 +153,7 @@ class Product extends Component
                $QueryProperty->branch_id=1;
                $QueryProperty->user_id=Auth::user()->id;
                $QueryProperty->save();
-            }
+           }
         }elseif(!$this->selectedColors && $this->selectedSizes){
             foreach($this->selectedSizes as $size){
                 $QueryProperty=new ProductProperties();
@@ -137,9 +184,6 @@ class Product extends Component
         'text' => 'Product C/U Successfully',
     ]);
 
-    }
-    public function mount(){
-        $this->code = 'P'.floor(time() - 999999999);
     }
     public function render()
     {
