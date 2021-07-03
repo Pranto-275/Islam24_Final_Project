@@ -10,8 +10,8 @@
                         <div class="socials-w">
                           <h2>Follow socials</h2>
                           <ul class="socials">
-{{--                            <li class="facebook"><a href="@if($companyInfo) {{ $companyInfo->facebook_link }} @endif" target="_blank"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>--}}
-{{--                            <li class="youtube"><a href="@if($companyInfo) {{ $companyInfo->youtube_link }} @endif" target="_blank"><i class="fa fa-youtube-play"></i><span>Youtube</span></a></li>--}}
+                           <li class="facebook"><a href="@if($companyInfo) {{ $companyInfo->facebook_link }} @endif" target="_blank"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+                           <li class="youtube"><a href="@if($companyInfo) {{ $companyInfo->youtube_link }} @endif" target="_blank"><i class="fa fa-youtube-play"></i><span>Youtube</span></a></li>
                           </ul>
                         </div>
                     </div>
