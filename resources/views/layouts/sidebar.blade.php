@@ -59,10 +59,10 @@
                         <li><a href="{{route('setting.invoice-setting')}}">Invoice Setting</a></li>
                         <li><a href="{{route('setting.payment-method')}}">Payment Method</a></li>
                         <li><a href="{{route('setting.vat')}}">Vat Info</a></li>
+                        <li><a href="{{route('setting.coupon-code')}}">Coupon code</a></li>
                         <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
                         <li><a href="{{route('setting.slider')}}">Slider</a></li>
                         <li><a href="{{route('setting.point-policy')}}">Point Policy</a></li>
-
                     </ul>
                 </li>
 

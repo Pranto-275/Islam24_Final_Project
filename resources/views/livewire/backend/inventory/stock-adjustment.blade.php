@@ -168,6 +168,7 @@
                             <table class="table table-centered mb-0 table-nowrap">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th>Sl</th>
                                         <th>Date</th>
                                         <th>Type</th>
                                         <th>Contact</th>
@@ -195,19 +196,29 @@
                                             {{ $stockAdjustment->type }}
                                         </td>
                                         <td>
-                                            {{ $stockAdjustment->Contact->name }}
+                                            @if($stockAdjustment)
+                                            {{ $stockAdjustment->Contact['name'] }}
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $stockAdjustment->FromBranch->name }}
+                                            @if($stockAdjustment)
+                                            {{ $stockAdjustment->FromBranch['name']}}
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $stockAdjustment->ToBranch->name }}
+                                            @if($stockAdjustment)
+                                            {{ $stockAdjustment->ToBranch['name'] }}
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $stockAdjustment->FromWarehouse->name }}
+                                            @if($stockAdjustment)
+                                            {{ $stockAdjustment->FromWarehouse['name'] }}
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $stockAdjustment->ToWarehouse->name }}
+                                            @if($stockAdjustment)
+                                            {{ $stockAdjustment->ToWarehouse['name'] }}
+                                            @endif
                                         </td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" wire:click="editStockAdjustment({{$stockAdjustment->id}})"><i class="bx bx-edit font-size-18"></i></button>
