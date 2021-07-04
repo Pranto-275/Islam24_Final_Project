@@ -25,6 +25,8 @@ use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
+use App\Http\Livewire\Backend\Transaction\CustomerPayment;
+use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
 use App\Http\Livewire\Backend\Inventory\Purchase;
 use App\Http\Livewire\Backend\ProductInfo\Size;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
@@ -146,6 +148,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
         Route::get('payment', Payment::class)->name('payment');
+        Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
+        Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
     });
 
     Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
@@ -169,6 +173,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
         Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
+
+
         Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
         Route::get('sale-report', SaleReport::class)->name('sale-report');
         Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
@@ -179,6 +185,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
         Route::get('coupons-report', CouponsReport::class)->name('coupons-report');
         Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
+
+
     });
 
     Route::group(['prefix' => 'data', 'as' => 'data.'], function () {

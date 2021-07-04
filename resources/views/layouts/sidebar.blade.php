@@ -73,6 +73,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('transaction.payment')}}">Payment Info</a></li>
+                        <li><a href="{{route('transaction.customer-payment')}}">Customer Payment</a></li>
+                        <li><a href="{{route('transaction.customer-payment-report')}}">Customer Payment Report</a></li>
                     </ul>
                 </li>
                 <li>
@@ -105,6 +107,7 @@
                         <li><a href="{{route('report.supplier-ledger')}}">Supplier Ledger</a></li>
                         <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li>
                     </ul>
+
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

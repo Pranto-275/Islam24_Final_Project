@@ -76,21 +76,19 @@
                     <div class="table-responsive">
                         <table id="datatable-buttons" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
-
-                            <tr>
-                                <th>SL</th>
-                                <th>Date</th>
-                                <th>Customer Name</th>
-                                <th>Sale Code</th>
-                                <th>Sub Total</th>
-                                <th>Discount</th>
-                                <th>Shipping Charge</th>
-                                <th>Total</th>
-                                <th>Paid</th>
-                                <th>Due</th>
-                                <th>Branch</th>
-                            </tr>
-
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Date</th>
+                                    <th>Customer Name</th>
+                                    <th>Sale Code</th>
+                                    <th>Sub Total</th>
+                                    <th>Discount</th>
+                                    <th>Shipping Charge</th>
+                                    <th>Total</th>
+                                    <th>Paid</th>
+                                    <th>Due</th>
+                                    
+                                </tr>
                             </thead>
                             <tbody>
                                 <?php $i=0; $subTotal=0; $discount=0; $shipping_charge=0; $grand_total=0;$paid_amount=0;$due=0; ?>
@@ -128,26 +126,28 @@
                                         {{ $sale->due }}
                                         <?php $due += $sale->due ?>
                                     </td>
-                                    <td>
-                                        {{ $sale->Branch->name }}
-                                    </td>
+                                   
                                 </tr>
                                 @endforeach
-                            </tbody>
+                            </tbody> 
                             <thead>
                                 <tr>
-                                    <th colspan="6"><center>Total</center></th>
+                                    <th colspan="4"><center>Total</center></th>
+                                    
                                     <th>{{ $subTotal }}</th>
                                     <th>{{ $discount }}</th>
                                     <th>{{ $shipping_charge }}</th>
                                     <th>{{ $grand_total }}</th>
                                     <th>{{ $paid_amount }}</th>
                                     <th>{{ $due }}</th>
-                                    <th></th>
+                                    
+                                    
                                 </tr>
 
-                                </thead>
+                            </thead> 
+                           
                         </table>
+                       
                         
 
 

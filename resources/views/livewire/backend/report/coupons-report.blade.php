@@ -13,81 +13,79 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                <div wire:ignore class="table-responsive">
-                    <table id="datatable-buttons" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="search-box mr-2 mb-2 d-inline-block">
-                                <div class="position-relative">
-                                    <h4 class="card-title">Coupons Reports</h4>
+                    <div wire:ignore class="table-responsive">
+                        <table id="datatable-buttons" class="table table-striped table-bordered nowrap" style="border-collapse:collapse; border-spacing:0; width:100%;">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="search-box mr-2 mb-2 d-inline-block">
+                                        <div class="position-relative">
+                                            <h4 class="title">Coupons Report</h4>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <hr>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label for="basicpill-firstname-input">Start Date</label>
+                                            <input id="daterange" type="date" class="form-control" wire:model.lazy="start_date">
+                                            @error('Date') <span class="error">{{ $message }}</span>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label for="basicpill-firstname-input">End Date</label>
+                                            <input id="daterange" type="date" class="form-control" wire:model.lazy="end_date">
+                                            @error('Date') <span class="error">{{ $message }}</span>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label for="basicpill-firstname-input">Order Status</label>
+                                            <select type="text" name="Order" class="form-control" placeholder="Order">
+                                            <option value="">All Order</option>
+                                            @foreach($orders as $order)
+                                            <option value="{{ $order->id }}">{{ $order->name }}</option>
+                                            @endforeach
+                                            </select>
+                                            @error('Order') <span class="error">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label for="basicpill-firstname-input">Coupon Code</label>
+                                            <input class="form-control" wire:model.lazy="type">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                    <h4 style="text-align:center">Coupons Report</h4>
+                                    <h5 style="text-align:center">-----------to-----------</h5>
+                        
+
                     </div>
-                    <hr>
-                    
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">Start Date</label>
-                                <input id= "daterange" type="date" class="form-control" wire:model.lazy="start_date"/>
-                                @error('Date') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">End Date</label>
-                                <input id= "daterange" type="date" class="form-control" wire:model.lazy="end_date"/>
-                                @error('Date') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">Order Status</label>
-                                <select type="text" name="Order" class="form-control" placeholder="Order">
-                                    <option value="">All Order</option>
-                                    @foreach($orders as $order)
-                                    <option value="{{ $order->id }}">{{ $order->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('Order') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">Coupon Code</label>
-                                <input class="form-control" wire:model.lazy="type">
-                                    
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <hr>
-                    <h4 style="text-align:center">Coupons Report</h4>
-                    <h5 style="text-align:center">---------to---------</h5>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-12">
-            <!-- <div class="card">
-                <div class="card-body"> -->
-                    
+            <div class="col-xl-12">
+               <div class="card">
+                    <div class="card-body">
+                        <div wire:ignore class="table-responsive">
                             <thead>
-                            <tr>
-                                <th>Coupon Name</th>
-                                <th>Coupon Code</th>
-                                <th>Orders</th>
-                                <th>Total</th>
-                                <th></th>
-                                
-                            </tr>
+                                <tr>
+                                    <th>Coupon Name</th>
+                                    <th>Coupon Code</th>
+                                    <th>Orders</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
                             </thead>
-                            
+                        </div>
+
                         </table>
                     </div>
-                <!-- </div>
-            </div> -->
+               </div>
+            </div>
         </div>
     </div>
 </div>
