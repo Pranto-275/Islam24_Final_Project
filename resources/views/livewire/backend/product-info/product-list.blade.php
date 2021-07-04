@@ -55,22 +55,22 @@
                                                  <td>{{ $product->name }}</td>
                                                  <td>
                                                     @if($product->SubSubCategory)
-                                                      {{ $product->SubSubCategory->name }}
+                                                      @if($product->SubSubCategory) {{ $product->SubSubCategory->name }} @endif
                                                     @endif
                                                  </td>
                                                  <td>
                                                      @if($product->Brand)
-                                                         {{ $product->Brand->name }}
+                                                         @if($product->Brand) {{ $product->Brand->name }} @endif
                                                      @endif
                                                  </td>
                                                  <td>
-                                                     @foreach($product->ProductProperties as $color)
-                                                       {{ $color->Color->color_name }}
+                                                     @foreach($product->ProductProperties->unique('color_id') as $color)
+                                                       @if($color->Color) {{ $color->Color->name }} @endif
                                                      @endforeach
                                                  </td>
                                                  <td>
-                                                    @foreach($product->ProductProperties as $size)
-                                                      {{ $size->Size->size_name }}
+                                                    @foreach($product->ProductProperties->unique('size_id') as $size)
+                                                      @if($size->Size) {{ $size->Size->name }} @endif
                                                     @endforeach
 
                                                  </td>
