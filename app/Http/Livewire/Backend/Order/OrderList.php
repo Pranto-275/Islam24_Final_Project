@@ -12,6 +12,10 @@ class OrderList extends Component
     public function popupInvoice(){
         $this->emit('modal','popupInvoice');
     }
+
+    public function printInvoice(){
+        $this->emit('modal','printInvoice');
+    }
     public function render()
     {
         return view('livewire.backend.order.order-list',[

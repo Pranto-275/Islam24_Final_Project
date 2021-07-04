@@ -63,7 +63,6 @@
                         <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
                         <li><a href="{{route('setting.slider')}}">Slider</a></li>
                         <li><a href="{{route('setting.point-policy')}}">Point Policy</a></li>
-
                     </ul>
                 </li>
 

@@ -97,149 +97,93 @@
 
       {{--Invoice Modal goes here--}}
 
-        <div wire:ignore.self class="modal fade" id="popupInvoice" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+        <div class="modal fade exampleModal" id="popupInvoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title mt-0" id="myLargeModalLabel">Invoice Report</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form wire:submit.prevent="categorySave">
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row mb-2">
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-6">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="card">
-                                                                <div class="card-body m-0 p-0">
-                                                                    <div class="row">
-                                                                        <div class="col-12">
-                                                                            <div class="card">
-                                                                                <div class="card-body m-0 p-0">
-                                                                                    <div class="row mb-2">
-                                                                                        <div class="col-md-2"></div>
-                                                                                        <div class="col-md-8">
-                                                                                            <center>
-                                                                                                <img src="../../storage/photo/{{ Auth::user()->profile_photo_path }}" alt="Logo" style="width: 100px; height: 100px;" class="avatar-md rounded-circle img-thumbnail">
-                                                                                            </center>
-                                                                                            <h3 class="text-center">
-                                                                                                {{-- @if($profileSetting)
-                                                                                                 {{ $profileSetting->business_name }}
-                                                                                                @endif --}}
-                                                                                            </h3>
-                                                                                            <h6 class="text-center">
-                                                                                                {{-- @if($profileSetting)
-                                                                                                {{ $profileSetting->phone }}
-                                                                                               @endif --}}
-                                                                                            </h6>
-                                                                                            <p class="text-center">
-                                                                                                {{-- @if($profileSetting)
-                                                                                                {{ $profileSetting->address }}
-                                                                                               @endif --}}
-                                                                                            </p>
-                                                                                            <hr>
-                                                                                            <p><span class="font-weight-bold">Invoice</span><?php echo str_repeat('&nbsp;', 45); ?>:<?php echo str_repeat('&nbsp;', 60); ?>
-                                                                                                {{--                                                                        @if ($Invoice)--}}
-                                                                                                {{--                                                                            {{ $Invoice->code }}--}}
-                                                                                                {{--                                                                        @endif--}}
-                                                                                            </p>
-                                                                                            <p><span class="font-weight-bold">Date</span><?php echo str_repeat('&nbsp;', 50); ?>:<?php echo str_repeat('&nbsp;', 60); ?>
-                                                                                                {{--                                                                        @if ($Invoice)--}}
-                                                                                                {{--                                                                            {{ $Invoice->date }}--}}
-                                                                                                {{--                                                                        @endif--}}
-                                                                                            </p>
-                                                                                            <p><span class="font-weight-bold">Sales By</span>
-                                                                                                {{--                                                                        @if ($Invoice)--}}
-                                                                                                {{--                                                                            {{ $Invoice->User->name }}--}}
-                                                                                                {{--                                                                        @endif--}}
-                                                                                            </p>
+                    <div class="modal-body">
+                        <p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
+                        <p class="mb-4">Billing Name: <span class="text-primary">Neal Matthews</span></p>
 
-                                                                                            <div class="invoiceTable">
-                                                                                                <table class="table table-bordered mb-0">
-                                                                                                    <thead>
-                                                                                                    <tr>
-                                                                                                        <th><center>Item</center></th>
-                                                                                                        <th><center>Price</center></th>
-                                                                                                        <th><center>Quantity</center></th>
-                                                                                                        <th><center>Vat</center></th>
-                                                                                                        <th><center>Total</center></th>
-                                                                                                    </tr>
-                                                                                                    </thead>
-
-                                                                                                    <tbody>
-
-                                                                                                    <tr>
-                                                                                                        <th scope="row"><center></center></th>
-                                                                                                        <td>
-                                                                                                            <center>
-
-                                                                                                            </center>
-                                                                                                        </td>
-                                                                                                        <td>
-                                                                                                            <center>
-
-                                                                                                            </center>
-                                                                                                        </td>
-                                                                                                        <td><center> </center></td>
-                                                                                                        <td><center> </center></td>
-                                                                                                    </tr>
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                            </div>
-
-                                                                                            <p class="mt-2"><span class="font-weight-bold">Sub Total</span>
-                                                                                            </p>
-                                                                                            <p><span class="font-weight-bold">Total Vat</span>
-                                                                                            </p>
-                                                                                            <p><span class="font-weight-bold">Total Discount</span>
-                                                                                            </p>
-                                                                                            <p><span class="font-weight-bold">Shipping Charge</span>
-                                                                                            </p>
-
-
-                                                                                            <p><span class="font-weight-bold">Net Amount</span>
-                                                                                            </p>
-                                                                                            <p><span class="font-weight-bold">Paid Amount</span>
-                                                                                            </p>
-                                                                                            <p><span class="font-weight-bold">Due Amount Change Amount </span>
-                                                                                            </p>
-
-                                                                                            <p>Thank You For Shopping. Come again!!</p>
-
-                                                                                        </div>
-                                                                                        <div class="col-md-2"></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3"></div>
-                                            </div>
+                        <div class="table-responsive">
+                            <table class="table table-centered table-nowrap">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <div>
+                                            <img src="assets/images/product/img-7.png" alt="" class="avatar-sm">
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                                    </th>
+                                    <td>
+                                        <div>
+                                            <h5 class="text-truncate font-size-14">Wireless Headphone (Black)</h5>
+                                            <p class="text-muted mb-0">$ 225 x 1</p>
+                                        </div>
+                                    </td>
+                                    <td>$ 255</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <div>
+                                            <img src="assets/images/product/img-4.png" alt="" class="avatar-sm">
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <div>
+                                            <h5 class="text-truncate font-size-14">Hoodie (Blue)</h5>
+                                            <p class="text-muted mb-0">$ 145 x 1</p>
+                                        </div>
+                                    </td>
+                                    <td>$ 145</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h6 class="m-0 text-right">Sub Total:</h6>
+                                    </td>
+                                    <td>
+                                        $ 400
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h6 class="m-0 text-right">Shipping:</h6>
+                                    </td>
+                                    <td>
+                                        Free
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h6 class="m-0 text-right">Total:</h6>
+                                    </td>
+                                    <td>
+                                        $ 400
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="{{route('order.print-order')}}" class="btn btn-secondary">Print</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         @push('scripts')
             <script>
 

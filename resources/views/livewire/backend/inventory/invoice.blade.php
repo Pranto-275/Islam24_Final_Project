@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Date</label>
                                     <input class="form-control" type="date" wire:model.lazy="date" placeholder="Date">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    @error('date') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -127,7 +127,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Earn point</label>
                                     <input class="form-control" type="text" wire:model.lazy="earn_point" placeholder="Earn Point">
-                                    @error('discount') <span class="error">{{ $message }}</span> @enderror
+                                    @error('earn_point') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 

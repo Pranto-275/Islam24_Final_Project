@@ -31,6 +31,7 @@ use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Backend\Order\Order;
 use App\Http\Livewire\Backend\Order\OrderList;
+use App\Http\Livewire\Backend\Order\PrintOrder;
 use App\Http\Livewire\Backend\Report\StockReport;
 use App\Http\Livewire\Backend\Report\PurchaseReport;
 use App\Http\Livewire\Backend\Report\PurchaseDetailsReport;
@@ -142,7 +143,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'order',  'as' => 'order.'], function (){
         Route::get('order/{id?}', Order::class)->name('order');
-       Route::get('order-list', OrderList::class)->name('order-list');
+        Route::get('order-list', OrderList::class)->name('order-list');
+        Route::get('print-order', PrintOrder::class)->name('print-order');
     });
 
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
