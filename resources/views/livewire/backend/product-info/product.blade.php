@@ -171,9 +171,9 @@
                         <div class="col-md-4 mt-2">
                             Youtube Link
                         </div>
-                        <div class="col-md-8 mt-2">
+                        {{--<div class="col-md-8 mt-2">
                            <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="youtube_link" placeholder="Video Link"/>
-                        </div>
+                        </div>--}}
 
                       </div>
 
@@ -189,10 +189,10 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                {{--<div class="form-group">
                                     <label for="metatitle">Meta title</label>
                                     <input id="metatitle" name="productname" type="text" class="form-control" wire:model.lazy="meta_title">
-                                </div>
+                                </div>--}}
                                 <div class="form-group">
                                     <label for="metakeywords">Meta Keywords</label>
                                     <input id="metakeywords" name="manufacturername" type="text" class="form-control" wire:model.lazy="meta_keyword">

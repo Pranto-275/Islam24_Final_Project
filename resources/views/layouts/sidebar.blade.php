@@ -53,6 +53,7 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('setting.company')}}">Company Info</a></li>
                         <li><a href="{{route('setting.branch')}}">Branch</a></li>
                         <li><a href="{{route('setting.currency')}}">Currency</a></li>
                         <li><a href="{{route('setting.delivery-method')}}">Delivery Method</a></li>

@@ -32,10 +32,10 @@ class Product extends Component
     public $brand_id;
     public $contact_id;
     public $low_alert;
-    public $youtube_link;
-    public $meta_title;
-    public $meta_description;
-    public $meta_keyword;
+    //public $youtube_link;
+    //public $meta_title;
+    //public $meta_description;
+    //public $meta_keyword;
     public $vat_id;
     public $status;
 
@@ -74,10 +74,10 @@ class Product extends Component
         $Query->brand_id=$this->brand_id;
         $Query->contact_id=$this->contact_id;
         $Query->low_alert=$this->low_alert;
-        $Query->youtube_link=$this->youtube_link;
-        $Query->meta_title=$this->meta_title;
-        $Query->meta_description=$this->meta_description;
-        $Query->meta_keyword=$this->meta_keyword;
+        //$Query->youtube_link=$this->youtube_link;
+        //$Query->meta_title=$this->meta_title;
+        //$Query->meta_description=$this->meta_description;
+        //$Query->meta_keyword=$this->meta_keyword;
         $Query->vat_id=$this->vat_id;
         $Query->status=$this->status;
         $Query->branch_id=1;
