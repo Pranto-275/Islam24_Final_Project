@@ -43,11 +43,6 @@
                                      @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Product Name</label>
-                                    <input id="name" type="text" class="form-control" wire:model.lazy="name" placeholder="Name">
-                                    @error('name') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                                <div class="form-group">
                                     <label class="control-label">Sub-sub Category</label>
                                     <select class="form-control select2" wire:model.lazy="sub_sub_category_id">
                                         <option>Select</option>
@@ -56,6 +51,11 @@
                                         @endforeach
                                     </select>
                                     @error('sub_sub_category_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Product Name</label>
+                                    <input id="name" type="text" class="form-control" wire:model.lazy="name" placeholder="Name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Brand</label>
@@ -96,7 +96,7 @@
                                     <label for="low_alert">Low Alert</label>
                                     <input id="low_alert" type="number" step="any" class="form-control" wire:model.lazy="low_alert" placeholder="Low Alert">
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="control-label">Contact</label>
                                     <select class="select2 form-control" wire:model.lazy="contact_id">
                                         <option value="">Select</option>
@@ -104,7 +104,7 @@
                                            <option value="{{ $contact->id }}">{{ $contact->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
 
                             </div>
 
@@ -131,10 +131,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -174,9 +174,9 @@
                         <div class="col-md-4 mt-2">
                             Youtube Link
                         </div>
-                        {{--<div class="col-md-8 mt-2">
+                        <div class="col-md-8 mt-2">
                            <input type="text" class="form-control form-control-lg inputBox" wire:model.lazy="youtube_link" placeholder="Video Link"/>
-                        </div>--}}
+                        </div>
 
                       </div>
 

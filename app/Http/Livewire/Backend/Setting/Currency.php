@@ -15,7 +15,7 @@ class Currency extends Component
     public $in_word_surfix;
     public $in_word_prefix_position;
     public $in_word_surfix_position;
-    public $status;
+    public $is_active;
     public $CurrencyId=NULL;
 
     public function currencyEdit($id)
@@ -30,7 +30,7 @@ class Currency extends Component
         $this->in_word_surfix = $Query->in_word_surfix;
         $this->in_word_prefix_position = $Query->in_word_prefix_position;
         $this->in_word_surfix_position = $Query->in_word_surfix_position;
-        $this->status = $Query->status;
+        $this->is_active = $Query->is_active;
 		$this->emit('modal', 'currencyInfoModal');
     }
     public function currencyDelete($id)
@@ -48,14 +48,14 @@ class Currency extends Component
             'title' => 'required',
             'symbol' => 'required',
             'symbol_position' => 'required',
-            'status' => 'required',
+            'is_active' => 'required',
         ]);
 
         if ($this->CurrencyId) {
             $Query = CurrencyInfo::find($this->CurrencyId);
         } else {
             $Query = new CurrencyInfo();
-            $Query->user_id = Auth::id();
+            $Query->created_by = Auth::id();
         }
         $Query->code = $this->code;
         $Query->title = $this->title;
@@ -65,7 +65,7 @@ class Currency extends Component
         $Query->in_word_surfix = $this->in_word_surfix;
         $Query->in_word_prefix_position = $this->in_word_prefix_position;
         $Query->in_word_surfix_position = $this->in_word_surfix_position;
-        $Query->status = $this->status;
+        $Query->is_active = $this->is_active;
         $Query->branch_id = '1';
         $Query->save();
 

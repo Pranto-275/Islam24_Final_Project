@@ -94,10 +94,10 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                             </div>
@@ -154,12 +154,6 @@
                         title: 'Buy Amount',
                         data:  'min_buy_amount',
                         name:  'min_buy_amount'
-                    },
-
-                    {
-                        title: 'Status',
-                        data:  'status',
-                        name:  'status'
                     },
 
                     {

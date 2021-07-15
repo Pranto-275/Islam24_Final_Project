@@ -61,15 +61,36 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Branch Name</label>
-                                    <input class="form-control" type="text" wire:model.lazy="branch_name" placeholder="Branch Name">
-                                    @error('branch_name') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Branch</label>
+                                    <select class="form-control" wire:model.lazy="branch_id">
+                                       <option value="">--Select Branch--</option>
+                                       @foreach ($branches as $branch)
+                                           <option value="{{$branch->id}}">{{$branch->name}}</option>
+                                       @endforeach
+                                    </select>
+                                    @error('branch_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="address" placeholder="Address">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" type="text" wire:model.lazy="description" placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="is_active">
+                                        <option>Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                     @error('in_word_surfix_position') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -114,14 +135,19 @@
                     },
                     {
                         title: 'Branch Name',
-                        data:  'branch_name',
-                        name:  'branch_name'
+                        data:  'branch_id',
+                        name:  'branch_id'
                     },
                     {
                         title: 'Address',
                         data:  'address',
                         name:  'address'
                     },
+                    {
+                        title: 'Status',
+                        data:  'is_active',
+                        name:  'is_active'
+                },
                     {
                         title: 'Action',
                         data: 'action',

@@ -18,7 +18,7 @@ class CreateDeliveryMethodsTable extends Migration
             $table->string('code', 20);
             $table->string('name',200);
             $table->text('address');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->foreignId('branch_id');
             $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);

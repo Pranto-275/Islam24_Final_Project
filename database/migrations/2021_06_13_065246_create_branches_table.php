@@ -19,7 +19,6 @@ class CreateBranchesTable extends Migration
             $table->string('name',200)->nullable();
             $table->string('address',200)->nullable();
             $table->string('mobile',20)->nullable();
-            $table->foreignId('branch_id');
             $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();

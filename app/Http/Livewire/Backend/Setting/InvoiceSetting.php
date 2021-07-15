@@ -26,7 +26,7 @@ class InvoiceSetting extends Component
     public $is_paid_due_hide;
     public $is_memo_no_hide;
     public $is_chalan_no_hide;
-    public $user_id;
+    public $created_by;
     public $invoiceSetting_id;
     public $invoiceInfoDetails;
     public $branch_id;
@@ -39,15 +39,15 @@ class InvoiceSetting extends Component
             'type'              => 'required',
             'invoice_title'    => 'required',
         ]);
-        $this->invoiceInfoDetails          = InvoiceSettingInfo::whereUserId(Auth::user()->id)->first();
+        $this->invoiceInfoDetails          = InvoiceSettingInfo::whereCreatedBy(Auth::user()->id)->first();
         if($this->invoiceInfoDetails){
         $this->invoiceSetting_id    = $this->invoiceInfoDetails->id;
         }
         if ($this->invoiceSetting_id){
-            $Query = InvoiceSettingInfo::whereUserId(Auth::user()->id)->find($this->invoiceSetting_id);
+            $Query = InvoiceSettingInfo::whereUserCreatedBy(Auth::user()->id)->find($this->invoiceSetting_id);
         }else{
             $Query  = new InvoiceSettingInfo();
-            $Query->user_id    = Auth::user()->id;
+            $Query->created_by    = Auth::user()->id;
         }
         $Query->type                = $this->type;
         if($this->logo){
@@ -73,7 +73,7 @@ class InvoiceSetting extends Component
     }
 
     public function mount(){
-        $this->invoiceInfoDetails          = InvoiceSettingInfo::whereUserId(Auth::user()->id)->first();
+        $this->invoiceInfoDetails          = InvoiceSettingInfo::whereCreatedBy(Auth::user()->id)->first();
         if ($this->invoiceInfoDetails){
 
             $this->invoiceSetting_id    = $this->invoiceInfoDetails->id;

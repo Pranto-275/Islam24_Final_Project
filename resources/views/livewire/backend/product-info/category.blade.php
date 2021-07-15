@@ -66,7 +66,14 @@
                                                     {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
                                                     <input type="file" wire:model.lazy="image1" x-ref="image1">
-
+                                                    @if (!$image1)
+                                                    @if($QueryUpdate)
+                                                    <img src="{{ asset('storage/photo/'.$QueryUpdate->image1)}}"  style="height:30px; weight:30px;" alt="Image1" class="img-circle img-fluid">
+                                                    @endif
+                                                    @endif
+                                                    @if ($image1)
+                                                    <img src="{{ $image1->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    @endif
                                                     {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
                                                 </div>
                                             </div>
@@ -79,7 +86,14 @@
                                                     {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
                                                     <input type="file" wire:model.lazy="image2" x-ref="image2">
-
+                                                    @if (!$image2)
+                                                    @if($QueryUpdate)
+                                                    <img src="{{ asset('storage/photo/'.$QueryUpdate->image2)}}"  style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">
+                                                    @endif
+                                                    @endif
+                                                    @if ($image2)
+                                                    <img src="{{ $image2->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                                    @endif
                                                     {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
                                                 </div>
                                             </div>
@@ -88,10 +102,10 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="basicpill-lastname-input">Status</label>
-                                                <select class="form-control" wire:model.lazy="status">
+                                                <select class="form-control" wire:model.lazy="is_active">
                                                     <option value="">Select Status</option>
-                                                    <option value="Active">Active</option>
-                                                    <option value="Inactive">Inactive</option>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -142,9 +156,9 @@
                         name:  'name'
                     },
                     {
-                        title: 'Image1',
-                        data:  'image1',
-                        name:  'image1'
+                        title: 'Name',
+                        data:  'name',
+                        name:  'name'
                     },
                     {
                         title: 'Image2',
@@ -153,8 +167,8 @@
                     },
                     {
                         title: 'Status',
-                        data:  'status',
-                        name:  'status'
+                        data:  'is_active',
+                        name:  'is_active'
                     },
                     {
                         title: 'Action',

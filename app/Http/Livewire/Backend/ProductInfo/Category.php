@@ -15,7 +15,7 @@ class Category extends Component
     public $name;
     public $image1;
     public $image2;
-    public $status;
+    public $is_active;
     public $top_show;
     public $CategoryId=NULL;
     public $QueryUpdate=NULL;
@@ -25,7 +25,7 @@ class Category extends Component
         $this->CategoryId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
-        $this->status = $this->QueryUpdate->status;
+        $this->is_active = $this->QueryUpdate->is_active;
         $this->top_show = $this->QueryUpdate->top_show;
 
         $this->emit('modal', 'categoryModal');
@@ -54,7 +54,7 @@ class Category extends Component
             $Query = ProductInfoCategory::find($this->CategoryId);
         }else{
             $Query = new ProductInfoCategory();
-            $Query->user_id = Auth::user()->id;
+            $Query->created_by = Auth::user()->id;
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
@@ -67,7 +67,7 @@ class Category extends Component
             $Query->image2 = basename($path);
         }
         $Query->branch_id = 1;
-        $Query->status = $this->status;
+        $Query->is_active = $this->is_active;
         if($this->top_show){
            $Query->top_show = 1;
         }else{

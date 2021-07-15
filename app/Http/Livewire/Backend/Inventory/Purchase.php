@@ -52,7 +52,7 @@ class Purchase extends Component
     public $wholesale_price;
     public $purchase_price;
     public $low_alert;
-    public $status;
+    public $is_active;
     public $paymentMethodList = [];
     public $orderProductList = [];
     protected $listeners = [
@@ -230,7 +230,7 @@ class Purchase extends Component
         $Query->contact_id = $this->contact_id;
         $Query->old_sale_price = 123;
         $Query->vat_id = 1;
-        $Query->status = $this->status;
+        $Query->is_active = $this->is_active;
         $Query->user_id = Auth::user()->id;
         $Query->branch_id = 1;
         $Query->save();

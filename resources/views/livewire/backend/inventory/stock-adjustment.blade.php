@@ -40,7 +40,7 @@
                               <select class="form-control" wire:model.lazy="contact_id">
                                    <option value="">Select Contact</option>
                                    @foreach ($contacts as $contact)
-                                    <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                    <option value="{{ $contact->id }}">{{ $contact->first_name }} {{ $contact->first_name }}</option>
                                    @endforeach
                               </select>
                               @error('contact_id') <span class="error">{{ $message }}</span> @enderror
@@ -210,8 +210,8 @@
                                             {{ $stockAdjustment->ToWarehouse->name }}
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm" wire:click="editStockAdjustment({{$stockAdjustment->id}})"><i class="bx bx-edit font-size-18"></i></button>
-                                            <button class="btn btn-danger btn-sm" wire:click="deleteStockAdjustment({{$stockAdjustment->id}})"><i class="bx bx-window-close font-size-18"></i></button>
+                                            {{-- <button class="btn btn-primary btn-sm" wire:click="editStockAdjustment({{$stockAdjustment->id}})"><i class="bx bx-edit font-size-18"></i></button>
+                                            <button class="btn btn-danger btn-sm" wire:click="deleteStockAdjustment({{$stockAdjustment->id}})"><i class="bx bx-window-close font-size-18"></i></button> --}}
                                         </td>
                                     </tr>
                                     @endforeach

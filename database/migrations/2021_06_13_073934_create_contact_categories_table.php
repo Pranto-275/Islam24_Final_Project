@@ -20,7 +20,7 @@ class CreateContactCategoriesTable extends Migration
             $table->string('name', 191)->nullable();
             $table->foreignId('user_id');
             $table->foreignId('branch_id');
-            $table->enum('status', ['Active', 'Inactive'])->nullable();
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

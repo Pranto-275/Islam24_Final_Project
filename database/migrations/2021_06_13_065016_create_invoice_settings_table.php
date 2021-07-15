@@ -30,7 +30,7 @@ class CreateInvoiceSettingsTable extends Migration
             $table->boolean('is_chalan_no_hide')->nullable()->default(0);
             $table->foreignId('branch_id');
             $table->foreignId('created_by');
-            $table->boolean('is_active')->nullable()->default(1);
+            // $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

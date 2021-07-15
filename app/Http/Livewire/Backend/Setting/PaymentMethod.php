@@ -13,7 +13,7 @@ class PaymentMethod extends Component
     public $name;
     public $account_holder_name;
     public $account_no;
-    public $user_id;
+    public $created_by;
     public $branch_id;
     public $paymentMethod_id;
 
@@ -30,13 +30,13 @@ class PaymentMethod extends Component
             $Query  = PaymentMethodInfo::find($this->paymentMethod_id);
         }else{
             $Query           = new PaymentMethodInfo();
-            $Query->user_id  = Auth::user()->id;
+            $Query->created_by  = Auth::user()->id;
         }
 
       $Query->name                   = $this->name;
       $Query->account_holder_name    = $this->account_holder_name;
       $Query->account_no             = $this->account_no;
-      $Query->user_id                = Auth::user()->id;
+      $Query->created_by                = Auth::user()->id;
       $Query->branch_id              = 1;
       $Query->save();
       $this->reset();

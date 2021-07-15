@@ -15,7 +15,7 @@ class SubCategory extends Component
     public $image;
     public $description;
     public $category_id;
-    public $status;
+    public $is_active;
     public $QueryUpdate;
     public $SubCategoryId;
 
@@ -26,7 +26,7 @@ class SubCategory extends Component
         $this->name = $this->QueryUpdate->name;
         $this->description = $this->QueryUpdate->description;
         $this->category_id = $this->QueryUpdate->category_id;
-        $this->status = $this->QueryUpdate->status;
+        $this->is_active = $this->QueryUpdate->is_active;
 
         $this->emit('modal', 'SubCategoryModal');
     }
@@ -48,7 +48,7 @@ class SubCategory extends Component
             $Query = SubCategoryProductInfo::find($this->SubCategoryId);
         }else{
             $Query = new SubCategoryProductInfo();
-            $Query->user_id = Auth::user()->id;
+            $Query->created_by = Auth::user()->id;
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
@@ -59,7 +59,7 @@ class SubCategory extends Component
         $Query->description = $this->description;
         $Query->category_id = $this->category_id;
         $Query->branch_id = 1;
-        $Query->status = $this->status;
+        $Query->is_active = $this->is_active;
 
         $Query->save();
         $this->reset();

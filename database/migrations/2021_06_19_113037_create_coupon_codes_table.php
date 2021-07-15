@@ -20,7 +20,7 @@ class CreateCouponCodesTable extends Migration
             $table->enum('offer_type', ['Percentage', 'Amount'])->nullable();
             $table->double('amount', 20, 4)->nullable();
             $table->double('min_buy_amount', 20, 4)->nullable();
-            $table->enum('status', ['Active', 'Inactive']);
+            $table->boolean('is_active')->nullable()->default(1);
             $table->foreignId('user_id');
             $table->foreignId('branch_id');
             $table->timestamps();

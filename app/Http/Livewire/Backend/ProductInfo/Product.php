@@ -32,12 +32,12 @@ class Product extends Component
     public $brand_id;
     public $contact_id;
     public $low_alert;
-    //public $youtube_link;
-    //public $meta_title;
-    //public $meta_description;
-    //public $meta_keyword;
+    public $youtube_link;
+    public $meta_title;
+    public $meta_description;
+    public $meta_keyword;
     public $vat_id;
-    public $status;
+    public $is_active;
 
     public $images=[];
     public $selectedColors=[];
@@ -60,14 +60,14 @@ class Product extends Component
         $this->discount=$this->QueryUpdate->discount;
         $this->sub_sub_category_id=$this->QueryUpdate->sub_sub_category_id;
         $this->brand_id=$this->QueryUpdate->brand_id;
-        $this->contact_id=$this->QueryUpdate->contact_id;
+        // $this->contact_id=$this->QueryUpdate->contact_id;
         $this->low_alert=$this->QueryUpdate->low_alert;
         $this->youtube_link=$this->QueryUpdate->youtube_link;
         $this->meta_title=$this->QueryUpdate->meta_title;
         $this->meta_description=$this->QueryUpdate->meta_description;
         $this->meta_keyword=$this->QueryUpdate->meta_keyword;
         $this->vat_id=$this->QueryUpdate->vat_id;
-        $this->status=$this->QueryUpdate->status;
+        $this->is_active=$this->QueryUpdate->is_active;
         $this->branch_id=1;
 
         $i=0;
@@ -99,7 +99,7 @@ class Product extends Component
            $Query=ProductInfo::find($this->ProductId);
         }else{
            $Query=new ProductInfo();
-           $Query->user_id=Auth::user()->id;
+           $Query->created_by=Auth::user()->id;
         }
 
         $Query->code=$this->code;
@@ -113,14 +113,14 @@ class Product extends Component
         $Query->discount=$this->discount;
         $Query->sub_sub_category_id=$this->sub_sub_category_id;
         $Query->brand_id=$this->brand_id;
-        $Query->contact_id=$this->contact_id;
+        // $Query->contact_id=$this->contact_id;
         $Query->low_alert=$this->low_alert;
-        //$Query->youtube_link=$this->youtube_link;
-        //$Query->meta_title=$this->meta_title;
-        //$Query->meta_description=$this->meta_description;
-        //$Query->meta_keyword=$this->meta_keyword;
+        $Query->youtube_link=$this->youtube_link;
+        $Query->meta_title=$this->meta_title;
+        $Query->meta_description=$this->meta_description;
+        $Query->meta_keyword=$this->meta_keyword;
         $Query->vat_id=$this->vat_id;
-        $Query->status=$this->status;
+        $Query->is_active=$this->is_active;
         $Query->branch_id=1;
         $Query->save();
 
@@ -135,7 +135,7 @@ class Product extends Component
             $QueryImage->product_id=$Query->id;
             $path = $image->store('/public/photo');
             $QueryImage->image = basename($path);
-            $QueryImage->user_id=Auth::user()->id;
+            $QueryImage->created_by=Auth::user()->id;
             $QueryImage->branch_id=1;
             $QueryImage->save();
           }
@@ -151,7 +151,7 @@ class Product extends Component
                $QueryProperty->product_id=$Query->id;
                $QueryProperty->color_id=$color;
                $QueryProperty->branch_id=1;
-               $QueryProperty->user_id=Auth::user()->id;
+               $QueryProperty->created_by=Auth::user()->id;
                $QueryProperty->save();
            }
         }elseif(!$this->selectedColors && $this->selectedSizes){
@@ -160,7 +160,7 @@ class Product extends Component
                 $QueryProperty->product_id=$Query->id;
                 $QueryProperty->size_id=$size;
                 $QueryProperty->branch_id=1;
-                $QueryProperty->user_id=Auth::user()->id;
+                $QueryProperty->created_by=Auth::user()->id;
                 $QueryProperty->save();
              }
         }else{
@@ -171,7 +171,7 @@ class Product extends Component
                 $QueryProperty->size_id=$size;
                 $QueryProperty->color_id=$color;
                 $QueryProperty->branch_id=1;
-                $QueryProperty->user_id=Auth::user()->id;
+                $QueryProperty->created_by=Auth::user()->id;
                 $QueryProperty->save();
                 }
             }

@@ -11,6 +11,7 @@ class Branch extends Component
     public $name;
     public $mobile;
     public $address;
+    public $is_active;
     public $BranchId=NULL;
     public $QueryUpdate=NULL;
     public function branchEdit($id)
@@ -21,6 +22,7 @@ class Branch extends Component
         $this->name = $Query->name;
         $this->mobile = $Query->mobile;
         $this->address = $Query->address;
+        $this->is_active = $Query->is_active;
 		$this->emit('modal', 'branchInfoModal');
     }
     public function branchDelete($id)
@@ -41,12 +43,13 @@ class Branch extends Component
             $Query = BranchInfo::find($this->BranchId);
         } else {
             $Query = new BranchInfo();
-            $Query->user_id = Auth::id();
+            $Query->created_by = Auth::id();
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
         $Query->mobile = $this->mobile;
         $Query->address = $this->address;
+        $Query->is_active = $this->is_active;
         $Query->save();
         $this->reset();
         $this->branchInfoModal();

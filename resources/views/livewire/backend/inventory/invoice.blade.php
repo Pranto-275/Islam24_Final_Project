@@ -82,7 +82,7 @@
                                     <select class="form-control" wire:model.lazy="contact_id">
                                         <option value="">Select Contact Name</option>
                                         @foreach ($Contacts as $Contact)
-                                            <option value="{{ $Contact->id }}">{{ $Contact->name }}</option>
+                                            <option value="{{ $Contact->id }}">{{ $Contact->first_name }} {{ $Contact->last_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('contact_id') <span class="error">{{ $message }}</span> @enderror
@@ -164,13 +164,13 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            {{-- <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">User Name</label>
                                     <input class="form-control" type="text" wire:model.lazy="user_id" placeholder="User Name">
                                     @error('user_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -185,7 +185,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Status</label>
                                     <select class="form-control" wire:model.lazy="status">
