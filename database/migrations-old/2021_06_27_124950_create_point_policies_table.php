@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUnitsTable extends Migration
+class CreatePointPoliciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateUnitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('point_policies', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 191);
-            $table->string('name', 191);
-            $table->double('rate', 20, 4);
-            $table->foreignId('branch_id');
-            $table->foreignId('created_by');
-            $table->boolean('is_active')->nullable()->default(1);
+            $table->string('name')->nullable();
+            $table->double('amount', 20, 2)->nullable();
+            $table->double('point_value', 20, 2)->nullable();
+            $table->double('point_amount', 20, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +31,6 @@ class CreateUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('point_policies');
     }
 }

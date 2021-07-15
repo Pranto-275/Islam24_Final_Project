@@ -14,6 +14,7 @@ use App\Http\Livewire\Backend\ProductInfo\Product;
 use App\Http\Livewire\Backend\ProductInfo\SubCategory;
 use App\Http\Livewire\Backend\ProductInfo\SubSubCategory;
 use App\Http\Livewire\Backend\ProductInfo\Unit;
+use App\Http\Livewire\Backend\setting\CompanyInfo;
 use App\Http\Livewire\Backend\setting\Branch;
 use App\Http\Livewire\Backend\setting\Currency;
 use App\Http\Livewire\Backend\Setting\DeliveryMethod;
@@ -128,6 +129,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('stock-manager', StockManager::class)->name('stock-manager');
     });
     Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
+        Route::get('company', CompanyInfo::class)->name('company');
         Route::get('branch', Branch::class)->name('branch');
         Route::get('currency', Currency::class)->name('currency');
         Route::get('delivery-method', DeliveryMethod::class)->name('delivery-method');

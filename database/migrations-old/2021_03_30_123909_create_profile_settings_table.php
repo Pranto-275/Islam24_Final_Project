@@ -24,8 +24,8 @@ class CreateProfileSettingsTable extends Migration
 			$table->string('postal_code', 100)->nullable();
 			$table->string('city', 100)->nullable();
 			$table->string('country', 100)->nullable();
-			//$table->foreignId('user_id');
-            $table->foreignId('company_id');
+			$table->foreignId('user_id');
+            $table->foreignId('branch_id');
             $table->enum('status', ['Active','Inactive']);
 			$table->softDeletes();
             $table->timestamps();

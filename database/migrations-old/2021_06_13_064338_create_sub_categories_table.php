@@ -20,9 +20,9 @@ class CreateSubCategoriesTable extends Migration
             $table->text('image')->nullable();
             $table->text('description')->nullable();
             $table->foreignId('category_id');
+            $table->foreignId('user_id');
             $table->foreignId('branch_id');
-            $table->foreignId('created_by');
-            $table->boolean('is_active')->nullable()->default(1);
+            $table->enum('status', ['Active', 'Inactive'])->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
