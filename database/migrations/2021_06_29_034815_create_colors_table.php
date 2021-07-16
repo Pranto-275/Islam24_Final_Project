@@ -17,6 +17,9 @@ class CreateColorsTable extends Migration
             $table->id();
             $table->string('color_name', 191);
             $table->string('color_code', 191);
+            //$table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

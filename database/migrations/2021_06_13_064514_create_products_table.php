@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->double('discount', 20, 4)->default(0);
             $table->foreignId('sub_sub_category_id');
             $table->string('low_alert', 191);
+            $table->enum('barcode_generate_state', ['Bulk', 'Single']);
             //$table->text('youtube_link')->nullable();
             //$table->text('meta_title')->nullable();
             //$table->text('meta_description')->nullable();

@@ -17,10 +17,11 @@ class CreateSlidersTable extends Migration
             $table->id();
             $table->string('title', 100)->nullable();
             $table->text('image')->nullable();
-            $table->string('position', 100)->nullable();
-            $table->foreignId('user_id');
+            $table->string('description', 250)->nullable();
+            $table->string('position', 50)->nullable();
             $table->foreignId('branch_id');
-            $table->enum('status', ['Active', 'Inactive']);
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

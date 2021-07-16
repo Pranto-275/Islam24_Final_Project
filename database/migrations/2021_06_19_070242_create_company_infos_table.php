@@ -25,9 +25,9 @@ class CreateCompanyInfosTable extends Migration
             $table->text('logo')->nullable();
             $table->text('facebook_link')->nullable();
             $table->text('youtube_link')->nullable();
-            $table->foreignId('user_id');
             $table->foreignId('branch_id');
-            $table->enum('status', ['Active', 'Inactive']);
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
