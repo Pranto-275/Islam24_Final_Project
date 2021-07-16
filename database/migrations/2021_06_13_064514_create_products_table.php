@@ -17,8 +17,6 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('code', 191);
             $table->string('name', 191);
-            //$table->string('short_description', 191);
-            //$table->string('long_description', 191);
             $table->double('regular_price', 20, 4);
             $table->double('special_price', 20, 4);
             $table->double('wholesale_price', 20, 4);
@@ -27,11 +25,6 @@ class CreateProductsTable extends Migration
             $table->foreignId('sub_sub_category_id');
             $table->string('low_alert', 191);
             $table->enum('barcode_generate_state', ['Bulk', 'Single']);
-            //$table->text('youtube_link')->nullable();
-            //$table->text('meta_title')->nullable();
-            //$table->text('meta_description')->nullable();
-            //$table->text('meta_keyword')->nullable();
-            //$table->foreignId('contact_id')->nullable();
             $table->foreignId('vat_id')->nullable();
             $table->foreignId('branch_id');
             $table->foreignId('created_by');
