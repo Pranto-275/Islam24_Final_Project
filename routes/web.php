@@ -21,6 +21,8 @@ use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Transaction\Payment;
+use App\Http\Livewire\Frontend\SignIn;
+use App\Http\Livewire\Frontend\SignUp;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Frontend\ProductView;
@@ -51,7 +53,6 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::group(['prefix' => 'customer', 'middleware' => ['auth']], function () {
     Route::get('customer_login', Customer::class)->name('customer_login');
-
     Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
     Route::get('product_view/{id?}', ProductView::class)->name('product_view');
  });
@@ -59,6 +60,8 @@ Route::group(['prefix' => 'customer', 'middleware' => ['auth']], function () {
 Route::get('/', Home::class)->name('home');
 Route::get('product-view', ProductView::class)->name('product-view');
 Route::get('category', FrontEndCategory::class)->name('category');
+Route::get('sign-in', SignIn::class)->name('sign-in');
+Route::get('sign-up', SignUp::class)->name('sign-up');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('livewire.dashboard');

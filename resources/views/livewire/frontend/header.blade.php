@@ -23,30 +23,21 @@
                             </li>
                             <li>
                                 <div class="heder-top-guide">
-                                    <span>Quick Guide</span>
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown"
+                                        <button
                                             aria-haspopup="true" aria-expanded="false">
-                                            Help
+                                            অর্ডার করার নিয়ম
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                            <a class="dropdown-item" href="terms-conditios.html">Returns</a>
-                                            <a class="dropdown-item" href="terms-conditios.html">Privacy</a>
-                                            <a class="dropdown-item" href="terms-conditios.html">Terms</a>
-                                        </div>
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown"
+                                        <button
                                             aria-haspopup="true" aria-expanded="false">
-                                            Sell With Us
+                                            অর্ডার ট্র্যাক করুন
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                            <a class="dropdown-item" href="my-account.html">Seller Login</a>
-                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -57,9 +48,9 @@
                     <div class="header-top-right">
                         <ul>
                             <li>
-                                <a href=""><i class="flaticon-user"></i>প্রবেশ / নিবন্ধন</a>
+                                <a href="{{route('sign-up')}}"><i class="flaticon-user"></i>প্রবেশ / নিবন্ধন</a>
                                 <span>বা</span>
-                                <a href="">আমার একাউন্ট</a>
+                                <a href="{{route('sign-in')}}">আমার একাউন্ট</a>
                             </li>
                         </ul>
                     </div>
