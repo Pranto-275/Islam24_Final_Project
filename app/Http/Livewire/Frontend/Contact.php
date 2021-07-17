@@ -8,6 +8,7 @@ class Contact extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.contact');
+        return view('livewire.frontend.contact')
+        ->layout('layouts.front_end');
     }
 }
