@@ -8,882 +8,584 @@
     <x-slot name="header">
         Product View
     </x-slot>
-
-    <div class="main-container container">
-		<ul class="breadcrumb">
-			<li><a href="#"><i class="fa fa-home"></i></a></li>
-			<li><a href="#">Smartphone & Tablets</a></li>
-			<li><a href="#">Chicken swinesha</a></li>
-
-		</ul>
-
-		<div class="row">
-
-			<!--Left Part Start -->
-			<aside class="col-sm-4 col-md-3 content-aside" id="column-left">
-				<div class="module category-style">
-                	<h3 class="modtitle">Categories</h3>
-                	<div class="modcontent">
-                		<div class="box-category">
-                			<ul id="cat_accordion" class="list-group">
-                                @foreach($categories as $category)
-                				<li class="hadchild"><a href="category.html" class="cutom-parent">{{ $category->name }}</a>   <span class="button-view  fa fa-plus-square-o"></span>
-                					<ul style="display: block;">
-                                         @foreach ($category->SubCategory as $subCategory)
-
-                						<li><a href="category.html">{{ $subCategory->name }}</a></li>
-
-                                        @endforeach
-                					</ul>
-                				</li>
-                              @endforeach
-
-                				<li class=""><a href="category.html" class="cutom-parent">Health &amp; Beauty</a>  <span class="dcjq-icon"></span></li>
-                				<li class=""><a href="category.html" class="cutom-parent">Kids &amp; Babies</a>    <span class="dcjq-icon"></span></li>
-                				<li class=""><a href="category.html" class="cutom-parent">Sports</a>  <span class="dcjq-icon"></span></li>
-                				<li class=""><a href="category.html" class="cutom-parent">Home &amp; Garden</a><span class="dcjq-icon"></span></li>
-                				<li class=""><a href="category.html" class="cutom-parent">Wines &amp; Spirits</a>  <span class="dcjq-icon"></span></li>
-                			</ul>
-                		</div>
-
-
-                	</div>
-                </div>
-
-
-            	<div class="module product-simple">
-                    <h3 class="modtitle">
-                        <span>Latest products</span>
-                    </h3>
-                    <div class="modcontent">
-                        <div class="so-extraslider" >
-                            <!-- Begin extraslider-inner -->
-                            <div class=" extraslider-inner">
-                                <div class="item ">
-                                    <div class="product-layout item-inner style1 ">
-                                        <div class="item-image">
-                                            <div class="item-img-info">
-                                                <a href="#" target="_self" title="Mandouille short ">
-                                                    <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/1.jpg" alt="Mandouille short">
-                                                    </a>
-                                            </div>
-
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="item-title">
-                                                <a href="#" target="_self" title="Mandouille short">Mandouille short </a>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                            </div>
-                                            <div class="content_price price">
-                                                <span class="price-new product-price">$55.00 </span>&nbsp;&nbsp;
-
-                                                <span class="price-old">$76.00 </span>&nbsp;
-
-                                            </div>
-                                        </div>
-                                        <!-- End item-info -->
-                                        <!-- End item-wrap-inner -->
-                                    </div>
-                                    <!-- End item-wrap -->
-                                    <div class="product-layout item-inner style1 ">
-                                        <div class="item-image">
-                                            <div class="item-img-info">
-                                                <a href="#" target="_self" title="Xancetta bresao ">
-                                                        <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/2.jpg" alt="Xancetta bresao">
-                                                        </a>
-                                            </div>
-
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="item-title">
-                                                <a href="#" target="_self" title="Xancetta bresao">
-                                                            Xancetta bresao
-                                                        </a>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                            </div>
-                                            <div class="content_price price">
-                                                <span class="price-new product-price">$80.00 </span>&nbsp;&nbsp;
-
-                                                <span class="price-old">$89.00 </span>&nbsp;
-
-
-
-                                            </div>
-                                        </div>
-                                        <!-- End item-info -->
-                                        <!-- End item-wrap-inner -->
-                                    </div>
-                                    <!-- End item-wrap -->
-                                    <div class="product-layout item-inner style1 ">
-                                        <div class="item-image">
-                                            <div class="item-img-info">
-                                                <a href="#" target="_self" title="Sausage cowbee ">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/3.jpg" alt="Sausage cowbee">
-                                                            </a>
-                                            </div>
-
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="item-title">
-                                                <a href="#" target="_self" title="Sausage cowbee">
-                                                            Sausage cowbee
-                                                        </a>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                            </div>
-
-                                            <div class="content_price price">
-                                                <span class="price product-price">
-                                                                $66.00
-                                                            </span>
-                                            </div>
-                                        </div>
-                                        <!-- End item-info -->
-                                        <!-- End item-wrap-inner -->
-                                    </div>
-                                    <!-- End item-wrap -->
-                                    <div class="product-layout item-inner style1 ">
-                                        <div class="item-image">
-                                            <div class="item-img-info">
-                                                <a href="#" target="_self" title="Chicken swinesha ">
-                                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/4.jpg" alt="Chicken swinesha">
-                                                                </a>
-                                            </div>
-
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="item-title">
-                                                <a href="#" target="_self" title="Chicken swinesha">
-                                                            Chicken swinesha
-                                                        </a>
-                                            </div>
-                                            <div class="rating">
-                                                <span class="fa fa-stack">
-                                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                                </span>
-                                                <span class="fa fa-stack">
-                                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                                </span>
-                                                <span class="fa fa-stack">
-                                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                                </span>
-                                                <span class="fa fa-stack">
-                                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                                </span>
-                                                <span class="fa fa-stack">
-                                                                    <i class="fa fa-star fa-stack-2x"></i>
-                                                                </span>
-                                            </div>
-                                            <div class="content_price price">
-                                                <span class="price-new product-price">$45.00 </span>&nbsp;&nbsp;
-
-                                                <span class="price-old">$56.00 </span>&nbsp;
-
-
-
-                                            </div>
-                                        </div>
-                                        <!-- End item-info -->
-                                        <!-- End item-wrap-inner -->
-                                    </div>
-                                    <!-- End item-wrap -->
-                                </div>
+        <!-- main-area -->
+        <main>
+            <!-- breadcrumb-area -->
+            <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content text-center">
+                                <h2>Shop Single</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Shop Details</li>
+                                    </ol>
+                                </nav>
                             </div>
-                            <!--End extraslider-inner -->
                         </div>
                     </div>
                 </div>
+            </section>
+            <!-- breadcrumb-area-end -->
 
-
-                <div class="module banner-left hidden-xs ">
-                	<div class="banner-sidebar banners">
-                      <div>
-                        <a title="Banner Image" href="#">
-                          <img src="{{ asset('supermarke/') }}/image/catalog/banners/banner-sidebar.jpg" alt="Banner Image">
-                        </a>
-                      </div>
+            <!-- shop-details-area -->
+            <section class="shop-details-area pt-100 pb-100">
+                <div class="container">
+                    <div class="row mb-95">
+                        <div class="col-xl-7 col-lg-6">
+                            <div class="shop-details-nav-wrap">
+                                <div class="shop-details-nav">
+                                    <div class="shop-nav-item">
+                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom01.jpg" alt="">
+                                    </div>
+                                    <div class="shop-nav-item">
+                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom02.jpg" alt="">
+                                    </div>
+                                    <div class="shop-nav-item">
+                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom03.jpg" alt="">
+                                    </div>
+                                    <div class="shop-nav-item">
+                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom04.jpg" alt="">
+                                    </div>
+                                    <div class="shop-nav-item">
+                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom03.jpg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shop-details-img-wrap">
+                                <div class="shop-details-active">
+                                    <div class="shop-details-img">
+                                        <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
+                                    </div>
+                                    <div class="shop-details-img">
+                                        <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
+                                    </div>
+                                    <div class="shop-details-img">
+                                        <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
+                                    </div>
+                                    <div class="shop-details-img">
+                                        <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
+                                    </div>
+                                    <div class="shop-details-img">
+                                        <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-6">
+                            <div class="shop-details-content">
+                                <span class="stock-info">In Stock</span>
+                                <h2>The Christina Fashion</h2>
+                                <div class="shop-details-review">
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span>- 3 Customer Reviews</span>
+                                </div>
+                                <div class="shop-details-price">
+                                    <h2>$29.00 <del>$49.00</del></h2>
+                                </div>
+                                <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining</p>
+                                <div class="product-details-size mb-40">
+                                    <span>Size : </span>
+                                    <a href="#">Guide</a>
+                                    <a href="#">Can't Find Your Size?</a>
+                                    <ul>
+                                        <li><a href="#">XXS</a></li>
+                                        <li><a href="#">XS</a></li>
+                                        <li><a href="#">s</a></li>
+                                        <li><a href="#">M</a></li>
+                                        <li><a href="#">L</a></li>
+                                    </ul>
+                                </div>
+                                <div class="perched-info">
+                                    <div class="cart-plus">
+                                        <form action="#">
+                                            <div class="cart-plus-minus">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <a href="#" class="btn add-card-btn">ADD TO CART</a>
+                                </div>
+                                <div class="shop-details-bottom">
+                                    <h5><a href="#"><i class="far fa-heart"></i> Add To Wishlist</a></h5>
+                                    <ul>
+                                        <li>
+                                            <span>Tag : </span>
+                                            <a href="#">clothing</a>
+                                        </li>
+                                        <li>
+                                            <span>CATEGORIES :</span>
+                                            <a href="#">women's,</a>
+                                            <a href="#">bikini,</a>
+                                            <a href="#">tops for,</a>
+                                            <a href="#">large bust</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product-desc-wrap mb-100">
+                                <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
+                                            aria-selected="true">Product Details</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="val-tab" data-toggle="tab" href="#val" role="tab" aria-controls="val"
+                                            aria-selected="false">Viewers Also Like</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="looks-tab" data-toggle="tab" href="#looks" role="tab" aria-controls="looks"
+                                            aria-selected="false">Looks</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
+                                            aria-selected="false">Product Reviews</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="qa-tab" data-toggle="tab" href="#qa" role="tab" aria-controls="qa"
+                                            aria-selected="false">Q&A</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">Product Details</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-4">
+                                                    <div class="product-desc-img">
+                                                        <img src="{{ URL::asset('venam/') }}/img/product/desc_img.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-8">
+                                                    <h5 class="small-title">The Christina Fashion</h5>
+                                                    <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
+                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    <ul class="product-desc-list">
+                                                        <li>65% poly, 35% rayon</li>
+                                                        <li>Hand wash cold</li>
+                                                        <li>Partially lined</li>
+                                                        <li>Hidden front button closure with keyhole accents</li>
+                                                        <li>Button cuff sleeves</li>
+                                                        <li>Made in USA</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="val" role="tabpanel" aria-labelledby="val-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">Product Details</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-4">
+                                                    <div class="product-desc-img">
+                                                        <img src="{{ URL::asset('venam/') }}/img/product/desc_img.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-8">
+                                                    <h5 class="small-title">The Christina Fashion</h5>
+                                                    <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
+                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    <ul class="product-desc-list">
+                                                        <li>65% poly, 35% rayon</li>
+                                                        <li>Hand wash cold</li>
+                                                        <li>Partially lined</li>
+                                                        <li>Hidden front button closure with keyhole accents</li>
+                                                        <li>Button cuff sleeves</li>
+                                                        <li>Made in USA</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="looks" role="tabpanel" aria-labelledby="looks-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">Product Details</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-4">
+                                                    <div class="product-desc-img">
+                                                        <img src="{{ URL::asset('venam/') }}/img/product/desc_img.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-8">
+                                                    <h5 class="small-title">The Christina Fashion</h5>
+                                                    <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
+                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    <ul class="product-desc-list">
+                                                        <li>65% poly, 35% rayon</li>
+                                                        <li>Hand wash cold</li>
+                                                        <li>Partially lined</li>
+                                                        <li>Hidden front button closure with keyhole accents</li>
+                                                        <li>Button cuff sleeves</li>
+                                                        <li>Made in USA</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">Product Details</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-4">
+                                                    <div class="product-desc-img">
+                                                        <img src="{{ URL::asset('venam/') }}/img/product/desc_img.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-8">
+                                                    <h5 class="small-title">The Christina Fashion</h5>
+                                                    <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
+                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    <ul class="product-desc-list">
+                                                        <li>65% poly, 35% rayon</li>
+                                                        <li>Hand wash cold</li>
+                                                        <li>Partially lined</li>
+                                                        <li>Hidden front button closure with keyhole accents</li>
+                                                        <li>Button cuff sleeves</li>
+                                                        <li>Made in USA</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="qa" role="tabpanel" aria-labelledby="qa-tab">
+                                        <div class="product-desc-content">
+                                            <h4 class="title">Product Details</h4>
+                                            <div class="row">
+                                                <div class="col-xl-3 col-md-4">
+                                                    <div class="product-desc-img">
+                                                        <img src="{{ URL::asset('venam/') }}/img/product/desc_img.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-9 col-md-8">
+                                                    <h5 class="small-title">The Christina Fashion</h5>
+                                                    <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
+                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    <ul class="product-desc-list">
+                                                        <li>65% poly, 35% rayon</li>
+                                                        <li>Hand wash cold</li>
+                                                        <li>Partially lined</li>
+                                                        <li>Hidden front button closure with keyhole accents</li>
+                                                        <li>Button cuff sleeves</li>
+                                                        <li>Made in USA</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shop-details-add mb-95">
+                                <a href="#"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_add.jpg" alt=""></a>
+                            </div>
+                            <div class="related-product-wrap pb-95">
+                                <div class="deal-day-top">
+                                    <div class="deal-day-title">
+                                        <h4 class="title">Viewers Also Liked</h4>
+                                    </div>
+                                    <div class="related-slider-nav">
+                                        <div class="slider-nav"></div>
+                                    </div>
+                                </div>
+                                <div class="row related-product-active">
+                                    <div class="col-xl-3">
+                                        <div class="exclusive-item exclusive-item-three text-center">
+                                            <div class="exclusive-item-thumb">
+                                                <a href="shop-details.html">
+                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img01.jpg" alt="">
+                                                    <img class="overlay-product-thumb" src="img/product/t_exclusive_product01.jpg" alt="">
+                                                </a>
+                                                <ul class="action">
+                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="exclusive-item-content">
+                                                <h5><a href="shop-details.html">Farfetch Mulberry Belted</a></h5>
+                                                <div class="exclusive--item--price">
+                                                    <del class="old-price">$69.00</del>
+                                                    <span class="new-price">$58.00</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <div class="exclusive-item exclusive-item-three text-center">
+                                            <div class="exclusive-item-thumb">
+                                                <a href="shop-details.html">
+                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img02.jpg" alt="">
+                                                    <img class="overlay-product-thumb" src="img/product/td_product_img05.jpg" alt="">
+                                                </a>
+                                                <ul class="action">
+                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="exclusive-item-content">
+                                                <h5><a href="shop-details.html">Luxury Fashion Bag</a></h5>
+                                                <div class="exclusive--item--price">
+                                                    <del class="old-price">$69.00</del>
+                                                    <span class="new-price">$29.00</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <div class="exclusive-item exclusive-item-three text-center">
+                                            <div class="exclusive-item-thumb">
+                                                <a href="shop-details.html">
+                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img03.jpg" alt="">
+                                                    <img class="overlay-product-thumb" src="img/product/t_exclusive_product04.jpg" alt="">
+                                                </a>
+                                                <ul class="action">
+                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="exclusive-item-content">
+                                                <h5><a href="shop-details.html">Men's Lathers Jacket</a></h5>
+                                                <div class="exclusive--item--price">
+                                                    <del class="old-price">$69.00</del>
+                                                    <span class="new-price">$58.00</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <div class="exclusive-item exclusive-item-three text-center">
+                                            <div class="exclusive-item-thumb">
+                                                <a href="shop-details.html">
+                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img04.jpg" alt="">
+                                                    <img class="overlay-product-thumb" src="img/product/td_product_img05.jpg" alt="">
+                                                </a>
+                                                <ul class="action">
+                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="exclusive-item-content">
+                                                <h5><a href="shop-details.html">Women Brand T-shirt</a></h5>
+                                                <div class="exclusive--item--price">
+                                                    <del class="old-price">$49.00</del>
+                                                    <span class="new-price">$21.00</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3">
+                                        <div class="exclusive-item exclusive-item-three text-center">
+                                            <div class="exclusive-item-thumb">
+                                                <a href="shop-details.html">
+                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img02.jpg" alt="">
+                                                    <img class="overlay-product-thumb" src="img/product/td_product_img05.jpg" alt="">
+                                                </a>
+                                                <ul class="action">
+                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
+                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="exclusive-item-content">
+                                                <h5><a href="shop-details.html">Luxury Fashion Bag</a></h5>
+                                                <div class="exclusive--item--price">
+                                                    <del class="old-price">$69.00</del>
+                                                    <span class="new-price">$29.00</span>
+                                                </div>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-reviews-wrap">
+                                <div class="deal-day-top">
+                                    <div class="deal-day-title">
+                                        <h4 class="title">Product Reviews</h4>
+                                    </div>
+                                </div>
+                                <div class="reviews-count-title">
+                                    <h5 class="title">3 review for Pouch Pocket Jacket</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="product-review-list blog-comment">
+                                            <ul>
+                                                <li>
+                                                    <div class="single-comment">
+                                                        <div class="comment-avatar-img">
+                                                            <img src="{{ URL::asset('venam/') }}/img/product/review_author_thumb01.jpg" alt="img">
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            <div class="comment-avatar-info">
+                                                                <h5>Emaliy Watson <span class="comment-date"> - November 13, 2020</span></h5>
+                                                                <div class="rating">
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining.</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="single-comment">
+                                                        <div class="comment-avatar-img">
+                                                            <img src="{{ URL::asset('venam/') }}/img/product/review_author_thumb02.jpg" alt="img">
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            <div class="comment-avatar-info">
+                                                                <h5>Tomas Alexzender <span class="comment-date"> - November 13, 2020</span></h5>
+                                                                <div class="rating">
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining.</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="single-comment">
+                                                        <div class="comment-avatar-img">
+                                                            <img src="{{ URL::asset('venam/') }}/img/product/review_author_thumb03.jpg" alt="img">
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            <div class="comment-avatar-info">
+                                                                <h5>Rana Watson <span class="comment-date"> - November 13, 2020</span></h5>
+                                                                <div class="rating">
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining.</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="single-comment">
+                                                        <div class="comment-avatar-img">
+                                                            <img src="{{ URL::asset('venam/') }}/img/product/review_author_thumb04.jpg" alt="img">
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            <div class="comment-avatar-info">
+                                                                <h5>Emaliy Watson <span class="comment-date"> - November 13, 2020</span></h5>
+                                                                <div class="rating">
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining.</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="product-review-form">
+                                            <p>Your email address will not be published. Required fields are marked *</p>
+                                            <div class="rising-star mb-40">
+                                                <h5>Your Rating</h5>
+                                                <div class="rising-rating"></div>
+                                            </div>
+                                            <form action="#">
+                                                <div class="form-grp">
+                                                    <label for="message">YOUR REVIEW *</label>
+                                                    <textarea name="message" id="message"></textarea>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-grp">
+                                                            <label for="uea">YOUR NAME *</label>
+                                                            <input type="text" id="uea">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-grp">
+                                                            <label for="email">YOUR Email *</label>
+                                                            <input type="email" id="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn">SUBMIT</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </aside>
-            <!--Left Part End -->
-
-			<!--Middle Part Start-->
-			<div id="content" class="col-md-9 col-sm-8">
-
-				<div class="product-view row">
-					<div class="left-content-product">
-
-						<div class="content-product-left class-honizol col-md-5 col-sm-12 col-xs-12">
-							<div class="large-image  ">
-								<img itemprop="image" class="product-image-zoom" src="{{ asset('storage/photo/'.$productMainImage->image) }}"  title="Chicken swinesha" alt="Chicken swinesha">
-							</div>
-							<a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
-
-							<div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                                @foreach ($productImages as $productImage)
-								<a data-index="0" class="img thumbnail " data-image="image/catalog/demo/product/fashion/1.jpg" title="Chicken swinesha">
-									<img src="{{ asset('storage/photo/'.$productImage->image) }}" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
-                                @endforeach
-								{{-- <a data-index="1" class="img thumbnail " data-image="image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/2.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
-								<a data-index="2" class="img thumbnail " data-image="image/catalog/demo/product/fashion/3.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/3.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
-								<a data-index="3" class="img thumbnail " data-image="image/catalog/demo/product/fashion/4.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/4.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a>
-								<a data-index="4" class="img thumbnail " data-image="image/catalog/demo/product/fashion/5.jpg" title="Chicken swinesha">
-									<img src="{{ asset('supermarke/') }}/image/catalog/demo/product/fashion/5.jpg" title="Chicken swinesha" alt="Chicken swinesha">
-								</a> --}}
-							</div>
-
-						</div>
-
-						<div class="content-product-right col-md-7 col-sm-12 col-xs-12">
-							<div class="title-product">
-								<h1>Chicken swinesha</h1>
-							</div>
-							<!-- Review ---->
-							<div class="box-review form-group">
-								<div class="ratings">
-									<div class="rating-box">
-										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-										<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-									</div>
-								</div>
-
-								<a class="reviews_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">0 reviews</a>	|
-								<a class="write_review_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
-							</div>
-
-							<div class="product-label form-group">
-								<div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-									<span class="price-new" itemprop="price">$114.00</span>
-									<span class="price-old">$122.00</span>
-								</div>
-								<div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
-							</div>
-
-							<div class="product-box-desc">
-								<div class="inner-box-desc">
-									<div class="price-tax"><span>Ex Tax:</span> $60.00</div>
-									<div class="reward"><span>Price in reward points:</span> 400</div>
-									<div class="brand"><span>Brand:</span><a href="#">Apple</a>		</div>
-									<div class="model"><span>Product Code:</span> Product 15</div>
-									<div class="reward"><span>Reward Points:</span> 100</div>
-								</div>
-							</div>
-
-
-							<div id="product">
-								<h4>Available Options</h4>
-								<div class="image_option_type form-group required">
-									<label class="control-label">Colors</label>
-									<ul class="product-options clearfix"id="input-option231">
-										<li class="radio">
-											<label>
-												<input class="image_radio" type="radio" name="option[231]" value="33">
-												<img src="{{ asset('supermarke/') }}/image/demo/colors/blue.jpg" data-original-title="blue +$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-												<label> </label>
-											</label>
-										</li>
-										<li class="radio">
-											<label>
-												<input class="image_radio" type="radio" name="option[231]" value="34">
-												<img src="{{ asset('supermarke/') }}/image/demo/colors/brown.jpg" data-original-title="brown -$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-												<label> </label>
-											</label>
-										</li>
-										<li class="radio">
-											<label>
-												<input class="image_radio" type="radio" name="option[231]" value="35"> <img src="{{ asset('supermarke/') }}/image/demo/colors/green.jpg"
-												data-original-title="green +$12.00" class="img-thumbnail icon icon-color">				<i class="fa fa-check"></i>
-												<label> </label>
-											</label>
-										</li>
-										<li class="selected-option">
-										</li>
-									</ul>
-								</div>
-
-								<div class="box-checkbox form-group required">
-									<label class="control-label">Checkbox</label>
-									<div id="input-option232">
-										<div class="checkbox">
-											<label for="checkbox_1"><input type="checkbox" name="option[232][]" value="36" id="checkbox_1"> Checkbox 1 (+$12.00)</label>
-										</div>
-										<div class="checkbox">
-											<label for="checkbox_2"><input type="checkbox" name="option[232][]" value="36" id="checkbox_2"> Checkbox 2 (+$36.00)</label>
-										</div>
-										<div class="checkbox">
-											<label for="checkbox_3"><input type="checkbox" name="option[232][]" value="36" id="checkbox_3"> Checkbox 3 (+$24.00)</label>
-										</div>
-										<div class="checkbox">
-											<label for="checkbox_4"><input type="checkbox" name="option[232][]" value="36" id="checkbox_4"> Checkbox 4 (+$48.00)</label>
-										</div>
-									</div>
-								</div>
-
-								<div class="form-group box-info-product">
-									<div class="option quantity">
-										<div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
-											<label>Qty</label>
-											<input class="form-control" type="text" name="quantity"
-											value="1">
-											<input type="hidden" name="product_id" value="50">
-											<span class="input-group-addon product_quantity_down">−</span>
-											<span class="input-group-addon product_quantity_up">+</span>
-										</div>
-									</div>
-									<div class="cart">
-										<input type="button" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" onclick="cart.add('42', '1');" data-original-title="Add to Cart">
-									</div>
-									<div class="add-to-links wish_comp">
-										<ul class="blank list-inline">
-											<li class="wishlist">
-												<a class="icon" data-toggle="tooltip" title=""
-												onclick="wishlist.add('50');" data-original-title="Add to Wish List"><i class="fa fa-heart"></i>
-												</a>
-											</li>
-											<li class="compare">
-												<a class="icon" data-toggle="tooltip" title=""
-												onclick="compare.add('50');" data-original-title="Compare this Product"><i class="fa fa-exchange"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-
-								</div>
-
-							</div>
-							<!-- end box info product -->
-
-						</div>
-
-					</div>
-				</div>
-				<!-- Product Tabs -->
-				<div class="producttab ">
-					<div class="tabsslider  vertical-tabs col-xs-12">
-						<ul class="nav nav-tabs col-lg-2 col-sm-3">
-							<li class="active"><a data-toggle="tab" href="#tab-1">Description</a></li>
-							<li class="item_nonactive"><a data-toggle="tab" href="#tab-review">Reviews (1)</a></li>
-							<li class="item_nonactive"><a data-toggle="tab" href="#tab-4">Tags</a></li>
-							<li class="item_nonactive"><a data-toggle="tab" href="#tab-5">Custom Tab</a></li>
-						</ul>
-						<div class="tab-content col-lg-10 col-sm-9 col-xs-12">
-							<div id="tab-1" class="tab-pane fade active in">
-								<p>
-									The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit to what you can achieve. <br>
-									<br>
-									The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it's designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. <br>
-									<br>
-									Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple's ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. <br>
-									<br>
-									Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. <br>
-									<br>
-									The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.<br>
-									</p>
-								<h3>
-									Features:</h3>
-								<p>
-									Unrivaled display performance</p>
-								<ul>
-									<li>
-										30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.</li>
-									<li>
-										Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.</li>
-									<li>
-										Wide-format design for simultaneous display of two full pages of text and graphics.</li>
-									<li>
-										Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks</li>
-									<li>
-										Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.</li>
-									<li>
-										Lightning-fast pixel response for full-motion digital video playback.</li>
-									<li>
-										Support for 16.7 million saturated colors, for use in all graphics-intensive applications.</li>
-								</ul>
-								<p>
-									Simple setup and operation</p>
-								<ul>
-									<li>
-										Single cable with elegant breakout for connection to DVI, USB and FireWire ports</li>
-									<li>
-										Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.</li>
-									<li>
-										Two FireWire 400 ports to support iSight and other desktop peripherals</li>
-								</ul>
-								<p>
-									Sleek, elegant design</p>
-								<ul>
-									<li>
-										Huge virtual workspace, very small footprint.</li>
-									<li>
-										Narrow Bezel design to minimize visual impact of using dual displays</li>
-									<li>
-										Unique hinge design for effortless adjustment</li>
-									<li>
-										Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)</li>
-								</ul>
-
-
-							</div>
-							<div id="tab-review" class="tab-pane fade">
-								<form>
-									<div id="review">
-										<table class="table table-striped table-bordered">
-											<tbody>
-												<tr>
-													<td style="width: 50%;"><strong>Super Administrator</strong></td>
-													<td class="text-right">29/07/2015</td>
-												</tr>
-												<tr>
-													<td colspan="2">
-														<p>Best this product opencart</p>
-														<div class="ratings">
-															<div class="rating-box">
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-															</div>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<div class="text-right"></div>
-									</div>
-									<h2 id="review-title">Write a review</h2>
-									<div class="contacts-form">
-										<div class="form-group"> <span class="icon icon-user"></span>
-											<input type="text" name="name" class="form-control" value="Your Name" onblur="if (this.value == '') {this.value = 'Your Name';}" onfocus="if(this.value == 'Your Name') {this.value = '';}">
-										</div>
-										<div class="form-group"> <span class="icon icon-bubbles-2"></span>
-											<textarea class="form-control" name="text" onblur="if (this.value == '') {this.value = 'Your Review';}" onfocus="if(this.value == 'Your Review') {this.value = '';}">Your Review</textarea>
-										</div>
-										<span style="font-size: 11px;"><span class="text-danger">Note:</span>						HTML is not translated!</span>
-
-										<div class="form-group">
-										 <b>Rating</b> <span>Bad</span>&nbsp;
-										<input type="radio" name="rating" value="1"> &nbsp;
-										<input type="radio" name="rating"
-										value="2"> &nbsp;
-										<input type="radio" name="rating"
-										value="3"> &nbsp;
-										<input type="radio" name="rating"
-										value="4"> &nbsp;
-										<input type="radio" name="rating"
-										value="5"> &nbsp;<span>Good</span>
-
-										</div>
-										<div class="buttons clearfix"><a id="button-review" class="btn buttonGray">Continue</a></div>
-									</div>
-								</form>
-							</div>
-							<div id="tab-4" class="tab-pane fade">
-								<a href="#">Monitor</a>,
-								<a href="#">Apple</a>
-							</div>
-							<div id="tab-5" class="tab-pane fade">
-								<h3 class="custom-color">Take a trivial example which of us ever undertakes</h3>
-								<p>Lorem ipsum dolor sit amet, consetetur
-									sadipscing elitr, sed diam nonumy eirmod
-									tempor invidunt ut labore et dolore
-									magna aliquyam erat, sed diam voluptua.
-									At vero eos et accusam et justo duo
-									dolores et ea rebum. Stet clita kasd
-									gubergren, no sea takimata sanctus est
-									Lorem ipsum dolor sit amet. Lorem ipsum
-									dolor sit amet, consetetur sadipscing
-									elitr, sed diam nonumy eirmod tempor
-									invidunt ut labore et dolore magna aliquyam
-									erat, sed diam voluptua. </p>
-								<p>At vero eos et accusam et justo duo dolores
-									et ea rebum. Stet clita kasd gubergren,
-									no sea takimata sanctus est Lorem ipsum
-									dolor sit amet. Lorem ipsum dolor sit
-									amet, consetetur sadipscing elitr.</p>
-									<ul class="marker-simple-list two-columns">
-						<li>Nam liberempore</li>
-						<li>Cumsoluta nobisest</li>
-						<li>Eligendptio cumque</li>
-						<li>Nam liberempore</li>
-						<li>Cumsoluta nobisest</li>
-						<li>Eligendptio cumque</li>
-						</ul>
-								<p>Sed diam nonumy eirmod tempor invidunt
-									ut labore et dolore magna aliquyam erat,
-									sed diam voluptua. At vero eos et accusam
-									et justo duo dolores et ea rebum. Stet
-									clita kasd gubergren, no sea takimata
-									sanctus est Lorem ipsum dolor sit amet.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- //Product Tabs -->
-
-				<!-- Related Products -->
-    			<div class="related titleLine products-list grid module ">
-    				<h3 class="modtitle">Related Products  </h3>
-
-    				<div class="releate-products yt-content-slider products-list" data-rtl="no" data-loop="yes" data-autoplay="no" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="5" data-items_column0="5" data-items_column1="3" data-items_column2="3" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
-    					<div class="item">
-                            <div class="item-inner product-layout transition product-grid">
-                                <div class="product-item-container">
-                                    <div class="left-block left-b">
-
-                                        <div class="product-image-container second_img">
-                                            <a href="product.html" target="_self" title="Lastrami bacon">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e1.jpg" class="img-1 img-responsive" alt="image1">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e10.jpg" class="img-2 img-responsive" alt="image2">
-                                            </a>
-                                        </div>
-                                        <!--quickview-->
-                                        <div class="so-quickview">
-                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                        </div>
-                                        <!--end quickview-->
-
-
-                                    </div>
-                                    <div class="right-block">
-                                        <div class="button-group so-quickview cartinfo--left">
-                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                <span>Add to cart </span>
-                                            </button>
-                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
-                                            </button>
-                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-retweet"></i><span>Compare this Product</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="caption hide-cont">
-                                            <div class="ratings">
-                                                <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                </div>
-                                                <span class="rating-num">( 2 )</span>
-                                            </div>
-                                            <h4><a href="product.html" title="Pastrami bacon" target="_self">Lastrami bacon</a></h4>
-
-                                        </div>
-                                        <p class="price">
-                                          <span class="price-new">$80.00</span>
-
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="item-inner product-layout transition product-grid">
-                                <div class="product-item-container">
-                                    <div class="left-block left-b">
-                                        <div class="box-label">
-                                            <span class="label-product label-sale">-15%</span>
-                                        </div>
-                                        <div class="product-image-container second_img">
-                                            <a href="product.html" target="_self" title="Exceeur sint occaecat">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e2.jpg" class="img-1 img-responsive" alt="image1">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e9.jpg" class="img-2 img-responsive" alt="image2">
-                                            </a>
-                                        </div>
-                                        <!--quickview-->
-                                        <div class="so-quickview">
-                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                        </div>
-                                        <!--end quickview-->
-
-                                    </div>
-                                    <div class="right-block">
-                                        <div class="button-group so-quickview cartinfo--left">
-                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                <span>Add to cart </span>
-                                            </button>
-                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
-                                            </button>
-                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-retweet"></i><span>Compare this Product</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="caption hide-cont">
-                                            <div class="ratings">
-                                                <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                </div>
-                                                <span class="rating-num">( 3 )</span>
-                                            </div>
-                                            <h4><a href="product.html" title="Pastrami bacon" target="_self">Exceeur sint occaecat</a></h4>
-
-                                        </div>
-                                        <p class="price">
-                                          <span class="price-new">$50.00</span>
-                                          <span class="price-old">$59.00</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="item-inner product-layout transition product-grid">
-                                <div class="product-item-container">
-                                    <div class="left-block left-b">
-
-                                        <div class="product-image-container second_img">
-                                            <a href="product.html" target="_self" title="Mapicola incidid">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e3.jpg" class="img-1 img-responsive" alt="image1">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e8.jpg" class="img-2 img-responsive" alt="image2">
-                                            </a>
-                                        </div>
-                                        <!--quickview-->
-                                        <div class="so-quickview">
-                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                        </div>
-                                        <!--end quickview-->
-
-
-                                    </div>
-                                    <div class="right-block">
-                                        <div class="button-group so-quickview cartinfo--left">
-                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                <span>Add to cart </span>
-                                            </button>
-                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
-                                            </button>
-                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-retweet"></i><span>Compare this Product</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="caption hide-cont">
-                                            <div class="ratings">
-                                                <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                </div>
-                                                <span class="rating-num">( 5 )</span>
-                                            </div>
-                                            <h4><a href="product.html" title="Pastrami bacon" target="_self">Mapicola incidid</a></h4>
-
-                                        </div>
-                                        <p class="price">
-                                          <span class="price-new">$60.00</span>
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="item-inner product-layout transition product-grid">
-                                <div class="product-item-container">
-                                    <div class="left-block left-b">
-                                        <div class="box-label">
-                                            <span class="label-product label-new">New</span>
-                                        </div>
-                                        <div class="product-image-container second_img">
-                                            <a href="product.html" target="_self" title="Duis aute irure ">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e4.jpg" class="img-1 img-responsive" alt="image1">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e7.jpg" class="img-2 img-responsive" alt="image2">
-                                            </a>
-                                        </div>
-                                        <!--quickview-->
-                                        <div class="so-quickview">
-                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                        </div>
-                                        <!--end quickview-->
-
-
-                                    </div>
-                                    <div class="right-block">
-                                        <div class="button-group so-quickview cartinfo--left">
-                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                <span>Add to cart </span>
-                                            </button>
-                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
-                                            </button>
-                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-retweet"></i><span>Compare this Product</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="caption hide-cont">
-                                            <div class="ratings">
-                                                <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                </div>
-                                                <span class="rating-num">( 2 )</span>
-                                            </div>
-                                            <h4><a href="product.html" title="Pastrami bacon" target="_self">Duis aute irure </a></h4>
-
-                                        </div>
-                                        <p class="price">
-                                          <span class="price-new">$48.00</span>
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="item-inner product-layout transition product-grid">
-                                <div class="product-item-container">
-                                    <div class="left-block left-b">
-
-                                        <div class="product-image-container second_img">
-                                            <a href="product.html" target="_self" title="Excepteur sint occ">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e5.jpg" class="img-1 img-responsive" alt="image1">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e6.jpg" class="img-2 img-responsive" alt="image2">
-                                            </a>
-                                        </div>
-                                        <!--quickview-->
-                                        <div class="so-quickview">
-                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                        </div>
-                                        <!--end quickview-->
-
-
-                                    </div>
-                                    <div class="right-block">
-                                        <div class="button-group so-quickview cartinfo--left">
-                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                <span>Add to cart </span>
-                                            </button>
-                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
-                                            </button>
-                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-retweet"></i><span>Compare this Product</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="caption hide-cont">
-                                            <div class="ratings">
-                                                <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                </div>
-                                                <span class="rating-num">( 4 )</span>
-                                            </div>
-                                            <h4><a href="product.html" title="Pastrami bacon" target="_self">Excepteur sint occ</a></h4>
-
-                                        </div>
-                                        <p class="price">
-                                          <span class="price-new">$90.00</span>
-
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="item-inner product-layout transition product-grid">
-                                <div class="product-item-container">
-                                    <div class="left-block left-b">
-
-                                        <div class="product-image-container second_img">
-                                            <a href="product.html" target="_self" title="PCenison meatloa">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e6.jpg" class="img-1 img-responsive" alt="image1">
-                                                <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/270/e2.jpg" class="img-2 img-responsive" alt="image2">
-                                            </a>
-                                        </div>
-                                        <!--quickview-->
-                                        <div class="so-quickview">
-                                          <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-eye"></i><span>Quick view</span></a>
-                                        </div>
-                                        <!--end quickview-->
-
-
-                                    </div>
-                                    <div class="right-block">
-                                        <div class="button-group so-quickview cartinfo--left">
-                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                <span>Add to cart </span>
-                                            </button>
-                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart-o"></i><span>Add to Wish List</span>
-                                            </button>
-                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-retweet"></i><span>Compare this Product</span>
-                                            </button>
-
-                                        </div>
-                                        <div class="caption hide-cont">
-                                            <div class="ratings">
-                                                <div class="rating-box">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                </div>
-                                                <span class="rating-num">( 6 )</span>
-                                            </div>
-                                            <h4><a href="product.html" title="Pastrami bacon" target="_self">Cenison meatloa</a></h4>
-
-                                        </div>
-                                        <p class="price">$42.00</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-    				</div>
-    			</div>
-
-    			<!-- end Related  Products-->
-			</div>
-
-
-
-
-
-
-			</div>
-
-
-		</div>
-		<!--Middle Part End-->
-	</div>
-
+            </section>
+            <!-- shop-details-area-end -->
+        </main>
+        <!-- main-area-end -->
 </div>
 @push('scripts')
 

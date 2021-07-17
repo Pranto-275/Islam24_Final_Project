@@ -1,220 +1,378 @@
-<div>
-    <header id="header" class=" typeheader-1">
-
-        <!-- Header Top -->
-        <div class="header-top hidden-compact">
-            <div class="container">
-                <div class="row">
-                    <div class="header-top-left col-lg-7 col-md-8 col-sm-6 col-xs-4">
-                        <div class="hidden-md hidden-sm hidden-xs welcome-msg">Welcome to SuperMarket! Wrap new offers / gift every single day on Weekends - New Coupon code: <span>Happy2018</span> </div>
-                        <ul class="top-link list-inline hidden-lg ">
-                            <li class="account" id="my_account">
-                                <a href="#" title="My Account " class="btn-xs dropdown-toggle" data-toggle="dropdown"> <span class="hidden-xs">My Account </span>  <span class="fa fa-caret-down"></span>
-                                </a>
-                                <ul class="dropdown-menu ">
-                                    <li><a href="register"><i class="fa fa-user"></i> Register</a></li>
-                                    <li><a href="{{ route('customer_login') }}"><i class="fa fa-pencil-square-o"></i> Login</a></li>
-                                </ul>
+<header class="header-style-two header-style-three">
+    <!-- header-top -->
+    <div class="header-top-area">
+        <div class="custom-container-two">
+            <div class="row">
+                <div class="col-md-8 col-sm-7">
+                    <div class="header-top-left">
+                        <ul>
+                            <li>
+                                <div class="ship-to">
+                                    <span>Language</span>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <img src="img/icon/bng.png" alt=""> BANGLA
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#"><img src="{{ URL::asset('venam/') }}/img/icon/bng.png" alt="">BANGLA</a>
+                                            <a class="dropdown-item" href="#"><img src="{{ URL::asset('venam/') }}/img/icon/australia.png" alt="">ENGLISH</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="heder-top-guide">
+                                    <span>Quick Guide</span>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            Help
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                            <a class="dropdown-item" href="terms-conditios.html">Returns</a>
+                                            <a class="dropdown-item" href="terms-conditios.html">Privacy</a>
+                                            <a class="dropdown-item" href="terms-conditios.html">Terms</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="heder-top-guide">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            Sell With Us
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                            <a class="dropdown-item" href="my-account.html">Seller Login</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
-                    <div class="header-top-right collapsed-block col-lg-5 col-md-4 col-sm-6 col-xs-8">
-                        <ul class="top-link list-inline lang-curr">
-                            <li class="currency">
-                                <div class="btn-group currencies-block">
-                                    <form action="index.html" method="post" enctype="multipart/form-data" id="currency">
-                                        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                            <span class="icon icon-credit "></span> $ US Dollar  <span class="fa fa-angle-down"></span>
-                                        </a>
-                                        <ul class="dropdown-menu btn-xs">
-                                            <li> <a href="#">(€)&nbsp;Euro</a></li>
-                                            <li> <a href="#">(£)&nbsp;Pounds    </a></li>
-                                            <li> <a href="#">($)&nbsp;US Dollar </a></li>
-                                        </ul>
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="language">
-                                <div class="btn-group languages-block ">
-                                    <form action="index.html" method="post" enctype="multipart/form-data" id="bt-language">
-                                        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                            <img src="{{ asset('supermarke/') }}/image/catalog/flags/gb.png" alt="English" title="English">
-                                            <span class="">English</span>
-                                            <span class="fa fa-angle-down"></span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="index.html"><img class="image_flag" src="{{ asset('supermarke/') }}/image/catalog/flags/gb.png" alt="English" title="English" /> English </a></li>
-                                            <li> <a href="html_with_RTL/index.html"> <img class="image_flag" src="{{ asset('supermarke/') }}/image/catalog/flags/ar.png" alt="Arabic" title="Arabic" /> Arabic </a> </li>
-                                        </ul>
-                                    </form>
-                                </div>
-
+                </div>
+                <div class="col-md-4 col-sm-5">
+                    <div class="header-top-right">
+                        <ul>
+                            <li>
+                                <a href=""><i class="flaticon-user"></i>প্রবেশ / নিবন্ধন</a>
+                                <span>বা</span>
+                                <a href="">আমার একাউন্ট</a>
                             </li>
                         </ul>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
-        <!-- //Header Top -->
+    </div>
+    <!-- header-top-end -->
 
-        <!-- Header center -->
-        <div class="header-middle">
-            <div class="container">
-                <div class="row">
-                    <!-- Logo -->
-                    <div class="navbar-logo col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                        <div class="logo"><a href="index.html"><img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" title="Your Store" alt="Logo" style="width: 180px;height:50px;"/></a></div>
-                    </div>
-                    <!-- //end Logo -->
-                    <!-- Search -->
-                    <div class="col-lg-7 col-md-6 col-sm-5">
-                        <div class="search-header-w">
-                            <div class="icon-search hidden-lg hidden-md hidden-sm"><i class="fa fa-search"></i></div>
-
-                            <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                                <form method="GET" action="index.html">
-                                    <div id="search0" class="search input-group form-group">
-                                        <div class="select_category filter_type  icon-select hidden-sm hidden-xs">
-                                            <select class="no-border" name="category_id">
-                                                <option value="0">All Categories</option>
-                                                @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="search">
-
-                                        <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
-
-                                    </div>
-                                    <input type="hidden" name="route" value="product/search" />
-                                </form>
+    <!-- menu-area -->
+    <div id="sticky-header" class="main-header menu-area">
+        <div class="custom-container-two">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
+                    <div class="menu-wrap">
+                        <nav class="menu-nav show">
+                            <div class="logo">
+                                <a href="{{url('/')}}"><img src="{{ URL::asset('venam/') }}/img/logo/logo_paikari_red.png" alt="Logo"></a>
                             </div>
-                        </div>
-                    </div>
-                    <!-- //end Search -->
-                    <div class="middle-right col-lg-3 col-md-3 col-sm-3">
-                        <!--cart-->
-                        <div class="shopping_cart">
-                            <div id="cart" class="btn-shopping-cart">
-
-                                <a data-loading-text="Loading... " class="btn-group top_cart dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                    <div class="shopcart">
-                                        <span class="icon-c">
-                                <i class="fa fa-shopping-bag"></i>
-                              </span>
-                                        <div class="shopcart-inner">
-                                            <p class="text-shopping-cart">
-
-                                                My cart
-                                            </p>
-
-                                            <span class="total-shopping-cart cart-total-full">
-                                   <span class="items_cart">02</span><span class="items_cart2"> item(s)</span><span class="items_carts">( $162.00 )</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <ul class="dropdown-menu pull-right shoppingcart-box" role="menu">
-                                    <li>
-                                        <table class="table table-striped">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center" style="width:70px">
-                                                        <a href="product.html">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/1.jpg" style="width:70px" alt="Yutculpa ullamcon" title="Yutculpa ullamco" class="preview">
-                                                        </a>
-                                                    </td>
-                                                    <td class="text-left"> <a class="cart_product_name" href="product.html">Yutculpa ullamco</a>
-                                                    </td>
-                                                    <td class="text-center">x1</td>
-                                                    <td class="text-center">$80.00</td>
-                                                    <td class="text-right">
-                                                        <a href="product.html" class="fa fa-edit"></a>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center" style="width:70px">
-                                                        <a href="product.html">
-                                                            <img src="{{ asset('supermarke/') }}/image/catalog/demo/product/80/2.jpg" style="width:70px" alt="Xancetta bresao" title="Xancetta bresao" class="preview">
-                                                        </a>
-                                                    </td>
-                                                    <td class="text-left"> <a class="cart_product_name" href="product.html">Xancetta bresao</a>
-                                                    </td>
-                                                    <td class="text-center">x1</td>
-                                                    <td class="text-center">$60.00</td>
-                                                    <td class="text-right">
-                                                        <a href="product.html" class="fa fa-edit"></a>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                            <div class="navbar-wrap main-menu d-none d-lg-flex">
+                                <ul class="navigation">
+                                    <li class="active"><a href="{{url('/')}}">Home</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li class="dropdown"><a href="#">PAGES</a>
+                                        <ul class="submenu">
+                                            <li><a href="my-account.html">My Account</a></li>
+                                            <li><a href="404.html">404 Page</a></li>
+                                            <li><a href="terms-conditios.html">Terms and Conditions</a></li>
+                                        </ul>
                                     </li>
-                                    <li>
-                                        <div>
-                                            <table class="table table-bordered">
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-left"><strong>Sub-Total</strong>
-                                                        </td>
-                                                        <td class="text-right">$140.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left"><strong>Eco Tax (-2.00)</strong>
-                                                        </td>
-                                                        <td class="text-right">$2.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left"><strong>VAT (20%)</strong>
-                                                        </td>
-                                                        <td class="text-right">$20.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-left"><strong>Total</strong>
-                                                        </td>
-                                                        <td class="text-right">$162.00</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <p class="text-right"> <a class="btn view-cart" href="cart.html"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="checkout.html"><i class="fa fa-share"></i>Checkout</a>
-                                            </p>
-                                        </div>
+                                    <li class="dropdown"><a href="#">BLOG</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Standard Blog</a></li>
+                                            <li><a href="blog-classic.html">Classic Blog</a></li>
+                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown"><a href="#">SHOP</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                            <li><a href="shop-details.html">Shop Details</a></li>
+                                            <li><a href="wishlist.html">Wishlist page</a></li>
+                                            <li><a href="cart.html">Cart page</a></li>
+                                            <li><a href="checkout.html">Checkout page</a></li>
+                                            <li><a href="order-completed.html">Order completed</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="special.html">SPECIAL</a></li>
+                                    <li><a href="contact.html">contacts</a></li>
+                                </ul>
+                            </div>
+                            <div class="header-action d-none d-md-block">
+                                <ul>
+                                    <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
+                                    <li><a href="wishlist.html"><i class="flaticon-heart"></i></a></li>
+                                    <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">2</span></a>
+                                        <span class="cart-total-price">$ 128.00</span>
+                                        <ul class="minicart">
+                                            <li class="d-flex align-items-start">
+                                                <div class="cart-img">
+                                                    <a href="#">
+                                                        <img src="{{ URL::asset('venam/') }}/img/product/cart_p01.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="cart-content">
+                                                    <h4>
+                                                        <a href="#">Charity Nike Brand Yellow T-Shirt</a>
+                                                    </h4>
+                                                    <div class="cart-price">
+                                                        <span class="new">$229.9</span>
+                                                        <span>
+                                                            <del>$229.9</del>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="del-icon">
+                                                    <a href="#">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class="d-flex align-items-start">
+                                                <div class="cart-img">
+                                                    <a href="#">
+                                                        <img src="{{ URL::asset('venam/') }}/img/product/cart_p02.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                                <div class="cart-content">
+                                                    <h4>
+                                                        <a href="#">BackPack For School Student</a>
+                                                    </h4>
+                                                    <div class="cart-price">
+                                                        <span class="new">$229.9</span>
+                                                        <span>
+                                                            <del>$229.9</del>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="del-icon">
+                                                    <a href="#">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="total-price">
+                                                    <span class="f-left">Total:</span>
+                                                    <span class="f-right">$239.9</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="checkout-link">
+                                                    <a href="#">Shopping Cart</a>
+                                                    <a class="red-color" href="#">Checkout</a>
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </div>
-
-                        </div>
-                        <!--//cart-->
-
-                        <ul class="wishlist-comp hidden-md hidden-sm hidden-xs">
-                            <li class="compare hidden-xs"><a onClick="window.location.href=window.location.href" class="top-link-compare" title="Compare "><i class="fa fa-refresh"></i></a>
-                            </li>
-                            <li class="wishlist hidden-xs"><a href="#" id="wishlist-total" class="top-link-wishlist" title="Wish List (0) "><i class="fa fa-heart"></i></a>
-                            </li>
-                        </ul>
-
-
-
+                        </nav>
                     </div>
+                    <!-- Mobile Menu  -->
+                    <div class="mobile-menu">
+                        <div class="menu-backdrop"></div>
+                        <div class="close-btn"><i class="fas fa-times"></i></div>
 
+                        <nav class="menu-box">
+                            <div class="nav-logo"><a href="index.html"><img src="{{ URL::asset('venam/') }}/img/logo/white_logo.png" alt="" title=""></a>
+                            </div>
+                            <div class="menu-outer">
+                                <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                            </div>
+                            <div class="social-links">
+                                <ul class="clearfix">
+                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                    <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                                    <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                                    <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                                    <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- End Mobile Menu -->
                 </div>
-
             </div>
         </div>
-        <!-- //Header center -->
+    </div>
+    <!-- menu-area-end -->
 
-        <!-- Header Bottom -->
-        @include('livewire.frontend.header-sidebar')
-    </header>
-</div>
+    <!-- header-search-area -->
+    <div class="header-search-area d-none d-md-block">
+        <div class="custom-container-two">
+            <div class="row align-items-center">
+                <div class="col-xl-3 col-lg-4 d-none d-lg-block">
+                    <div class="header-category d-none d-lg-block">
+                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ALL DEPARTMENT</a>
+                        <ul class="category-menu">
+                            <li class="has-dropdown"><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img01.png" alt=""></div> Western woman</a>
+                                <ul class="mega-menu">
+                                    <li>
+                                        <ul>
+                                            <li class="dropdown-title">Accessories & Parts</li>
+                                            <li><a href="#">Cables & Adapters</a></li>
+                                            <li><a href="#">Batteries</a></li>
+                                            <li><a href="#">Chargers</a></li>
+                                            <li><a href="#">Bags & Cases</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li class="dropdown-title">Electronic Cigarettes</li>
+                                            <li><a href="#">Audio & Video</a></li>
+                                            <li><a href="#">Televisions</a></li>
+                                            <li><a href="#">TV Receivers</a></li>
+                                            <li><a href="#">Projectors</a></li>
+                                            <li><a href="#">Audio Amplifier Boards</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li class="dropdown-title">Smart Electronics</li>
+                                            <li><a href="#">Cables & Adapters</a></li>
+                                            <li><a href="#">Batteries</a></li>
+                                            <li><a href="#">Chargers</a></li>
+                                            <li><a href="#">Bags & Cases</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li class="dropdown-title">Portable Audio & Video</li>
+                                            <li><a href="#">Audio & Video</a></li>
+                                            <li><a href="#">Televisions</a></li>
+                                            <li><a href="#">TV Receivers</a></li>
+                                            <li><a href="#">Projectors</a></li>
+                                            <li><a href="#">Audio Amplifier Boards</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li class="dropdown-title">Accessories & Parts</li>
+                                            <li><a href="#">Cables & Adapters</a></li>
+                                            <li><a href="#">Batteries</a></li>
+                                            <li><a href="#">Chargers</a></li>
+                                            <li><a href="#">Bags & Cases</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li class="dropdown-title">Audio & Video</li>
+                                            <li class="mega-menu-banner"><a href="#"><img src="{{ URL::asset('venam/') }}/img/images/megamenu_banner.jpg" alt=""></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown"><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img02.png" alt=""></div> TV, Appliances</a>
+                                <ul class="mega-menu">
+                                    <li>
+                                        <ul>
+                                            <li class="dropdown-title">Accessories & Parts</li>
+                                            <li><a href="#">Cables & Adapters</a></li>
+                                            <li><a href="#">Batteries</a></li>
+                                            <li><a href="#">Chargers</a></li>
+                                            <li><a href="#">Bags & Cases</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li class="dropdown-title">Electronic Cigarettes</li>
+                                            <li><a href="#">Audio & Video</a></li>
+                                            <li><a href="#">Televisions</a></li>
+                                            <li><a href="#">TV Receivers</a></li>
+                                            <li><a href="#">Projectors</a></li>
+                                            <li><a href="#">Audio Amplifier Boards</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li class="dropdown-title">Smart Electronics</li>
+                                            <li><a href="#">Cables & Adapters</a></li>
+                                            <li><a href="#">Batteries</a></li>
+                                            <li><a href="#">Chargers</a></li>
+                                            <li><a href="#">Bags & Cases</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li class="dropdown-title">Portable Audio & Video</li>
+                                            <li><a href="#">Audio & Video</a></li>
+                                            <li><a href="#">Televisions</a></li>
+                                            <li><a href="#">TV Receivers</a></li>
+                                            <li><a href="#">Projectors</a></li>
+                                            <li><a href="#">Audio Amplifier Boards</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <ul>
+                                            <li class="dropdown-title">Accessories & Parts</li>
+                                            <li><a href="#">Cables & Adapters</a></li>
+                                            <li><a href="#">Batteries</a></li>
+                                            <li><a href="#">Chargers</a></li>
+                                            <li><a href="#">Bags & Cases</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li class="dropdown-title">Audio & Video</li>
+                                            <li class="mega-menu-banner"><a href="#"><img src="{{ URL::asset('venam/') }}/img/images/megamenu_banner.jpg" alt=""></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img03.png" alt=""></div> Baby Product</a></li>
+                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img04.png" alt=""></div> Grocery Product</a></li>
+                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img05.png" alt=""></div> Beauty, Health Product</a></li>
+                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img06.png" alt=""></div> Industrial Product</a></li>
+                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img07.png" alt=""></div> Car, Motorbike</a></li>
+                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img08.png" alt=""></div> Club Sports</a></li>
+                            <li>
+                                <ul class="more_slide_open">
+                                    <li><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img01.png" alt=""></div> Western woman</a></li>
+                                    <li><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img02.png" alt=""></div> Health Product</a></li>
+                                    <li><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img03.png" alt=""></div> Industrial Product</a></li>
+                                </ul>
+                            </li>
+                            <li class="more_categories">More Categories<i class="fas fa-angle-down"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-8">
+                    <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                        <div class="header-search-wrap">
+                            <form action="#">
+                                <input type="text" placeholder="Search for your item's type.....">
+                                <select class="custom-select">
+                                    <option selected="">All Categories</option>
+                                    <option>Women's Clothing</option>
+                                    <option>Men's Clothing</option>
+                                    <option>Computer & Office</option>
+                                    <option>Consumer Electronics</option>
+                                    <option>Home & Garden</option>
+                                    <option>Luggage & Bags</option>
+                                    <option>Shoes</option>
+                                    <option>Mother & Kids</option>
+                                    <option>Beauty & Health</option>
+                                    <option>Home Appliances</option>
+                                    <option>Food</option>
+                                    <option>Underwear & Sleepwear</option>
+                                    <option>In All Categories</option>
+                                </select>
+                                <button><i class="flaticon-magnifying-glass-1"></i></button>
+                            </form>
+                        </div>
+                        <div class="header-free-shopping">
+                            <p>Free Shipping on Orders <span>$39+</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header-search-area-end -->
+</header>
