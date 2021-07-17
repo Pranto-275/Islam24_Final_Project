@@ -446,8 +446,8 @@
                                     <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png" alt="">
                                 </div>
                                 <div class="core-features-content">
-                                    <h6>Online Support</h6>
-                                    <span>30 days money back guarantee</span>
+                                    <h6>24/7 Support !</h6>
+                                    <span>Saving Every Moments</span>
                                 </div>
                             </div>
                         </div>
