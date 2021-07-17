@@ -28,6 +28,7 @@ use App\Http\Livewire\Frontend\Checkout;
 use App\Http\Livewire\Frontend\Contact as ContactUs;
 use App\Http\Livewire\Frontend\TermsConditios;
 use App\Http\Livewire\Frontend\Wishlist;
+use App\Http\Livewire\Frontend\About as AboutUs;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Frontend\ProductView;
@@ -67,11 +68,13 @@ Route::get('product-view', ProductView::class)->name('product-view');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
 Route::get('sign-up', SignUp::class)->name('sign-up');
-
 Route::get('cart', Cart::class)->name('cart');
 Route::get('check-out', Checkout::class)->name('check-out');
 Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
+
+Route::get('about', AboutUs::class)->name('about');
+
 Route::get('wish-list', Wishlist::class)->name('wish-list');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

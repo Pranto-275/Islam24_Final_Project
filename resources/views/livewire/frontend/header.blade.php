@@ -74,40 +74,32 @@
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
                                     <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="about">About Us</a></li>
                                     <li class="dropdown"><a href="#">PAGES</a>
                                         <ul class="submenu">
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                            <li><a href="terms-conditios.html">Terms and Conditions</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#">BLOG</a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">Standard Blog</a></li>
-                                            <li><a href="blog-classic.html">Classic Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                            <li><a href="sign-in">My Account</a></li>
+                                            <li><a href="404">404 Page</a></li>
+                                            <li><a href="terms-conditios">Terms and Conditions</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown"><a href="#">SHOP</a>
                                         <ul class="submenu">
-                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                            <li><a href="shop-details.html">Shop Details</a></li>
-                                            <li><a href="wishlist.html">Wishlist page</a></li>
-                                            <li><a href="cart.html">Cart page</a></li>
-                                            <li><a href="checkout.html">Checkout page</a></li>
-                                            <li><a href="order-completed.html">Order completed</a></li>
+                                            <li><a href="category">Shop Left Sidebar</a></li>
+                                            <li><a href="product-view">Shop Details</a></li>
+                                            <li><a href="wish-list">Wishlist page</a></li>
+                                            <li><a href="cart">Cart page</a></li>
+                                            <li><a href="checkout">Checkout page</a></li>
+                                            <li><a href="order-completed">Order completed</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="special.html">SPECIAL</a></li>
-                                    <li><a href="contact.html">contacts</a></li>
+                                    <li><a href="#">SPECIAL</a></li>
+                                    <li><a href="{{route('contact-us')}}">contacts</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">
                                 <ul>
                                     <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="flaticon-heart"></i></a></li>
+                                    <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
                                     <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">2</span></a>
                                         <span class="cart-total-price">$ 128.00</span>
                                         <ul class="minicart">
@@ -165,8 +157,8 @@
                                             </li>
                                             <li>
                                                 <div class="checkout-link">
-                                                    <a href="#">Shopping Cart</a>
-                                                    <a class="red-color" href="#">Checkout</a>
+                                                    <a href="{{route('cart')}}">Shopping Cart</a>
+                                                    <a class="red-color" href="{{route('check-out')}}">Checkout</a>
                                                 </div>
                                             </li>
                                         </ul>
