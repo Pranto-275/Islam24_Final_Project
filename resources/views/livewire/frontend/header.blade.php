@@ -78,7 +78,7 @@
                                     <li class="dropdown"><a href="#">PAGES</a>
                                         <ul class="submenu">
                                             <li><a href="sign-in">My Account</a></li>
-                                            <li><a href="404">404 Page</a></li>
+                                            <li><a href="error">404 Page</a></li>
                                             <li><a href="terms-conditios">Terms and Conditions</a></li>
                                         </ul>
                                     </li>

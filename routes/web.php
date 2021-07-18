@@ -29,6 +29,8 @@ use App\Http\Livewire\Frontend\Contact as ContactUs;
 use App\Http\Livewire\Frontend\TermsConditios;
 use App\Http\Livewire\Frontend\Wishlist;
 use App\Http\Livewire\Frontend\About as AboutUs;
+use App\Http\Livewire\Frontend\Error;
+use App\Http\Livewire\Frontend\OrderCompleted;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Frontend\ProductView;
@@ -74,6 +76,8 @@ Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
 
 Route::get('about', AboutUs::class)->name('about');
+Route::get('error', Error::class)->name('error');
+Route::get('order-completed', OrderCompleted::class)->name('order-completed');
 
 Route::get('wish-list', Wishlist::class)->name('wish-list');
 
