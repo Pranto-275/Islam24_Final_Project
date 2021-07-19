@@ -16,7 +16,7 @@ class CreateCouponCodesTable extends Migration
         Schema::create('coupon_codes', function (Blueprint $table) {
             $table->id();
             $table->string('code', 50)->nullable();
-            $table->integer('expired_day', 100)->nullable();
+            $table->integer('expired_day')->nullable();
             $table->timestamp('expired_date')->nullable();
             $table->timestamp('after_effect_date')->nullable();
             $table->enum('offer_type', ['Percentage', 'Amount', 'Reward-Point'])->nullable();
