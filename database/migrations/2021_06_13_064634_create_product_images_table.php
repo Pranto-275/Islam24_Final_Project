@@ -16,8 +16,9 @@ class CreateProductImagesTable extends Migration
         Schema::create('product_images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->text('image')->nullable();
-            $table->foreignId('created_by');
+            $table->json('image')->nullable();
+            $table->string('position', 50)->nullable();
+            $table->foreignId('user_id');
             $table->foreignId('branch_id');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();

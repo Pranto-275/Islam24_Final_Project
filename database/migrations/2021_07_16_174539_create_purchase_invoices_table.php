@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStockAdjustmentsTable extends Migration
+class CreatePurchaseInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateStockAdjustmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stock_adjustments', function (Blueprint $table) {
+        Schema::create('purchase_invoices', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->enum('type',['Transfer','Decrease','Increase']);
             $table->foreignId('contact_id')->nullable();
-            $table->foreignId('from_branch_id')->nullable();
-            $table->foreignId('to_branch_id')->nullable();
-            $table->foreignId('from_warehouse_id')->nullable();
-            $table->foreignId('to_warehouse_id')->nullable();
-            $table->string('note')->nullable();
+            $table->dateTime('purchase_date')->nullable();
+            $table->double('total_amount')->nullable();
+            $table->double('other_amount')->nullable();
+            $table->double('discount')->nullable();
+            $table->double('commission')->nullable();
+            $table->double('vat')->nullable();
+            $table->double('payable_amount')->nullable();
+            $table->text('note')->nullable();
             $table->foreignId('branch_id');
             $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
@@ -38,6 +39,6 @@ class CreateStockAdjustmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stock_adjustments');
+        Schema::dropIfExists('purchase_invoices');
     }
 }

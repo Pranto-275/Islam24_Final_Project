@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSizesTable extends Migration
+class CreateProductBarcodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSizesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sizes', function (Blueprint $table) {
+        Schema::create('product_barcodes', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 191);
-            $table->string('size_name', 191);
-            //$table->foreignId('branch_id');
+            $table->foreignId('product_id')->nullable();
+            $table->string('barcode', 50)->nullable();
+            $table->foreignId('branch_id');
             $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreateSizesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sizes');
+        Schema::dropIfExists('product_barcodes');
     }
 }

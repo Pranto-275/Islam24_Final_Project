@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentsTable extends Migration
+class CreateSalePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('sale_payments', function (Blueprint $table) {
             $table->id();
             $table->string('code')->nullable();
             $table->string('date')->nullable();
-            $table->enum('type', ['CustomerPayment', 'SupplierPayment']);
             $table->foreignId('contact_id');
-            $table->foreignId('invoice_id')->nullable();
-            $table->double('amount', 20,4)->nullable();
+            $table->foreignId('sale_invoice_id')->nullable();
+            $table->double('total_amount', 20,4)->nullable();
             $table->double('charge', 20,4)->nullable();
+            $table->double('vat', 20,4)->nullable();
+            $table->double('discount', 20,4)->nullable();
             $table->double('net_amount', 20,4)->nullable();
             $table->foreignId('payment_method_id');
             $table->string('transaction_id')->nullable();
@@ -42,6 +43,6 @@ class CreatePaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('sale_payments');
     }
 }

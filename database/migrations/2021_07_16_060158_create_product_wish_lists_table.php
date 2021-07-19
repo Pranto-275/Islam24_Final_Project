@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductPropertiesTable extends Migration
+class CreateProductWishListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreateProductPropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_properties', function (Blueprint $table) {
+        Schema::create('product_wish_lists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id');
-            $table->foreignId('size_id', 191)->nullable();
-            $table->foreignId('color_id', 191)->nullable();
+            $table->foreignId('product_id')->nullable();
+            $table->foreignId('branch_id')->default(0);
             $table->foreignId('created_by');
-            $table->foreignId('branch_id');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -33,6 +30,6 @@ class CreateProductPropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_properties');
+        Schema::dropIfExists('product_wish_lists');
     }
 }

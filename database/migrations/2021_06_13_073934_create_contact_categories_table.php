@@ -18,8 +18,8 @@ class CreateContactCategoriesTable extends Migration
             $table->enum('type', ['Customer', 'Supplier', 'Staff'])->nullable();
             $table->string('code', 191)->nullable();
             $table->string('name', 191)->nullable();
-            $table->foreignId('user_id');
             $table->foreignId('branch_id');
+            $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();

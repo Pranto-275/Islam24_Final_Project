@@ -26,14 +26,17 @@ class CreateStockManagersTable extends Migration
             //$table->double('vat', 20, 4)->nullable();
             //$table->double('discount', 20, 4)->nullable();
             //$table->double('subtotal', 20, 4)->nullable();
+            $table->double('stock_in_opening', 20, 4)->nullable()->default(0);
             $table->double('stock_in_purchase', 20, 4)->nullable()->default(0);
             $table->double('stock_in_inventory', 20, 4)->nullable()->default(0);
+            $table->double('stock_out_opening', 20, 4)->nullable()->default(0);
             $table->double('stock_out_sale', 20, 4)->nullable()->default(0);
             $table->double('stock_out_sale_web', 20, 4)->nullable()->default(0);
             $table->double('stock_out_inventory', 20, 4)->nullable()->default(0);
             $table->foreignId('warehouse_id');
-            $table->foreignId('user_id');
             $table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
