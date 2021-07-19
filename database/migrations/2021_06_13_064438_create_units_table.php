@@ -18,9 +18,9 @@ class CreateUnitsTable extends Migration
             $table->string('code', 191);
             $table->string('name', 191);
             $table->double('rate', 20, 4);
-            $table->foreignId('user_id');
             $table->foreignId('branch_id');
-            $table->enum('status', ['Active', 'Inactive'])->nullable();
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

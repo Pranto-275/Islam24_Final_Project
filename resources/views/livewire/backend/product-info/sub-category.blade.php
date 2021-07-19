@@ -52,10 +52,20 @@
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-lastname-input">Name</label>
+                                    <select class="form-control" wire:model.lazy="category_id">
+                                       <option value="">Select Category</option>
+                                       @foreach ($categories as $category)
+                                           <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                       @endforeach
+                                    </select>
+                                    @error('category_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Sub Category Name</label>
                                     <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Name">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
@@ -83,18 +93,6 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <select class="form-control" wire:model.lazy="category_id">
-                                       <option value="">Select Category</option>
-                                       @foreach ($categories as $category)
-                                           <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                       @endforeach
-                                    </select>
-                                    @error('category_id') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
                                     <label for="basicpill-lastname-input">Description</label>
                                     <input class="form-control" type="text" wire:model.lazy="description" placeholder="Description">
                                 </div>
@@ -104,10 +102,10 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                             </div>
@@ -168,8 +166,8 @@
                     },
                     {
                         title: 'Status',
-                        data:  'status',
-                        name:  'status'
+                        data:  'is_active',
+                        name:  'is_active'
                     },
                     {
                         title: 'Action',

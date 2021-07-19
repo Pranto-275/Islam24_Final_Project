@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactCategoryModal"><i class="mdi mdi-plus mr-1"></i>Add Contact Category Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="ContactCategoryModal"><i class="mdi mdi-plus mr-1"></i>Contact Category</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -48,12 +48,12 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Type</label>
-                                    <select class="form-control" type="text" wire:model.lazy="type">
-                                        <option value="">Select Contact Category</option>
-                                        @foreach($ConatactCategories as $contactCategory)
-                                            <option value="{{$contactCategory->type}}">{{$contactCategory->type}}</option>
-                                        @endforeach
-                                    </select>
+                                        <select class="form-control" wire:model.lazy="type">
+                                            <option value="">Select Contact type</option>
+                                            <option value="customer">customer</option>
+                                            <option value="Staff">Staff</option>
+                                            <option value="Supplier">Supplier</option>
+                                        </select>
                                     @error('type') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -74,12 +74,11 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -95,12 +94,19 @@
 </div>
 @push('scripts')
     <script>
+        function callEdit(id) {
+        @this.call('contactCategoryEdit', id);
+        }
+        function callDelete(id) {
+        @this.call('contactCategoryDelete', id);
+
+        }
 
         $(document).ready(function () {
             var datatable = $('#ContactCategoryTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.contact_category_table')}}",
                 columns: [
                     {
                         title: 'SL',
@@ -108,41 +114,23 @@
                     },
                     {
                         title: 'Type',
-                        data: 'type',
-                        name:'type'
+                        data:  'type',
+                        name:  'type'
+                    },
+                    {
+                        title: 'Code',
+                        data:  'code',
+                        name:  'code'
                     },
                     {
                         title: 'Name',
-                        data: 'name',
-                        name:'name'
+                        data:  'name',
+                        name:  'name'
                     },
-                    {
-                        title: 'Address',
-                        data: 'address',
-                        name:'address'
-                    },
-                    {
-                        title: 'Shipping Address',
-                        data: 'shipping address',
-                        name:'shipping address'
-                    },
-
-                    {
-                        title: 'Email',
-                        data: 'email',
-                        name:'email'
-                    },
-
-                    {
-                        title: 'Phone',
-                        data: 'phone',
-                        name:'phone'
-                    },
-
                     {
                         title: 'Action',
-                        data: 'action',
-                        name:'action'
+                        data:  'action',
+                        name:  'action'
                     },
                 ]
             });

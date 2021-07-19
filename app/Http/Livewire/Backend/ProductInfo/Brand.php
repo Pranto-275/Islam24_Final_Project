@@ -1,12 +1,78 @@
 <?php
 
 namespace App\Http\Livewire\Backend\ProductInfo;
+use App\Models\Backend\ProductInfo\Brand as BrandInfo;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Brand extends Component
 {
+    use WithFileUploads;
+
+
+    public $code;
+    public $name;
+    public $image;
+    public $description;
+    public $branch_id;
+    public $is_active;
+    public $brand_id;
+    public $QueryUpdate;
+
+
+    public function brandInfoSave(){
+
+
+        $this->validate([
+           'name'   => 'required',
+        //    'image'  => 'required',
+            'description' => 'required'
+        ]);
+
+        if ($this->brand_id){
+          $Query  = BrandInfo::find($this->brand_id);
+        }else{
+            $Query           = new BrandInfo();
+            $Query->created_by        =  Auth::user()->id;
+        }
+       $Query->code           =  $this->code;
+       $Query->name           =  $this->name;
+        if($this->image){
+            $path = $this->image->store('/public/photo');
+            $Query->image = basename($path);
+        }
+       $Query->description    =  $this->description;
+       $Query->branch_id      = 1;
+       $Query->is_active         = $this->is_active;
+       $Query->save();
+       $this->reset();
+       $this->emit('success', [
+          'text' => 'brand info saved successfully',
+       ]);
+
+    }
+
+    public function brandEdit($id){
+        $this->QueryUpdate  = BrandInfo::find($id);
+        $this->brand_id     =  $this->QueryUpdate->id;
+        $this->code         =  $this->QueryUpdate->code;
+        $this->name         =  $this->QueryUpdate->name;
+        $this->description  =  $this->QueryUpdate->description;
+        $this->is_active       =  $this->QueryUpdate->is_active;
+        $this->BrandAInfoModal();
+    }
+
+    public function brandDelete($id){
+        BrandInfo::find($id)->delete();
+        $this->emit('success',[
+           'text' => 'Brand Info deleted successfully',
+        ]);
+    }
+
     public function BrandAInfoModal(){
+        $this->code = 'C'.floor(time()-999999);
         $this->emit('modal','BrandAInfoModal');
     }
     public function render()

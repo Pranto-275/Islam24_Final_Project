@@ -13,7 +13,7 @@ class Slider extends Component
     public $title;
     public $image;
     public $position;
-    public $status;
+    public $is_active;
     public $SliderId=NULL;
     public $QueryUpdate=NULL;
     public function sliderImageEdit($id)
@@ -22,9 +22,9 @@ class Slider extends Component
         $Query = SliderInfo::find($id);
         $this->SliderId = $Query->id;
         $this->title = $Query->title;
-        $this->image = $Query->image;
+        // $this->image = $Query->image;
         $this->position = $Query->position;
-        $this->status = $Query->status;
+        $this->is_active = $Query->is_active;
 		$this->emit('modal', 'sliderImage');
     }
     public function sliderImageDelete($id)
@@ -35,17 +35,23 @@ class Slider extends Component
             'text' => 'Slider Image Deleted Successfully',
         ]);
     }
-    public function sliderImageSave()
-    {
+    public function validation($id=NULL){
+       if(!$id){
         $this->validate([
             'image' => 'required',
         ]);
+       }
+    }
+    public function sliderImageSave()
+    {
 
         if ($this->SliderId) {
+            $this->validation($this->SliderId);
             $Query = SliderInfo::find($this->SliderId);
         } else {
+            $this->validation();
             $Query = new SliderInfo();
-            $Query->user_id = Auth::id();
+            $Query->created_by = Auth::id();
         }
         $Query->title = $this->title;
         if($this->image){

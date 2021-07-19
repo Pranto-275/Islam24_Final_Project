@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\UserProfile;
 
+namespace App\Http\Livewire\UserProfile;
 use App\Models\UserProfile\ProfileSetting;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithFileUploads;
 use Livewire\Component;
+
 
 class ProfileSettings extends Component
 {
+    use WithFileUploads;
+
     public $business_name;
     public $email;
     public $name;
@@ -15,6 +19,7 @@ class ProfileSettings extends Component
     public $postal_code;
     public $city;
     public $country;
+    public $profile_photo;
     public $ProfileSetting = null;
 
     public function mount()
@@ -47,7 +52,7 @@ class ProfileSettings extends Component
             $Query = $this->ProfileSetting;
         } else {
             $Query = new ProfileSetting();
-            $Query->user_id = Auth::id();
+            // $Query->user_id = Auth::id();
         }
         $Query->business_name = $this->business_name;
         $Query->email = $this->email;
@@ -56,6 +61,11 @@ class ProfileSettings extends Component
         $Query->postal_code = $this->postal_code;
         $Query->city = $this->city;
         $Query->country = $this->country;
+        if($this->profile_photo){
+            $path = $this->profile_photo->store('/public/photo');
+            $Query->profile_photo = basename($path);
+        }
+        $Query->company_id = Auth::user()->id;
         $Query->branch_id = 1;
         $Query->save();
         $this->emit('success', ['text' => 'Profile Settings C/U Successfully']);

@@ -15,14 +15,16 @@ class CreateCouponCodesTable extends Migration
     {
         Schema::create('coupon_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 100)->nullable();
+            $table->string('code', 50)->nullable();
+            $table->integer('expired_day', 100)->nullable();
             $table->timestamp('expired_date')->nullable();
-            $table->enum('offer_type', ['Percentense', 'Amount'])->nullable();
-            $table->double('amount', 20, 4)->nullable();
+            $table->timestamp('after_effect_date')->nullable();
+            $table->enum('offer_type', ['Percentage', 'Amount', 'Reward-Point'])->nullable();
+            $table->double('offer_amount', 20, 4)->nullable();
             $table->double('min_buy_amount', 20, 4)->nullable();
-            $table->enum('status', ['Active', 'Inactive']);
-            $table->foreignId('user_id');
             $table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

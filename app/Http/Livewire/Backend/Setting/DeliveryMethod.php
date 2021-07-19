@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Backend\Setting;
 use App\Models\Backend\Setting\DeliveryMethod as DeliveryMethodInfo;
+use App\Models\Backend\Setting\Branch;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -10,17 +11,21 @@ class DeliveryMethod extends Component
     public $code;
     public $name;
     public $address;
-    public $branch_name;
+    public $branch_id;
+    public $is_active;
+    public $description;
     public $DeliveryId=NULL;
 
     public function deliveryMethodEdit($id)
     {
-        $Query = DeliveryMethodInfo::find($id);
-        $this->DeliveryId = $Query->id;
-        $this->code = $Query->code;
-        $this->name = $Query->name;
-        $this->branch_name = $Query->branch_name;
-        $this->address = $Query->address;
+        $this->Query = DeliveryMethodInfo::find($id);
+        $this->DeliveryId = $this->Query->id;
+        $this->code = $this->Query->code;
+        $this->name = $this->Query->name;
+        $this->branch_id = $this->Query->branch_id;
+        $this->is_active = $this->Query->is_active;
+        $this->address = $this->Query->address;
+        $this->description = $this->Query->description;
 		$this->emit('modal', 'deliveryMethodInfoModal');
     }
     public function deliveryMethodDelete($id)
@@ -36,17 +41,20 @@ class DeliveryMethod extends Component
         $this->validate([
             'code' => 'required',
             'name' => 'required',
-            'branch_name' => 'required',
+            'branch_id' => 'required',
         ]);
         if ($this->DeliveryId) {
             $Query = DeliveryMethodInfo::find($this->DeliveryId);
         } else {
             $Query = new DeliveryMethodInfo();
+            $Query->created_by=Auth::user()->id;
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
-        $Query->branch_name = $this->branch_name;
+        $Query->branch_id = $this->branch_id;
+        $Query->is_active = $this->is_active;
         $Query->address = $this->address;
+        $Query->description = $this->description;
         $Query->save();
 
         $this->deliveryMethodModal();
@@ -61,6 +69,8 @@ class DeliveryMethod extends Component
     }
     public function render()
     {
-        return view('livewire.backend.setting.delivery-method');
+        return view('livewire.backend.setting.delivery-method',[
+            'branches'=>Branch::get(),
+        ]);
     }
 }

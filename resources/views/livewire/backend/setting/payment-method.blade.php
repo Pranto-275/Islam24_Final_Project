@@ -47,12 +47,27 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Payment Method ID</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Currency ID">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Account Holdar Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="account_holder_name" placeholder="Account holder name">
+                                    @error('account_holder_name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Account No</label>
+                                    <input class="form-control" type="text" wire:model.lazy="account_no" placeholder="Account No">
+                                    @error('account_no') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -66,26 +81,46 @@
 </div>
 @push('scripts')
     <script>
+        function callEdit(id) {
+        @this.call('paymentMethodEdit', id);
+        }
+        function callDelete(id) {
+        @this.call('paymentMethodDelete', id);
+        }
 
         $(document).ready(function () {
             var datatable = $('#PaymentMethodTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{route('data.index')}}",
+                ajax: "{{route('data.paymentMethod_table')}}",
                 columns: [
                     {
                         title: 'SL',
                         data: 'id'
                     },
                     {
-                        title: 'Payment Method ID',
-                        data:  'payment method id',
-                        name:  'payment method id'
+                        title: 'Name',
+                        data:  'name',
+                        name:  'name'
                     },
+
+                    {
+                        title: 'Account holder Name',
+                        data:  'account_holder_name',
+                        name:  'account_holder_name'
+                    },
+
+                    {
+                        title: 'Account No',
+                        data:  'account_no',
+                        name:  'account_no'
+                    },
+
+
                     {
                         title: 'Action',
                         data: 'action',
-                        name:'action'
+                         name:'action'
                     },
                 ]
             });

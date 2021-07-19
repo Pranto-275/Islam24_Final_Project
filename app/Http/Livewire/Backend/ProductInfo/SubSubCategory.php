@@ -15,7 +15,7 @@ class SubSubCategory extends Component
     public $image;
     public $description;
     public $sub_category_id;
-    public $status;
+    public $is_active;
     public $subSubCategoryId=NULL;
     public $QueryUpdate=NULL;
 
@@ -27,7 +27,7 @@ class SubSubCategory extends Component
         $this->name = $this->QueryUpdate->name;
         $this->description = $this->QueryUpdate->description;
         $this->sub_category_id = $this->QueryUpdate->sub_category_id;
-        $this->status = $this->QueryUpdate->status;
+        $this->is_active = $this->QueryUpdate->is_active;
 
         $this->emit('modal', 'ProductSubSubCategoryInfoModal');
     }
@@ -49,7 +49,7 @@ class SubSubCategory extends Component
             $Query = SubSubCategoryProductInfo::find($this->subSubCategoryId);
         }else{
             $Query = new SubSubCategoryProductInfo();
-            $Query->user_id = Auth::user()->id;
+            $Query->created_by = Auth::user()->id;
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
@@ -59,15 +59,14 @@ class SubSubCategory extends Component
         }
         $Query->description = $this->description;
         $Query->sub_category_id = $this->sub_category_id;
-        $Query->status = $this->status;
+        $Query->is_active = $this->is_active;
         $Query->branch_id = 1;
 
         $Query->save();
         $this->reset();
         $this->ProductSubSubCategoryInfoModal();
-
         $this->emit('success', [
-            'text' => 'Sub-Sub Category Created Successfully',
+            'text' => 'Sub-Sub C/U Created Successfully',
         ]);
     }
     public function ProductSubSubCategoryInfoModal(){

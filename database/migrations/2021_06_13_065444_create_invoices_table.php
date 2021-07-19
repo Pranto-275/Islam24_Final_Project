@@ -23,12 +23,13 @@ class CreateInvoicesTable extends Migration
             $table->double('vat_total', 20, 4)->nullable();
             $table->double('discount_value', 20, 4)->nullable();
             $table->double('discount', 20, 4)->nullable();
+            $table->double('shipping_charge', 20, 4)->nullable();
             $table->double('earn_point', 20, 4)->nullable();
             $table->double('earn_point_amount', 20, 4)->nullable();
             $table->double('expense_point', 20, 4)->nullable();
             $table->double('expense_point_amount', 20, 4)->nullable();
             $table->double('grand_total', 20, 4)->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('created_by');
             $table->foreignId('branch_id');
             $table->enum('status', ['Pending', 'In Process', 'Delivered', 'Accepted', 'Rescheduled', 'Picked Up', 'Cancel', 'Return']);
             $table->timestamps();

@@ -66,6 +66,16 @@
                                     @error('address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="is_active">
+                                        <option value="">Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

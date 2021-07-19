@@ -20,10 +20,10 @@ class CreateCategoriesTable extends Migration
             $table->text('image1')->nullable();
             $table->text('image2')->nullable();
             $table->text('description')->nullable();
-            $table->foreignId('user_id');
-            $table->foreignId('branch_id');
-            $table->enum('status', ['Active', 'Inactive'])->nullable();
             $table->tinyInteger('top_show');
+            $table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
