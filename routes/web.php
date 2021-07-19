@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\DatatableController;
-use App\Http\Livewire\Backend\CheckOut\CheckOut;
 use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
 use App\Http\Livewire\Backend\ContactInfo\Customer as CustomerInfo;
 use App\Http\Livewire\Backend\ContactInfo\Staff;
@@ -35,8 +34,8 @@ use App\Http\Livewire\Backend\Report\SalesReturnReport;
 use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Report\StockReport;
 use App\Http\Livewire\Backend\Report\SupplierLedger;
-use App\Http\Livewire\Backend\setting\CompanyInfo;
 use App\Http\Livewire\Backend\setting\Branch;
+use App\Http\Livewire\Backend\setting\CompanyInfo;
 use App\Http\Livewire\Backend\Setting\CouponCode;
 use App\Http\Livewire\Backend\setting\Currency;
 use App\Http\Livewire\Backend\Setting\DeliveryMethod;
@@ -51,6 +50,7 @@ use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
 use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\CategoryWiseProduct;
+use App\Http\Livewire\FrontEnd\CheckOut;
 use App\Http\Livewire\Frontend\Customer;
 use App\Http\Livewire\Frontend\CustomerRegister;
 use App\Http\Livewire\Frontend\Home;
