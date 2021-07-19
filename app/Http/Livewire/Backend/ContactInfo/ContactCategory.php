@@ -12,7 +12,7 @@ class ContactCategory extends Component
     public $type;
     public $code;
     public $name;
-    public $status;
+    public $is_active;
     public $branch_id;
     public $contact_Category_id;
 
@@ -33,7 +33,7 @@ class ContactCategory extends Component
           $Query->type        = $this->type;
           $Query->code        = $this->code;
           $Query->name        = $this->name;
-          $Query->status      = $this->status;
+          $Query->is_active      = $this->is_active;
           $Query->branch_id   = 1;
           $Query->save();
           $this->reset();
@@ -51,7 +51,7 @@ class ContactCategory extends Component
      $this->type                = $this->QueryUpdate->type;
      $this->code                = $this->QueryUpdate->code;
      $this->name                = $this->QueryUpdate->name;
-     $this->status              = $this->QueryUpdate->status;
+     $this->is_active              = $this->QueryUpdate->is_active;
      $this->ContactCategoryModal();
   }
 

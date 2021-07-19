@@ -13,7 +13,7 @@ class CouponCode extends Component
     public $offer_type;
     public $amount;
     public $min_buy_amount;
-    public $status;
+    public $is_active;
     public $couponCode_id;
     public $user_id;
     public $branch_id;
@@ -43,7 +43,7 @@ public function couponCodeSave(){
     $Query->offer_type         = $this->offer_type;
     $Query->amount             = $this->amount;
     $Query->min_buy_amount     = $this->min_buy_amount;
-    $Query->status             = $this->status;
+    $Query->is_active             = $this->is_active;
     $Query->branch_id          = 1;
     $Query->save();
     $this->reset();
@@ -61,7 +61,7 @@ public function couponEdit($id){
    $this->offer_type         = $this->QueryUpdate->offer_type;
    $this->amount             = $this->QueryUpdate->amount;
    $this->min_buy_amount     = $this->QueryUpdate->min_buy_amount;
-   $this->status             = $this->QueryUpdate->status;
+   $this->is_active             = $this->QueryUpdate->is_active;
    $this->couponCodeModal();
 }
 

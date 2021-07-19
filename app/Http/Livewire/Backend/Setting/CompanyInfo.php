@@ -16,7 +16,7 @@ class CompanyInfo extends Component
     public $address;
     public $email;
     public $web;
-    public $status;
+    public $is_active;
     public $branch_id;
     public $companyInfo_id;
     public $CompanyInfoDetails=null;

@@ -46,7 +46,7 @@
                 <form wire:submit.prevent="ContactInfoSave">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Contact Category</label>
                                     <select class="form-control" wire:model.lazy="contact_category_id">
@@ -60,9 +60,16 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Name</label>
-                                    <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter Name">
-                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">First Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="first_name" placeholder="First Name">
+                                    @error('first_name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Last Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="last_name" placeholder="Last Name">
+                                    @error('last_name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -131,13 +138,13 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
 
                                     </select>
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -177,9 +184,14 @@
                         name:  'type'
                     },
                     {
-                        title: 'Name',
-                        data:  'name',
-                        name:  'name'
+                        title: 'First Name',
+                        data:  'first_name',
+                        name:  'first_name'
+                    },
+                    {
+                        title: 'Last Name',
+                        data:  'last_name',
+                        name:  'last_name'
                     },
                     {
                         title: 'Address',

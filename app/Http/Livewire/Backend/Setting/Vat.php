@@ -13,9 +13,8 @@ class Vat extends Component
     public $name;
     public $rate_percent;
     public $rate_fixed;
-    public $user_id;
     public $branch_id;
-    public $status;
+    public $is_active;
     public $vat_id;
 
 
@@ -33,7 +32,7 @@ class Vat extends Component
             $Query  = VatInfo::find($this->vat_id);
         }else{
             $Query = new VatInfo();
-            $Query->user_id = Auth::user()->id;
+            $Query->created_by = Auth::user()->id;
         }
 
        $Query->code              = $this->code;
@@ -41,6 +40,7 @@ class Vat extends Component
        $Query->rate_percent      = $this->rate_percent;
        $Query->rate_fixed        = $this->rate_fixed;
        $Query->branch_id         = 1;
+       $Query->is_active       = $this->is_active;
        $Query-> save();
        $this-> reset();
        $this-> VatModal();
@@ -57,7 +57,7 @@ class Vat extends Component
         $this->name         = $this->QueryUpdate->name;
         $this->rate_percent = $this->QueryUpdate->rate_percent;
         $this->rate_fixed   = $this->QueryUpdate->rate_fixed;
-        $this->status       = $this->QueryUpdate->status;
+        $this->is_active       = $this->QueryUpdate->is_active;
         $this->VatModal();
     }
 

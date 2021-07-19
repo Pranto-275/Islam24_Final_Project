@@ -26,7 +26,7 @@ class Invoice extends Component
     public $expense_point_amount;
     public $grand_total;
     public $invoice_id;
-    public $user_id;
+    public $created_by;
     public $branch_id;
     public $status;
 
@@ -39,7 +39,7 @@ class Invoice extends Component
           $invoiceInfo = invoiceInfo::find($this->invoice_id);
         }else{
         $invoiceInfo = new InvoiceInfo();
-        $invoiceInfo->user_id = Auth::user()->id;
+        $invoiceInfo->created_by = Auth::user()->id;
     }
 
        $invoiceInfo->type                     = $this->type;

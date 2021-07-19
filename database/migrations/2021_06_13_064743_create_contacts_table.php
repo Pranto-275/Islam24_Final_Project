@@ -15,25 +15,24 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['Customer', 'Supplier', 'Staff'])->nullable();
-            $table->string('first_name', 191)->nullable();
-            $table->string('last_name', 191)->nullable();
-            $table->string('address', 191)->nullable();
-            $table->string('shipping_address', 191)->nullable();
-            $table->string('post_code', 191)->nullable();
-            $table->string('state', 191)->nullable();
+            $table->enum('type', ['Customer', 'Supplier', 'Staff', 'Both'])->nullable();
+            $table->string('first_name', 100)->nullable();
+            $table->string('last_name', 100)->nullable();
+            $table->string('address', 255)->nullable();
+            $table->string('shipping_address', 255)->nullable();
+            $table->string('post_code', 6)->nullable();
+            $table->string('state', 100)->nullable();
             $table->foreignId('country_id')->nullable();
-            $table->string('phone', 191)->nullable();
-            $table->string('mobile', 191)->nullable();
-            $table->string('email', 191)->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('mobile', 20)->nullable();
+            $table->string('email', 100)->nullable();
             $table->date('due_date')->nullable();
             $table->date('birthday')->nullable();
-            $table->date('opening_balance')->nullable();
+            $table->double('opening_balance')->nullable()->default(0);
             $table->foreignId('contact_category_id')->nullable();
-            $table->foreignId('user_id');
             $table->foreignId('branch_id');
-            $table->string('password');
-            $table->enum('status', ['Active', 'Inactive'])->nullable();
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -16,9 +16,8 @@ class Brand extends Component
     public $name;
     public $image;
     public $description;
-    public $user_id;
     public $branch_id;
-    public $status;
+    public $is_active;
     public $brand_id;
     public $QueryUpdate;
 
@@ -28,7 +27,7 @@ class Brand extends Component
 
         $this->validate([
            'name'   => 'required',
-           'image'  => 'required',
+        //    'image'  => 'required',
             'description' => 'required'
         ]);
 
@@ -36,7 +35,7 @@ class Brand extends Component
           $Query  = BrandInfo::find($this->brand_id);
         }else{
             $Query           = new BrandInfo();
-            $Query->user_id        =  Auth::user()->id;
+            $Query->created_by        =  Auth::user()->id;
         }
        $Query->code           =  $this->code;
        $Query->name           =  $this->name;
@@ -46,7 +45,7 @@ class Brand extends Component
         }
        $Query->description    =  $this->description;
        $Query->branch_id      = 1;
-       $Query->status         = $this->status;
+       $Query->is_active         = $this->is_active;
        $Query->save();
        $this->reset();
        $this->emit('success', [
@@ -61,7 +60,7 @@ class Brand extends Component
         $this->code         =  $this->QueryUpdate->code;
         $this->name         =  $this->QueryUpdate->name;
         $this->description  =  $this->QueryUpdate->description;
-        $this->status       =  $this->QueryUpdate->status;
+        $this->is_active       =  $this->QueryUpdate->is_active;
         $this->BrandAInfoModal();
     }
 

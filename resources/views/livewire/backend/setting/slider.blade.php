@@ -63,6 +63,7 @@
                                                     <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
                                                     @endif
                                                     @endif
+                                    @error('image') <span class="error">{{ $message }}</span> @enderror
                                                     {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
                                                 </div>
                                             </div>
@@ -76,10 +77,10 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="basicpill-lastname-input">Status</label>
-                                                <select class="form-control" wire:model.lazy="status">
+                                                <select class="form-control" wire:model.lazy="is_active">
                                                     <option value="">Select Status</option>
-                                                    <option value="Active">Active</option>
-                                                    <option value="Inactive">Inactive</option>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -127,11 +128,6 @@
                         title: 'Position',
                         data:  'position',
                         name:  'position'
-                    },
-                    {
-                        title: 'Status',
-                        data:  'status',
-                        name:  'status'
                     },
                     {
                         title: 'Action',

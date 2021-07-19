@@ -83,20 +83,17 @@
                             </div>
 
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Description</label>
-                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Enter Brand Description">
-                                    @error('description') <span class="error">{{ $message }}</span> @enderror
-                                </div>
+                                <label for="basicpill-lastname-input">Description</label>
+                                <textarea class="form-control" wire:model.lazy="description" placeholder="Description"></textarea>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                     @error('status') <span class="error">{{ $message }}</span> @enderror
                                 </div>
@@ -155,12 +152,6 @@
                         title: 'Description',
                         data:  'description',
                         name:  'description'
-                    },
-
-                    {
-                        title: 'Status',
-                        data:  'status',
-                        name:  'status'
                     },
 
                     {

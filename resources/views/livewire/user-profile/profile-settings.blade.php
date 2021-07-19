@@ -22,11 +22,31 @@
                             </div>
                         </div><hr>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Business Name:</label>
                                     <input class="form-control" type="text" wire:model.lazy="business_name" placeholder="Business Name:">
                                     @error('business_name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="control-label">Profile Photo (517.38*492 jpg)</label>
+                                    <div class="custom-file">
+                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+
+                                        <input type="file" wire:model.lazy="profile_photo" x-ref="image">
+                                        @if (!$profile_photo)
+                                        @if($ProfileSetting)
+                                        <img src="{{ asset('storage/photo/'.$ProfileSetting->profile_photo)}}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
+                                        @endif
+                                        @if ($profile_photo)
+                                        <img src="{{ $profile_photo->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
+                                        {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
+                                        @error('image') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">

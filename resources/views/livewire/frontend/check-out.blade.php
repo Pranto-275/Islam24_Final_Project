@@ -395,7 +395,7 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <th scope="row"><img src="assets/images/product/img-1.png" alt="product-img" title="product-img" class="avatar-md"></th>
+                                                    <th scope="row"><img src="{{ asset('assets/images/product/img-1.png') }}" alt="product-img" title="product-img" class="avatar-md"></th>
                                                     <td>
                                                         <h5 class="font-size-14 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">Half sleeve T-shirt  (64GB) </a></h5>
                                                         <p class="text-muted mb-0">$ 450 x 1</p>
@@ -403,7 +403,7 @@
                                                     <td>$ 450</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row"><img src="assets/images/product/img-7.png" alt="product-img" title="product-img" class="avatar-md"></th>
+                                                    <th scope="row"><img src="{{ asset('assets/images/product/img-7.png') }}" alt="product-img" title="product-img" class="avatar-md"></th>
                                                     <td>
                                                         <h5 class="font-size-14 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">Wirless Headphone </a></h5>
                                                         <p class="text-muted mb-0">$ 225 x 1</p>

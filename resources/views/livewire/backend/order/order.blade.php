@@ -377,10 +377,10 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                             </div>

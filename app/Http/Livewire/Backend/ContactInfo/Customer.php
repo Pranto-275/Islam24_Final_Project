@@ -9,7 +9,8 @@ use Livewire\Component;
 class Customer extends Component
 {
    public $type;
-   public $name;
+   public $first_name;
+   public $last_name;
    public $address;
    public $shipping_address;
    public $phone;
@@ -20,7 +21,7 @@ class Customer extends Component
    public $opening_balance;
    public $contact_category_id;
    public $CustomerCategoryId;
-   public $status;
+   public $is_active;
 
 
 
@@ -28,17 +29,19 @@ class Customer extends Component
     public function ContactInfoSave(){
         $this->validate([
             'contact_category_id'                   => 'required',
-            'name'                   => 'required',
+            'first_name'                   => 'required',
+            'last_name'                   => 'required',
         ]);
 // dd($this->contact_category_id);
         if ($this->CustomerCategoryId){
            $Query = Contact::find($this->CustomerCategoryId);
         }else{
             $Query           = new Contact();
-            $Query->user_id  = Auth::id();
+            $Query->created_by  = Auth::id();
         }
         $Query->type                  = "Customer";
-        $Query->name                  = $this->name;
+        $Query->first_name                  = $this->first_name;
+        $Query->last_name                  = $this->last_name;
         $Query->address               = $this->address;
         $Query->shipping_address      = $this->shipping_address;
         $Query->phone                 = $this->phone;
@@ -48,7 +51,7 @@ class Customer extends Component
         $Query->birthday              = $this->birthday;
         $Query->opening_balance       = $this->opening_balance;
         $Query->contact_category_id       = $this->contact_category_id;
-        $Query->status                = $this->status;
+        $Query->is_active                = $this->is_active;
         $Query->branch_id             = 1;
         $Query->save();
         $this->reset();
@@ -70,7 +73,8 @@ class Customer extends Component
        $this->QueryUpdate         = Contact::find($id);
        $this->CustomerCategoryId  = $this->QueryUpdate->id;
        $this->type                = $this->QueryUpdate->type;
-       $this->name                = $this->QueryUpdate->name;
+       $this->first_name                = $this->QueryUpdate->first_name;
+       $this->last_name                = $this->QueryUpdate->last_name;
        $this->address             = $this->QueryUpdate->address;
        $this->shipping_address    = $this->QueryUpdate->shipping_address;
        $this->phone               = $this->QueryUpdate->phone;
@@ -80,7 +84,7 @@ class Customer extends Component
        $this->birthday            = $this->QueryUpdate->birthday;
        $this->opening_balance     = $this->QueryUpdate->opening_balance;
        $this->contact_category_id     = $this->QueryUpdate->contact_category_id;
-       $this->status              = $this->QueryUpdate->status;
+       $this->is_active              = $this->QueryUpdate->is_active;
        $this->ContactModal();
     }
 

@@ -65,7 +65,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">percentage Rate</label>
-                                    <input class="form-control" type="text" wire:model.lazy="rate_percent" placeholder="Enter percentage rate">
+                                    <input class="form-control" type="number" wire:model.lazy="rate_percent" placeholder="Enter percentage rate">
                                     @error('rate_percent') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Fixed Rate</label>
-                                    <input class="form-control" type="text" wire:model.lazy="rate_fixed" placeholder="Enter fixed rate">
+                                    <input class="form-control" type="number" wire:model.lazy="rate_fixed" placeholder="Enter fixed rate">
                                     @error('rate_fixed') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -81,10 +81,10 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
-                                    <select class="form-control" wire:model.lazy="status">
+                                    <select class="form-control" wire:model.lazy="is_active">
                                         <option value="">Select Status</option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
                                     </select>
                                 </div>
                             </div>
@@ -144,12 +144,6 @@
                         title: 'Fixed Rate',
                         data:  'rate_fixed',
                         name:  'rate_fixed'
-                    },
-
-                    {
-                        title: 'Status',
-                        data:  'status',
-                        name:  'status'
                     },
 
                     {

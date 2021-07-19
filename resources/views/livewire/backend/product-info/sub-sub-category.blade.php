@@ -45,7 +45,7 @@
                 <form wire:submit.prevent="saveSubSubCategory">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Code</label>
                                     <input class="form-control" type="text" wire:model.lazy="code" placeholder="Code">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Sub Category</label>
                                     <select class="form-control" wire:model.lazy="sub_category_id">
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Name</label>
                                     <input class="form-control" type="text" wire:model.lazy="name" placeholder="Enter sub sub category name">
@@ -73,7 +73,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="control-label">Image (517.38*492 jpg)</label>
                                     <div class="custom-file">
@@ -92,22 +92,17 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Description</label>
-                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Description">
-                                </div>
+                                <label for="basicpill-lastname-input">Description</label>
+                                <textarea class="form-control" wire:model.lazy="description" placeholder="Description"></textarea>
                             </div>
-
-
                             <div class="col-lg-12">
                                 <div class="form-group">
                                         <label for="basicpill-lastname-input">Status</label>
-                                        <select class="form-control" wire:model.lazy="status">
+                                        <select class="form-control" wire:model.lazy="is_active">
                                             <option value="">Select Status</option>
-                                            <option value="Active">Active</option>
-                                            <option value="Inactive">Inactive</option>
+                                            <option value="1">Active</option>
+                                            <option value="0">Inactive</option>
                                         </select>
                                 </div>
                             </div>
@@ -162,16 +157,20 @@
                         name:  'description'
                     },
                     {
+                        title: 'Status',
+                        data:  'is_active',
+                        name:  'is_active'
+                    },
+                    {
                         title: 'Image',
                         data:  'image',
                         name:  'image'
                     },
-                    {
-                        title: 'Status',
-                        data:  'status',
-                        name:  'status'
-                    },
-
+                    // {
+                    //     title: 'Status',
+                    //     data:  'status',
+                    //     name:  'status'
+                    // },
                     {
                         title: 'Action',
                         data: 'action',

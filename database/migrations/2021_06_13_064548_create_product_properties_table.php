@@ -18,9 +18,9 @@ class CreateProductPropertiesTable extends Migration
             $table->foreignId('product_id');
             $table->foreignId('size_id', 191)->nullable();
             $table->foreignId('color_id', 191)->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('created_by');
             $table->foreignId('branch_id');
-            $table->enum('status', ['Active', 'Inactive'])->nullable();
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

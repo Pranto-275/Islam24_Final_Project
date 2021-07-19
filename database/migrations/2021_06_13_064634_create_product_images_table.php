@@ -17,9 +17,9 @@ class CreateProductImagesTable extends Migration
             $table->id();
             $table->foreignId('product_id');
             $table->text('image')->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('created_by');
             $table->foreignId('branch_id');
-            $table->enum('status', ['Active', 'Inactive'])->nullable();
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

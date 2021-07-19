@@ -10,6 +10,7 @@
     <meta name="description" content="SuperMarket is a powerful Multi-purpose HTML5 Template with clean and user friendly design. It is definite a great starter for any eCommerce web project." />
     <meta name="author" content="Magentech">
     <meta name="robots" content="index, follow" />
+    {{-- <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" /> --}}
 
     <!-- Mobile specific metas
     ============================================ -->
@@ -21,6 +22,15 @@
 
     <!-- Libs CSS
     ============================================ -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+
+    <link href="{{ asset('assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+
+   <!-- Icons Css -->
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+   <!-- App Css-->
+   <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" href="{{ asset('supermarke/') }}/css/bootstrap/css/bootstrap.min.css">
     <link href="{{ asset('supermarke/') }}/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ asset('supermarke/') }}/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
@@ -52,6 +62,7 @@
     @livewireStyles
 
     @livewireScripts
+
 </head>
 
 <body class="common-home res layout-1">
@@ -76,6 +87,19 @@
 <!-- Include Libs & Plugins
 ============================================ -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+
+<script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
+
+<!-- init js -->
+<script src="{{ asset('assets/js/pages/ecommerce-select2.init.js') }}"></script>
+
+<!-- App js -->
+<script src="{{ asset('assets/js/app.js') }}"></script>
 <script type="text/javascript" src="{{ asset('supermarke/') }}/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="{{ asset('supermarke/') }}/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ asset('supermarke/') }}/js/owl-carousel/owl.carousel.js"></script>

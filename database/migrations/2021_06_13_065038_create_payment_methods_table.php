@@ -15,13 +15,14 @@ class CreatePaymentMethodsTable extends Migration
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 100)->nullable();
+            $table->string('code', 20)->nullable();
             $table->string('name');
-            $table->string('account_no')->nullable();
-            $table->string('account_holder_name')->nullable();
-            $table->double('opening_balance')->nullable();
-            $table->foreignId('user_id');
+            $table->string('account_no', 50)->nullable();
+            $table->string('account_holder_name', 100)->nullable();
+            $table->double('opening_balance')->nullable()->default(0);
             $table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

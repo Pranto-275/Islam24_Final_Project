@@ -17,7 +17,7 @@ class CreatePermissionCategoriesTable extends Migration
             $table->id();
             $table->string('title',191)->nullable();
             $table->string('name',191)->nullable();
-            $table->enum('status', ['Active','Inactive']);
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

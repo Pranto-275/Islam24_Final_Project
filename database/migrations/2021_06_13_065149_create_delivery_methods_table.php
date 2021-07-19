@@ -15,10 +15,13 @@ class CreateDeliveryMethodsTable extends Migration
     {
         Schema::create('delivery_methods', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 100);
-            $table->string('name',100);
-            $table->string('address',100);
-            $table->string('branch_name');
+            $table->string('code', 20);
+            $table->string('name',200);
+            $table->text('address');
+            $table->string('description')->nullable();
+            $table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

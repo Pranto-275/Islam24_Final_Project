@@ -23,9 +23,9 @@ class CreateCurrenciesTable extends Migration
             $table->string('in_word_surfix',100)->nullable();
             $table->enum('in_word_prefix_position', ['Prefix','Surfix'])->nullable();
             $table->enum('in_word_surfix_position', ['Prefix','Surfix'])->nullable();
-			$table->foreignId('user_id');
+			$table->foreignId('created_by');
             $table->foreignId('branch_id');
-            $table->enum('status', ['Active','Inactive']);
+            $table->boolean('is_active')->nullable()->default(1);
 			$table->softDeletes();
             $table->timestamps();
         });

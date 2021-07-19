@@ -10,14 +10,14 @@ class Unit extends Component
     public $code;
     public $name;
     public $rate;
-    public $status;
+    public $is_active;
     public $UnitId=NULL;
     public function unitEdit($id){
         $this->QueryUpdate = UnitInfo::find($id);
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
         $this->rate = $this->QueryUpdate->rate;
-        $this->status = $this->QueryUpdate->status;
+        $this->is_active = $this->QueryUpdate->is_active;
 
         $this->productUnitInfoModal();
     }
@@ -32,19 +32,19 @@ class Unit extends Component
         $this->validate([
             'code' => 'required',
             'name' => 'required',
-            'status' => 'required',
+            'rate' => 'required',
         ]);
 
         if($this->UnitId){
             $Query = UnitInfo::find($this->UnitId);
         }else{
             $Query = new UnitInfo();
-            $Query->user_id = Auth::user()->id;
+            $Query->created_by = Auth::user()->id;
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
         $Query->rate = $this->rate;
-        $Query->status = $this->status;
+        $Query->is_active = $this->is_active;
         $Query->branch_id = 1;
         $Query->save();
         $this->reset();

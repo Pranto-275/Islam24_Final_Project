@@ -35,6 +35,7 @@ use App\Http\Livewire\Backend\Report\SalesReturnReport;
 use App\Http\Livewire\Backend\Report\StockAdjustmentReport;
 use App\Http\Livewire\Backend\Report\StockReport;
 use App\Http\Livewire\Backend\Report\SupplierLedger;
+use App\Http\Livewire\Backend\setting\CompanyInfo;
 use App\Http\Livewire\Backend\setting\Branch;
 use App\Http\Livewire\Backend\Setting\CouponCode;
 use App\Http\Livewire\Backend\setting\Currency;
@@ -130,6 +131,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('stock-manager', StockManager::class)->name('stock-manager');
     });
     Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
+        Route::get('company', CompanyInfo::class)->name('company');
         Route::get('branch', Branch::class)->name('branch');
         Route::get('currency', Currency::class)->name('currency');
         Route::get('delivery-method', DeliveryMethod::class)->name('delivery-method');
