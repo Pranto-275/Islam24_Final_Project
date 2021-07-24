@@ -22,11 +22,31 @@ use App\Models\Inventory\Currency;
 use App\Models\Inventory\DeliveryMethod;
 use App\Models\Backend\Setting\Warehouse;
 use App\Models\Backend\ProductInfo\Unit;
+use App\Models\Backend\Inventory\PurchaseInvoice;
 use App\Models\Setting\Slider;
 use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
+    public function PurchaseInvoiceTable(){
+        $Query = PurchaseInvoice::query()->orderBy('id', 'desc');
+
+        $this->i = 1;
+
+        return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
+        ->addColumn('contact_id', function ($data) {
+            return $data->Contact ? $data->Contact->first_name.' '.$data->Contact->last_name : '';
+        })
+        ->addColumn('action', function ($data) {
+            return '<a class="btn btn-primary btn-sm" href="'.route('inventory.purchase', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="bx bx-edit font-size-18"></i></a>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['id', 'contact_id', 'action'])
+        ->toJSON();
+    }
     public function SliderTable(){
         $Query = Slider::query()->orderBy('id', 'desc');
 

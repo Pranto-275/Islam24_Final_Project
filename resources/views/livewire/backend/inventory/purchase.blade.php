@@ -36,7 +36,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Date</label>
                                 <input id="date" type="date" class="form-control" wire:model.lazy="date" placeholder="Date" required>
@@ -44,7 +44,7 @@
                             </div>
 
                         </div>
-                        <div class="col-lg-2">
+                        {{-- <div class="col-lg-2">
                             <div class="form-group">
                                 <label class="control-label">Warehouse</label>
                                 <select class="form-control" wire:model.lazy="warehouse_id" id="select2-dropdown">
@@ -55,7 +55,7 @@
                                 </select>
                                 @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label class="control-label">Supplier</label>
@@ -68,7 +68,7 @@
                                 @error('contact_id') <span class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Search Product</label>
                                 <livewire:component.product-search-dropdown/>
@@ -90,11 +90,11 @@
                                     <th>Product Code</th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
-                                    <th>Unit</th>
-                                    <th>Vat</th>
+                                    {{-- <th>Unit</th>
+                                    <th>Vat</th> --}}
                                     <th>Pur Rate</th>
                                     <th>Discount</th>
-                                    <th>Sale Rate</th>
+                                    <th>Regular Rate</th>
                                     <th>Amount</th>
                                     <th colspan="1">Action</th>
                                 </tr>
@@ -112,12 +112,12 @@
                                     <td>
                                         <input type="number" class="form-control" wire:model.debounce.500ms="product_quantity.{{$key}}" style="width: 100px;" placeholder="Quantity" step="any">
                                     </td>
-                                    <td>
-                                        {{-- {{ $Item->Unit->name }} --}}
+                                    {{-- <td>
+                                        {{ $Item->Unit->name }}
                                     </td>
                                     <td>
-                                        {{-- {{ $Item->Vat->name }} --}}
-                                    </td>
+                                        {{ $Item->Vat->name }}
+                                    </td> --}}
                                     <td>
                                         <input type="text" class="form-control"  wire:model.debounce.500ms="product_rate.{{$key}}" placeholder="Pur Rate">
                                     </td>
@@ -125,7 +125,7 @@
                                         <input type="text" class="form-control" wire:model.debounce.500ms="product_discount.{{$key}}" style="width: 100px;" placeholder="Discount">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control"  value="{{ $product['sale_price'] }}" placeholder="Sale Rate">
+                                        <input type="text" class="form-control"  value="{{ $product['regular_price'] }}" placeholder="Sale Rate">
                                     </td>
                                     <td>
                                         {{$product_subtotal[$key]}}
@@ -176,10 +176,10 @@
                                         <input type="number" step="any" class="form-control" name="AmttoPay" wire:model.debounce.500ms="grand_total"  style="width: 200px;"  placeholder="Amt to Pay" readonly>
                                     </td>
                                     <td>
-                                        <input type="number" step="any" class="form-control" name="PaidAmount" placeholder="Paid Amount" wire:model.500ms="paid_amount" readonly>
+                                        <input type="number" step="any" class="form-control" name="PaidAmount" placeholder="Paid Amount"wire:model.debounce.500ms="paid_amount" readonly>
                                     </td>
                                     <td>
-                                        <input type="number" step="any" class="form-control" name="Due" placeholder="Due" wire:model.500ms="due" readonly>
+                                        <input type="number" step="any" class="form-control" name="Due" placeholder="Due" wire:model.debounce.500ms="due" style="width:80px;" readonly>
                                     </td>
                                 </tr>
                             </tbody>
@@ -209,7 +209,7 @@
                                     <tr>
                                         <th scope="row"><center>{{$item['payment_method_name']}}</center></th>
                                         <td>
-                                            {{$item['payment_method_name']}}
+                                            {{$item['transaction_id']}}
                                         </td>
                                         <td>
                                            {{$item['payment_amount']}}
@@ -249,6 +249,12 @@
                                                 <option value="{{ $payment->id }}">{{ $payment->name }}</option>
                                             @endforeach
                                         </select>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>Transaction Id</td>
+                                    <th>
+                                        <input type="text" class="form-control" placeholder="Transaction Id" wire:model.lazy="transaction_id">
                                     </th>
                                 </tr>
                                 <tr>
@@ -319,7 +325,7 @@
                                     <select class="form-control" wire:model.lazy="contact_id">
                                         <option value="">Select Contact</option>
                                         @foreach ($contacts as $contact)
-                                            <option value="{{ $contact->id }}">{{ $contact->name }}</option>
+                                            <option value="{{ $contact->id }}">{{ $contact->first_name }} {{ $contact->last_name }}</option>
                                         @endforeach
                                     </select>
                                     @error('contact_id') <span class="error">{{ $message }}</span> @enderror
@@ -346,21 +352,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sale Price</label>
-                                    <input class="form-control" type="number" step="any" wire:model.lazy="sale_price" placeholder="Enter sale price">
+                                    <label for="basicpill-firstname-input">Regular Price</label>
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="regular_price" placeholder="Enter Regular price">
                                 </div>
                             </div>
-
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Special Price</label>
+                                    <input class="form-control" type="number" step="any" wire:model.lazy="special_price" placeholder="Enter Special Price">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Whole Sales Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="wholesale_price" placeholder="Enter Whole sale price">
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Purchase Price</label>
                                     <input class="form-control" type="number" step="any" wire:model.lazy="purchase_price" placeholder="Enter Purchase price">

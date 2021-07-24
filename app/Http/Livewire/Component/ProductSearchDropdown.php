@@ -19,6 +19,7 @@ class ProductSearchDropdown extends Component
 
     public function render()
     {
+
         $Product = Product::where('name', 'like', '%'.$this->search.'%');
         $Product = $Product->get();
         return view('livewire.component.product-search-dropdown',

@@ -2,16 +2,16 @@
 
 namespace App\Http\Livewire\Inventory;
 
-use App\Models\Accounts\Payment;
-use App\Models\AccountsSettings\Branch;
-use App\Models\AccountsSettings\PaymentMethod;
-use App\Models\AccountsSettings\Vat;
 use App\Models\Contact\Contact;
 use App\Models\Inventory\Category;
-use App\Models\Inventory\Invoice;
+use App\Models\Backend\Inventory\Invoice;
 use App\Models\Inventory\Item as ItemM;
-use App\Models\Inventory\Unit;
-use App\Models\Stock\StockManager;
+use App\Models\Backend\Inventory\StockManager;
+use App\Models\Backend\Setting\PaymentMethod;
+use App\Models\Backend\Transaction\Payment;
+use App\Models\Backend\Setting\Vat;
+use App\Models\Backend\Setting\Branch;
+use App\Models\Backend\ProductInfo\Unit;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;

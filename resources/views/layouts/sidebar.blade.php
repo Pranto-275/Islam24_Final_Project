@@ -24,6 +24,7 @@
                         <li><a href="{{route('inventory.stock-adjustment')}}">Stock Adjustment</a></li>
                         <li><a href="{{route('inventory.stock-manager')}}">Stock Manager</a></li>
                         <li><a href="{{route('inventory.purchase')}}">Purchase</a></li>
+                        <li><a href="{{route('inventory.purchase-list')}}">Purchase List</a></li>
                     </ul>
                 </li>
                 <li>

@@ -7,6 +7,7 @@ use App\Http\Livewire\Backend\ContactInfo\Staff;
 use App\Http\Livewire\Backend\ContactInfo\Supplier;
 use App\Http\Livewire\Backend\Inventory\Invoice;
 use App\Http\Livewire\Backend\Inventory\Purchase;
+use App\Http\Livewire\Backend\Inventory\PurchaseList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
 use App\Http\Livewire\Backend\Inventory\StockManager;
 use App\Http\Livewire\Backend\Order\Order;
@@ -123,6 +124,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
         Route::get('ware-house', WareHouse::class)->name('ware-house');
         Route::get('purchase/{id?}', Purchase::class)->name('purchase');
+        Route::get('purchase-list', PurchaseList::class)->name('purchase-list');
     });
     Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
         Route::get('profile-settings', ProfileSettings::class)->name('profile-settings');
@@ -227,5 +229,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('supplier_table', [DatatableController::class, 'SupplierTable'])->name('supplier_table');
         Route::get('staff_table', [DatatableController::class, 'StaffTable'])->name('staff_table');
         Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
+        Route::get('purchase_invoice', [DatatableController::class, 'PurchaseInvoiceTable'])->name('purchase_invoice');
     });
 });
