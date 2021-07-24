@@ -72,6 +72,8 @@
                                     @error('last_name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+
+
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Address</label>
@@ -127,7 +129,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Add password</label>
+                                    <input class="form-control" type="text" wire:model.lazy="opening_balance" placeholder="Add password">
+                                    @error('opening_balance') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
                                     <select class="form-control" wire:model.lazy="is_active">
@@ -190,6 +200,12 @@
                     },
                     {
                         title: 'Phone',
+                        data:  'phone',
+                        name:  'phone'
+                    },
+
+                    {
+                        title: 'password',
                         data:  'phone',
                         name:  'phone'
                     },

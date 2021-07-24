@@ -23,6 +23,9 @@ class CreateStockAdjustmentsTable extends Migration
             $table->foreignId('from_warehouse_id')->nullable();
             $table->foreignId('to_warehouse_id')->nullable();
             $table->string('note')->nullable();
+            $table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

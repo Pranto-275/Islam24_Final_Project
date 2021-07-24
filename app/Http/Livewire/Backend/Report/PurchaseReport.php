@@ -11,6 +11,7 @@ class PurchaseReport extends Component
     {
         return view('livewire.backend.report.purchase-report', [
             'suppliers' => Invoice::get(),
+            
         ]);
     }
 }

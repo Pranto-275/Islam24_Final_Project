@@ -80,8 +80,7 @@
                                 <th>SL</th>
                                 <th>Date</th>
                                 <th>Code</th>
-                                <th>Product Name</th>
-                                
+                                <th>Product Name</th>                               
                                 <th>VAT</th>
                                 <th>Disount</th>
                                 <th>Qty</th>
@@ -91,7 +90,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <?php $i=0; $sale_price=0; $sale_subtotal=0; $quantity=0; ?>
+                                <?php $i=0; $vat=0; $discount=0; $sale_price=0; $sale_subtotal=0; $quantity=0; ?>
                                 @foreach ($salesDetails as $salesDetail)
 
                                 <tr>
@@ -128,11 +127,13 @@
                             </tbody>
                             <thead>
                                 <tr>
-                                    <th colspan="7"><center>Total</center></th>
+                                    <th colspan="4"><center>Total</center></th>
+                                    <th>{{ $vat }}</th>
+                                    <th>{{ $discount }}</th>
                                     <th>{{ $quantity }}</th>
                                     <th>{{ $sale_price }}</th>
                                     <th>{{ $sale_subtotal }}</th>
-                                    <th></th>
+                                    
                                 </tr>
                                 </thead>
                         </table>

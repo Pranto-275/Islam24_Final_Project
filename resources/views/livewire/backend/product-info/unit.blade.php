@@ -126,11 +126,6 @@
                         name:  'rate'
                     },
 
-                    {
-                        title: 'Status',
-                        data:  'status',
-                        name:  'status'
-                    },
 
                     {
                         title: 'Action',

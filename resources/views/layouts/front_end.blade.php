@@ -1,139 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <!-- Basic page needs
-    ============================================ -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'SuperMarket') }}</title>
-    <meta charset="utf-8">
-    <meta name="keywords" content="html5 template, best html5 template, best html template, html5 basic template, multipurpose html5 template, multipurpose html template, creative html templates, creative html5 templates" />
-    <meta name="description" content="SuperMarket is a powerful Multi-purpose HTML5 Template with clean and user friendly design. It is definite a great starter for any eCommerce web project." />
-    <meta name="author" content="Magentech">
-    <meta name="robots" content="index, follow" />
-    {{-- <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" /> --}}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>{{ config('app.name', 'Paikari Electronics') }}</title>
+        <meta name="keywords" content="html5 template, best html5 template, best html template, html5 basic template, multipurpose html5 template, multipurpose html template, creative html templates, creative html5 templates" />
+        <meta name="description" content="SuperMarket is a powerful Multi-purpose HTML5 Template with clean and user friendly design. It is definite a great starter for any eCommerce web project." />
+        <meta name="author" content="Magentech">
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Mobile specific metas
-    ============================================ -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('venam/') }}/img/favicon.png">
+		<!-- CSS here -->
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/animate.min.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/magnific-popup.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/jquery-ui.min.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/flaticon.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/odometer.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/aos.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/slick.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/default.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/style.css">
+        <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/responsive.css">
+    </head>
+    <body>
+        <!-- preloader  -->
+        <div id="preloader">
+            <div id="ctn-preloader" class="ctn-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                    <div class="txt-loading">
+                        <span data-text-preloader="V" class="letters-loading">
+                            V
+                        </span>
+                        <span data-text-preloader="E" class="letters-loading">
+                            E
+                        </span>
+                        <span data-text-preloader="N" class="letters-loading">
+                            N
+                        </span>
+                        <span data-text-preloader="A" class="letters-loading">
+                            A
+                        </span>
+                        <span data-text-preloader="M" class="letters-loading">
+                            M
+                        </span>
+                    </div>
+                </div>
+                <div class="loader">
+                    <div class="row">
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-left">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                        <div class="col-3 loader-section section-right">
+                            <div class="bg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- preloader end -->
 
-    <!-- Favicon
-    ============================================ -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('supermarke/') }}/ico/favicon-16x16.png"/>
 
-    <!-- Libs CSS
-    ============================================ -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
 
-    <link href="{{ asset('assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-
-   <!-- Icons Css -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-   <!-- App Css-->
-   <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" href="{{ asset('supermarke/') }}/css/bootstrap/css/bootstrap.min.css">
-    <link href="{{ asset('supermarke/') }}/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/themecss/lib.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/js/minicolors/miniColors.css" rel="stylesheet">
-
-    <!-- Theme CSS
-    ============================================ -->
-    <link href="{{ asset('supermarke/') }}/css/themecss/so_searchpro.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/themecss/so-categories.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/themecss/so-category-slider.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/themecss/so-newletter-popup.css" rel="stylesheet">
-
-    <link href="{{ asset('supermarke/') }}/css/footer/footer1.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/header/header1.css" rel="stylesheet">
-    <link id="color_scheme" href="{{ asset('supermarke/') }}/css/theme.css" rel="stylesheet">
-    <link href="{{ asset('supermarke/') }}/css/responsive.css" rel="stylesheet">
-
-     <!-- Google web fonts
-    ============================================ -->
-    <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
-    <style type="text/css">
-         body{font-family:'Poppins', sans-serif;}
-    </style>
-    @livewireStyles
-
-    @livewireScripts
-
-</head>
-
-<body class="common-home res layout-1">
-
-    <div id="wrapper" class="wrapper-fluid banners-effect-3">
-        <!-- Header Container  -->
+        <!-- header-area -->
         @include('livewire.frontend.header')
-        <!-- //Header Container  -->
+        <!-- header-area-end -->
 
-        <!-- Main Container  -->
-              {{$slot}}
-        <!-- //Main Container -->
+        <!-- main-area -->
+        {{$slot}}
+        <!-- main-area-end -->
 
-        <!-- Footer Container -->
+        <!-- footer-area -->
         @include('livewire.frontend.footer')
-        <!-- //end Footer Container -->
-    </div>
-
-<!-- End Color Scheme
-============================================ -->
-
-<!-- Include Libs & Plugins
-============================================ -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
-<script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
-<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-
-<script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
-
-<!-- init js -->
-<script src="{{ asset('assets/js/pages/ecommerce-select2.init.js') }}"></script>
-
-<!-- App js -->
-<script src="{{ asset('assets/js/app.js') }}"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/slick-slider/slick.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/themejs/libs.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/unveil/jquery.unveil.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/countdown/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/datetimepicker/moment.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/modernizr/modernizr-2.6.2.min.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/minicolors/jquery.miniColors.min.js"></script>
-
-<!-- Theme files
-============================================ -->
-
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/themejs/application.js"></script>
-
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/themejs/homepage.js"></script>
-
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/themejs/toppanel.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="{{ asset('supermarke/') }}/js/themejs/addtocart.js"></script>
-<script type="text/javascript">
-<!--
-// Check if Cookie exists
-    if($.cookie('display')){
-        view = $.cookie('display');
-    }else{
-        view = 'grid';
-    }
-    if(view) display(view);
-//-->
-</script>
-</body>
+        <!-- footer-area-end -->
+		<!-- JS here -->
+        <script src="{{ URL::asset('venam/') }}/js/vendor/jquery-3.5.0.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/popper.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/bootstrap.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/isotope.pkgd.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/imagesloaded.pkgd.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/jquery.magnific-popup.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/owl.carousel.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/jquery.odometer.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/jquery.countdown.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/jquery.appear.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/slick.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/ajax-form.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/wow.min.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/aos.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/plugins.js"></script>
+        <script src="{{ URL::asset('venam/') }}/js/main.js"></script>
+    </body>
 </html>

@@ -1,167 +1,104 @@
-<div>
 
-    <!-- Footer Container -->
-    <footer class="footer-container typefooter-1">
-        <!-- Footer Top Container -->
-
-            <div class="container">
-                <div class="row footer-top">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="socials-w">
-                          <h2>Follow socials</h2>
-                          <ul class="socials">
-                            @if($companyInfo)<li class="facebook"><a href="{{ $companyInfo->facebook_link }}" target="_blank"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>@endif
-                            @if($companyInfo)<li class="youtube"><a href="{{ $companyInfo->youtube_link }}" target="_blank"><i class="fa fa-youtube-play"></i><span>Youtube</span></a></li>@endif
-                          </ul>
+<footer class="footer-area footer-style-two">
+    <div class="footer-top pt-65 pb-25">
+        <div class="custom-container-two">
+            <div class="footer-newsletter-wrap footer-newsletter-two">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-xl-8 col-lg-6">
+                        <div class="newsletter-title">
+                            <h4>Subscribe <span>Now !</span></h4>
+                            <span>Venam By Signing Up To Our Newsletter.</span>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="module newsletter-footer1">
-                            <div class="newsletter">
-
-                                <div class="title-block">
-                                    <div class="page-heading font-title">
-                                        Signup for Newsletter
-                                    </div>
-
-                                </div>
-
-                                <div class="block_content">
-                                    <form method="post" id="signup" name="signup" class="form-group form-inline signup send-mail">
-                                        <div class="form-group">
-                                            <div class="input-box">
-                                                <input type="email" placeholder="Your email address..." value="" class="form-control" id="txtemail" name="txtemail" size="55">
-                                            </div>
-                                            <div class="subcribe">
-                                                <button class="btn btn-primary btn-default font-title" type="submit" onclick="return subscribe_newsletter();" name="submit">
-                                            Subscribe
-                                        </button>
-                                            </div>
-                                        </div>
-                                    </form>
-
-
-                                </div>
-                                <!--/.modcontent-->
-
-                            </div>
-
+                    <div class="col-xl-4 col-lg-6 col-md-8">
+                        <div class="newsletter-form">
+                            <form action="#">
+                                <input type="email" placeholder="Enter Your Email....">
+                                <button class="btn">Subscribe</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-        <!-- /Footer Top Container -->
-
-        <div class="footer-middle ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-infos">
-                        <div class="infos-footer">
-                            @if($companyInfo)
-                            <a href="#"><img src="{{ asset('storage/photo/'.$companyInfo->logo) }}" alt="Logo" style="width: 180px;height:50px;"></a>
-                            @endif
-                            <ul class="menu">
-                                <li class="adres">
-                                @if($companyInfo)
-                                    {{ $companyInfo->address }}
-                                @endif
-                                </li>
+            <div class="row justify-content-between">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget mb-50">
+                        <div class="footer-logo mb-30">
+                            <a href="{{url('/')}}"><img src="{{ URL::asset('venam/') }}/img/logo/white_paikari_logo.png" alt=""></a>
+                        </div>
+                        <div class="footer-text mb-35">
+                            <h5 class="call-us">Got Question? Call us 24/7</h5>
+                            <h6 class="number">+88 01828-862147</h6>
+                            <p>Block-A, Meraj Nagar, Rayerbag, kadamtali, Dhaka - 1362</p>
+                            <a href="#" class="btn"><i class="fas fa-map-marker-alt"></i>view on map</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-50">
+                        <div class="fw-title mb-35">
+                            <h5>Customer Service</h5>
+                        </div>
+                        <div class="fw-link">
+                            <ul>
+                                <li><a href="#">Help Center</a></li>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Product Recalls</a></li>
+                                <li><a href="#">Accessibility</a></li>
+                                <li><a href="#">Contact Us</a></li>
                             </ul>
                         </div>
-
-
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
-                        <div class="box-information box-footer">
-                            <div class="module clearfix">
-                                <h3 class="modtitle">Information</h3>
-                                <div class="modcontent">
-                                    <ul class="menu">
-                                        <li><a href="#">About Us</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
-                        <div class="box-account box-footer">
-                            <div class="module clearfix">
-                                <h3 class="modtitle">My Account</h3>
-                                <div class="modcontent">
-                                    <ul class="menu">
-                                        <li><a href="#">Brands</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-clear">
-                        <div class="box-service box-footer">
-                          <div class="module clearfix">
-                            <h3 class="modtitle">Categories</h3>
-                            <div class="modcontent">
-                              <ul class="menu">
-                                @foreach($categories as $category)
-                                <li><a href="#">{{ $category->name }}</a></li>
-                                @endforeach
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12 col-style">
-                        <div class="box-service box-footer">
-                            <div class="module clearfix">
-                                <h3 class="modtitle">Services</h3>
-                                <div class="modcontent">
-                                    <ul class="menu">
-                                        <li><a href="#">Contact Us</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                        <div class="footer-b">
-                            <div class="bottom-cont">
-                                <a href="#"><img src="{{ asset('supermarke/') }}/image/catalog/demo/payment/pay1.jpg" alt="image"></a>
-                                <ul class="footer-links">
-                                    <li><a href="#">About Us</a></li>
-                                </ul>
-                                <p>**$50 off orders $350+ with the code BOO50. $75 off orders $500+ with the code BOO75. $150 off orders $1000+ with the code BOO150. Valid from October 28, 2016 to October 31, 2016. Offer may not be combined with any other offers or promotions, is non-exchangeable and non-refundable. Offer valid within the US only.</p>
-                            </div>
+                <div class="col-xl-2 col-lg-3 col-sm-6">
+                    <div class="footer-widget mb-50">
+                        <div class="fw-title mb-35">
+                            <h5>Our Stores</h5>
                         </div>
-            </div>
-        </div>
-        <!-- Footer Bottom Container -->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="col-lg-12 col-xs-12 payment-w">
-                <img src="{{ asset('supermarke/') }}/image/catalog/demo/payment/payment.png" alt="imgpayment">
+                        <div class="fw-link">
+                            <ul>
+                                <li><a href="#">New York</a></li>
+                                <li><a href="#">London SF</a></li>
+                                <li><a href="#">Cockfosters BP</a></li>
+                                <li><a href="#">Los Angeles</a></li>
+                                <li><a href="#">Chicago</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="copyright-w">
-                <div class="container">
-                    <div class="copyright">
-                    SuperMarket © 2018 Demo Store. All Rights Reserved. Designed by <a href="http://www.opencartworks.com/" target="_blank">OpenCartWorks.Com</a>
+                <div class="col-xl-2 col-lg-2 col-sm-6">
+                    <div class="footer-widget mb-50">
+                        <div class="fw-title mb-35">
+                            <h5>My Account</h5>
+                        </div>
+                        <div class="fw-link">
+                            <ul>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Discount</a></li>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Orders History</a></li>
+                                <li><a href="#">Order Tracking</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /Footer Bottom Container -->
-
-         <!--Back To Top-->
-        <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
-    </footer>
-    <!-- //end Footer Container -->
-</div>
+    </div>
+    <div class="copyright-wrap copyright-style-two">
+        <div class="custom-container-two">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="copyright-text">
+                        <p>Copyright © 2020 <a href="#">Paikari Electronics</a> All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 d-none d-md-block">
+                    <div class="payment-method-img text-right">
+                        <img src="{{ URL::asset('venam/') }}/img/images/card_img.png" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

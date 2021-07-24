@@ -60,10 +60,10 @@
                         <li><a href="{{route('setting.invoice-setting')}}">Invoice Setting</a></li>
                         <li><a href="{{route('setting.payment-method')}}">Payment Method</a></li>
                         <li><a href="{{route('setting.vat')}}">Vat Info</a></li>
+                        <li><a href="{{route('setting.coupon-code')}}">Coupon code</a></li>
                         <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
                         <li><a href="{{route('setting.slider')}}">Slider</a></li>
                         <li><a href="{{route('setting.point-policy')}}">Point Policy</a></li>
-
                     </ul>
                 </li>
 
@@ -74,6 +74,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('transaction.payment')}}">Payment Info</a></li>
+                        <li><a href="{{route('transaction.customer-payment')}}">Customer Payment</a></li>
+                        <li><a href="{{route('transaction.customer-payment-report')}}">Customer Payment Report</a></li>
                     </ul>
                 </li>
                 <li>
@@ -106,6 +108,7 @@
                         <li><a href="{{route('report.supplier-ledger')}}">Supplier Ledger</a></li>
                         <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li>
                     </ul>
+
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

@@ -19,6 +19,10 @@ class CreatePointPoliciesTable extends Migration
             $table->double('amount', 20, 2)->nullable();
             $table->double('point_value', 20, 2)->nullable();
             $table->double('point_amount', 20, 2)->nullable();
+            $table->string('description')->nullable();
+            $table->foreignId('branch_id');
+            $table->foreignId('created_by');
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
