@@ -21,9 +21,10 @@ class CreateProductsTable extends Migration
             $table->double('special_price', 20, 4);
             $table->double('wholesale_price', 20, 4);
             $table->double('purchase_price', 20, 4)->default(0);
-            $table->double('discount', 20, 4)->default(0);
+            $table->double('discount', 20, 4)->default(0)->nullable();
             $table->foreignId('sub_sub_category_id');
-            $table->string('low_alert', 191);
+            $table->foreignId('brand_id')->nullable();
+            $table->string('low_alert', 191)->nullable();
             $table->enum('barcode_generate_state', ['Bulk', 'Single']);
             $table->foreignId('vat_id')->nullable();
             $table->foreignId('branch_id');
