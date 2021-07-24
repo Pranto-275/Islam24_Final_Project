@@ -30,7 +30,12 @@ class DatatableController extends Controller
     public function SliderTable(){
         $Query = Slider::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('image', function ($data) {
             $url = asset('storage/photo/'.$data->image);
             return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
@@ -45,7 +50,12 @@ class DatatableController extends Controller
     public function UnitTable(){
         $Query = Unit::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('action', function ($data) {
             return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
@@ -57,7 +67,12 @@ class DatatableController extends Controller
     public function InvoiceTable(){
         $Query = Invoice::query()->orderBy('id', 'desc');
 
-        return Datatables::of($Query)
+            $this->i = 1;
+
+            return Datatables::of($Query)
+              ->addColumn('id', function ($data) {
+               return $this->i++;
+            })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
@@ -70,7 +85,12 @@ class DatatableController extends Controller
     public function CompanyInfoTable(){
         $Query = CompanyInfo::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
@@ -81,7 +101,12 @@ class DatatableController extends Controller
 
     public function InvoiceSettingTable(){
         $Query = InvoiceSetting::query()->orderBy('id', 'desc');
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
             ->addColumn('image', function ($data) {
                 $url = asset('storage/photo/'.$data->image);
 
@@ -99,7 +124,12 @@ class DatatableController extends Controller
     public function WarehouseTable(){
         $Query = Warehouse::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('action', function ($data) {
             return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
@@ -112,7 +142,12 @@ class DatatableController extends Controller
     public function DeliveryMethodTable(){
         $Query = DeliveryMethod::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('is_active', function ($data) {
             return $data->is_active==1 ? 'Active' : 'Inactive';
         })
@@ -129,7 +164,12 @@ class DatatableController extends Controller
     public function CurrencyTable(){
         $Query = Currency::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('is_active', function ($data) {
             return $data->is_active==1 ? 'Active' : 'Inactive';
         })
@@ -143,7 +183,12 @@ class DatatableController extends Controller
     public function BranchTable(){
         $Query = Branch::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('is_active', function ($data) {
             return $data->is_active==1 ? 'Active' : 'Inactive';
         })
@@ -158,7 +203,12 @@ class DatatableController extends Controller
     public function paymentMethodTable(){
         $Query = PaymentMethod::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
@@ -170,7 +220,12 @@ class DatatableController extends Controller
     public function BrandTable(){
         $Query = Brand::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
             ->addColumn('image', function ($data) {
                 $url = asset('storage/photo/'.$data->image);
 
@@ -187,7 +242,12 @@ class DatatableController extends Controller
     public function VatTable(){
         $Query = Vat::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
 
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
@@ -200,7 +260,12 @@ class DatatableController extends Controller
     public function CouponTable(){
         $Query = CouponCode::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
 
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
@@ -213,7 +278,12 @@ class DatatableController extends Controller
     public function ContactCategoryTable(){
         $Query = ContactCategory::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
 
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
@@ -226,7 +296,12 @@ class DatatableController extends Controller
     public function CustomerTable(){
         $Query = Contact::query()->whereType('Customer')->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
 
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
@@ -239,7 +314,12 @@ class DatatableController extends Controller
     public function SupplierTable(){
         $Query = Contact::query()->whereType('Supplier')->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
 
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
@@ -252,7 +332,12 @@ class DatatableController extends Controller
     public function StaffTable(){
         $Query = Contact::query()->whereType('Staff')->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
 
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
@@ -265,7 +350,12 @@ class DatatableController extends Controller
     public function ProductPropertiesTable(){
         $Query = ProductProperties::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('product_id', function ($data) {
             return $data->Product ? $data->Product->name : '';
         })
@@ -279,7 +369,12 @@ class DatatableController extends Controller
     public function ProductImageTable(){
         $Query = ProductImage::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('product_id', function ($data) {
             return $data->Product ? $data->Product->name : '';
         })
@@ -298,7 +393,12 @@ class DatatableController extends Controller
     public function ProductTable(){
         $Query = Product::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('sub_sub_category_id', function ($data) {
             return $data->SubSubCategory ? $data->SubSubCategory->name : '';
         })
@@ -312,7 +412,12 @@ class DatatableController extends Controller
     public function SubSubCategoryTable(){
         $Query = SubSubCategory::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('is_active', function ($data) {
             return $data->is_active==1 ? 'Active' : 'Inactive';
         })
@@ -335,7 +440,12 @@ class DatatableController extends Controller
     public function SubCategoryTable(){
         $Query = SubCategory::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('is_active', function ($data) {
             return $data->is_active==1 ? 'Active' : 'Inactive';
         })
@@ -357,7 +467,12 @@ class DatatableController extends Controller
     public function CategoryTable(){
         $Query = Category::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('is_active', function ($data) {
             return $data->is_active==1 ? 'Active' : 'Inactive';
         })
@@ -389,7 +504,12 @@ class DatatableController extends Controller
     {
         $Query = UserMm::query()->orderBy('id', 'desc');
 
+        $this->i = 1;
+
         return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
         ->addColumn('action', function ($data) {
             return '<button class="btn btn-dark btn-sm" onclick="callPermission('.$data->id.')"><i class="bx bx-lock-alt font-size-18"></i></button>
                     <button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>

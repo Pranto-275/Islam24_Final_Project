@@ -76,7 +76,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="address" placeholder="Enter Address">
-                                    @error('address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -84,7 +83,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Shipping Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="shipping_address" placeholder="Enter Shipping address">
-                                    @error('shipping_address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -92,7 +90,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Phone</label>
                                     <input class="form-control" type="text" wire:model.lazy="phone" placeholder="Enter Phone">
-                                    @error('phone') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -100,14 +97,12 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Mobile</label>
                                     <input class="form-control" type="text" wire:model.lazy="mobile" placeholder="Enter Mobile Number">
-                                    @error('mobile') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Email</label>
                                     <input class="form-control" type="text" wire:model.lazy="email" placeholder="Enter email address">
-                                    @error('email') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -115,7 +110,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Due date</label>
                                     <input class="form-control" type="date" wire:model.lazy="due_date" placeholder="Give Due date">
-                                    @error('due_date') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -123,7 +117,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Birth Day</label>
                                     <input class="form-control" type="date" wire:model.lazy="birthday" placeholder="Enter birthdate">
-                                    @error('birthday') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -131,7 +124,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">opening Balance</label>
                                     <input class="form-control" type="text" wire:model.lazy="opening_balance" placeholder="Enter opening balance">
-                                    @error('opening_balance') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -142,9 +134,7 @@
                                         <option value="">Select Status</option>
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
-
                                     </select>
-                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -179,11 +169,6 @@
                         data: 'id'
                     },
                     {
-                        title: 'Type',
-                        data:  'type',
-                        name:  'type'
-                    },
-                    {
                         title: 'First Name',
                         data:  'first_name',
                         name:  'first_name'
@@ -203,13 +188,6 @@
                         data:  'shipping_address',
                         name:  'shipping_address'
                     },
-
-                    {
-                        title: 'Email',
-                        data:  'email',
-                        name:  'email'
-                    },
-
                     {
                         title: 'Phone',
                         data:  'phone',

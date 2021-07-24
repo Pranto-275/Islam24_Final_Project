@@ -36,7 +36,7 @@ class Staff extends Component
             $Query           = new Contact();
             $Query->created_by  = Auth::id();
         }
-        $Query->type                  = "Customer";
+        $Query->type                  = "Staff";
         $Query->first_name                  = $this->first_name;
         $Query->last_name                  = $this->last_name;
         $Query->address               = $this->address;

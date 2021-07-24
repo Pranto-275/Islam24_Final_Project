@@ -23,9 +23,6 @@ class Customer extends Component
    public $CustomerCategoryId;
    public $is_active;
 
-
-
-
     public function ContactInfoSave(){
         $this->validate([
             'contact_category_id'                   => 'required',

@@ -179,11 +179,6 @@
                         data: 'id'
                     },
                     {
-                        title: 'Type',
-                        data:  'type',
-                        name:  'type'
-                    },
-                    {
                         title: 'First Name',
                         data:  'first_name',
                         name:  'first_name'
@@ -203,13 +198,6 @@
                         data:  'shipping_address',
                         name:  'shipping_address'
                     },
-
-                    {
-                        title: 'Email',
-                        data:  'email',
-                        name:  'email'
-                    },
-
                     {
                         title: 'Phone',
                         data:  'phone',
