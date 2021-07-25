@@ -1,3 +1,6 @@
+<div>
+    {{-- The Master doesn't talk, he acts. --}}
+</div>
 @push('css')
         <!-- Sweet Alert -->
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}">
@@ -6,7 +9,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        Purchase List
+        Sale List
     </x-slot>
 
     <div class="row">
@@ -17,7 +20,7 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Purchase List</h4>
+                                    <h4>Sale List</h4>
                                 </div>
                             </div>
                         </div>
@@ -29,7 +32,7 @@
                     </div>
                     <div class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="PurchaseTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="SaleTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                 </div>
@@ -41,27 +44,27 @@
 @push('scripts')
 <script>
     function callDelete(id) {
-        @this.call('PurchaseDelete', id);
+        @this.call('SaleDelete', id);
     }
 
     $(document).ready(function () {
 
-        var datatable = $('#PurchaseTable').DataTable({
+        var datatable = $('#SaleTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{route('data.purchase_invoice')}}",
+            ajax: "{{route('data.sale_invoice')}}",
             columns: [
                 {
                     title: 'SL',
                     data: 'id'
                 },
                 {
-                    title: 'Purchase Date',
-                    data: 'purchase_date',
-                    name:'purchase_date'
+                    title: 'Sale Date',
+                    data: 'sale_date',
+                    name:'sale_date'
                 },
                 {
-                    title: 'Supplier',
+                    title: 'Customer',
                     data: 'contact_id',
                     name:'contact_id'
                 },

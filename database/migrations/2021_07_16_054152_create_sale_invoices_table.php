@@ -20,6 +20,7 @@ class CreateSaleInvoicesTable extends Migration
             $table->double('total_amount')->nullable();
             $table->double('other_amount')->nullable();
             $table->double('discount')->nullable();
+            $table->double('shipping_charge')->nullable();
             $table->double('vat')->nullable();
             $table->double('payable_amount')->nullable();
             $table->text('note')->nullable();

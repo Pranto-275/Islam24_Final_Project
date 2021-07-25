@@ -204,116 +204,22 @@
                     <div class="header-category d-none d-lg-block">
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ALL DEPARTMENT</a>
                         <ul class="category-menu">
-                            <li class="has-dropdown"><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img01.png" alt=""></div> Western woman</a>
+                        @foreach ($categories as $category)
+                            <li class="has-dropdown"><a href="#"><div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt="" style="width:35px;height:35px;"></div>{{$category->name}}</a>
                                 <ul class="mega-menu">
+                                    @foreach ($category->SubCategory as $subCategory)
                                     <li>
                                         <ul>
-                                            <li class="dropdown-title">Accessories & Parts</li>
-                                            <li><a href="#">Cables & Adapters</a></li>
-                                            <li><a href="#">Batteries</a></li>
-                                            <li><a href="#">Chargers</a></li>
-                                            <li><a href="#">Bags & Cases</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="dropdown-title">Electronic Cigarettes</li>
-                                            <li><a href="#">Audio & Video</a></li>
-                                            <li><a href="#">Televisions</a></li>
-                                            <li><a href="#">TV Receivers</a></li>
-                                            <li><a href="#">Projectors</a></li>
-                                            <li><a href="#">Audio Amplifier Boards</a></li>
+                                            <li class="dropdown-title">{{ $subCategory->name }}</li>
+                                            @foreach ($subCategory->SubSubCategory as $subSubCategory)
+                                            <li><a href="#">{{$subSubCategory->name}}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li>
-                                        <ul>
-                                            <li class="dropdown-title">Smart Electronics</li>
-                                            <li><a href="#">Cables & Adapters</a></li>
-                                            <li><a href="#">Batteries</a></li>
-                                            <li><a href="#">Chargers</a></li>
-                                            <li><a href="#">Bags & Cases</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="dropdown-title">Portable Audio & Video</li>
-                                            <li><a href="#">Audio & Video</a></li>
-                                            <li><a href="#">Televisions</a></li>
-                                            <li><a href="#">TV Receivers</a></li>
-                                            <li><a href="#">Projectors</a></li>
-                                            <li><a href="#">Audio Amplifier Boards</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li class="dropdown-title">Accessories & Parts</li>
-                                            <li><a href="#">Cables & Adapters</a></li>
-                                            <li><a href="#">Batteries</a></li>
-                                            <li><a href="#">Chargers</a></li>
-                                            <li><a href="#">Bags & Cases</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="dropdown-title">Audio & Video</li>
-                                            <li class="mega-menu-banner"><a href="#"><img src="{{ URL::asset('venam/') }}/img/images/megamenu_banner.jpg" alt=""></a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                    @endforeach
                                 </ul>
                             </li>
-                            <li class="has-dropdown"><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img02.png" alt=""></div> TV, Appliances</a>
-                                <ul class="mega-menu">
-                                    <li>
-                                        <ul>
-                                            <li class="dropdown-title">Accessories & Parts</li>
-                                            <li><a href="#">Cables & Adapters</a></li>
-                                            <li><a href="#">Batteries</a></li>
-                                            <li><a href="#">Chargers</a></li>
-                                            <li><a href="#">Bags & Cases</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="dropdown-title">Electronic Cigarettes</li>
-                                            <li><a href="#">Audio & Video</a></li>
-                                            <li><a href="#">Televisions</a></li>
-                                            <li><a href="#">TV Receivers</a></li>
-                                            <li><a href="#">Projectors</a></li>
-                                            <li><a href="#">Audio Amplifier Boards</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li class="dropdown-title">Smart Electronics</li>
-                                            <li><a href="#">Cables & Adapters</a></li>
-                                            <li><a href="#">Batteries</a></li>
-                                            <li><a href="#">Chargers</a></li>
-                                            <li><a href="#">Bags & Cases</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="dropdown-title">Portable Audio & Video</li>
-                                            <li><a href="#">Audio & Video</a></li>
-                                            <li><a href="#">Televisions</a></li>
-                                            <li><a href="#">TV Receivers</a></li>
-                                            <li><a href="#">Projectors</a></li>
-                                            <li><a href="#">Audio Amplifier Boards</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul>
-                                            <li class="dropdown-title">Accessories & Parts</li>
-                                            <li><a href="#">Cables & Adapters</a></li>
-                                            <li><a href="#">Batteries</a></li>
-                                            <li><a href="#">Chargers</a></li>
-                                            <li><a href="#">Bags & Cases</a></li>
-                                        </ul>
-                                        <ul>
-                                            <li class="dropdown-title">Audio & Video</li>
-                                            <li class="mega-menu-banner"><a href="#"><img src="{{ URL::asset('venam/') }}/img/images/megamenu_banner.jpg" alt=""></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img03.png" alt=""></div> Baby Product</a></li>
-                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img04.png" alt=""></div> Grocery Product</a></li>
-                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img05.png" alt=""></div> Beauty, Health Product</a></li>
-                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img06.png" alt=""></div> Industrial Product</a></li>
-                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img07.png" alt=""></div> Car, Motorbike</a></li>
-                            <li><a href="shop-left-sidebar.html"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img08.png" alt=""></div> Club Sports</a></li>
+                        @endforeach
                             <li>
                                 <ul class="more_slide_open">
                                     <li><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img01.png" alt=""></div> Western woman</a></li>
@@ -332,18 +238,9 @@
                                 <input type="text" placeholder="Search for your item's type.....">
                                 <select class="custom-select">
                                     <option selected="">All Categories</option>
-                                    <option>Women's Clothing</option>
-                                    <option>Men's Clothing</option>
-                                    <option>Computer & Office</option>
-                                    <option>Consumer Electronics</option>
-                                    <option>Home & Garden</option>
-                                    <option>Luggage & Bags</option>
-                                    <option>Shoes</option>
-                                    <option>Mother & Kids</option>
-                                    <option>Beauty & Health</option>
-                                    <option>Home Appliances</option>
-                                    <option>Food</option>
-                                    <option>Underwear & Sleepwear</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
                                     <option>In All Categories</option>
                                 </select>
                                 <button><i class="flaticon-magnifying-glass-1"></i></button>

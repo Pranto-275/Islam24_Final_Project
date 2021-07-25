@@ -20,11 +20,11 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('inventory.invoice')}}">Invoice</a></li>
-                        <li><a href="{{route('inventory.stock-adjustment')}}">Stock Adjustment</a></li>
-                        <li><a href="{{route('inventory.stock-manager')}}">Stock Manager</a></li>
                         <li><a href="{{route('inventory.purchase')}}">Purchase</a></li>
+                        <li><a href="{{route('inventory.sale')}}">Sale</a></li>
                         <li><a href="{{route('inventory.purchase-list')}}">Purchase List</a></li>
+                        <li><a href="{{route('inventory.sale-list')}}">Sale List</a></li>
+                        <li><a href="{{route('inventory.stock-adjustment')}}">Stock Adjustment</a></li>
                     </ul>
                 </li>
                 <li>

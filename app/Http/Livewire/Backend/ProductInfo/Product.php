@@ -103,6 +103,10 @@ class Product extends Component
             'code' => 'required',
             'name' => 'required',
             'sub_sub_category_id' => 'required',
+            'brand_id' => 'required',
+            'regular_price' => 'required',
+            'purchase_price' => 'required',
+            'short_description' => 'required',
         ]);
         DB::transaction(function () {
             // Product Save

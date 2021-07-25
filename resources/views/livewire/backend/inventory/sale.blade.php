@@ -6,7 +6,7 @@
 
 <div>
     <x-slot name="title">
-        Purchase Add
+        Sale Add
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -16,7 +16,7 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4 class="card-title">Purchase Add</h4>
+                                    <h4 class="card-title">Sale Add</h4>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="basicpill-firstname-input">Purchase Code</label>
+                                <label for="basicpill-firstname-input">Sale Code</label>
                                 <input class="form-control" type="text" wire:model.lazy="code" placeholder="Purchase Code">
                                  @error('code') <span class="error">{{ $message }}</span> @enderror
                             </div>
@@ -58,9 +58,9 @@
                         </div> --}}
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label class="control-label">Supplier</label>
+                                <label class="control-label">Customer</label>
                                 <select class="form-control" wire:model.lazy="contact_id" id="select2-dropdown">
-                                    <option>Select Supplier</option>
+                                    <option>Select Customer</option>
                                    @foreach ($contacts as $contact)
                                        <option value="{{ $contact->id }}">{{ $contact->first_name }} {{ $contact->last_name }}</option>
                                    @endforeach
@@ -249,7 +249,7 @@
                                                 <option value="{{ $payment->id }}">{{ $payment->name }}</option>
                                             @endforeach
                                         </select>
-                                        @error('payment_method_id') <span class="error">{{ $message }}</span> @enderror
+                                       @error('payment_method_id') <span class="error">{{ $message }}</span> @enderror
                                     </th>
                                 </tr>
                                 <tr>
@@ -268,7 +268,8 @@
                                     <th>Amount</th>
                                     <th>
                                         <input type="text" class="form-control" name="Amount" placeholder="Amount" wire:model.lazy="payment_amount">
-                                        @error('payment_amount') <span class="error">{{ $message }}</span> @enderror
+                                       @error('payment_amount') <span class="error">{{ $message }}</span> @enderror
+
                                     </th>
                                 </tr>
                             </tbody>

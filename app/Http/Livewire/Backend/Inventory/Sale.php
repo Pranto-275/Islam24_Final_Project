@@ -8,9 +8,9 @@ use App\Models\Backend\ProductInfo\Unit;
 use App\Models\Backend\Setting\Branch;
 use App\Models\Backend\Setting\Vat;
 use App\Models\Backend\ProductInfo\Product;
-use App\Models\Backend\Inventory\PurchaseInvoice;
-use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
-use App\Models\Backend\Inventory\PurchasePayment;
+use App\Models\Backend\Inventory\SaleInvoice;
+use App\Models\Backend\Inventory\SaleInvoiceDetail;
+use App\Models\Backend\Inventory\SalePayment;
 use App\Models\Backend\Setting\Warehouse;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -18,7 +18,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
 
-class Purchase extends Component
+class Sale extends Component
 {
     public $code;
     public $date;
@@ -40,7 +40,7 @@ class Purchase extends Component
     public $payment_method_id;
     public $payment_amount;
     public $payment_code;
-    public $PurchaseInvoice;
+    public $SaleInvoice;
     public $sub_sub_category_id;
     public $name;
     public $images;
@@ -66,13 +66,13 @@ class Purchase extends Component
             'subtotal' => 'required',
         ]);
         DB::transaction(function(){
-        if($this->PurchaseInvoice){
-            $Query = PurchaseInvoice::find($this->PurchaseInvoice->id);
+        if($this->SaleInvoice){
+            $Query = SaleInvoice::find($this->SaleInvoice->id);
         }else{
-            $Query = new PurchaseInvoice();
+            $Query = new SaleInvoice();
             $Query->created_by = Auth::id();
         }
-        $Query->purchase_date = $this->date;
+        $Query->sale_date = $this->date;
         // $Query->code = $this->code;
         $Query->contact_id = $this->contact_id;
         $Query->total_amount = $this->subtotal;
@@ -84,42 +84,42 @@ class Purchase extends Component
         foreach ($this->orderProductList as $key => $value) {
             // dd($this->orderProductList);
             $product = Product::find($key);
-            $PurchaseInvoiceDetail = PurchaseInvoiceDetail::whereProductId($key)->wherePurchaseInvoiceId($Query->id)->first();
-            if (!$PurchaseInvoiceDetail) {
-                $PurchaseInvoiceDetail = new PurchaseInvoiceDetail();
-                $PurchaseInvoiceDetail->created_by = Auth::id();
-                $PurchaseInvoiceDetail->branch_id = 1;
+            $SaleInvoiceDetail = SaleInvoiceDetail::whereProductId($key)->whereSaleInvoiceId($Query->id)->first();
+            if (!$SaleInvoiceDetail) {
+                $SaleInvoiceDetail = new SaleInvoiceDetail();
+                $SaleInvoiceDetail->created_by = Auth::id();
+                $SaleInvoiceDetail->branch_id = 1;
             }
 
-            $PurchaseInvoiceDetail->purchase_invoice_id = $Query->id;
-            $PurchaseInvoiceDetail->product_id = $product->id;
-            $PurchaseInvoiceDetail->unit_price=$this->product_rate[$key];
-            $PurchaseInvoiceDetail->quantity = $this->product_quantity[$key];
-            $PurchaseInvoiceDetail->save();
+            $SaleInvoiceDetail->sale_invoice_id = $Query->id;
+            $SaleInvoiceDetail->product_id = $product->id;
+            $SaleInvoiceDetail->unit_price=$this->product_rate[$key];
+            $SaleInvoiceDetail->quantity = $this->product_quantity[$key];
+            $SaleInvoiceDetail->save();
         }
         foreach ($this->paymentMethodList as $key => $value) {
             if (isset($value['id']) && $value['id']) {
-                $PurchasePayment = PurchasePayment::find($value['id']);
+                $SalePayment = SalePayment::find($value['id']);
             } else {
-                $PurchasePayment = new PurchasePayment();
+                $SalePayment = new SalePayment();
             }
 
-            $PurchasePayment->date = Carbon::now();
-            $PurchasePayment->contact_id = $Query->contact_id;
-            $PurchasePayment->purchase_invoice_id = $Query->id;
-            $PurchasePayment->payment_method_id = $value['payment_method_id'];
-            $PurchasePayment->total_amount = $value['payment_amount'];
-            $PurchasePayment->transaction_id = $value['transaction_id'];
-            $PurchasePayment->code = $value['payment_code'];
-            $PurchasePayment->created_by = Auth::id();
-            $PurchasePayment->branch_id = 1;
-            $PurchasePayment->save();
+            $SalePayment->date = Carbon::now();
+            $SalePayment->contact_id = $Query->contact_id;
+            $SalePayment->sale_invoice_id = $Query->id;
+            $SalePayment->payment_method_id = $value['payment_method_id'];
+            $SalePayment->total_amount = $value['payment_amount'];
+            $SalePayment->transaction_id = $value['transaction_id'];
+            $SalePayment->code = $value['payment_code'];
+            $SalePayment->created_by = Auth::id();
+            $SalePayment->branch_id = 1;
+            $SalePayment->save();
         }
     });
     $this->emit('success', [
         'text' => 'Purchase Added Successfully',
     ]);
-        if(!$this->PurchaseInvoice){
+        if(!$this->SaleInvoice){
          $this->reset();
         }
         $this->payment_code = 'PM'.floor(time() - 999999999);
@@ -140,7 +140,6 @@ class Purchase extends Component
             'payment_amount' => 'required',
         ]);
         $PaymentMethod = PaymentMethod::find($this->payment_method_id);
-
         $paymentMethodList = collect($this->paymentMethodList);
         $cartItem = [
             'id' => null,
@@ -211,25 +210,25 @@ class Purchase extends Component
         $this->payment_code = 'PM'.floor(time() - 999999999);
 
         if ($id) {
-            $this->PurchaseInvoice = PurchaseInvoice::find($id);
-            $this->contact_id = $this->PurchaseInvoice->contact_id;
-            $this->waiter_id = $this->PurchaseInvoice->waiter_id;
-            $this->table_id = $this->PurchaseInvoice->table_id;
-            // $this->vat_id = $this->PurchaseInvoice->vat_id;
-            $this->date = $this->PurchaseInvoice->date;
-            $this->shipping_charge = $this->PurchaseInvoice->shipping_charge;
-            $this->discount = $this->PurchaseInvoice->discount;
-            $this->grand_total = $this->PurchaseInvoice->grand_total;
-            $this->subtotal = $this->PurchaseInvoice->subtotal;
-            $this->expense_point = $this->PurchaseInvoice->expense_point;
-            $this->expense_point_amount = $this->PurchaseInvoice->expense_point_amount;
-            $this->due = $this->PurchaseInvoice->due;
-            $this->note = $this->PurchaseInvoice->note;
-            $this->paid_amount=PurchasePayment::wherePurchaseInvoiceId($id)->sum('total_amount');
-            $StockManager = PurchaseInvoiceDetail::wherePurchaseInvoiceId($this->PurchaseInvoice->id)->get();
+            $this->SaleInvoice = SaleInvoice::find($id);
+            $this->contact_id = $this->SaleInvoice->contact_id;
+            $this->waiter_id = $this->SaleInvoice->waiter_id;
+            $this->table_id = $this->SaleInvoice->table_id;
+            // $this->vat_id = $this->SaleInvoice->vat_id;
+            $this->date = $this->SaleInvoice->date;
+            $this->shipping_charge = $this->SaleInvoice->shipping_charge;
+            $this->discount = $this->SaleInvoice->discount;
+            $this->grand_total = $this->SaleInvoice->grand_total;
+            $this->subtotal = $this->SaleInvoice->subtotal;
+            $this->expense_point = $this->SaleInvoice->expense_point;
+            $this->expense_point_amount = $this->SaleInvoice->expense_point_amount;
+            // $this->paid_amount = $this->SaleInvoice->SalePayment->sum('total_amount');
+            $this->due = $this->SaleInvoice->due;
+            $this->note = $this->SaleInvoice->note;
+            $this->paid_amount=SalePayment::whereSaleInvoiceId($id)->sum('total_amount');
+            $StockManager = SaleInvoiceDetail::whereSaleInvoiceId($this->SaleInvoice->id)->get();
             // dd($StockManager);
             $cart = collect($this->orderProductList);
-            
             foreach ($StockManager as $stockItem) {
                 $item = Product::find($stockItem->product_id);
                 $this->product_quantity[$item->id] = $stockItem->quantity;
@@ -240,7 +239,7 @@ class Purchase extends Component
             }
             $this->orderProductList = $cart;
 
-            $PaymentList = PurchasePayment::wherePurchaseInvoiceId($this->PurchaseInvoice->id)->get();
+            $PaymentList = SalePayment::whereSaleInvoiceId($this->SaleInvoice->id)->get();
             // dd($PaymentList->count());
             $cartPayment = collect($this->paymentMethodList);
             foreach ($PaymentList as $paymentList) {
@@ -271,8 +270,8 @@ class Purchase extends Component
     {
         // dd($this->paymentMethodList);
 
-        return view('livewire.backend.inventory.purchase',[
-            'contacts'=>Contact::whereType('Supplier')->get(),
+        return view('livewire.backend.inventory.sale',[
+            'contacts'=>Contact::whereType('Customer')->get(),
             'payments'=>PaymentMethod::get(),
             'categories'=> Category::get(),
             'Units' => Unit::all(),

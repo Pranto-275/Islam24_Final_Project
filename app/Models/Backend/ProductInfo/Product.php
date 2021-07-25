@@ -7,6 +7,7 @@ use App\Models\Backend\ProductInfo\ProductImage;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\ProductInfo\Brand;
 use App\Models\Backend\ProductInfo\ProductProperties;
+use App\Models\Backend\Setting\Vat;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -32,5 +33,9 @@ class Product extends Model
     }
     public function ProductProperties(){
         return $this->hasMany(ProductProperties::class);
+    }
+    public function Vat()
+    {
+        return $this->belongsTo(Vat::class);
     }
 }

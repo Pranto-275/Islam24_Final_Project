@@ -112,6 +112,7 @@
                                 <div class="form-group">
                                     <label for="regular_price">Regular Price</label>
                                     <input id="regular_price" type="number" step="any" class="form-control" wire:model.lazy="regular_price" placeholder="Regular Price">
+                                    @error('regular_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="special_price">Special Price</label>
@@ -124,6 +125,7 @@
                                 <div class="form-group">
                                     <label for="purchase_price">Purchase Price</label>
                                     <input id="purchase_price" type="number" step="any" class="form-control" wire:model.lazy="purchase_price" placeholder="Purchase Price">
+                                    @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="discount">Discount</label>
@@ -140,6 +142,7 @@
                                 <div class="form-group">
                                     <label for="productdesc">Short Description</label>
                                     <textarea class="form-control" id="short_description" rows="3" wire:model.lazy="short_description"></textarea>
+                                    @error('short_description') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="productdesc">Long Description</label>

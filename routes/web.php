@@ -5,11 +5,11 @@ use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
 use App\Http\Livewire\Backend\ContactInfo\Customer as CustomerInfo;
 use App\Http\Livewire\Backend\ContactInfo\Staff;
 use App\Http\Livewire\Backend\ContactInfo\Supplier;
-use App\Http\Livewire\Backend\Inventory\Invoice;
 use App\Http\Livewire\Backend\Inventory\Purchase;
 use App\Http\Livewire\Backend\Inventory\PurchaseList;
+use App\Http\Livewire\Backend\Inventory\Sale;
+use App\Http\Livewire\Backend\Inventory\SaleList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
-use App\Http\Livewire\Backend\Inventory\StockManager;
 use App\Http\Livewire\Backend\Order\Order;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
@@ -120,11 +120,13 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('category', Category::class)->name('category');
         Route::get('currency', Currency::class)->name('currency');
         Route::get('language', Language::class)->name('language');
-        // Route::get('pointPolicy', PointPolicy::class)->name('pointPolicy');
         Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
         Route::get('ware-house', WareHouse::class)->name('ware-house');
         Route::get('purchase/{id?}', Purchase::class)->name('purchase');
         Route::get('purchase-list', PurchaseList::class)->name('purchase-list');
+        Route::get('sale/{id?}', Sale::class)->name('sale');
+        Route::get('sale-list', SaleList::class)->name('sale-list');
+        Route::get('stock-adjustment', StockAdjustment::class)->name('stock-adjustment');
     });
     Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
         Route::get('profile-settings', ProfileSettings::class)->name('profile-settings');
@@ -144,11 +146,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('size', Size::class)->name('size');
     });
 
-    Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
-        Route::get('invoice', Invoice::class)->name('invoice');
-        Route::get('stock-adjustment', StockAdjustment::class)->name('stock-adjustment');
-        Route::get('stock-manager', StockManager::class)->name('stock-manager');
-    });
     Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
         Route::get('company', CompanyInfo::class)->name('company');
         Route::get('branch', Branch::class)->name('branch');
@@ -230,5 +227,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('staff_table', [DatatableController::class, 'StaffTable'])->name('staff_table');
         Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
         Route::get('purchase_invoice', [DatatableController::class, 'PurchaseInvoiceTable'])->name('purchase_invoice');
+        Route::get('sale_invoice', [DatatableController::class, 'SaleInvoiceTable'])->name('sale_invoice');
     });
 });
