@@ -167,7 +167,7 @@ class Sale extends Component
 
         foreach ($this->orderProductList as $key => $value) {
             if (is_numeric($this->product_rate[$key]) && is_numeric($this->product_quantity[$key]) && is_numeric($this->product_discount[$key])) {
-                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key] - floatval($this->product_discount[$key]);
+                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key] - floatval($this->product_discount[$key] * $this->product_quantity[$key]);
                 $grandTotal += $this->product_subtotal[$key];
             }
         }
@@ -226,16 +226,16 @@ class Sale extends Component
             $this->due = $this->SaleInvoice->due;
             $this->note = $this->SaleInvoice->note;
             $this->paid_amount=SalePayment::whereSaleInvoiceId($id)->sum('total_amount');
-            $StockManager = SaleInvoiceDetail::whereSaleInvoiceId($this->SaleInvoice->id)->get();
-            // dd($StockManager);
+            $SaleInvoiceDetail = SaleInvoiceDetail::whereSaleInvoiceId($this->SaleInvoice->id)->get();
+            // dd($SaleInvoiceDetail);
             $cart = collect($this->orderProductList);
-            foreach ($StockManager as $stockItem) {
-                $item = Product::find($stockItem->product_id);
-                $this->product_quantity[$item->id] = $stockItem->quantity;
-                $this->product_discount[$item->id] = $item->discount;
-                $this->product_rate[$item->id] = $stockItem->unit_price;
-                // $this->item_subtotal[$item->id] = $stockItem->sale_price * $stockItem->quantity;
-                $cart[$item->id] = $item;
+            foreach ($SaleInvoiceDetail as $stockProduct) {
+                $product = Product::find($stockProduct->product_id);
+                $this->product_quantity[$product->id] = $stockProduct->quantity;
+                $this->product_discount[$product->id] = $product->discount;
+                $this->product_rate[$product->id] = $stockProduct->unit_price;
+                // $this->product_subtotal[$product->id] = $stockProduct->sale_price * $stockProduct->quantity;
+                $cart[$product->id] = $product;
             }
             $this->orderProductList = $cart;
 
