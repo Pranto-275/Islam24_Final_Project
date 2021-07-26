@@ -168,7 +168,7 @@ class Purchase extends Component
 
         foreach ($this->orderProductList as $key => $value) {
             if (is_numeric($this->product_rate[$key]) && is_numeric($this->product_quantity[$key]) && is_numeric($this->product_discount[$key])) {
-                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key] - floatval($this->product_discount[$key]) * $this->product_quantity[$key];
+                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key] - floatval($this->product_discount[$key]);
                 $grandTotal += $this->product_subtotal[$key];
             }
         }
@@ -198,7 +198,8 @@ class Purchase extends Component
             $this->product_quantity[$product['id']] = 1;
             $this->product_rate[$product['id']] = $product['purchase_price'];
             $this->product_sale_price[$product['id']] = $product['regular_price'];
-            $this->product_discount[$product['id']] = $product['discount'];
+            // $this->product_discount[$product['id']] = $product['discount'];
+            $this->product_discount[$product['id']] = 0;
             $this->product_subtotal[$product['id']] = 0;
         }
         $this->orderProductList = $cart->toArray();
