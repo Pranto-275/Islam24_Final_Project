@@ -117,10 +117,12 @@
                                 <div class="form-group">
                                     <label for="special_price">Special Price</label>
                                     <input id="special_price" type="number" step="any" class="form-control" wire:model.lazy="special_price" placeholder="Special Price">
+                                    @error('special_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="wholesale_price">Wholesale Price</label>
                                     <input id="wholesale_price" type="number" step="any" class="form-control" wire:model.lazy="wholesale_price" placeholder="Wholesale Price">
+                                    @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="purchase_price">Purchase Price</label>
@@ -138,11 +140,11 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="productdesc">Short Description</label>
                                     <textarea class="form-control" id="short_description" rows="3" wire:model.lazy="short_description"></textarea>
-                                    @error('short_description') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="productdesc">Long Description</label>

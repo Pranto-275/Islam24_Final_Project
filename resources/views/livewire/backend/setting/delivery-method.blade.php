@@ -75,11 +75,13 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="address" placeholder="Address">
+                                    @error('address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <textarea class="form-control" type="text" wire:model.lazy="description" placeholder="Description"></textarea>
+                                    @error('description') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -90,7 +92,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
-                                     @error('in_word_surfix_position') <span class="error">{{ $message }}</span> @enderror
+                                     @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>

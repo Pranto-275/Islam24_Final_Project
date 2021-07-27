@@ -49,7 +49,7 @@ public function companyInfoSave(){
        $Query = $this->CompanyInfoDetails;
     }else{
         $Query               = new CompanyInfoDetails();
-        $Query->user_id      = Auth::user()->id;
+        $Query->created_by      = Auth::user()->id;
     }
 
           $Query->name         = $this->name;
@@ -59,7 +59,6 @@ public function companyInfoSave(){
           $Query->web          = $this->email;
           $Query->branch_id    = 1;
           $Query->save();
-          $this->reset();
           $this->emit('success',[
              'text' => 'CompanyInfo save successfully',
           ]);

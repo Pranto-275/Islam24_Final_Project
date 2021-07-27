@@ -43,6 +43,7 @@ class SubSubCategory extends Component
             'code' => 'required',
             'name' => 'required',
             'sub_category_id' => 'required',
+            'is_active' => 'required',
         ]);
 
         if($this->subSubCategoryId){

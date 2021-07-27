@@ -120,6 +120,7 @@
                                             <option value="{{$Currency->id}}">{{$Currency->symbol}}</option>
                                         @endforeach
                                     </select>
+                                    @error('currency_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 

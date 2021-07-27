@@ -14,7 +14,7 @@
                             <div class="col-sm-4">
                                 <div class="search-box mr-2 mb-2 d-inline-block">
                                     <div class="position-relative">
-                                        <h4 class="card-title">Profile Setting</h4>
+                                        <h4 class="card-title">Company Info</h4>
                                     </div>
                                 </div>
                             </div>
@@ -85,6 +85,7 @@
                                 <div class="form-group">
                                         <option value="">Select Branch</option>
                                           <select class="form-control" wire:model.lazy="branch_id">
+                                              <option value="">---Select Branch---</option>
                                          @foreach ($branches as $branch)
                                             <option value="{{ $branch->name }}">{{ $branch->name }}</option>
                                         @endforeach

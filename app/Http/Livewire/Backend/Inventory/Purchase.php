@@ -23,8 +23,6 @@ class Purchase extends Component
     public $code;
     public $date;
     public $contact_id;
-    public $warehouse_id;
-    public $image;
     public $product_quantity;
     public $product_sale_price;
     public $Product;
@@ -43,13 +41,11 @@ class Purchase extends Component
     public $PurchaseInvoice;
     public $sub_sub_category_id;
     public $name;
-    public $images;
     public $regular_price;
     public $special_price;
     public $wholesale_price;
     public $purchase_price;
     public $transaction_id;
-    public $low_alert;
     public $is_active;
     public $paymentMethodList = [];
     public $orderProductList = [];
@@ -159,6 +155,7 @@ class Purchase extends Component
         $this->paid_amount = $payment_amount_total;
         $this->reset(['payment_method_id', 'payment_amount']);
         $this->payment_code = 'PM'.floor(time() - 999999999);
+        $this->transaction_id='TR'.floor(time() - 999999999);
         $this->updateProductCal();
 
     }
@@ -198,7 +195,6 @@ class Purchase extends Component
             $this->product_quantity[$product['id']] = 1;
             $this->product_rate[$product['id']] = $product['purchase_price'];
             $this->product_sale_price[$product['id']] = $product['regular_price'];
-            // $this->product_discount[$product['id']] = $product['discount'];
             $this->product_discount[$product['id']] = 0;
             $this->product_subtotal[$product['id']] = 0;
         }
@@ -214,9 +210,6 @@ class Purchase extends Component
         if ($id) {
             $this->PurchaseInvoice = PurchaseInvoice::find($id);
             $this->contact_id = $this->PurchaseInvoice->contact_id;
-            $this->waiter_id = $this->PurchaseInvoice->waiter_id;
-            $this->table_id = $this->PurchaseInvoice->table_id;
-            // $this->vat_id = $this->PurchaseInvoice->vat_id;
             $this->date = $this->PurchaseInvoice->date;
             $this->shipping_charge = $this->PurchaseInvoice->shipping_charge;
             $this->discount = $this->PurchaseInvoice->discount;
@@ -236,7 +229,6 @@ class Purchase extends Component
                 $this->product_quantity[$product->id] = $stockProduct->quantity;
                 $this->product_discount[$product->id] = $product->discount;
                 $this->product_rate[$product->id] = $stockProduct->unit_price;
-                // $this->product_subtotal[$product->id] = $stockProduct->sale_price * $stockProduct->quantity;
                 $cart[$product->id] = $product;
             }
             $this->orderProductList = $cart;
@@ -257,9 +249,7 @@ class Purchase extends Component
                 ];
 
                 $this->paymentMethodList = $cartPayment->push($cartItem);
-                // $this->payment_amount[$paymentMethod->id] = $paymentList->amount;
 
-                // $cartPayment[$paymentMethod->id] = $paymentMethod;
             }
             $this->paymentMethodList = $cartPayment;
             $this->updateProductCal();

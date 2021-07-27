@@ -42,6 +42,9 @@ class DeliveryMethod extends Component
             'code' => 'required',
             'name' => 'required',
             'branch_id' => 'required',
+            'address' => 'required',
+            'description' => 'required',
+            'is_active' => 'required',
         ]);
         if ($this->DeliveryId) {
             $Query = DeliveryMethodInfo::find($this->DeliveryId);

@@ -37,7 +37,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Product Unit Info</h5>
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Currency Info</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -128,7 +128,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
-                                     @error('in_word_surfix_position') <span class="error">{{ $message }}</span> @enderror
+                                     @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>

@@ -12,7 +12,9 @@ class PointPolicy extends Component
     public $amount;
     public $point_value;
     public $point_amount;
-    public $PointPolicy = null;
+    public $description;
+    public $is_active;
+    public $PointPolicy;
 
     public function mount()
     {
@@ -22,6 +24,8 @@ class PointPolicy extends Component
             $this->amount = $this->PointPolicy->amount;
             $this->point_value = $this->PointPolicy->point_value;
             $this->point_amount = $this->PointPolicy->point_amount;
+            $this->description = $this->PointPolicy->description;
+            $this->is_active = $this->PointPolicy->is_active;
         }
     }
 
@@ -33,17 +37,22 @@ class PointPolicy extends Component
             'amount' => 'required',
             'point_value' => 'required',
             'point_amount' => 'required',
+            'is_active' => 'required',
         ]);
         $this->PointPolicy = PointPolicyM::first();
         if ($this->PointPolicy) {
             $Query = $this->PointPolicy;
         } else {
             $Query = new PointPolicyM();
+            $Query->created_by = Auth::user()->id;
         }
         $Query->name = $this->name;
         $Query->amount = $this->amount;
         $Query->point_value = $this->point_value;
         $Query->point_amount = $this->point_amount;
+        $Query->description = $this->description;
+        $Query->is_active = $this->is_active;
+        $Query->branch_id = 1;
         $Query->save();
         $this->emit('success', ['text' => 'Point Policy C/U Successfully']);
     }

@@ -52,7 +52,7 @@
         var datatable = $('#SaleTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{route('data.sale_invoice')}}",
+            ajax: "{{route('data.sale_list')}}",
             columns: [
                 {
                     title: 'SL',

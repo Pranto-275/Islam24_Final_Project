@@ -95,11 +95,9 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label for="basicpill-lastname-input">Description</label>
-                                    <input class="form-control" type="text" wire:model.lazy="description" placeholder="Description">
+                                    <textarea class="form-control" wire:model.lazy="description" placeholder="Description"></textarea>
                                 </div>
                             </div>
-
 
                             <div class="col-lg-12">
                                 <div class="form-group">
@@ -109,6 +107,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -155,11 +154,6 @@
                         title: 'Category',
                         data:  'category_id',
                         name:  'category_id'
-                    },
-                    {
-                        title: 'Description',
-                        data:  'description',
-                        name:  'description'
                     },
                     {
                         title: 'Image',

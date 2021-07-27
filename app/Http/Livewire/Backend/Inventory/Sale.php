@@ -23,8 +23,6 @@ class Sale extends Component
     public $code;
     public $date;
     public $contact_id;
-    public $warehouse_id;
-    public $image;
     public $product_quantity;
     public $product_sale_price;
     public $Product;
@@ -43,13 +41,11 @@ class Sale extends Component
     public $SaleInvoice;
     public $sub_sub_category_id;
     public $name;
-    public $images;
     public $regular_price;
     public $special_price;
     public $wholesale_price;
     public $purchase_price;
     public $transaction_id;
-    public $low_alert;
     public $is_active;
     public $paymentMethodList = [];
     public $orderProductList = [];
@@ -117,7 +113,7 @@ class Sale extends Component
         }
     });
     $this->emit('success', [
-        'text' => 'Purchase Added Successfully',
+        'text' => 'Sale Added Successfully',
     ]);
         if(!$this->SaleInvoice){
          $this->reset();
@@ -196,8 +192,6 @@ class Sale extends Component
             $this->Product=Product::find($product['id']);
             $this->product_quantity[$product['id']] = 1;
             $this->product_rate[$product['id']] = $product['regular_price'];
-            // $this->product_sale_price[$product['id']] = $product['regular_price'];
-            // $this->product_discount[$product['id']] = $product['discount'];
             $this->product_discount[$product['id']] = 0;
             $this->product_subtotal[$product['id']] = 0;
         }
@@ -213,9 +207,6 @@ class Sale extends Component
         if ($id) {
             $this->SaleInvoice = SaleInvoice::find($id);
             $this->contact_id = $this->SaleInvoice->contact_id;
-            $this->waiter_id = $this->SaleInvoice->waiter_id;
-            $this->table_id = $this->SaleInvoice->table_id;
-            // $this->vat_id = $this->SaleInvoice->vat_id;
             $this->date = $this->SaleInvoice->date;
             $this->shipping_charge = $this->SaleInvoice->shipping_charge;
             $this->discount = $this->SaleInvoice->discount;
@@ -223,7 +214,6 @@ class Sale extends Component
             $this->subtotal = $this->SaleInvoice->subtotal;
             $this->expense_point = $this->SaleInvoice->expense_point;
             $this->expense_point_amount = $this->SaleInvoice->expense_point_amount;
-            // $this->paid_amount = $this->SaleInvoice->SalePayment->sum('total_amount');
             $this->due = $this->SaleInvoice->due;
             $this->note = $this->SaleInvoice->note;
             $this->paid_amount=SalePayment::whereSaleInvoiceId($id)->sum('total_amount');

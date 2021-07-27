@@ -28,7 +28,8 @@ class Brand extends Component
         $this->validate([
            'name'   => 'required',
         //    'image'  => 'required',
-            'description' => 'required'
+            // 'description' => 'required',
+            'is_active' => 'required',
         ]);
 
         if ($this->brand_id){
@@ -45,11 +46,12 @@ class Brand extends Component
         }
        $Query->description    =  $this->description;
        $Query->branch_id      = 1;
-       $Query->is_active         = $this->is_active;
+       $Query->is_active      = $this->is_active;
        $Query->save();
        $this->reset();
+       $this->BrandAInfoModal();
        $this->emit('success', [
-          'text' => 'brand info saved successfully',
+          'text' => 'brand saved successfully',
        ]);
 
     }
@@ -60,14 +62,14 @@ class Brand extends Component
         $this->code         =  $this->QueryUpdate->code;
         $this->name         =  $this->QueryUpdate->name;
         $this->description  =  $this->QueryUpdate->description;
-        $this->is_active       =  $this->QueryUpdate->is_active;
+        $this->is_active    =  $this->QueryUpdate->is_active;
         $this->BrandAInfoModal();
     }
 
     public function brandDelete($id){
         BrandInfo::find($id)->delete();
         $this->emit('success',[
-           'text' => 'Brand Info deleted successfully',
+           'text' => 'Brand deleted successfully',
         ]);
     }
 
