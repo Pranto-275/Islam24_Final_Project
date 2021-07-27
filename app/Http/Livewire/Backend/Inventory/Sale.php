@@ -195,8 +195,8 @@ class Sale extends Component
             $cart[$product['id']] = $product;
             $this->Product=Product::find($product['id']);
             $this->product_quantity[$product['id']] = 1;
-            $this->product_rate[$product['id']] = $product['purchase_price'];
-            $this->product_sale_price[$product['id']] = $product['regular_price'];
+            $this->product_rate[$product['id']] = $product['regular_price'];
+            // $this->product_sale_price[$product['id']] = $product['regular_price'];
             // $this->product_discount[$product['id']] = $product['discount'];
             $this->product_discount[$product['id']] = 0;
             $this->product_subtotal[$product['id']] = 0;

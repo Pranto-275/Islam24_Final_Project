@@ -159,6 +159,7 @@ class Product extends Component
                     $QueryImage->image = basename($path);
                     $QueryImage->created_by = Auth::user()->id;
                     $QueryImage->branch_id = 1;
+                    $QueryImage->is_active = 1;
                     $QueryImage->save();
                 }
             }

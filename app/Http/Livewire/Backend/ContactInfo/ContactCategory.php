@@ -22,12 +22,13 @@ class ContactCategory extends Component
         'type'=> 'required',
         'code'=> 'required',
         'name'=> 'required',
+        'is_active'=> 'required',
     ]);
       if ($this->contact_Category_id){
           $Query  = ContactCategoryInfo::find($this->contact_Category_id);
       }else{
           $Query               = new ContactCategoryInfo();
-          $Query->user_id      = Auth::user()->id;
+          $Query->created_by      = Auth::user()->id;
       }
 
           $Query->type        = $this->type;

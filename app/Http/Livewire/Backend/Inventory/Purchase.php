@@ -206,7 +206,7 @@ class Purchase extends Component
         $this->updateProductCal();
     }
 
-    public function mount($id=NULL){
+    public function mount($id=null){
         $this->code = 'PR'.floor(time() - 999999999);
         $this->transaction_id='TR'.floor(time() - 999999999);
         $this->payment_code = 'PM'.floor(time() - 999999999);

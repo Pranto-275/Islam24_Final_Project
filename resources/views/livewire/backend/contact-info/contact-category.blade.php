@@ -50,7 +50,7 @@
                                     <label for="basicpill-firstname-input">Type</label>
                                         <select class="form-control" wire:model.lazy="type">
                                             <option value="">Select Contact type</option>
-                                            <option value="customer">customer</option>
+                                            <option value="Customer">Customer</option>
                                             <option value="Staff">Staff</option>
                                             <option value="Supplier">Supplier</option>
                                         </select>
@@ -79,6 +79,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
