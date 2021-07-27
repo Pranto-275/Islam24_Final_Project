@@ -23,10 +23,9 @@
                         <div class="col-sm-6 text-sm-right">
                             <address class="mt-2 mt-sm-0">
                                 <strong>Shipped To:</strong><br>
-                                Kenny Rigdon<br>
-                                1234 Main<br>
-                                Apt. 4B<br>
-                                Springfield, ST 54321
+                                {{$PurchaseInvoice->Contact->first_name}} {{$PurchaseInvoice->Contact->last_name}}<br>
+                                {{$PurchaseInvoice->Contact->shipping_address}}<br>
+                                {{$PurchaseInvoice->Contact->phone}}<br>
 
                             </address>
                         </div>

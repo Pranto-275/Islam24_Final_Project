@@ -78,6 +78,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="address" placeholder="Enter Address">
+                                    @error('address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -85,6 +86,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Shipping Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="shipping_address" placeholder="Enter Shipping address">
+                                    @error('shipping_address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -145,6 +147,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>

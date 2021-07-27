@@ -14,10 +14,9 @@
                                     <div class="col-sm-6">
                                         <address>
                                             <strong>Billed To:</strong><br>
-                                            Kenny Rigdon<br>
-                                            1234 Main<br>
-                                            Apt. 4B<br>
-                                            Springfield, ST 54321
+                                            {{$SaleInvoice->Contact->first_name}} {{$SaleInvoice->Contact->last_name}}<br>
+                                            {{$SaleInvoice->Contact->address}}<br>
+                                            {{$SaleInvoice->Contact->phone}}<br>
 
                                         </address>
                                     </div>
@@ -25,7 +24,7 @@
                                         <address class="mt-2 mt-sm-0">
                                             <strong>Shipped To:</strong><br>
                                             {{$SaleInvoice->Contact->first_name}} {{$SaleInvoice->Contact->last_name}}<br>
-                                            {{$SaleInvoice->Contact->address}}<br>
+                                            {{$SaleInvoice->Contact->shipping_address}}<br>
                                             {{$SaleInvoice->Contact->phone}}<br>
                                         </address>
                                     </div>
