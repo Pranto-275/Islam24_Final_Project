@@ -92,7 +92,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Phone</label>
                                     <input class="form-control" type="text" wire:model.lazy="phone" placeholder="Enter Phone">
-                                    @error('phone') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -107,7 +106,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Email</label>
                                     <input class="form-control" type="text" wire:model.lazy="email" placeholder="Enter email address">
-                                    @error('email') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -115,7 +113,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Due date</label>
                                     <input class="form-control" type="date" wire:model.lazy="due_date" placeholder="Give Due date">
-                                    @error('due_date') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -123,7 +120,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Birth Day</label>
                                     <input class="form-control" type="date" wire:model.lazy="birthday" placeholder="Enter birthdate">
-                                    @error('birthday') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -131,7 +127,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">opening Balance</label>
                                     <input class="form-control" type="text" wire:model.lazy="opening_balance" placeholder="Enter opening balance">
-                                    @error('opening_balance') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -206,9 +201,9 @@
                     },
 
                     {
-                        title: 'Phone',
-                        data:  'phone',
-                        name:  'phone'
+                        title: 'Mobile',
+                        data:  'mobile',
+                        name:  'mobile'
                     },
 
                     {

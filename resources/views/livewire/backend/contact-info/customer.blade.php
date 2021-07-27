@@ -101,6 +101,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Mobile</label>
                                     <input class="form-control" type="text" wire:model.lazy="mobile" placeholder="Enter Mobile Number">
+                                    @error('mobile') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -202,9 +203,9 @@
                         name:  'shipping_address'
                     },
                     {
-                        title: 'Phone',
-                        data:  'phone',
-                        name:  'phone'
+                        title: 'Mobile',
+                        data:  'mobile',
+                        name:  'mobile'
                     },
 
                     {

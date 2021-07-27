@@ -30,6 +30,7 @@ class Customer extends Component
             'last_name'                   => 'required',
             'address'                   => 'required',
             'shipping_address'                   => 'required',
+            'mobile'                   => 'required',
             'is_active'                   => 'required',
         ]);
 // dd($this->contact_category_id);

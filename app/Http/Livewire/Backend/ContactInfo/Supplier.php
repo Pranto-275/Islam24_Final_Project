@@ -33,6 +33,7 @@ class Supplier extends Component
             'last_name'                   => 'required',
             'address'                   => 'required',
             'shipping_address'                   => 'required',
+            'mobile'                   => 'required',
             'is_active'                   => 'required',
         ]);
 // dd($this->contact_category_id);
@@ -60,7 +61,7 @@ class Supplier extends Component
         $this->reset();
         $this->ContactModal();
         $this->emit('success',[
-            'text' => 'Customer C/U Successfully',
+            'text' => 'Supplier C/U Successfully',
         ]);
     }
 
@@ -68,7 +69,7 @@ class Supplier extends Component
         Contact::find($id)->delete();
 
         $this->emit('success',[
-           'text' => 'Customer deleted successfully',
+           'text' => 'Supplier deleted successfully',
         ]);
     }
 
