@@ -56,13 +56,14 @@
                     <ul class="sub-menu" aria-expanded="false">
                         {{-- <li><a href="{{route('setting.company')}}">Company Info</a></li> --}}
                         <li><a href="{{route('setting.branch')}}">Branch</a></li>
+                        <li><a href="{{route('setting.vat')}}">Vat</a></li>
+                        <li><a href="{{route('setting.warehouse')}}">Warehouse</a></li>
+                        <li><a href="{{route('setting.companyinfo')}}">Company Info</a></li>
                         <li><a href="{{route('setting.currency')}}">Currency</a></li>
                         <li><a href="{{route('setting.delivery-method')}}">Delivery Method</a></li>
                         <li><a href="{{route('setting.invoice-setting')}}">Invoice Setting</a></li>
                         <li><a href="{{route('setting.payment-method')}}">Payment Method</a></li>
-                        <li><a href="{{route('setting.vat')}}">Vat Info</a></li>
                         <li><a href="{{route('setting.coupon-code')}}">Coupon code</a></li>
-                        <li><a href="{{route('setting.warehouse')}}">Warehouse Info</a></li>
                         <li><a href="{{route('setting.slider')}}">Slider</a></li>
                         <li><a href="{{route('setting.point-policy')}}">Point Policy</a></li>
                     </ul>
@@ -97,17 +98,19 @@
                         <span>Report</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('report.purchase-report')}}">Purchase Report</a></li>
+                        <li><a href="{{route('report.sale-report')}}">Sales Report</a></li>
+                        <li><a href="{{route('report.purchase-details-report')}}">Purchase Detail Report</a></li>
+                        <li><a href="{{route('report.sale-details-report')}}">Sales Detail Report</a></li>
                         <li><a href="{{route('report.customer-ledger')}}">Customer Ledger</a></li>
                         <li><a href="{{route('report.coupons-report')}}">Coupons Report</a></li>
                         <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
-                        <li><a href="{{route('report.purchase-report')}}">Purchase Report</a></li>
-                        <li><a href="{{route('report.sale-report')}}">Sales Report</a></li>
-                        <li><a href="{{route('report.purchase-details-report')}}">Purchase Details Report</a></li>
-                        <li><a href="{{route('report.sale-details-report')}}">Sales Details Report</a></li>
                         <li><a href="{{route('report.purchase-return-report')}}">Purchase Return Report</a></li>
                         <li><a href="{{route('report.sales-return-report')}}">Sales Return Report</a></li>
                         <li><a href="{{route('report.supplier-ledger')}}">Supplier Ledger</a></li>
                         <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li>
+                        <li><a href="{{route('report.stock-report')}}">Stock Report</a></li>
+                        <li><a href="{{route('report.order-report')}}">Order Report</a></li>
                     </ul>
 
                 </li>
@@ -119,18 +122,6 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('order.order-list')}}">Order List</a></li>
                     </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-list-ul"></i>
-                        <span>Stock</span>
-                    </a>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('report.stock-report')}}">Stock Report</a></li>
-                        <li><a href="{{route('report.order-report')}}">Order Report</a></li>
-                    </ul>
-
                 </li>
             </ul>
         </div>

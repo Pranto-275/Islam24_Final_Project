@@ -3,6 +3,7 @@
 namespace App\Models\Backend\Inventory;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
+use App\Models\Backend\Inventory\SalePayment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,5 +21,8 @@ class SaleInvoice extends Model
     }
     public function SaleInvoiceDetail(){
         return $this->hasMany(SaleInvoiceDetail::class);
+    }
+    public function SalePayment(){
+        return $this->hasMany(SalePayment::class);
     }
 }

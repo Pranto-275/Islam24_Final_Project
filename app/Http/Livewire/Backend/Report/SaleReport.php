@@ -1,22 +1,29 @@
 <?php
 
 namespace App\Http\Livewire\Backend\Report;
-
-use Livewire\Component;
-use App\Models\Backend\Inventory\Invoice;
-use App\Models\Backend\Setting\Branch;
+use App\Models\Backend\Inventory\SaleInvoice;
 use App\Models\Backend\ContactInfo\Contact;
+use Carbon\Carbon;
+use Livewire\Component;
 
 class SaleReport extends Component
 {
+    public $from_date;
+    public $to_date;
+    public $contact_id;
+
+    public function dateFilter($model){
+        return $model->where('sale_date', '>=', Carbon::parse($this->from_date)->format('Y-m-d'))->where('sale_date', '<=', Carbon::parse($this->to_date)->format('Y-m-d'));
+    }
     public function render()
     {
+        $salesInvoice=SaleInvoice::orderBy('id', 'desc');
+        if($this->contact_id){
+            $salesInvoice->whereContactId($this->contact_id);
+        }
         return view('livewire.backend.report.sale-report', [
-            'Customers' => Invoice::get(),
-             'branches' => Invoice::get(),
-              'sales' => Invoice::get(),
-
-            
+              'customers' => Contact::whereType('Customer')->get(),
+              'salesInvoice' => $salesInvoice->get(),
         ]);
     }
 }

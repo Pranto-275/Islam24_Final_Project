@@ -4,7 +4,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="invoice-title">
-                        <h4 class="float-right font-size-16">Purchase # {{$PurchaseId}}</h4>
+                        <h4 class="float-right font-size-16">
+                            Purchase # {{$PurchaseId}}<br>
+                            <address>
+                                Date: {{$PurchaseInvoice->purchase_date}}<br><br>
+                            </address>
+                        </h4>
                         <div class="mb-4">
                             <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
                         </div>
@@ -21,20 +26,20 @@
                         </div>
                         <div class="col-sm-6 text-sm-right">
                             <address class="mt-2 mt-sm-0">
-                                <strong>Shipped To:</strong><br>
+                                <strong>Supplier</strong><br>
                                 {{$PurchaseInvoice->Contact->first_name}} {{$PurchaseInvoice->Contact->last_name}}<br>
-                                {{$PurchaseInvoice->Contact->shipping_address}}<br>
+                                {{$PurchaseInvoice->Contact->address}}<br>
                                 {{$PurchaseInvoice->Contact->phone}}<br>
                             </address>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-sm-6 mt-3">
-                            {{-- <address>
+                            <address>
                                 <strong>Payment Method:</strong><br>
                                 Visa ending **** 4242<br>
                                 jsmith@email.com
-                            </address> --}}
+                            </address>
                         </div>
                         <div class="col-sm-6 mt-3 text-sm-right">
                             <address>
@@ -42,7 +47,7 @@
                                 {{$PurchaseInvoice->purchase_date}}<br><br>
                             </address>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="py-2 mt-3">
                         <h3 class="font-size-15 font-weight-bold">Purchase summary</h3>
                     </div>

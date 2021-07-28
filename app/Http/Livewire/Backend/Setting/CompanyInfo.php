@@ -4,34 +4,40 @@ namespace App\Http\Livewire\Backend\Setting;
 use App\Models\Backend\Setting\CompanyInfo as CompanyInfoDetails;
 use App\Models\Backend\Setting\Branch;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithFileUploads;
 use Livewire\Component;
-use phpDocumentor\Reflection\Types\Null_;
 
 class CompanyInfo extends Component
 {
+    use WithFileUploads;
 
     public $name;
     public $phone;
     public $mobile;
     public $address;
+    public $hotline;
+    public $logo;
     public $email;
     public $web;
+    public $facebook_link;
+    public $youtube_link;
     public $is_active;
-    public $branch_id;
-    public $companyInfo_id;
-    public $CompanyInfoDetails=null;
+    public $CompanyInfo;
 
 
 
 public function mount(){
-    $this->CompanyInfoDetails  = CompanyInfoDetails::first();
-    if ($this->CompanyInfoDetails){
-        $this->name         = $this->CompanyInfoDetails->name;
-        $this->phone        = $this->CompanyInfoDetails->phone;
-        $this->mobile       = $this->CompanyInfoDetails->mobile;
-        $this->address      = $this->CompanyInfoDetails->address;
-        $this->email        = $this->CompanyInfoDetails->email;
-        $this->web          = $this->CompanyInfoDetails->web;
+    $this->CompanyInfo  = CompanyInfoDetails::whereCreatedBy(Auth::user()->id)->first();
+    if ($this->CompanyInfo){
+        $this->name= $this->CompanyInfo->name;
+        $this->phone= $this->CompanyInfo->phone;
+        $this->mobile= $this->CompanyInfo->mobile;
+        $this->address=$this->CompanyInfo->address;
+        $this->hotline=$this->CompanyInfo->hotline;
+        $this->email=$this->CompanyInfo->email;
+        $this->web= $this->CompanyInfo->web;
+        $this->facebook_link= $this->CompanyInfo->facebook_link;
+        $this->youtube_link= $this->CompanyInfo->youtube_link;
     }
 }
 
@@ -40,27 +46,31 @@ public function companyInfoSave(){
     $this->validate([
        'name'   => 'required',
        'phone'  => 'required',
-        'mobile' => 'required',
-        'address' => 'required',
-        'email'   => 'required',
-
+       'address' => 'required',
     ]);
-    if ($this->CompanyInfoDetails){
-       $Query = $this->CompanyInfoDetails;
-    }else{
-        $Query               = new CompanyInfoDetails();
-        $Query->created_by      = Auth::user()->id;
+    $Query  = CompanyInfoDetails::whereCreatedBy(Auth::user()->id)->first();
+    if (!$Query){
+        $Query= new CompanyInfoDetails();
+        $Query->created_by= Auth::user()->id;
     }
 
-          $Query->name         = $this->name;
-          $Query->phone        = $this->phone;
-          $Query->mobile       = $this->mobile;
-          $Query->address      = $this->address;
-          $Query->web          = $this->email;
-          $Query->branch_id    = 1;
+          $Query->name = $this->name;
+          $Query->phone = $this->phone;
+          $Query->mobile = $this->mobile;
+          $Query->address = $this->address;
+          $Query->hotline = $this->hotline;
+          $Query->email = $this->email;
+          $Query->web = $this->web;
+          $Query->facebook_link = $this->facebook_link;
+          $Query->youtube_link = $this->youtube_link;
+          if($this->logo){
+            $path = $this->logo->store('/public/photo');
+            $Query->logo = basename($path);
+          }
+          $Query->branch_id = 1;
           $Query->save();
           $this->emit('success',[
-             'text' => 'CompanyInfo save successfully',
+             'text' => 'CompanyInfo Saved Successfully',
           ]);
 }
 
