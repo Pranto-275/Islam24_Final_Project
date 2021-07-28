@@ -32,7 +32,7 @@ class Purchase extends Component
     public $grand_total;
     public $discount;
     public $product_rate;
-    public $shipping_charge;
+    public $shipping_charge=0;
     public $due;
     public $paid_amount;
     public $payment_method_id;

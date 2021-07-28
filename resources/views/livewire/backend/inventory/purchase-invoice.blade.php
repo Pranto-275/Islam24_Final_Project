@@ -6,7 +6,7 @@
                     <div class="invoice-title">
                         <h4 class="float-right font-size-16">Purchase # {{$PurchaseId}}</h4>
                         <div class="mb-4">
-                            <img src="assets/images/logo-dark.png" alt="logo" height="20"/>
+                            <img src="{{ asset('storage/photo/'.$InvoiceSetting->logo)}}" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
                         </div>
                     </div>
                     <hr>
@@ -54,6 +54,7 @@
                                 <tr>
                                     <th style="width: 70px;">Sr.</th>
                                     <th>Product</th>
+                                    <th>Quantity</th>
                                     <th class="text-right">Price</th>
                                 </tr>
                             </thead>
@@ -66,6 +67,7 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{$purchaseInvoiceDetail->Product->name}}</td>
+                                    <td>{{$purchaseInvoiceDetail->quantity}}</td>
                                     <td class="text-right">{{$purchaseInvoiceDetail->unit_price * $purchaseInvoiceDetail->quantity}}</td>
                                     @php
                                         $subTotal += $purchaseInvoiceDetail->unit_price * $purchaseInvoiceDetail->quantity;
@@ -73,21 +75,21 @@
                                 </tr>
                               @endforeach
                               <tr>
-                                <td colspan="2" class="text-right">Sub Total</td>
+                                <td colspan="3" class="text-right">Sub Total</td>
                                 <td class="text-right">{{$subTotal}}</td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="border-0 text-right">
+                                <td colspan="3" class="border-0 text-right">
                                     <strong>Discount</strong></td>
                                 <td class="border-0 text-right">{{$PurchaseInvoice->discount}}</td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="border-0 text-right">
+                                <td colspan="3" class="border-0 text-right">
                                     <strong>Shipping</strong></td>
                                 <td class="border-0 text-right">{{$PurchaseInvoice->shipping_charge}}</td>
                             </tr>
                             <tr>
-                                <td colspan="2" class="border-0 text-right">
+                                <td colspan="3" class="border-0 text-right">
                                     <strong>Total</strong></td>
                                 <td class="border-0 text-right"><h4 class="m-0">{{$subTotal + $PurchaseInvoice->shipping_charge - $PurchaseInvoice->discount}}</h4></td>
                             </tr>
