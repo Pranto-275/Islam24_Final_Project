@@ -4,7 +4,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="invoice-title">
-                                    <h4 class="float-right font-size-16">Sale # {{$SaleId}}</h4>
+                                    <h4 class="float-right font-size-16">
+                                        Sale # {{$SaleId}}<br>
+                                        Date: {{$SaleInvoice->sale_date}}
+                                    </h4>
                                     <div class="mb-4">
                                         <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
                                     </div>
@@ -29,13 +32,13 @@
                                         </address>
                                     </div>
                                 </div>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-sm-6 mt-3">
-                                        {{-- <address>
+                                        <address>
                                             <strong>Payment Method:</strong><br>
                                             Visa ending **** 4242<br>
                                             jsmith@email.com
-                                        </address> --}}
+                                        </address>
                                     </div>
                                     <div class="col-sm-6 mt-3 text-sm-right">
                                         <address>
@@ -43,7 +46,7 @@
                                             {{$SaleInvoice->sale_date}}<br><br>
                                         </address>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="py-2 mt-3">
                                     <h3 class="font-size-15 font-weight-bold">Sale summary</h3>
                                 </div>

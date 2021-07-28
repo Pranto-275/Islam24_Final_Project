@@ -150,7 +150,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
-        Route::get('company', CompanyInfo::class)->name('company');
+        Route::get('companyinfo', CompanyInfo::class)->name('companyinfo');
         Route::get('branch', Branch::class)->name('branch');
         Route::get('currency', Currency::class)->name('currency');
         Route::get('delivery-method', DeliveryMethod::class)->name('delivery-method');

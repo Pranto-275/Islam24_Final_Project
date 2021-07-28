@@ -1,8 +1,6 @@
 @push('css')
         <!-- Sweet Alert -->
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/datatables/datatables.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}">
 @endpush
 <div>
@@ -23,47 +21,28 @@
                         </div>
                     </div><hr>
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="basicpill-firstname-input">From Date</label>
-                                          <input type="date" class="form-control" wire:model.lazy="date"/>
+                                          <input type="date" class="form-control" wire:model.lazy="from_date"/>
                                       </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                       <div class="form-group">
                                           <label for="basicpill-firstname-input">To Date</label>
-                                          <input type="date" class="form-control" wire:model.lazy="date1"/>
+                                          <input type="date" class="form-control" wire:model.lazy="to_date"/>
                                       </div>
                                     </div>
-                                  </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Select Customer</label>
                                 <select class="form-control" placeholder="Customer" wire:model.lazy="contact_id">
                                     <option>Select Customer</option>
                                     @foreach ($Customers as $customer)
-                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                    <option value="{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }}</option>
                                     @endforeach
                                 </select>
-                                @error('contact_id') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="basicpill-lastname-input">Branch</label>
-                                                    <select class="form-control" wire:model.lazy="branch_id">
-                                                        <option value="">Select Branch</option>
-                                                       @foreach ($branches as $branch)
-                                                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                                                        @endforeach
-                                                 </select>
-                                 @error('branch_id') <span class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
                     </div>
@@ -79,65 +58,53 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Date</th>
-                                <th>Code</th>
-                                <th>Product Name</th>                               
-                                <th>VAT</th>
-                                <th>Disount</th>
-                                <th>Qty</th>
-                                <th>Sale Price</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
                                 <th>Sub Total</th>
-                                
+
                             </tr>
                             </thead>
                             <tbody>
-                                <?php $i=0; $vat=0; $discount=0; $sale_price=0; $sale_subtotal=0; $quantity=0; ?>
-                                @foreach ($salesDetails as $salesDetail)
+                                @php $i=0;  $subtotal=0; @endphp
+                                @foreach ($saleDetails as $saleDetail)
 
                                 <tr>
                                     <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a></td>
-                                    <td>{{ $salesDetail->date }}</td>
-                                    <td>{{ $salesDetail->Contact->code }}</td>
-                                
                                     <td>
-                                        {{ $salesDetail->product_id }}
+                                        @if($saleDetail->SaleInvoice) {{ $saleDetail->SaleInvoice->sale_date }} @endif
+                                    </td>
+                                    <td>
+                                        @if($saleDetail->SaleInvoice->Contact) {{ $saleDetail->SaleInvoice->Contact->first_name }} {{ $saleDetail->SaleInvoice->Contact->last_name }} @endif
+                                    </td>
+                                    <td>
+                                        {{$saleDetail->Product->name}}
+                                    </td>
 
+                                    <td>
+                                        {{$saleDetail->quantity}}
                                     </td>
                                     <td>
-                                        0
-                                    </td>
-                                   
-                                    <td>
-                                        0
+                                        {{ $saleDetail->unit_price }}
                                     </td>
                                     <td>
-                                        {{ $salesDetail->quantity }}
-                                        <?php $quantity += $salesDetail->quantity ?>
+                                        {{ $saleDetail->unit_price * $saleDetail->quantity }}
+                                         @php $subtotal += $saleDetail->unit_price * $saleDetail->quantity @endphp
                                     </td>
-                                    <td>
-                                        {{ $salesDetail->sale_price }}
-                                         <?php $sale_price += $salesDetail->sale_price ?>
-                                    </td>
-                                    <td>
-                                        {{ $salesDetail->sale_subtotal }}
-                                        <?php $sale_subtotal += $salesDetail->sale_subtotal ?>
-                                    </td>
-                                   
+
                                 </tr>
                                 @endforeach
                             </tbody>
                             <thead>
                                 <tr>
-                                    <th colspan="4"><center>Total</center></th>
-                                    <th>{{ $vat }}</th>
-                                    <th>{{ $discount }}</th>
-                                    <th>{{ $quantity }}</th>
-                                    <th>{{ $sale_price }}</th>
-                                    <th>{{ $sale_subtotal }}</th>
-                                    
+                                    <th colspan="6"><center>Total</center></th>
+                                    <th>{{ $subtotal }}</th>
+
                                 </tr>
                                 </thead>
                         </table>
-                       
+
                     </div>
                 </div>
             </div>
@@ -145,20 +112,6 @@
     </div>
 </div>
 @push('scripts')
-        <script>
-              $( "#daterange" ).change(function() {
-                // $this->date=$( ".date" ).val();
-                @this.set(date, $( "#daterange" ).val());
-               });
-
-            $(function() {
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
-            }, function(start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
-            });
-        </script>
         <!-- Plugins js -->
         <script src="{{ URL::asset('assets/libs/datatables/datatables.min.js')}}"></script>
         <script src="{{ URL::asset('assets/libs/jszip/jszip.min.js')}}"></script>
