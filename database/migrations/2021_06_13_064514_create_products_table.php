@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->double('purchase_price', 20, 4)->default(0);
             $table->double('discount', 20, 4)->default(0)->nullable();
             $table->foreignId('sub_sub_category_id');
+            $table->foreignId('sub_sub_category_id');
+            $table->foreignId('sub_sub_category_id');
             $table->foreignId('contact_id')->nullable();
             $table->foreignId('brand_id')->nullable();
             $table->string('low_alert', 191)->nullable();
