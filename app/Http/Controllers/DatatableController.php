@@ -29,7 +29,7 @@ use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
-    public function SaleInvoiceTable(){
+    public function SaleListTable(){
         $Query = SaleInvoice::query()->orderBy('id', 'desc');
 
         $this->i = 1;
@@ -42,13 +42,14 @@ class DatatableController extends Controller
             return $data->Contact ? $data->Contact->first_name.' '.$data->Contact->last_name : '';
         })
         ->addColumn('action', function ($data) {
-            return '<a class="btn btn-primary btn-sm" href="'.route('inventory.sale', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="bx bx-edit font-size-18"></i></a>
+            return '<a class="btn btn-info btn-sm" href="'.route('inventory.sale-invoice', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="fas fa-eye font-size-18"></i></a>
+                    <a class="btn btn-primary btn-sm" href="'.route('inventory.sale', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="bx bx-edit font-size-18"></i></a>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
         })
         ->rawColumns(['id', 'contact_id', 'action'])
         ->toJSON();
     }
-    public function PurchaseInvoiceTable(){
+    public function PurchaseListTable(){
         $Query = PurchaseInvoice::query()->orderBy('id', 'desc');
 
         $this->i = 1;
@@ -61,7 +62,8 @@ class DatatableController extends Controller
             return $data->Contact ? $data->Contact->first_name.' '.$data->Contact->last_name : '';
         })
         ->addColumn('action', function ($data) {
-            return '<a class="btn btn-primary btn-sm" href="'.route('inventory.purchase', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="bx bx-edit font-size-18"></i></a>
+            return '<a class="btn btn-info btn-sm" href="'.route('inventory.purchase-invoice', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="fas fa-eye font-size-18"></i></a>
+                    <a class="btn btn-primary btn-sm" href="'.route('inventory.purchase', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="bx bx-edit font-size-18"></i></a>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
         })
         ->rawColumns(['id', 'contact_id', 'action'])

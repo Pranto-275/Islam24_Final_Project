@@ -70,7 +70,7 @@ class Currency extends Component
         $Query->save();
 
         $this->currencyInfoModal();
-
+        $this->reset();
         $this->emit('success', [
             'text' => 'Currency C/U Successfully',
         ]);

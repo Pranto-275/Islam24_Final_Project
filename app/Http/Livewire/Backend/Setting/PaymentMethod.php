@@ -13,8 +13,9 @@ class PaymentMethod extends Component
     public $name;
     public $account_holder_name;
     public $account_no;
+    public $opening_balance=0;
     public $created_by;
-    public $branch_id;
+    public $is_active;
     public $paymentMethod_id;
 
 
@@ -23,6 +24,7 @@ class PaymentMethod extends Component
             'name'                   => 'required',
             'account_holder_name'    => 'required',
             'account_no'             => 'required',
+            'is_active'             => 'required',
         ]);
 
 
@@ -36,10 +38,13 @@ class PaymentMethod extends Component
       $Query->name                   = $this->name;
       $Query->account_holder_name    = $this->account_holder_name;
       $Query->account_no             = $this->account_no;
+      $Query->opening_balance             = $this->opening_balance;
+      $Query->is_active       = $this->is_active;
       $Query->created_by                = Auth::user()->id;
       $Query->branch_id              = 1;
       $Query->save();
       $this->reset();
+      $this->PaymentMethodModal();
       $this->emit('success',[
          'text' => 'Payment Method save successfully',
       ]);
@@ -52,6 +57,7 @@ class PaymentMethod extends Component
         $this->name                    = $this->QueryUpdate->name;
         $this->account_holder_name     = $this->QueryUpdate->account_holder_name;
         $this->account_no              = $this->QueryUpdate->account_no;
+        $this->opening_balance         = $this->QueryUpdate->opening_balance;
         $this->PaymentMethodModal();
     }
 

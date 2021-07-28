@@ -12,8 +12,9 @@ class Branch extends Component
     public $mobile;
     public $address;
     public $is_active;
-    public $BranchId=NULL;
-    public $QueryUpdate=NULL;
+    public $BranchId;
+    public $QueryUpdate;
+
     public function branchEdit($id)
     {
         $Query = BranchInfo::find($id);
@@ -38,6 +39,7 @@ class Branch extends Component
         $this->validate([
             'code' => 'required',
             'name' => 'required',
+            'is_active' => 'required',
         ]);
         if ($this->BranchId) {
             $Query = BranchInfo::find($this->BranchId);

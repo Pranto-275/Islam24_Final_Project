@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Brand</label>
-                                    <select class="form-control" wire:model.lazy="brand_id" wire:model.lazy="brand_id">
+                                    <select class="form-control" wire:model.lazy="brand_id">
                                         <option>Select</option>
                                         @foreach ($brands as $brand)
                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -96,6 +96,16 @@
                                     <label for="low_alert">Low Alert</label>
                                     <input id="low_alert" type="number" step="any" class="form-control" wire:model.lazy="low_alert" placeholder="Low Alert">
                                 </div>
+                                <div class="form-group">
+                                    <label class="control-label">Warehouse</label>
+                                    <select class="form-control" wire:model.lazy="warehouse_id">
+                                        <option>Select</option>
+                                        @foreach ($warehouses as $warehouse)
+                                           <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
                                 {{-- <div class="form-group">
                                     <label for="control-label">Contact</label>
                                     <select class="select2 form-control" wire:model.lazy="contact_id">
@@ -110,6 +120,11 @@
 
                             <div class="col-sm-6">
                                 <div class="form-group">
+                                    <label for="stock_in_opening">Opening Stock</label>
+                                    <input id="stock_in_opening" type="number" step="any" class="form-control" wire:model.lazy="stock_in_opening" placeholder="Opening Stock">
+                                    @error('stock_in_opening') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="regular_price">Regular Price</label>
                                     <input id="regular_price" type="number" step="any" class="form-control" wire:model.lazy="regular_price" placeholder="Regular Price">
                                     @error('regular_price') <span class="error">{{ $message }}</span> @enderror
@@ -117,10 +132,12 @@
                                 <div class="form-group">
                                     <label for="special_price">Special Price</label>
                                     <input id="special_price" type="number" step="any" class="form-control" wire:model.lazy="special_price" placeholder="Special Price">
+                                    @error('special_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="wholesale_price">Wholesale Price</label>
                                     <input id="wholesale_price" type="number" step="any" class="form-control" wire:model.lazy="wholesale_price" placeholder="Wholesale Price">
+                                    @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="purchase_price">Purchase Price</label>
@@ -138,11 +155,11 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="productdesc">Short Description</label>
                                     <textarea class="form-control" id="short_description" rows="3" wire:model.lazy="short_description"></textarea>
-                                    @error('short_description') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="productdesc">Long Description</label>

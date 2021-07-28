@@ -9,9 +9,12 @@ use App\Models\Backend\ProductInfo\Product as ProductTable;
 use App\Models\Backend\ProductInfo\ProductImage;
 use App\Models\Backend\ProductInfo\ProductInfo;
 use App\models\Backend\ProductInfo\ProductProperties;
+use App\Models\Backend\Inventory\StockManager;
+use App\Models\Backend\Setting\Warehouse;
 use App\Models\Backend\ProductInfo\Size;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\Setting\Vat;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -31,6 +34,8 @@ class Product extends Component
     public $wholesale_price;
     public $purchase_price;
     public $discount;
+    public $warehouse_id;
+    public $stock_in_opening;
     public $brand_id;
     public $contact_id;
     public $low_alert;
@@ -93,6 +98,13 @@ class Product extends Component
             // $this->selectedSizes = array_unique($this->selectedSizes);
             // $this->selectedColors = array_unique($this->selectedColors);
         }
+        // Stock Manager
+        $StockManager = StockManager::whereProductId($id)->first();
+        if($StockManager){
+        $this->stock_in_opening=$StockManager->stock_in_opening;
+        $this->warehouse_id=$StockManager->warehouse_id;
+        }
+
         // Product Code
         $this->code = 'P'.floor(time() - 999999999);
     }
@@ -105,10 +117,15 @@ class Product extends Component
             'sub_sub_category_id' => 'required',
             'brand_id' => 'required',
             'regular_price' => 'required',
+            'special_price' => 'required',
+            'wholesale_price' =>'required',
             'purchase_price' => 'required',
-            'short_description' => 'required',
+            'warehouse_id' => 'required',
+            'stock_in_opening' => 'required',
+            'is_active' => 'required',
         ]);
         DB::transaction(function () {
+            // dd();
             // Product Save
             if ($this->ProductId) {
                 $Query = ProductTable::find($this->ProductId);
@@ -199,6 +216,17 @@ class Product extends Component
             //         }
             //     }
             // }
+
+            // Start Product Save Stock Manager
+                  $StockManager = StockManager::whereProductId($Query->id)->firstOrNew();
+                  $StockManager->date=Carbon::now();
+                  $StockManager->product_id=$Query->id;
+                  $StockManager->stock_in_opening=$this->stock_in_opening;
+                  $StockManager->warehouse_id=$this->warehouse_id;
+                  $StockManager->branch_id=1;
+                  $StockManager->created_by=Auth::user()->id;
+                  $StockManager->save();
+            // End Product Save Stock Manager
         });
         if (!$this->ProductId) {
             $this->reset();
@@ -224,6 +252,7 @@ class Product extends Component
             'sizes' => Size::get(),
             'vats' => Vat::get(),
             'contacts' => Contact::get(),
+            'warehouses' => Warehouse::get(),
         ]);
     }
 }

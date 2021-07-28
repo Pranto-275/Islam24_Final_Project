@@ -9,14 +9,14 @@ use Livewire\Component;
 class CouponCode extends Component
 {
     public $code;
+    public $expired_day;
     public $expired_date;
+    public $after_effect_date;
     public $offer_type;
-    public $amount;
+    public $offer_amount;
     public $min_buy_amount;
     public $is_active;
-    public $couponCode_id;
-    public $user_id;
-    public $branch_id;
+    public $CouponCodeId;
 
 
 
@@ -24,29 +24,34 @@ class CouponCode extends Component
 public function couponCodeSave(){
     $this->validate([
        'code'                 => 'required',
-       'expired_date'         => 'required',
-        'offer_type'          => 'required',
-        'amount'              => 'required',
-        'min_buy_amount'      => 'required'
+       'expired_day'                 => 'required',
+       'expired_date'                 => 'required',
+       'after_effect_date'                 => 'required',
+       'offer_type'          => 'required',
+       'offer_amount'              => 'required',
+       'is_active'         => 'required',
     ]);
 
 
-    if ($this->couponCode_id){
-        $Query = CouponCodeInfo::find($this->couponCode_id);
+    if ($this->CouponCodeId){
+        $Query = CouponCodeInfo::find($this->CouponCodeId);
     }else{
         $Query  = new CouponCodeInfo();
-        $Query->user_id = Auth::user()->id;
+        $Query->created_by = Auth::user()->id;
     }
 
     $Query->code               = $this->code;
+    $Query->expired_day       = $this->expired_day;
     $Query->expired_date       = $this->expired_date;
+    $Query->after_effect_date       = $this->after_effect_date;
     $Query->offer_type         = $this->offer_type;
-    $Query->amount             = $this->amount;
+    $Query->offer_amount             = $this->offer_amount;
     $Query->min_buy_amount     = $this->min_buy_amount;
     $Query->is_active             = $this->is_active;
     $Query->branch_id          = 1;
     $Query->save();
     $this->reset();
+    $this->couponCodeModal();
     $this->emit('success',[
        'text' => 'Coupon code saved successfully',
     ]);
@@ -55,26 +60,29 @@ public function couponCodeSave(){
 
 public function couponEdit($id){
    $this->QueryUpdate        = CouponCodeInfo::find($id);
-   $this->couponCode_id      = $this->QueryUpdate->id;
+   $this->CouponCodeId      = $this->QueryUpdate->id;
    $this->code               = $this->QueryUpdate->code;
+   $this->expired_day       = $this->QueryUpdate->expired_day;
    $this->expired_date       = $this->QueryUpdate->expired_date;
+   $this->after_effect_date       = $this->QueryUpdate->after_effect_date;
    $this->offer_type         = $this->QueryUpdate->offer_type;
-   $this->amount             = $this->QueryUpdate->amount;
+   $this->offer_amount             = $this->QueryUpdate->offer_amount;
    $this->min_buy_amount     = $this->QueryUpdate->min_buy_amount;
    $this->is_active             = $this->QueryUpdate->is_active;
+
    $this->couponCodeModal();
 }
 
 public function couponDelete($id){
     CouponCodeInfo::find($id)->delete();
     $this->emit('success',[
-       'text' => 'CouponInfo deleted successfully',
+       'text' => 'Coupon Code deleted successfully',
     ]);
 }
 
 
     public function couponCodeModal(){
-        $this->code = 'C'. floor(time()-99999);
+        $this->code = 'CO'. floor(time()-99999);
         $this->emit('modal','couponCodeModal');
     }
     public function render()

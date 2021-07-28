@@ -47,6 +47,13 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label for="basicpill-firstname-input">Code</label>
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter code">
+                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
                                     <label for="basicpill-firstname-input">Type</label>
                                         <select class="form-control" wire:model.lazy="type">
                                             <option value="">Select Contact type</option>
@@ -55,13 +62,6 @@
                                             <option value="Supplier">Supplier</option>
                                         </select>
                                     @error('type') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter code">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-12">

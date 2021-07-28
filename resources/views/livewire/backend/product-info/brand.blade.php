@@ -77,13 +77,12 @@
                                         <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
                                         @endif
                                         {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
-                                        @error('image') <span class="error">{{ $message }}</span> @enderror
+                                        {{-- @error('image') <span class="error">{{ $message }}</span> @enderror --}}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
-                                <label for="basicpill-lastname-input">Description</label>
                                 <textarea class="form-control" wire:model.lazy="description" placeholder="Description"></textarea>
                             </div>
 
@@ -95,7 +94,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
-                                    @error('status') <span class="error">{{ $message }}</span> @enderror
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -147,13 +146,6 @@
                         data:  'image',
                         name:  'image'
                     },
-
-                    {
-                        title: 'Description',
-                        data:  'description',
-                        name:  'description'
-                    },
-
                     {
                         title: 'Action',
                         data:  'action',

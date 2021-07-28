@@ -1,13 +1,11 @@
 @push('css')
         <!-- Sweet Alert -->
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-        <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/datatables/datatables.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}">
 @endpush
 <div>
     <x-slot name="title">
-        Purchase Reports
+        Purchase Report
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -17,43 +15,50 @@
                         <div class="col-sm-12">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4 class="card-title">Purchase Reports</h4>
+                                    <h4 class="card-title">Purchase Report</h4>
                                 </div>
                             </div>
                         </div>
                     </div><hr>
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">Select Date</label>
-                                <input type="text" name="daterange" id="daterange" class="form-control" placeholder="Enter Date">
-                                @error('Date') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="basicpill-firstname-input">Supplier</label>
-                                <select type="text" name="Supplier" class="form-control" placeholder="Supplier">
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">From Date</label>
+                                    <input type="date" class="form-control" wire:model.lazy="from_date"/>
+                                </div>
+                              </div>
+
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">To Date</label>
+                                    <input type="date" class="form-control" wire:model.lazy="to_date"/>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                               <div class="form-group">
+                                <label for="basicpill-firstname-input">Select Supplier</label>
+
+                                <select class="form-control" placeholder="Customer" wire:model.lazy="contact_id">
                                     <option value="">Select Supplier</option>
-                                    @foreach($suppliers as $supplier)
-                                    <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                    @foreach ($suppliers as $supplier)
+                                    <option value="{{ $supplier->id }}">{{ $supplier->first_name }} {{ $supplier->last_name }}</option>
                                     @endforeach
                                 </select>
-                                @error('Supplier') <span class="error">{{ $message }}</span> @enderror
+
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        {{-- <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="basicpill-firstname-input">Branch</label>
-                                <select class="form-control" wire:model.lazy="type">
+                                <label for="basicpill-lastname-input">Branch</label>
+                                <select class="form-control" wire:model.lazy="branch_id">
                                     <option value="">Select Branch</option>
-                                    <option value="All">All</option>
-                                    <option value="Two Option">Two Option</option>
-                                    <option value="Three Option">Three Option</option>
-                                    <option value="Four Option">Four Option</option>
-                                </select>
+                                   @foreach ($branches as $branch)
+                                     <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                    @endforeach
+                             </select>
+                                @error('branch_id') <span class="error">{{ $message }}</span> @enderror
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -61,77 +66,80 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <div wire:ignore class="table-responsive">
+                    <div class="table-responsive">
                         <table id="datatable-buttons" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
-                            <tr>
-                                <th>SL</th>
-                                <th>Date</th>
-                                <th>Supplier Name</th>
-                                <th>Purchase Code</th>
-                                <th>Chalan No</th>
-                                <th>Memo No</th>
-                                <th>Sub Total</th>
-                                <th>Discount</th>
-                                <th>Shipping Charge</th>
-                                <th>Total</th>
-                                <th>Paid</th>
-                                <th>Due</th>
-                                <th>Branch</th>
-                            </tr>
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Date</th>
+                                    <th>Supplier Name</th>
+                                    <th>Sub Total</th>
+                                    <th>Discount</th>
+                                    <th>Shipping Charge</th>
+                                    <th>Payable Amount</th>
+                                    <th>Paid</th>
+                                    <th>Due</th>
+
+                                </tr>
                             </thead>
                             <tbody>
-
+                                @php $i=0; $subTotal=0; $discount=0; $shipping_charge=0; $grand_total=0;$paid_amount=0;$due=0; @endphp
+                                @foreach ($purchasesInvoice as $purchaseInvoice)
                                 <tr>
-                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">1</a></td>
-                                    <td>2021-Mar-04</td>
-                                    <td>Md Suboj</td>
+                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a></td>
+                                    <td>{{ $purchaseInvoice->purchase_date }}</td>
+                                    <td>@if($purchaseInvoice->Contact) {{ $purchaseInvoice->Contact->first_name }} {{ $purchaseInvoice->Contact->last_name }} @endif</td>
                                     <td>
-                                        P5111168
+                                        {{ $purchaseInvoice->total_amount }}
+                                        @php $subTotal +=$purchaseInvoice->total_amount @endphp
                                     </td>
                                     <td>
-                                        Product
+                                        {{ $purchaseInvoice->discount }}
+                                        @php $discount += $purchaseInvoice->discount @endphp
                                     </td>
                                     <td>
-                                        diadent gp
+                                        {{ $purchaseInvoice->shipping_charge }}
+                                        @php $shipping_charge += $purchaseInvoice->shipping_charge @endphp
                                     </td>
                                     <td>
-                                        0
+                                        {{ $purchaseInvoice->payable_amount }}
+                                        @php $grand_total += $purchaseInvoice->payable_amount @endphp
+
                                     </td>
                                     <td>
-                                        100
+                                        {{ $purchaseInvoice->PurchasePayment->sum('total_amount') }}
+                                        @php $paid_amount += $purchaseInvoice->PurchasePayment->sum('total_amount') @endphp
+
                                     </td>
                                     <td>
-                                        30000
+                                        {{ $purchaseInvoice->payable_amount - $purchaseInvoice->PurchasePayment->sum('total_amount')}}
+                                        @php $due += $purchaseInvoice->payable_amount - $purchaseInvoice->PurchasePayment->sum('total_amount') @endphp
                                     </td>
-                                    <td>
-                                        3
-                                    </td>
-                                    <td>
-                                        900
-                                    </td>
-                                    <td>
-                                        97
-                                    </td>
-                                    <td>
-                                        Branch
-                                    </td>
+
                                 </tr>
-                                
+                                @endforeach
                             </tbody>
                             <thead>
                                 <tr>
-                                    <th colspan="6"><center>Total</center></th>
-                                    <th>47600.00</th>
-                                    <th>47600.00</th>
-                                    <th>47600.00</th>
-                                    <th>47600.00</th>
-                                    <th>47600.00</th>
-                                    <th>47600.00</th>
-                                    <th></th>
+                                    <th colspan="3"><center>Total</center></th>
+
+                                    <th>{{ $subTotal }}</th>
+                                    <th>{{ $discount }}</th>
+                                    <th>{{ $shipping_charge }}</th>
+                                    <th>{{ $grand_total }}</th>
+                                    <th>{{ $paid_amount }}</th>
+                                    <th>{{ $due }}</th>
+
+
                                 </tr>
-                                </thead>
+
+                            </thead>
+
                         </table>
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -139,15 +147,6 @@
     </div>
 </div>
 @push('scripts')
-        <script>
-            $(function() {
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
-            }, function(start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
-            });
-        </script>
         <!-- Plugins js -->
         <script src="{{ URL::asset('assets/libs/datatables/datatables.min.js')}}"></script>
         <script src="{{ URL::asset('assets/libs/jszip/jszip.min.js')}}"></script>

@@ -52,8 +52,27 @@
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
-
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Expired Day</label>
+                                    <input class="form-control" type="number" wire:model.lazy="expired_day" placeholder="Expired Day">
+                                    @error('expired_day') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Offer Effect Date</label>
+                                    <input class="form-control" type="date" wire:model.lazy="after_effect_date" placeholder="Enter expired date">
+                                    @error('after_effect_date') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Expired Date</label>
+                                    <input class="form-control" type="date" wire:model.lazy="expired_date" placeholder="Enter expired date">
+                                    @error('expired_date') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Offer Type</label>
@@ -62,32 +81,24 @@
                                         <option value="Percentage">Percentage</option>
                                         <option value="Amount">Amount</option>
                                     </select>
+                                    @error('offer_type') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Amount</label>
-                                    <input class="form-control" type="text" wire:model.lazy="amount" placeholder="Enter Amount">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">Offer Amount</label>
+                                    <input class="form-control" type="text" wire:model.lazy="offer_amount" placeholder="Offer Amount">
+                                    @error('offer_amount') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Min Buy Amount</label>
                                     <input class="form-control" type="text" wire:model.lazy="min_buy_amount" placeholder="Enter Min Amount">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Expired Date</label>
-                                    <input class="form-control" type="date" wire:model.lazy="expired_date" placeholder="Enter expired date">
-                                    @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -99,6 +110,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -136,6 +148,16 @@
                         name:   'code'
                     },
                     {
+                        title: 'Expired Day',
+                        data:  'expired_day',
+                        name:  'expired_day'
+                    },
+                    {
+                        title: 'After Effect Date',
+                        data:  'after_effect_date',
+                        name:  'after_effect_date'
+                    },
+                    {
                         title: 'Expired Date',
                         data:  'expired_date',
                         name:  'expired_date'
@@ -146,12 +168,12 @@
                         name:  'offer_type'
                     },
                     {
-                        title: 'Amount',
-                        data:  'amount',
-                        name:  'amount'
+                        title: 'Offer Amount',
+                        data:  'offer_amount',
+                        name:  'offer_amount'
                     },
                     {
-                        title: 'Buy Amount',
+                        title: 'Min Buy Amount',
                         data:  'min_buy_amount',
                         name:  'min_buy_amount'
                     },

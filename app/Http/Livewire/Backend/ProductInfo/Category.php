@@ -15,6 +15,7 @@ class Category extends Component
     public $name;
     public $image1;
     public $image2;
+    public $description;
     public $is_active;
     public $top_show;
     public $CategoryId=NULL;
@@ -25,6 +26,7 @@ class Category extends Component
         $this->CategoryId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
+        $this->description = $this->QueryUpdate->description;
         $this->is_active = $this->QueryUpdate->is_active;
         $this->top_show = $this->QueryUpdate->top_show;
 
@@ -48,6 +50,7 @@ class Category extends Component
         $this->validate([
             'code' => 'required',
             'name' => 'required',
+            'is_active' => 'required',
         ]);
 
         if($this->CategoryId){
@@ -58,6 +61,7 @@ class Category extends Component
         }
         $Query->code = $this->code;
         $Query->name = $this->name;
+        $Query->description = $this->description;
         if($this->image1){
         $path = $this->image1->store('/public/photo');
         $Query->image1 = basename($path);

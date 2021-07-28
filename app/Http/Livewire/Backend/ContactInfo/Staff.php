@@ -28,6 +28,10 @@ class Staff extends Component
             'contact_category_id'                   => 'required',
             'first_name'                   => 'required',
             'last_name'                   => 'required',
+            'address'                   => 'required',
+            'shipping_address'                   => 'required',
+            'mobile'                   => 'required',
+            'is_active'                   => 'required',
         ]);
 // dd($this->contact_category_id);
         if ($this->CustomerCategoryId){
@@ -54,7 +58,7 @@ class Staff extends Component
         $this->reset();
         $this->ContactModal();
         $this->emit('success',[
-            'text' => 'Customer C/U Successfully',
+            'text' => 'Staff C/U Successfully',
         ]);
     }
 
@@ -62,7 +66,7 @@ class Staff extends Component
         Contact::find($id)->delete();
 
         $this->emit('success',[
-           'text' => 'Customer deleted successfully',
+           'text' => 'Staff deleted successfully',
         ]);
     }
 

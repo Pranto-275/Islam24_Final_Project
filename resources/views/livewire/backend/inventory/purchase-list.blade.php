@@ -29,7 +29,7 @@
                     </div>
                     <div class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="PurchaseTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="PurchaseListTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                 </div>
@@ -46,10 +46,10 @@
 
     $(document).ready(function () {
 
-        var datatable = $('#PurchaseTable').DataTable({
+        var datatable = $('#PurchaseListTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{route('data.purchase_invoice')}}",
+            ajax: "{{route('data.purchase_list')}}",
             columns: [
                 {
                     title: 'SL',

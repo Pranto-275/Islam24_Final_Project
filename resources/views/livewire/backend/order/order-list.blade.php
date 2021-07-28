@@ -13,13 +13,13 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>orderList</h4>
+                                    <h4>Order List</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <a href="">
+                                <a href="{{ route('inventory.sale') }}">
                                     <button type="button"
                                             class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
                                             class="mdi mdi-plus mr-1"></i>New Order
@@ -40,10 +40,13 @@
                                         <thead class="thead-light">
                                         <tr>
                                             <th>SL</th>
-                                            <th>Date</th>
-                                            <th>Type</th>
-                                            <th>Contact</th>
-                                            <th>Quantity</th>
+                                            <th>Customer</th>
+                                            <th>Sale Date</th>
+                                            <th>Total Amount</th>
+                                            <th>Discount</th>
+                                            <th>Shipping Charge</th>
+                                            <th>Payable Amount</th>
+                                            {{-- <th>Status</th> --}}
                                             <th colspan="2">Action</th>
                                         </tr>
                                         </thead>
@@ -52,35 +55,41 @@
                                             $i=0;
                                         @endphp
 
-                                         @foreach ($invoices as $invoice)
+                                         @foreach ($saleInvoices as $saleInvoice)
 
                                         <tr>
                                             <td>
                                                 <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
                                             </td>
                                             <td>
-                                                {{$invoice->date}}
+                                                {{$saleInvoice->Contact->first_name}} {{$saleInvoice->Contact->last_name}}
                                             </td>
                                             <td>
-                                                {{$invoice->type}}
-                                            </td>
-
-                                            <td>
-{{--                                               {{$invoice->ContactName->name}}--}}
+                                                {{$saleInvoice->sale_date}}
                                             </td>
 
                                             <td>
-                                                @if($invoice->StockManager)
-                                                    {{$invoice->StockManager->sum('quantity')}}
-                                                @endif
+                                              {{$saleInvoice->total_amount}}
                                             </td>
 
                                             <td>
-                                                <button class="btn btn-primary btn-sm" wire:click="popupInvoice()"><i
-                                                        class="fas fa-check font-size-18"></i></button>
-                                                <button class="btn btn-primary btn-sm" wire:click="editOrderlist()"><i
+                                              {{$saleInvoice->discount}}
+                                            </td>
+                                            <td>
+                                                {{$saleInvoice->shipping_charge}}
+                                            </td>
+                                            <td>
+                                                {{$saleInvoice->payable_amount}}
+                                              </td>
+                                            <td>
+                                                <a class="btn btn-info btn-sm" href="{{ route('inventory.sale-invoice', ['id' => $saleInvoice->id])}}">
+                                                    <i class="fas fa-eye font-size-18"></i>
+                                                </a>
+                                                <a href="{{ route('inventory.sale',['id'=>$saleInvoice->id]) }}">
+                                                    <button class="btn btn-primary btn-sm"><i
                                                         class="bx bx-edit font-size-18"></i></button>
-                                                <button class="btn btn-danger btn-sm" wire:click="deleteOrderlist()"><i
+                                                </a>
+                                                <button class="btn btn-danger btn-sm" wire:click="deleteOrder({{ $saleInvoice->id }})"><i
                                                         class="bx bx-window-close font-size-18"></i></button>
                                             </td>
                                         </tr>
@@ -96,7 +105,7 @@
         </div>
 
       {{--Invoice Modal goes here--}}
-
+{{--
         <div class="modal fade exampleModal" id="popupInvoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -183,7 +192,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
         @push('scripts')
             <script>
 

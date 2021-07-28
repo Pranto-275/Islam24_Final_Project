@@ -68,6 +68,23 @@
                                     @error('account_no') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Opening Balance</label>
+                                    <input class="form-control" type="text" wire:model.lazy="opening_balance" placeholder="Opening Balance">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Status</label>
+                                    <select class="form-control" wire:model.lazy="is_active">
+                                        <option value="">Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -109,14 +126,16 @@
                         data:  'account_holder_name',
                         name:  'account_holder_name'
                     },
-
                     {
                         title: 'Account No',
                         data:  'account_no',
                         name:  'account_no'
                     },
-
-
+                    {
+                        title: 'Opening Balance',
+                        data:  'opening_balance',
+                        name:  'opening_balance'
+                    },
                     {
                         title: 'Action',
                         data: 'action',

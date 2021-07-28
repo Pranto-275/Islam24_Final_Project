@@ -25,7 +25,7 @@ class Vat extends Component
             'name'            => 'required',
             'rate_percent'    => 'required',
             'rate_fixed'      => 'required',
-
+            'is_active'      => 'required',
         ]);
 
         if ($this->vat_id){

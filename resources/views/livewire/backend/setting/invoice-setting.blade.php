@@ -61,10 +61,18 @@
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label class="control-label">Logo  (517.38*492 jpg)</label>
-                                    <div class="custom-file">
-                                        {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
+                                    <label class="control-label">Logo  (517.38*492 jpg)
+                                        @if (!$logo)
+                                        @if($invoiceInfoDetails)
+                                           <img src="{{ asset('storage/photo/'.$invoiceInfoDetails->logo)}}"  style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">
+                                        @endif
+                                       @endif
 
+                                       @if ($logo)
+                                            <img src="{{ $logo->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        @endif
+                                    </label>
+                                    <div class="custom-file">
                                         <input type="file" wire:model.lazy="logo" x-ref="logo">
                                     </div>
                                 </div>
@@ -120,6 +128,7 @@
                                             <option value="{{$Currency->id}}">{{$Currency->symbol}}</option>
                                         @endforeach
                                     </select>
+                                    @error('currency_id') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 

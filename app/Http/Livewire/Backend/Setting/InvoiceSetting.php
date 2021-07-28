@@ -27,7 +27,7 @@ class InvoiceSetting extends Component
     public $is_memo_no_hide;
     public $is_chalan_no_hide;
     public $created_by;
-    public $invoiceSetting_id;
+    public $invoiceSettingId;
     public $invoiceInfoDetails;
     public $branch_id;
 
@@ -38,13 +38,14 @@ class InvoiceSetting extends Component
         $this->validate([
             'type'              => 'required',
             'invoice_title'    => 'required',
+            'currency_id'    => 'required',
         ]);
-        $this->invoiceInfoDetails          = InvoiceSettingInfo::whereCreatedBy(Auth::user()->id)->first();
+        $this->invoiceInfoDetails=InvoiceSettingInfo::whereCreatedBy(Auth::user()->id)->first();
         if($this->invoiceInfoDetails){
-        $this->invoiceSetting_id    = $this->invoiceInfoDetails->id;
+        $this->invoiceSettingId= $this->invoiceInfoDetails->id;
         }
-        if ($this->invoiceSetting_id){
-            $Query = InvoiceSettingInfo::whereUserCreatedBy(Auth::user()->id)->find($this->invoiceSetting_id);
+        if ($this->invoiceSettingId){
+            $Query = InvoiceSettingInfo::whereCreatedBy(Auth::user()->id)->find($this->invoiceSettingId);
         }else{
             $Query  = new InvoiceSettingInfo();
             $Query->created_by    = Auth::user()->id;
@@ -54,6 +55,7 @@ class InvoiceSetting extends Component
           $path = $this->logo->store('/public/photo');
           $Query->logo = basename($path);
         }
+
         $Query->invoice_header      = $this->invoice_header;
         $Query->invoice_title       = $this->invoice_title;
         $Query->invoice_footer      = $this->invoice_footer;
@@ -76,7 +78,7 @@ class InvoiceSetting extends Component
         $this->invoiceInfoDetails          = InvoiceSettingInfo::whereCreatedBy(Auth::user()->id)->first();
         if ($this->invoiceInfoDetails){
 
-            $this->invoiceSetting_id    = $this->invoiceInfoDetails->id;
+            $this->invoiceSettingId    = $this->invoiceInfoDetails->id;
             $this->type                 = $this->invoiceInfoDetails->type;
             $this->invoice_header       = $this->invoiceInfoDetails->invoice_header;
             $this->invoice_title        = $this->invoiceInfoDetails->invoice_title;

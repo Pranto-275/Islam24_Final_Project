@@ -78,6 +78,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="address" placeholder="Enter Address">
+                                    @error('address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -85,6 +86,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Shipping Address</label>
                                     <input class="form-control" type="text" wire:model.lazy="shipping_address" placeholder="Enter Shipping address">
+                                    @error('shipping_address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -99,6 +101,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Mobile</label>
                                     <input class="form-control" type="text" wire:model.lazy="mobile" placeholder="Enter Mobile Number">
+                                    @error('mobile') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -145,6 +148,7 @@
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
+                                    @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>
@@ -199,9 +203,9 @@
                         name:  'shipping_address'
                     },
                     {
-                        title: 'Phone',
-                        data:  'phone',
-                        name:  'phone'
+                        title: 'Mobile',
+                        data:  'mobile',
+                        name:  'mobile'
                     },
 
                     {

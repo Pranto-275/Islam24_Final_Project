@@ -101,12 +101,19 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group">
+                                                <textarea class="form-control" wire:model.lazy="description" placeholder="Description"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
                                                 <label for="basicpill-lastname-input">Status</label>
                                                 <select class="form-control" wire:model.lazy="is_active">
                                                     <option value="">Select Status</option>
                                                     <option value="1">Active</option>
                                                     <option value="0">Inactive</option>
                                                 </select>
+                                                @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                             </div>
                                         </div>
 
@@ -156,9 +163,9 @@
                         name:  'name'
                     },
                     {
-                        title: 'Name',
-                        data:  'name',
-                        name:  'name'
+                        title: 'Image1',
+                        data:  'image1',
+                        name:  'image1'
                     },
                     {
                         title: 'Image2',

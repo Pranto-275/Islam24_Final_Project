@@ -11,9 +11,11 @@ class Unit extends Component
     public $name;
     public $rate;
     public $is_active;
-    public $UnitId=NULL;
+    public $UnitId;
+
     public function unitEdit($id){
         $this->QueryUpdate = UnitInfo::find($id);
+        $this->UnitId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
         $this->rate = $this->QueryUpdate->rate;
@@ -33,6 +35,7 @@ class Unit extends Component
             'code' => 'required',
             'name' => 'required',
             'rate' => 'required',
+            'is_active' => 'required',
         ]);
 
         if($this->UnitId){

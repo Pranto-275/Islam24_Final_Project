@@ -11,7 +11,7 @@ class Warehouse extends Component
     public $name;
     public $address;
     public $is_active;
-    public $WarehouseId=NULL;
+    public $WarehouseId;
 
     public function warehouseEdit($id)
     {
@@ -37,6 +37,7 @@ class Warehouse extends Component
             'code' => 'required',
             'name' => 'required',
             'address' => 'required',
+            'is_active' => 'required',
         ]);
         if ($this->WarehouseId) {
             $Query = WareHouseInfo::find($this->WarehouseId);

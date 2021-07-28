@@ -6,11 +6,12 @@ use App\Http\Livewire\Backend\ContactInfo\Customer as CustomerInfo;
 use App\Http\Livewire\Backend\ContactInfo\Staff;
 use App\Http\Livewire\Backend\ContactInfo\Supplier;
 use App\Http\Livewire\Backend\Inventory\Purchase;
+use App\Http\Livewire\Backend\Inventory\PurchaseInvoice;
 use App\Http\Livewire\Backend\Inventory\PurchaseList;
 use App\Http\Livewire\Backend\Inventory\Sale;
 use App\Http\Livewire\Backend\Inventory\SaleList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
-use App\Http\Livewire\Backend\Order\Order;
+use App\Http\Livewire\Backend\Inventory\SaleInvoice;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
 use App\Http\Livewire\Backend\ProductInfo\Brand;
@@ -126,8 +127,10 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('ware-house', WareHouse::class)->name('ware-house');
         Route::get('purchase/{id?}', Purchase::class)->name('purchase');
         Route::get('purchase-list', PurchaseList::class)->name('purchase-list');
+        Route::get('purchase-invoice/{id}', PurchaseInvoice::class)->name('purchase-invoice');
         Route::get('sale/{id?}', Sale::class)->name('sale');
         Route::get('sale-list', SaleList::class)->name('sale-list');
+        Route::get('sale-invoice/{id}', SaleInvoice::class)->name('sale-invoice');
         Route::get('stock-adjustment', StockAdjustment::class)->name('stock-adjustment');
     });
     Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
@@ -149,7 +152,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
-        Route::get('company', CompanyInfo::class)->name('company');
+        Route::get('companyinfo', CompanyInfo::class)->name('companyinfo');
         Route::get('branch', Branch::class)->name('branch');
         Route::get('currency', Currency::class)->name('currency');
         Route::get('delivery-method', DeliveryMethod::class)->name('delivery-method');
@@ -163,7 +166,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
-        Route::get('order/{id?}', Order::class)->name('order');
         Route::get('order-list', OrderList::class)->name('order-list');
         Route::get('print-order', PrintOrder::class)->name('print-order');
     });
@@ -228,7 +230,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('supplier_table', [DatatableController::class, 'SupplierTable'])->name('supplier_table');
         Route::get('staff_table', [DatatableController::class, 'StaffTable'])->name('staff_table');
         Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
-        Route::get('purchase_invoice', [DatatableController::class, 'PurchaseInvoiceTable'])->name('purchase_invoice');
-        Route::get('sale_invoice', [DatatableController::class, 'SaleInvoiceTable'])->name('sale_invoice');
+        Route::get('purchase_list', [DatatableController::class, 'PurchaseListTable'])->name('purchase_list');
+        Route::get('sale_list', [DatatableController::class, 'SaleListTable'])->name('sale_list');
     });
 });

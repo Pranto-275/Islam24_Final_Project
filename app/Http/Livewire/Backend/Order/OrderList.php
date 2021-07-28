@@ -1,26 +1,26 @@
 <?php
 
 namespace App\Http\Livewire\Backend\Order;
-use App\Models\Backend\ContactInfo\Contact;
-use App\Models\Backend\Inventory\Invoice;
+use App\Models\Backend\Inventory\SaleInvoice;
+use App\Models\Backend\Inventory\SaleInvoiceDetail;
+use App\Models\Backend\Inventory\SalePayment;
 use Livewire\Component;
 
 class OrderList extends Component
 {
+    public function deleteOrder($id){
+        SaleInvoice::whereId($id)->delete();
+        SaleInvoiceDetail::whereSaleInvoiceId($id)->delete();
+        SalePayment::whereSaleInvoiceId($id)->delete();
 
-
-    public function popupInvoice(){
-        $this->emit('modal','popupInvoice');
-    }
-
-    public function printInvoice(){
-        $this->emit('modal','printInvoice');
+        $this->emit('success', [
+            'text' => 'Order Deleted Successfully',
+        ]);
     }
     public function render()
     {
         return view('livewire.backend.order.order-list',[
-            'invoices'=> Invoice::whereType('order')->get(),
-            'contacts'=> Contact::get(),
+            'saleInvoices'=> SaleInvoice::whereInvoiceChannel('Web-Sale')->orderBy('id', 'desc')->get(),
         ]);
     }
 }

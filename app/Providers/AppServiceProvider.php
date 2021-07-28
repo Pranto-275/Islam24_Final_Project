@@ -6,8 +6,11 @@ use App\Models\Backend\ProductInfo\Category;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\Backend\ProductInfo\SubCategory;
 use App\Models\Backend\ProductInfo\SubSubCategory;
-use App\Models\Backend\Setting\CompanyInfo as SettingCompanyInfo;
+// use App\Models\Backend\Setting\CompanyInfo as SettingCompanyInfo;
+use App\Models\Backend\Setting\InvoiceSetting;
+use App\Models\Inventory\Currency;
 use App\Models\Setting\Slider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -37,7 +40,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('products', Product::orderBy('id', 'desc')->get());
             $view->with('sliderImages', Slider::orderBy('position')->take(4)->get());
-            $view->with('companyInfo', SettingCompanyInfo::first());
+            // $view->with('companyInfo', SettingCompanyInfo::first());
+            $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
+            $view->with('currencySymbol', Currency::whereIsActive(1)->first());
         });
     }
 }
