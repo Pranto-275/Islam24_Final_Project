@@ -4,7 +4,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="invoice-title">
-                                    <h4 class="float-right font-size-16">Order # {{$OrderId}}</h4>
+                                    <h4 class="float-right font-size-16">Sale # {{$SaleId}}</h4>
                                     <div class="mb-4">
                                         <img src="assets/images/logo-dark.png" alt="logo" height="20"/>
                                     </div>
@@ -39,13 +39,13 @@
                                     </div>
                                     <div class="col-sm-6 mt-3 text-sm-right">
                                         <address>
-                                            <strong>Order Date:</strong><br>
+                                            <strong>Sale Date:</strong><br>
                                             {{$SaleInvoice->sale_date}}<br><br>
                                         </address>
                                     </div>
                                 </div>
                                 <div class="py-2 mt-3">
-                                    <h3 class="font-size-15 font-weight-bold">Order summary</h3>
+                                    <h3 class="font-size-15 font-weight-bold">Sale summary</h3>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-nowrap">

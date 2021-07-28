@@ -6,11 +6,11 @@ use Livewire\Component;
 
 class PurchaseInvoice extends Component
 {
-    public $OrderId;
+    public $PurchaseId;
     public $PurchaseInvoiceId;
     public function mount($id){
       $this->PurchaseInvoiceId=$id;
-      $this->OrderId='PO'.floor(time() - 999999999);
+      $this->PurchaseId='P'.floor(time() - 999999999);
     }
     public function render()
     {
