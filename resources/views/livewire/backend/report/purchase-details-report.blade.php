@@ -73,7 +73,7 @@
                                 <tr>
                                     <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a></td>
                                     <td>
-                                        @if($purchaseDetail->SaleInvoice) {{ $purchaseDetail->SaleInvoice->sale_date }} @endif
+                                        @if($purchaseDetail->PurchaseInvoice) {{ $purchaseDetail->PurchaseInvoice->purchase_date }} @endif
                                     </td>
                                     <td>
                                         @if($purchaseDetail->PurchaseInvoice->Contact) {{ $purchaseDetail->PurchaseInvoice->Contact->first_name }} {{ $purchaseDetail->PurchaseInvoice->Contact->last_name }} @endif
