@@ -116,10 +116,8 @@ class Purchase extends Component
         // Start Purchase Product Stock Manager
         foreach ($this->orderProductList as $key => $value) {
             $product = Product::find($key);
-            $PurchaseInvoiceDetail = PurchaseInvoiceDetail::whereProductId($key)->get();
             $StockManager = StockManager::whereProductId($key)->first();
-            $StockManager->stock_in_purchase=$PurchaseInvoiceDetail->sum('quantity');
-            $StockManager->stock_in_inventory=$StockManager->stock_in_opening + $PurchaseInvoiceDetail->sum('quantity') - $StockManager->stock_out_sale;
+            $StockManager->stock_in_purchase=$StockManager->stock_in_purchase+$this->product_quantity[$key];
             $StockManager->save();
         }
         // End Purchase Product Stock Manager
