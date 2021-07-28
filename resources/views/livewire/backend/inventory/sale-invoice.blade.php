@@ -6,7 +6,7 @@
                                 <div class="invoice-title">
                                     <h4 class="float-right font-size-16">Sale # {{$SaleId}}</h4>
                                     <div class="mb-4">
-                                        <img src="{{ asset('storage/photo/'.$InvoiceSetting->logo)}}" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
+                                        <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
                                     </div>
                                 </div>
                                 <hr>
@@ -75,22 +75,44 @@
                                           @endforeach
                                           <tr>
                                             <td colspan="3" class="text-right">Sub Total</td>
-                                            <td class="text-right">{{$subTotal}}</td>
+                                            <td class="text-right">
+                                                @if($currencySymbol)
+                                                     {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{$subTotal}}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="border-0 text-right">
                                                 <strong>Discount</strong></td>
-                                            <td class="border-0 text-right">{{$SaleInvoice->discount}}</td>
+                                            <td class="border-0 text-right">
+                                                @if($currencySymbol)
+                                                    {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{$SaleInvoice->discount}}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="border-0 text-right">
                                                 <strong>Shipping</strong></td>
-                                            <td class="border-0 text-right">{{$SaleInvoice->shipping_charge}}</td>
+                                            <td class="border-0 text-right">
+                                                @if($currencySymbol)
+                                                   {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{$SaleInvoice->shipping_charge}}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="border-0 text-right">
                                                 <strong>Total</strong></td>
-                                            <td class="border-0 text-right"><h4 class="m-0">{{$subTotal + $SaleInvoice->shipping_charge - $SaleInvoice->discount}}</h4></td>
+                                            <td class="border-0 text-right">
+                                                <h4 class="m-0">
+                                                    @if($currencySymbol)
+                                                       {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                    {{$subTotal + $SaleInvoice->shipping_charge - $SaleInvoice->discount}}
+                                                </h4>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>

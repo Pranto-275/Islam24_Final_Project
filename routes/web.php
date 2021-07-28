@@ -12,7 +12,6 @@ use App\Http\Livewire\Backend\Inventory\Sale;
 use App\Http\Livewire\Backend\Inventory\SaleList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
 use App\Http\Livewire\Backend\Inventory\SaleInvoice;
-use App\Http\Livewire\Backend\Order\Order;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
 use App\Http\Livewire\Backend\ProductInfo\Brand;
@@ -165,7 +164,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
     });
 
     Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
-        Route::get('order/{id?}', Order::class)->name('order');
         Route::get('order-list', OrderList::class)->name('order-list');
         Route::get('print-order', PrintOrder::class)->name('print-order');
     });

@@ -10,6 +10,7 @@ use App\Models\Backend\Setting\Vat;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\Backend\Inventory\SaleInvoice;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
+use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Inventory\SalePayment;
 use App\Models\Backend\Setting\Warehouse;
 use Illuminate\Support\Facades\Auth;
@@ -111,6 +112,16 @@ class Sale extends Component
             $SalePayment->branch_id = 1;
             $SalePayment->save();
         }
+            // Start Sale Product Stock Manager
+            foreach ($this->orderProductList as $key => $value) {
+                $product = Product::find($key);
+                $SaleInvoiceDetail = SaleInvoiceDetail::whereProductId($key)->get();
+                $StockManager = StockManager::whereProductId($key)->first();
+                $StockManager->stock_out_sale=$SaleInvoiceDetail->sum('quantity');
+                $StockManager->stock_in_inventory=$StockManager->stock_in_opening + $StockManager->stock_in_purchase - $SaleInvoiceDetail->sum('quantity');
+                $StockManager->save();
+            }
+            // End Sale Product Stock Manager
     });
     $this->emit('success', [
         'text' => 'Sale Added Successfully',
@@ -162,8 +173,8 @@ class Sale extends Component
         $grandTotal = 0;
 
         foreach ($this->orderProductList as $key => $value) {
-            if (is_numeric($this->product_rate[$key]) && is_numeric($this->product_quantity[$key]) && is_numeric($this->product_discount[$key])) {
-                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key] - floatval($this->product_discount[$key]);
+            if (is_numeric($this->product_rate[$key]) && is_numeric($this->product_quantity[$key])) {
+                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key];
                 $grandTotal += $this->product_subtotal[$key];
             }
         }
@@ -223,7 +234,7 @@ class Sale extends Component
             foreach ($SaleInvoiceDetail as $stockProduct) {
                 $product = Product::find($stockProduct->product_id);
                 $this->product_quantity[$product->id] = $stockProduct->quantity;
-                $this->product_discount[$product->id] = $product->discount;
+                // $this->product_discount[$product->id] = $product->discount;
                 $this->product_rate[$product->id] = $stockProduct->unit_price;
                 // $this->product_subtotal[$product->id] = $stockProduct->sale_price * $stockProduct->quantity;
                 $cart[$product->id] = $product;

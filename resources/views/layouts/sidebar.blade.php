@@ -117,7 +117,6 @@
                         <span>Order</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('order.order')}}">Order</a></li>
                         <li><a href="{{route('order.order-list')}}">Order List</a></li>
                     </ul>
                 </li>

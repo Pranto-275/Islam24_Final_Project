@@ -11,6 +11,7 @@ use App\Models\Backend\ProductInfo\Product;
 use App\Models\Backend\Inventory\PurchaseInvoice;
 use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\PurchasePayment;
+use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Setting\Warehouse;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -111,6 +112,17 @@ class Purchase extends Component
             $PurchasePayment->branch_id = 1;
             $PurchasePayment->save();
         }
+
+        // Start Purchase Product Stock Manager
+        foreach ($this->orderProductList as $key => $value) {
+            $product = Product::find($key);
+            $PurchaseInvoiceDetail = PurchaseInvoiceDetail::whereProductId($key)->get();
+            $StockManager = StockManager::whereProductId($key)->first();
+            $StockManager->stock_in_purchase=$PurchaseInvoiceDetail->sum('quantity');
+            $StockManager->stock_in_inventory=$StockManager->stock_in_opening + $PurchaseInvoiceDetail->sum('quantity') - $StockManager->stock_out_sale;
+            $StockManager->save();
+        }
+        // End Purchase Product Stock Manager
     });
     $this->emit('success', [
         'text' => 'Purchase Added Successfully',
@@ -164,8 +176,8 @@ class Purchase extends Component
         $grandTotal = 0;
 
         foreach ($this->orderProductList as $key => $value) {
-            if (is_numeric($this->product_rate[$key]) && is_numeric($this->product_quantity[$key]) && is_numeric($this->product_discount[$key])) {
-                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key] - floatval($this->product_discount[$key]);
+            if (is_numeric($this->product_rate[$key]) && is_numeric($this->product_quantity[$key])) {
+                $this->product_subtotal[$key] = $this->product_rate[$key] * $this->product_quantity[$key];
                 $grandTotal += $this->product_subtotal[$key];
             }
         }
@@ -227,7 +239,7 @@ class Purchase extends Component
             foreach ($PurchaseInvoiceDetail as $stockProduct) {
                 $product = Product::find($stockProduct->product_id);
                 $this->product_quantity[$product->id] = $stockProduct->quantity;
-                $this->product_discount[$product->id] = $product->discount;
+                // $this->product_discount[$product->id] = $product->discount;
                 $this->product_rate[$product->id] = $stockProduct->unit_price;
                 $cart[$product->id] = $product;
             }

@@ -6,7 +6,7 @@
                     <div class="invoice-title">
                         <h4 class="float-right font-size-16">Purchase # {{$PurchaseId}}</h4>
                         <div class="mb-4">
-                            <img src="{{ asset('storage/photo/'.$InvoiceSetting->logo)}}" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
+                            <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
                         </div>
                     </div>
                     <hr>
@@ -17,7 +17,6 @@
                                 {{$PurchaseInvoice->Contact->first_name}} {{$PurchaseInvoice->Contact->last_name}}<br>
                                 {{$PurchaseInvoice->Contact->address}}<br>
                                 {{$PurchaseInvoice->Contact->phone}}<br>
-
                             </address>
                         </div>
                         <div class="col-sm-6 text-sm-right">
@@ -26,7 +25,6 @@
                                 {{$PurchaseInvoice->Contact->first_name}} {{$PurchaseInvoice->Contact->last_name}}<br>
                                 {{$PurchaseInvoice->Contact->shipping_address}}<br>
                                 {{$PurchaseInvoice->Contact->phone}}<br>
-
                             </address>
                         </div>
                     </div>
@@ -76,22 +74,44 @@
                               @endforeach
                               <tr>
                                 <td colspan="3" class="text-right">Sub Total</td>
-                                <td class="text-right">{{$subTotal}}</td>
+                                <td class="text-right">
+                                    @if($currencySymbol)
+                                        {{ $currencySymbol->symbol }}
+                                    @endif
+                                    {{$subTotal}}
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="border-0 text-right">
                                     <strong>Discount</strong></td>
-                                <td class="border-0 text-right">{{$PurchaseInvoice->discount}}</td>
+                                <td class="border-0 text-right">
+                                    @if($currencySymbol)
+                                        {{ $currencySymbol->symbol }}
+                                    @endif
+                                    {{$PurchaseInvoice->discount}}
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="border-0 text-right">
                                     <strong>Shipping</strong></td>
-                                <td class="border-0 text-right">{{$PurchaseInvoice->shipping_charge}}</td>
+                                <td class="border-0 text-right">
+                                    @if($currencySymbol)
+                                       {{ $currencySymbol->symbol }}
+                                    @endif
+                                    {{$PurchaseInvoice->shipping_charge}}
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="border-0 text-right">
                                     <strong>Total</strong></td>
-                                <td class="border-0 text-right"><h4 class="m-0">{{$subTotal + $PurchaseInvoice->shipping_charge - $PurchaseInvoice->discount}}</h4></td>
+                                <td class="border-0 text-right">
+                                    <h4 class="m-0">
+                                        @if($currencySymbol)
+                                           {{ $currencySymbol->symbol }}
+                                        @endif
+                                        {{$subTotal + $PurchaseInvoice->shipping_charge - $PurchaseInvoice->discount}}
+                                    </h4>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
