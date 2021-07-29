@@ -79,16 +79,15 @@
         <!-- Scroll-top-end-->
 
         <!-- header-area -->
-        @include('frontend.header')
+        @include('livewire.frontend.header')
         <!-- header-area-end -->
 
         <!-- main-area -->
-        {{--{{$slot}}--}}
-        @yield('content')
+        {{$slot}}
         <!-- main-area-end -->
 
         <!-- footer-area -->
-        @include('frontend.footer')
+        @include('livewire.frontend.footer')
         <!-- footer-area-end -->
 		<!-- JS here -->
         <script src="{{ URL::asset('venam/') }}/js/vendor/jquery-3.5.0.min.js"></script>
@@ -107,18 +106,5 @@
         <script src="{{ URL::asset('venam/') }}/js/aos.js"></script>
         <script src="{{ URL::asset('venam/') }}/js/plugins.js"></script>
         <script src="{{ URL::asset('venam/') }}/js/main.js"></script>
-
-        <script>
-            $.ajaxSetup({
-                crossDomain: true,
-                xhrFields: {
-                    withCredentials: true
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-        </script>
     </body>
 </html>

@@ -72,6 +72,7 @@ use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
 use App\Http\Livewire\UserProfile\ProfileSettings;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontEnt\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +94,8 @@ Route::group(['prefix' => 'customer'], function () {
     Route::get('product_view/{id?}', ProductView::class)->name('product_view');
 });
 
-Route::get('/', Home::class)->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/ajax/add-to-card', [HomeController::class, 'addToCard'])->name('ajax-add-to-card');
 Route::get('product-view', ProductView::class)->name('product-view');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
