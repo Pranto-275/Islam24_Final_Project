@@ -95,7 +95,7 @@ Route::group(['prefix' => 'customer'], function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/ajax/add-to-card', [HomeController::class, 'addToCard'])->name('ajax-add-to-card');
+Route::post('/ajax/add-to-card-store', [HomeController::class, 'addToCardStore'])->name('ajax-add-to-card-store');
 Route::get('product-view', ProductView::class)->name('product-view');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');

@@ -13,6 +13,7 @@ use App\Models\Setting\Slider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\Services\AddToCardService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -43,6 +44,7 @@ class AppServiceProvider extends ServiceProvider
             // $view->with('companyInfo', SettingCompanyInfo::first());
             $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
+            $view->with('cardBadge', AddToCardService::cardTotalProductAndAmount());
         });
     }
 }

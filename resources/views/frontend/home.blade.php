@@ -332,7 +332,7 @@
             $('.cart-count').html('');
             $.ajax({
                 method:'POST',
-                url: '{{ route('ajax-add-to-card') }}',
+                url: '{{ route('ajax-add-to-card-store') }}',
                 data: {
                     "product_id": productId
                 },
