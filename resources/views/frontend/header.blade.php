@@ -100,10 +100,39 @@
                                 <ul>
                                     <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
-                                    <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">2</span></a>
-                                        <span class="cart-total-price">$ 128.00</span>
+                                    <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
+                                        <span class="cart-total-price">$ {{ $cardBadge['data']['total_price'] }}</span>
                                         <ul class="minicart">
-                                            <li class="d-flex align-items-start">
+                                            @if($cardBadge['data']['products'])
+                                                @foreach($cardBadge['data']['products'] as $product)
+                                                    <li class="d-flex align-items-start">
+                                                        <div class="cart-img">
+                                                            <a href="#">
+                                                                <img src="{{ URL::asset('venam/') }}/img/product/cart_p01.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="cart-content">
+                                                            <h4>
+                                                                <a href="#">{{ $product['Info']['product_name'] }}</a>
+                                                            </h4>
+                                                            <div class="cart-price">
+                                                                <span class="new">{{ $product['Info']['special_price'] }}</span>
+                                                                <span>
+                                                            <del>{{ $product['Info']['regular_price'] }}</del>
+                                                        </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="del-icon">
+                                                            <a href="#">
+                                                                <i class="far fa-trash-alt"></i>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            @else
+
+                                            @endif
+                                            {{--<li class="d-flex align-items-start">
                                                 <div class="cart-img">
                                                     <a href="#">
                                                         <img src="{{ URL::asset('venam/') }}/img/product/cart_p01.jpg" alt="">
@@ -148,11 +177,11 @@
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </div>
-                                            </li>
+                                            </li>--}}
                                             <li>
                                                 <div class="total-price">
                                                     <span class="f-left">Total:</span>
-                                                    <span class="f-right">$239.9</span>
+                                                    <span class="f-right">$ {{ $cardBadge['data']['total_price'] }}</span>
                                                 </div>
                                             </li>
                                             <li>
