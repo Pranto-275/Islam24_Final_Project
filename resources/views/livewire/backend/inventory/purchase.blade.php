@@ -111,16 +111,16 @@
                                         {{ $product['name'] }}
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" wire:model.debounce.500ms="product_quantity.{{$key}}" style="width: 100px;" placeholder="Quantity" step="any">
+                                        <input type="number" class="form-control" wire:model.debounce.500ms="product_quantity.{{$key}}" style="width: 100px;" @if($PurchaseInvoice) readonly @endif placeholder="Quantity" step="any">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control"  wire:model.debounce.500ms="product_rate.{{$key}}" placeholder="Pur Rate">
+                                        <input type="text" class="form-control"  wire:model.debounce.500ms="product_rate.{{$key}}" @if($PurchaseInvoice) readonly @endif placeholder="Pur Rate">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" wire:model.debounce.500ms="product_discount.{{$key}}" style="width: 100px;" placeholder="Discount">
+                                        <input type="text" class="form-control" wire:model.debounce.500ms="product_discount.{{$key}}" @if($PurchaseInvoice) readonly @endif style="width: 100px;" placeholder="Discount">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control"  value="{{ $product['regular_price'] }}" placeholder="Sale Rate">
+                                        <input type="text" class="form-control"  value="{{ $product['regular_price'] }}" @if($PurchaseInvoice) readonly @endif placeholder="Sale Rate">
                                     </td>
                                     <td>
                                         {{$product_subtotal[$key]}}

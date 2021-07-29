@@ -111,13 +111,13 @@
                                         {{ $product['name'] }}
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control" wire:model.debounce.500ms="product_quantity.{{$key}}" style="width: 100px;" placeholder="Quantity" step="any">
+                                        <input type="number" class="form-control" wire:model.debounce.500ms="product_quantity.{{$key}}" @if($SaleInvoice) readonly @endif style="width: 100px;" placeholder="Quantity" step="any">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control"  wire:model.debounce.500ms="product_rate.{{$key}}" placeholder="Pur Rate">
+                                        <input type="text" class="form-control"  wire:model.debounce.500ms="product_rate.{{$key}}" @if($SaleInvoice) readonly @endif placeholder="Pur Rate">
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control" wire:model.debounce.500ms="product_discount.{{$key}}" style="width: 100px;" placeholder="Discount">
+                                        <input type="text" class="form-control" wire:model.debounce.500ms="product_discount.{{$key}}" @if($SaleInvoice) readonly @endif style="width: 100px;" placeholder="Discount">
                                     </td>
                                     <td>
                                         {{$product_subtotal[$key]}}
