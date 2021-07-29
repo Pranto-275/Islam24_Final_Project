@@ -125,6 +125,7 @@ class Product extends Component
             'is_active' => 'required',
         ]);
         DB::transaction(function () {
+            // dd();
             // Product Save
             if ($this->ProductId) {
                 $Query = ProductTable::find($this->ProductId);
