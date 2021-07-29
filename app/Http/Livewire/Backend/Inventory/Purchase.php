@@ -13,6 +13,7 @@ use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\PurchasePayment;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Setting\Warehouse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -56,63 +57,70 @@ class Purchase extends Component
         'payment_method_search' => 'AddPaymentMethod',
     ];
 
-    public function Submit(){
+    public function Submit(Request $request){
         $this->validate([
             'code' => 'required',
             'contact_id' => 'required',
             'date' => 'required',
             'subtotal' => 'required',
         ]);
-        DB::transaction(function(){
-        if($this->PurchaseInvoice){
-            $Query = PurchaseInvoice::find($this->PurchaseInvoice->id);
-        }else{
-            $Query = new PurchaseInvoice();
-            $Query->created_by = Auth::id();
-        }
-        $Query->purchase_date = $this->date;
-        // $Query->code = $this->code;
-        $Query->contact_id = $this->contact_id;
-        $Query->total_amount = $this->subtotal;
-        $Query->discount = $this->discount;
-        $Query->shipping_charge = $this->shipping_charge;
-        $Query->payable_amount = $this->grand_total;
-        $Query->branch_id = '1';
-        $Query->save();
-        foreach ($this->orderProductList as $key => $value) {
-            // dd($this->orderProductList);
-            $product = Product::find($key);
-            $PurchaseInvoiceDetail = PurchaseInvoiceDetail::whereProductId($key)->wherePurchaseInvoiceId($Query->id)->first();
-            if (!$PurchaseInvoiceDetail) {
-                $PurchaseInvoiceDetail = new PurchaseInvoiceDetail();
-                $PurchaseInvoiceDetail->created_by = Auth::id();
-                $PurchaseInvoiceDetail->branch_id = 1;
-            }
-
-            $PurchaseInvoiceDetail->purchase_invoice_id = $Query->id;
-            $PurchaseInvoiceDetail->product_id = $product->id;
-            $PurchaseInvoiceDetail->unit_price=$this->product_rate[$key];
-            $PurchaseInvoiceDetail->quantity = $this->product_quantity[$key];
-            $PurchaseInvoiceDetail->save();
-        }
-        foreach ($this->paymentMethodList as $key => $value) {
-            if (isset($value['id']) && $value['id']) {
-                $PurchasePayment = PurchasePayment::find($value['id']);
+        //$serverMemo = $request->get("serverMemo");
+        //dd($serverMemo['data']['orderProductList']);
+        DB::transaction(function() {
+            if($this->PurchaseInvoice) {
+                $Query = PurchaseInvoice::find($this->PurchaseInvoice->id);
             } else {
-                $PurchasePayment = new PurchasePayment();
+                $Query = new PurchaseInvoice();
+                $Query->created_by = Auth::id();
             }
 
-            $PurchasePayment->date = Carbon::now();
-            $PurchasePayment->contact_id = $Query->contact_id;
-            $PurchasePayment->purchase_invoice_id = $Query->id;
-            $PurchasePayment->payment_method_id = $value['payment_method_id'];
-            $PurchasePayment->total_amount = $value['payment_amount'];
-            $PurchasePayment->transaction_id = $value['transaction_id'];
-            $PurchasePayment->code = $value['payment_code'];
-            $PurchasePayment->created_by = Auth::id();
-            $PurchasePayment->branch_id = 1;
-            $PurchasePayment->save();
-        }
+            $Query->purchase_date = $this->date;
+            // $Query->code = $this->code;
+            $Query->contact_id = $this->contact_id;
+            $Query->total_amount = $this->subtotal;
+            $Query->discount = $this->discount;
+            $Query->shipping_charge = $this->shipping_charge;
+            $Query->payable_amount = $this->grand_total;
+            $Query->branch_id = '1';
+            $Query->save();
+
+            foreach ($this->orderProductList as $key => $value) {
+                // dd($this->orderProductList);
+                $product = Product::find($key);
+                $PurchaseInvoiceDetail = PurchaseInvoiceDetail::whereProductId($key)->wherePurchaseInvoiceId($Query->id)->first();
+                if (!$PurchaseInvoiceDetail) {
+                    $PurchaseInvoiceDetail = new PurchaseInvoiceDetail();
+                    $PurchaseInvoiceDetail->created_by = Auth::id();
+                    $PurchaseInvoiceDetail->branch_id = 1;
+                }
+
+                $PurchaseInvoiceDetail->purchase_invoice_id = $Query->id;
+                $PurchaseInvoiceDetail->product_id = $product->id;
+                $PurchaseInvoiceDetail->unit_price=$this->product_rate[$key];
+                $PurchaseInvoiceDetail->quantity = $this->product_quantity[$key];
+                $PurchaseInvoiceDetail->save();
+            }
+
+            foreach ($this->paymentMethodList as $key => $value) {
+                if (isset($value['id']) && $value['id']) {
+                    $PurchasePayment = PurchasePayment::find($value['id']);
+                } else {
+                    $PurchasePayment = new PurchasePayment();
+                }
+
+                $PurchasePayment->date = Carbon::now();
+                $PurchasePayment->contact_id = $Query->contact_id;
+                $PurchasePayment->purchase_invoice_id = $Query->id;
+                $PurchasePayment->payment_method_id = $value['payment_method_id'];
+                $PurchasePayment->total_amount = $value['payment_amount'];
+                $PurchasePayment->transaction_id = $value['transaction_id'];
+                $PurchasePayment->code = $value['payment_code'];
+                $PurchasePayment->created_by = Auth::id();
+                $PurchasePayment->branch_id = 1;
+                $PurchasePayment->save();
+            }
+
+
 
         // Start Purchase Product Stock Manager
         foreach ($this->orderProductList as $key => $value) {
