@@ -96,6 +96,7 @@
                                     <th>Discount</th>
 
                                     <th>Amount</th>
+                                    <th>Warehouse</th>
                                     <th colspan="1">Action</th>
                                 </tr>
                             </thead>
@@ -112,12 +113,6 @@
                                     <td>
                                         <input type="number" class="form-control" wire:model.debounce.500ms="product_quantity.{{$key}}" style="width: 100px;" placeholder="Quantity" step="any">
                                     </td>
-                                    {{-- <td>
-                                        {{ $Item->Unit->name }}
-                                    </td> --}}
-                                    {{-- <td>
-                                        @if($Product->Vat) {{ $Product->Vat->rate_fixed }} @endif
-                                    </td> --}}
                                     <td>
                                         <input type="text" class="form-control"  wire:model.debounce.500ms="product_rate.{{$key}}" placeholder="Pur Rate">
                                     </td>
@@ -126,6 +121,17 @@
                                     </td>
                                     <td>
                                         {{$product_subtotal[$key]}}
+                                    </td>
+                                    <td>
+                                    <div class="form-group">
+                                    <select class="form-control" wire:model.lazy="warehouse_id.{{$key}}">
+                                        <option value="">Select</option>
+                                        @foreach ($warehouses as $warehouse)
+                                           <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    {{-- @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror --}}
+                                </div>
                                     </td>
                                     <td>
                                         <center><a href="#" class="btn btn-danger btn-sm" wire:click="removeProduct({{$key}})"><i class="fa fa-trash"></i></a></center>

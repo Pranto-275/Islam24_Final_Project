@@ -172,11 +172,14 @@ class DatatableController extends Controller
         ->addColumn('id', function ($data) {
             return $this->i++;
         })
+        ->addColumn('branch_id', function ($data) {
+            return $data->Branch ? $data->Branch->name : '';
+        })
         ->addColumn('action', function ($data) {
             return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
         })
-        ->rawColumns(['action'])
+        ->rawColumns(['action','branch_id'])
         ->toJSON();
     }
 

@@ -8,6 +8,7 @@ use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\ProductInfo\Brand;
 use App\Models\Backend\ProductInfo\ProductProperties;
 use App\Models\Backend\Setting\Vat;
+use App\Models\Backend\Inventory\StockManager;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -37,5 +38,8 @@ class Product extends Model
     public function Vat()
     {
         return $this->belongsTo(Vat::class);
+    }
+    public function StockManager(){
+       return $this->hasOne(StockManager::class);
     }
 }

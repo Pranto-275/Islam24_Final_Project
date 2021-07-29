@@ -47,6 +47,7 @@ class Purchase extends Component
     public $wholesale_price;
     public $purchase_price;
     public $transaction_id;
+    public $warehouse_id;
     public $is_active;
     public $paymentMethodList = [];
     public $orderProductList = [];
@@ -116,8 +117,12 @@ class Purchase extends Component
         // Start Purchase Product Stock Manager
         foreach ($this->orderProductList as $key => $value) {
             $product = Product::find($key);
-            $StockManager = StockManager::whereProductId($key)->first();
+            $StockManager = StockManager::whereProductId($key)->whereWarehouseId($this->warehouse_id[$key])->firstOrNew();
+            $StockManager->product_id=$key;
             $StockManager->stock_in_purchase=$StockManager->stock_in_purchase+$this->product_quantity[$key];
+            $StockManager->warehouse_id=$this->warehouse_id[$key];
+            $StockManager->branch_id=1;
+            $StockManager->created_by = Auth::user()->id;
             $StockManager->save();
         }
         // End Purchase Product Stock Manager
@@ -202,6 +207,9 @@ class Purchase extends Component
         } else {
             $cart[$product['id']] = $product;
             $this->Product=Product::find($product['id']);
+            if($this->Product->StockManager){
+                $this->warehouse_id[$product['id']] = $this->Product->StockManager->warehouse_id;
+            }
             $this->product_quantity[$product['id']] = 1;
             $this->product_rate[$product['id']] = $product['purchase_price'];
             $this->product_sale_price[$product['id']] = $product['regular_price'];

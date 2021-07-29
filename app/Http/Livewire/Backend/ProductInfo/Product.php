@@ -120,8 +120,6 @@ class Product extends Component
             'special_price' => 'required',
             'wholesale_price' =>'required',
             'purchase_price' => 'required',
-            'warehouse_id' => 'required',
-            'stock_in_opening' => 'required',
             'is_active' => 'required',
         ]);
         DB::transaction(function () {
@@ -218,14 +216,20 @@ class Product extends Component
             // }
 
             // Start Product Save Stock Manager
-                  $StockManager = StockManager::whereProductId($Query->id)->firstOrNew();
-                  $StockManager->date=Carbon::now();
-                  $StockManager->product_id=$Query->id;
-                  $StockManager->stock_in_opening=$this->stock_in_opening;
-                  $StockManager->warehouse_id=$this->warehouse_id;
-                  $StockManager->branch_id=1;
-                  $StockManager->created_by=Auth::user()->id;
-                  $StockManager->save();
+            if($this->stock_in_opening){
+                $this->validate([
+                    'warehouse_id' => 'required',
+                ]);
+                $StockManager = StockManager::whereProductId($Query->id)->firstOrNew();
+                $StockManager->date=Carbon::now();
+                $StockManager->product_id=$Query->id;
+                $StockManager->stock_in_opening=$this->stock_in_opening;
+                $StockManager->warehouse_id=$this->warehouse_id;
+                $StockManager->branch_id=1;
+                $StockManager->created_by=Auth::user()->id;
+                $StockManager->save();
+            }
+
             // End Product Save Stock Manager
         });
         if (!$this->ProductId) {

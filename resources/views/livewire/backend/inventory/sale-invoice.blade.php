@@ -55,6 +55,7 @@
                                         <thead>
                                             <tr>
                                                 <th style="width: 70px;">Sr.</th>
+                                                <th>Image</th>
                                                 <th>Product</th>
                                                 <th>Quantity</th>
                                                 <th class="text-right">Price</th>
@@ -68,6 +69,9 @@
                                          @foreach ($SaleInvoice->SaleInvoiceDetail as $saleInvoiceDetail)
                                             <tr>
                                                 <td>{{ ++$i }}</td>
+                                                <td>
+                                                    <img class="rounded" @if($saleInvoiceDetail->Product->ProductImageFirst) src="{{ asset('storage/photo/'.$saleInvoiceDetail->Product->ProductImageFirst->image)}}" @endif  style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">
+                                                </td>
                                                 <td>{{$saleInvoiceDetail->Product->name}}</td>
                                                 <td>{{$saleInvoiceDetail->quantity}}</td>
                                                 <td class="text-right">{{$saleInvoiceDetail->unit_price * $saleInvoiceDetail->quantity}}</td>

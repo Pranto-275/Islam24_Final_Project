@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Backend\Setting;
 use App\models\Backend\Setting\Warehouse as WareHouseInfo;
+use App\Models\Backend\Setting\Branch;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -11,6 +12,7 @@ class Warehouse extends Component
     public $name;
     public $address;
     public $is_active;
+    public $branch_id;
     public $WarehouseId;
 
     public function warehouseEdit($id)
@@ -20,6 +22,7 @@ class Warehouse extends Component
         $this->code = $Query->code;
         $this->name = $Query->name;
         $this->address = $Query->address;
+        $this->branch_id = $Query->branch_id;
         $this->is_active = $Query->is_active;
 		$this->emit('modal', 'warehouseModal');
     }
@@ -48,7 +51,7 @@ class Warehouse extends Component
         $Query->code = $this->code;
         $Query->name = $this->name;
         $Query->address = $this->address;
-        $Query->branch_id = 1;
+        $Query->branch_id = $this->branch_id;
         $Query->is_active = $this->is_active;
 
         $Query->save();
@@ -65,6 +68,8 @@ class Warehouse extends Component
     }
     public function render()
     {
-        return view('livewire.backend.setting.warehouse');
+        return view('livewire.backend.setting.warehouse',[
+            'branches'=>Branch::get(),
+        ]);
     }
 }

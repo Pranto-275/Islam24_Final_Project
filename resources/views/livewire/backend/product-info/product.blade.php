@@ -96,16 +96,6 @@
                                     <label for="low_alert">Low Alert</label>
                                     <input id="low_alert" type="number" step="any" class="form-control" wire:model.lazy="low_alert" placeholder="Low Alert">
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label">Warehouse</label>
-                                    <select class="form-control" wire:model.lazy="warehouse_id">
-                                        <option>Select</option>
-                                        @foreach ($warehouses as $warehouse)
-                                           <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror
-                                </div>
                                 {{-- <div class="form-group">
                                     <label for="control-label">Contact</label>
                                     <select class="select2 form-control" wire:model.lazy="contact_id">
@@ -120,9 +110,9 @@
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="stock_in_opening">Opening Stock</label>
-                                    <input id="stock_in_opening" type="number" step="any" class="form-control" wire:model.lazy="stock_in_opening" placeholder="Opening Stock">
-                                    @error('stock_in_opening') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="purchase_price">Purchase Price</label>
+                                    <input id="purchase_price" type="number" step="any" class="form-control" wire:model.lazy="purchase_price" placeholder="Purchase Price">
+                                    @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="regular_price">Regular Price</label>
@@ -140,13 +130,22 @@
                                     @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="purchase_price">Purchase Price</label>
-                                    <input id="purchase_price" type="number" step="any" class="form-control" wire:model.lazy="purchase_price" placeholder="Purchase Price">
-                                    @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="discount">Discount</label>
                                     <input id="discount" type="number" step="any" class="form-control" wire:model.lazy="discount" placeholder="Discount">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Warehouse</label>
+                                    <select class="form-control" wire:model.lazy="warehouse_id">
+                                        <option>Select</option>
+                                        @foreach ($warehouses as $warehouse)
+                                           <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="stock_in_opening">Opening Stock</label>
+                                    <input id="stock_in_opening" type="number" step="any" class="form-control" wire:model.lazy="stock_in_opening" placeholder="Opening Stock">
                                 </div>
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
@@ -158,16 +157,20 @@
                                     @error('is_active') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="productdesc">Short Description</label>
-                                    <textarea class="form-control" id="short_description" rows="3" wire:model.lazy="short_description"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="productdesc">Long Description</label>
-                                    <textarea class="form-control" id="long_description" rows="3" wire:model.lazy="long_description"></textarea>
+                                        <label for="basicpill-lastname-input">Short Description</label>
+                                        <textarea class="form-control" id="short_description" rows="3" wire:model.lazy="short_description" placeholder="Short Description"></textarea>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="basicpill-lastname-input">Long Description</label>
+                                <textarea class="form-control" id="long_description" rows="3" wire:model.lazy="long_description" placeholder="Long Description"></textarea>
+                            </div>
+                          </div>
+                        </div>
                         {{-- <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Save Changes</button>
                         <button type="submit" class="btn btn-secondary waves-effect">Cancel</button> --}}
 

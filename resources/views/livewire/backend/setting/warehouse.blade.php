@@ -67,6 +67,18 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="basicpill-lastname-input">Branch</label>
+                                <select class="form-control" wire:model.lazy="branch_id">
+                                    <option value="">Select Branch</option>
+                                   @foreach ($branches as $branch)
+                                     <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                    @endforeach
+                             </select>
+                                @error('branch_id') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
                                     <select class="form-control" wire:model.lazy="is_active">
@@ -120,6 +132,11 @@
                         title: 'Address',
                         data:  'address',
                         name:  'address'
+                    },
+                    {
+                        title: 'Branch',
+                        data:  'branch_id',
+                        name:  'branch_id'
                     },
                     {
                         title: 'Action',

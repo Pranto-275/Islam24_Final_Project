@@ -47,6 +47,8 @@ class Sale extends Component
     public $wholesale_price;
     public $purchase_price;
     public $transaction_id;
+    public $warehouse_id;
+    public $warehouse_error;
     public $is_active;
     public $paymentMethodList = [];
     public $orderProductList = [];
@@ -116,9 +118,13 @@ class Sale extends Component
             foreach ($this->orderProductList as $key => $value) {
                 $product = Product::find($key);
                 $SaleInvoiceDetail = SaleInvoiceDetail::whereProductId($key)->get();
-                $StockManager = StockManager::whereProductId($key)->first();
+                $StockManager = StockManager::whereProductId($key)->whereWarehouseId($this->warehouse_id[$key])->firstOrNew();
+                $StockManager->product_id=$key;
                 $StockManager->stock_out_sale=$SaleInvoiceDetail->sum('quantity');
                 $StockManager->stock_in_inventory=$StockManager->stock_in_opening + $StockManager->stock_in_purchase - $SaleInvoiceDetail->sum('quantity');
+                $StockManager->warehouse_id=$this->warehouse_id[$key];
+                $StockManager->branch_id=1;
+                $StockManager->created_by = Auth::user()->id;
                 $StockManager->save();
             }
             // End Sale Product Stock Manager
@@ -201,6 +207,9 @@ class Sale extends Component
         } else {
             $cart[$product['id']] = $product;
             $this->Product=Product::find($product['id']);
+            if($this->Product->StockManager){
+               $this->warehouse_id[$product['id']] = $this->Product->StockManager->warehouse_id;
+            }
             $this->product_quantity[$product['id']] = 1;
             $this->product_rate[$product['id']] = $product['regular_price'];
             $this->product_discount[$product['id']] = 0;
