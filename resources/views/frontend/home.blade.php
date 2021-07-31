@@ -345,8 +345,6 @@
 
                     $('.cart-total-price').html(result.data.total_price)
                     $('.cart-count').html(result.data.number_of_product)
-
-                    console.log(result.data.card_count)
                 },
                 error: function (request, status, error) {
                     var responseText = JSON.parse(request.responseText);
