@@ -79,11 +79,11 @@
         <!-- Scroll-top-end-->
 
         <!-- header-area -->
-        @include('frontend.header')
+
         <!-- header-area-end -->
 
         <!-- main-area -->
-        {{--{{$slot}}--}}
+
         @yield('content')
         <!-- main-area-end -->
 
