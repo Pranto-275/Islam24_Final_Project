@@ -95,12 +95,15 @@ Route::group(['prefix' => 'customer'], function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::post('/ajax/add-to-card-store', [HomeController::class, 'addToCardStore'])->name('ajax-add-to-card-store');
+Route::post('/ajax/add-to-card-quantity-update', [HomeController::class, 'cartProductQuantityUpdate'])->name('ajax-add-to-card-quantity-update');
+Route::post('/ajax/add-to-card-product-delete', [HomeController::class, 'cartProductDelete'])->name('ajax-add-to-card-product-delete');
 Route::get('product-view', ProductView::class)->name('product-view');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
 Route::get('sign-up', SignUp::class)->name('sign-up');
-Route::get('cart', Cart::class)->name('cart');
+//Route::get('cart', Cart::class)->name('cart');
 Route::get('check-out', Checkout::class)->name('check-out');
 Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
