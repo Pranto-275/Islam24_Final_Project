@@ -37,7 +37,7 @@
 <li>
     <div class="total-price">
         <span class="f-left">Total:</span>
-        <span class="f-right">$ {{ $cardBadge['data']['total_price'] }}</span>
+        <span class="f-right" id="total_mini_cart_amount">$ {{ $cardBadge['data']['total_price'] }}</span>
     </div>
 </li>
 <li>
@@ -68,10 +68,12 @@
 
                     return false;
                 }
-                console.log(result.data.number_of_product)
+
+                console.log(result.data.data.total_price)
                 $('#li_row_'+productId).remove();
-                $('.cart-total-price').html(result.data.total_price)
-                $('.cart-count').html(result.data.number_of_product)
+                $('#total_mini_cart_amount').html(result.data.data.total_price)
+                $('.cart-total-price').html(result.data.data.total_price)
+                $('.cart-count').html(result.data.data.number_of_product)
             },
             error: function (request, status, error) {
                 var responseText = JSON.parse(request.responseText);
