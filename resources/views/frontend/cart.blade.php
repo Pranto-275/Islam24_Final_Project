@@ -1,3 +1,4 @@
+@include('frontend.header')
 @extends('layouts.front_end')
 @push('css')
 
