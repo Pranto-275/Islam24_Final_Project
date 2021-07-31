@@ -25,15 +25,16 @@
         </li>
     @endforeach
 @else
-    <li class="d-flex align-items-start">
+    {{--<li class="d-flex align-items-start">
 
         <div class="cart-content">
             <h4>
                 <a href="#">Op's there is no product</a>
             </h4>
         </div>
-    </li>
+    </li>--}}
 @endif
+
 <li>
     <div class="total-price">
         <span class="f-left">Total:</span>
@@ -49,43 +50,7 @@
 
 <script>
     $(document).ready(function (){
-        $('.btn-product-delete').on('click', function () {
-            var productId = $(this).attr('data-product-id');
-            //console.log(productId)
-            productDelete(productId)
-        });
+
     })
-    function productDelete(productId) {
-        $.ajax({
-            method:'POST',
-            url: '{{ route('ajax-add-to-card-product-delete') }}',
-            data: {
-                "product_id" : productId
-            },
-            success: function (result, text) {
-                if(result.errorStatus) {
-                    alert(result.message);
 
-                    return false;
-                }
-
-                console.log(result.data.data.total_price)
-                $('#li_row_'+productId).remove();
-                $('#total_mini_cart_amount').html(result.data.data.total_price)
-                $('.cart-total-price').html(result.data.data.total_price)
-                $('.cart-count').html(result.data.data.number_of_product)
-            },
-            error: function (request, status, error) {
-                var responseText = JSON.parse(request.responseText);
-                //console.log(responseText.message)
-                var errorText = '';
-                $.each(responseText.errors, function(key, item) {
-                    //console.log(key+' ---- ' +item);
-                    errorText += item +'\n';
-                });
-
-                alert(errorText)
-            }
-        })
-    }
 </script>

@@ -41,6 +41,7 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+        $data['html'] = view('frontend.header-card-popup')->render();
         $data['products'] = $this->product->with('ProductImageFirst')->get()->toArray();
 
         return view('frontend.home', [
@@ -71,5 +72,12 @@ class HomeController extends Controller
     public function cartProductDelete(Request $request)
     {
         return $this->addToCardService::productDelete($request->get('product_id'));
+    }
+
+    public function checkOut()
+    {
+        $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
+
+        return view('frontend.check-out', ['data' => $data]);
     }
 }
