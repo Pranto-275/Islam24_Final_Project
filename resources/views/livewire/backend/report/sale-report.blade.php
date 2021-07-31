@@ -84,7 +84,7 @@
                             </thead>
                             <tbody>
                                 @php $i=0; $subTotal=0; $discount=0; $shipping_charge=0; $grand_total=0;$paid_amount=0;$due=0; @endphp
-                                @foreach ($salesInvoice as $saleInvoice)
+                                @foreach ($this->dateFilter($salesInvoice) as $saleInvoice)
                                 <tr>
                                     <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a></td>
                                     <td>{{ $saleInvoice->sale_date }}</td>

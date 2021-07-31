@@ -7,6 +7,8 @@ use App\Models\Backend\ProductInfo\ProductImage;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\ProductInfo\Brand;
 use App\Models\Backend\ProductInfo\ProductProperties;
+use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
+use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use App\Models\Backend\Setting\Vat;
 use App\Models\Backend\Inventory\StockManager;
 use Illuminate\Database\Eloquent\Model;
@@ -56,5 +58,11 @@ class Product extends Model
     }
     public function StockManager(){
        return $this->hasOne(StockManager::class);
+    }
+    public function PurchaseInvoiceDetail(){
+        return $this->hasMany(PurchaseInvoiceDetail::class);
+    }
+    public function SaleInvoiceDetail(){
+        return $this->hasMany(SaleInvoiceDetail::class);
     }
 }

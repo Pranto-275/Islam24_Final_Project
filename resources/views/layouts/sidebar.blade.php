@@ -102,15 +102,15 @@
                         <li><a href="{{route('report.sale-report')}}">Sales Report</a></li>
                         <li><a href="{{route('report.purchase-details-report')}}">Purchase Detail Report</a></li>
                         <li><a href="{{route('report.sale-details-report')}}">Sales Detail Report</a></li>
-                        <li><a href="{{route('report.customer-ledger')}}">Customer Ledger</a></li>
+                        <li><a href="{{route('report.stock-report')}}">Stock Report</a></li>
+                        {{-- <li><a href="{{route('report.customer-ledger')}}">Customer Ledger</a></li>
                         <li><a href="{{route('report.coupons-report')}}">Coupons Report</a></li>
                         <li><a href="{{route('report.stock-adjustment-report')}}">Stock Adjustment Report</a></li>
                         <li><a href="{{route('report.purchase-return-report')}}">Purchase Return Report</a></li>
                         <li><a href="{{route('report.sales-return-report')}}">Sales Return Report</a></li>
                         <li><a href="{{route('report.supplier-ledger')}}">Supplier Ledger</a></li>
                         <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li>
-                        <li><a href="{{route('report.stock-report')}}">Stock Report</a></li>
-                        <li><a href="{{route('report.order-report')}}">Order Report</a></li>
+                        <li><a href="{{route('report.order-report')}}">Order Report</a></li> --}}
                     </ul>
 
                 </li>
