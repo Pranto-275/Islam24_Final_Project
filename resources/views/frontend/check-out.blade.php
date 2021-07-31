@@ -1,3 +1,4 @@
+@extends('layouts.front_end')
 @push('css')
 
 @endpush
@@ -394,7 +395,44 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
+                                                @if($data['products'])
+                                                    @foreach($data['products']['data']['products'] as $productId => $product)
+                                                        <tr>
+                                                            <th scope="row"><img src="{{ asset('assets/images/product/img-1.png') }}" alt="product-img" title="product-img" class="avatar-md"></th>
+                                                            <td>
+                                                                <h5 class="font-size-14 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">{{ $product['Info']['product_name'] }}</a></h5>
+                                                                <p class="text-muted mb-0">$ {{ $product['Info']['special_price'] }} x {{ $product['quantity'] }}</p>
+                                                            </td>
+                                                            <td>$ 450</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <h6 class="m-0 text-right">Sub Total:</h6>
+                                                        </td>
+                                                        <td>
+                                                            $ {{ $data['products']['data']['total_price'] }}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3">
+                                                            <div class="bg-soft-primary p-3 rounded">
+                                                                <h5 class="font-size-14 text-primary mb-0"><i class="fas fa-shipping-fast mr-2"></i> Shipping <span class="float-right">Free</span></h5>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <h6 class="m-0 text-right">Total:</h6>
+                                                        </td>
+                                                        <td>
+                                                            $ {{ $data['products']['data']['total_price'] }}
+                                                        </td>
+                                                    </tr>
+                                                @else
+
+                                                @endif
+                                                {{--<tr>
                                                     <th scope="row"><img src="{{ asset('assets/images/product/img-1.png') }}" alt="product-img" title="product-img" class="avatar-md"></th>
                                                     <td>
                                                         <h5 class="font-size-14 text-truncate"><a href="ecommerce-product-detail.html" class="text-dark">Half sleeve T-shirt  (64GB) </a></h5>
@@ -409,30 +447,8 @@
                                                         <p class="text-muted mb-0">$ 225 x 1</p>
                                                     </td>
                                                     <td>$ 225</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <h6 class="m-0 text-right">Sub Total:</h6>
-                                                    </td>
-                                                    <td>
-                                                        $ 675
-                                                    </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="3">
-                                                            <div class="bg-soft-primary p-3 rounded">
-                                                                <h5 class="font-size-14 text-primary mb-0"><i class="fas fa-shipping-fast mr-2"></i> Shipping <span class="float-right">Free</span></h5>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <h6 class="m-0 text-right">Total:</h6>
-                                                        </td>
-                                                        <td>
-                                                            $ 675
-                                                        </td>
-                                                    </tr>
+                                                </tr>--}}
+
                                                 </tbody>
                                             </table>
 

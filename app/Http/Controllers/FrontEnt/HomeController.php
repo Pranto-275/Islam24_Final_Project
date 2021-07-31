@@ -73,4 +73,11 @@ class HomeController extends Controller
     {
         return $this->addToCardService::productDelete($request->get('product_id'));
     }
+
+    public function checkOut()
+    {
+        $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
+
+        return view('frontend.check-out', ['data' => $data]);
+    }
 }
