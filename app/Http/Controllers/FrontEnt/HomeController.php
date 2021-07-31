@@ -41,6 +41,7 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
+        $data['html'] = view('frontend.header-card-popup')->render();
         $data['products'] = $this->product->with('ProductImageFirst')->get()->toArray();
 
         return view('frontend.home', [

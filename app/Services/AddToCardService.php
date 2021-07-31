@@ -126,6 +126,7 @@ class AddToCardService extends Controller
             $data['number_of_product'] += 1;
             $data['products'][$result['product_id']] = [
                 'Info' => json_decode($result['data'], true),
+                'product_id' => $result['product_id'],
                 'quantity' => $result['quantity'],
                 'unit_price' => $result['unit_price'],
                 'total_price' => $result['total_price'],
