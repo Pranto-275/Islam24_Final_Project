@@ -214,8 +214,8 @@
                     }
 
                     $('#product_subtotal_'+productId).html(result.data.product_card.total_price)
-                    /*$('.cart-total-price').html(result.data.total_price)
-                    $('.cart-count').html(result.data.number_of_product)*/
+                    $('.cart-total-price').html(result.data.total_price)
+                    $('.cart-count').html(result.data.number_of_product)
                 },
                 error: function (request, status, error) {
                     var responseText = JSON.parse(request.responseText);
