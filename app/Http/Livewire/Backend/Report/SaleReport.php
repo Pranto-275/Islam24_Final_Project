@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class SaleReport extends Component
 {
-    public $from_date;
-    public $to_date;
+    public $from_date='00-00-00';
+    public $to_date='01-01-3000';
     public $contact_id;
 
     public function dateFilter($model){

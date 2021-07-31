@@ -27,14 +27,14 @@
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Category</label>
                                 <Select class="form-control" wire:model.lazy="category_id">
-                                
+
                                 <option value="">Select Category</option>
                                 @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                                 </Select>
                                 @error('Category') <span class="error">{{ $message }}</span> @enderror
-                                
+
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -74,40 +74,48 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
+                                <th>Product Code</th>
+                                <th>Product Name</th>
                                 <th>Category</th>
                                 <th>Brand</th>
-                                <th>Item Name</th>
-                                <th>Product Name</th>
-                                <th>In Qty</th>
-                                
+                                <th>Stock In Inventory</th>
+
                             </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i=0;
+                                @endphp
+                                @foreach ($products as $product)
+
                                 <tr>
-                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">1</a> </td>
-                                    <td>Default Category</td>
+
+                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{++$i}}</a> </td>
                                     <td>
-                                        P5111168
+                                        {{$product->code}}
                                     </td>
                                     <td>
-                                        diadent gp
+                                        {{$product->name}}
+                                    </td>
+                                    <td>{{$product->SubSubCategory->name}}</td>
+                                    <td>
+                                        {{$product->Brand->name}}
                                     </td>
                                     <td>
-                                        100
+                                        {{$product->PurchaseInvoiceDetail->sum('quantity')-$product->SaleInvoiceDetail->sum('quantity')}}
                                     </td>
-                                    <td>
-                                        30000
-                                    </td>
-                                   
+
                                 </tr>
+
+                                @endforeach
                             </tbody>
                             <thead>
-                                <tr>
+                                {{-- <tr>
                                     <th colspan="4"><center>Total</center></th>
                                     <th>47600.00</th>
                                     <th>47600.00</th>
-                                   
-                                </tr>
+
+                                </tr> --}}
                                 </thead>
                         </table>
                     </div>

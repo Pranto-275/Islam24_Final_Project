@@ -3,14 +3,18 @@
 namespace App\Http\Livewire\Backend\Report;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class PurchaseDetailsReport extends Component
 {
-    public $from_date;
-    public $to_date;
+    // public $from_date='00-00-00';
+    // public $to_date='01-01-3000';
     public $contact_id;
 
+    // public function dateFilter($model){
+    //     return $model->where('sale_date', '>=', Carbon::parse($this->from_date)->format('Y-m-d'))->where('sale_date', '<=', Carbon::parse($this->to_date)->format('Y-m-d'));
+    // }
     public function render()
     {
         $PurchaseInvoiceDetail=PurchaseInvoiceDetail::orderBy('id', 'desc');
