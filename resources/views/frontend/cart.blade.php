@@ -38,7 +38,9 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="table-responsive-xl">
+                                @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
+                                    @php $totalPrice = $cardBadge['data']['total_price'] @endphp
                                     <table class="table mb-0">
                                         <thead>
                                         <tr>
@@ -142,7 +144,7 @@
                                     <h6 class="title">Cart Totals</h6>
                                     <form action="#">
                                         <ul>
-                                            <li><span>SUBTOTAL</span> $ 136.00</li>
+                                            <li><span>SUBTOTAL</span> $ <span class="cart-total-price">{{ $totalPrice }}</span></li>
                                             <li>
                                                 <span>SHIPPING</span>
                                                 <div class="shop-check-wrap">
@@ -156,7 +158,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="cart-total-amount"><span>TOTAL</span> <span class="amount">$ 151.00</span></li>
+                                            <li class="cart-total-amount"><span>TOTAL</span> <span class="amount cart-total-price">$ {{ $totalPrice }}</span></li>
                                         </ul>
                                         <button class="btn">PROCEED TO CHECKOUT</button>
                                     </form>
