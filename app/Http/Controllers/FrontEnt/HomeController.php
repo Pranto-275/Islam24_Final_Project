@@ -52,4 +52,24 @@ class HomeController extends Controller
     {
         return $this->addToCardService::addCardStore($request->get('product_id'));
     }
+
+    public function cart()
+    {
+        return view('frontend.cart');
+    }
+
+    public function cartProductQuantityUpdate(Request $request): array
+    {
+        $quantity = $request->get('quantity');
+        if ($request->get('state') == 'decrease') {
+            $quantity = ($quantity * (-1));
+        }
+
+        return $this->addToCardService::addCardStore($request->get('product_id'), $quantity);
+    }
+
+    public function cartProductDelete(Request $request)
+    {
+        return $this->addToCardService::productDelete($request->get('product_id'));
+    }
 }

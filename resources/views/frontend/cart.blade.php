@@ -1,3 +1,4 @@
+@extends('layouts.front_end')
 @push('css')
 
 @endpush
@@ -20,7 +21,7 @@
                                 <h2>Shopping Cart</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
                                     </ol>
                                 </nav>
@@ -37,8 +38,9 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="table-responsive-xl">
-                                <table class="table mb-0">
-                                    <thead>
+                                @if($cardBadge['data']['products'])
+                                    <table class="table mb-0">
+                                        <thead>
                                         <tr>
                                             <th class="product-thumbnail"></th>
                                             <th class="product-name">Product</th>
@@ -46,9 +48,31 @@
                                             <th class="product-quantity">QUANTITY</th>
                                             <th class="product-subtotal">SUBTOTAL</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($cardBadge['data']['products'] as $productId => $product)
+                                            <tr id="row_{{ $productId }}">
+                                                <td class="product-thumbnail"><a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
+                                                </td>
+                                                <td class="product-name">
+                                                    <h4><a href="{{ route('product-view') }}">{{ $product['Info']['product_name'] }}</a></h4>
+                                                    <p>Cramond Leopard & Pythong Anorak</p>
+                                                    <span>65% poly, 35% rayon</span>
+                                                </td>
+                                                <td class="product-price">$ {{ $product['unit_price'] }}</td>
+                                                <td class="product-quantity">
+                                                    <div class="cart-plus">
+                                                        <form action="#">
+                                                            <div class="cart-plus-minus" data-product-id="{{ $productId }}">
+                                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productId }}" value="{{ $product['quantity'] }}">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                                <td class="product-subtotal" id="product_subtotal_{{ $productId }}"><span>$ {{ $product['total_price'] }}</span></td>
+                                            </tr>
+                                        @endforeach
+                                        {{--<tr>
                                             <td class="product-thumbnail"><a href="#" class="wishlist-remove"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
                                             </td>
                                             <td class="product-name">
@@ -87,9 +111,12 @@
                                                 </div>
                                             </td>
                                             <td class="product-subtotal"><span>$ 68.00</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                        </tr>--}}
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <div class="alert alert-warning text-center">Op's there is no product</div>
+                                @endif
                             </div>
                             <div class="shop-cart-bottom mt-20">
                                 <div class="row">
@@ -143,6 +170,95 @@
 
         </main>
         <!-- main-area-end -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.inc.qtybutton').on('click', function () {
+                var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
+                //console.log($('#product_quantity_'+productId).val())
+                quantityUpdate('increase', productId)
+            });
+
+            $('.dec.qtybutton').on('click', function () {
+                var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
+                //console.log($('#product_quantity_'+productId).val())
+                quantityUpdate('decrease', productId)
+            });
+
+            $('.wishlist-remove').on('click', function () {
+                var productId = $(this).attr('data-product-id');
+                //console.log(productId)
+                productDelete(productId)
+            });
+        });
+
+        function quantityUpdate(type, productId) {
+            $.ajax({
+                method:'POST',
+                url: '{{ route('ajax-add-to-card-quantity-update') }}',
+                data: {
+                    "state" : type,
+                    "product_id" : productId,
+                    "quantity": 1
+                },
+                success: function (result, text) {
+                    if(result.errorStatus) {
+                        alert(result.message);
+                        if(result.data.quantity == 0) {
+                            $('#product_quantity_'+productId).val(1)
+                        }
+                        return false;
+                    }
+
+                    $('#product_subtotal_'+productId).html(result.data.product_card.total_price)
+                    /*$('.cart-total-price').html(result.data.total_price)
+                    $('.cart-count').html(result.data.number_of_product)*/
+                },
+                error: function (request, status, error) {
+                    var responseText = JSON.parse(request.responseText);
+                    //console.log(responseText.message)
+                    var errorText = '';
+                    $.each(responseText.errors, function(key, item) {
+                        //console.log(key+' ---- ' +item);
+                        errorText += item +'\n';
+                    });
+
+                    alert(errorText)
+                }
+            })
+        }
+
+        function productDelete(productId) {
+            $.ajax({
+                method:'POST',
+                url: '{{ route('ajax-add-to-card-product-delete') }}',
+                data: {
+                    "product_id" : productId
+                },
+                success: function (result, text) {
+                    if(result.errorStatus) {
+                        alert(result.message);
+
+                        return false;
+                    }
+
+                    $('#row_'+productId).remove()
+                },
+                error: function (request, status, error) {
+                    var responseText = JSON.parse(request.responseText);
+                    //console.log(responseText.message)
+                    var errorText = '';
+                    $.each(responseText.errors, function(key, item) {
+                        //console.log(key+' ---- ' +item);
+                        errorText += item +'\n';
+                    });
+
+                    alert(errorText)
+                }
+            })
+        }
+
+    </script>
 </div>
 @push('scripts')
 

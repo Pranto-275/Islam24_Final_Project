@@ -4,12 +4,14 @@
 namespace App\Services;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\FrontEnd\AddToCard as AddToCardModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class AddToCardService
+class AddToCardService extends Controller
 {
     /**
      * @var Product
@@ -32,7 +34,7 @@ class AddToCardService
         $this->addToCardModel = $addToCardModel;
     }
 
-    public static function addCardStore($productId): array
+    public static function addCardStore($productId, $quantity = 1): array
     {
         $sessionId = Session::getId();
         $result = Product::with('ProductImageFirst')->find($productId);
@@ -49,16 +51,31 @@ class AddToCardService
 
             $productCard = AddToCardModel::where(['session_id' => $sessionId,'product_id' => $productId])->first();
             if ($productCard) {
-                $productCard->quantity = ($productCard->quantity + 1);
-                $productCard->data = json_encode($productInfo);
-                $productCard->unit_price = $product['special_price'];
-                $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
+                $requestQuantity = ($productCard->quantity + $quantity);
+                if(!($requestQuantity>0)){
+                    return [
+                        'errorStatus' => true,
+                        'message' => "You can't zero quantity.",
+                        'data' => [
+                            'quantity' => 0
+                        ],
+                        'errors' => [
+                            'error' => ''
+                        ]
+                    ];
+                }
+                if ($requestQuantity > 0) {
+                    $productCard->quantity = $requestQuantity;
+                    $productCard->data = json_encode($productInfo);
+                    $productCard->unit_price = $product['special_price'];
+                    $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
+                }
             } else {
                 $productCard = new AddToCardModel();
                 $productCard->session_id = $sessionId;
                 $productCard->product_id = $productId;
                 $productCard->data = json_encode($productInfo);
-                $productCard->quantity = 1;
+                $productCard->quantity = $quantity;
                 $productCard->unit_price = $product['special_price'];
                 $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
             }
@@ -101,6 +118,8 @@ class AddToCardService
         $data['total_price'] = 0;
         $data['number_of_product'] = 0;
         $data['products'] = [];
+        //$data['miniCard'] = '';
+        //$data['miniCard'] = self::miniCard();
 
         foreach ($results as $result) {
             $data['total_price'] += $result['total_price'];
@@ -124,4 +143,41 @@ class AddToCardService
 
         return $response;
     }
+
+    public static function miniCard()
+    {
+        return view('frontend.header-card-popup')->render();
+    }
+
+    public static function productDelete($productId)
+    {
+        $sessionId = Session::getId();
+
+        $result = AddToCardModel::where(['session_id' => $sessionId,'product_id'=>$productId])->delete();
+
+        if($result) {
+            $data = self::cardTotalProductAndAmount();
+            $response = [
+                'errorStatus' => false,
+                'message' => '',
+                'data' => $data,
+                'errors' => [
+                    'error' => ''
+                ]
+            ];
+        } else {
+            $response = [
+                'errorStatus' => true,
+                'message' => "Product delete not successful",
+                'data' => [],
+                'errors' => [
+                    'error' => ''
+                ]
+            ];
+        }
+
+        return $response;
+    }
+
+
 }
