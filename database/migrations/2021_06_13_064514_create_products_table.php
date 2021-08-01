@@ -23,11 +23,13 @@ class CreateProductsTable extends Migration
             $table->double('purchase_price', 20, 4)->default(0);
             $table->double('discount', 20, 4)->default(0)->nullable();
             $table->foreignId('sub_sub_category_id');
-            $table->foreignId('sub_sub_category_id');
-            $table->foreignId('sub_sub_category_id');
+            $table->foreignId('sub_category_id');
+            $table->foreignId('category_id');
             $table->foreignId('contact_id')->nullable();
             $table->foreignId('brand_id')->nullable();
             $table->string('low_alert', 191)->nullable();
+            $table->double('min_order_qty', 20, 4)->nullable();
+            $table->enum('featured', ['None', 'New Product', 'Trending Product', 'Best Selling Product']);
             $table->enum('barcode_generate_state', ['Bulk', 'Single']);
             $table->foreignId('vat_id')->nullable();
             $table->foreignId('branch_id');
