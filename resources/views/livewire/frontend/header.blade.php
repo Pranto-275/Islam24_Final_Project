@@ -205,7 +205,7 @@
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ALL DEPARTMENT</a>
                         <ul class="category-menu">
                         @foreach ($categories as $category)
-                            <li class="has-dropdown"><a href="#"><div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt="" style="width:35px;height:35px;"></div>{{$category->name}}</a>
+                            <li class="has-dropdown"><a href="{{ route('all-product')}}"><div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt="" style="width:35px;height:35px;"></div>{{$category->name}}</a>
                                 <ul class="mega-menu">
                                     @foreach ($category->SubCategory as $subCategory)
                                     <li>

@@ -96,10 +96,15 @@ Route::group(['prefix' => 'customer'], function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/check-out', [HomeController::class, 'checkOut'])->name('check-out');
+Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
+Route::get('/search-subCategory-wise/{id?}', [HomeController::class, 'searchBySubCategory'])->name('search-subCategory-wise');
+Route::get('/search-subSubCategory-wise/{id?}', [HomeController::class, 'searchBySubSubCategory'])->name('search-subSubCategory-wise');
+Route::get('/search-brand-wise/{id?}', [HomeController::class, 'searchByBrand'])->name('search-brand-wise');
 Route::post('/ajax/add-to-card-store', [HomeController::class, 'addToCardStore'])->name('ajax-add-to-card-store');
 Route::post('/ajax/add-to-card-quantity-update', [HomeController::class, 'cartProductQuantityUpdate'])->name('ajax-add-to-card-quantity-update');
 Route::post('/ajax/add-to-card-product-delete', [HomeController::class, 'cartProductDelete'])->name('ajax-add-to-card-product-delete');
 Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
+// Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
 Route::get('sign-up', SignUp::class)->name('sign-up');

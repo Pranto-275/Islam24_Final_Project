@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\FrontEnd\AddToCard;
 use App\Services\AddToCardService;
+use App\Models\Backend\ProductInfo\Brand;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -45,7 +46,34 @@ class HomeController extends Controller
             'data' => $data,
         ]);
     }
-
+    public function searchByBrand($brandId=NULL){
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereBrandId($brandId)->get()->toArray();
+        return view('frontend.all_product',[
+            'data'=>$data,
+            // 'productDetails'=>Product::whereCategoryId($catId)->get(),
+        ]);
+    }
+    public function searchBySubSubCategory($catId=NULL){
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($catId)->get()->toArray();
+        return view('frontend.all_product',[
+            'data'=>$data,
+            // 'productDetails'=>Product::whereCategoryId($catId)->get(),
+        ]);
+    }
+    public function searchBySubCategory($catId=NULL){
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($catId)->get()->toArray();
+        return view('frontend.all_product',[
+            'data'=>$data,
+            // 'productDetails'=>Product::whereCategoryId($catId)->get(),
+        ]);
+    }
+    public function searchByCategory($catId=NULL){
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->get()->toArray();
+        return view('frontend.all_product',[
+            'data'=>$data,
+            // 'productDetails'=>Product::whereCategoryId($catId)->get(),
+        ]);
+    }
     public function addToCardStore(Request $request): array
     {
         return $this->addToCardService::addCardStore($request->get('product_id'));

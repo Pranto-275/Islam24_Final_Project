@@ -114,7 +114,7 @@
                                     </h2>
                                 </div>
                                 <p>@if($productDetails->ProductInfo) {{$productDetails->ProductInfo->long_description}} @endif</p>
-                                <div class="product-details-size mb-40">
+                                {{-- <div class="product-details-size mb-40">
                                     <span>Size : </span>
                                     <a href="#">Guide</a>
                                     <a href="#">Can't Find Your Size?</a>
@@ -125,7 +125,7 @@
                                         <li><a href="#">M</a></li>
                                         <li><a href="#">L</a></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                                 <div class="perched-info">
                                     <div class="cart-plus">
                                         <form action="#">
@@ -194,7 +194,7 @@
                                                     <h5 class="small-title">{{$productDetails->name}}</h5>
                                                     <p>{{$productDetails->ProductInfo->short_description}}</p>
                                                     <p>{{$productDetails->ProductInfo->long_description}}</p>
-                                                    {{-- <p>{{$productDetails->ProductInfo->meta_description}}</p> --}}
+                                                    <p>{{$productDetails->ProductInfo->meta_description}}</p>
                                                     {{-- <ul class="product-desc-list">
                                                         <li>65% poly, 35% rayon</li>
                                                         <li>Hand wash cold</li>
