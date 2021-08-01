@@ -195,7 +195,7 @@
                             <div class="col-xl-4 col-md-4 col-sm-6">
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
-                                        <a href="shop-details.html">
+                                        <a href="{{route('product-details',['id'=>$product['id']])}}">
                                             <img src="{{ URL::asset('venam/') }}/img/product/td_product_img01.jpg" alt="">
                                             <img class="overlay-product-thumb" src="{{ URL::asset('venam/') }}/img/product/t_exclusive_product01.jpg" alt="">
                                         </a>

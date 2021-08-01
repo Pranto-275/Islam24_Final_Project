@@ -85,7 +85,7 @@
                                     <li class="dropdown"><a href="#">SHOP</a>
                                         <ul class="submenu">
                                             <li><a href="category">Shop Left Sidebar</a></li>
-                                            <li><a href="product-view">Shop Details</a></li>
+                                            <li><a href="product-details">Shop Details</a></li>
                                             <li><a href="wish-list">Wishlist page</a></li>
                                             <li><a href="cart">Cart page</a></li>
                                             <li><a href="checkout">Checkout page</a></li>
