@@ -148,14 +148,18 @@
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ALL DEPARTMENT</a>
                         <ul class="category-menu">
                         @foreach ($categories as $category)
-                            <li class="has-dropdown"><a href="#"><div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt="" style="width:35px;height:35px;"></div>{{$category->name}}</a>
+                            <li class="has-dropdown">
+                                <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
+                                    <div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt="" style="width:35px;height:35px;"></div>
+                                    {{$category->name}}
+                                </a>
                                 <ul class="mega-menu">
                                     @foreach ($category->SubCategory as $subCategory)
                                     <li>
                                         <ul>
-                                            <li class="dropdown-title">{{ $subCategory->name }}</li>
+                                            <li class="dropdown-title"><a href="{{ route('search-subCategory-wise',['id'=>$subCategory->id]) }}">{{ $subCategory->name }}</a></li>
                                             @foreach ($subCategory->SubSubCategory as $subSubCategory)
-                                            <li><a href="#">{{$subSubCategory->name}}</a></li>
+                                            <li><a href="{{ route('search-subSubCategory-wise',['id'=>$subSubCategory->id]) }}">{{$subSubCategory->name}}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>

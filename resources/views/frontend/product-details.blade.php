@@ -194,7 +194,7 @@
                                                     <h5 class="small-title">{{$productDetails->name}}</h5>
                                                     <p>{{$productDetails->ProductInfo->short_description}}</p>
                                                     <p>{{$productDetails->ProductInfo->long_description}}</p>
-                                                    {{-- <p>{{$productDetails->ProductInfo->meta_description}}</p> --}}
+                                                    <p>{{$productDetails->ProductInfo->meta_description}}</p>
                                                     {{-- <ul class="product-desc-list">
                                                         <li>65% poly, 35% rayon</li>
                                                         <li>Hand wash cold</li>
