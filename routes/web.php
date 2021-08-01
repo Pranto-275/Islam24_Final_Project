@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DatatableController;
+use App\Http\Controllers\FrontEnt\HomeController;
 use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
 use App\Http\Livewire\Backend\ContactInfo\Customer as CustomerInfo;
 use App\Http\Livewire\Backend\ContactInfo\Staff;
@@ -9,9 +10,9 @@ use App\Http\Livewire\Backend\Inventory\Purchase;
 use App\Http\Livewire\Backend\Inventory\PurchaseInvoice;
 use App\Http\Livewire\Backend\Inventory\PurchaseList;
 use App\Http\Livewire\Backend\Inventory\Sale;
+use App\Http\Livewire\Backend\Inventory\SaleInvoice;
 use App\Http\Livewire\Backend\Inventory\SaleList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
-use App\Http\Livewire\Backend\Inventory\SaleInvoice;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
 use App\Http\Livewire\Backend\ProductInfo\Brand;
@@ -58,7 +59,6 @@ use App\Http\Livewire\FrontEnd\CheckOut;
 use App\Http\Livewire\Frontend\Contact as ContactUs;
 use App\Http\Livewire\Frontend\Customer;
 use App\Http\Livewire\Frontend\Error;
-use App\Http\Livewire\Frontend\Home;
 use App\Http\Livewire\Frontend\OrderCompleted;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Frontend\SignIn;
@@ -72,7 +72,6 @@ use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
 use App\Http\Livewire\UserProfile\ProfileSettings;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FrontEnt\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,7 +99,7 @@ Route::get('/check-out', [HomeController::class, 'checkOut'])->name('check-out')
 Route::post('/ajax/add-to-card-store', [HomeController::class, 'addToCardStore'])->name('ajax-add-to-card-store');
 Route::post('/ajax/add-to-card-quantity-update', [HomeController::class, 'cartProductQuantityUpdate'])->name('ajax-add-to-card-quantity-update');
 Route::post('/ajax/add-to-card-product-delete', [HomeController::class, 'cartProductDelete'])->name('ajax-add-to-card-product-delete');
-Route::get('product-view', ProductView::class)->name('product-view');
+Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
 Route::get('sign-up', SignUp::class)->name('sign-up');

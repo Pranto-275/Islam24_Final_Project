@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Http\Controllers\FrontEnt;
 
@@ -6,11 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\FrontEnd\AddToCard;
 use App\Services\AddToCardService;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -29,8 +27,6 @@ class HomeController extends Controller
 
     /**
      * HomeController constructor.
-     * @param Product $product
-     * @param AddToCard $addToCard
      */
     public function __construct(Product $product, AddToCard $addToCard, AddToCardService $addToCardService)
     {
@@ -46,7 +42,7 @@ class HomeController extends Controller
         $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->orderBy('id', 'desc')->get()->toArray();
 // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
-            'data' => $data
+            'data' => $data,
         ]);
     }
 
@@ -80,5 +76,10 @@ class HomeController extends Controller
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
 
         return view('frontend.check-out', ['data' => $data]);
+    }
+
+    public function productDetails($id = null)
+    {
+        return view('frontend.product-details');
     }
 }
