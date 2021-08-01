@@ -39,10 +39,11 @@
                         <div class="col-xl-7 col-lg-6">
                             <div class="shop-details-nav-wrap">
                                 <div class="shop-details-nav">
+                                    @foreach ($productDetails->ProductImages as $productImage)
                                     <div class="shop-nav-item">
-                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom01.jpg" alt="">
+                                        <img src="{{ asset('storage/photo/'.$productImage->image) }}" alt="">
                                     </div>
-                                    <div class="shop-nav-item">
+                                    {{-- <div class="shop-nav-item">
                                         <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom02.jpg" alt="">
                                     </div>
                                     <div class="shop-nav-item">
@@ -53,12 +54,20 @@
                                     </div>
                                     <div class="shop-nav-item">
                                         <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom03.jpg" alt="">
-                                    </div>
+                                    </div> --}}
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="shop-details-img-wrap">
                                 <div class="shop-details-active">
+                                    @foreach ($productDetails->ProductImages as $productImage)
                                     <div class="shop-details-img">
+                                        <a href="{{ asset('storage/photo/'.$productImage->image) }}" class="popup-image"><img src="{{ asset('storage/photo/'.$productImage->image) }}" alt=""></a>
+                                    </div>
+
+                                    @endforeach
+
+                                    {{-- <div class="shop-details-img">
                                         <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
                                     </div>
                                     <div class="shop-details-img">
@@ -69,17 +78,14 @@
                                     </div>
                                     <div class="shop-details-img">
                                         <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
-                                    </div>
-                                    <div class="shop-details-img">
-                                        <a href="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" class="popup-image"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_img01.jpg" alt=""></a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-6">
                             <div class="shop-details-content">
                                 <span class="stock-info">In Stock</span>
-                                <h2>The Christina Fashion</h2>
+                                <h2>{{$productDetails->name}}</h2>
                                 <div class="shop-details-review">
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
@@ -91,9 +97,23 @@
                                     <span>- 3 Customer Reviews</span>
                                 </div>
                                 <div class="shop-details-price">
-                                    <h2>$29.00 <del>$49.00</del></h2>
+                                    <h2>
+                                        @if($currencySymbol)
+                                            {{ $currencySymbol->symbol }}
+                                        @endif
+                                        {{$productDetails->special_price}}
+                                        <span style="font-size: 10px;">
+                                            @if($currencySymbol)
+                                            {{ $currencySymbol->symbol }}
+                                        @endif
+                                        <del>
+                                            {{$productDetails->regular_price}}
+                                        </del>
+                                        </span>
+
+                                    </h2>
                                 </div>
-                                <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining</p>
+                                <p>@if($productDetails->ProductInfo) {{$productDetails->ProductInfo->long_description}} @endif</p>
                                 <div class="product-details-size mb-40">
                                     <span>Size : </span>
                                     <a href="#">Guide</a>
@@ -167,22 +187,28 @@
                                             <div class="row">
                                                 <div class="col-xl-3 col-md-4">
                                                     <div class="product-desc-img">
-                                                        <img src="{{ URL::asset('venam/') }}/img/product/desc_img.jpg" alt="">
+                                                        <img src="{{ asset('storage/photo/'.$productDetails->ProductImageFirst->image) }}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-9 col-md-8">
-                                                    <h5 class="small-title">The Christina Fashion</h5>
-                                                    <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
-                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                    <ul class="product-desc-list">
+                                                    <h5 class="small-title">{{$productDetails->name}}</h5>
+                                                    <p>{{$productDetails->ProductInfo->short_description}}</p>
+                                                    <p>{{$productDetails->ProductInfo->long_description}}</p>
+                                                    {{-- <p>{{$productDetails->ProductInfo->meta_description}}</p> --}}
+                                                    {{-- <ul class="product-desc-list">
                                                         <li>65% poly, 35% rayon</li>
                                                         <li>Hand wash cold</li>
                                                         <li>Partially lined</li>
                                                         <li>Hidden front button closure with keyhole accents</li>
                                                         <li>Button cuff sleeves</li>
                                                         <li>Made in USA</li>
-                                                    </ul>
+                                                    </ul> --}}
+                                                    <p>
+                                                        @if($productDetails->ProductInfo->youtube_link)
+                                                             <span><i class="fab fa-youtube text-danger"></i></span>
+                                                             <a href="{{$productDetails->ProductInfo->youtube_link}}">Youtube Link</a>
+                                                        @endif
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

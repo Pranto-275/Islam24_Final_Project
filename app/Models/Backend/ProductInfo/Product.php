@@ -7,6 +7,7 @@ use App\Models\Backend\ProductInfo\ProductImage;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\ProductInfo\Brand;
 use App\Models\Backend\ProductInfo\ProductProperties;
+use App\Models\Backend\ProductInfo\ProductInfo;
 use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use App\Models\Backend\Setting\Vat;
@@ -17,6 +18,10 @@ class Product extends Model
 {
     use HasFactory;
 
+    public function ProductImages()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
     public function ProductImage()
     {
         return $this->hasMany(ProductImage::class)->take(1);
@@ -64,5 +69,8 @@ class Product extends Model
     }
     public function SaleInvoiceDetail(){
         return $this->hasMany(SaleInvoiceDetail::class);
+    }
+    public function ProductInfo(){
+        return $this->hasOne(ProductInfo::class);
     }
 }
