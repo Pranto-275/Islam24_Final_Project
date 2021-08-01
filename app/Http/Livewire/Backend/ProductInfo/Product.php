@@ -12,6 +12,8 @@ use App\models\Backend\ProductInfo\ProductProperties;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Setting\Warehouse;
 use App\Models\Backend\ProductInfo\Size;
+use App\Models\Backend\ProductInfo\Category;
+use App\Models\Backend\ProductInfo\SubCategory;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\Setting\Vat;
 use Carbon\Carbon;
@@ -26,6 +28,8 @@ class Product extends Component
 
     public $code;
     public $name;
+    public $category_id;
+    public $sub_category_id;
     public $sub_sub_category_id;
     public $short_description;
     public $long_description;
@@ -36,6 +40,8 @@ class Product extends Component
     public $discount;
     public $warehouse_id;
     public $stock_in_opening;
+    public $min_order_qty;
+    public $featured;
     public $brand_id;
     public $contact_id;
     public $low_alert;
@@ -66,8 +72,12 @@ class Product extends Component
             $this->wholesale_price = $this->QueryUpdate->wholesale_price;
             $this->purchase_price = $this->QueryUpdate->purchase_price;
             $this->discount = $this->QueryUpdate->discount;
+            $this->category_id = $this->QueryUpdate->category_id;
+            $this->sub_category_id = $this->QueryUpdate->sub_category_id;
             $this->sub_sub_category_id = $this->QueryUpdate->sub_sub_category_id;
             $this->brand_id = $this->QueryUpdate->brand_id;
+            $this->featured = $this->QueryUpdate->featured;
+            $this->min_order_qty = $this->QueryUpdate->min_order_qty;
             // $this->contact_id=$this->QueryUpdate->contact_id;
             $this->low_alert = $this->QueryUpdate->low_alert;
 
@@ -114,7 +124,10 @@ class Product extends Component
         $this->validate([
             'code' => 'required',
             'name' => 'required',
+            'category_id' => 'required',
+            'sub_category_id' => 'required',
             'sub_sub_category_id' => 'required',
+            'featured' => 'required',
             'brand_id' => 'required',
             'regular_price' => 'required',
             'special_price' => 'required',
@@ -140,8 +153,12 @@ class Product extends Component
             $Query->wholesale_price = $this->wholesale_price;
             $Query->purchase_price = $this->purchase_price;
             $Query->discount = $this->discount;
+            $Query->category_id = $this->category_id;
+            $Query->sub_category_id = $this->sub_category_id;
             $Query->sub_sub_category_id = $this->sub_sub_category_id;
             $Query->brand_id = $this->brand_id;
+            $Query->featured = $this->featured;
+            $Query->min_order_qty = $this->min_order_qty;
             // $Query->contact_id=$this->contact_id;
             $Query->low_alert = $this->low_alert;
             $Query->vat_id = $this->vat_id;
@@ -246,11 +263,29 @@ class Product extends Component
             ]);
         }
     }
+    public function updated(){
+        if($this->category_id){
 
+        }
+    }
     public function render()
     {
+        if($this->category_id){
+            $subCat=SubCategory::whereCategoryId($this->category_id)->get();
+        }else{
+            $subCat=SubCategory::get();
+        }
+
+        if($this->sub_category_id){
+            $subSubCat=SubSubCategory::whereSubCategoryId($this->sub_category_id)->get();
+        }else{
+            $subSubCat=SubSubCategory::get();
+        }
+
         return view('livewire.backend.product-info.product', [
-            'subSubCategories' => SubSubCategory::get(),
+            'Categories' => Category::get(),
+            'SubCategories' => $subCat,
+            'SubSubCategories' => $subSubCat,
             'brands' => Brand::get(),
             'colors' => Color::get(),
             'sizes' => Size::get(),

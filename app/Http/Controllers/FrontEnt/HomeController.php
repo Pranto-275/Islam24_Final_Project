@@ -38,8 +38,9 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $data['html'] = view('frontend.header-card-popup')->render();
-        $data['products'] = $this->product->with('ProductImageFirst')->get()->toArray();
-
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('Best Selling Product')->get()->toArray();
+        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->orderBy('id', 'desc')->get()->toArray();
+// dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
             'data' => $data,
         ]);
@@ -79,6 +80,9 @@ class HomeController extends Controller
 
     public function productDetails($id = null)
     {
-        return view('frontend.product-details');
+
+        return view('frontend.product-details',[
+            'productDetails'=>Product::whereId($id)->first(),
+        ]);
     }
 }

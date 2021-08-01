@@ -13,12 +13,13 @@
     </x-slot>
     <main>
         <!-- slider-area -->
-        <section class="third-slider-area" data-background="{{ URL::asset('venam/') }}/img/slider/slider_bg.jpg">
+        <section class="third-slider-area">
             <div class="custom-container-two">
                 <div class="row">
                     <div class="col-12">
                         <div class="slider-active">
-                            <div class="single-slider slider-bg" data-background="{{ URL::asset('venam/') }}/img/slider/t_slider_bg01.jpg">
+                            @foreach ($sliderImages as $sliderImage)
+                            <div class="single-slider slider-bg" data-background="{{ asset('storage/photo/'.$sliderImage->image) }}">
                                 <div class="slider-content">
                                     <h5 data-animation="fadeInUp" data-delay=".3s">top deal !</h5>
                                     <h2 data-animation="fadeInUp" data-delay=".6s">stylish top <span>handbag</span></h2>
@@ -26,10 +27,11 @@
                                     <a href="shop-left-sidebar.html" class="btn yellow-btn" data-animation="fadeInUp" data-delay="1s">Shop Now</a>
                                 </div>
                                 <div class="slider-img" data-animation="fadeInRight" data-delay="1.2s">
-                                    <img src="img/slider/t_slider_img01.png" alt="">
+                                    <img src="{{ asset('storage/photo/'.$sliderImage->image) }}" alt="">
                                 </div>
                             </div>
-                            <div class="single-slider slider-bg" data-background="{{ URL::asset('venam/') }}/img/slider/t_slider_bg02.jpg">
+                            @endforeach
+                            {{-- <div class="single-slider slider-bg" data-background="{{ URL::asset('venam/') }}/img/slider/t_slider_bg02.jpg">
                                 <div class="slider-content">
                                     <h5 data-animation="fadeInUp" data-delay=".3s">top deal !</h5>
                                     <h2 data-animation="fadeInUp" data-delay=".6s">stylish <span>headphone</span></h2>
@@ -39,43 +41,20 @@
                                 <div class="slider-img" data-animation="fadeInRight" data-delay="1.2s">
                                     <img src="{{ URL::asset('venam/') }}/img/slider/t_slider_img02.png" alt="">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-lg-2 col-md-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/images/top_cat_banner01.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/images/top_cat_banner02.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/images/top_cat_banner03.jpg" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/images/top_cat_banner03.jpg" alt=""></a>
-                        </div>
-                    </div>
+                    @foreach ($categories as $category)
 
                     <div class="col-lg-2 col-md-6">
                         <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/images/top_cat_banner03.jpg" alt=""></a>
+                            <a href="shop-left-sidebar.html"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt=""></a>
                         </div>
                     </div>
 
-                    <div class="col-lg-2 col-md-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/images/top_cat_banner03.jpg" alt=""></a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -92,7 +71,47 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-xl-4 col-md-4 col-sm-6">
+                    {{-- Start New Electronics --}}
+                    @if($data['products_desc'])
+                    @foreach($data['products_desc'] as $product)
+                        <div class="col-xl-4 col-md-4 col-sm-6">
+                            <div class="exclusive-item exclusive-item-three text-center mb-40">
+                                <div class="exclusive-item-thumb">
+                                    <a href="shop-details.html">
+                                        <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                        <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                    </a>
+                                    <ul class="action">
+                                        <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                        <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
+                                        <li><a href="#"><i class="flaticon-witness"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="exclusive-item-content">
+                                    <h5><a href="shop-details.html">{{ $product['name'] }}</a></h5>
+                                    <div class="exclusive--item--price">
+                                        <del class="old-price">{{ $product['regular_price'] }}</del>
+                                        <span class="new-price">{{ $product['special_price'] }}</span>
+                                    </div>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    @else
+                    <div class="col-md-12">
+                        <div class="alert alert-info text-center"> Op's there is no products </div>
+                    </div>
+                    @endif
+                    {{-- End New Electronics --}}
+
+                    {{-- <div class="col-xl-4 col-md-4 col-sm-6">
                         <div class="exclusive-item exclusive-item-three text-center mb-40">
                             <div class="exclusive-item-thumb">
                                 <a href="shop-details.html">
@@ -178,7 +197,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- exclusive-collection-area-end -->
                 <!-- testimonial-area -->
@@ -196,8 +215,8 @@
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                            <img src="{{ URL::asset('venam/') }}/img/product/td_product_img01.jpg" alt="">
-                                            <img class="overlay-product-thumb" src="{{ URL::asset('venam/') }}/img/product/t_exclusive_product01.jpg" alt="">
+                                            <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                            <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                         </a>
                                         <ul class="action">
                                             <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>

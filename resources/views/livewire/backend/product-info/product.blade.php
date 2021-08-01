@@ -43,10 +43,30 @@
                                      @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label">Category</label>
+                                    <select class="form-control select2" wire:model.lazy="category_id">
+                                        <option>Select</option>
+                                        @foreach ($Categories as $category)
+                                           <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('category_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Sub Category</label>
+                                    <select class="form-control select2" wire:model.lazy="sub_category_id">
+                                        <option>Select</option>
+                                        @foreach ($SubCategories as $subCategory)
+                                           <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('sub_category_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Sub-sub Category</label>
                                     <select class="form-control select2" wire:model.lazy="sub_sub_category_id">
                                         <option>Select</option>
-                                        @foreach ($subSubCategories as $subSubCategory)
+                                        @foreach ($SubSubCategories as $subSubCategory)
                                            <option value="{{ $subSubCategory->id }}">{{ $subSubCategory->name }}</option>
                                         @endforeach
                                     </select>
@@ -60,12 +80,23 @@
                                 <div class="form-group">
                                     <label class="control-label">Brand</label>
                                     <select class="form-control" wire:model.lazy="brand_id">
-                                        <option>Select</option>
+                                        <option value="">Select</option>
                                         @foreach ($brands as $brand)
                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('brand_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Featured</label>
+                                    <select class="form-control" wire:model.lazy="featured">
+                                        <option value="">Select</option>
+                                           <option value="None">None</option>
+                                           <option value="New Product">New Product</option>
+                                           <option value="Trending Product">Trending Product</option>
+                                           <option value="Best Selling Product">Best Selling Product</option>
+                                    </select>
+                                    @error('featured') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div wire:ignore class="form-group">
                                     <label class="control-label">Colors</label>
@@ -134,6 +165,10 @@
                                     <input id="discount" type="number" step="any" class="form-control" wire:model.lazy="discount" placeholder="Discount">
                                 </div>
                                 <div class="form-group">
+                                    <label for="min_order_qty">Minimum Order Quantity</label>
+                                    <input id="min_order_qty" type="number" step="any" class="form-control" wire:model.lazy="min_order_qty" placeholder="Opening Stock">
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Warehouse</label>
                                     <select class="form-control" wire:model.lazy="warehouse_id">
                                         <option>Select</option>
@@ -160,17 +195,13 @@
                                         <label for="basicpill-lastname-input">Short Description</label>
                                         <textarea class="form-control" id="short_description" rows="3" wire:model.lazy="short_description" placeholder="Short Description"></textarea>
                                 </div>
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Long Description</label>
+                                    <textarea class="form-control" id="long_description" rows="3" wire:model.lazy="long_description" placeholder="Long Description"></textarea>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="basicpill-lastname-input">Long Description</label>
-                                <textarea class="form-control" id="long_description" rows="3" wire:model.lazy="long_description" placeholder="Long Description"></textarea>
-                            </div>
-                          </div>
-                        </div>
                         {{-- <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Save Changes</button>
                         <button type="submit" class="btn btn-secondary waves-effect">Cancel</button> --}}
 
