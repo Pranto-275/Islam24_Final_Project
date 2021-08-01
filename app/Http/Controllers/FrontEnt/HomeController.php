@@ -42,8 +42,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $data['html'] = view('frontend.header-card-popup')->render();
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
-        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->orderBy('id', 'desc')->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('Best Selling Product')->get()->toArray();
+        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->orderBy('id', 'desc')->get()->toArray();
 // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
             'data' => $data
