@@ -36,11 +36,12 @@ class AppServiceProvider extends ServiceProvider
         //Categories
         View::composer('*', function ($view) {
             $view->with('categories', Category::orderBy('id', 'desc')->get());
+            // $view->with('skipTopTencategories', Category::orderBy('id', 'desc')->skip(10)->get());
             $view->with('topCategories', Category::whereTopShow(1)->take(5)->get());
             $view->with('subCategories', SubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
-            $view->with('products', Product::orderBy('id', 'desc')->get());
-            $view->with('sliderImages', Slider::orderBy('position')->take(4)->get());
+            // $view->with('products', Product::orderBy('id', 'desc')->get());
+            $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
             // $view->with('companyInfo', SettingCompanyInfo::first());
             $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
