@@ -263,14 +263,29 @@ class Product extends Component
             ]);
         }
     }
+    public function updated(){
+        if($this->category_id){
 
+        }
+    }
     public function render()
     {
+        if($this->category_id){
+            $subCat=SubCategory::whereCategoryId($this->category_id)->get();
+        }else{
+            $subCat=SubCategory::get();
+        }
+
+        if($this->sub_category_id){
+            $subSubCat=SubSubCategory::whereSubCategoryId($this->sub_category_id)->get();
+        }else{
+            $subSubCat=SubSubCategory::get();
+        }
+
         return view('livewire.backend.product-info.product', [
-            'categories' => Category::get(),
-            'subCategories' => SubCategory::get(),
-            'subSubCategories' => SubSubCategory::get(),
-            'subSubCategories' => SubSubCategory::get(),
+            'Categories' => Category::get(),
+            'SubCategories' => $subCat,
+            'SubSubCategories' => $subSubCat,
             'brands' => Brand::get(),
             'colors' => Color::get(),
             'sizes' => Size::get(),

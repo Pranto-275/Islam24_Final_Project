@@ -46,7 +46,7 @@
                                     <label class="control-label">Category</label>
                                     <select class="form-control select2" wire:model.lazy="category_id">
                                         <option>Select</option>
-                                        @foreach ($categories as $category)
+                                        @foreach ($Categories as $category)
                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
@@ -56,7 +56,7 @@
                                     <label class="control-label">Sub Category</label>
                                     <select class="form-control select2" wire:model.lazy="sub_category_id">
                                         <option>Select</option>
-                                        @foreach ($subCategories as $subCategory)
+                                        @foreach ($SubCategories as $subCategory)
                                            <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
                                         @endforeach
                                     </select>
@@ -66,7 +66,7 @@
                                     <label class="control-label">Sub-sub Category</label>
                                     <select class="form-control select2" wire:model.lazy="sub_sub_category_id">
                                         <option>Select</option>
-                                        @foreach ($subSubCategories as $subSubCategory)
+                                        @foreach ($SubSubCategories as $subSubCategory)
                                            <option value="{{ $subSubCategory->id }}">{{ $subSubCategory->name }}</option>
                                         @endforeach
                                     </select>
