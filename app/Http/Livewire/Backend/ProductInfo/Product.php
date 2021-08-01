@@ -77,6 +77,7 @@ class Product extends Component
             $this->sub_sub_category_id = $this->QueryUpdate->sub_sub_category_id;
             $this->brand_id = $this->QueryUpdate->brand_id;
             $this->featured = $this->QueryUpdate->featured;
+            $this->min_order_qty = $this->QueryUpdate->min_order_qty;
             // $this->contact_id=$this->QueryUpdate->contact_id;
             $this->low_alert = $this->QueryUpdate->low_alert;
 
@@ -157,6 +158,7 @@ class Product extends Component
             $Query->sub_sub_category_id = $this->sub_sub_category_id;
             $Query->brand_id = $this->brand_id;
             $Query->featured = $this->featured;
+            $Query->min_order_qty = $this->min_order_qty;
             // $Query->contact_id=$this->contact_id;
             $Query->low_alert = $this->low_alert;
             $Query->vat_id = $this->vat_id;
