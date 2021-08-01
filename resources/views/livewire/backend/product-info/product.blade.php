@@ -165,6 +165,10 @@
                                     <input id="discount" type="number" step="any" class="form-control" wire:model.lazy="discount" placeholder="Discount">
                                 </div>
                                 <div class="form-group">
+                                    <label for="min_order_qty">Minimum Order Quantity</label>
+                                    <input id="min_order_qty" type="number" step="any" class="form-control" wire:model.lazy="min_order_qty" placeholder="Opening Stock">
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Warehouse</label>
                                     <select class="form-control" wire:model.lazy="warehouse_id">
                                         <option>Select</option>
@@ -177,10 +181,6 @@
                                 <div class="form-group">
                                     <label for="stock_in_opening">Opening Stock</label>
                                     <input id="stock_in_opening" type="number" step="any" class="form-control" wire:model.lazy="stock_in_opening" placeholder="Opening Stock">
-                                </div>
-                                <div class="form-group">
-                                    <label for="min_order_qty">Minimum Order Quantity</label>
-                                    <input id="min_order_qty" type="number" step="any" class="form-control" wire:model.lazy="min_order_qty" placeholder="Opening Stock">
                                 </div>
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
