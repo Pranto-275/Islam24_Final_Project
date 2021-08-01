@@ -46,12 +46,11 @@
                                     </div>
                                     <div class="shop-cat-list">
                                         <ul>
-                                            <li><a href="#">Accessories</a><span>27</span></li>
-                                            <li><a href="#">Leather Jacket</a><span>12</span></li>
-                                            <li><a href="#">Woman Hoodies</a><span>6</span></li>
-                                            <li><a href="#">Man Shoes</a><span>7</span></li>
-                                            <li><a href="#">Baby Troys</a><span>9</span></li>
-                                            <li><a href="#">Kitchen Accessories</a><span>16</span></li>
+                                            @foreach ($categories as $category)
+
+                                            <li><a href="{{ route('search-category-wise',['id'=>$category->id]) }}">{{$category->name}}</a><span>{{$category->SubCategory->count()}}</span></li>
+
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -75,9 +74,11 @@
                                     <div class="sidebar-product-active">
                                         <div class="sidebar-product-list">
                                             <ul>
+                                                @foreach ($newProducts as $newProduct)
+
                                                 <li>
                                                     <div class="sidebar-product-thumb">
-                                                        <a href="shop-details.html"><img src="img/product/sidebar_product01.jpg" alt=""></a>
+                                                        <a href="{{route('product-details',['id'=>$newProduct->id])}}"><img @if($newProduct->ProductImageFirst) src="{{ asset('storage/photo/'.$newProduct->ProductImageFirst->image)}}" @endif style="width:30px;height:30px;" alt="Image"></a>
                                                     </div>
                                                     <div class="sidebar-product-content">
                                                         <div class="rating">
@@ -87,42 +88,13 @@
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                         </div>
-                                                        <h5><a href="shop-details.html">Slim Fit Cotton</a></h5>
+                                                        <h5><a href="{{route('product-details',['id'=>$newProduct['id']])}}">{{$newProduct->name}}</a></h5>
                                                         <span>$ 39.00</span>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <div class="sidebar-product-thumb">
-                                                        <a href="shop-details.html"><img src="img/product/sidebar_product02.jpg" alt=""></a>
-                                                    </div>
-                                                    <div class="sidebar-product-content">
-                                                        <div class="rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                        </div>
-                                                        <h5><a href="shop-details.html">Slim Fit Cotton</a></h5>
-                                                        <span>$ 39.00</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="sidebar-product-thumb">
-                                                        <a href="shop-details.html"><img src="img/product/sidebar_product03.jpg" alt=""></a>
-                                                    </div>
-                                                    <div class="sidebar-product-content">
-                                                        <div class="rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                        </div>
-                                                        <h5><a href="shop-details.html">Slim Fit Cotton</a></h5>
-                                                        <span>$ 39.00</span>
-                                                    </div>
-                                                </li>
+
+                                                @endforeach
+
                                             </ul>
                                         </div>
                                         <div class="sidebar-product-list">
@@ -185,10 +157,9 @@
                                     </div>
                                     <div class="sidebar-brand-list">
                                         <ul>
-                                            <li><a href="#">New Arrivals</a></li>
-                                            <li><a href="#">Clothing & Accessories</a></li>
-                                            <li><a href="#">Vanam Jacket</a></li>
-                                            <li><a href="#">Home Electronics</a></li>
+                                            @foreach ($brands as $brand)
+                                            <li><a href="{{ route('search-brand-wise',['id'=>$brand->id]) }}">{{$brand->name}}</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <div class="shop-sidebar-size">
@@ -251,7 +222,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                                     <div class="exclusive-item exclusive-item-three text-center mb-50">
                                         <div class="exclusive-item-thumb">
-                                            <a href="shop-details.html">
+                                            <a href="{{route('product-details',['id'=>$product['id']])}}">
                                                 <img @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image'])}}" @endif style="height:200px;" alt="{{$product['name']}}">
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}">
                                             </a>
@@ -262,7 +233,7 @@
                                             </ul>
                                         </div>
                                         <div class="exclusive-item-content">
-                                            <h5><a href="shop-details.html">{{ $product['name'] }}</a></h5>
+                                            <h5><a href="{{route('product-details',['id'=>$product['id']])}}">{{ $product['name'] }}</a></h5>
                                             <div class="exclusive--item--price">
                                                 @if($currencySymbol)
                                                      {{ $currencySymbol->symbol }}

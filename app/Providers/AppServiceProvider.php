@@ -10,6 +10,7 @@ use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\Setting\InvoiceSetting;
 use App\Models\Inventory\Currency;
 use App\Models\Setting\Slider;
+use App\Models\Backend\ProductInfo\Brand;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -40,12 +41,16 @@ class AppServiceProvider extends ServiceProvider
             $view->with('topCategories', Category::whereTopShow(1)->take(5)->get());
             $view->with('subCategories', SubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
+            $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
+            $view->with('newProducts', Product::whereFeatured('New Product')->orderBy('id', 'desc')->take(3)->get());
+            $view->with('brands', Brand::get());
             // $view->with('products', Product::orderBy('id', 'desc')->get());
             $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
             // $view->with('companyInfo', SettingCompanyInfo::first());
             $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
             $view->with('cardBadge', AddToCardService::cardTotalProductAndAmount());
+
         });
     }
 }
