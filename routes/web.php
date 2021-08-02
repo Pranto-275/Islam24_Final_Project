@@ -103,6 +103,8 @@ Route::get('/search-brand-wise/{id?}', [HomeController::class, 'searchByBrand'])
 Route::post('/ajax/add-to-card-store', [HomeController::class, 'addToCardStore'])->name('ajax-add-to-card-store');
 Route::post('/ajax/add-to-card-quantity-update', [HomeController::class, 'cartProductQuantityUpdate'])->name('ajax-add-to-card-quantity-update');
 Route::post('/ajax/add-to-card-product-delete', [HomeController::class, 'cartProductDelete'])->name('ajax-add-to-card-product-delete');
+Route::post('/confirm-order', [HomeController::class, 'confirmOrder'])->name('confirm-order');
+Route::get('/order-completed', [HomeController::class, 'orderComplete'])->name('order-completed');
 Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
 // Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
 Route::get('category', FrontEndCategory::class)->name('category');
@@ -115,7 +117,7 @@ Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
 
 Route::get('about', AboutUs::class)->name('about');
 Route::get('error', Error::class)->name('error');
-Route::get('order-completed', OrderCompleted::class)->name('order-completed');
+// Route::get('order-completed', OrderCompleted::class)->name('order-completed');
 
 Route::get('wish-list', Wishlist::class)->name('wish-list');
 

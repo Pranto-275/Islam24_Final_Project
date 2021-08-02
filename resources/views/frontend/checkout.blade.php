@@ -37,7 +37,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="checkout-wrap">
-                        <h5 class="title">billing information</h5>
+                        <h5 class="title">Quck Checkout</h5>
                         <form action="#" class="checkout-form">
                             <div class="row">
                                 <div class="col-sm-6">

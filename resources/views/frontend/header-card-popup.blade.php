@@ -3,7 +3,7 @@
         <li class="d-flex align-items-start" id="li_row_{{ $productId }}">
             <div class="cart-img">
                 <a href="#">
-                    <img src="{{ URL::asset('venam/') }}/img/product/cart_p01.jpg" alt="">
+                    <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" alt="">
                 </a>
             </div>
             <div class="cart-content">
