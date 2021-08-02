@@ -19,8 +19,6 @@ class CreateOrderDetailsTable extends Migration
             $table->foreignId('product_id')->nullable();
             $table->double('unit_price')->nullable();
             $table->double('quantity')->nullable();
-            $table->foreignId('branch_id');
-            $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();

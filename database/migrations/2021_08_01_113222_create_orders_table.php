@@ -24,10 +24,7 @@ class CreateOrdersTable extends Migration
             $table->double('vat')->nullable();
             $table->double('payable_amount')->nullable();
             $table->text('note')->nullable();
-            $table->enum('invoice_channel', ['Web-Sale', 'Sale-Terminal'])->comment('Backend Sale or Online Sale');
             $table->foreignId('coupon_code_id')->nullable();
-            $table->foreignId('branch_id');
-            $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
