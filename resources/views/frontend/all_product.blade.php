@@ -228,7 +228,7 @@
                                             </a>
                                             <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                                <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
+                                                <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                                 <li><a href="#"><i class="flaticon-witness"></i></a></li>
                                             </ul>
                                         </div>
