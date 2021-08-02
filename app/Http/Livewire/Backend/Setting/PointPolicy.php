@@ -52,7 +52,7 @@ class PointPolicy extends Component
         $Query->point_amount = $this->point_amount;
         $Query->description = $this->description;
         $Query->is_active = $this->is_active;
-        $Query->branch_id = 1;
+        $Query->branch_id = Auth::user()->branch_id;
         $Query->save();
         $this->emit('success', ['text' => 'Point Policy C/U Successfully']);
     }

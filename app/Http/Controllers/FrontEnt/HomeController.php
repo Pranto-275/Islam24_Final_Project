@@ -53,15 +53,15 @@ class HomeController extends Controller
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
         ]);
     }
-    public function searchBySubSubCategory($catId=NULL){
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($catId)->get()->toArray();
+    public function searchBySubSubCategory($subSubCatId=NULL){
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($subSubCatId)->get()->toArray();
         return view('frontend.all_product',[
             'data'=>$data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
         ]);
     }
-    public function searchBySubCategory($catId=NULL){
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($catId)->get()->toArray();
+    public function searchBySubCategory($subCatId=NULL){
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->get()->toArray();
         return view('frontend.all_product',[
             'data'=>$data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),

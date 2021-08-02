@@ -67,7 +67,7 @@ class InvoiceSetting extends Component
         $Query->is_paid_due_hide    = $this->is_paid_due_hide;
         $Query->is_memo_no_hide     = $this->is_memo_no_hide;
         $Query->is_chalan_no_hide   = $this->is_chalan_no_hide;
-        $Query->branch_id           = 1;
+        $Query->branch_id           = Auth::user()->branch_id;
         $Query->save();
         $this->emit('success',[
            'text' => 'Invoice setting has been saved successfully',

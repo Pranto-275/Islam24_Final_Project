@@ -40,6 +40,7 @@ class Warehouse extends Component
             'code' => 'required',
             'name' => 'required',
             'address' => 'required',
+            'branch_id' => 'required',
             'is_active' => 'required',
         ]);
         if ($this->WarehouseId) {

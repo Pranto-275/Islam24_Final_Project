@@ -78,7 +78,7 @@ class Sale extends Component
         $Query->discount = $this->discount;
         $Query->shipping_charge = $this->shipping_charge;
         $Query->payable_amount = $this->grand_total;
-        $Query->branch_id = '1';
+        $Query->branch_id = Auth::user()->branch_id;
         $Query->save();
         foreach ($this->orderProductList as $key => $value) {
             // dd($this->orderProductList);
@@ -87,7 +87,7 @@ class Sale extends Component
             if (!$SaleInvoiceDetail) {
                 $SaleInvoiceDetail = new SaleInvoiceDetail();
                 $SaleInvoiceDetail->created_by = Auth::id();
-                $SaleInvoiceDetail->branch_id = 1;
+                $SaleInvoiceDetail->branch_id = Auth::user()->branch_id;
             }
 
             $SaleInvoiceDetail->sale_invoice_id = $Query->id;
@@ -111,7 +111,7 @@ class Sale extends Component
             $SalePayment->transaction_id = $value['transaction_id'];
             $SalePayment->code = $value['payment_code'];
             $SalePayment->created_by = Auth::id();
-            $SalePayment->branch_id = 1;
+            $SalePayment->branch_id = Auth::user()->branch_id;
             $SalePayment->save();
         }
             // Start Sale Product Stock Manager
@@ -123,7 +123,7 @@ class Sale extends Component
                 $StockManager->stock_out_sale=$SaleInvoiceDetail->sum('quantity');
                 $StockManager->stock_in_inventory=$StockManager->stock_in_opening + $StockManager->stock_in_purchase - $SaleInvoiceDetail->sum('quantity');
                 $StockManager->warehouse_id=$this->warehouse_id[$key];
-                $StockManager->branch_id=1;
+                $StockManager->branch_id=Auth::user()->branch_id;
                 $StockManager->created_by = Auth::user()->id;
                 $StockManager->save();
             }

@@ -59,7 +59,7 @@ class SubCategory extends Component
         }
         $Query->description = $this->description;
         $Query->category_id = $this->category_id;
-        $Query->branch_id = 1;
+        $Query->branch_id = Auth::user()->branch_id;
         $Query->is_active = $this->is_active;
 
         $Query->save();

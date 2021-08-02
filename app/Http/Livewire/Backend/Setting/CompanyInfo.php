@@ -67,7 +67,7 @@ public function companyInfoSave(){
             $path = $this->logo->store('/public/photo');
             $Query->logo = basename($path);
           }
-          $Query->branch_id = 1;
+          $Query->branch_id = Auth::user()->branch_id;
           $Query->save();
           $this->emit('success',[
              'text' => 'CompanyInfo Saved Successfully',

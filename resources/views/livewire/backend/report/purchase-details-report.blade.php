@@ -79,7 +79,7 @@
                                         @if($purchaseDetail->PurchaseInvoice->Contact) {{ $purchaseDetail->PurchaseInvoice->Contact->first_name }} {{ $purchaseDetail->PurchaseInvoice->Contact->last_name }} @endif
                                     </td>
                                     <td>
-                                        {{$purchaseDetail->Product->name}}
+                                        @if($purchaseDetail->Product) {{$purchaseDetail->Product->name}} @endif
                                     </td>
 
                                     <td>

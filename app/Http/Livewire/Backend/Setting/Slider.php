@@ -58,7 +58,7 @@ class Slider extends Component
             $Query->image = basename($path);
         }
         $Query->position = $this->position;
-        $Query->branch_id = 1;
+        $Query->branch_id = Auth::user()->branch_id;
         $Query->save();
         $this->reset();
         $this->sliderImageModal();

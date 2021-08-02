@@ -66,7 +66,7 @@ class Currency extends Component
         $Query->in_word_prefix_position = $this->in_word_prefix_position;
         $Query->in_word_surfix_position = $this->in_word_surfix_position;
         $Query->is_active = $this->is_active;
-        $Query->branch_id = '1';
+        $Query->branch_id = Auth::user()->branch_id;
         $Query->save();
 
         $this->currencyInfoModal();

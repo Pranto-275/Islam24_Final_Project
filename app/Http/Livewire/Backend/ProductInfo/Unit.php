@@ -48,7 +48,7 @@ class Unit extends Component
         $Query->name = $this->name;
         $Query->rate = $this->rate;
         $Query->is_active = $this->is_active;
-        $Query->branch_id = 1;
+        $Query->branch_id = Auth::user()->branch_id;
         $Query->save();
         $this->reset();
         $this->productUnitInfoModal();

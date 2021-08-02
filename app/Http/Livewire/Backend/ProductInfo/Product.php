@@ -83,7 +83,7 @@ class Product extends Component
 
             $this->vat_id = $this->QueryUpdate->vat_id;
             $this->is_active = $this->QueryUpdate->is_active;
-            $this->branch_id = 1;
+            $this->branch_id = Auth::user()->branch_id;
 
             $productInfo = ProductInfo::whereProductId($id)->first();
             if ($productInfo) {
@@ -163,7 +163,7 @@ class Product extends Component
             $Query->low_alert = $this->low_alert;
             $Query->vat_id = $this->vat_id;
             $Query->is_active = $this->is_active;
-            $Query->branch_id = 1;
+            $Query->branch_id = Auth::user()->branch_id;
             $Query->save();
 
             $productInfo = ProductInfo::whereProductId($Query->id)->firstOrNew();
@@ -174,7 +174,7 @@ class Product extends Component
             $productInfo->meta_keyword = $this->meta_keyword;
             $productInfo->short_description = $this->short_description;
             $productInfo->long_description = $this->long_description;
-            $productInfo->branch_id = 1;
+            $productInfo->branch_id = Auth::user()->branch_id;
             $productInfo->created_by = Auth::user()->id;
             $productInfo->save();
 
@@ -190,7 +190,7 @@ class Product extends Component
                     $path = $image->store('/public/photo');
                     $QueryImage->image = basename($path);
                     $QueryImage->created_by = Auth::user()->id;
-                    $QueryImage->branch_id = 1;
+                    $QueryImage->branch_id = Auth::user()->branch_id;
                     $QueryImage->is_active = 1;
                     $QueryImage->save();
                 }
@@ -242,7 +242,7 @@ class Product extends Component
                 $StockManager->product_id=$Query->id;
                 $StockManager->stock_in_opening=$this->stock_in_opening;
                 $StockManager->warehouse_id=$this->warehouse_id;
-                $StockManager->branch_id=1;
+                $StockManager->branch_id=Auth::user()->branch_id;
                 $StockManager->created_by=Auth::user()->id;
                 $StockManager->save();
             }

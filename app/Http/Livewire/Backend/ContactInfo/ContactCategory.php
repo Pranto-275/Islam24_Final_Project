@@ -13,7 +13,6 @@ class ContactCategory extends Component
     public $code;
     public $name;
     public $is_active;
-    public $branch_id;
     public $contact_Category_id;
 
 
@@ -35,7 +34,7 @@ class ContactCategory extends Component
           $Query->code        = $this->code;
           $Query->name        = $this->name;
           $Query->is_active      = $this->is_active;
-          $Query->branch_id   = 1;
+          $Query->branch_id   = Auth::user()->branch_id;
           $Query->save();
           $this->reset();
           $this->ContactCategoryModal();

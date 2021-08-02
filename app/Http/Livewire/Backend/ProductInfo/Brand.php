@@ -16,7 +16,6 @@ class Brand extends Component
     public $name;
     public $image;
     public $description;
-    public $branch_id;
     public $is_active;
     public $brand_id;
     public $QueryUpdate;
@@ -45,7 +44,7 @@ class Brand extends Component
             $Query->image = basename($path);
         }
        $Query->description    =  $this->description;
-       $Query->branch_id      = 1;
+       $Query->branch_id      = Auth::user()->branch_id;
        $Query->is_active      = $this->is_active;
        $Query->save();
        $this->reset();

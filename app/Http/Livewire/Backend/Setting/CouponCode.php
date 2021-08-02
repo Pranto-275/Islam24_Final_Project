@@ -48,7 +48,7 @@ public function couponCodeSave(){
     $Query->offer_amount             = $this->offer_amount;
     $Query->min_buy_amount     = $this->min_buy_amount;
     $Query->is_active             = $this->is_active;
-    $Query->branch_id          = 1;
+    $Query->branch_id          = Auth::user()->branch_id;
     $Query->save();
     $this->reset();
     $this->couponCodeModal();

@@ -186,7 +186,7 @@
                                 <select class="custom-select">
                                     <option selected="">All Categories</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
                                     @endforeach
                                     <option>In All Categories</option>
                                 </select>
