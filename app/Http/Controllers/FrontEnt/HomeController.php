@@ -93,7 +93,6 @@ class HomeController extends Controller
         $OrderDetails->save();
         }
 
-
     //   Delete Add To Cart
          AddToCard::whereId(28)->delete();
 
