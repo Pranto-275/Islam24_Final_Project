@@ -182,4 +182,25 @@ class HomeController extends Controller
             'productDetails' => Product::whereId($id)->first(),
         ]);
     }
+
+    public function productSearch(Request $request)
+    {
+
+        $query = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('Best Selling Product');
+
+        if($request->get('search_product_name')){
+            $query->where('name', 'like', '%'.$request->get('search_product_name').'%');
+        }
+        if($request->get('search_product_category')){
+            $query->where('sub_sub_category_id', $request->get('search_product_category'));
+        }
+
+        $data['products'] = $query->get()->toArray();
+
+        return view('frontend.product-search', [
+            'data' => $data,
+        ]);
+    }
+
+
 }
