@@ -8,6 +8,7 @@ use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ContactInfo\ContactCategory;
 use App\Models\Backend\ProductInfo\Brand;
 use App\Models\Backend\Setting\Vat;
+use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\User as UserMm;
 use App\Models\Inventory\Category;
 use App\Models\Backend\ProductInfo\SubCategory;
@@ -29,6 +30,25 @@ use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
+    public function ShippingChargeTable(){
+        $Query = ShippingCharge::query()->orderBy('id', 'desc');
+
+        $this->i = 1;
+
+        return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
+        ->addColumn('is_active', function ($data) {
+            return $data->is_active==1 ? 'Active' : 'Inactive';
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action', 'is_active'])
+        ->toJSON();
+    }
     public function SaleListTable(){
         $Query = SaleInvoice::query()->orderBy('id', 'desc');
 
@@ -77,6 +97,9 @@ class DatatableController extends Controller
         return Datatables::of($Query)
         ->addColumn('id', function ($data) {
             return $this->i++;
+        })
+        ->addColumn('is_active', function ($data) {
+            return $data->is_active==1 ? 'Active' : 'Inactive';
         })
         ->addColumn('image', function ($data) {
             $url = asset('storage/photo/'.$data->image);
@@ -161,8 +184,6 @@ class DatatableController extends Controller
             ->rawColumns(['image','action'])
             ->toJSON();
     }
-
-
     public function WarehouseTable(){
         $Query = Warehouse::query()->orderBy('id', 'desc');
 
@@ -182,8 +203,6 @@ class DatatableController extends Controller
         ->rawColumns(['action','branch_id'])
         ->toJSON();
     }
-
-
     public function DeliveryMethodTable(){
         $Query = DeliveryMethod::query()->orderBy('id', 'desc');
 
@@ -251,14 +270,17 @@ class DatatableController extends Controller
         $this->i = 1;
 
         return Datatables::of($Query)
-        ->addColumn('id', function ($data) {
-            return $this->i++;
-        })
+            ->addColumn('id', function ($data) {
+                 return $this->i++;
+             })
+             ->addColumn('is_active', function ($data) {
+                return $data->is_active==1 ? 'Active' : 'Inactive';
+            })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['is_active', 'action'])
             ->toJSON();
     }
 
@@ -290,15 +312,17 @@ class DatatableController extends Controller
         $this->i = 1;
 
         return Datatables::of($Query)
-        ->addColumn('id', function ($data) {
-            return $this->i++;
-        })
-
+            ->addColumn('id', function ($data) {
+                return $this->i++;
+            })
+            ->addColumn('is_active', function ($data) {
+                return $data->is_active==1 ? 'Active' : 'Inactive';
+            })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
             })
-            ->rawColumns(['image', 'action'])
+            ->rawColumns(['image','is_active', 'action'])
             ->toJSON();
     }
 
@@ -308,15 +332,17 @@ class DatatableController extends Controller
         $this->i = 1;
 
         return Datatables::of($Query)
-        ->addColumn('id', function ($data) {
-            return $this->i++;
-        })
-
+            ->addColumn('id', function ($data) {
+                return $this->i++;
+            })
+            ->addColumn('is_active', function ($data) {
+                return $data->is_active==1 ? 'Active' : 'Inactive';
+            })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
             })
-            ->rawColumns(['image', 'action'])
+            ->rawColumns(['image', 'is_active', 'action'])
             ->toJSON();
     }
 

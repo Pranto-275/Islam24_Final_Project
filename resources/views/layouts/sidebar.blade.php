@@ -57,6 +57,7 @@
                         {{-- <li><a href="{{route('setting.company')}}">Company Info</a></li> --}}
                         <li><a href="{{route('setting.branch')}}">Branch</a></li>
                         <li><a href="{{route('setting.vat')}}">Vat</a></li>
+                        <li><a href="{{route('setting.shipping-charge')}}">Shipping Charge</a></li>
                         <li><a href="{{route('setting.warehouse')}}">Warehouse</a></li>
                         <li><a href="{{route('setting.companyinfo')}}">Company Info</a></li>
                         <li><a href="{{route('setting.currency')}}">Currency</a></li>

@@ -47,6 +47,7 @@ use App\Http\Livewire\Backend\Setting\PaymentMethod;
 use App\Http\Livewire\Backend\Setting\PointPolicy;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Setting\Vat;
+use App\Http\Livewire\Backend\Setting\ShippingCharge;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Transaction\CustomerPayment;
 use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
@@ -170,6 +171,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('payment-method', PaymentMethod::class)->name('payment-method');
         Route::get('coupon-code', CouponCode::class)->name('coupon-code');
         Route::get('vat', Vat::class)->name('vat');
+        Route::get('shipping-charge', ShippingCharge::class)->name('shipping-charge');
         Route::get('warehouse', Warehouse::class)->name('warehouse');
         Route::get('slider', Slider::class)->name('slider');
         Route::get('point-policy', PointPolicy::class)->name('point-policy');
@@ -233,6 +235,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('brand_table', [DatatableController::class, 'BrandTable'])->name('brand_table');
         Route::get('invoiceSetting_table', [DatatableController::class, 'InvoiceSettingTable'])->name('invoiceSetting_table');
         Route::get('vat_table', [DatatableController::class, 'VatTable'])->name('vat_table');
+        Route::get('shipping_charge', [DatatableController::class, 'ShippingChargeTable'])->name('shipping_charge');
         Route::get('coupon_table', [DatatableController::class, 'CouponTable'])->name('coupon_table');
         Route::get('paymentMethod_table', [DatatableController::class, 'paymentMethodTable'])->name('paymentMethod_table');
         Route::get('invoiceSave', [DatatableController::class, 'InvoiceTable'])->name('invoiceSave');

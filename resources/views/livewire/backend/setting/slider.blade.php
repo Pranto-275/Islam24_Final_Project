@@ -134,6 +134,11 @@
                         name:  'position'
                     },
                     {
+                        title: 'Status',
+                        data:  'is_active',
+                        name:  'is_active'
+                    },
+                    {
                         title: 'Action',
                         data:  'action',
                         name:  'action'
