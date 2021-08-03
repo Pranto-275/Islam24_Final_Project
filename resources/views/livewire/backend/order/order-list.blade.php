@@ -41,7 +41,7 @@
                                         <tr>
                                             <th>SL</th>
                                             <th>Customer</th>
-                                            <th>Sale Date</th>
+                                            <th>Order Date</th>
                                             <th>Total Amount</th>
                                             <th>Discount</th>
                                             <th>Shipping Charge</th>
@@ -55,42 +55,38 @@
                                             $i=0;
                                         @endphp
 
-                                         @foreach ($saleInvoices as $saleInvoice)
+                                         @foreach ($orders as $order)
 
                                         <tr>
                                             <td>
                                                 <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
                                             </td>
                                             <td>
-                                                {{$saleInvoice->Contact->first_name}} {{$saleInvoice->Contact->last_name}}
+                                                {{$order->Contact->first_name}}
                                             </td>
                                             <td>
-                                                {{$saleInvoice->sale_date}}
-                                            </td>
-
-                                            <td>
-                                              {{$saleInvoice->total_amount}}
+                                                {{$order->order_date}}
                                             </td>
 
                                             <td>
-                                              {{$saleInvoice->discount}}
+                                              {{$order->total_amount}}
+                                            </td>
+
+                                            <td>
+                                              {{$order->discount}}
                                             </td>
                                             <td>
-                                                {{$saleInvoice->shipping_charge}}
+                                                {{$order->shipping_charge}}
                                             </td>
                                             <td>
-                                                {{$saleInvoice->payable_amount}}
-                                              </td>
-                                            <td>
-                                                <a class="btn btn-info btn-sm" href="{{ route('inventory.sale-invoice', ['id' => $saleInvoice->id])}}">
-                                                    <i class="fas fa-eye font-size-18"></i>
-                                                </a>
-                                                <a href="{{ route('inventory.sale',['id'=>$saleInvoice->id]) }}">
-                                                    <button class="btn btn-primary btn-sm"><i
-                                                        class="bx bx-edit font-size-18"></i></button>
-                                                </a>
-                                                <button class="btn btn-danger btn-sm" wire:click="deleteOrder({{ $saleInvoice->id }})"><i
-                                                        class="bx bx-window-close font-size-18"></i></button>
+                                                {{$order->payable_amount}}
+                                            </td>
+                                            <td wire:ignore>
+                                                <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">
+                                                     <option value="">Status</option>
+                                                     <option value="approved {{$order->id}}">Approved</option>
+                                                     <option value="cancel {{$order->id}}">Cancel</option>
+                                                </select>
                                             </td>
                                         </tr>
                                          @endforeach
@@ -194,10 +190,7 @@
             </div>
         </div> --}}
         @push('scripts')
-            <script>
 
-
-            </script>
         @endpush
 
 
