@@ -177,7 +177,11 @@
                         data:  'min_buy_amount',
                         name:  'min_buy_amount'
                     },
-
+                    {
+                        title: 'Status',
+                        data:  'is_active',
+                        name:  'is_active'
+                    },
                     {
                         title: 'Action',
                         data:  'action',

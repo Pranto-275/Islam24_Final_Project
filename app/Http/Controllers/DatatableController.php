@@ -98,6 +98,9 @@ class DatatableController extends Controller
         ->addColumn('id', function ($data) {
             return $this->i++;
         })
+        ->addColumn('is_active', function ($data) {
+            return $data->is_active==1 ? 'Active' : 'Inactive';
+        })
         ->addColumn('image', function ($data) {
             $url = asset('storage/photo/'.$data->image);
             return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
@@ -267,14 +270,17 @@ class DatatableController extends Controller
         $this->i = 1;
 
         return Datatables::of($Query)
-        ->addColumn('id', function ($data) {
-            return $this->i++;
-        })
+            ->addColumn('id', function ($data) {
+                 return $this->i++;
+             })
+             ->addColumn('is_active', function ($data) {
+                return $data->is_active==1 ? 'Active' : 'Inactive';
+            })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['is_active', 'action'])
             ->toJSON();
     }
 
@@ -326,15 +332,17 @@ class DatatableController extends Controller
         $this->i = 1;
 
         return Datatables::of($Query)
-        ->addColumn('id', function ($data) {
-            return $this->i++;
-        })
-
+            ->addColumn('id', function ($data) {
+                return $this->i++;
+            })
+            ->addColumn('is_active', function ($data) {
+                return $data->is_active==1 ? 'Active' : 'Inactive';
+            })
             ->addColumn('action', function ($data) {
                 return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
             })
-            ->rawColumns(['image', 'action'])
+            ->rawColumns(['image', 'is_active', 'action'])
             ->toJSON();
     }
 
