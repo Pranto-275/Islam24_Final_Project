@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    @foreach ($categories as $category)
+                    @foreach ($topSixCategories as $category)
 
                     <div class="col-lg-2 col-md-6">
                         <div class="top-cat-banner-item mt-30">
