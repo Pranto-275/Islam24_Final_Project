@@ -14,28 +14,9 @@
                  <!-- main-area -->
         <main>
 
-            <!-- breadcrumb-area -->
-            <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="breadcrumb-content text-center">
-                                <h2>Smart Shop</h2>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Shop Left Sidebar</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- breadcrumb-area-end -->
 
             <!-- shop-area -->
-            <div class="shop-area gray-bg pt-100 pb-100">
+            <div class="shop-area gray-bg pt-20 pb-100">
                 <div class="custom-container-two">
                     <div class="row justify-content-center">
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 order-2 order-lg-0">

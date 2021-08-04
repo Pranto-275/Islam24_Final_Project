@@ -74,7 +74,7 @@
                     {{-- Start New Electronics --}}
                     @if($data['products_desc'])
                     @foreach($data['products_desc'] as $product)
-                        <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="col-6 col-xl-3 col-md-4">
                             <div class="exclusive-item exclusive-item-three text-center mb-40">
                                 <div class="exclusive-item-thumb">
                                     <a href="shop-details.html">
@@ -211,7 +211,7 @@
                 <div class="row justify-content-center">
                     @if($data['products'])
                         @foreach($data['products'] as $product)
-                            <div class="col-xl-4 col-md-4 col-sm-6">
+                            <div class="col-xl-3 col-md-4 col-6">
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">

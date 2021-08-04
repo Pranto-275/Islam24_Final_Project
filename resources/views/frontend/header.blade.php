@@ -101,7 +101,7 @@
                                     <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
                                     <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
-                                        <span class="cart-total-price">$ {{ $cardBadge['data']['total_price'] }}</span>
+                                        <span class="cart-total-price" style="width: 120px;">$ {{ $cardBadge['data']['total_price'] }}</span>
                                         <ul class="minicart">
                                             @include('frontend.header-card-popup')
                                         </ul>
@@ -184,7 +184,7 @@
                             <form action="{{ route('product-search') }}" method="GET">
                                 <input type="text" name="search_product_name" id="search_product_name" placeholder="Search for your item's type.....">
                                 <select class="custom-select" name="search_product_category" id="search_product_category">
-                                    <option selected="">All Categories</option>
+                                    <option selected="" value="">All Categories</option>
                                     @foreach ($categories as $category)
                                         <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
                                     @endforeach

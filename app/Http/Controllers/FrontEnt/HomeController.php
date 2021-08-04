@@ -98,7 +98,7 @@ class HomeController extends Controller
             }
 
             //   Delete Add To Cart
-            AddToCard::whereId(28)->delete();
+            AddToCard::wheresessionId($sessionId)->delete();
         });
 
         //    return redirect()->route('/order-completed');
@@ -186,7 +186,7 @@ class HomeController extends Controller
     public function productSearch(Request $request)
     {
 
-        $query = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('Best Selling Product');
+        $query = $this->product->with(['ProductImageFirst', 'ProductImageLast']);
 
         if($request->get('search_product_name')){
             $query->where('name', 'like', '%'.$request->get('search_product_name').'%');
