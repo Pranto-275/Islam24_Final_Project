@@ -98,10 +98,10 @@
         <!-- footer-area-end -->
 
         <!-- Start Mobile Responseive Footer -->
-        <div>
-            @include('frontend.mobile-responsive-footer')
-        </div>
+        @include('frontend.mobile-responsive-footer')
         <!-- Start Mobile Responseive Footer -->
+       <br>
+
 		<!-- JS here -->
         <script src="{{ URL::asset('venam/') }}/js/vendor/jquery-3.5.0.min.js"></script>
         <script src="{{ URL::asset('venam/') }}/js/popper.min.js"></script>
