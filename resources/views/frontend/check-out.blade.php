@@ -15,6 +15,7 @@
 
     <main>
          <!-- breadcrumb-area -->
+
          <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
             <div class="container">
                 <div class="row">
@@ -32,6 +33,7 @@
                 </div>
             </div>
         </section>
+
         <!-- breadcrumb-area-end -->
 
         <!-- checkout-area -->
