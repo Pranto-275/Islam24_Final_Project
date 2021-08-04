@@ -5187,3 +5187,20 @@ label {
     font: bold 2em "Rubik", sans-serif;
   }
 }
+
+#mobileResponsiveFooter{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width:100%;
+    margin-bottom: 1px;
+}
+@media only screen and (min-width: 768px) {
+    #mobileResponsiveFooter{
+        display: none;
+    }
+}
+#shoppingStart{
+    background-color: #5be762;
+    font-weight: bold;
+}
