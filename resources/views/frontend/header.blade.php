@@ -181,16 +181,16 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
                         <div class="header-search-wrap">
-                            <form action="#">
-                                <input type="text" placeholder="Search for your item's type.....">
-                                <select class="custom-select">
+                            <form action="{{ route('product-search') }}" method="GET">
+                                <input type="text" name="search_product_name" id="search_product_name" placeholder="Search for your item's type.....">
+                                <select class="custom-select" name="search_product_category" id="search_product_category">
                                     <option selected="">All Categories</option>
                                     @foreach ($categories as $category)
                                         <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
                                     @endforeach
                                     <option>In All Categories</option>
                                 </select>
-                                <button><i class="flaticon-magnifying-glass-1"></i></button>
+                                <button type="submit" id="btn-product-search"><i class="flaticon-magnifying-glass-1"></i></button>
                             </form>
                         </div>
                         <div class="header-free-shopping">
@@ -203,3 +203,15 @@
     </div>
     <!-- header-search-area-end -->
 </header>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btn-product-search').on('click', function (){
+           /*var url = '{{ route('check-out') }}';
+           var searchProductName = $('#search_product_name').val();
+           var searchProductCategory = $('#search_product_category').val();
+
+            window.location = '"'+url+'/'+searchProductName+'/'+searchProductCategory+'"';*/
+        });
+    });
+</script>
