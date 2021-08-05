@@ -19,9 +19,9 @@ class OrderList extends Component
         $id=$IdStatus['1'];
         if($this->status=="approved"){
             DB::transaction(function() use($id) {
-        //    Start Data From Order To Sale Invoice
+        // Start Data From Order To Sale Invoice
              $order=Order::find($id);
-             $saleInvoice=new SaleInvoice();
+             $saleInvoice=SaleInvoice::whereOrderId($order->id)->firstOrNew();
              $saleInvoice->order_id=$order->id;
              $saleInvoice->contact_id=$order->contact_id;
              $saleInvoice->sale_date=Carbon::now();
@@ -33,7 +33,8 @@ class OrderList extends Component
              $saleInvoice->branch_id=Auth::user()->branch_id;
              $saleInvoice->created_by=Auth::user()->id;
              $saleInvoice->save();
-        //    End Data From Order To Sale Invoice
+        // End Data From Order To Sale Invoice
+
         // Start Order Detail To Sale Invoice Details
            foreach($order->OrderDetail as $orderProduct){
                $saleInvoiceDetail=new SaleInvoiceDetail();
@@ -48,7 +49,8 @@ class OrderList extends Component
                $saleInvoiceDetail->save();
            }
         // End Order Detail To Sale Invoice Details
-        //  Approve Order
+
+        // Approve Order
              $order->status="approved";
              $order->save();
             });
@@ -56,10 +58,11 @@ class OrderList extends Component
                 'text' => 'Order Approved Successfully',
              ]);
         }else if($this->status="cancel"){
-            //  Approve Order
+        //  Approve Order
             $order=Order::find($id);
             $order->status="cancel";
             $order->save();
+
             $this->emit('success',[
                 'text' => 'Order Cancel Successfully',
              ]);
