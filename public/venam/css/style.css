@@ -5201,7 +5201,7 @@ label {
     }
 }
 #shoppingStart{
-    background-color: #5be762;
+    /* background-color: #5be762; */
     font-weight: bold;
 }
 @media only screen and (min-width: 768px) {
@@ -5214,5 +5214,8 @@ label {
         -webkit-box-shadow: 0 4px 3px -3px black;
         -moz-box-shadow: 0 4px 3px -3px black;
         box-shadow: 0 4px 3px -6px black;
+    }
+    #paikaryLogo{
+        display: none;
     }
 }
