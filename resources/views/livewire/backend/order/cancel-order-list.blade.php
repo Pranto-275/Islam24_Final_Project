@@ -3,7 +3,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        Order List
+        Cancelled Order List
     </x-slot>
     <div class="row">
         <div class="col-12">
