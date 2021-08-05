@@ -13,16 +13,16 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Order List</h4>
+                                    <h4>Pending Order List</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <a href="{{ route('inventory.sale') }}">
+                                <a href="{{ route('order.order-list') }}">
                                     <button type="button"
                                             class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
-                                            class="mdi mdi-plus mr-1"></i>New Order
+                                            class="mdi mdi-plus mr-1"></i>Order List
                                     </button>
                                 </a>
                             </div>
