@@ -69,7 +69,7 @@
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                         </div>
-                                                        <h5><a href="{{route('product-details',['id'=>$newProduct['id']])}}">{{$newProduct->name}}</a></h5>
+                                                        <h5><a href="{{route('product-details',['id'=>$newProduct['id']])}}" style="text-transform: capitalize;">{{$newProduct->name}}</a></h5>
                                                         <span>$ 39.00</span>
                                                     </div>
                                                 </li>

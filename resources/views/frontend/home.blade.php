@@ -50,7 +50,7 @@
 
                     <div class="col-lg-2 col-md-6">
                         <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt=""></a>
+                            <a href="shop-left-sidebar.html"><img src="{{ asset('storage/photo/'.$category->image1) }}" style="height: 142px;" alt=""></a>
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
                                     </ul>
                                 </div>
                                 <div class="exclusive-item-content">
-                                    <h5><a href="shop-details.html">{{ $product['name'] }}</a></h5>
+                                    <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
                                     <div class="exclusive--item--price">
                                         <del class="old-price">{{ $product['regular_price'] }}</del>
                                         <span class="new-price">{{ $product['special_price'] }}</span>
@@ -225,7 +225,7 @@
                                         </ul>
                                     </div>
                                     <div class="exclusive-item-content">
-                                        <h5><a href="shop-details.html">{{ $product['name'] }}</a></h5>
+                                        <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
                                         <div class="exclusive--item--price">
                                             <del class="old-price">{{ $product['regular_price'] }}</del>
                                             <span class="new-price">{{ $product['special_price'] }}</span>

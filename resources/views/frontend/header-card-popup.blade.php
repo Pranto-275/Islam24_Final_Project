@@ -8,7 +8,7 @@
             </div>
             <div class="cart-content">
                 <h4>
-                    <a href="#">{{ $product['Info']['product_name'] }}</a>
+                    <a href="#" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a>
                 </h4>
                 <div class="cart-price">
                     <span class="new">{{ $product['Info']['special_price'] }}</span>

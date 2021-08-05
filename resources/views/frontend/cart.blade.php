@@ -58,7 +58,7 @@
                                                 <td class="product-thumbnail"><a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
                                                 </td>
                                                 <td class="product-name">
-                                                    <h4><a href="{{ route('product-details',['id'=>$productId]) }}">{{ $product['Info']['product_name'] }}</a></h4>
+                                                    <h4><a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a></h4>
                                                     <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span>
                                                 </td>
