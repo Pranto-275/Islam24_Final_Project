@@ -143,7 +143,7 @@
                             <aside class="shop-cart-sidebar">
                                 <div class="shop-cart-widget">
                                     <h6 class="title">Cart Totals</h6>
-                                    <form action="#">
+                                    <form action="{{ route('check-out') }}">
                                         <ul>
                                             <li><span>SUBTOTAL</span> $ <span class="cart-total-price">{{ $totalPrice }}</span></li>
                                             <li>
