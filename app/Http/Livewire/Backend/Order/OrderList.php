@@ -22,6 +22,7 @@ class OrderList extends Component
         //    Start Data From Order To Sale Invoice
              $order=Order::find($id);
              $saleInvoice=new SaleInvoice();
+             $saleInvoice->order_id=$order->id;
              $saleInvoice->contact_id=$order->contact_id;
              $saleInvoice->sale_date=Carbon::now();
              $saleInvoice->total_amount	=$order->total_amount;

@@ -5204,3 +5204,15 @@ label {
     background-color: #5be762;
     font-weight: bold;
 }
+@media only screen and (min-width: 768px) {
+    #mobile-response-search-box{
+        visibility: hidden;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #responsive-header{
+        -webkit-box-shadow: 0 4px 3px -3px black;
+        -moz-box-shadow: 0 4px 3px -3px black;
+        box-shadow: 0 4px 3px -6px black;
+    }
+}

@@ -122,6 +122,9 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('order.order-list')}}">Order List</a></li>
+                        <li><a href="{{route('order.order-pending')}}">Pending Order</a></li>
+                        <li><a href="{{route('order.order-approve')}}">Approved Order</a></li>
+                        <li><a href="{{route('order.order-cancel')}}">Cancelled Order</a></li>
                     </ul>
                 </li>
             </ul>
