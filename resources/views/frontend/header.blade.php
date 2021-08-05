@@ -71,33 +71,6 @@
                             <div class="logo">
                                 <a href="{{url('/')}}"><img src="{{ URL::asset('venam/') }}/img/logo/logo_paikari_red.png" alt="Logo"></a>
                             </div>
-                            {{-- Start Mobile Responsive Search Box --}}
-                            <form action="{{ route('product-search') }}" method="GET">
-                            <div class="input-group mt-1" id="mobile-response-search-box" style="width: 100%;">
-                                <input type="text" class="form-control" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
-                                <div class="input-group-append">
-                                    <select name="search_product_category" id="search_product_category" style="width:90px;">
-                                        <option selected="" value="">Categories</option>
-                                        @foreach ($categories as $category)
-                                            <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
-                                        @endforeach
-                                        <option>In All Categories</option>
-                                    </select>
-                                </div>
-                                <div class="input-group-append" style="width: 20px;">
-                                    <button type="submit" style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i class="fa fa-search text-light"></i></button>
-                                  {{-- <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                  </div> --}}
-                                </div>
-                            </div>
-                           </form>
-                            {{-- End Mobile Responsive Search Box --}}
-                           &nbsp;&nbsp;
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
                                     <li class="active"><a href="{{url('/')}}">Home</a></li>
@@ -136,6 +109,33 @@
                                 </ul>
                             </div>
                         </nav>
+                          {{-- Start Mobile Responsive Search Box --}}
+                            <form action="{{ route('product-search') }}" method="GET">
+                            <div class="input-group mt-1" id="mobile-response-search-box" style="width: 100%;">
+                                <input type="text" class="form-control" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
+                                <div class="input-group-append">
+                                    <select name="search_product_category" id="search_product_category" style="width:90px;">
+                                        <option selected="" value="">Categories</option>
+                                        @foreach ($categories as $category)
+                                            <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
+                                        @endforeach
+                                        <option>In All Categories</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-append" style="width: 20px;">
+                                    <button type="submit" style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i class="fa fa-search text-light"></i></button>
+                                  {{-- <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                  </div> --}}
+                                </div>
+                            </div>
+                           </form>
+                            {{-- End Mobile Responsive Search Box --}}
+                            &nbsp;&nbsp;
                     </div>
                     <!-- Mobile Menu  -->
                     <div class="mobile-menu">

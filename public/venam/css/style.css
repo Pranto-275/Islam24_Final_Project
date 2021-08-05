@@ -5206,7 +5206,7 @@ label {
 }
 @media only screen and (min-width: 768px) {
     #mobile-response-search-box{
-        visibility: hidden;
+        display: none;
     }
 }
 @media only screen and (max-width: 768px) {
