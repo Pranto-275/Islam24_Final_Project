@@ -71,8 +71,8 @@
                         <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
                             <input type="text" class="form-control" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
                             <div class="input-group-append">
-                                <select name="search_product_category" id="search_product_category" style="width:90px;">
-                                    <option selected="" value="">Categories</option>
+                                <select name="search_product_category" id="search_product_category" style="width:90px;background-color:rgb(173, 241, 188);">
+                                    <option selected="" value="">Category</option>
                                     @foreach ($categories as $category)
                                         <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
                                     @endforeach
