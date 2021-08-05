@@ -1,9 +1,5 @@
-@include('frontend.header')
 @extends('layouts.front_end')
-@push('css')
-
-@endpush
-
+@section('content')
 <div>
     <x-slot name="title">
         Home
@@ -13,28 +9,9 @@
     </x-slot>
     <main>
 
-       <!-- breadcrumb-area -->
-       <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2>Order Completed</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Order Completed</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- breadcrumb-area-end -->
 
     <!-- order-complete-area -->
-    <section class="order-complete-area pattern-bg pt-100 pb-100" data-background="img/bg/pattern_bg.jpg">
+    <section class="order-complete-area pattern-bg pt-20 pb-100" data-background="img/bg/pattern_bg.jpg">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10">
@@ -46,7 +23,7 @@
                             </div>
                             <p>Thank you for your order! Your order is being processed and will be completed within 6-12 Hours. You will receive an
                             email confirmation when your order is completed.</p>
-                            <a href="shop-left-sidebar.html" class="btn">CONTINUE SHOPPING</a>
+                            <a href="{{route('home')}}" class="btn">CONTINUE SHOPPING</a>
                             <p class="get-ans">Get answers to all your <a href="#">Questions</a> you might have.</p>
                         </div>
                     </div>
@@ -137,6 +114,4 @@
     </li>
 </div>--}}
 
-@push('scripts')
-
-@endpush
+@endsection

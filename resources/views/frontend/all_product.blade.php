@@ -1,8 +1,5 @@
-@include('frontend.header')
 @extends('layouts.front_end')
-@push('css')
-
-@endpush
+@section('content')
 <div>
     <x-slot name="title">
         Product View
@@ -264,6 +261,7 @@
         <!-- main-area-end -->
         <!-- main-area-end -->
 </div>
+@endsection
 @push('scripts')
 
 @endpush

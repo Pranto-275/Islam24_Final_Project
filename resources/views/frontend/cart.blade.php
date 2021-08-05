@@ -1,8 +1,6 @@
-@include('frontend.header')
-@extends('layouts.front_end')
-@push('css')
 
-@endpush
+@extends('layouts.front_end')
+@section('content')
 <div>
     <x-slot name="title">
         Cart
@@ -172,6 +170,7 @@
             <!-- shop-cart-area-end -->
 
         </main>
+        @endsection
         <!-- main-area-end -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

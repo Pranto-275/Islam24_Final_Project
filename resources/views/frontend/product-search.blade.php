@@ -1,9 +1,5 @@
-@include('frontend.header')
 @extends('layouts.front_end')
-@push('css')
-
-@endpush
-
+@section('content')
 <div>
     <x-slot name="title">
         Home
@@ -67,6 +63,4 @@
 
     </main>
 </div>
-@push('scripts')
-
-@endpush
+@endsection

@@ -1,9 +1,5 @@
-@include('frontend.header')
 @extends('layouts.front_end')
-@push('css')
-
-@endpush
-
+@section('content')
 <div>
     <x-slot name="title">
         Home
@@ -24,11 +20,11 @@
                                     <h5 data-animation="fadeInUp" data-delay=".3s">top deal !</h5>
                                     <h2 data-animation="fadeInUp" data-delay=".6s">stylish top <span>handbag</span></h2>
                                     <p data-animation="fadeInUp" data-delay=".9s">Get up to <span>50%</span> off Today Only</p>
-                                    <a href="shop-left-sidebar.html" class="btn yellow-btn" data-animation="fadeInUp" data-delay="1s">Shop Now</a>
+                                    <a href="{{route('search-category-wise')}}" class="btn yellow-btn" data-animation="fadeInUp" data-delay="1s">Shop Now</a>
                                 </div>
-                                <div class="slider-img" data-animation="fadeInRight" data-delay="1.2s">
+                                {{-- <div class="slider-img" data-animation="fadeInRight" data-delay="1.2s">
                                     <img src="{{ asset('storage/photo/'.$sliderImage->image) }}" alt="">
-                                </div>
+                                </div> --}}
                             </div>
                             @endforeach
                             {{-- <div class="single-slider slider-bg" data-background="{{ URL::asset('venam/') }}/img/slider/t_slider_bg02.jpg">
@@ -369,6 +365,4 @@
     </li>
 </div>--}}
 
-@push('scripts')
-
-@endpush
+@endsection
