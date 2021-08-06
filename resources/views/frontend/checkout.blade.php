@@ -1,8 +1,6 @@
-@include('frontend.header')
-@extends('layouts.front_end')
-@push('css')
 
-@endpush
+@extends('layouts.front_end')
+@section('content')
 <div>
     <x-slot name="title">
         Chechout
@@ -506,6 +504,4 @@
 
 
 </div>
-@push('scripts')
-
-@endpush
+@endsection

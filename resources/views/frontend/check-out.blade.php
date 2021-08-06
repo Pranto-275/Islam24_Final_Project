@@ -1,9 +1,5 @@
-
-@include('frontend.header')
 @extends('layouts.front_end')
-@push('css')
-
-@endpush
+@section('content')
 <div>
 
     <x-slot name="title">
@@ -14,36 +10,18 @@
     </x-slot>
 
     <main>
-         <!-- breadcrumb-area -->
 
-         <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadcrumb-content text-center">
-                            <h2>Shopping Checkout</h2>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- breadcrumb-area-end -->
 
         <!-- checkout-area -->
-        <section class="checkout-area pt-100 pb-100">
+        <section class="checkout-area pt-50 pb-100">
             <div class="container">
-                <div class="row justify-content-center">
+                <form id="checkout" method="POST" action="{{ route('confirm-order') }}" enctype="multipart/form-data" class="checkout-form" accept-charset="utf-8">
+                   @csrf
+                   <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="checkout-wrap">
                             <h5 class="title">Quick Checkout</h5>
-                            <form action="#" class="checkout-form">
+
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-grp">
@@ -79,15 +57,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-8">
                         <aside class="shop-cart-sidebar checkout-sidebar">
                             <div class="shop-cart-widget">
                                 <h6 class="title">Cart Totals</h6>
-                                <form id="contact-form">
-                                    {{-- @csrf --}}
+
 
                                     <ul>
                                         <li><span>SUBTOTAL</span> $ 136.00</li>
@@ -158,11 +135,13 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-submit" type="submit">Confirm</button>
-                                </form>
+
                             </div>
                         </aside>
                     </div>
+
                 </div>
+            </form>
             </div>
         </section>
         <!-- checkout-area-end -->
@@ -225,7 +204,8 @@
     <!-- end row -->
 
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@endsection
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
  $.ajaxSetup({
 
@@ -258,8 +238,8 @@ headers: {
 
 // console.log(fName);
 });
-</script>
-@push('scripts')
+</script> --}}
+{{-- @push('scripts')
 
 <script src="assets/libs/select2/js/select2.min.js"></script>
 
@@ -268,4 +248,22 @@ headers: {
 
 <!-- App js -->
 <script src="assets/js/app.js"></script>
-@endpush
+@endpush --}}
+@section('script')
+<script>
+	$(document).ready(function(){
+		$('#checkout').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+		});
+
+	});
+</script>
+@endsection

@@ -1,8 +1,6 @@
-@include('frontend.header')
-@extends('layouts.front_end')
-@push('css')
 
-@endpush
+@extends('layouts.front_end')
+@section('content')
 <div>
     <x-slot name="title">
         Cart
@@ -143,7 +141,7 @@
                             <aside class="shop-cart-sidebar">
                                 <div class="shop-cart-widget">
                                     <h6 class="title">Cart Totals</h6>
-                                    <form action="#">
+                                    <form action="{{ route('check-out') }}">
                                         <ul>
                                             <li><span>SUBTOTAL</span> $ <span class="cart-total-price">{{ $totalPrice }}</span></li>
                                             <li>
@@ -172,6 +170,7 @@
             <!-- shop-cart-area-end -->
 
         </main>
+        @endsection
         <!-- main-area-end -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

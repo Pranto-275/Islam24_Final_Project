@@ -59,6 +59,12 @@ class HomeController extends Controller
 
     public function confirmOrder(Request $request)
     {
+        // dd(true);
+        // $request->validate([
+        //     'fName' => 'required',
+        //     'mobile' => 'required',
+
+        // ]);
         DB::transaction(function () use ($request) {
             $sessionId = Session::getId();
             //    Add Customer
@@ -100,7 +106,12 @@ class HomeController extends Controller
             //   Delete Add To Cart
             AddToCard::wheresessionId($sessionId)->delete();
         });
-
+        // return response()->json([
+        //     'status' => 'success',
+        //     'message' => 'Successfully',
+        //     'redirect_url' => route('order-completed'),
+        // ]);
+        return redirect(route('order-completed'));
         //    return redirect()->route('/order-completed');
     }
 
