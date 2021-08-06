@@ -129,7 +129,7 @@
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
                                     <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
                                         <span class="cart-total-price" style="width: 120px;">$ {{ $cardBadge['data']['total_price'] }}</span>
-                                        <ul class="minicart">
+                                        <ul class="minicart" style="height: 300px;overflow-y: scroll;">
                                             @include('frontend.header-card-popup')
                                         </ul>
                                     </li>
