@@ -165,7 +165,7 @@
                                                     <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span>
                                                 </div>
-                                                <div class="col-4 product-price mt-2">$ {{ $product['unit_price'] }}</div>
+                                                <div class="col-4 product-price mt-5 text-info">$ {{ $product['unit_price'] }}</div>
                                                 <div class="col-4 product-quantity">
                                                     <div class="cart-plus">
                                                         <form action="#">
@@ -175,7 +175,7 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                                <div class="col-4 product-subtotal mt-2" id="product_subtotal_{{ $productId }}"><span>$ {{ $product['total_price'] }}</span></div>
+                                                <div class="col-4 product-subtotal mt-5 pl-4 text-info" id="product_subtotal_{{ $productId }}"><span>$ {{ $product['total_price'] }}</span></div>
                                             </div>
                                             <hr>
                                         @endforeach
