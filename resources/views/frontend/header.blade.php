@@ -48,9 +48,9 @@
                     <div class="header-top-right">
                         <ul>
                             <li>
-                                <a href="{{route('sign-up')}}"><i class="flaticon-user"></i>প্রবেশ / নিবন্ধন</a>
-                                <span>বা</span>
-                                <a href="{{route('sign-in')}}">আমার একাউন্ট</a>
+                                <a href="{{route('sign-up')}}"><i class="flaticon-user"></i>Sign Up</a>
+                                <span>Or</span>
+                                <a href="{{route('sign-in')}}">Sign In</a>
                             </li>
                         </ul>
                     </div>
@@ -101,14 +101,14 @@
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
                                     <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                    <li><a href="about">About Us</a></li>
-                                    <li class="dropdown"><a href="#">PAGES</a>
+                                    {{-- <li><a href="about">About Us</a></li> --}}
+                                    {{-- <li class="dropdown"><a href="#">PAGES</a>
                                         <ul class="submenu">
                                             <li><a href="sign-in">My Account</a></li>
                                             <li><a href="error">404 Page</a></li>
                                             <li><a href="terms-conditios">Terms and Conditions</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                     <li class="dropdown"><a href="#">SHOP</a>
                                         <ul class="submenu">
                                             <li><a href="category">Shop Left Sidebar</a></li>
@@ -119,7 +119,7 @@
                                             <li><a href="order-completed">Order completed</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">SPECIAL</a></li>
+                                    {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
                                 </ul>
                             </div>
@@ -129,7 +129,7 @@
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
                                     <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
                                         <span class="cart-total-price" style="width: 120px;">$ {{ $cardBadge['data']['total_price'] }}</span>
-                                        <ul class="minicart" style="height: 300px;overflow-y: scroll;">
+                                        <ul class="minicart">
                                             @include('frontend.header-card-popup')
                                         </ul>
                                     </li>
@@ -143,7 +143,10 @@
                         <div class="close-btn"><i class="fas fa-times"></i></div>
 
                         <nav class="menu-box">
-                            <div class="nav-logo"><a href="index.html"><img src="{{ URL::asset('venam/') }}/img/logo/white_logo.png" alt="" title=""></a>
+                            <div class="nav-logo">
+                                <a href="{{url('/')}}">
+                                    <img src="{{ URL::asset('venam/') }}/img/logo/logo_paikari_red.png" alt="Logo">
+                                </a>
                             </div>
                             <div class="menu-outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

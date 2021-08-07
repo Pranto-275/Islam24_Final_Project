@@ -38,7 +38,7 @@
                         <div class="col-lg-8">
                             <div class="table-responsive-xl">
                                 <table class="table mb-0">
-                                    <thead>
+                                    <thead id="cartHeader">
                                         <tr>
                                             <th class="product-thumbnail"></th>
                                             <th class="product-name">Product</th>

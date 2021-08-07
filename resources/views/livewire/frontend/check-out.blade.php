@@ -4,10 +4,10 @@
 <div>
 
     <x-slot name="title">
-        Category
+        Checkout
     </x-slot>
     <x-slot name="header">
-       Category
+        Checkout
     </x-slot>
 
     <div class="checkout-tabs">

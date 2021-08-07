@@ -5208,6 +5208,7 @@ label {
     #mobile-response-search-box{
         display: none;
     }
+
 }
 @media only screen and (max-width: 768px) {
     #responsive-header{
@@ -5218,4 +5219,6 @@ label {
     #paikaryLogo{
         display: none;
     }
+
 }
+

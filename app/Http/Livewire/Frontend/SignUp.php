@@ -8,7 +8,7 @@ class SignUp extends Component
 {
     public function render()
     {
-        return view('livewire.frontend.sign-up')
+        return view('frontend.sign-up')
         ->layout('layouts.front_end');
     }
 }

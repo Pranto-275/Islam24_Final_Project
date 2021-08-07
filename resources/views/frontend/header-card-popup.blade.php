@@ -1,4 +1,5 @@
 @if($cardBadge['data']['products'])
+<div style="height: 300px;overflow-y: scroll;">
     @foreach($cardBadge['data']['products'] as $productId => $product)
         <li class="d-flex align-items-start" id="li_row_{{ $productId }}">
             <div class="cart-img">
@@ -27,6 +28,7 @@
             </div>
         </li>
     @endforeach
+</div>
 @else
     {{--<li class="d-flex align-items-start">
 
@@ -37,7 +39,6 @@
         </div>
     </li>--}}
 @endif
-
 <li>
     <div class="total-price">
         <span class="f-left">Total:</span>

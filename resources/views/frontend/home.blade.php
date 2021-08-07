@@ -46,7 +46,7 @@
 
                     <div class="col-lg-2 col-md-6">
                         <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ asset('storage/photo/'.$category->image1) }}" style="height: 142px;" alt=""></a>
+                            <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><img src="{{ asset('storage/photo/'.$category->image1) }}" style="height: 142px;" alt=""></a>
                         </div>
                     </div>
 
@@ -70,10 +70,10 @@
                     {{-- Start New Electronics --}}
                     @if($data['products_desc'])
                     @foreach($data['products_desc'] as $product)
-                        <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="col-xl-3 col-md-3 col-6">
                             <div class="exclusive-item exclusive-item-three text-center mb-40">
                                 <div class="exclusive-item-thumb">
-                                    <a href="shop-details.html">
+                                    <a href="{{route('product-details',['id'=>$product['id']])}}">
                                         <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                         <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                     </a>
@@ -207,7 +207,7 @@
                 <div class="row justify-content-center">
                     @if($data['products'])
                         @foreach($data['products'] as $product)
-                            <div class="col-xl-4 col-md-4 col-sm-6">
+                            <div class="col-xl-3 col-md-3 col-6">
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">

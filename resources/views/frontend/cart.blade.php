@@ -1,7 +1,18 @@
-
 @extends('layouts.front_end')
 @section('content')
 <div>
+    <style>
+       @media only screen and (min-width: 768px) {
+        #cartForMobile{
+            display: none;
+        }
+       }
+       @media only screen and (max-width: 768px) {
+        #cartForDeskTop{
+            display: none;
+        }
+       }
+    </style>
     <x-slot name="title">
         Cart
     </x-slot>
@@ -35,7 +46,7 @@
             <section class="shop-cart-area wishlist-area pt-100 pb-100">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 mb-1" id="cartForDeskTop">
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
@@ -137,6 +148,62 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- Start Cart For Mobile --}}
+                        <div class="col-12" id="cartForMobile">
+                            <div class="table-responsive-xl">
+                                @php $totalPrice = 0; @endphp
+                                @if($cardBadge['data']['products'])
+                                    @php $totalPrice = $cardBadge['data']['total_price'] @endphp
+                                    <table class="table mb-0">
+
+                                        @foreach($cardBadge['data']['products'] as $productId => $product)
+                                            <div class="row" id="row_{{ $productId }}">
+                                                <div class="col-6 product-thumbnail"><a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
+                                                </div>
+                                                <div class="col-6 product-name">
+                                                    <h4><a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a></h4>
+                                                    <p>Cramond Leopard & Pythong Anorak</p>
+                                                    <span>65% poly, 35% rayon</span>
+                                                </div>
+                                                <div class="col-4 product-price mt-2">$ {{ $product['unit_price'] }}</div>
+                                                <div class="col-4 product-quantity">
+                                                    <div class="cart-plus">
+                                                        <form action="#">
+                                                            <div class="cart-plus-minus" data-product-id="{{ $productId }}">
+                                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productId }}" value="{{ $product['quantity'] }}">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 product-subtotal mt-2" id="product_subtotal_{{ $productId }}"><span>$ {{ $product['total_price'] }}</span></div>
+                                            </div>
+                                            <hr>
+                                        @endforeach
+
+                                    </table>
+                                @else
+                                    <div class="alert alert-warning text-center">Op's there is no product</div>
+                                @endif
+                            </div>
+                            <div class="shop-cart-bottom mt-20">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="cart-coupon">
+                                            <form action="#">
+                                                <input type="text" placeholder="Enter Coupon Code...">
+                                                <button class="btn">Apply Coupon</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="continue-shopping">
+                                            <a href="shop.html" class="btn">Continue Shopping</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- End Cart For Mobile --}}
                         <div class="col-lg-4 col-md-8">
                             <aside class="shop-cart-sidebar">
                                 <div class="shop-cart-widget">
