@@ -26,6 +26,13 @@
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/default.css">
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/style.css">
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/responsive.css">
+        <style>
+            @media only screen and (max-width: 768px) {
+               #scrollTop{
+                  display: none;
+               }
+            }
+         </style>
     </head>
     <body>
         <!-- preloader  -->
@@ -79,7 +86,7 @@
 
 
 		<!-- Scroll-top -->
-        <button class="scroll-top scroll-to-target" data-target="html">
+        <button class="scroll-top scroll-to-target" data-target="html" id="scrollTop">
             <i class="fas fa-angle-up"></i>
         </button>
         <!-- Scroll-top-end-->
