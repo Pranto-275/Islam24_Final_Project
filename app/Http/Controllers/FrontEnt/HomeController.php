@@ -118,9 +118,6 @@ class HomeController extends Controller
     public function searchByBrand($brandId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereBrandId($brandId)->get()->toArray();
-        if(!$data['products']){
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
-        }
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -130,9 +127,6 @@ class HomeController extends Controller
     public function searchBySubSubCategory($subSubCatId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($subSubCatId)->get()->toArray();
-        if(!$data['products']){
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
-        }
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -142,9 +136,6 @@ class HomeController extends Controller
     public function searchBySubCategory($subCatId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->get()->toArray();
-        if(!$data['products']){
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
-        }
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -154,9 +145,6 @@ class HomeController extends Controller
     public function searchByCategory($catId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->get()->toArray();
-        if(!$data['products']){
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
-        }
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),

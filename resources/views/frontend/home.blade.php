@@ -1,6 +1,22 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
+    <style>
+    .buy-now{
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 7px 22px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.buy-now-button:hover{
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+    </style>
     <x-slot name="title">
         Home
     </x-slot>
@@ -70,7 +86,7 @@
                     {{-- Start New Electronics --}}
                     @if($data['products_desc'])
                     @foreach($data['products_desc'] as $product)
-                        <div class="col-xl-3 col-md-3 col-6">
+                        <div class="col-xl-2 col-md-2 col-6">
                             <div class="exclusive-item exclusive-item-three text-center mb-40">
                                 <div class="exclusive-item-thumb">
                                     <a href="{{route('product-details',['id'=>$product['id']])}}">
@@ -89,12 +105,16 @@
                                         <del class="old-price">{{ $product['regular_price'] }}</del>
                                         <span class="new-price">{{ $product['special_price'] }}</span>
                                     </div>
-                                    <div class="rating">
+                                    {{-- <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
+                                    </div> --}}
+                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
+
+                                    <div>
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +227,7 @@
                 <div class="row justify-content-center">
                     @if($data['products'])
                         @foreach($data['products'] as $product)
-                            <div class="col-xl-3 col-md-3 col-6">
+                            <div class="col-xl-2 col-md-2 col-6">
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
@@ -226,13 +246,15 @@
                                             <del class="old-price">{{ $product['regular_price'] }}</del>
                                             <span class="new-price">{{ $product['special_price'] }}</span>
                                         </div>
-                                        <div class="rating">
+                                        {{-- <div class="rating">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
-                                        </div>
+                                        </div> --}}
+                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
+
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,22 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
+    <style>
+        .buy-now{
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        padding: 7px 22px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+    }
+    .buy-now-button:hover{
+        background: black;
+        color: white;
+        font-weight: bold;
+    }
+    </style>
     <x-slot name="title">
         Home
     </x-slot>
@@ -41,13 +57,14 @@
                                             <del class="old-price">{{ $product['regular_price'] }}</del>
                                             <span class="new-price">{{ $product['special_price'] }}</span>
                                         </div>
-                                        <div class="rating">
+                                        {{-- <div class="rating">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
-                                        </div>
+                                        </div> --}}
+                                        <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
                                     </div>
                                 </div>
                             </div>
