@@ -197,7 +197,7 @@
                             <div class="row">
                                  @foreach ($data['products'] as $product)
 
-                                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                                     <div class="exclusive-item exclusive-item-three text-center mb-50">
                                         <div class="exclusive-item-thumb">
                                             <a href="{{route('product-details',['id'=>$product['id']])}}">
