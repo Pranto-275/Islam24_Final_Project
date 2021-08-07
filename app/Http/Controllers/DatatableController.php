@@ -573,7 +573,7 @@ class DatatableController extends Controller
 
     public function UserTable()
     {
-        $Query = UserMm::query()->orderBy('id', 'desc');
+        $Query = UserMm::query()->orderBy('id', 'desc')->get();
 
         $this->i = 1;
 
