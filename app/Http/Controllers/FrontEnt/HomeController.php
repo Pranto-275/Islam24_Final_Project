@@ -59,7 +59,7 @@ class HomeController extends Controller
 
     public function confirmOrder(Request $request)
     {
-        // dd(true);
+        // dd($request);
         // $request->validate([
         //     'fName' => 'required',
         //     'mobile' => 'required',
@@ -68,7 +68,7 @@ class HomeController extends Controller
         DB::transaction(function () use ($request) {
             $sessionId = Session::getId();
             //    Add Customer
-            $Query = new Contact();
+            $Query = Contact::whereMobile($request->mobile)->firstOrNew();
             $Query->type = 'Customer';
             $Query->first_name = $request->fName;
             $Query->last_name = $request->lName;

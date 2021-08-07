@@ -26,31 +26,31 @@
                                     <div class="col-sm-6">
                                         <div class="form-grp">
                                             <label for="fName">First Name <span>*</span></label>
-                                            <input type="text" id="fName" required>
+                                            <input type="text" name="fName" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-grp">
                                             <label for="fName">Last Name <span>*</span></label>
-                                            <input type="text" id="lName" required>
+                                            <input type="text" name="lName" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="mobile">Your Mobile <span>*</span></label>
-                                            <input type="text" id="mobile" required>
+                                            <input type="text" name="mobile" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-grp">
                                             <label for="shipping_address">Shipping ADDRESS *</label>
-                                            <input type="text" id="shipping_address" required>
+                                            <input type="text" name="shipping_address" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>District *</label>
-                                            <select class="custom-select" id="district" required>
+                                            <select class="custom-select" id="district" name="district" required>
                                                 <option value="New York">Chittagang</option>
                                                 <option value="California">Barisal</option>
                                             </select>
