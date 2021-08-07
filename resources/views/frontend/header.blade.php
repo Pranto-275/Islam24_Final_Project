@@ -177,7 +177,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
-                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>Category</a>
+                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>Categories</a>
                         <ul class="category-menu">
                         @foreach ($categories as $category)
                             <li class="has-dropdown">
