@@ -65,31 +65,33 @@
         <div class="custom-container-two">
             <div class="row">
                 <div class="col-12" id="responsive-header">
-                    <div class="mobile-nav-toggler float-left"><i class="fas fa-bars"></i>&nbsp;</div>
+                    <div class="mobile-nav-toggler float-left mt-1"><i class="fas fa-bars"></i>&nbsp;</div>
                        {{-- Start Mobile Responsive Search Box --}}
                        <form action="{{ route('product-search') }}" method="GET">
-                        <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
-                            <input type="text" class="form-control" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
-                            <div class="input-group-append">
-                                <select name="search_product_category" id="search_product_category" style="width:90px;">
-                                    <option selected="" value="">Category</option>
-                                    @foreach ($categories as $category)
-                                        <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
-                                    @endforeach
-                                    <option>In All Categories</option>
-                                </select>
+                        <center>
+                            <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
+                                <input type="text" class="form-control mb-2" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
+                                <div class="input-group-append">
+                                    <select class="mb-2" name="search_product_category" id="search_product_category" style="width:90px;">
+                                        <option selected="" value="">Category</option>
+                                        @foreach ($categories as $category)
+                                            <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
+                                        @endforeach
+                                        <option>In All Categories</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-append mb-2" style="width: 20px;">
+                                    <button type="submit" style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i class="fa fa-search text-light"></i></button>
+                                  {{-- <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                  </div> --}}
+                                </div>
                             </div>
-                            <div class="input-group-append" style="width: 20px;">
-                                <button type="submit" style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i class="fa fa-search text-light"></i></button>
-                              {{-- <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Separated link</a>
-                              </div> --}}
-                            </div>
-                        </div>
+                        </center>
                        </form>
                         {{-- End Mobile Responsive Search Box --}}
                         {{-- &nbsp;&nbsp; --}}
