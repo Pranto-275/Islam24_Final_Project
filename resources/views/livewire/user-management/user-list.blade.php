@@ -315,6 +315,17 @@
                                         @error('password') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="basicpill-firstname-input"> Type</label>
+                                        <select class="form-control" wire:model.lazy="type">
+                                           <option value="">Select Type</option>
+                                               <option value="Admin">Admin</option>
+                                               <option value="User">User</option>
+                                        </select>
+                                        @error('type') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
                                 {{-- <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="state.password">Password</label>
@@ -376,11 +387,16 @@
                     data: 'email',
                     name:'email'
                 },
-                // {
-                //     title: 'Mobile',
-                //     data: 'mobile',
-                //     name:'mobile'
-                // },
+                {
+                    title: 'Mobile',
+                    data: 'mobile',
+                    name:'mobile'
+                },
+                {
+                    title: 'Type',
+                    data: 'type',
+                    name:'type'
+                },
                 {
                     title: 'Action',
                     data: 'action',

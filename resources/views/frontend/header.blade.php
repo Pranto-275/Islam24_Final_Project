@@ -48,7 +48,7 @@
                     <div class="header-top-right">
                         <ul>
                             <li>
-                                <a href="{{route('sign-up')}}"><i class="flaticon-user"></i>Sign Up</a>
+                                <a href="{{route('register')}}"><i class="flaticon-user"></i>Sign Up</a>
                                 <span>Or</span>
                                 <a href="{{route('sign-in')}}">Sign In</a>
                             </li>

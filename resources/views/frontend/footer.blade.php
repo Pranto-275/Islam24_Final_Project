@@ -1,8 +1,8 @@
 
 <footer class="footer-area footer-style-two">
-    <div class="footer-top pt-65 pb-25">
+    <div class="footer-top pt-35 pb-25">
         <div class="custom-container-two">
-            <div class="footer-newsletter-wrap footer-newsletter-two">
+            {{-- <div class="footer-newsletter-wrap footer-newsletter-two">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-xl-8 col-lg-6">
                         <div class="newsletter-title">
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row justify-content-between">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget mb-50">
