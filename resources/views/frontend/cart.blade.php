@@ -149,7 +149,7 @@
                             </div>
                         </div>
                         {{-- Start Cart For Mobile --}}
-                        <div class="col-12" id="cartForMobile">
+                        {{-- <div class="col-12" id="cartForMobile">
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
@@ -202,7 +202,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- End Cart For Mobile --}}
                         <div class="col-lg-4 col-md-8">
                             <aside class="shop-cart-sidebar">
