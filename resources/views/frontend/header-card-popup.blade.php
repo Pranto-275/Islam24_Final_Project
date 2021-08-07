@@ -29,7 +29,7 @@
         </li>
     @endforeach
 </div>
-@else
+{{-- @else --}}
     {{--<li class="d-flex align-items-start">
 
         <div class="cart-content">
