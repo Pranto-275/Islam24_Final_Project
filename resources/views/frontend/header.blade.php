@@ -72,8 +72,8 @@
                             <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
                                 <input type="text" class="form-control mb-2" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
                                 <div class="input-group-append">
-                                    <select class="mb-2" name="search_product_category" id="search_product_category" style="width:90px;">
-                                        <option selected="" value="">Category</option>
+                                    <select class="custom-select mb-2" name="search_product_category" id="search_product_category" style="width:110px;">
+                                        <option selected="" value="" >Category</option>
                                         @foreach ($categories as $category)
                                             <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
                                         @endforeach
@@ -177,7 +177,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
-                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ALL DEPARTMENT</a>
+                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>Category</a>
                         <ul class="category-menu">
                         @foreach ($categories as $category)
                             <li class="has-dropdown">
