@@ -53,7 +53,7 @@
                 <div class="col-xl-2 col-lg-3 col-sm-6">
                     <div class="footer-widget mb-50">
                         <div class="fw-title mb-35">
-                            <h5>Our Stores</h5>
+                            <h5>Our Stories</h5>
                         </div>
                         <div class="fw-link">
                             <ul>

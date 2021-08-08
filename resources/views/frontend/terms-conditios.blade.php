@@ -1,12 +1,11 @@
-@push('css')
-
-@endpush
+@extends('layouts.front_end')
+@section('content')
 <div>
     <x-slot name="title">
-        Terms Condition
+        Terms & Condition
     </x-slot>
     <x-slot name="header">
-        Terms Condition
+        Terms & Condition
     </x-slot>
 
     <!-- breadcrumb-area -->
@@ -84,6 +83,4 @@
     <!-- terms-and-conditions-area-end -->
 
 </div>
-@push('scripts')
-
-@endpush
+@endsection

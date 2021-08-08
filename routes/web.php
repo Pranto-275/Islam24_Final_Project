@@ -126,7 +126,7 @@ Route::get('error', Error::class)->name('error');
 // Route::get('order-completed', OrderCompleted::class)->name('order-completed');
 
 Route::get('wish-list', Wishlist::class)->name('wish-list');
-// Route::group(['middleware' => ['role:admin|user', 'web']], function () {
+Route::group(['middleware' => ['role:admin']], function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         return view('livewire.dashboard');
     })->name('dashboard');
@@ -263,4 +263,4 @@ Route::get('wish-list', Wishlist::class)->name('wish-list');
             Route::get('sale_list', [DatatableController::class, 'SaleListTable'])->name('sale_list');
         });
     });
-// });
+});

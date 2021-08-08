@@ -27,9 +27,9 @@ class Currency extends Component
         $this->symbol = $Query->symbol;
         $this->symbol_position = $Query->symbol_position;
         $this->in_word_prefix = $Query->in_word_prefix;
-        $this->in_word_surfix = $Query->in_word_surfix;
+        $this->in_word_surfix = $Query->in_word_suffix;
         $this->in_word_prefix_position = $Query->in_word_prefix_position;
-        $this->in_word_surfix_position = $Query->in_word_surfix_position;
+        $this->in_word_surfix_position = $Query->in_word_suffix_position;
         $this->is_active = $Query->is_active;
 		$this->emit('modal', 'currencyInfoModal');
     }
@@ -62,9 +62,9 @@ class Currency extends Component
         $Query->symbol = $this->symbol;
         $Query->symbol_position = $this->symbol_position;
         $Query->in_word_prefix = $this->in_word_prefix;
-        $Query->in_word_surfix = $this->in_word_surfix;
+        $Query->in_word_suffix = $this->in_word_surfix;
         $Query->in_word_prefix_position = $this->in_word_prefix_position;
-        $Query->in_word_surfix_position = $this->in_word_surfix_position;
+        $Query->in_word_suffix_position = $this->in_word_surfix_position;
         $Query->is_active = $this->is_active;
         $Query->branch_id = Auth::user()->branch_id;
         $Query->save();

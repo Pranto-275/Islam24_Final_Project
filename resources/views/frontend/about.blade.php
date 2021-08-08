@@ -1,6 +1,5 @@
-@push('css')
-
-@endpush
+@extends('layouts.front_end')
+@section('content')
 <div>
     <x-slot name="title">
         About
@@ -15,7 +14,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h2>about store</h2>
+                        <h2>about US</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -260,10 +259,8 @@
         </div>
     </section>
     <!-- testimonial-area-end -->
-
-
 </div>
 
-@push('scripts')
+@endsection
 
-@endpush
+

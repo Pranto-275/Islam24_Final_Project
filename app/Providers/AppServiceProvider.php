@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('brands', Brand::get());
             // $view->with('products', Product::orderBy('id', 'desc')->get());
             $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
-            $view->with('companyInfo', CompanyInfo::whereCreatedBy(Auth::user()->id)->first());
+            $view->with('companyInfo', CompanyInfo::first());
             $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
             $view->with('cardBadge', AddToCardService::cardTotalProductAndAmount());

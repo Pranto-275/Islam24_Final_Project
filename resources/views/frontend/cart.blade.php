@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="continue-shopping">
-                                            <a href="shop.html" class="btn">Continue Shopping</a>
+                                            <a href="{{route('search-category-wise')}}" class="btn">Continue Shopping</a>
                                         </div>
                                     </div>
                                 </div>

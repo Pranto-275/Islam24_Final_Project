@@ -320,8 +320,8 @@
                                         <label for="basicpill-firstname-input"> Type</label>
                                         <select class="form-control" wire:model.lazy="type">
                                            <option value="">Select Type</option>
-                                               <option value="Admin">Admin</option>
-                                               <option value="User">User</option>
+                                               <option value="admin">Admin</option>
+                                               <option value="user">User</option>
                                         </select>
                                         @error('type') <span class="error">{{ $message }}</span> @enderror
                                     </div>

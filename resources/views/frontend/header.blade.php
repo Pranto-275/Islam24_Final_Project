@@ -47,20 +47,37 @@
                 <div class="col-md-4 col-sm-5">
                     <div class="header-top-right">
                         <ul>
+                            @if(Auth::user())
                             <li>
-                                @if(Auth::user())
-                                <a class="log-out-btn dropdown-item text-danger" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout </a>
+                                <div class="heder-top-guide">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            {{Auth::user()->name}}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                            <a class="dropdown-item" href="my-account.html">My Account</a>
+                                            <a class="log-out-btn dropdown-item text-danger" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Sign Out </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                </form>
-                                @else
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    {{ csrf_field() }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            @else
+                            <li>
+
+
+
                                 <a href="{{route('register')}}"><i class="flaticon-user"></i>Sign Up</a>
                                 <span>Or</span>
                                 <a href="{{route('sign-in')}}">Sign In</a>
-                                @endif
+
 
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -120,7 +137,7 @@
                                             <li><a href="terms-conditios">Terms and Conditions</a></li>
                                         </ul>
                                     </li> --}}
-                                    <li><a href="#">Shop</a></li>
+                                    <li><a href="{{route('search-category-wise')}}">Shop</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
                                 </ul>

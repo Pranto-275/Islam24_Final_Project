@@ -144,7 +144,12 @@ class HomeController extends Controller
 
     public function searchByCategory($catId = null)
     {
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->get()->toArray();
+        if($catId){
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->get()->toArray();
+        }else{
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
+
+        }
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -204,7 +209,7 @@ class HomeController extends Controller
 
         $data['products'] = $query->get()->toArray();
 
-        return view('frontend.product-search', [
+        return view('frontend.all_product', [
             'data' => $data,
         ]);
     }
