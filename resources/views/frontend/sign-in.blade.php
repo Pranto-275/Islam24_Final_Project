@@ -47,7 +47,7 @@
                                 <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
                             </div>
                             <span class="or">- OR -</span>
-                            <form method="POST" action="{{ route('login') }}" class="login-form">
+                            <form method="POST" action="{{ route('customer_sign_in') }}" class="login-form">
                                 @csrf
                                 <div class="form-grp">
                                     <x-jet-label for="email" value="{{ __('Email') }}" />

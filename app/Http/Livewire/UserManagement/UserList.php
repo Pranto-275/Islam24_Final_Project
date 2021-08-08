@@ -30,7 +30,7 @@ class UserList extends Component
         }
         $Query->name = $this->name;
         $Query->email = $this->email;
-        $Query->password = Hash::make('$this->password');
+        $Query->password = Hash::make($this->password);
         $Query->type = $this->type;
         $Query->save();
         $Query->assignRole($this->type);
