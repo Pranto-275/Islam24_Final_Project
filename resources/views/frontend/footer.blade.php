@@ -45,7 +45,7 @@
                                 <li><a href="#">Returns</a></li>
                                 <li><a href="#">Product Recalls</a></li>
                                 <li><a href="#">Accessibility</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="{{route('contact-us')}}">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -53,13 +53,13 @@
                 <div class="col-xl-2 col-lg-3 col-sm-6">
                     <div class="footer-widget mb-50">
                         <div class="fw-title mb-35">
-                            <h5>Our Stores</h5>
+                            <h5>Menu</h5>
                         </div>
                         <div class="fw-link">
                             <ul>
-                                <li><a href="#">New York</a></li>
-                                <li><a href="#">London SF</a></li>
-                                <li><a href="#">Cockfosters BP</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="{{route('terms-conditios')}}">Terms & Conditions</a></li>
+                                <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="#">Los Angeles</a></li>
                                 <li><a href="#">Chicago</a></li>
                             </ul>
