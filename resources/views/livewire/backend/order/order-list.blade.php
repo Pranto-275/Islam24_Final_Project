@@ -81,12 +81,15 @@
                                             <td>
                                                 {{$order->payable_amount}}
                                             </td>
-                                            <td wire:ignore>
+                                            <td>
+                                                <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.order-invoice',['id'=>$order->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
+                                                <div wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">
                                                      <option value="">Status</option>
                                                      <option value="approved {{$order->id}}">Approved</option>
                                                      <option value="cancel {{$order->id}}">Cancel</option>
                                                 </select>
+                                                </div>
                                             </td>
                                         </tr>
                                          @endforeach

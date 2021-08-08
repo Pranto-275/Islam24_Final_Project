@@ -15,6 +15,7 @@ use App\Http\Livewire\Backend\Inventory\SaleList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
 use App\Http\Livewire\Backend\Order\ApproveOrderList;
 use App\Http\Livewire\Backend\Order\CancelOrderList;
+use App\Http\Livewire\Backend\Order\OrderInvoice;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Order\PendingOrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
@@ -194,6 +195,14 @@ Route::get('wish-list', Wishlist::class)->name('wish-list');
             Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
             Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
         });
+    Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
+        Route::get('order-list', OrderList::class)->name('order-list');
+        Route::get('order-invoice/{id}', OrderInvoice::class)->name('order-invoice');
+        Route::get('order-pending', PendingOrderList::class)->name('order-pending');
+        Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
+        Route::get('order-cancel', CancelOrderList::class)->name('order-cancel');
+        Route::get('print-order', PrintOrder::class)->name('print-order');
+    });
 
         Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
             Route::get('contact-category', ContactCategory::class)->name('contact-category');
