@@ -100,9 +100,9 @@
                     <div class="col-xl-3">
                         <div class="exclusive-item exclusive-item-three text-center">
                             <div class="exclusive-item-thumb">
-                                <a href="shop-details.html">
+                                <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
                                     <img class="topCategoryImage" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="Image">
-                                    <img class="topCategoryImage overlay-product-thumb" src="{{ asset('storage/photo/'.$topCategory->image2) }}" alt="Image">
+                                    <img class="topCategoryImage overlay-product-thumb" src="{{ asset('storage/photo/'.$topCategory->image2) }}" alt="">
                                 </a>
                                 {{-- <ul class="action">
                                     <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
