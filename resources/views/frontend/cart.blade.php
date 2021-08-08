@@ -260,7 +260,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('.inc.qtybutton').on('click', function () {
+            /*$('.inc.qtybutton').on('click', function () {
                 var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
                 //console.log($('#product_quantity_'+productId).val())
                 quantityUpdate('increase', productId)
@@ -276,10 +276,10 @@
                 var productId = $(this).attr('data-product-id');
                 //console.log(productId)
                 productDeleteCart(productId)
-            });
+            });*/
         });
 
-        function quantityUpdate(type, productId) {
+        /*function quantityUpdate(type, productId) {
             $.ajax({
                 method:'POST',
                 url: '{{ route('ajax-add-to-card-quantity-update') }}',
@@ -347,7 +347,7 @@
                     alert(errorText)
                 }
             })
-        }
+        }*/
 
     </script>
 </div>

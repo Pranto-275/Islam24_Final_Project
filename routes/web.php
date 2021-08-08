@@ -126,62 +126,75 @@ Route::get('error', Error::class)->name('error');
 // Route::get('order-completed', OrderCompleted::class)->name('order-completed');
 
 Route::get('wish-list', Wishlist::class)->name('wish-list');
+// Route::group(['middleware' => ['role:admin|user', 'web']], function () {
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('livewire.dashboard');
+    })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('livewire.dashboard');
-})->name('dashboard');
+    Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
+        Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
+            Route::get('user-list', UserList::class)->name('user-list');
+        });
+        Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
+            Route::get('category', Category::class)->name('category');
+            Route::get('currency', Currency::class)->name('currency');
+            Route::get('language', Language::class)->name('language');
+            Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
+            Route::get('ware-house', WareHouse::class)->name('ware-house');
+            Route::get('purchase/{id?}', Purchase::class)->name('purchase');
+            Route::get('purchase-list', PurchaseList::class)->name('purchase-list');
+            Route::get('purchase-invoice/{id}', PurchaseInvoice::class)->name('purchase-invoice');
+            Route::get('sale/{id?}', Sale::class)->name('sale');
+            Route::get('sale-list', SaleList::class)->name('sale-list');
+            Route::get('sale-invoice/{id}', SaleInvoice::class)->name('sale-invoice');
+            Route::get('stock-adjustment', StockAdjustment::class)->name('stock-adjustment');
+        });
+        Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
+            Route::get('profile-settings', ProfileSettings::class)->name('profile-settings');
+            Route::get('change-password', ChangePassword::class)->name('change-password');
+            Route::get('auth-lock-screen', AuthLockScreen::class)->name('auth-lock-screen');
+        });
 
-Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
-    Route::group(['prefix' => 'user-management', 'as' => 'user-management.'], function () {
-        Route::get('user-list', UserList::class)->name('user-list');
-    });
-    Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
-        Route::get('category', Category::class)->name('category');
-        Route::get('currency', Currency::class)->name('currency');
-        Route::get('language', Language::class)->name('language');
-        Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
-        Route::get('ware-house', WareHouse::class)->name('ware-house');
-        Route::get('purchase/{id?}', Purchase::class)->name('purchase');
-        Route::get('purchase-list', PurchaseList::class)->name('purchase-list');
-        Route::get('purchase-invoice/{id}', PurchaseInvoice::class)->name('purchase-invoice');
-        Route::get('sale/{id?}', Sale::class)->name('sale');
-        Route::get('sale-list', SaleList::class)->name('sale-list');
-        Route::get('sale-invoice/{id}', SaleInvoice::class)->name('sale-invoice');
-        Route::get('stock-adjustment', StockAdjustment::class)->name('stock-adjustment');
-    });
-    Route::group(['prefix' => 'user-profile', 'as' => 'user-profile.'], function () {
-        Route::get('profile-settings', ProfileSettings::class)->name('profile-settings');
-        Route::get('change-password', ChangePassword::class)->name('change-password');
-        Route::get('auth-lock-screen', AuthLockScreen::class)->name('auth-lock-screen');
-    });
+        Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
+            Route::get('category', Category::class)->name('category');
+            Route::get('sub-category', SubCategory::class)->name('sub-category');
+            Route::get('brand', Brand::class)->name('brand');
+            Route::get('product/{id?}', Product::class)->name('product');
+            Route::get('product-list', ProductList::class)->name('product-list');
+            Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
+            Route::get('unit', Unit::class)->name('unit');
+            Route::get('color', Color::class)->name('color');
+            Route::get('size', Size::class)->name('size');
+        });
 
-    Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
-        Route::get('category', Category::class)->name('category');
-        Route::get('sub-category', SubCategory::class)->name('sub-category');
-        Route::get('brand', Brand::class)->name('brand');
-        Route::get('product/{id?}', Product::class)->name('product');
-        Route::get('product-list', ProductList::class)->name('product-list');
-        Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
-        Route::get('unit', Unit::class)->name('unit');
-        Route::get('color', Color::class)->name('color');
-        Route::get('size', Size::class)->name('size');
-    });
+        Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
+            Route::get('companyinfo', CompanyInfo::class)->name('companyinfo');
+            Route::get('branch', Branch::class)->name('branch');
+            Route::get('currency', Currency::class)->name('currency');
+            Route::get('delivery-method', DeliveryMethod::class)->name('delivery-method');
+            Route::get('invoice-setting', InvoiceSetting::class)->name('invoice-setting');
+            Route::get('payment-method', PaymentMethod::class)->name('payment-method');
+            Route::get('coupon-code', CouponCode::class)->name('coupon-code');
+            Route::get('vat', Vat::class)->name('vat');
+            Route::get('shipping-charge', ShippingCharge::class)->name('shipping-charge');
+            Route::get('warehouse', Warehouse::class)->name('warehouse');
+            Route::get('slider', Slider::class)->name('slider');
+            Route::get('point-policy', PointPolicy::class)->name('point-policy');
+        });
 
-    Route::group(['prefix' => 'setting', 'as' => 'setting.'], function () {
-        Route::get('companyinfo', CompanyInfo::class)->name('companyinfo');
-        Route::get('branch', Branch::class)->name('branch');
-        Route::get('currency', Currency::class)->name('currency');
-        Route::get('delivery-method', DeliveryMethod::class)->name('delivery-method');
-        Route::get('invoice-setting', InvoiceSetting::class)->name('invoice-setting');
-        Route::get('payment-method', PaymentMethod::class)->name('payment-method');
-        Route::get('coupon-code', CouponCode::class)->name('coupon-code');
-        Route::get('vat', Vat::class)->name('vat');
-        Route::get('shipping-charge', ShippingCharge::class)->name('shipping-charge');
-        Route::get('warehouse', Warehouse::class)->name('warehouse');
-        Route::get('slider', Slider::class)->name('slider');
-        Route::get('point-policy', PointPolicy::class)->name('point-policy');
-    });
+        Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
+            Route::get('order-list', OrderList::class)->name('order-list');
+            Route::get('order-pending', PendingOrderList::class)->name('order-pending');
+            Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
+            Route::get('order-cancel', CancelOrderList::class)->name('order-cancel');
+            Route::get('print-order', PrintOrder::class)->name('print-order');
+        });
 
+        Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
+            Route::get('payment', Payment::class)->name('payment');
+            Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
+            Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
+        });
     Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
         Route::get('order-list', OrderList::class)->name('order-list');
         Route::get('order-invoice/{id}', OrderInvoice::class)->name('order-invoice');
@@ -191,68 +204,63 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
         Route::get('print-order', PrintOrder::class)->name('print-order');
     });
 
-    Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
-        Route::get('payment', Payment::class)->name('payment');
-        Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
-        Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
+        Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
+            Route::get('contact-category', ContactCategory::class)->name('contact-category');
+            Route::get('customer', CustomerInfo::class)->name('customer');
+            Route::get('supplier', Supplier::class)->name('supplier');
+            Route::get('staff', Staff::class)->name('staff');
+        });
+
+        Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
+            Route::get('stock-report', StockReport::class)->name('stock-report');
+            Route::get('order-report', OrderReport::class)->name('order-report');
+        });
+
+        Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
+            Route::get('index', [DatatableController::class, 'index'])->name('index');
+
+            Route::get('user-table', [DatatableController::class, 'UserTable'])->name('user_table');
+        });
+
+        Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
+            Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
+
+            Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
+            Route::get('sale-report', SaleReport::class)->name('sale-report');
+            Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
+            Route::get('sale-details-report', SaleDetailsReport::class)->name('sale-details-report');
+            Route::get('purchase-return-report', PurchaseReturnReport::class)->name('purchase-return-report');
+            Route::get('sales-return-report', SalesReturnReport::class)->name('sales-return-report');
+            Route::get('supplier-ledger', SupplierLedger::class)->name('supplier-ledger');
+            Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
+            Route::get('coupons-report', CouponsReport::class)->name('coupons-report');
+            Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
+        });
+
+        Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
+            Route::get('category_table', [DatatableController::class, 'CategoryTable'])->name('category_table');
+            Route::get('sub_category_table', [DatatableController::class, 'SubCategoryTable'])->name('sub_category_table');
+            Route::get('sub_sub_category_table', [DatatableController::class, 'SubSubCategoryTable'])->name('sub_sub_category_table');
+            Route::get('product_table', [DatatableController::class, 'ProductTable'])->name('product_table');
+            Route::get('branch_table', [DatatableController::class, 'BranchTable'])->name('branch_table');
+            Route::get('currency_table', [DatatableController::class, 'CurrencyTable'])->name('currency_table');
+            Route::get('delivery_method_table', [DatatableController::class, 'DeliveryMethodTable'])->name('delivery_method_table');
+            Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
+            Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
+            Route::get('slider_table', [DatatableController::class, 'SliderTable'])->name('slider_table');
+            Route::get('brand_table', [DatatableController::class, 'BrandTable'])->name('brand_table');
+            Route::get('invoiceSetting_table', [DatatableController::class, 'InvoiceSettingTable'])->name('invoiceSetting_table');
+            Route::get('vat_table', [DatatableController::class, 'VatTable'])->name('vat_table');
+            Route::get('shipping_charge', [DatatableController::class, 'ShippingChargeTable'])->name('shipping_charge');
+            Route::get('coupon_table', [DatatableController::class, 'CouponTable'])->name('coupon_table');
+            Route::get('paymentMethod_table', [DatatableController::class, 'paymentMethodTable'])->name('paymentMethod_table');
+            Route::get('invoiceSave', [DatatableController::class, 'InvoiceTable'])->name('invoiceSave');
+            Route::get('customer_table', [DatatableController::class, 'CustomerTable'])->name('customer_table');
+            Route::get('supplier_table', [DatatableController::class, 'SupplierTable'])->name('supplier_table');
+            Route::get('staff_table', [DatatableController::class, 'StaffTable'])->name('staff_table');
+            Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
+            Route::get('purchase_list', [DatatableController::class, 'PurchaseListTable'])->name('purchase_list');
+            Route::get('sale_list', [DatatableController::class, 'SaleListTable'])->name('sale_list');
+        });
     });
-
-    Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
-        Route::get('contact-category', ContactCategory::class)->name('contact-category');
-        Route::get('customer', CustomerInfo::class)->name('customer');
-        Route::get('supplier', Supplier::class)->name('supplier');
-        Route::get('staff', Staff::class)->name('staff');
-    });
-
-    Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
-        Route::get('stock-report', StockReport::class)->name('stock-report');
-        Route::get('order-report', OrderReport::class)->name('order-report');
-    });
-
-    Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
-        Route::get('index', [DatatableController::class, 'index'])->name('index');
-
-        Route::get('user-table', [DatatableController::class, 'UserTable'])->name('user_table');
-    });
-
-    Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
-        Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
-
-        Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
-        Route::get('sale-report', SaleReport::class)->name('sale-report');
-        Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');
-        Route::get('sale-details-report', SaleDetailsReport::class)->name('sale-details-report');
-        Route::get('purchase-return-report', PurchaseReturnReport::class)->name('purchase-return-report');
-        Route::get('sales-return-report', SalesReturnReport::class)->name('sales-return-report');
-        Route::get('supplier-ledger', SupplierLedger::class)->name('supplier-ledger');
-        Route::get('customer-ledger', CustomerLedger::class)->name('customer-ledger');
-        Route::get('coupons-report', CouponsReport::class)->name('coupons-report');
-        Route::get('profit-loss', ProfitLoss::class)->name('profit-loss');
-    });
-
-    Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
-        Route::get('category_table', [DatatableController::class, 'CategoryTable'])->name('category_table');
-        Route::get('sub_category_table', [DatatableController::class, 'SubCategoryTable'])->name('sub_category_table');
-        Route::get('sub_sub_category_table', [DatatableController::class, 'SubSubCategoryTable'])->name('sub_sub_category_table');
-        Route::get('product_table', [DatatableController::class, 'ProductTable'])->name('product_table');
-        Route::get('branch_table', [DatatableController::class, 'BranchTable'])->name('branch_table');
-        Route::get('currency_table', [DatatableController::class, 'CurrencyTable'])->name('currency_table');
-        Route::get('delivery_method_table', [DatatableController::class, 'DeliveryMethodTable'])->name('delivery_method_table');
-        Route::get('warehouse_table', [DatatableController::class, 'WarehouseTable'])->name('warehouse_table');
-        Route::get('unit_table', [DatatableController::class, 'UnitTable'])->name('unit_table');
-        Route::get('slider_table', [DatatableController::class, 'SliderTable'])->name('slider_table');
-        Route::get('brand_table', [DatatableController::class, 'BrandTable'])->name('brand_table');
-        Route::get('invoiceSetting_table', [DatatableController::class, 'InvoiceSettingTable'])->name('invoiceSetting_table');
-        Route::get('vat_table', [DatatableController::class, 'VatTable'])->name('vat_table');
-        Route::get('shipping_charge', [DatatableController::class, 'ShippingChargeTable'])->name('shipping_charge');
-        Route::get('coupon_table', [DatatableController::class, 'CouponTable'])->name('coupon_table');
-        Route::get('paymentMethod_table', [DatatableController::class, 'paymentMethodTable'])->name('paymentMethod_table');
-        Route::get('invoiceSave', [DatatableController::class, 'InvoiceTable'])->name('invoiceSave');
-        Route::get('customer_table', [DatatableController::class, 'CustomerTable'])->name('customer_table');
-        Route::get('supplier_table', [DatatableController::class, 'SupplierTable'])->name('supplier_table');
-        Route::get('staff_table', [DatatableController::class, 'StaffTable'])->name('staff_table');
-        Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
-        Route::get('purchase_list', [DatatableController::class, 'PurchaseListTable'])->name('purchase_list');
-        Route::get('sale_list', [DatatableController::class, 'SaleListTable'])->name('sale_list');
-    });
-});
+// });
