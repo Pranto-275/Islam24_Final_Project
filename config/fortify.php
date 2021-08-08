@@ -61,18 +61,20 @@ return [
     |
     */
 
-    // 'home' => RouteServiceProvider::HOME,
-    'home' => function () {
+ 'home' => RouteServiceProvider::HOME,
+    // 'home' => function () {
         //if you want to go to a specific route
-        return route('home');
+        // return route('home');
 
         //or if you have a bunch of redirection options
-        if (Auth::user()->hasRole('admin|user')) {
-            return RouteServiceProvider::HOME;
-        } else {
-            return route('home');
-        }
-    },
+        // if (Auth::user()->hasRole('admin|user')) {
+            // return RouteServiceProvider::HOME;
+            // return route('inventory.category');
+            // return redirect(RouteServiceProvider::HOME);
+        // } else {
+        //     return route('home');
+        // }
+    // },
 
     /*
     |--------------------------------------------------------------------------
