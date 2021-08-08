@@ -16,6 +16,21 @@
     color: white;
     font-weight: bold;
 }
+.topCategoryImage{
+    width:150px;
+    height:177px;
+}
+
+/* @media only screen and (min-width: 768px) {
+    #sliderImageSize{
+    height: 100px;background-repeat: no-repeat;background-size: cover;
+    }
+}
+@media only screen and (max-width: 768px) {
+    #sliderImageSize{
+        height: 50px;background-repeat: no-repeat;background-size: cover;
+    }
+} */
     </style>
     <x-slot name="title">
         Home
@@ -57,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                {{-- <div class="row justify-content-center">
                     @foreach ($topSixCategories as $category)
 
                     <div class="col-lg-2 col-md-6">
@@ -67,11 +82,53 @@
                     </div>
 
                     @endforeach
+                </div> --}}
+            </div>
+            {{-- Start Top Category Show Slider --}}
+            <div class="related-product-wrap pb-5">
+                <div class="deal-day-top">
+                    <div class="deal-day-title">
+                        <h4 class="title">Top Categories</h4>
+                    </div>
+                    <div class="related-slider-nav">
+                        <div class="slider-nav"></div>
+                    </div>
+                </div>
+
+                <div class="row related-product-active">
+                    @foreach ($topCategories as $topCategory)
+                    <div class="col-xl-3">
+                        <div class="exclusive-item exclusive-item-three text-center">
+                            <div class="exclusive-item-thumb">
+                                <a href="shop-details.html">
+                                    <img class="topCategoryImage" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="Image">
+                                    <img class="topCategoryImage overlay-product-thumb" src="{{ asset('storage/photo/'.$topCategory->image2) }}" alt="Image">
+                                </a>
+                                {{-- <ul class="action">
+                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
+                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
+                                </ul> --}}
+                            </div>
+                            <div class="exclusive-item-content">
+                                <h5 class="text-center"><a href="shop-details.html">{{$topCategory->name}}</a></h5>
+                                {{-- <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
+            {{-- End Top Category Show Slider --}}
         </section>
         <!-- slider-area-end -->
-        <section class="exclusive-collection pt-100 pb-55">
+        <section class="exclusive-collection pt-20 pb-55">
             <div class="custom-container-two">
                  <!-- exclusive-collection-area -->
                 <div class="row justify-content-center">
