@@ -111,16 +111,7 @@
                                             <li><a href="terms-conditios">Terms and Conditions</a></li>
                                         </ul>
                                     </li> --}}
-                                    <li class="dropdown"><a href="#">SHOP</a>
-                                        <ul class="submenu">
-                                            <li><a href="category">Shop Left Sidebar</a></li>
-                                            <li><a href="product-details">Shop Details</a></li>
-                                            <li><a href="wish-list">Wishlist page</a></li>
-                                            <li><a href="cart">Cart page</a></li>
-                                            <li><a href="checkout">Checkout page</a></li>
-                                            <li><a href="order-completed">Order completed</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="#">Shop</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
                                 </ul>
