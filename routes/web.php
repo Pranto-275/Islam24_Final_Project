@@ -15,6 +15,7 @@ use App\Http\Livewire\Backend\Inventory\SaleList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
 use App\Http\Livewire\Backend\Order\ApproveOrderList;
 use App\Http\Livewire\Backend\Order\CancelOrderList;
+use App\Http\Livewire\Backend\Order\OrderInvoice;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Order\PendingOrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
@@ -183,6 +184,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
         Route::get('order-list', OrderList::class)->name('order-list');
+        Route::get('order-invoice/{id}', OrderInvoice::class)->name('order-invoice');
         Route::get('order-pending', PendingOrderList::class)->name('order-pending');
         Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
         Route::get('order-cancel', CancelOrderList::class)->name('order-cancel');
