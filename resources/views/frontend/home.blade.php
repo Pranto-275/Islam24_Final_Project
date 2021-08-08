@@ -318,7 +318,7 @@
                                             </del>
                                             <span class="new-price">
                                                 @if($currencySymbol)
-                                                     {{ $currencySymbol->symbol }}
+                                                {{ $currencySymbol->symbol }}
                                                 @endif
                                                 {{ $product['special_price'] }}
                                             </span>
