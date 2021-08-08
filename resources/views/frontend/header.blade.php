@@ -137,7 +137,7 @@
                                             <li><a href="terms-conditios">Terms and Conditions</a></li>
                                         </ul>
                                     </li> --}}
-                                    <li><a href="#">Shop</a></li>
+                                    <li><a href="{{route('search-category-wise')}}">Shop</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
                                 </ul>
