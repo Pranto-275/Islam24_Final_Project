@@ -107,7 +107,7 @@
                     <div class="menu-wrap">
                         <nav class="menu-nav show">
                             <div class="logo" id="paikaryLogo">
-                                <a href="{{url('/')}}"><img src="{{ URL::asset('venam/') }}/img/logo/logo_paikari_red.png" alt="Logo"></a>
+                                <a href="{{url('/')}}"><img src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif" style="height:39.9px;background-image: cover;" alt="Logo"></a>
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
@@ -130,7 +130,12 @@
                                     <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
                                     <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
-                                        <span class="cart-total-price" style="width: 120px;">$ {{ $cardBadge['data']['total_price'] }}</span>
+                                        <span class="cart-total-price" style="width: 120px;">
+                                            @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                            @endif
+                                             {{ $cardBadge['data']['total_price'] }}
+                                        </span>
                                         <ul class="minicart">
                                             @include('frontend.header-card-popup')
                                         </ul>
@@ -147,7 +152,7 @@
                         <nav class="menu-box">
                             <div class="nav-logo">
                                 <a href="{{url('/')}}">
-                                    <img src="{{ URL::asset('venam/') }}/img/logo/logo_paikari_red.png" alt="Logo">
+                                    <img src="@if($companyInfo) {{'storage/photo/'.$companyInfo->logo}} @endif" style="height:39.9px;background-image: cover;" alt="Logo">
                                 </a>
                             </div>
                             <div class="menu-outer">

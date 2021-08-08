@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <div class="invoice-title">
                         <h4 class="float-right font-size-16">
-                            Order # {{$OrderInvoiceId}}<br>
+                            Order # {{$OrderId}}<br>
                             Date: {{$OrderInvoice->order_date}}
                         </h4>
                         <div class="mb-4">

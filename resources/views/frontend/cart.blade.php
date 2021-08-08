@@ -71,7 +71,12 @@
                                                     <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span>
                                                 </td>
-                                                <td class="product-price">$ {{ $product['unit_price'] }}</td>
+                                                <td class="product-price">
+                                                    @if($currencySymbol)
+                                                        {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                    {{ $product['unit_price'] }}
+                                                </td>
                                                 <td class="product-quantity">
                                                     <div class="cart-plus">
                                                         <form action="#">
@@ -81,7 +86,14 @@
                                                         </form>
                                                     </div>
                                                 </td>
-                                                <td class="product-subtotal" id="product_subtotal_{{ $productId }}"><span>$ {{ $product['total_price'] }}</span></td>
+                                                <td class="product-subtotal" id="product_subtotal_{{ $productId }}">
+                                                <span>
+                                                    @if($currencySymbol)
+                                                       {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                    {{ $product['total_price'] }}
+                                                </span>
+                                            </td>
                                             </tr>
                                         @endforeach
                                         {{--<tr>
@@ -210,7 +222,13 @@
                                     <h6 class="title">Cart Totals</h6>
                                     <form action="{{ route('check-out') }}">
                                         <ul>
-                                            <li><span>SUBTOTAL</span> $ <span class="cart-total-price">{{ $totalPrice }}</span></li>
+                                            <li><span>SUBTOTAL</span>
+                                                 <span class="cart-total-price">
+                                                    @if($currencySymbol)
+                                                        {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                     {{ $totalPrice }}
+                                                </span></li>
                                             <li>
                                                 <span>SHIPPING</span>
                                                 <div class="shop-check-wrap">
