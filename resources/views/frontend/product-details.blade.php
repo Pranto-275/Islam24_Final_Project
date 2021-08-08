@@ -82,7 +82,7 @@
                         <div class="col-xl-5 col-lg-6">
                             <div class="shop-details-content">
                                 <span class="stock-info">In Stock</span>
-                                <h2>{{$productDetails->name}}</h2>
+                                <h2>{{ $productDetails->name }}</h2>
                                 <div class="shop-details-review">
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
@@ -126,12 +126,12 @@
                                 <div class="perched-info">
                                     <div class="cart-plus">
                                         <form action="#">
-                                            <div class="cart-plus-minus">
-                                                <input type="text" value="1">
+                                            <div class="cart-plus-minus" data-product-id="{{ $productDetails->id }}">
+                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}"  value="1">
                                             </div>
                                         </form>
                                     </div>
-                                    <a href="#" class="btn add-card-btn">ADD TO CART</a>
+                                    <a href="javascript:void(0)" class="btn add-card-btn add-to-card" data-product-id="{{ $productDetails->id }}">ADD TO CART</a>
                                 </div>
                                 <div class="shop-details-bottom">
                                     <h5><a href="#"><i class="far fa-heart"></i> Add To Wishlist</a></h5>
@@ -185,6 +185,7 @@
                                                 <div class="col-xl-3 col-md-4">
                                                     <div class="product-desc-img">
                                                         <img src="{{ asset('storage/photo/'.$productDetails->ProductImageFirst->image) }}" alt="">
+                                                        <img src="{{ asset('storage/blank-product-image.png') }}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-9 col-md-8">

@@ -46,7 +46,7 @@ class AddToCardService extends Controller
                 'product_name' => $product['name'],
                 'regular_price' => $product['regular_price'],
                 'special_price' => $product['special_price'],
-                'image' => $productImage,
+                'image' => $productImage ? $productImage : 'blank-product-image.png',
             ];
 
             $productCard = AddToCardModel::where(['session_id' => $sessionId,'product_id' => $productId])->first();
