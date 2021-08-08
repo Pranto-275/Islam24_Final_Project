@@ -204,7 +204,7 @@ class HomeController extends Controller
 
         $data['products'] = $query->get()->toArray();
 
-        return view('frontend.product-search', [
+        return view('frontend.all_product', [
             'data' => $data,
         ]);
     }
