@@ -161,7 +161,7 @@
                             </div>
                         </div>
                         {{-- Start Cart For Mobile --}}
-                        {{-- <div class="col-12" id="cartForMobile">
+                        <div class="col-12" id="cartForMobile">
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
@@ -176,9 +176,19 @@
                                                     <h4><a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a></h4>
                                                     <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span>
+                                                    <div class="text-danger">
+                                                        @if($currencySymbol)
+                                                            {{ $currencySymbol->symbol }}
+                                                        @endif
+                                                        {{ $product['unit_price'] }}
+                                                         *
+                                                         {{ $product['quantity'] }}
+                                                    </div>
                                                 </div>
-                                                <div class="col-4 product-price mt-5 text-info">$ {{ $product['unit_price'] }}</div>
-                                                <div class="col-4 product-quantity">
+                                                {{-- <div class="col-4 product-price mt-5 text-info">$ {{ $product['unit_price'] }}</div> --}}
+                                                <div class="col-4"></div>
+                                                <div class="col-2"></div>
+                                                <div class="col-2 product-quantity">
                                                     <div class="cart-plus">
                                                         <form action="#">
                                                             <div class="cart-plus-minus" data-product-id="{{ $productId }}">
@@ -187,7 +197,7 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                                <div class="col-4 product-subtotal mt-5 pl-4 text-info" id="product_subtotal_{{ $productId }}"><span>$ {{ $product['total_price'] }}</span></div>
+                                                {{-- <div class="col-4 product-subtotal mt-5 pl-4 text-info" id="product_subtotal_{{ $productId }}"><span>$ {{ $product['total_price'] }}</span></div> --}}
                                             </div>
                                             <hr>
                                         @endforeach
@@ -214,7 +224,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                         {{-- End Cart For Mobile --}}
                         <div class="col-lg-4 col-md-8">
                             <aside class="shop-cart-sidebar">
@@ -242,7 +252,15 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="cart-total-amount"><span>TOTAL</span> <span class="amount cart-total-price">$ {{ $totalPrice }}</span></li>
+                                            <li class="cart-total-amount">
+                                                <span>TOTAL</span>
+                                                <span class="amount cart-total-price">
+                                                @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $totalPrice }}
+                                                </span>
+                                        </li>
                                         </ul>
                                         <button class="btn">PROCEED TO CHECKOUT</button>
                                     </form>
