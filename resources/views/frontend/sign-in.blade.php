@@ -71,9 +71,9 @@
                                 </div>
                                 <div class="form-grp-btn">
                                     {{-- <a href="#" class="btn">Login</a> --}}
-                                    <x-jet-button class="ml-4" type="submit">
+                                    <button class="btn" type="submit" style="background: #ff6000;color:white;">
                                         {{ __('Login') }}
-                                    </x-jet-button>
+                                    </button>
                                 </div>
                             </form>
                         </div>
