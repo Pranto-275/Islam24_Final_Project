@@ -42,7 +42,12 @@
 <li>
     <div class="total-price">
         <span class="f-left">Total:</span>
-        <span class="f-right" id="total_mini_cart_amount">$ {{ $cardBadge['data']['total_price'] }}</span>
+        <span class="f-right" id="total_mini_cart_amount">
+            @if($currencySymbol)
+              {{ $currencySymbol->symbol }}
+            @endif
+             {{ $cardBadge['data']['total_price'] }}
+        </span>
     </div>
 </li>
 <li>

@@ -54,8 +54,18 @@
                                     <div class="exclusive-item-content">
                                         <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
                                         <div class="exclusive--item--price">
-                                            <del class="old-price">{{ $product['regular_price'] }}</del>
-                                            <span class="new-price">{{ $product['special_price'] }}</span>
+                                            <del class="old-price">
+                                                @if($currencySymbol)
+                                                   {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $product['regular_price'] }}
+                                            </del>
+                                            <span class="new-price">
+                                                @if($currencySymbol)
+                                                   {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $product['special_price'] }}
+                                            </span>
                                         </div>
                                         {{-- <div class="rating">
                                             <i class="fas fa-star"></i>

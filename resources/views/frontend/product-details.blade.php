@@ -100,10 +100,10 @@
                                         @endif
                                         {{$productDetails->special_price}}
                                         <span style="font-size: 10px;">
-                                            @if($currencySymbol)
-                                            {{ $currencySymbol->symbol }}
-                                        @endif
                                         <del>
+                                            @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                            @endif
                                             {{$productDetails->regular_price}}
                                         </del>
                                         </span>
