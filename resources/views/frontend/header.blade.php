@@ -52,7 +52,7 @@
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
                                         <button class="dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
+                                            aria-haspopup="true" style="background-color: #f8f9fa; color: black;border: none;color: rgb(12, 6, 6);padding: 7px 16px; text-align: center;text-decoration: none;font-size: 14px;cursor: pointer;" aria-expanded="false">
                                             {{Auth::user()->name}}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">

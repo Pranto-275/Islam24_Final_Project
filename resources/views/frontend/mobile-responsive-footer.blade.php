@@ -14,7 +14,7 @@
             </div>
             <div class="col-3 pt-1 text-center">
                 {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-                <li class="header-shop-cart"><a href="#"><i class="fas fa-bullhorn" style="font-size: 20px;"></i></a><br>
+                <li class="header-shop-cart"><a href="{{route('search-category-wise')}}"><i class="fas fa-bullhorn" style="font-size: 20px;"></i></a><br>
                     <span style="font-size:10px;">Campaign</span>
             </div>
             <div class="col-3 pt-1 text-center">
