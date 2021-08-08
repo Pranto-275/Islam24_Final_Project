@@ -1,6 +1,5 @@
-@push('css')
-
-@endpush
+@extends('layouts.front_end')
+@section('content')
 <div>
     <x-slot name="title">
         Contact
@@ -117,6 +116,4 @@
     <!-- contact-area-end -->
 
 </div>
-@push('scripts')
-
-@endpush
+@endsection
