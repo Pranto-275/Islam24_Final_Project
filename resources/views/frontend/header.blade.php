@@ -48,9 +48,18 @@
                     <div class="header-top-right">
                         <ul>
                             <li>
+                                @if(Auth::user())
+                                <a class="log-out-btn dropdown-item text-danger" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                </form>
+                                @else
                                 <a href="{{route('register')}}"><i class="flaticon-user"></i>Sign Up</a>
                                 <span>Or</span>
                                 <a href="{{route('sign-in')}}">Sign In</a>
+                                @endif
+
                             </li>
                         </ul>
                     </div>
