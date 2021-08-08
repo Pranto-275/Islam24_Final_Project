@@ -11,6 +11,7 @@ class UserList extends Component
     public $name;
     public $email;
     public $password;
+    public $type;
     public $user_id=null;
 
     public function UserSave()
@@ -18,6 +19,7 @@ class UserList extends Component
         $this->validate([
             'name' => 'required',
             'email' => 'required',
+            'type' => 'required',
         ]);
         if ($this->user_id) {
             $Query = User::find($this->user_id);
@@ -28,7 +30,7 @@ class UserList extends Component
         $Query->name = $this->name;
         $Query->email = $this->email;
         $Query->password = Hash::make('$this->password');
-        //$Query->password = Hash::make('password');
+        $Query->type = $this->type;
         $Query->save();
 
         $this->UserModal();
@@ -46,6 +48,7 @@ class UserList extends Component
         if (!empty($this->password)) {
             $this->password = Hash::make($Query->password);
         }
+        $this->type= $Query->type;
         // $this->password = $Query->password;
         // $this->password = Hash::make('$Query->password');
 		$this->emit('modal', 'UserModal');

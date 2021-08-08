@@ -115,6 +115,7 @@
                                            </x-slot>
                             <x-jet-validation-errors class="mb-4" />
                             <form method="POST" action="{{ route('register') }}" class="login-form">
+                                @csrf
                                 <div class="form-grp">
                                     <x-jet-label for="name" value="{{ __('Name') }}" />
                                     <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -158,10 +159,10 @@
                                         <a href="#">forgot password</a>
                                     </div>
                                 </div>
-                                <div class="form-grp-btn">
-                                    {{-- <button type="submit" class="btn">Sign up</button> --}}
+                                <div class="form-grp-btn" >
+                                    <button type="submit" class="btn">Sign up</button>
 
-                                    <x-jet-button class="ml-4">
+                                    <x-jet-button class="ml-4" type="submit">
                                         {{ __('Register') }}
                                     </x-jet-button>
                                 </div>

@@ -47,27 +47,33 @@
                                 <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
                             </div>
                             <span class="or">- OR -</span>
-                            <form action="#" class="login-form">
+                            <form method="POST" action="{{ route('login') }}" class="login-form">
+                                @csrf
                                 <div class="form-grp">
-                                    <label for="uea">USERNAME OR EMAIL ADDRESS <span>*</span></label>
-                                    <input type="text" id="uea">
+                                    <x-jet-label for="email" value="{{ __('Email') }}" />
+                                     <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                                 </div>
                                 <div class="form-grp">
-                                    <label for="password">PASSWORD <span>*</span></label>
-                                    <input type="password" id="password">
+                                    <x-jet-label for="password" value="{{ __('Password') }}" />
+                                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
                                     <i class="far fa-eye"></i>
                                 </div>
                                 <div class="form-grp-bottom">
                                     <div class="remember">
-                                        <input type="checkbox" id="check">
-                                        <label for="check">Remember me</label>
+                                        <label for="remember_me" class="flex items-center">
+                                            <x-jet-checkbox id="remember_me" name="remember" />
+                                            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                                        </label>
                                     </div>
                                     <div class="forget-pass">
                                         <a href="#">forgot password</a>
                                     </div>
                                 </div>
                                 <div class="form-grp-btn">
-                                    <a href="#" class="btn">Login</a>
+                                    {{-- <a href="#" class="btn">Login</a> --}}
+                                    <x-jet-button class="ml-4" type="submit">
+                                        {{ __('Login') }}
+                                    </x-jet-button>
                                 </div>
                             </form>
                         </div>
