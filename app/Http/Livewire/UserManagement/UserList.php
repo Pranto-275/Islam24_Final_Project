@@ -31,7 +31,7 @@ class UserList extends Component
         $Query->name = $this->name;
         $Query->email = $this->email;
         $Query->password = Hash::make('$this->password');
-        // $Query->type = $this->type;
+        $Query->type = $this->type;
         $Query->save();
         $Query->assignRole($this->type);
 
@@ -51,7 +51,7 @@ class UserList extends Component
         if (!empty($this->password)) {
             $this->password = Hash::make($Query->password);
         }
-        // $this->type = $Query->type;
+        $this->type = $Query->type;
         // $this->password = $Query->password;
         // $this->password = Hash::make('$Query->password');
         $this->emit('modal', 'UserModal');
