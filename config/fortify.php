@@ -61,21 +61,20 @@ return [
     |
     */
 
-//  'home' => RouteServiceProvider::HOME,
-    'home' => function () {
-        // if you want to go to a specific route
-        // return route('home');
+ 'home' => RouteServiceProvider::HOME,
+    // 'home' => function () {
+    //     // if you want to go to a specific route
+    //     // return route('home');
 
-        // or if you have a bunch of redirection options
-        if (Auth::user()->hasAnyRole('admin')) {
-             return RouteServiceProvider::HOME;
-            // return 2;
-            // return redirect(RouteServiceProvider::HOME);
-        } else {
-            return route('home');
-        }
-    },
-
+    //     // or if you have a bunch of redirection options
+    //     if (Auth::user()->hasAnyRole('admin')) {
+    //          return RouteServiceProvider::HOME;
+    //         // return 2;
+    //         // return redirect(RouteServiceProvider::HOME);
+    //     } else {
+    //         return route('home');
+    //     }
+    // },
 
     /*
     |--------------------------------------------------------------------------

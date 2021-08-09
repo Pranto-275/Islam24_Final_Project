@@ -191,7 +191,7 @@ class HomeController extends Controller
     public function productDetails($id = null)
     {
         return view('frontend.product-details', [
-            'productDetails' => Product::whereId($id)->first(),
+            'productDetails' => Product::whereId($id)->first()
         ]);
     }
 
