@@ -16,9 +16,12 @@ class CreateShippingChargesTable extends Migration
         Schema::create('shipping_charges', function (Blueprint $table) {
             $table->id();
             $table->string('code', 20)->nullable();
-            $table->string('title',200)->nullable();
-            $table->string('location',200)->nullable();
-            $table->double('amount')->default(0);
+            $table->string('title', 200)->nullable();
+            $table->enum('type', ['price', 'weight'])->nullable();
+            $table->double('from', 20, 4)->nullable();
+            $table->double('to', 20, 4)->nullable();
+            $table->double('shipping_fee', 20, 4)->default(0);
+            $table->foreignId('country_id');
             $table->foreignId('branch_id');
             $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
