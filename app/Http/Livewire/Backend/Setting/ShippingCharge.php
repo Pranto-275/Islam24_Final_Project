@@ -9,8 +9,11 @@ class ShippingCharge extends Component
 {
     public $code;
     public $title;
-    public $location;
-    public $amount;
+    public $type;
+    public $from;
+    public $to;
+    public $shipping_fee;
+    public $country_id;
     public $is_active;
     public $ShippingChargeId;
 
@@ -19,8 +22,11 @@ class ShippingCharge extends Component
         $this->ShippingChargeId = $QueryUpdate->id;
         $this->code = $QueryUpdate->code;
         $this->title = $QueryUpdate->title;
-        $this->location = $QueryUpdate->location;
-        $this->amount = $QueryUpdate->amount;
+        $this->type = $QueryUpdate->type;
+        $this->from = $QueryUpdate->from;
+        $this->to = $QueryUpdate->to;
+        $this->shipping_fee = $QueryUpdate->shipping_fee;
+        $this->country_id = $QueryUpdate->country_id;
         $this->is_active = $QueryUpdate->is_active;
 		$this->ShippingChargeModal();
     }
@@ -34,8 +40,11 @@ class ShippingCharge extends Component
         $this->validate([
             'code'            => 'required',
             'title'            => 'required',
-            'location'    => 'required',
-            'amount'      => 'required',
+            'type'            => 'required',
+            'from'            => 'required',
+            'to'            => 'required',
+            'shipping_fee'    => 'required',
+            'country_id'      => 'required',
             'is_active'      => 'required',
         ]);
 
@@ -48,8 +57,11 @@ class ShippingCharge extends Component
 
         $Query->code = $this->code;
         $Query->title = $this->title;
-        $Query->location = $this->location;
-        $Query->amount = $this->amount;
+        $Query->type = $this->type;
+        $Query->from = $this->from;
+        $Query->to = $this->to;
+        $Query->shipping_fee = $this->shipping_fee;
+        $Query->country_id = $this->country_id;
         $Query->branch_id = Auth::user()->branch_id;
         $Query->is_active = $this->is_active;
         $Query->save();
