@@ -131,7 +131,7 @@
                                                 @php
                                                 $productQuantity = isset($cardBadge['data']['products'][$productDetails->id]['quantity']) ? $cardBadge['data']['products'][$productDetails->id]['quantity'] : 0;
                                                 @endphp
-                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}"  value="{{ $productQuantity }}">
+                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}"  value="{{ $productQuantity ? $productQuantity : $productDetails->min_order_qty }}" readonly>
                                             </div>
                                         </form>
                                     </div>

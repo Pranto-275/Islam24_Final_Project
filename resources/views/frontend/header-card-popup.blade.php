@@ -77,13 +77,16 @@
         $(document).on('click', '.add-to-card', function () {
             //alert($(this).attr('data-product-id'))
             var productId = $(this).attr('data-product-id');
+            var productQuantity = 1;
+            
             $('.cart-total-price').html('');
             $('.cart-count').html('');
             $.ajax({
                 method:'POST',
                 url: '{{ route('ajax-add-to-card-store') }}',
                 data: {
-                    "product_id": productId
+                    "product_id": productId,
+                    "product_quantity" : productQuantity
                 },
                 success: function (result, text) {
                     if(result.errorStatus) {
