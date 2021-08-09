@@ -88,25 +88,20 @@
                                             <input type="checkbox" class="custom-control-input" id="customCheck4">
                                             <label class="custom-control-label" for="customCheck4">Cash On Delivery</label>
                                         </div>
-                                    </div>
-                                    <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
                                             <label class="custom-control-label" for="customCheck3">bKash</label>
                                         </div>
-                                    </div>
-                                    <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
                                             <label class="custom-control-label" for="customCheck3">Nagad</label>
                                         </div>
-                                    </div>
-                                    <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
                                             <label class="custom-control-label" for="customCheck3">Rocket</label>
                                         </div>
                                     </div>
+
                                     {{-- <div class="paypal-method">
                                         <div class="paypal-method-flex">
                                             <div class="custom-control custom-checkbox">
