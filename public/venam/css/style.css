@@ -1446,7 +1446,7 @@ label {
     width: 55%;
 }
 .third-slider-area .slider-img {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     text-align: right;
 }
 .third-slider-area .slider-img img {

@@ -114,51 +114,40 @@
                 </div> --}}
 
             </div>
+
+        </section>
+        <!-- slider-area-end -->
+        <section class="exclusive-collection pt-20 pb-55">
             {{-- Start Top Category Show Slider --}}
             <div class="related-product-wrap pb-5">
                 <div class="deal-day-top">
                     <div class="deal-day-title">
-                        <h4 class="title pl-3 pt-1">Top Categories</h4>
+                        <h4 class="title pl-3 pt-0">Top Categories</h4>
                     </div>
                     <div class="related-slider-nav">
                         <div class="slider-nav"></div>
                     </div>
                 </div>
-
-                <div class="row related-product-active">
+                <span class="row related-product-active">
                     @foreach ($topCategories as $topCategory)
-                    <div class="col-xl-3">
-                        <div class="exclusive-item exclusive-item-three text-center">
+                    <div class="col-xl-2 col-4">
+                        <div class="text-center">
                             <div class="exclusive-item-thumb">
                                 <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
                                     <img class="topCategoryImage" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="Image">
                                     <img class="topCategoryImage overlay-product-thumb" src="{{ asset('storage/photo/'.$topCategory->image2) }}" alt="">
                                 </a>
-                                {{-- <ul class="action">
-                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                </ul> --}}
                             </div>
                             <div class="exclusive-item-content">
                                 <h5 class="text-center"><a href="shop-details.html">{{$topCategory->name}}</a></h5>
-                                {{-- <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div> --}}
+
                             </div>
                         </div>
                     </div>
                     @endforeach
-                </div>
+                </span>
             </div>
             {{-- End Top Category Show Slider --}}
-        </section>
-        <!-- slider-area-end -->
-        <section class="exclusive-collection pt-20 pb-55">
             <div class="custom-container-two">
                  <!-- exclusive-collection-area -->
                 <div class="row justify-content-center">
@@ -495,3 +484,4 @@
 </div>--}}
 
 @endsection
+

@@ -303,7 +303,7 @@
                                         <div class="slider-nav"></div>
                                     </div>
                                 </div>
-                                <div class="row related-product-active">
+                                <div class="row ">
                                     <div class="col-xl-3">
                                         <div class="exclusive-item exclusive-item-three text-center">
                                             <div class="exclusive-item-thumb">
