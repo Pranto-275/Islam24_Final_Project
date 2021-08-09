@@ -23,7 +23,7 @@
 
 @media only screen and (min-width: 768px) {
     .slider-image{
-    height: 450px;background-repeat: no-repeat;background-size: cover;
+    height: 470px;background-repeat: no-repeat;background-size: cover;
     }
 }
 @media only screen and (max-width: 768px) {
@@ -119,7 +119,7 @@
         <!-- slider-area-end -->
         <section class="exclusive-collection pt-20 pb-55">
             {{-- Start Top Category Show Slider --}}
-            <div class="related-product-wrap pb-5">
+            {{-- <div class="related-product-wrap pb-5">
                 <div class="deal-day-top">
                     <div class="deal-day-title">
                         <h4 class="title pl-3 pt-0">Top Categories</h4>
@@ -128,7 +128,7 @@
                         <div class="slider-nav"></div>
                     </div>
                 </div>
-                <span class="row related-product-active">
+                <span class="row">
                     @foreach ($topCategories as $topCategory)
                     <div class="col-xl-2 col-4">
                         <div class="text-center">
@@ -146,9 +146,40 @@
                     </div>
                     @endforeach
                 </span>
-            </div>
+            </div> --}}
+
+            <section class="most-popular-area theme-bg pt-20 pb-10">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="section-title text-center mb-10">
+                                <h5>Top Categories</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row popular-active">
+                        @foreach ($topCategories as $topCategory)
+                        <div class="col-xl-3">
+                                <div class="viewed-item-top mb-0 pb-0">
+                                    <div class="most--popular--item--thumb mb-2 p-0">
+                                        <a href="shop-details.html">
+                                            <center>
+                                                <img src="{{ asset('storage/photo/'.$topCategory->image1) }}" style="width:260px;height:180px;" alt="">
+                                            </center>
+                                        </a>
+                                    </div>
+                                    <div class="super-deal-content">
+                                        <h6 class="text-center"><a href="shop-details.html">{{$topCategory->name}}</a></h6>
+                                    </div>
+                                </div>
+
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
             {{-- End Top Category Show Slider --}}
-            <div class="custom-container-two">
+            <div class="custom-container-two mt-5">
                  <!-- exclusive-collection-area -->
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
