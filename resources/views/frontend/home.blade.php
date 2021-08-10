@@ -28,6 +28,9 @@
     #paymentCard{
         height: 100px;
     }
+    .cartModal1{
+        display: none;
+    }
 }
 @media only screen and (max-width: 768px) {
     .slider-image{
@@ -40,6 +43,52 @@
     #categoryName{
         font-size: 12px;
     }
+    .cartModal{
+        display: none;
+    }
+}
+/* .footer-area{
+    position:relative;
+} */
+
+.modal-dialog {
+  position:absolute;
+  /* top: 200px; */
+  right: 0px;
+  bottom: 0;
+  left: 0;
+  z-index: 10040;
+}
+.cart-button{
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: rgb(12, 1, 1);
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.cart-button1{
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+.cart-button1:hover {
+  background-color: #555555;
+  color:white;
+}
+.cart-button2{
+    background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+.cart-button2:hover {
+    background-color: #4CAF50;
+  color: white;
 }
     </style>
     <x-slot name="title">
@@ -90,7 +139,7 @@
             {{-- Start Top Category Show Slider --}}
             <h5 class="text-center">Top Categories</h5>
             <hr class="mt-0 pt-0">
-                <div class="row">
+                <div class="row mx-1">
                     @foreach ($topSixCategories as $topCategory)
                     <div class="col-xl-2 col-4">
                         <div class="text-center">
@@ -111,7 +160,7 @@
                 </div>
                 @if(count($topSixCategories)>0)
                 <div>
-                    <center><a href="{{route('search-category-wise')}}" class="btn btn-sm" style="padding:10px;margin-bottom:10px;width:100px;height:30px;color:white;background-color:rgb(121, 100, 218);">See More</a></center>
+                    <center><a href="{{route('search-category-wise')}}" class="btn btn-sm" style="padding:10px;margin-bottom:10px;width:100px;height:30px;color:#03030a;background-color:rgb(236, 240, 14);">See More</a></center>
                 </div>
                 @endif
             {{-- End Top Category Show Slider --}}
@@ -133,13 +182,15 @@
                             <div class="exclusive-item exclusive-item-three text-center mb-40">
                                 <div class="exclusive-item-thumb">
                                     <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                        <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
-                                        <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                        <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
+                                        <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                     </a>
+                                    @if($product['discount'])
                                     <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                    @endif
                                     <span class="sd-meta">New!</span>
                                     <ul class="action">
-                                        <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                        {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
                                         <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                         <li><a href="#"><i class="flaticon-witness"></i></a></li>
                                     </ul>
@@ -167,8 +218,9 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div> --}}
-                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
-
+                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile</a>
+                                    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
                                     <div>
                                     </div>
                                 </div>
@@ -184,6 +236,74 @@
 
                 </div>
                 <!-- exclusive-collection-area-end -->
+                {{-- Start Modal --}}
+
+     <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm m-0">
+          <div class="modal-content p-3" style="">
+             <div class="">
+                 <h5>
+                    <span>
+                        <i class="fas fa-shopping-basket"></i>
+                    </span>
+                   PAIKARI Express Shahbagh
+                </h5>
+                 <hr class="m-0 p-0">
+                 <div class="row">
+                    <div class="col-4">
+                        <img src="{{ asset('img/logo/logo.png') }}"/>
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                          <div class="col-12">
+                            Kali Baush Fish-Small-1Kg-3101596 <br>
+                            @if($currencySymbol)
+                                {{ $currencySymbol->symbol }}
+                            @endif
+                            390 x 1
+                          </div>
+                          <div class="col-4">
+                              <span class="text-danger" style="font-size: 18px;">
+                                @if($currencySymbol)
+                                    {{ $currencySymbol->symbol }}
+                                @endif
+                                390
+                              </span>
+                          </div>
+                          <div class="col-8 text-center">
+                            <td class="product-quantity">
+                                <div class="cart-plus">
+                                    <form action="#">
+                                        <div class="cart-plus-minus">
+                                            <input type="text" class="product_quantity">
+                                        </div>
+                                    </form>
+                                </div>
+                            </td>
+                              {{-- <a class="px-2 border" style="border-radius: 100%;font-weight:bold;font-size:28px;">-</a><span class="px-2" style="font-weight:bold;font-size:28px;">10</span><a class="px-2 border" style="border-radius: 100%;font-weight:bold;font-size:28px;">+</a> --}}
+                          </div>
+                        </div>
+                    </div>
+                 </div>
+                 <hr class="my-2">
+                 <div class="row">
+                    <div class="col-6">
+                        <center>
+                        <a class="cart-button cart-button1">Add To Cart</a>
+                        </center>
+                    </div>
+                    <div class="col-6">
+                        <center>
+                        <a class="cart-button cart-button2">Checkout</a>
+                        </center>
+                    </div>
+                 </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      {{-- End Modal --}}
                 <!-- testimonial-area -->
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -199,12 +319,14 @@
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                            <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
-                                            <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                            <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
+                                            <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                         </a>
+                                        @if($product['discount'])
                                         <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                        @endif
                                         <ul class="action">
-                                            <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                            {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
                                             <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                             <li><a href="#"><i class="flaticon-witness"></i></a></li>
                                         </ul>
@@ -232,7 +354,9 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                         </div> --}}
-                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile</a>
+
 
                                     </div>
                                 </div>
@@ -259,25 +383,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" id="paymentCard" alt=""></a>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" id="paymentCard" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" id="paymentCard" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" id="paymentCard" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
                     </div>
                 </div>

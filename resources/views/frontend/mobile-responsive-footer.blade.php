@@ -1,4 +1,4 @@
-<footer id="mobileResponsiveFooter">
+<footer id="mobileResponsiveFooter" style="z-index: 1;">
     <div class="card">
         <div class="card-body m-0 p-0">
           <div class="row">

@@ -47,6 +47,9 @@
                 <div class="col-md-4 col-sm-5">
                     <div class="header-top-right">
                         <ul>
+                            <li>
+                                <a href="#"><i class="fas fa-user"></i></a>
+                            </li>
                             @if(Auth::user())
                             <li>
                                 <div class="heder-top-guide">
@@ -158,6 +161,9 @@
                                         </ul>
                                     </li>
                                 </ul>
+                            </div>
+                            <div>
+                                <a href="{{ route('my-account') }}">My Account</a>
                             </div>
                         </nav>
                     </div>
