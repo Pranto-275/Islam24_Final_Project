@@ -91,7 +91,7 @@
             {{-- Start Top Category Show Slider --}}
             <h5 class="text-center">Top Categories</h5>
             <hr class="mt-0 pt-0">
-                <div class="row">
+                <div class="row mx-1">
                     @foreach ($topSixCategories as $topCategory)
                     <div class="col-xl-2 col-4">
                         <div class="text-center">
