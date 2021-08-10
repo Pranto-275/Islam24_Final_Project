@@ -52,12 +52,12 @@
 }
 .exclusive-item-thumb .discount {
 	top: 3px;
-	left: 5px;
+	left: 3px;
 	background: #f7ba01;
 }
 .exclusive-item-thumb .sd-meta {
     top: 3px;
-    right: 5px;
+    right: 3px;
     left: auto;
 }
          </style>
