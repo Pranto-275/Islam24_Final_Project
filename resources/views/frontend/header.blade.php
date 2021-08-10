@@ -162,6 +162,9 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div>
+                                <a href="">My Account</a>
+                            </div>
                         </nav>
                     </div>
                     <!-- Mobile Menu  -->

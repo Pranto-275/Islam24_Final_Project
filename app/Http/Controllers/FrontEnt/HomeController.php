@@ -41,7 +41,9 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
-
+    public function MyAccount(){
+        return view('frontend.my-account');
+    }
     public function index(Request $request)
     {
         $data['html'] = view('frontend.header-card-popup')->render();

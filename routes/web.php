@@ -113,6 +113,7 @@ Route::post('/ajax/add-to-card-product-delete', [HomeController::class, 'cartPro
 Route::post('/confirm-order', [HomeController::class, 'confirmOrder'])->name('confirm-order');
 Route::get('/order-completed', [HomeController::class, 'orderComplete'])->name('order-completed');
 Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
+Route::get('my-account', [HomeController::class, 'MyAccount'])->name('my-account');
 // Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
