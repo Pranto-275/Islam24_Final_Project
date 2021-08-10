@@ -35,8 +35,26 @@
             --text-opacity: 1;
             color: #cbd5e0;
             color: rgba(203,213,224,var(--text-opacity));
-
         }
+        .pb-4{
+            padding-bottom: 1rem;
+        }
+        .w-full{
+            width: 100%;
+        }
+        .mt-4{
+            margin-top: 1rem;
+        }
+        .mt-4{
+            margin-top: 1rem;
+        }
+        .text-gray-700{
+            --text-opacity: 1;
+             color: #4a5568;
+             color: rgba(74,85,104,var(--text-opacity));
+        }
+
+
         button:hover,
         a:hover {
             opacity: 0.7;
@@ -83,11 +101,23 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="current balance">
+                        <div class="current balance pb-4">
                             <h4>
                                 <span class="fonts">Paikarihaat Account</span>
                                 <span class="ml-2 text-sm text-gray-400">Your Account Information</span>
                             </h4>
+                            <div class="w-full mt-4 mb-6">
+                                 <div class="mb-4">
+                                     <div class="flex">
+                                         <h1 class="text-xl fonts">
+                                            ৳ 0.00
+                                         </h1>
+                                     </div>
+                                     <p class="text-gray-700">
+                                         Current Balance
+                                     </p>
+                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
