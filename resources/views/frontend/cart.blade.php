@@ -46,7 +46,8 @@
             <section class="shop-cart-area wishlist-area pt-100 pb-100">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8 mb-1" id="cartForDeskTop">
+                        {{-- For Block In Mobile id="cartForDeskTop" --}}
+                        <div class="col-lg-8 mb-1" id="">
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])

@@ -164,6 +164,9 @@
                                      <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account</li>
                                 </ul>
                             </div>
+                            <div>
+                                <a href="{{ route('my-account') }}">My Account</a>
+                            </div>
                         </nav>
                     </div>
                     <!-- Mobile Menu  -->

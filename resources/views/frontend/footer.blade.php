@@ -1,4 +1,3 @@
-
 <footer class="footer-area footer-style-two">
     <div class="footer-top pt-35 pb-25">
         <div class="custom-container-two">
