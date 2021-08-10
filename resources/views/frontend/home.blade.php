@@ -219,7 +219,7 @@
                                         <i class="fas fa-star"></i>
                                     </div> --}}
                                     <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
-                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">Buy Now</a>
+                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile</a>
                                     {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
                                     <div>
                                     </div>
@@ -354,7 +354,9 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                         </div> --}}
-                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                    <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile</a>
+
 
                                     </div>
                                 </div>
