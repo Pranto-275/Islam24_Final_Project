@@ -41,6 +41,7 @@
         font-size: 12px;
     }
 }
+
     </style>
     <x-slot name="title">
         Home
@@ -111,7 +112,7 @@
                 </div>
                 @if(count($topSixCategories)>0)
                 <div>
-                    <center><a href="{{route('search-category-wise')}}" class="btn btn-sm" style="padding:10px;margin-bottom:10px;width:100px;height:30px;color:white;background-color:rgb(121, 100, 218);">See More</a></center>
+                    <center><a href="{{route('search-category-wise')}}" class="btn btn-sm" style="padding:10px;margin-bottom:10px;width:100px;height:30px;color:#03030a;background-color:rgb(236, 240, 14);">See More</a></center>
                 </div>
                 @endif
             {{-- End Top Category Show Slider --}}
@@ -136,7 +137,9 @@
                                         <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                         <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                     </a>
+                                    @if($product['discount'])
                                     <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                    @endif
                                     <span class="sd-meta">New!</span>
                                     <ul class="action">
                                         <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -202,7 +205,9 @@
                                             <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                             <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                         </a>
+                                        @if($product['discount'])
                                         <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                        @endif
                                         <ul class="action">
                                             <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
                                             <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
