@@ -21,12 +21,11 @@
                     <div class="col-lg-8">
                         <div class="checkout-wrap">
                             <h5 class="title">Quick Checkout</h5>
-
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-grp">
                                             <label for="fName">First Name <span>*</span></label>
-                                            <input type="text" name="fName" required>
+                                            <input type="text" name="fName" required value="@if(Auth::user()){{Auth::user()->name}}@endif">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -38,13 +37,13 @@
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="mobile">Your Mobile <span>*</span></label>
-                                            <input type="text" name="mobile" required>
+                                            <input type="text" name="mobile" required value="@if(Auth::user()){{Auth::user()->mobile}}@endif">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-grp">
                                             <label for="shipping_address">Shipping ADDRESS *</label>
-                                            <input type="text" name="shipping_address" required>
+                                            <input type="text" name="shipping_address" required value="@if(Auth::user()){{Auth::user()->address}}@endif">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -64,21 +63,24 @@
                         <aside class="shop-cart-sidebar checkout-sidebar">
                             <div class="shop-cart-widget">
                                 <h6 class="title">Cart Totals</h6>
-
-
                                     <ul>
                                         <li><span>SUBTOTAL</span> $ 136.00</li>
                                         <li>
                                             <span>SHIPPING</span>
                                             <div class="shop-check-wrap">
+                                                @if($shipping_charge)
+                                                @foreach ($shipping_charge as $shippingCharge )
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">FLAT RATE: $15</label>
+                                                    <label class="custom-control-label" for="customCheck1">{{$shippingCharge->title}}: {{$shippingCharge->shipping_fee}}</label>
                                                 </div>
+                                                @endforeach
+                                                @else
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="customCheck2">
                                                     <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>
                                                 </div>
+                                                @endif
                                             </div>
                                         </li>
                                         <li class="cart-total-amount"><span>TOTAL</span> <span class="amount">$ 151.00</span></li>
@@ -88,25 +90,20 @@
                                             <input type="checkbox" class="custom-control-input" id="customCheck4">
                                             <label class="custom-control-label" for="customCheck4">Cash On Delivery</label>
                                         </div>
-                                    </div>
-                                    <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
                                             <label class="custom-control-label" for="customCheck3">bKash</label>
                                         </div>
-                                    </div>
-                                    <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
                                             <label class="custom-control-label" for="customCheck3">Nagad</label>
                                         </div>
-                                    </div>
-                                    <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
                                             <label class="custom-control-label" for="customCheck3">Rocket</label>
                                         </div>
                                     </div>
+
                                     {{-- <div class="paypal-method">
                                         <div class="paypal-method-flex">
                                             <div class="custom-control custom-checkbox">
@@ -135,7 +132,6 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-submit" type="submit">Confirm</button>
-
                             </div>
                         </aside>
                     </div>

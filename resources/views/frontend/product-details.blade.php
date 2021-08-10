@@ -1,5 +1,6 @@
 @extends('layouts.front_end')
 @section('content')
+
 <div>
     <x-slot name="title">
         Product View
@@ -127,7 +128,10 @@
                                     <div class="cart-plus">
                                         <form action="#">
                                             <div class="cart-plus-minus" data-product-id="{{ $productDetails->id }}">
-                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}"  value="1">
+                                                @php
+                                                $productQuantity = isset($cardBadge['data']['products'][$productDetails->id]['quantity']) ? $cardBadge['data']['products'][$productDetails->id]['quantity'] : 0;
+                                                @endphp
+                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}"  value="{{ $productQuantity }}">
                                             </div>
                                         </form>
                                     </div>
@@ -329,7 +333,7 @@
                                         <div class="slider-nav"></div>
                                     </div>
                                 </div>
-                                <div class="row related-product-active">
+                                <div class="row ">
                                     <div class="col-xl-3">
                                         <div class="exclusive-item exclusive-item-three text-center">
                                             <div class="exclusive-item-thumb">

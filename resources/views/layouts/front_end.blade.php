@@ -32,6 +32,34 @@
                   display: none;
                }
             }
+            .super-deal-thumb span.sd-meta,
+.exclusive-item-thumb .sd-meta,
+.exclusive-item-thumb .discount,
+.list-product-tag {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 21px;
+	background: #ff6000;
+	color: #fff;
+	font-size: 12px;
+	line-height: 21px;
+	padding: 0 8px;
+	border-radius: 3px;
+	font-weight: 500;
+	text-transform: capitalize;
+	z-index: 1;
+}
+.exclusive-item-thumb .discount {
+	top: 3px;
+	left: 3px;
+	background: #f7ba01;
+}
+.exclusive-item-thumb .sd-meta {
+    top: 3px;
+    right: 3px;
+    left: auto;
+}
          </style>
     </head>
     <body>

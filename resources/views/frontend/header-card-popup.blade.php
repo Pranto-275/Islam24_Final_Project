@@ -1,7 +1,8 @@
 @if($cardBadge['data']['products'])
 <div style="height: 300px;overflow-y: scroll;">
     @foreach($cardBadge['data']['products'] as $productId => $product)
-        <li class="d-flex align-items-start" id="li_row_{{ $productId }}">
+
+        <li class="d-flex align-items-start" id="li_row_{{ $productId }}" style="margin-left: 0px !important;">
             <div class="cart-img">
                 <a href="#">
                     <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" alt="">
@@ -200,6 +201,7 @@
                 $('#product_subtotal_'+productId).html(result.data.product_card.total_price)
                 $('.cart-total-price').html(result.data.total_price)
                 $('.cart-count').html(result.data.number_of_product)
+                cloneMiniCart(result.data)
             },
             error: function (request, status, error) {
                 var responseText = JSON.parse(request.responseText);

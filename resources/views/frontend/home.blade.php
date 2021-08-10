@@ -21,16 +21,27 @@
     height:177px;
 }
 
-/* @media only screen and (min-width: 768px) {
-    #sliderImageSize{
-    height: 100px;background-repeat: no-repeat;background-size: cover;
+@media only screen and (min-width: 768px) {
+    .slider-image{
+    height: 470px;background-repeat: no-repeat;background-size: cover;
+    }
+    #paymentCard{
+        height: 100px;
     }
 }
 @media only screen and (max-width: 768px) {
-    #sliderImageSize{
-        height: 50px;background-repeat: no-repeat;background-size: cover;
+    .slider-image{
+        height: 200px;background-repeat: no-repeat;background-size: cover;
     }
-} */
+    .topCategoryImage{
+        height:80px;
+        /* width: 20px; */
+    }
+    #categoryName{
+        font-size: 12px;
+    }
+}
+
     </style>
     <x-slot name="title">
         Home
@@ -42,94 +53,70 @@
         <!-- slider-area -->
         <section class="third-slider-area">
             <div class="custom-container-two">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slider-active">
-                            @foreach ($sliderImages as $sliderImage)
-                            <div class="single-slider slider-bg" data-background="{{ asset('storage/photo/'.$sliderImage->image) }}">
-                                <div class="slider-content">
-                                    <h5 data-animation="fadeInUp" data-delay=".3s">top deal !</h5>
-                                    <h2 data-animation="fadeInUp" data-delay=".6s">stylish top <span>handbag</span></h2>
-                                    <p data-animation="fadeInUp" data-delay=".9s">Get up to <span>50%</span> off Today Only</p>
-                                    <a href="{{route('search-category-wise')}}" class="btn yellow-btn" data-animation="fadeInUp" data-delay="1s">Shop Now</a>
-                                </div>
-                                {{-- <div class="slider-img" data-animation="fadeInRight" data-delay="1.2s">
-                                    <img src="{{ asset('storage/photo/'.$sliderImage->image) }}" alt="">
-                                </div> --}}
-                            </div>
-                            @endforeach
-                            {{-- <div class="single-slider slider-bg" data-background="{{ URL::asset('venam/') }}/img/slider/t_slider_bg02.jpg">
-                                <div class="slider-content">
-                                    <h5 data-animation="fadeInUp" data-delay=".3s">top deal !</h5>
-                                    <h2 data-animation="fadeInUp" data-delay=".6s">stylish <span>headphone</span></h2>
-                                    <p data-animation="fadeInUp" data-delay=".9s">Get up to <span>50%</span> off Today Only</p>
-                                    <a href="shop-left-sidebar.html" class="btn yellow-btn" data-animation="fadeInUp" data-delay="1s">Shop Now</a>
-                                </div>
-                                <div class="slider-img" data-animation="fadeInRight" data-delay="1.2s">
-                                    <img src="{{ URL::asset('venam/') }}/img/slider/t_slider_img02.png" alt="">
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-                {{-- <div class="row justify-content-center">
-                    @foreach ($topSixCategories as $category)
+                {{-- Start Main Slider --}}
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    {{-- <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol> --}}
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100 slider-image" src="{{ asset('storage/photo/'.$sliderImageLast->image) }}" alt="First slide">
+                      </div>
+                      @foreach ($sliderImages as $sliderImage)
 
-                    <div class="col-lg-2 col-md-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><img src="{{ asset('storage/photo/'.$category->image1) }}" style="height: 142px;" alt=""></a>
-                        </div>
-                    </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100 slider-image" src="{{ asset('storage/photo/'.$sliderImage->image) }}" alt="Second slide">
+                      </div>
 
-                    @endforeach
-                </div> --}}
+                      @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                {{-- End Main Slider --}}
+
             </div>
-            {{-- Start Top Category Show Slider --}}
-            <div class="related-product-wrap pb-5">
-                <div class="deal-day-top">
-                    <div class="deal-day-title">
-                        <h4 class="title">Top Categories</h4>
-                    </div>
-                    <div class="related-slider-nav">
-                        <div class="slider-nav"></div>
-                    </div>
-                </div>
 
-                <div class="row related-product-active">
-                    @foreach ($topCategories as $topCategory)
-                    <div class="col-xl-3">
-                        <div class="exclusive-item exclusive-item-three text-center">
-                            <div class="exclusive-item-thumb">
-                                <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
-                                    <img class="topCategoryImage" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="Image">
-                                    <img class="topCategoryImage overlay-product-thumb" src="{{ asset('storage/photo/'.$topCategory->image2) }}" alt="">
-                                </a>
-                                {{-- <ul class="action">
-                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                </ul> --}}
-                            </div>
-                            <div class="exclusive-item-content">
-                                <h5 class="text-center"><a href="shop-details.html">{{$topCategory->name}}</a></h5>
-                                {{-- <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-            {{-- End Top Category Show Slider --}}
         </section>
         <!-- slider-area-end -->
         <section class="exclusive-collection pt-20 pb-55">
-            <div class="custom-container-two">
+            {{-- Start Top Category Show Slider --}}
+            <h5 class="text-center">Top Categories</h5>
+            <hr class="mt-0 pt-0">
+                <div class="row mx-1">
+                    @foreach ($topSixCategories as $topCategory)
+                    <div class="col-xl-2 col-4">
+                        <div class="text-center">
+                            <div class="exclusive-item-thumb">
+                                <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
+                                    <center>
+                                        <img class="rounded topCategoryImage" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="Image">
+                                        <img class="rounded topCategoryImage overlay-product-thumb" src="{{ asset('storage/photo/'.$topCategory->image2) }}" alt="">
+                                    </center>
+                                </a>
+                            </div>
+                            <div class="exclusive-item-content">
+                                <h5 id="categoryName" class="text-center"><a href="shop-details.html">{{$topCategory->name}}</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @if(count($topSixCategories)>0)
+                <div>
+                    <center><a href="{{route('search-category-wise')}}" class="btn btn-sm" style="padding:10px;margin-bottom:10px;width:100px;height:30px;color:#03030a;background-color:rgb(236, 240, 14);">See More</a></center>
+                </div>
+                @endif
+            {{-- End Top Category Show Slider --}}
+            <div class="custom-container-two mt-5">
                  <!-- exclusive-collection-area -->
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
@@ -147,11 +134,15 @@
                             <div class="exclusive-item exclusive-item-three text-center mb-40">
                                 <div class="exclusive-item-thumb">
                                     <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                        <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
-                                        <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                        <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
+                                        <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                     </a>
+                                    @if($product['discount'])
+                                    <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                    @endif
+                                    <span class="sd-meta">New!</span>
                                     <ul class="action">
-                                        <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                        {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
                                         <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                         <li><a href="#"><i class="flaticon-witness"></i></a></li>
                                     </ul>
@@ -194,93 +185,6 @@
                     @endif
                     {{-- End New Electronics --}}
 
-                    {{-- <div class="col-xl-4 col-md-4 col-sm-6">
-                        <div class="exclusive-item exclusive-item-three text-center mb-40">
-                            <div class="exclusive-item-thumb">
-                                <a href="shop-details.html">
-                                    <img src="{{ URL::asset('venam/') }}/img/product/t_exclusive_product01.jpg" alt="">
-                                    <img class="overlay-product-thumb" src="{{ URL::asset('venam/') }}/img/product/td_product_img04.jpg" alt="">
-                                </a>
-                                <ul class="action">
-                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="exclusive-item-content">
-                                <h5><a href="shop-details.html">Woman Lathers Jacket</a></h5>
-                                <div class="exclusive--item--price">
-                                    <del class="old-price">$69.00</del>
-                                    <span class="new-price">$58.00</span>
-                                </div>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-4 col-sm-6">
-                        <div class="exclusive-item exclusive-item-three text-center mb-40">
-                            <div class="exclusive-item-thumb">
-                                <a href="shop-details.html">
-                                    <img src="{{ URL::asset('venam/') }}/img/product/t_exclusive_product02.jpg" alt="">
-                                    <img class="overlay-product-thumb" src="{{ URL::asset('venam/') }}/img/product/td_product_img01.jpg" alt="">
-                                </a>
-                                <ul class="action">
-                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="exclusive-item-content">
-                                <h5><a href="shop-details.html">Luxury Fashion Bag</a></h5>
-                                <div class="exclusive--item--price">
-                                    <del class="old-price">$69.00</del>
-                                    <span class="new-price">$29.00</span>
-                                </div>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-4 col-sm-6">
-                        <div class="exclusive-item exclusive-item-three text-center mb-40">
-                            <div class="exclusive-item-thumb">
-                                <a href="shop-details.html">
-                                    <img src="{{ URL::asset('venam/') }}/img/product/t_exclusive_product03.jpg" alt="">
-                                    <img class="overlay-product-thumb" src="{{ URL::asset('venam/') }}/img/product/td_product_img05.jpg" alt="">
-                                </a>
-                                <ul class="action">
-                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="exclusive-item-content">
-                                <h5><a href="shop-details.html">Woman Lathers Jacket</a></h5>
-                                <div class="exclusive--item--price">
-                                    <del class="old-price">$69.00</del>
-                                    <span class="new-price">$58.00</span>
-                                </div>
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <!-- exclusive-collection-area-end -->
                 <!-- testimonial-area -->
@@ -298,11 +202,14 @@
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                            <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
-                                            <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                            <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
+                                            <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                         </a>
+                                        @if($product['discount'])
+                                        <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                        @endif
                                         <ul class="action">
-                                            <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                            {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
                                             <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                             <li><a href="#"><i class="flaticon-witness"></i></a></li>
                                         </ul>
@@ -357,25 +264,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" alt=""></a>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="top-cat-banner-item mt-30">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -388,7 +297,7 @@
                 <div class="core-features-border">
                     <div class="row justify-content-center">
                         <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
+                            <div class="core-features-item mb-10">
                                 <div class="core-features-icon">
                                     <img src="{{ URL::asset('venam/') }}/img/icon/core_features01.png" alt="">
                                 </div>
@@ -399,7 +308,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
+                            <div class="core-features-item mb-10">
                                 <div class="core-features-icon">
                                     <img src="{{ URL::asset('venam/') }}/img/icon/core_features02.png" alt="">
                                 </div>
@@ -410,7 +319,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
+                            <div class="core-features-item mb-10">
                                 <div class="core-features-icon">
                                     <img src="{{ URL::asset('venam/') }}/img/icon/core_features03.png" alt="">
                                 </div>
@@ -421,7 +330,7 @@
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
+                            <div class="core-features-item mb-10">
                                 <div class="core-features-icon">
                                     <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png" alt="">
                                 </div>
@@ -465,3 +374,4 @@
 </div>--}}
 
 @endsection
+

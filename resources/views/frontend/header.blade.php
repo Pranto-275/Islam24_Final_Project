@@ -47,12 +47,15 @@
                 <div class="col-md-4 col-sm-5">
                     <div class="header-top-right">
                         <ul>
+                            <li>
+                                <a href="#"><i class="fas fa-user"></i></a>
+                            </li>
                             @if(Auth::user())
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
                                         <button class="dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
+                                            aria-haspopup="true" aria-expanded="false" style="background-color: #f8f9fa; color: black;border: none;color: rgb(12, 6, 6);padding: 7px 16px; text-align: center;text-decoration: none;font-size: 14px;cursor: pointer;">
                                             {{Auth::user()->name}}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">

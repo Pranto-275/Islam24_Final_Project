@@ -45,7 +45,7 @@
                 <form wire:submit.prevent="ShippingChargeSave">
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Code</label>
                                     <input class="form-control" type="text" wire:model.lazy="code" placeholder="Code">
@@ -53,31 +53,56 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Title</label>
                                     <input class="form-control" type="text" wire:model.lazy="title" placeholder="Enter Title">
                                     @error('title') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
-
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Location</label>
-                                    <input class="form-control" type="text" wire:model.lazy="location" placeholder="Enter Location">
-                                    @error('location') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-lastname-input">Type</label>
+                                    <select class="form-control" wire:model.lazy="type">
+                                        <option value="">Select Type</option>
+                                        <option value="price">Price</option>
+                                        <option value="weight">Weight</option>
+                                    </select>
+                                    @error('type') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Amount</label>
-                                    <input class="form-control" type="number" wire:model.lazy="amount" placeholder="Enter Amount">
-                                    @error('amount') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="basicpill-firstname-input">From</label>
+                                    <input class="form-control" type="text" wire:model.lazy="from" placeholder="From">
+                                    @error('from') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">To</label>
+                                    <input class="form-control" type="text" wire:model.lazy="to" placeholder="To">
+                                    @error('to') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Shipping Fee</label>
+                                    <input class="form-control" type="number" wire:model.lazy="shipping_fee" placeholder="Shipping Fee">
+                                    @error('shipping_fee') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Country</label>
+                                    <select class="form-control" wire:model.lazy="country_id">
+                                        <option value="">Select Country</option>
+                                        <option value="1">Bangladesh</option>
+                                        <option value="2">Pakistan</option>
+                                    </select>
+                                    @error('country_id') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
@@ -134,14 +159,29 @@
                         name:  'title'
                     },
                     {
-                        title: 'Location',
-                        data:  'location',
-                        name:  'location'
+                        title: 'Type',
+                        data:  'type',
+                        name:  'type'
                     },
                     {
-                        title: 'Amount',
-                        data:  'amount',
-                        name:  'amount'
+                        title: 'From',
+                        data:  'from',
+                        name:  'from'
+                    },
+                    {
+                        title: 'To',
+                        data:  'to',
+                        name:  'to'
+                    },
+                    {
+                        title: 'Shipping Fee',
+                        data:  'shipping_fee',
+                        name:  'shipping_fee'
+                    },
+                    {
+                        title: 'Country',
+                        data:  'country_id',
+                        name:  'country_id'
                     },
                     {
                         title: 'Status',

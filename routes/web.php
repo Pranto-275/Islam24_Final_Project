@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\FrontEnt\HomeController;
+use App\Http\Controllers\FrontEnt\LoginController;
 use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
 use App\Http\Livewire\Backend\ContactInfo\Customer as CustomerInfo;
 use App\Http\Livewire\Backend\ContactInfo\Staff;
@@ -127,8 +128,9 @@ Route::get('error', Error::class)->name('error');
 // Route::get('order-completed', OrderCompleted::class)->name('order-completed');
 
 Route::get('wish-list', Wishlist::class)->name('wish-list');
+Route::Post('customer_sign_in', [LoginController::class, 'authenticate'])->name('customer_sign_in');
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
         return view('livewire.dashboard');
     })->name('dashboard');
 
@@ -196,14 +198,14 @@ Route::group(['middleware' => ['role:admin']], function () {
             Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
             Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
         });
-    Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
-        Route::get('order-list', OrderList::class)->name('order-list');
-        Route::get('order-invoice/{id}', OrderInvoice::class)->name('order-invoice');
-        Route::get('order-pending', PendingOrderList::class)->name('order-pending');
-        Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
-        Route::get('order-cancel', CancelOrderList::class)->name('order-cancel');
-        Route::get('print-order', PrintOrder::class)->name('print-order');
-    });
+        Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
+            Route::get('order-list', OrderList::class)->name('order-list');
+            Route::get('order-invoice/{id}', OrderInvoice::class)->name('order-invoice');
+            Route::get('order-pending', PendingOrderList::class)->name('order-pending');
+            Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
+            Route::get('order-cancel', CancelOrderList::class)->name('order-cancel');
+            Route::get('print-order', PrintOrder::class)->name('print-order');
+        });
 
         Route::group(['prefix' => 'contact-info', 'as' => 'contact-info.'], function () {
             Route::get('contact-category', ContactCategory::class)->name('contact-category');

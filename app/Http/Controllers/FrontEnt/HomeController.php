@@ -7,6 +7,7 @@ namespace App\Http\Controllers\FrontEnt;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ProductInfo\Product;
+use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
@@ -118,6 +119,7 @@ class HomeController extends Controller
     public function searchByBrand($brandId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereBrandId($brandId)->get()->toArray();
+
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -127,6 +129,7 @@ class HomeController extends Controller
     public function searchBySubSubCategory($subSubCatId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($subSubCatId)->get()->toArray();
+
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -136,6 +139,7 @@ class HomeController extends Controller
     public function searchBySubCategory($subCatId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->get()->toArray();
+
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -144,12 +148,12 @@ class HomeController extends Controller
 
     public function searchByCategory($catId = null)
     {
-        if($catId){
+        if ($catId) {
             $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->get()->toArray();
-        }else{
+        } else {
             $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
-
         }
+
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -185,7 +189,7 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
 
-        return view('frontend.check-out', ['data' => $data]);
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get()]);
     }
 
     public function productDetails($id = null)
@@ -197,13 +201,12 @@ class HomeController extends Controller
 
     public function productSearch(Request $request)
     {
-
         $query = $this->product->with(['ProductImageFirst', 'ProductImageLast']);
 
-        if($request->get('search_product_name')){
+        if ($request->get('search_product_name')) {
             $query->where('name', 'like', '%'.$request->get('search_product_name').'%');
         }
-        if($request->get('search_product_category')){
+        if ($request->get('search_product_category')) {
             $query->where('sub_sub_category_id', $request->get('search_product_category'));
         }
 
@@ -213,6 +216,4 @@ class HomeController extends Controller
             'data' => $data,
         ]);
     }
-
-
 }

@@ -220,8 +220,11 @@
                                                 <img @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image'])}}" @endif style="height:200px;" alt="{{$product['name']}}">
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}">
                                             </a>
+                                            @if($product['discount'])
+                                              <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                            @endif
                                             <ul class="action">
-                                                <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
+                                                {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
                                                 <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                                 <li><a href="#"><i class="flaticon-witness"></i></a></li>
                                             </ul>

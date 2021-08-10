@@ -38,8 +38,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $view->with('categories', Category::orderBy('id', 'desc')->get());
             // $view->with('skipTopTencategories', Category::orderBy('id', 'desc')->skip(10)->get());
-            $view->with('topCategories', Category::whereTopShow(1)->get());
-            // $view->with('topSixCategories', Category::whereTopShow(1)->take(6)->get());
+            // $view->with('topCategories', Category::whereTopShow(1)->get());
+            $view->with('topSixCategories', Category::whereTopShow(1)->take(6)->get());
             $view->with('subCategories', SubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
@@ -47,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('brands', Brand::get());
             // $view->with('products', Product::orderBy('id', 'desc')->get());
             $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
+            $view->with('sliderImageLast', Slider::orderBy('id','desc')->whereIsActive(1)->first());
             $view->with('companyInfo', CompanyInfo::first());
             $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
