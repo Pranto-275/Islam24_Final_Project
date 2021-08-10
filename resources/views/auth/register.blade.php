@@ -121,8 +121,16 @@
                                     <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                                 </div>
                                 <div class="form-grp">
+                                    <x-jet-label for="mobile" value="{{ __('Mobile') }}" />
+                                    <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required />
+                                </div>
+                                <div class="form-grp">
                                     <x-jet-label for="email" value="{{ __('Email') }}" />
                                     <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                                </div>
+                                <div class="form-grp">
+                                    <x-jet-label for="address" value="{{ __('Address') }}" />
+                                    <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" />
                                 </div>
                                 <div class="form-grp">
                                     <x-jet-label for="password" value="{{ __('Password') }}" />
@@ -162,9 +170,9 @@
                                 <div class="form-grp-btn" >
                                     <button type="submit" class="btn">Sign up</button>
 
-                                    <x-jet-button class="ml-4" type="submit">
+                                    {{-- <x-jet-button class="ml-4" type="submit">
                                         {{ __('Register') }}
-                                    </x-jet-button>
+                                    </x-jet-button> --}}
                                 </div>
                             </form>
                         {{-- </x-jet-authentication-card> --}}
