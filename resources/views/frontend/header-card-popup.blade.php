@@ -78,7 +78,7 @@
             //alert($(this).attr('data-product-id'))
             var productId = $(this).attr('data-product-id');
             var productQuantity = 1;
-            
+
             $('.cart-total-price').html('');
             $('.cart-count').html('');
             $.ajax({
