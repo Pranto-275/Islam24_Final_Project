@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\FrontEnt\HomeController;
 use App\Http\Livewire\Backend\ContactInfo\ContactCategory;
@@ -70,6 +69,7 @@ use App\Http\Livewire\Frontend\SignIn;
 use App\Http\Livewire\Frontend\SignUp;
 use App\Http\Livewire\Frontend\TermsConditios;
 use App\Http\Livewire\Frontend\Wishlist;
+use App\Http\Livewire\Frontend\Myprofile;
 use App\Http\Livewire\Inventory\DelieveryMethod;
 use App\Http\Livewire\Inventory\Language;
 use App\Http\Livewire\UserManagement\UserList;
@@ -120,6 +120,7 @@ Route::get('sign-up', SignUp::class)->name('sign-up');
 //Route::get('check-out', Checkout::class)->name('check-out');
 Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
+Route::get('my-profile', MyProfile::class)->name('my-profile');
 
 Route::get('about', AboutUs::class)->name('about');
 Route::get('error', Error::class)->name('error');

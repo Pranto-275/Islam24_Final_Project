@@ -144,6 +144,7 @@
                             </div>
                             <div class="header-action d-none d-md-block">
                                 <ul>
+
                                     <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
                                     <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
@@ -157,6 +158,7 @@
                                             @include('frontend.header-card-popup')
                                         </ul>
                                     </li>
+                                     <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account</li>
                                 </ul>
                             </div>
                         </nav>
