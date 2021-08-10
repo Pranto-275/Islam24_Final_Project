@@ -264,25 +264,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" id="paymentCard" alt=""></a>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" id="paymentCard" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" id="paymentCard" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-6">
-                        <div class="top-cat-banner-item mt-10">
-                            <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" id="paymentCard" alt=""></a>
+                        <div class="col-lg-3 col-6">
+                            <div class="top-cat-banner-item mt-10">
+                                <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" id="paymentCard" alt=""></a>
+                            </div>
                         </div>
                     </div>
                 </div>
