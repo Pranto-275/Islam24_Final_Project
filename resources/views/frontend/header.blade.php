@@ -163,7 +163,7 @@
                                 </ul>
                             </div>
                             <div>
-                                <a href="">My Account</a>
+                                <a href="{{ route('my-account') }}">My Account</a>
                             </div>
                         </nav>
                     </div>
