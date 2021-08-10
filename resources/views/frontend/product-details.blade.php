@@ -111,7 +111,7 @@
 
                                     </h2>
                                 </div>
-                                <p>@if($productDetails->ProductInfo) {{$productDetails->ProductInfo->long_description}} @endif</p>
+                                <p>@if($productDetails->ProductInfo) {{ $productDetails->ProductInfo->long_description }} @endif</p>
                                 {{-- <div class="product-details-size mb-40">
                                     <span>Size : </span>
                                     <a href="#">Guide</a>
@@ -131,7 +131,7 @@
                                                 @php
                                                 $productQuantity = isset($cardBadge['data']['products'][$productDetails->id]['quantity']) ? $cardBadge['data']['products'][$productDetails->id]['quantity'] : 0;
                                                 @endphp
-                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}"  value="{{ $productQuantity ? $productQuantity : $productDetails->min_order_qty }}" readonly>
+                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}" data-minimum-quantity="{{ $productDetails->min_order_qty }}" value="{{ $productQuantity ? $productQuantity : $productDetails->min_order_qty }}" >
                                             </div>
                                         </form>
                                     </div>

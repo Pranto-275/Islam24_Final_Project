@@ -218,9 +218,22 @@
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                     </div> --}}
+                                    <?php
+                                    $minimumQuantity = 0;
+                                    $orderQuantity = 0;
+                                    if(isset($cardBadge['data']['products'][$product['id']])) {
+                                        $minimumQuantity = $cardBadge['data']['products'][$product['id']]['minimum_order_quantity'];
+                                        $orderQuantity = $cardBadge['data']['products'][$product['id']]['quantity'];
+                                    }
+                                    ?>
                                     <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
-                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile</a>
+                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile 2</a>
                                     {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
+                                    <?php
+                                    echo "<pre>";
+                                    //print_r($cardBadge['data']['products'][$product['id']]['product_id']);
+                                    echo "</pre>";
+                                    ?>
                                     <div>
                                     </div>
                                 </div>
@@ -241,7 +254,7 @@
      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm m-0">
           <div class="modal-content p-3" style="">
-             <div class="">
+             <div class="mobile-modal">
                  <h5>
                     <span>
                         <i class="fas fa-shopping-basket"></i>
@@ -251,31 +264,31 @@
                  <hr class="m-0 p-0">
                  <div class="row">
                     <div class="col-4">
-                        <img src="{{ asset('img/logo/logo.png') }}"/>
+                        <img src="{{ asset('img/logo/logo.png') }}" class="img img-thumbnail"/>
                     </div>
                     <div class="col-8">
                         <div class="row">
                           <div class="col-12">
-                            Kali Baush Fish-Small-1Kg-3101596 <br>
+                            <span id="mobile-modal-product-name">Kali Baush Fish-Small-1Kg-3101596 </span><br>
                             @if($currencySymbol)
                                 {{ $currencySymbol->symbol }}
                             @endif
-                            390 x 1
+                            <span class="mobile-modal-product-price"></span> x 1
                           </div>
                           <div class="col-4">
                               <span class="text-danger" style="font-size: 18px;">
                                 @if($currencySymbol)
                                     {{ $currencySymbol->symbol }}
                                 @endif
-                                390
+                                <span class="mobile-modal-product-price"></span>
                               </span>
                           </div>
                           <div class="col-8 text-center">
                             <td class="product-quantity">
                                 <div class="cart-plus">
                                     <form action="#">
-                                        <div class="cart-plus-minus">
-                                            <input type="text" class="product_quantity">
+                                        <div class="cart-plus-minus mobile-modal-cart-plus-minus">
+                                            <input type="text" class="mobile-modal-product-quantity product-quantity-cart" >
                                         </div>
                                     </form>
                                 </div>
@@ -289,7 +302,7 @@
                  <div class="row">
                     <div class="col-6">
                         <center>
-                        <a class="cart-button cart-button1">Add To Cart</a>
+                        <a class="cart-button cart-button1 add-to-card mobile-modal-add-to-card">Add To Cart</a>
                         </center>
                     </div>
                     <div class="col-6">
@@ -355,7 +368,7 @@
                                             <i class="fas fa-star"></i>
                                         </div> --}}
                                     <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
-                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile</a>
+                                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile 1</a>
 
 
                                     </div>
@@ -491,6 +504,10 @@
         </div>
     </li>
 </div>--}}
-
+<style>
+    .col-6 {
+        margin-bottom: 50px !important;
+    }
+</style>
 @endsection
 
