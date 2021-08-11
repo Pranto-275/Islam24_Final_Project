@@ -22,23 +22,23 @@
                          {{-- Start First Card --}}
                         <div class="card shadow-sm mb-3">
                             <center>
-                            <img class="card-img-top" src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png" style="width:100px;height:100px;border-radius:100%;" alt="Profile Photo">
+                            <img class="card-img-top rounded-circle mt-1" src="{{ asset('storage/photo/'.Auth::user()->profile_photo_path) }}" style="width:100px;height:100px;" alt="Profile Photo">
                             </center>
                             <div class="card-body">
-                              <h5 class="card-title text-center">Alamin</h5>
+                              <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                               <center>
                               <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a>
                               </center>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
-                                <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li>
+                                {{-- <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">Orders</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Reviews</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Refund Settlements</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Change Password</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Appointment</a></li>
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li> --}}
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Reviews</a></li> --}}
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Refund Settlements</a></li> --}}
+                                <li class="list-group-item"><a class="text-dark" href="#change-password" data-toggle="tab">Change Password</a></li>
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Appointment</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li>
                             </ul>
                           </div>
@@ -52,38 +52,67 @@
                          <div class="card shadow-sm tab-content clearfix">
                             {{-- Start Basic Information Card --}}
                             <div class="card-body basic tab-pane active" id="basic-information">
-                                <h5 class="card-title">Personal Information</h5>
+                                @foreach ($contacts as $contact)
+                                <h5 class="card-title">
+                                    @if(Session::has('message'))
+                                       <p class="alert alert-info">{{ Session::get('message') }}</p>
+                                    @endif
+                                </h5>
+                                <form id="edit-info" action="{{ route('edit') }}" method="GET">
+                                        @csrf
+                                        <input type="number" value="{{$contact->id}}" name="editId" hidden/>
+                                    <h5 class="card-title">
+                                    Personal Information
+                                    <input type="number" name="editId" value="{{ $contact->id }}" id="edit" hidden/>
+                                    <button type="submit" class="float-right border p-1 rounded text-info">Edit</button>
+                                    </h5>
+                                    </form>
                                 <hr class="mt-2">
+                                <form id="edit-info-customer" action="{{ route('edit') }}" method="POST">
+                                    @csrf
+                                    <input type="number" name="editId" value="{{ $contact->id }}" id="edit" hidden/>
                                 <div class="row">
-                                  <div class="col-6 pb-2 font-weight-bold">Paikary Number:</div>
-                                  <div class="col-6 pb-2">01710000000</div>
                                   <div class="col-6 pb-2 font-weight-bold">First Name:</div>
-                                  <div class="col-6 pb-2">Iqbal</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->first_name}} --}}
+                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->first_name}}" name="first_name"/>
+                                  </div>
                                   <div class="col-6 pb-2 font-weight-bold">Last Name:</div>
-                                  <div class="col-6 pb-2">Hossain</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->last_name}} --}}
+                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->last_name}}" name="last_name"/>
+                                  </div>
                                   <div class="col-6 pb-2 font-weight-bold">Contact Number:</div>
-                                  <div class="col-6 pb-2">0140000000</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Gender:</div>
-                                  <div class="col-6 pb-2">Male</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->phone}} --}}
+                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->phone}}" name="phone"/>
+                                  </div>
                                   <div class="col-6 pb-2 font-weight-bold">Date of Birth:</div>
-                                  <div class="col-6 pb-2">N/A</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Member Since:</div>
-                                  <div class="col-6 pb-2">11 Sep 2019</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Organization:</div>
-                                  <div class="col-6 pb-2">N/A</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Occupation:</div>
-                                  <div class="col-6 pb-2">N/A</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->birthday}} --}}
+                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->birthday}}" name="birthday"/>
+                                  </div>
                                   <hr>
                                 </div>
                                 <h5 class="card-title">EMAIL ADDRESS</h5>
                                 <hr class="mt-2">
                                 <div class="row">
                                   <div class="col-6 pb-2 font-weight-bold">Primary Email:</div>
-                                  <div class="col-6 pb-2">N/A</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Other:</div>
-                                  <div class="col-6 pb-2">N/A</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->email}} --}}
+                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="email" value="{{$contact->email}}" name="email"/>
+                                  </div>
+                                  <div class="col-6 pb-2 font-weight-bold">Mobile:</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->mobile}} --}}
+                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) readonly @endif @else disabled @endif class="form-control" type="text" value="{{$contact->mobile}}" name="mobile"/>
+                                  </div>
                                   <hr>
                                 </div>
+                                <button type="submit" class="float-right border p-1 rounded text-info bg-info text-light" @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif>Save</button>
+                                <br>
+                               </form>
+                                @endforeach
                               </div>
                               {{-- End Basic Information Card --}}
                               {{-- Start Address Card --}}
@@ -148,6 +177,31 @@
                                 </div>
                               </div>
                               {{-- End Order Card --}}
+                               {{-- Start Change Password Card --}}
+                               <div class="card-body basic tab-pane" id="change-password">
+                                <h5 class="card-title">Change Password</h5>
+                                <hr class="mt-2">
+                                <form id="change-password-customer" action="{{ route('change-password-customer') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input name="oldpassword" id="oldpassword" type="text" class="form-control" placeholder="Old Password" required/>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <input name="newpassword" id="newpassword" type="password" class="form-control" placeholder="New Password" required/>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <input name="password_confirmation" id="password_confirmation" type="password" class="form-control" placeholder="Confirm Password" required/>
+                                        </div>
+                                        <div class="col-md-12">
+                                         <center>
+                                             <button type="submit" style="background:rgb(9, 154, 238);margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;">Change</button>
+                                         </center>
+                                        </div>
+                                     </div>
+                                </form>
+                              </div>
+                              {{-- End Change Password Card --}}
                               {{-- Start Transaction Card --}}
                               <div class="card-body basic tab-pane" id="transaction">
                                 <h5 class="card-title">Order</h5>
@@ -245,5 +299,32 @@ headers: {
 <script src="assets/js/app.js"></script>
 @endpush --}}
 @section('script')
-
+<script>
+	$(document).ready(function(){
+		$('#change-password-customer').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+		});
+	});
+    $(document).ready(function(){
+		$('#edit-info').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+		});
+	});
+</script>
 @endsection

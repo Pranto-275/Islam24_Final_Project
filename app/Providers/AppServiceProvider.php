@@ -55,7 +55,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
             $view->with('cardBadge', AddToCardService::cardTotalProductAndAmount());
-            $view->with('contacts', Contact::whereCreatedBy(Auth::id())->get());
         });
     }
 }

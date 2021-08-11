@@ -13,12 +13,16 @@ use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
 use App\Services\AddToCardService;
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
+    // public $EditId;
     /**
      * @var Product
      */
@@ -41,8 +45,58 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
+    public function EditContactById(Request $request){
+        $Query=Contact::find($request->editId);
+        $Query->first_name=$request->first_name;
+        $Query->last_name=$request->last_name;
+        $Query->phone=$request->phone;
+        $Query->birthday=$request->birthday;
+        $Query->email=$request->email;
+        $Query->mobile=$request->mobile;
+        $Query->save();
+
+        return redirect()->back();
+    }
+    public function EditContact(Request $request){
+    //    dd($request->editId);
+    // dd($request->editId);
+    //    $this->EditId=$request->editId;
+       return view('frontend.my-account',[
+        'contacts'=>Contact::whereCreatedBy(Auth::user()->id)->get(),
+        'EditId'=>$request->editId,
+    ]);
+    }
+    public function ChangePassword(Request $request){
+        // dd($request->oldpassword);
+
+        $this->validate($request, [
+            'oldpassword' => 'required',
+            'newpassword' => 'required',
+            'password_confirmation' => 'required_with:oldpassword|same:newpassword|min:6'
+        ]);
+
+           $hashedPassword = Auth::user()->password;
+
+           if (Hash::check($request->oldpassword , $hashedPassword )) {
+
+             if (!Hash::check($request->newpassword , $hashedPassword)) {
+
+                  $users =User::find(Auth::user()->id);
+                  $users->password = bcrypt($request->newpassword);
+                  User::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
+
+                //   session()->flash('message','password updated successfully');
+                //   return redirect()->back();
+                return redirect(route('my-account'));
+                }
+
+             }
+    }
     public function MyAccount(){
-        return view('frontend.my-account');
+        // dd(Contact::whereCreatedBy(Auth::user()->id)->get());
+        return view('frontend.my-account',[
+            'contacts'=>Contact::whereCreatedBy(Auth::user()->id)->get(),
+        ]);
     }
     public function index(Request $request)
     {

@@ -89,6 +89,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('change-password-customer', [HomeController::class, 'ChangePassword'])->name('change-password-customer');
+Route::get('edit/{id?}', [HomeController::class, 'EditContact'])->name('edit');
+Route::post('edit', [HomeController::class, 'EditContactById']);
 
  Route::get('/', function () {
      return view('auth.login');
@@ -114,6 +117,7 @@ Route::post('/confirm-order', [HomeController::class, 'confirmOrder'])->name('co
 Route::get('/order-completed', [HomeController::class, 'orderComplete'])->name('order-completed');
 Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
 Route::get('my-account', [HomeController::class, 'MyAccount'])->name('my-account');
+// Route::get('change-password', [HomeController::class, 'ChangePassword'])->name('change-password');
 // Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
