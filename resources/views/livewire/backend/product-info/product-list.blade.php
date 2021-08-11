@@ -32,10 +32,11 @@
                                             <th>Sr.</th>
                                             <th>Code</th>
                                             <th>Name</th>
+                                            <th>image</th>
                                             <th>Category</th>
                                             <th>Brand</th>
-                                            <th>Color</th>
-                                            <th>Size</th>
+                                            {{-- <th>Color</th> --}}
+                                            {{-- <th>Size</th> --}}
                                             <th>Regular Price</th>
                                             <th>Special Price</th>
                                             <th>Wholesale Price</th>
@@ -54,6 +55,9 @@
                                                  <td>{{ $product->code }}</td>
                                                  <td>{{ $product->name }}</td>
                                                  <td>
+                                                     <img src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}"/>
+                                                 </td>
+                                                 <td>
                                                     @if($product->SubSubCategory)
                                                       @if($product->SubSubCategory) {{ $product->SubSubCategory->name }} @endif
                                                     @endif
@@ -63,17 +67,20 @@
                                                          @if($product->Brand) {{ $product->Brand->name }} @endif
                                                      @endif
                                                  </td>
-                                                 <td>
-                                                     {{-- @foreach($product->ProductProperties->unique('color_id') as $color)
+                                                 {{-- <td>
+                                                     @foreach($product->ProductProperties->unique('color_id') as $color)
                                                        @if($color->Color) {{ $color->Color->name }} @endif
-                                                     @endforeach --}}
-                                                 </td>
-                                                 <td>
-                                                    {{-- @foreach($product->ProductProperties->unique('size_id') as $size)
-                                                      @if($size->Size) {{ $size->Size->name }} @endif
-                                                    @endforeach --}}
+                                                     @endforeach
+                                                 </td> --}}
 
-                                                 </td>
+
+                                                 {{-- <td>
+                                                    @foreach($product->ProductProperties->unique('size_id') as $size)
+                                                      @if($size->Size) {{ $size->Size->name }} @endif
+                                                    @endforeach
+                                                 </td> --}}
+
+
                                                  <td>{{ $product->regular_price }}</td>
                                                  <td>{{ $product->special_price }}</td>
                                                  <td>{{ $product->wholesale_price }}</td>

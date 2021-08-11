@@ -83,6 +83,23 @@
                                     <input type="file" wire:model.lazy="logo" x-ref="logo">
                                 </div>
                             </div>
+
+
+                            <div wire.ignore class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Privacy Policy</label>
+                                    <textarea class="form-control"  id="privacy_policy" wire:model.lazy="privacy_policy" placeholder="privacy_policy"></textarea>
+                                </div>
+                            </div>
+
+                            <div wire.ignore class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Terms & Condition</label>
+                                    <textarea class="form-control"  id="terms_condition" wire:model.lazy="terms_condition" placeholder="terms_condition"></textarea>
+                                </div>
+                            </div>
+
+
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Facebook Link</label>
@@ -108,6 +125,116 @@
     </div>
 </div>
 @push('scripts')
+<script>
+     $(document).ready(function () {
+  if ($("#privacy_policy").length > 0) {
+    tinymce.init({
+      selector: "textarea#privacy_policy",
+      height: 200,
+	   forced_root_block: false,
+        setup: function (editor) {
+            editor.on('init change', function () {
+                editor.save();
+            });
+            editor.on('change', function (e) {
+            @this.set('privacy_policy', editor.getContent());
+            });
+        },
+      plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "save table contextmenu directionality emoticons template paste textcolor"],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+      style_formats: [{
+        title: 'Bold text',
+        inline: 'b'
+      }, {
+        title: 'Red text',
+        inline: 'span',
+        styles: {
+          color: '#ff0000'
+        }
+      }, {
+        title: 'Red header',
+        block: 'h1',
+        styles: {
+          color: '#ff0000'
+        }
+      }, {
+        title: 'Example 1',
+        inline: 'span',
+        classes: 'example1'
+      }, {
+        title: 'Example 2',
+        inline: 'span',
+        classes: 'example2'
+      }, {
+        title: 'Table styles'
+      }, {
+        title: 'Table row 1',
+        selector: 'tr',
+        classes: 'tablerow1'
+      }]
+    });
+
+  }
+  if ($("#terms_condition").length > 0) {
+    tinymce.init({
+      selector: "textarea#terms_condition",
+      height: 300,
+	   forced_root_block: false,
+        setup: function (editor) {
+            editor.on('init change', function () {
+                editor.save();
+            });
+            editor.on('change', function (e) {
+            @this.set('terms_condition', editor.getContent());
+            });
+        },
+      plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "save table contextmenu directionality emoticons template paste textcolor"],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+      style_formats: [{
+        title: 'Bold text',
+        inline: 'b'
+      }, {
+        title: 'Red text',
+        inline: 'span',
+        styles: {
+          color: '#ff0000'
+        }
+      }, {
+        title: 'Red header',
+        block: 'h1',
+        styles: {
+          color: '#ff0000'
+        }
+      }, {
+        title: 'Example 1',
+        inline: 'span',
+        classes: 'example1'
+      }, {
+        title: 'Example 2',
+        inline: 'span',
+        classes: 'example2'
+      }, {
+        title: 'Table styles'
+      }, {
+        title: 'Table row 1',
+        selector: 'tr',
+        classes: 'tablerow1'
+      }]
+    });
+
+  }
+  $('.summernote').summernote({
+    height: 300,
+    // set editor height
+    minHeight: null,
+    // set minimum height of editor
+    maxHeight: null,
+    // set maximum height of editor
+    focus: true // set focus to editable area after initializing summernote
+
+  });
+});
+</script>
 
 @endpush
 

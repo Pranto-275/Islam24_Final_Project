@@ -17,6 +17,8 @@ class CompanyInfo extends Component
     public $address;
     public $hotline;
     public $logo;
+    public $privacy_policy;
+    public $terms_condition;
     public $email;
     public $web;
     public $facebook_link;
@@ -60,6 +62,8 @@ public function companyInfoSave(){
           $Query->address = $this->address;
           $Query->hotline = $this->hotline;
           $Query->email = $this->email;
+          $Query->privacy_policy = $this->privacy_policy;
+          $Query->terms_condition = $this->terms_condition;
           $Query->web = $this->web;
           $Query->facebook_link = $this->facebook_link;
           $Query->youtube_link = $this->youtube_link;

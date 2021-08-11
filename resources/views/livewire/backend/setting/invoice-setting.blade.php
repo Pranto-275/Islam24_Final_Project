@@ -59,7 +59,7 @@
                             </div>
 
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="control-label">Logo  (517.38*492 jpg)
                                         @if (!$logo)
@@ -85,12 +85,25 @@
                                     @error('invoice_title') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+
+                            {{-- input footer --}}
+                            {{-- <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Invoice Footer:</label>
                                     <input class="form-control" type="text" wire:model.lazy="invoice_footer" placeholder="Invoice Footer:">
                                 </div>
-                            </div>
+                            </div> --}}
+
+
+                             {{-- sumernote  texteditor --}}
+                             <div class=col-lg-12>
+                                <div wire:ignore class="form-group">
+                                    <label for="basicpill-lastname-input">Invoice Footer</label>
+                                    <textarea class="form-control" id="invoice_footer" rows="3"  wire:model.lazy="invoice_footer" placeholder="Footer Description"></textarea>
+                                 </div>
+                             </div>
+
+
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Vat Registration Number:</label>
@@ -195,6 +208,69 @@
     </div>
 </div>
 @push('scripts')
+<script>
+     $(document).ready(function () {
+  if ($("#invoice_footer").length > 0) {
+    tinymce.init({
+      selector: "textarea#invoice_footer",
+      height: 200,
+	   forced_root_block: false,
+        setup: function (editor) {
+            editor.on('init change', function () {
+                editor.save();
+            });
+            editor.on('change', function (e) {
+            @this.set('invoice_footer', editor.getContent());
+            });
+        },
+      plugins: ["advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker", "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking", "save table contextmenu directionality emoticons template paste textcolor"],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+      style_formats: [{
+        title: 'Bold text',
+        inline: 'b'
+      }, {
+        title: 'Red text',
+        inline: 'span',
+        styles: {
+          color: '#ff0000'
+        }
+      }, {
+        title: 'Red header',
+        block: 'h1',
+        styles: {
+          color: '#ff0000'
+        }
+      }, {
+        title: 'Example 1',
+        inline: 'span',
+        classes: 'example1'
+      }, {
+        title: 'Example 2',
+        inline: 'span',
+        classes: 'example2'
+      }, {
+        title: 'Table styles'
+      }, {
+        title: 'Table row 1',
+        selector: 'tr',
+        classes: 'tablerow1'
+      }]
+    });
+
+  }
+
+  $('.summernote').summernote({
+    height: 300,
+    // set editor height
+    minHeight: null,
+    // set minimum height of editor
+    maxHeight: null,
+    // set maximum height of editor
+    focus: true // set focus to editable area after initializing summernote
+
+  });
+});
+</script>
 
 @endpush
 
