@@ -33,13 +33,13 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Orders</a></li>
+                                <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">Orders</a></li>
                                 <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li>
                                 <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Reviews</a></li>
                                 <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Refund Settlements</a></li>
                                 <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Change Password</a></li>
                                 <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Appointment</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Transactions</a></li>
+                                <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li>
                             </ul>
                           </div>
                          {{-- End First Card --}}
@@ -110,6 +110,80 @@
                                 </div>
                               </div>
                               {{-- End Address Card --}}
+                              {{-- Start Order Card --}}
+                              <div class="card-body basic tab-pane" id="order">
+                                <h5 class="card-title">Order</h5>
+                                <hr class="mt-2">
+                                <div class="row" style="overflow: scroll;">
+                                    <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Discount</th>
+                                            <th>S. Charge</th>
+                                            <th>Payable</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i=0;
+                                            @endphp
+                                        @foreach ($contacts as $contact)
+                                          @foreach ($contact->Order as $order)
+                                          <tr>
+                                            <th scope="row">{{++$i}}</th>
+                                            <td>{{$order->order_date}}</td>
+                                            <td>{{$order->total_amount}}</td>
+                                            <td>{{$order->discount}}</td>
+                                            <td>{{$order->shipping_charge}}</td>
+                                            <td>{{$order->payable_amount}}</td>
+                                          </tr>
+                                          @endforeach
+                                        @endforeach
+
+                                        </tbody>
+                                      </table>
+                                </div>
+                              </div>
+                              {{-- End Order Card --}}
+                              {{-- Start Transaction Card --}}
+                              <div class="card-body basic tab-pane" id="transaction">
+                                <h5 class="card-title">Order</h5>
+                                <hr class="mt-2">
+                                <div class="row" style="overflow: scroll;">
+                                    <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Payment Method</th>
+                                            <th>Transaction Id</th>
+                                            <th>Amount</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i=0;
+                                            @endphp
+                                        @foreach ($contacts as $contact)
+                                           @foreach ($contact->Payment as $payment)
+                                          <tr>
+                                            <th scope="row">{{++$i}}</th>
+                                            <td>{{$payment->date}}</td>
+                                            <td>@if($payment->PaymentMethod) {{$payment->PaymentMethod->name}} @endif</td>
+                                            <td>{{$payment->transaction_id}}</td>
+                                            <td>{{$payment->amount}}</td>
+                                          </tr>
+                                           @endforeach
+                                        @endforeach
+
+                                        </tbody>
+                                      </table>
+                                </div>
+                              </div>
+                              {{-- End Transaction Card --}}
                           </div>
 
                          {{-- End Card For Basic Information --}}
