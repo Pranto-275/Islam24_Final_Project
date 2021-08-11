@@ -18,7 +18,6 @@
                         <li class="breadcrumb-item active">Add Product</li>
                     </ol>
                 </div>
-
             </div>
         </div>
     </div>

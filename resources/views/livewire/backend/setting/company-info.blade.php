@@ -76,7 +76,7 @@
                                         @endif
                                        @endif
 
-                                       @if ($logo)
+                                        @if ($logo)
                                             <img src="{{ $logo->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
                                         @endif
                                     </label>
@@ -85,20 +85,23 @@
                             </div>
 
 
-                            <div wire.ignore class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Privacy Policy</label>
-                                    <textarea class="form-control"  id="privacy_policy" wire:model.lazy="privacy_policy" placeholder="privacy_policy"></textarea>
+                            <div class="col-lg-12">
+                                <div wire:ignore class="form-group">
+                                    <label for="basicpill-lastname-input">Privacy Policy</label>
+                                    <textarea class="form-control" id="privacy_policy" rows="3"
+                                        wire:model.lazy="privacy_policy"
+                                        placeholder="privacy policy"></textarea>
                                 </div>
                             </div>
 
-                            <div wire.ignore class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="basicpill-firstname-input">Terms & Condition</label>
-                                    <textarea class="form-control"  id="terms_condition" wire:model.lazy="terms_condition" placeholder="terms_condition"></textarea>
+                            <div class="col-lg-12">
+                                <div wire:ignore class="form-group">
+                                    <label for="basicpill-lastname-input">Terms & Condition</label>
+                                    <textarea class="form-control" id="terms_condition" rows="3"
+                                        wire:model.lazy="terms_condition"
+                                        placeholder="Terms & Condition"></textarea>
                                 </div>
                             </div>
-
 
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -223,6 +226,9 @@
     });
 
   }
+
+
+
   $('.summernote').summernote({
     height: 300,
     // set editor height

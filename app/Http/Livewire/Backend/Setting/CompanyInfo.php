@@ -37,6 +37,8 @@ public function mount(){
         $this->address=$this->CompanyInfo->address;
         $this->hotline=$this->CompanyInfo->hotline;
         $this->email=$this->CompanyInfo->email;
+        $this->privacy_policy=$this->CompanyInfo->privacy_policy;
+        $this->terms_condition=$this->CompanyInfo->terms_condition;
         $this->web= $this->CompanyInfo->web;
         $this->facebook_link= $this->CompanyInfo->facebook_link;
         $this->youtube_link= $this->CompanyInfo->youtube_link;
