@@ -68,6 +68,34 @@
             productDeleteMiniCart(productId)
         });*/
 
+        $(".btn-mobile-modal").on('click', function (){
+            $('.mobile-modal img').attr('src', '');
+            $("#mobile-modal-product-name").html('');
+            $(".mobile-modal-product-price").html('');
+
+            var productId = $(this).attr('data-product-id');
+            var productName = $(this).attr('data-product-name');
+            var productPrice = $(this).attr('data-product-price');
+            var productImg = $(this).attr('data-product-image');
+            var productMinQty = $(this).attr('data-product-minimum-quantity');
+            var productOrderQty = $(this).attr('data-product-quantity');
+            var requestQty = productOrderQty;
+            if(! productOrderQty) {
+                requestQty = productMinQty;
+            }
+
+            $('.mobile-modal img').attr('src', productImg);
+            $("#mobile-modal-product-name").html(productName);
+            $(".mobile-modal-product-price").html(productPrice);
+            $(".mobile-modal-product-quantity").val(requestQty);
+            $(".mobile-modal-product-quantity").attr('id', 'product_quantity_'+productId)
+            $(".mobile-modal-product-quantity").attr('data-product-id', productId)
+            $(".mobile-modal-product-quantity").attr('data-minimum-quantity', productMinQty)
+            $(".mobile-modal-add-to-card").attr('data-product-id', productId)
+            $(".mobile-modal-cart-plus-minus").attr('data-product-id', productId)
+
+        })
+
         $(document).on('click','.btn-product-delete', function () {
             var productId = $(this).attr('data-product-id');
             //console.log(productId)
@@ -77,18 +105,28 @@
         $(document).on('click', '.add-to-card', function () {
             //alert($(this).attr('data-product-id'))
             var productId = $(this).attr('data-product-id');
+            var productQuantity = 1;
+            if ($("#product_quantity_"+productId).length) {
+                productQuantity = parseFloat($("#product_quantity_"+productId).val());
+            }
+
             $('.cart-total-price').html('');
             $('.cart-count').html('');
             $.ajax({
                 method:'POST',
                 url: '{{ route('ajax-add-to-card-store') }}',
                 data: {
-                    "product_id": productId
+                    "product_id": productId,
+                    "product_quantity" : productQuantity
                 },
                 success: function (result, text) {
                     if(result.errorStatus) {
                         alert(result.message);
-
+                        if (result.data.hasOwnProperty('quantity')) {
+                            if ($("#product_quantity_"+productId).length) {
+                                $("#product_quantity_"+productId).val(result.data.quantity);
+                            }
+                        }
                         return false;
                     }
 
@@ -111,6 +149,66 @@
                 }
             })
         })
+
+        $(document).on('blur', '.product-quantity-cart', function (){
+            var productId = $(this).attr('data-product-id');
+            var minOrderQty = parseFloat($(this).attr('data-minimum-quantity'))
+            var productQuantity = 1;
+            if ($("#product_quantity_"+productId).length) {
+                productQuantity = parseFloat($("#product_quantity_"+productId).val());
+            }
+            if(!(productQuantity>0)){
+                alert('Input minimum one quantity');
+                return false;
+            }
+
+            if(!(productQuantity >= minOrderQty)){
+                alert("You have to order minimum "+minOrderQty+" quantity");
+
+                $(this).val(minOrderQty)
+                productQuantity = minOrderQty;
+                //return false;
+            }
+
+            $('.cart-total-price').html('');
+            $('.cart-count').html('');
+            $.ajax({
+                method:'POST',
+                url: '{{ route('ajax-add-to-card-store') }}',
+                data: {
+                    "product_id": productId,
+                    "product_quantity" : productQuantity
+                },
+                success: function (result, text) {
+                    if(result.errorStatus) {
+                        alert(result.message);
+                        if (result.data.hasOwnProperty('quantity')) {
+                            if ($("#product_quantity_"+productId).length) {
+                                $("#product_quantity_"+productId).val(result.data.quantity);
+                            }
+                        }
+                        return false;
+                    }
+
+                    $('#total_mini_cart_amount').html(result.data.total_price)
+                    $('.cart-total-price').html(result.data.total_price)
+                    $('.cart-count').html(result.data.number_of_product)
+                    //$("#clone_mini_cart").clone().appendTo(".minicart");
+                    cloneMiniCart(result.data)
+                },
+                error: function (request, status, error) {
+                    var responseText = JSON.parse(request.responseText);
+                    //console.log(responseText.message)
+                    var errorText = '';
+                    $.each(responseText.errors, function(key, item) {
+                        //console.log(key+' ---- ' +item);
+                        errorText += item +'\n';
+                    });
+
+                    alert(errorText)
+                }
+            })
+        });
 
         $('.inc.qtybutton').on('click', function () {
             var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
@@ -181,20 +279,22 @@
     }
 
     function quantityUpdate(type, productId) {
+        var productQuantity = 1;
+        if ($("#product_quantity_"+productId).length) {
+            productQuantity = parseFloat($("#product_quantity_"+productId).val());
+        }
         $.ajax({
             method:'POST',
             url: '{{ route('ajax-add-to-card-quantity-update') }}',
             data: {
                 "state" : type,
                 "product_id" : productId,
-                "quantity": 1
+                "quantity": productQuantity
             },
             success: function (result, text) {
                 if(result.errorStatus) {
                     alert(result.message);
-                    if(result.data.quantity == 0) {
-                        $('#product_quantity_'+productId).val(1)
-                    }
+                    $('#product_quantity_'+productId).val(result.data.quantity)
                     return false;
                 }
 

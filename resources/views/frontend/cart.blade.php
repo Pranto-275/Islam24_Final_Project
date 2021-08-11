@@ -82,7 +82,7 @@
                                                     <div class="cart-plus">
                                                         <form action="#">
                                                             <div class="cart-plus-minus" data-product-id="{{ $productId }}">
-                                                                <input type="text" class="product_quantity" id="product_quantity_{{ $productId }}" value="{{ $product['quantity'] }}">
+                                                                <input type="text" class="product_quantity product-quantity-cart" id="product_quantity_{{ $productId }}" data-product-id="{{ $productId }}" data-minimum-quantity="{{ $product['minimum_order_quantity'] }}" value="{{ $product['quantity'] }}">
                                                             </div>
                                                         </form>
                                                     </div>
@@ -213,95 +213,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            /*$('.inc.qtybutton').on('click', function () {
-                var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
-                //console.log($('#product_quantity_'+productId).val())
-                quantityUpdate('increase', productId)
-            });
 
-            $('.dec.qtybutton').on('click', function () {
-                var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
-                //console.log($('#product_quantity_'+productId).val())
-                quantityUpdate('decrease', productId)
-            });
-
-            $('.wishlist-remove').on('click', function () {
-                var productId = $(this).attr('data-product-id');
-                //console.log(productId)
-                productDeleteCart(productId)
-            });*/
         });
-
-        /*function quantityUpdate(type, productId) {
-            $.ajax({
-                method:'POST',
-                url: '{{ route('ajax-add-to-card-quantity-update') }}',
-                data: {
-                    "state" : type,
-                    "product_id" : productId,
-                    "quantity": 1
-                },
-                success: function (result, text) {
-                    if(result.errorStatus) {
-                        alert(result.message);
-                        if(result.data.quantity == 0) {
-                            $('#product_quantity_'+productId).val(1)
-                        }
-                        return false;
-                    }
-
-                    $('#product_subtotal_'+productId).html(result.data.product_card.total_price)
-                    $('.cart-total-price').html(result.data.total_price)
-                    $('.cart-count').html(result.data.number_of_product)
-                },
-                error: function (request, status, error) {
-                    var responseText = JSON.parse(request.responseText);
-                    //console.log(responseText.message)
-                    var errorText = '';
-                    $.each(responseText.errors, function(key, item) {
-                        //console.log(key+' ---- ' +item);
-                        errorText += item +'\n';
-                    });
-
-                    alert(errorText)
-                }
-            })
-        }
-
-        function productDeleteCart(productId) {
-            $.ajax({
-                method:'POST',
-                url: '{{ route('ajax-add-to-card-product-delete') }}',
-                data: {
-                    "product_id" : productId
-                },
-                success: function (result, text) {
-                    if(result.errorStatus) {
-                        alert(result.message);
-
-                        return false;
-                    }
-
-                    $('#row_'+productId).remove();
-                    $('#li_row_'+productId).remove();
-                    $('#total_mini_cart_amount').html(result.data.data.total_price)
-                    $('.cart-total-price').html(result.data.data.total_price)
-                    $('.cart-count').html(result.data.data.number_of_product)
-                },
-                error: function (request, status, error) {
-                    var responseText = JSON.parse(request.responseText);
-                    //console.log(responseText.message)
-                    var errorText = '';
-                    $.each(responseText.errors, function(key, item) {
-                        //console.log(key+' ---- ' +item);
-                        errorText += item +'\n';
-                    });
-
-                    alert(errorText)
-                }
-            })
-        }*/
-
     </script>
 </div>
 @push('scripts')

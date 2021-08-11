@@ -49,15 +49,33 @@ class AddToCardService extends Controller
                 'image' => $productImage ? $productImage : 'blank-product-image.png',
             ];
 
-            $productCard = AddToCardModel::where(['session_id' => $sessionId,'product_id' => $productId])->first();
+            $productCard = AddToCardModel::where(['session_id' => $sessionId,'product_id' => $productId])->with('getProduct')->first();
             if ($productCard) {
-                $requestQuantity = ($productCard->quantity + $quantity);
+                if ($quantity > 1) {
+                    $requestQuantity = $quantity;
+                } else {
+                    $requestQuantity = ($productCard->quantity + $quantity);
+                }
+
+                if(! ($requestQuantity >= $productCard['getProduct']['min_order_qty'])){
+                    return [
+                        'errorStatus' => true,
+                        'message' => "You have to order minimum ".$productCard['getProduct']['min_order_qty']." quantity",
+                        'data' => [
+                            'quantity' => $productCard['getProduct']['min_order_qty']
+                        ],
+                        'errors' => [
+                            'error' => ''
+                        ]
+                    ];
+                }
+
                 if(!($requestQuantity>0)){
                     return [
                         'errorStatus' => true,
                         'message' => "You can't zero quantity.",
                         'data' => [
-                            'quantity' => 0
+                            'quantity' => 1
                         ],
                         'errors' => [
                             'error' => ''
@@ -114,7 +132,11 @@ class AddToCardService extends Controller
     {
         $sessionId = Session::getId();
 
-        $results = AddToCardModel::where('session_id', $sessionId)->select(['product_id', 'quantity', 'unit_price', 'data', 'total_price'])->get()->toArray();
+        $results = AddToCardModel::where('session_id', $sessionId)
+            ->select(['product_id', 'quantity', 'unit_price', 'data', 'total_price'])
+            ->with('getProduct')
+            ->get()->toArray();
+
         $data['total_price'] = 0;
         $data['number_of_product'] = 0;
         $data['products'] = [];
@@ -128,6 +150,7 @@ class AddToCardService extends Controller
                 'Info' => json_decode($result['data'], true),
                 'product_id' => $result['product_id'],
                 'quantity' => $result['quantity'],
+                'minimum_order_quantity' => $result['get_product']['min_order_qty'],
                 'unit_price' => $result['unit_price'],
                 'total_price' => $result['total_price'],
             ];

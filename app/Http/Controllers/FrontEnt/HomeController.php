@@ -164,7 +164,8 @@ class HomeController extends Controller
 
     public function addToCardStore(Request $request): array
     {
-        return $this->addToCardService::addCardStore($request->get('product_id'));
+        $quantity = $request->get('product_quantity') ? $request->get('product_quantity') : 1;
+        return $this->addToCardService::addCardStore($request->get('product_id'), $quantity);
     }
 
     public function cart()
