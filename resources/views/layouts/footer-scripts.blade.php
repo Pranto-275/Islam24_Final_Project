@@ -8,6 +8,7 @@
 <script src="{{ URL::asset('assets/libs/select2/select2.min.js')}}"></script>
 <script src="{{ URL::asset('assets/libs/datatables/datatables.min.js')}}"></script>
 <script src="{{ URL::asset('assets/libs/moment/moment.min.js')}}"></script>
+<script src="{{URL::asset('assets/libs/tinymce/tinymce.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"></script>
 

@@ -194,7 +194,7 @@
                                                 </div>
                                                 <div class="col-xl-9 col-md-8">
                                                     <h5 class="small-title">{{$productDetails->name}}</h5>
-                                                    <p>{{$productDetails->ProductInfo->short_description}}</p>
+                                                    <p>{!!$productDetails->ProductInfo->short_description!!}</p>
                                                     <p>{{$productDetails->ProductInfo->long_description}}</p>
                                                     <p>{{$productDetails->ProductInfo->meta_description}}</p>
                                                     {{-- <ul class="product-desc-list">
