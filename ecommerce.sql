@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 06:01 AM
+-- Generation Time: Aug 11, 2021 at 07:13 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.15
 
@@ -25,6 +25,54 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `add_to_cards`
+--
+
+CREATE TABLE `add_to_cards` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `session_id` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` double(8,2) NOT NULL DEFAULT 0.00,
+  `unit_price` double(8,2) NOT NULL DEFAULT 0.00,
+  `total_price` double(8,2) NOT NULL DEFAULT 0.00,
+  `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`data`)),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `add_to_cards`
+--
+
+INSERT INTO `add_to_cards` (`id`, `session_id`, `product_id`, `quantity`, `unit_price`, `total_price`, `data`, `created_at`, `updated_at`) VALUES
+(6, '9J0Lkegmbrds9JvVHGRJq5VRkdsPOz15vyZnHU3p', 3, 1.00, 150.00, 150.00, '{\"product_id\":3,\"product_name\":\"Memory Card\",\"regular_price\":120,\"special_price\":150,\"image\":\"j3WS5exhgTdo8jfo9VccBwpwSgORnes55NjyHZlF.png\"}', '2021-08-09 22:40:28', '2021-08-09 22:40:28'),
+(7, '9J0Lkegmbrds9JvVHGRJq5VRkdsPOz15vyZnHU3p', 1, 1.00, 120.00, 120.00, '{\"product_id\":1,\"product_name\":\"Pensrive\",\"regular_price\":150,\"special_price\":120,\"image\":\"KghsZrMJWH39pYyfmmXgQp4zHhV00SDGoFgzIjBa.jpg\"}', '2021-08-09 22:40:29', '2021-08-09 22:40:29'),
+(8, '9J0Lkegmbrds9JvVHGRJq5VRkdsPOz15vyZnHU3p', 4, 1.00, 300.00, 300.00, '{\"product_id\":4,\"product_name\":\"8 Gb Pendrive\",\"regular_price\":250,\"special_price\":300,\"image\":\"Bz0T6gEu341lUfVbi1HbJjt7CYxDEo0kD8Qlqd8F.jpg\"}', '2021-08-09 22:40:30', '2021-08-09 22:40:30'),
+(9, '9J0Lkegmbrds9JvVHGRJq5VRkdsPOz15vyZnHU3p', 5, 1.00, 200.00, 200.00, '{\"product_id\":5,\"product_name\":\"16 gb Pendrive\",\"regular_price\":250,\"special_price\":200,\"image\":\"smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png\"}', '2021-08-09 22:40:31', '2021-08-09 22:40:31'),
+(10, '9J0Lkegmbrds9JvVHGRJq5VRkdsPOz15vyZnHU3p', 2, 1.00, 110.00, 110.00, '{\"product_id\":2,\"product_name\":\"new item\",\"regular_price\":120,\"special_price\":110,\"image\":\"4Q9DM7yD3oMnh5mB5VOW1DcVXFK8C59NtdTLNFb8.jpg\"}', '2021-08-09 22:40:33', '2021-08-09 22:40:33'),
+(11, '890neH1faVVKWRefqQCLGF91V1DiLlpZOUWq3DQQ', 2, 6.00, 110.00, 660.00, '{\"product_id\":2,\"product_name\":\"new item\",\"regular_price\":120,\"special_price\":110,\"image\":\"4Q9DM7yD3oMnh5mB5VOW1DcVXFK8C59NtdTLNFb8.jpg\"}', '2021-08-09 22:42:03', '2021-08-09 23:46:15'),
+(12, '890neH1faVVKWRefqQCLGF91V1DiLlpZOUWq3DQQ', 3, 6.00, 150.00, 900.00, '{\"product_id\":3,\"product_name\":\"Memory Card\",\"regular_price\":120,\"special_price\":150,\"image\":\"j3WS5exhgTdo8jfo9VccBwpwSgORnes55NjyHZlF.png\"}', '2021-08-09 22:42:06', '2021-08-09 23:46:12'),
+(13, '890neH1faVVKWRefqQCLGF91V1DiLlpZOUWq3DQQ', 4, 6.00, 300.00, 1800.00, '{\"product_id\":4,\"product_name\":\"8 Gb Pendrive\",\"regular_price\":250,\"special_price\":300,\"image\":\"Bz0T6gEu341lUfVbi1HbJjt7CYxDEo0kD8Qlqd8F.jpg\"}', '2021-08-09 22:42:08', '2021-08-09 23:46:10'),
+(14, '890neH1faVVKWRefqQCLGF91V1DiLlpZOUWq3DQQ', 1, 6.00, 120.00, 720.00, '{\"product_id\":1,\"product_name\":\"Pensrive\",\"regular_price\":150,\"special_price\":120,\"image\":\"KghsZrMJWH39pYyfmmXgQp4zHhV00SDGoFgzIjBa.jpg\"}', '2021-08-09 22:42:11', '2021-08-09 23:46:13'),
+(15, '890neH1faVVKWRefqQCLGF91V1DiLlpZOUWq3DQQ', 5, 6.00, 200.00, 1200.00, '{\"product_id\":5,\"product_name\":\"16 gb Pendrive\",\"regular_price\":250,\"special_price\":200,\"image\":\"smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png\"}', '2021-08-09 22:42:13', '2021-08-09 23:46:11'),
+(86, '0BsuC2XxCyhJ9KrR7ByzQ1DDXmXE8UutIQ243cWp', 5, 3.00, 200.00, 600.00, '{\"product_id\":5,\"product_name\":\"16 gb Pendrive\",\"regular_price\":250,\"special_price\":200,\"image\":\"smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png\"}', '2021-08-10 07:35:04', '2021-08-10 07:36:08'),
+(87, '0BsuC2XxCyhJ9KrR7ByzQ1DDXmXE8UutIQ243cWp', 4, 4.00, 300.00, 1200.00, '{\"product_id\":4,\"product_name\":\"8 Gb Pendrive\",\"regular_price\":250,\"special_price\":300,\"image\":\"Bz0T6gEu341lUfVbi1HbJjt7CYxDEo0kD8Qlqd8F.jpg\"}', '2021-08-10 07:35:05', '2021-08-10 07:36:10'),
+(88, '0BsuC2XxCyhJ9KrR7ByzQ1DDXmXE8UutIQ243cWp', 3, 4.00, 150.00, 600.00, '{\"product_id\":3,\"product_name\":\"Memory Card\",\"regular_price\":120,\"special_price\":150,\"image\":\"j3WS5exhgTdo8jfo9VccBwpwSgORnes55NjyHZlF.png\"}', '2021-08-10 07:35:06', '2021-08-10 07:36:11'),
+(89, '0BsuC2XxCyhJ9KrR7ByzQ1DDXmXE8UutIQ243cWp', 1, 3.00, 120.00, 360.00, '{\"product_id\":1,\"product_name\":\"Pensrive\",\"regular_price\":150,\"special_price\":120,\"image\":\"KghsZrMJWH39pYyfmmXgQp4zHhV00SDGoFgzIjBa.jpg\"}', '2021-08-10 07:35:07', '2021-08-10 07:36:02'),
+(90, '0BsuC2XxCyhJ9KrR7ByzQ1DDXmXE8UutIQ243cWp', 2, 1.00, 110.00, 110.00, '{\"product_id\":2,\"product_name\":\"new item\",\"regular_price\":120,\"special_price\":110,\"image\":\"4Q9DM7yD3oMnh5mB5VOW1DcVXFK8C59NtdTLNFb8.jpg\"}', '2021-08-10 07:36:05', '2021-08-10 07:36:05'),
+(105, 'J7Qf024XxIcJIF5NXoIthkHrRJazeL0M4E9JwZfr', 4, 1.00, 300.00, 300.00, '{\"product_id\":4,\"product_name\":\"8 Gb Pendrive\",\"regular_price\":250,\"special_price\":300,\"image\":\"Bz0T6gEu341lUfVbi1HbJjt7CYxDEo0kD8Qlqd8F.jpg\"}', '2021-08-10 22:31:53', '2021-08-10 22:31:53'),
+(106, 'J7Qf024XxIcJIF5NXoIthkHrRJazeL0M4E9JwZfr', 3, 1.00, 150.00, 150.00, '{\"product_id\":3,\"product_name\":\"Memory Card\",\"regular_price\":120,\"special_price\":150,\"image\":\"j3WS5exhgTdo8jfo9VccBwpwSgORnes55NjyHZlF.png\"}', '2021-08-10 22:31:57', '2021-08-10 22:31:57'),
+(107, 'J7Qf024XxIcJIF5NXoIthkHrRJazeL0M4E9JwZfr', 5, 1.00, 200.00, 200.00, '{\"product_id\":5,\"product_name\":\"16 gb Pendrive\",\"regular_price\":250,\"special_price\":200,\"image\":\"smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png\"}', '2021-08-10 22:32:00', '2021-08-10 22:32:00'),
+(108, 'J7Qf024XxIcJIF5NXoIthkHrRJazeL0M4E9JwZfr', 2, 1.00, 110.00, 110.00, '{\"product_id\":2,\"product_name\":\"new item\",\"regular_price\":120,\"special_price\":110,\"image\":\"4Q9DM7yD3oMnh5mB5VOW1DcVXFK8C59NtdTLNFb8.jpg\"}', '2021-08-10 22:32:04', '2021-08-10 22:32:04'),
+(109, 'J7Qf024XxIcJIF5NXoIthkHrRJazeL0M4E9JwZfr', 1, 1.00, 120.00, 120.00, '{\"product_id\":1,\"product_name\":\"Pensrive\",\"regular_price\":150,\"special_price\":120,\"image\":\"KghsZrMJWH39pYyfmmXgQp4zHhV00SDGoFgzIjBa.jpg\"}', '2021-08-10 22:32:38', '2021-08-10 22:32:38'),
+(114, 'z5FkcpZD9N6YODjJLNpYegqOiAq39r4xu9tWxTsw', 5, 8.00, 200.00, 1600.00, '{\"product_id\":5,\"product_name\":\"16 gb Pendrive\",\"regular_price\":250,\"special_price\":200,\"image\":\"smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png\"}', '2021-08-10 22:43:37', '2021-08-10 22:44:28'),
+(115, 'z5FkcpZD9N6YODjJLNpYegqOiAq39r4xu9tWxTsw', 4, 11.00, 300.00, 3300.00, '{\"product_id\":4,\"product_name\":\"8 Gb Pendrive\",\"regular_price\":250,\"special_price\":300,\"image\":\"Bz0T6gEu341lUfVbi1HbJjt7CYxDEo0kD8Qlqd8F.jpg\"}', '2021-08-10 22:43:38', '2021-08-10 22:44:14'),
+(120, '946hfDBM1TLsRzBCLKK2CFbfKVVzzjIT8iFyIKcG', 5, 10.00, 200.00, 2000.00, '{\"product_id\":5,\"product_name\":\"16 gb Pendrive\",\"regular_price\":250,\"special_price\":200,\"image\":\"smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png\"}', '2021-08-10 22:55:13', '2021-08-10 22:55:13'),
+(121, '946hfDBM1TLsRzBCLKK2CFbfKVVzzjIT8iFyIKcG', 5, 10.00, 200.00, 2000.00, '{\"product_id\":5,\"product_name\":\"16 gb Pendrive\",\"regular_price\":250,\"special_price\":200,\"image\":\"smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png\"}', '2021-08-10 22:55:13', '2021-08-10 22:55:13');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `branches`
 --
 
@@ -40,6 +88,13 @@ CREATE TABLE `branches` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `branches`
+--
+
+INSERT INTO `branches` (`id`, `code`, `name`, `address`, `mobile`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'B627559547', 'Default Branch', 'Dhakaa,Bangladesh', '01643235533', 1, 1, '2021-07-29 05:52:50', '2021-07-29 05:52:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -95,7 +150,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `code`, `name`, `image1`, `image2`, `description`, `top_show`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'C626670495', 'Ladies ', 'E0MSEwmLZAK6VV4C3GwGDLmdGr32QRahKDK1ubji.jpg', 'pZuPP3kB2r5KwOh2ws9thMn1uybWsjOLtEtVX66H.jpg', NULL, 0, 1, 1, 1, '2021-07-18 22:55:04', '2021-07-18 22:55:58', NULL);
+(1, 'C626670495', 'Ladies ', 'E0MSEwmLZAK6VV4C3GwGDLmdGr32QRahKDK1ubji.jpg', 'pZuPP3kB2r5KwOh2ws9thMn1uybWsjOLtEtVX66H.jpg', NULL, 1, 1, 1, 1, '2021-07-18 22:55:04', '2021-08-07 23:15:28', NULL),
+(2, 'C627823255', 'Gents', 'onB07gKn2jVgTFag7MSLWtACydau3rNPB3CKs3sz.jpg', NULL, NULL, 1, 1, 1, 1, '2021-08-01 07:07:48', '2021-08-07 23:15:18', NULL),
+(3, 'C627823272', 'Kids', 'WRNDjrwWEhT9SgvdGiFMyljqi2ud1ObH6Tr3Tz50.png', NULL, NULL, 1, 1, 1, 1, '2021-08-01 07:08:10', '2021-08-07 23:15:12', NULL),
+(4, 'C627823293', 'Mens Fashion', 'lC4Xqa3lw74kbtfauR6Fza3jdVtjSwOUAOKN4tQ8.png', NULL, NULL, 1, 1, 1, 1, '2021-08-01 07:08:33', '2021-08-07 23:15:07', NULL),
+(5, 'C628399836', 'Electronics', 'UbwdtDbqXIMo1RuMOFLNOYdDZjK3z7C91UZDINOD.jpg', NULL, NULL, 1, 1, 7, 1, '2021-08-07 23:17:36', '2021-08-07 23:17:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -145,7 +204,7 @@ CREATE TABLE `company_infos` (
 --
 
 INSERT INTO `company_infos` (`id`, `name`, `phone`, `mobile`, `address`, `hotline`, `email`, `web`, `logo`, `facebook_link`, `youtube_link`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Shomikaron', '11111', '0000', NULL, '0111', NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL, NULL, NULL);
+(1, 'Shomikaron', '11111', '0000', 'Block-A, Meraj Nagar, Rayerbag, kadamtali, Dhaka - 1362', '0111', NULL, NULL, 'VrRIYQ3RL0lsSCD0Ndb2anDAhpoGFUzGvLfD7Htt.png', NULL, NULL, 1, 1, 1, NULL, '2021-08-08 02:28:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,6 +214,7 @@ INSERT INTO `company_infos` (`id`, `name`, `phone`, `mobile`, `address`, `hotlin
 
 CREATE TABLE `contacts` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `type` enum('Customer','Supplier','Staff','Both') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `first_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -182,9 +242,9 @@ CREATE TABLE `contacts` (
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`id`, `type`, `first_name`, `last_name`, `address`, `shipping_address`, `post_code`, `state`, `country_id`, `phone`, `mobile`, `email`, `due_date`, `birthday`, `opening_balance`, `contact_category_id`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Customer', 'Walking ', 'Customer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, 1, '2021-07-26 18:09:33', '2021-07-26 18:09:40', NULL),
-(2, 'Supplier', 'Walking ', 'Supplier', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 1, 1, 1, '2021-07-26 18:12:40', '2021-07-26 18:12:49', NULL);
+INSERT INTO `contacts` (`id`, `user_id`, `type`, `first_name`, `last_name`, `address`, `shipping_address`, `post_code`, `state`, `country_id`, `phone`, `mobile`, `email`, `due_date`, `birthday`, `opening_balance`, `contact_category_id`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, NULL, 'Customer', 'Nozibor', 'Rahman', NULL, 'Dhaka,Bangladesh', NULL, NULL, NULL, NULL, '01643235533', NULL, NULL, NULL, 0, NULL, 1, 1, 1, '2021-08-07 02:28:23', '2021-08-07 02:40:01', NULL),
+(2, NULL, 'Customer', 'iqbal', 'Rahman', NULL, 'Hazi Tower,Lakecity Concord Gate,Khilkhet,Dhaka*1229', NULL, NULL, NULL, NULL, '0122222222', NULL, NULL, NULL, 0, NULL, 1, 1, 1, '2021-08-09 07:14:30', '2021-08-09 07:14:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -285,6 +345,13 @@ CREATE TABLE `currencies` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `currencies`
+--
+
+INSERT INTO `currencies` (`id`, `code`, `title`, `symbol`, `symbol_position`, `in_word_prefix`, `in_word_suffix`, `in_word_prefix_position`, `in_word_suffix_position`, `branch_id`, `created_by`, `is_active`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'C628421204', 'BDT', '৳', 'Prefix', 'ss', 'ssss', 'Prefix', 'Prefix', 1, 1, 1, NULL, '2021-08-08 05:18:36', '2021-08-08 05:18:36');
 
 -- --------------------------------------------------------
 
@@ -397,54 +464,134 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(35, '2014_10_12_000000_create_users_table', 1),
-(36, '2014_10_12_100000_create_password_resets_table', 1),
-(37, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
-(38, '2019_08_19_000000_create_failed_jobs_table', 1),
-(39, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(40, '2020_05_21_100000_create_teams_table', 1),
-(41, '2020_05_21_200000_create_team_user_table', 1),
-(42, '2020_05_21_300000_create_team_invitations_table', 1),
-(43, '2021_02_13_105214_create_sessions_table', 1),
-(44, '2021_03_30_123909_create_profile_settings_table', 1),
-(45, '2021_04_01_205916_create_permissions_table', 1),
-(46, '2021_04_01_210304_create_permission_categories_table', 1),
-(47, '2021_06_13_064243_create_brands_table', 1),
-(48, '2021_06_13_064317_create_categories_table', 1),
-(49, '2021_06_13_064338_create_sub_categories_table', 1),
-(50, '2021_06_13_064414_create_sub_sub_categories_table', 1),
-(51, '2021_06_13_064438_create_units_table', 1),
-(52, '2021_06_13_064514_create_products_table', 1),
-(53, '2021_06_13_064634_create_product_images_table', 1),
-(54, '2021_06_13_064743_create_contacts_table', 1),
-(55, '2021_06_13_065016_create_invoice_settings_table', 1),
-(56, '2021_06_13_065038_create_payment_methods_table', 1),
-(57, '2021_06_13_065149_create_delivery_methods_table', 1),
-(58, '2021_06_13_065207_create_vats_table', 1),
-(59, '2021_06_13_065246_create_branches_table', 1),
-(60, '2021_06_13_065302_create_warehouses_table', 1),
-(61, '2021_06_13_065444_create_invoices_table', 1),
-(62, '2021_06_13_065519_create_stock_managers_table', 1),
-(63, '2021_06_13_065548_create_stock_adjustments_table', 1),
-(64, '2021_06_13_065811_create_payments_table', 1),
-(65, '2021_06_13_070133_create_currencies_table', 1),
-(66, '2021_06_13_073934_create_contact_categories_table', 1),
-(67, '2021_06_19_070242_create_company_infos_table', 1),
-(68, '2021_06_19_090514_create_sliders_table', 1),
-(69, '2021_06_19_113037_create_coupon_codes_table', 1),
-(70, '2021_06_27_124950_create_point_policies_table', 1),
-(71, '2021_06_29_034815_create_colors_table', 1),
-(72, '2021_06_29_053813_create_sizes_table', 1),
 (73, '2021_07_16_052805_create_product_info_table', 1),
-(74, '2021_07_16_054152_create_sale_invoices_table', 1),
-(75, '2021_07_16_055111_create_sale_invoice_details_table', 1),
-(76, '2021_07_16_055154_create_product_barcodes_table', 1),
-(77, '2021_07_16_060158_create_product_wish_lists_table', 1),
-(78, '2021_07_16_174539_create_purchase_invoices_table', 1),
-(79, '2021_07_16_174559_create_purchase_invoice_details_table', 1),
-(80, '2021_07_16_175013_create_contact_balances_table', 1),
-(81, '2021_07_16_205947_create_sale_payments_table', 1),
-(82, '2021_07_16_205958_create_purchase_payments_table', 1);
+(91, '2014_10_12_000000_create_users_table', 2),
+(92, '2014_10_12_100000_create_password_resets_table', 2),
+(93, '2014_10_12_200000_add_two_factor_columns_to_users_table', 2),
+(94, '2019_08_19_000000_create_failed_jobs_table', 2),
+(95, '2019_12_14_000001_create_personal_access_tokens_table', 2),
+(96, '2020_05_21_100000_create_teams_table', 2),
+(97, '2020_05_21_200000_create_team_user_table', 2),
+(98, '2020_05_21_300000_create_team_invitations_table', 2),
+(99, '2021_02_13_105214_create_sessions_table', 2),
+(100, '2021_03_30_123909_create_profile_settings_table', 2),
+(101, '2021_04_01_210304_create_permission_categories_table', 2),
+(102, '2021_06_13_064243_create_brands_table', 2),
+(103, '2021_06_13_064317_create_categories_table', 2),
+(104, '2021_06_13_064338_create_sub_categories_table', 2),
+(105, '2021_06_13_064414_create_sub_sub_categories_table', 2),
+(106, '2021_06_13_064438_create_units_table', 2),
+(107, '2021_06_13_064514_create_products_table', 2),
+(108, '2021_06_13_064634_create_product_images_table', 2),
+(109, '2021_06_13_064743_create_contacts_table', 2),
+(110, '2021_06_13_065016_create_invoice_settings_table', 2),
+(111, '2021_06_13_065038_create_payment_methods_table', 2),
+(112, '2021_06_13_065149_create_delivery_methods_table', 2),
+(113, '2021_06_13_065207_create_vats_table', 2),
+(114, '2021_06_13_065246_create_branches_table', 2),
+(115, '2021_06_13_065302_create_warehouses_table', 2),
+(116, '2021_06_13_065444_create_invoices_table', 2),
+(117, '2021_06_13_065519_create_stock_managers_table', 2),
+(118, '2021_06_13_065548_create_stock_adjustments_table', 2),
+(119, '2021_06_13_065811_create_payments_table', 2),
+(120, '2021_06_13_070133_create_currencies_table', 2),
+(121, '2021_06_13_073934_create_contact_categories_table', 2),
+(122, '2021_06_19_070242_create_company_infos_table', 2),
+(123, '2021_06_19_090514_create_sliders_table', 2),
+(124, '2021_06_19_113037_create_coupon_codes_table', 2),
+(125, '2021_06_27_124950_create_point_policies_table', 2),
+(126, '2021_06_29_034815_create_colors_table', 2),
+(127, '2021_06_29_053813_create_sizes_table', 2),
+(128, '2021_06_29_155357_create_permission_tables', 2),
+(129, '2021_07_16_052805_create_product_infos_table', 2),
+(130, '2021_07_16_054152_create_sale_invoices_table', 2),
+(131, '2021_07_16_055111_create_sale_invoice_details_table', 2),
+(132, '2021_07_16_055154_create_product_barcodes_table', 2),
+(133, '2021_07_16_060158_create_product_wish_lists_table', 2),
+(134, '2021_07_16_174539_create_purchase_invoices_table', 2),
+(135, '2021_07_16_174559_create_purchase_invoice_details_table', 2),
+(136, '2021_07_16_175013_create_contact_balances_table', 2),
+(137, '2021_07_16_205947_create_sale_payments_table', 2),
+(138, '2021_07_16_205958_create_purchase_payments_table', 2),
+(139, '2021_07_28_202059_create_add_to_cards_table', 2),
+(140, '2021_08_01_113222_create_orders_table', 2),
+(141, '2021_08_01_113325_create_order_details_table', 2),
+(142, '2021_08_03_043041_create_shipping_charges_table', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1),
+(3, 'App\\Models\\User', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `contact_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `order_date` datetime DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `other_amount` double DEFAULT NULL,
+  `discount` double DEFAULT NULL,
+  `shipping_charge` double DEFAULT NULL,
+  `vat` double DEFAULT NULL,
+  `payable_amount` double DEFAULT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `coupon_code_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `status` enum('pending','approved','cancel') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `product_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `unit_price` double DEFAULT NULL,
+  `quantity` double DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -522,12 +669,10 @@ INSERT INTO `payment_methods` (`id`, `code`, `name`, `account_no`, `account_hold
 
 CREATE TABLE `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT 1,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -601,8 +746,13 @@ CREATE TABLE `products` (
   `purchase_price` double(20,4) NOT NULL DEFAULT 0.0000,
   `discount` double(20,4) DEFAULT 0.0000,
   `sub_sub_category_id` bigint(20) UNSIGNED NOT NULL,
-  `brand_id` bigint(20) DEFAULT NULL,
+  `sub_category_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `contact_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `brand_id` bigint(20) UNSIGNED DEFAULT NULL,
   `low_alert` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `min_order_qty` double(20,4) DEFAULT NULL,
+  `featured` enum('None','New Product','Trending Product','Best Selling Product') COLLATE utf8mb4_unicode_ci NOT NULL,
   `barcode_generate_state` enum('Bulk','Single') COLLATE utf8mb4_unicode_ci NOT NULL,
   `vat_id` bigint(20) UNSIGNED DEFAULT NULL,
   `branch_id` bigint(20) UNSIGNED NOT NULL,
@@ -617,12 +767,12 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `code`, `name`, `regular_price`, `special_price`, `wholesale_price`, `purchase_price`, `discount`, `sub_sub_category_id`, `brand_id`, `low_alert`, `barcode_generate_state`, `vat_id`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'P626671375', 'Nokia 1110', 120.0000, 120.0000, 100.0000, 90.0000, 0.0000, 1, 1, NULL, 'Bulk', 1, 1, 1, NULL, '2021-07-18 23:36:43', '2021-07-18 23:36:43', NULL),
-(2, 'P626681536', 'Jhenaidah Branch', 150.0000, 140.0000, 120.0000, 100.0000, 0.0000, 1, 1, NULL, 'Bulk', NULL, 1, 1, 1, '2021-07-18 23:37:49', '2021-07-19 01:58:59', NULL),
-(3, 'P626681547', 'test Item', 120.0000, 150.0000, 100.0000, 80.0000, NULL, 1, 1, NULL, 'Bulk', NULL, 1, 1, NULL, '2021-07-19 02:00:25', '2021-07-19 02:00:25', NULL),
-(4, 'P627202739', 'test Item', 150.0000, 120.0000, 100.0000, 80.0000, NULL, 1, 1, NULL, 'Bulk', NULL, 1, 1, NULL, '2021-07-25 02:46:30', '2021-07-25 02:46:30', NULL),
-(5, 'P627202939', 'test Item two', 150.0000, 120.0000, 100.0000, 50.0000, NULL, 1, 1, NULL, 'Bulk', NULL, 1, 1, 1, '2021-07-25 02:51:50', '2021-07-25 02:51:50', NULL);
+INSERT INTO `products` (`id`, `code`, `name`, `regular_price`, `special_price`, `wholesale_price`, `purchase_price`, `discount`, `sub_sub_category_id`, `sub_category_id`, `category_id`, `contact_id`, `brand_id`, `low_alert`, `min_order_qty`, `featured`, `barcode_generate_state`, `vat_id`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'P628052522', 'Pensrive', 150.0000, 120.0000, 120.0000, 100.0000, NULL, 1, 1, 1, NULL, 1, NULL, 5.0000, 'New Product', 'Bulk', NULL, 1, 1, 1, '2021-08-01 07:04:18', '2021-08-03 22:49:05', NULL),
+(2, 'P628052666', 'new item', 120.0000, 110.0000, 104.0000, 100.0000, NULL, 1, 1, 1, NULL, 1, NULL, 10.0000, 'Best Selling Product', 'Bulk', NULL, 1, 1, 1, '2021-08-03 22:52:19', '2021-08-03 22:52:19', NULL),
+(3, 'P628058662', 'Memory Card', 120.0000, 150.0000, 100.0000, 150.0000, 20.0000, 1, 1, 1, NULL, 1, NULL, 10.0000, 'New Product', 'Bulk', NULL, 1, 1, 1, '2021-08-04 00:31:59', '2021-08-04 00:31:59', NULL),
+(4, 'P628058721', '8 Gb Pendrive', 250.0000, 300.0000, 100.0000, 200.0000, NULL, 1, 1, 1, NULL, 1, NULL, 10.0000, 'New Product', 'Bulk', NULL, 1, 1, 1, '2021-08-04 00:33:01', '2021-08-04 00:33:01', NULL),
+(5, 'P628487534', '16 gb Pendrive', 250.0000, 200.0000, 150.0000, 520.0000, NULL, 1, 1, 1, NULL, 1, NULL, 5.0000, 'New Product', 'Bulk', NULL, 1, 1, 1, '2021-08-04 00:33:56', '2021-08-08 23:39:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -651,7 +801,7 @@ CREATE TABLE `product_barcodes` (
 CREATE TABLE `product_images` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `product_id` bigint(20) UNSIGNED NOT NULL,
-  `image` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`image`)),
+  `image` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `position` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by` bigint(20) UNSIGNED NOT NULL,
   `branch_id` bigint(20) UNSIGNED NOT NULL,
@@ -660,6 +810,21 @@ CREATE TABLE `product_images` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_images`
+--
+
+INSERT INTO `product_images` (`id`, `product_id`, `image`, `position`, `created_by`, `branch_id`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(6, 5, 'smx4PXqp4cAY5fw4UU777Krks9lkN5bH22I8iV1i.png', NULL, 1, 1, 1, '2021-07-28 12:57:33', '2021-07-28 12:57:33', NULL),
+(7, 5, 'edrVWBy3H4trCYylqUnfR5QYnPx8mF3vpnDsshNm.jpg', NULL, 1, 1, 1, '2021-07-28 12:57:33', '2021-07-28 12:57:33', NULL),
+(8, 5, 'H4bpYb7mytFX0BlrPZYVHG20wDHTYTcBpqQzmjyN.jpg', NULL, 1, 1, 1, '2021-07-28 12:57:33', '2021-07-28 12:57:33', NULL),
+(9, 1, 'KghsZrMJWH39pYyfmmXgQp4zHhV00SDGoFgzIjBa.jpg', NULL, 1, 1, 1, '2021-08-01 07:04:18', '2021-08-01 07:04:18', NULL),
+(10, 1, 'wXwKBplKoeQDki838Q8lJzYFTDOQfhYsG8S0IbPA.jpg', NULL, 1, 1, 1, '2021-08-01 07:04:18', '2021-08-01 07:04:18', NULL),
+(11, 2, '4Q9DM7yD3oMnh5mB5VOW1DcVXFK8C59NtdTLNFb8.jpg', NULL, 1, 1, 1, '2021-08-03 22:52:19', '2021-08-03 22:52:19', NULL),
+(12, 3, 'j3WS5exhgTdo8jfo9VccBwpwSgORnes55NjyHZlF.png', NULL, 1, 1, 1, '2021-08-04 00:31:59', '2021-08-04 00:31:59', NULL),
+(13, 4, 'Bz0T6gEu341lUfVbi1HbJjt7CYxDEo0kD8Qlqd8F.jpg', NULL, 1, 1, 1, '2021-08-04 00:33:01', '2021-08-04 00:33:01', NULL),
+(14, 5, 'WaDJMycQBybq0FCpLEcSHDX4ArZn0U5cHvDn4zr1.jpg', NULL, 1, 1, 1, '2021-08-04 00:33:56', '2021-08-04 00:33:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -689,11 +854,11 @@ CREATE TABLE `product_infos` (
 --
 
 INSERT INTO `product_infos` (`id`, `product_id`, `short_description`, `long_description`, `youtube_link`, `meta_title`, `meta_description`, `meta_keyword`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, NULL, 'hello', 'lllll', NULL, NULL, NULL, NULL, 1, 1, 1, '2021-07-19 00:15:17', '2021-07-19 00:15:17', NULL),
-(3, 2, NULL, NULL, NULL, NULL, 'hello world', 'hello Worlds', 1, 1, 1, '2021-07-19 01:43:45', '2021-07-19 01:53:04', NULL),
-(4, 3, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2021-07-19 02:00:25', '2021-07-19 02:00:25', NULL),
-(5, 4, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2021-07-25 02:46:30', '2021-07-25 02:46:30', NULL),
-(6, 5, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2021-07-25 02:51:50', '2021-07-25 02:51:50', NULL);
+(1, 1, 'Short Description Test', 'Long Description Test', NULL, NULL, NULL, NULL, 1, 1, 1, '2021-08-01 07:04:18', '2021-08-01 07:04:18', NULL),
+(2, 2, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2021-08-03 22:52:19', '2021-08-03 22:52:19', NULL),
+(3, 3, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2021-08-04 00:31:59', '2021-08-04 00:31:59', NULL),
+(4, 4, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2021-08-04 00:33:01', '2021-08-04 00:33:01', NULL),
+(5, 5, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, '2021-08-04 00:33:56', '2021-08-04 00:33:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -749,9 +914,9 @@ CREATE TABLE `purchase_invoices` (
   `total_amount` double DEFAULT NULL,
   `other_amount` double DEFAULT NULL,
   `discount` double DEFAULT NULL,
+  `shipping_charge` double DEFAULT NULL,
   `commission` double DEFAULT NULL,
   `vat` double DEFAULT NULL,
-  `shipping_charge` double(20,4) DEFAULT NULL,
   `payable_amount` double DEFAULT NULL,
   `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `branch_id` bigint(20) UNSIGNED NOT NULL,
@@ -761,13 +926,6 @@ CREATE TABLE `purchase_invoices` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `purchase_invoices`
---
-
-INSERT INTO `purchase_invoices` (`id`, `contact_id`, `purchase_date`, `total_amount`, `other_amount`, `discount`, `commission`, `vat`, `shipping_charge`, `payable_amount`, `note`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 2, '2021-07-27 00:00:00', 490, NULL, 20, NULL, NULL, 100.0000, 570, NULL, 1, 1, 1, '2021-07-26 18:18:51', '2021-07-26 18:18:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -788,13 +946,6 @@ CREATE TABLE `purchase_invoice_details` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `purchase_invoice_details`
---
-
-INSERT INTO `purchase_invoice_details` (`id`, `purchase_invoice_id`, `product_id`, `unit_price`, `quantity`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 5, 50, 10, 1, 1, 1, '2021-07-26 18:18:52', '2021-07-26 18:18:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -825,12 +976,40 @@ CREATE TABLE `purchase_payments` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `purchase_payments`
+-- Table structure for table `roles`
 --
 
-INSERT INTO `purchase_payments` (`id`, `code`, `date`, `contact_id`, `purchase_invoice_id`, `total_amount`, `charge`, `vat`, `discount`, `net_amount`, `payment_method_id`, `transaction_id`, `receipt_no`, `note`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'PM627344997', '2021-07-27 00:18:52', 2, 1, 570.0000, NULL, NULL, NULL, NULL, 1, 'TR627344869', NULL, NULL, 1, 1, 1, '2021-07-26 18:18:52', '2021-07-26 18:18:52', NULL);
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'web', '2021-08-07 18:00:00', '2021-08-07 18:00:00'),
+(2, 'user', 'web', '2021-08-07 18:00:00', '2021-08-07 18:00:00'),
+(3, 'customer', 'web', '2021-08-07 18:00:00', '2021-08-07 18:00:00'),
+(4, 'seller', 'web', '2021-08-07 18:00:00', '2021-08-07 18:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -840,13 +1019,14 @@ INSERT INTO `purchase_payments` (`id`, `code`, `date`, `contact_id`, `purchase_i
 
 CREATE TABLE `sale_invoices` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED DEFAULT NULL,
   `contact_id` bigint(20) UNSIGNED DEFAULT NULL,
   `sale_date` datetime DEFAULT NULL,
   `total_amount` double DEFAULT NULL,
   `other_amount` double DEFAULT NULL,
   `discount` double DEFAULT NULL,
+  `shipping_charge` double DEFAULT NULL,
   `vat` double DEFAULT NULL,
-  `shipping_charge` double(20,4) DEFAULT NULL,
   `payable_amount` double DEFAULT NULL,
   `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `invoice_channel` enum('Web-Sale','Sale-Terminal') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Backend Sale or Online Sale',
@@ -858,13 +1038,6 @@ CREATE TABLE `sale_invoices` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `sale_invoices`
---
-
-INSERT INTO `sale_invoices` (`id`, `contact_id`, `sale_date`, `total_amount`, `other_amount`, `discount`, `vat`, `shipping_charge`, `payable_amount`, `note`, `invoice_channel`, `coupon_code_id`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, '2021-07-27 00:00:00', 10800, NULL, 200, NULL, 200.0000, 10800, NULL, 'Web-Sale', NULL, 1, 1, 1, '2021-07-26 18:34:58', '2021-07-26 18:34:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -885,13 +1058,6 @@ CREATE TABLE `sale_invoice_details` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `sale_invoice_details`
---
-
-INSERT INTO `sale_invoice_details` (`id`, `sale_invoice_id`, `product_id`, `unit_price`, `quantity`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 3, 120, 100, 1, 1, 1, '2021-07-26 18:34:58', '2021-07-26 18:34:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -922,13 +1088,6 @@ CREATE TABLE `sale_payments` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `sale_payments`
---
-
-INSERT INTO `sale_payments` (`id`, `code`, `date`, `contact_id`, `sale_invoice_id`, `total_amount`, `charge`, `vat`, `discount`, `net_amount`, `payment_method_id`, `transaction_id`, `receipt_no`, `note`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'PM627346048', '2021-07-27 00:34:58', 1, 1, 10800.0000, NULL, NULL, NULL, NULL, 1, 'TR627346048', NULL, NULL, 1, 1, 1, '2021-07-26 18:34:58', '2021-07-26 18:34:58', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -949,7 +1108,40 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('gEFwNB4XaerIoZpAkwUyePb6qpGAw1q6eHdAoXlr', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiZ2NpcmhBY2sxTXNmdnRIa0tNTUZXTkRDVlpIQU94a1NYbWhFc1ZNVCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly9lY29tLmxvY2FsOjgwODAvbWVtYmVyL2ludmVudG9yeS9zYWxlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGsxM3lzd3AuSWtqL1JwZEU0UVJxd3V3VTRTR3ZCRlFHWllpQ01oR1VIQ2tUMzcvZFZvelZDIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRrMTN5c3dwLklrai9ScGRFNFFScXd1d1U0U0d2QkZRR1pZaUNNaEdVSENrVDM3L2RWb3pWQyI7fQ==', 1627348908);
+('946hfDBM1TLsRzBCLKK2CFbfKVVzzjIT8iFyIKcG', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiZnM1TzNsa1BnMHVYMXBXRENSNjJDTVBQdmF4a1J6SW1pYlJmQVdwVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHA6Ly9lY29tLmxvY2FsOjgwODAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJC94ay91cmZ5aDF3UHJkUEVPL2hxYi5FL05MNExRb2RvOU5QZUVJbDIvTEpNSWhtbnA0VDRLIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQveGsvdXJmeWgxd1ByZFBFTy9ocWIuRS9OTDRMUW9kbzlOUGVFSWwyL0xKTUlobW5wNFQ0SyI7fQ==', 1628658241),
+('TzwZXtYQjZxFVaDA7dJ3P1jgaZenjHYKHVPI1tZT', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUUZ0WlZKY3dWZ0wzU0lDOUVEcU1hSndYdVRHTnVMNEgwZjdObXhpYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHA6Ly9lY29tLmxvY2FsOjgwODAiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1628654842),
+('z5FkcpZD9N6YODjJLNpYegqOiAq39r4xu9tWxTsw', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOUdFWlhPd2VPS0s5Q2FqRlRPNTVrNURZM0E5OTJkdWdhMUVpb3Z1eiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9lY29tLmxvY2FsOjgwODAvY2FydCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1628657082);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipping_charges`
+--
+
+CREATE TABLE `shipping_charges` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `code` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` enum('price','weight') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `from` double(20,4) DEFAULT NULL,
+  `to` double(20,4) DEFAULT NULL,
+  `shipping_fee` double(20,4) NOT NULL DEFAULT 0.0000,
+  `country_id` bigint(20) UNSIGNED NOT NULL,
+  `branch_id` bigint(20) UNSIGNED NOT NULL,
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shipping_charges`
+--
+
+INSERT INTO `shipping_charges` (`id`, `code`, `title`, `type`, `from`, `to`, `shipping_fee`, `country_id`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'SC1627509411', 'Inside Dhaka', 'price', 0.0000, 5000.0000, 50.0000, 1, 1, 1, 1, '2021-08-09 05:44:07', '2021-08-09 05:44:07', NULL),
+(2, 'SC1627509453', 'Outside Dhaka', 'price', 0.0000, 10000.0000, 100.0000, 1, 1, 1, 1, '2021-08-09 05:44:44', '2021-08-09 05:44:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -993,7 +1185,7 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `title`, `image`, `description`, `position`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Title', 'Qi3vUCNfJJlEs3nWRhlCI4aryzXWp0Pa8eG8jmH9.jpg', NULL, '23', 1, 1, 1, '2021-07-26 18:54:20', '2021-07-26 18:54:36', NULL);
+(1, 'Title', 'Ql9bXWFtUFZwnlZxJccaBo9BKZ2TZrzNxUZw2vK1.jpg', NULL, '23', 1, 1, 1, '2021-07-26 18:54:20', '2021-08-05 12:12:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -1029,6 +1221,14 @@ CREATE TABLE `stock_managers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `product_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `invoice_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `stock_adjustment_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `flow` enum('In','Out') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quantity` double(20,4) DEFAULT NULL,
+  `price` double(20,4) DEFAULT NULL,
+  `vat` double(20,4) DEFAULT NULL,
+  `discount` double(20,4) DEFAULT NULL,
+  `subtotal` double(20,4) DEFAULT NULL,
   `stock_in_opening` double(20,4) DEFAULT 0.0000,
   `stock_in_purchase` double(20,4) DEFAULT 0.0000,
   `stock_in_inventory` double(20,4) DEFAULT 0.0000,
@@ -1099,7 +1299,7 @@ CREATE TABLE `sub_sub_categories` (
 --
 
 INSERT INTO `sub_sub_categories` (`id`, `sub_category_id`, `code`, `name`, `image`, `description`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'C626670736', 'Many Quericity', 'eDdprviIov2PsvMpUvbrLHMa4wFQljKDog7LgJWz.jpg', 'Hello Test', 1, 1, 1, '2021-07-18 22:59:29', '2021-07-18 22:59:29', NULL);
+(1, 1, 'C626670736', 'Ladies 4 Pcs', 'eDdprviIov2PsvMpUvbrLHMa4wFQljKDog7LgJWz.jpg', 'Hello Test', 1, 1, 1, '2021-07-18 22:59:29', '2021-08-01 07:00:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -1121,7 +1321,8 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `user_id`, `name`, `personal_team`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@admin.com\'s Team', 1, '2021-07-18 22:54:46', '2021-07-18 22:54:46');
+(1, 1, 'Admin\'s Team', 1, '2021-08-09 22:41:45', '2021-08-09 22:41:45'),
+(2, 2, 'Customer\'s Team', 1, '2021-08-10 06:49:28', '2021-08-10 06:49:28');
 
 -- --------------------------------------------------------
 
@@ -1192,6 +1393,8 @@ CREATE TABLE `users` (
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` enum('Admin','User','Customer','Seller') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1208,8 +1411,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `mobile`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `branch_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'admin@admin.com', NULL, NULL, NULL, 'admin@admin.com', NULL, '$2y$10$k13yswp.Ikj/RpdE4QRqwuwU4SGvBFQGZYiCMhGUHCkT37/dVozVC', NULL, NULL, NULL, NULL, NULL, NULL, '2021-07-18 22:54:46', '2021-07-18 22:54:46');
+INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `mobile`, `email`, `address`, `type`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `branch_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', NULL, NULL, '01643235533', 'admin@admin.com', 'Hazi Tower,Lakecity Concord Gate,Khilkhet,Dhaka-1229', 'Customer', NULL, '$2y$10$/xk/urfyh1wPrdPEO/hqb.E/NL4LQodo9NPeEIl2/LJMIhmnp4T4K', NULL, NULL, NULL, NULL, NULL, NULL, '2021-08-09 22:41:45', '2021-08-09 22:41:45'),
+(2, 'Customer', NULL, NULL, '01643235500', 'customer@customer.com', 'Dhaka,Bangladesh', 'Customer', NULL, '$2y$10$7WGCfbcq6IocdZ.ZzMQLNeMASmUIGMi2KnQBF4SLbp9l0WWIbIcg2', NULL, NULL, NULL, NULL, NULL, NULL, '2021-08-10 06:49:28', '2021-08-10 06:49:28');
 
 -- --------------------------------------------------------
 
@@ -1231,13 +1435,6 @@ CREATE TABLE `vats` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `vats`
---
-
-INSERT INTO `vats` (`id`, `code`, `name`, `rate_percent`, `rate_fixed`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'V1625686432', '0%', 0, 0, 1, 1, 1, '2021-07-18 23:09:27', '2021-07-19 03:20:33', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -1258,8 +1455,22 @@ CREATE TABLE `warehouses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `warehouses`
+--
+
+INSERT INTO `warehouses` (`id`, `code`, `name`, `address`, `branch_id`, `created_by`, `is_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'W627497653', 'Default Warehouse', 'Dhaka,Bangladesh', 1, 1, 1, '2021-07-28 12:41:18', '2021-07-28 12:41:18', NULL),
+(2, 'W627559583', 'WareHouse 2', 'Dhaka,Bangladesh', 1, 1, 1, '2021-07-29 05:53:20', '2021-07-29 05:53:20', NULL);
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `add_to_cards`
+--
+ALTER TABLE `add_to_cards`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `branches`
@@ -1353,6 +1564,32 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -1374,7 +1611,8 @@ ALTER TABLE `payment_methods`
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Indexes for table `permission_categories`
@@ -1451,6 +1689,20 @@ ALTER TABLE `purchase_payments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
+
+--
 -- Indexes for table `sale_invoices`
 --
 ALTER TABLE `sale_invoices`
@@ -1475,6 +1727,12 @@ ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sessions_user_id_index` (`user_id`),
   ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `shipping_charges`
+--
+ALTER TABLE `shipping_charges`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sizes`
@@ -1564,10 +1822,16 @@ ALTER TABLE `warehouses`
 --
 
 --
+-- AUTO_INCREMENT for table `add_to_cards`
+--
+ALTER TABLE `add_to_cards`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+
+--
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `brands`
@@ -1579,7 +1843,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `colors`
@@ -1621,7 +1885,7 @@ ALTER TABLE `coupon_codes`
 -- AUTO_INCREMENT for table `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `delivery_methods`
@@ -1651,7 +1915,19 @@ ALTER TABLE `invoice_settings`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -1693,7 +1969,7 @@ ALTER TABLE `point_policies`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_barcodes`
@@ -1705,13 +1981,13 @@ ALTER TABLE `product_barcodes`
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_infos`
 --
 ALTER TABLE `product_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_wish_lists`
@@ -1729,37 +2005,49 @@ ALTER TABLE `profile_settings`
 -- AUTO_INCREMENT for table `purchase_invoices`
 --
 ALTER TABLE `purchase_invoices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `purchase_invoice_details`
 --
 ALTER TABLE `purchase_invoice_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `purchase_payments`
 --
 ALTER TABLE `purchase_payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sale_invoices`
 --
 ALTER TABLE `sale_invoices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sale_invoice_details`
 --
 ALTER TABLE `sale_invoice_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sale_payments`
 --
 ALTER TABLE `sale_payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shipping_charges`
+--
+ALTER TABLE `shipping_charges`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sizes`
@@ -1801,7 +2089,7 @@ ALTER TABLE `sub_sub_categories`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `team_invitations`
@@ -1825,23 +2113,42 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vats`
 --
 ALTER TABLE `vats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `warehouses`
 --
 ALTER TABLE `warehouses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `team_invitations`
