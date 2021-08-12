@@ -46,25 +46,13 @@ class HomeController extends Controller
         $this->addToCardService = $addToCardService;
     }
     public function EditContactById(Request $request){
-        $Query=Contact::find($request->editId);
-        $Query->first_name=$request->first_name;
-        $Query->last_name=$request->last_name;
-        $Query->phone=$request->phone;
-        $Query->birthday=$request->birthday;
-        $Query->email=$request->email;
+        $Query=User::find(Auth::user()->id);
+        $Query->name=$request->name;
         $Query->mobile=$request->mobile;
+        $Query->email=$request->email;
         $Query->save();
 
         return redirect()->back();
-    }
-    public function EditContact(Request $request){
-    //    dd($request->editId);
-    // dd($request->editId);
-    //    $this->EditId=$request->editId;
-       return view('frontend.my-account',[
-        'contacts'=>Contact::whereCreatedBy(Auth::user()->id)->get(),
-        'EditId'=>$request->editId,
-    ]);
     }
     public function ChangePassword(Request $request){
         // dd($request->oldpassword);

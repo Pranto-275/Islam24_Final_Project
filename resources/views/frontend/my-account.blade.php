@@ -52,46 +52,21 @@
                          <div class="card shadow-sm tab-content clearfix">
                             {{-- Start Basic Information Card --}}
                             <div class="card-body basic tab-pane active" id="basic-information">
-                                @foreach ($contacts as $contact)
-                                <h5 class="card-title">
-                                    @if(Session::has('message'))
-                                       <p class="alert alert-info">{{ Session::get('message') }}</p>
-                                    @endif
-                                </h5>
-                                <form id="edit-info" action="{{ route('edit') }}" method="GET">
-                                        @csrf
-                                        <input type="number" value="{{$contact->id}}" name="editId" hidden/>
-                                    <h5 class="card-title">
-                                    Personal Information
-                                    <input type="number" name="editId" value="{{ $contact->id }}" id="edit" hidden/>
-                                    <button type="submit" class="float-right border p-1 rounded text-info">Edit</button>
-                                    </h5>
-                                    </form>
-                                <hr class="mt-2">
                                 <form id="edit-info-customer" action="{{ route('edit') }}" method="POST">
                                     @csrf
-                                    <input type="number" name="editId" value="{{ $contact->id }}" id="edit" hidden/>
+                                <hr class="mt-2">
                                 <div class="row">
-                                  <div class="col-6 pb-2 font-weight-bold">First Name:</div>
+                                  <div class="col-6 pb-2 font-weight-bold">Name:</div>
                                   <div class="col-6 pb-2">
                                       {{-- {{$contact->first_name}} --}}
-                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->first_name}}" name="first_name"/>
+                                      <input class="form-control" type="text" name="name" value="{{Auth::user()->name}}" name="first_name"/>
                                   </div>
-                                  <div class="col-6 pb-2 font-weight-bold">Last Name:</div>
-                                  <div class="col-6 pb-2">
-                                      {{-- {{$contact->last_name}} --}}
-                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->last_name}}" name="last_name"/>
-                                  </div>
-                                  <div class="col-6 pb-2 font-weight-bold">Contact Number:</div>
+                                  <div class="col-6 pb-2 font-weight-bold">Mobile:</div>
                                   <div class="col-6 pb-2">
                                       {{-- {{$contact->phone}} --}}
-                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->phone}}" name="phone"/>
+                                      <input class="form-control" type="text" name="mobile" value="{{Auth::user()->mobile}}" name="phone"/>
                                   </div>
-                                  <div class="col-6 pb-2 font-weight-bold">Date of Birth:</div>
-                                  <div class="col-6 pb-2">
-                                      {{-- {{$contact->birthday}} --}}
-                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="text" value="{{$contact->birthday}}" name="birthday"/>
-                                  </div>
+
                                   <hr>
                                 </div>
                                 <h5 class="card-title">EMAIL ADDRESS</h5>
@@ -100,19 +75,13 @@
                                   <div class="col-6 pb-2 font-weight-bold">Primary Email:</div>
                                   <div class="col-6 pb-2">
                                       {{-- {{$contact->email}} --}}
-                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif class="form-control" type="email" value="{{$contact->email}}" name="email"/>
-                                  </div>
-                                  <div class="col-6 pb-2 font-weight-bold">Mobile:</div>
-                                  <div class="col-6 pb-2">
-                                      {{-- {{$contact->mobile}} --}}
-                                      <input @if(isset($EditId)) @if($EditId!=$contact->id) readonly @endif @else disabled @endif class="form-control" type="text" value="{{$contact->mobile}}" name="mobile"/>
+                                      <input class="form-control" type="email" name="email" value="{{Auth::user()->email}}" name="email"/>
                                   </div>
                                   <hr>
                                 </div>
-                                <button type="submit" class="float-right border p-1 rounded text-info bg-info text-light" @if(isset($EditId)) @if($EditId!=$contact->id) disabled @endif @else disabled @endif>Save</button>
+                                <button type="submit" class="float-right border p-1 rounded text-info bg-info text-light">Save Change</button>
                                 <br>
                                </form>
-                                @endforeach
                               </div>
                               {{-- End Basic Information Card --}}
                               {{-- Start Address Card --}}
@@ -314,7 +283,7 @@ headers: {
 		});
 	});
     $(document).ready(function(){
-		$('#edit-info').ajaxForm({
+		$('#edit-info-customer').ajaxForm({
 			beforeSend: formBeforeSend,
 			beforeSubmit: formBeforeSubmit,
 			error: formError,
