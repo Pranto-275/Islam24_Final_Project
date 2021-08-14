@@ -27,7 +27,7 @@
                             <div class="card-body">
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                               <center>
-                              <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a>
+                              {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>
                             </div>
                             <ul class="list-group list-group-flush">
@@ -66,7 +66,11 @@
                                       {{-- {{$contact->phone}} --}}
                                       <input class="form-control" type="text" name="mobile" value="{{Auth::user()->mobile}}" name="phone"/>
                                   </div>
-
+                                  <div class="col-6 pb-2 font-weight-bold">Address:</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->phone}} --}}
+                                      <input class="form-control" type="text" name="address" value="{{Auth::user()->address}}" name="address"/>
+                                  </div>
                                   <hr>
                                 </div>
                                 <h5 class="card-title">EMAIL ADDRESS</h5>

@@ -50,6 +50,7 @@ class HomeController extends Controller
         $Query->name=$request->name;
         $Query->mobile=$request->mobile;
         $Query->email=$request->email;
+        $Query->address=$request->address;
         $Query->save();
 
         return redirect()->back();
