@@ -56,7 +56,7 @@
                         </div>
                         <div class="fw-link">
                             <ul>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
                                 <li><a href="{{route('terms-conditios')}}">Terms & Conditions</a></li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
                                 <li><a href="#">Los Angeles</a></li>
