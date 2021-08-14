@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Livewire\Backend\Transaction;
-use App\Models\Backend\Inventory\SaleInvoice;
+use App\Models\Backend\Inventory\PurchaseInvoice;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\Setting\PaymentMethod;
 use App\Models\Backend\Transaction\Payment;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class CustomerPayment extends Component
+class SupplierPayment extends Component
 {
     public $contact_id;
     public $date;
-    public $sale_code;
+    public $purchase_code;
     public $code;
     public $transaction_id;
     public $payment_method_id;
@@ -23,7 +23,7 @@ class CustomerPayment extends Component
     public function editPayment($id){
         $this->PaymentId=$id;
         $QueryUpdate=Payment::find($this->PaymentId);
-        $Invoice=SaleInvoice::whereId($QueryUpdate->invoice_id)->first();
+        $Invoice=PurchaseInvoice::whereId($QueryUpdate->invoice_id)->first();
         $this->contact_id=$QueryUpdate->contact_id;
         $this->date=$QueryUpdate->date;
         $this->sale_code=$Invoice->code;
@@ -42,7 +42,7 @@ class CustomerPayment extends Component
     public function paymentSave(){
         $this->validate([
             'code' => 'required',
-            'sale_code' => 'required',
+            'purchase_code' => 'required',
             'date' => 'required',
             'contact_id' => 'required',
             'transaction_id' => 'required',
@@ -52,7 +52,7 @@ class CustomerPayment extends Component
         ]);
 
         // dd($this->sale_code);
-        $sale_invoice_id=SaleInvoice::whereCode($this->sale_code)->first();
+        $purchase_invoice_id=PurchaseInvoice::whereCode($this->purchase_code)->first();
         // dd($sale_invoice_id);
         if($this->PaymentId){
             $Query=Payment::find($this->PaymentId);
@@ -62,9 +62,9 @@ class CustomerPayment extends Component
         }
         $Query->code=$this->code;
         $Query->date=$this->date;
-        $Query->type="CustomerPayment";
+        $Query->type="SupplierPayment";
         $Query->contact_id=$this->contact_id;
-        $Query->invoice_id=$sale_invoice_id->id;
+        $Query->invoice_id=$purchase_invoice_id->id;
         $Query->amount=$this->amount;
         $Query->payment_method_id=$this->payment_method_id;
         $Query->transaction_id=$this->transaction_id;
@@ -73,25 +73,25 @@ class CustomerPayment extends Component
         $Query->save();
 
         $this->emit('success', [
-            'text' => 'Sales Payment C/U Successfully',
+            'text' => 'Purchase Payment C/U Successfully',
         ]);
     }
-    public function mount($sale_code=NULL){
-        $this->code = 'CP'.floor(time() - 999999999);
+    public function mount($purchase_code=NULL){
+        $this->code = 'SP'.floor(time() - 999999999);
         $this->transaction_id = 'TI'.floor(time() - 999999999);
 
-      if($sale_code){
-         $this->sale_code=$sale_code;
+      if($purchase_code){
+         $this->purchase_code=$purchase_code;
       }
     //   dd($this->sale_code);
     }
     public function render()
     {
-        return view('livewire.backend.transaction.customer-payment',[
-            'sale_codes'=>SaleInvoice::get(),
-            'contacts'=>Contact::whereType('Customer')->get(),
+        return view('livewire.backend.transaction.supplier-payment',[
+            'purchase_codes'=>PurchaseInvoice::get(),
+            'contacts'=>Contact::whereType('Supplier')->get(),
             'payment_methods'=>PaymentMethod::get(),
-            'payments'=>Payment::whereType('CustomerPayment')->get(),
+            'payments'=>Payment::whereType('SupplierPayment')->get(),
         ]);
     }
 }

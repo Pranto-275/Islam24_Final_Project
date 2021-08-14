@@ -7,7 +7,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        Customer Payment Reports
+        Supplier Payment Reports
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -17,13 +17,13 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4 class="card-title">Customer Payment Reports</h4>
+                                    <h4 class="card-title">Supplier Payment Reports</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <a href="{{route('transaction.customer-payment')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Customer Payment</button></a>
+                                <a href="{{route('transaction.supplier-payment')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Supplier Payment</button></a>
                             </div>
                         </div><!-- end col-->
                     </div><hr>
@@ -42,9 +42,9 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="basicpill-firstname-input">Select Customer</label>
+                                <label for="basicpill-firstname-input">Select Supplier</label>
                                 <select class="form-control" wire:model.lazy="type">
-                                    <option value="">Select Customer</option>
+                                    <option value="">Select Supplier</option>
                                     <option value="Walking Customer">Walking Customer</option>
                                 </select>
                             </div>
@@ -71,7 +71,7 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Date</th>
-                                <th>Customer</th>
+                                <th>Supplier</th>
                                 <th>Payment Method</th>
                                 <th>Amount</th>
                             </tr>
@@ -81,15 +81,15 @@
                                 @php
                                     $i=0;$sum=0;
                                 @endphp
-                                @foreach ($customer_payments as $customer_payment)
+                                @foreach ($supplier_payments as $supplier_payment)
                                 <tr>
                                    <td>{{++$i}}</td>
-                                   <td>{{$customer_payment->date}}</td>
-                                   <td>{{$customer_payment->Contact->first_name}} {{$customer_payment->Contact->last_name}}</td>
-                                   <td>{{$customer_payment->PaymentMethod->name}}</td>
-                                   <td>{{$customer_payment->amount}}</td>
+                                   <td>{{$supplier_payment->date}}</td>
+                                   <td>{{$supplier_payment->Contact->first_name}} {{$supplier_payment->Contact->last_name}}</td>
+                                   <td>{{$supplier_payment->PaymentMethod->name}}</td>
+                                   <td>{{$supplier_payment->amount}}</td>
                                    @php
-                                       $sum+=$customer_payment->amount;
+                                       $sum+=$supplier_payment->amount;
                                    @endphp
                                 </tr>
                                 @endforeach

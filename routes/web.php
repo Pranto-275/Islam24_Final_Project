@@ -54,7 +54,9 @@ use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Transaction\CustomerPayment;
+use App\Http\Livewire\Backend\Transaction\SupplierPayment;
 use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
+use App\Http\Livewire\Backend\Transaction\SupplierPaymentReport;
 use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Frontend\About as AboutUs;
 use App\Http\Livewire\Frontend\Cart;
@@ -202,8 +204,10 @@ Route::group(['middleware' => ['role:admin']], function () {
 
         Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
             Route::get('payment', Payment::class)->name('payment');
-            Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
+            Route::get('customer-payment/{sale_code?}', CustomerPayment::class)->name('customer-payment');
+            Route::get('supplier-payment/{purchase_code?}', SupplierPayment::class)->name('supplier-payment');
             Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
+            Route::get('supplier-payment-report', SupplierPaymentReport::class)->name('supplier-payment-report');
         });
         Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
             Route::get('order-list', OrderList::class)->name('order-list');

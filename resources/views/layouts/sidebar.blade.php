@@ -77,7 +77,9 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('transaction.customer-payment')}}">Customer Payment</a></li>
+                        <li><a href="{{route('transaction.supplier-payment')}}">Supplier Payment</a></li>
                         <li><a href="{{route('transaction.customer-payment-report')}}">Customer Payment Report</a></li>
+                        <li><a href="{{route('transaction.supplier-payment-report')}}">Supplier Payment Report</a></li>
                     </ul>
                 </li>
                 <li>

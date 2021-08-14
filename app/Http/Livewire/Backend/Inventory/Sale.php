@@ -74,7 +74,7 @@ class Sale extends Component
             $Query->created_by = Auth::id();
         }
         $Query->sale_date = $this->date;
-        // $Query->code = $this->code;
+        $Query->code = $this->code;
         $Query->contact_id = $this->contact_id;
         $Query->total_amount = $this->subtotal;
         $Query->discount = $this->discount;

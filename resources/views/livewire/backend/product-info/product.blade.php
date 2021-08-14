@@ -35,7 +35,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form wire:ignore.self wire:submit.prevent="productSave">
+            <form wire:ignore wire:submit.prevent="productSave">
 
                 <div class="card">
                     <div class="card-body">
@@ -240,18 +240,18 @@
     <div class="card">
         <div class="card-body">
 
-            <div wire.ignore.self class="row">
+            <div class="row">
                 <div class="col-md-4">
                     Product Image (600*600)
                 </div>
+
                 <div class="col-md-8">
+
                     @if($QueryUpdate)
                     @foreach ($QueryUpdate->ProductImageTop4 as $image)
-                    {{-- <img class="rounded mb-1" src="{{ asset('storage/photo/'.$image->image) }}"
-                        style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid"> --}}
-                        <div ng-repeat="file in imagefinaldata" class="img_wrp">
+                        <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
                             <img style="height:30px; weight:30px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
-                            <div class="close" wire:click="imageDelete({{$image->id}})">
+                            <div class="close text-danger" wire:click="imageDelete({{$image->id}})">
                                 <span aria-hidden="true">&times;</span>
                             </div>
                         </div>
