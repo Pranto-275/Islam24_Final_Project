@@ -8,7 +8,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="{{url('/dashboard')}}" class="waves-effect">
+                    <a href="{{url('/admin')}}" class="waves-effect">
                         <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right">01</span>
                         <span>Dashboards</span>
                     </a>
@@ -76,7 +76,6 @@
                         <span>Transaction</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('transaction.payment')}}">Payment Info</a></li>
                         <li><a href="{{route('transaction.customer-payment')}}">Customer Payment</a></li>
                         <li><a href="{{route('transaction.customer-payment-report')}}">Customer Payment Report</a></li>
                     </ul>

@@ -13,7 +13,7 @@ class ProductList extends Component
         Product::find($id)->delete();
         ProductInfo::whereProductId($id)->delete();
         ProductImage::whereProductId($id)->delete();
-        ProductProperties::whereProductId($id)->delete();
+        // ProductProperties::whereProductId($id)->delete();
 
         $this->emit('success', [
             'text' => 'Product Deleted Successfully',

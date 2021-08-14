@@ -13,6 +13,7 @@ use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Inventory\SalePayment;
 use App\Models\Backend\Setting\Warehouse;
+use App\Models\Backend\Setting\ShippingCharge;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -50,6 +51,7 @@ class Sale extends Component
     public $warehouse_id;
     public $warehouse_error;
     public $is_active;
+    public $shipping_fee;
     public $paymentMethodList = [];
     public $orderProductList = [];
     protected $listeners = [
@@ -275,6 +277,11 @@ class Sale extends Component
         }
     }
     public function updated(){
+        if($this->shipping_fee){
+            //   dd($this->shipping_fee);
+               $this->shipping_charge=$this->shipping_fee;
+               $this->shipping_fee=NULL;
+        }
         $this->updateProductCal();
     }
     public function render()
@@ -289,6 +296,7 @@ class Sale extends Component
             'vats'=> Vat::get(),
             'branches'=> Branch::get(),
             'warehouses'=>Warehouse::get(),
+            'shipping_charges'=>ShippingCharge::get(),
         ]);
     }
 }

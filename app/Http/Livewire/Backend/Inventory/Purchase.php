@@ -13,6 +13,7 @@ use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\PurchasePayment;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Setting\Warehouse;
+use App\Models\Backend\Setting\ShippingCharge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -47,6 +48,7 @@ class Purchase extends Component
     public $special_price;
     public $wholesale_price;
     public $purchase_price;
+    public $shipping_fee;
     public $transaction_id;
     public $warehouse_id;
     public $is_active;
@@ -282,6 +284,11 @@ class Purchase extends Component
         }
     }
     public function updated(){
+        if($this->shipping_fee){
+        //   dd($this->shipping_fee);
+           $this->shipping_charge=$this->shipping_fee;
+           $this->shipping_fee=NULL;
+        }
         $this->updateProductCal();
     }
     public function render()
@@ -296,6 +303,7 @@ class Purchase extends Component
             'vats'=> Vat::get(),
             'branches'=> Branch::get(),
             'warehouses'=>Warehouse::get(),
+            'shipping_charges'=>ShippingCharge::get(),
         ]);
     }
 }
