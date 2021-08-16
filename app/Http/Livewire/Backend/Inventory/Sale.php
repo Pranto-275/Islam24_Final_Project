@@ -65,6 +65,7 @@ class Sale extends Component
             'contact_id' => 'required',
             'date' => 'required',
             'subtotal' => 'required',
+            'warehouse_id' => 'required',
         ]);
         DB::transaction(function(){
         if($this->SaleInvoice){
@@ -122,6 +123,9 @@ class Sale extends Component
                 $SaleInvoiceDetail = SaleInvoiceDetail::whereProductId($key)->get();
                 $StockManager = StockManager::whereProductId($key)->whereWarehouseId($this->warehouse_id[$key])->firstOrNew();
                 $StockManager->product_id=$key;
+                $StockManager->invoice_id=$Query->id;
+                $StockManager->flow="Out";
+                $StockManager->price=$this->product_rate[$key];
                 $StockManager->stock_out_sale=$SaleInvoiceDetail->sum('quantity');
                 $StockManager->stock_in_inventory=$StockManager->stock_in_opening + $StockManager->stock_in_purchase - $SaleInvoiceDetail->sum('quantity');
                 $StockManager->warehouse_id=$this->warehouse_id[$key];
@@ -238,6 +242,12 @@ class Sale extends Component
             $this->expense_point_amount = $this->SaleInvoice->expense_point_amount;
             $this->due = $this->SaleInvoice->due;
             $this->note = $this->SaleInvoice->note;
+
+            $stock_managers=StockManager::whereInvoiceId($id)->get();
+            foreach($stock_managers as $stock_manager){
+                $this->warehouse_id[$stock_manager->product_id]=$stock_manager->warehouse_id;
+            }
+
             $this->paid_amount=SalePayment::whereSaleInvoiceId($id)->sum('total_amount');
             $SaleInvoiceDetail = SaleInvoiceDetail::whereSaleInvoiceId($this->SaleInvoice->id)->get();
             // dd($SaleInvoiceDetail);

@@ -65,6 +65,7 @@ class Purchase extends Component
             'contact_id' => 'required',
             'date' => 'required',
             'subtotal' => 'required',
+            'warehouse_id' => 'required',
         ]);
         //$serverMemo = $request->get("serverMemo");
         //dd($serverMemo['data']['orderProductList']);
@@ -127,8 +128,12 @@ class Purchase extends Component
         // Start Purchase Product Stock Manager
         foreach ($this->orderProductList as $key => $value) {
             $product = Product::find($key);
+            // dd($key);
             $StockManager = StockManager::whereProductId($key)->whereWarehouseId($this->warehouse_id[$key])->firstOrNew();
             $StockManager->product_id=$key;
+            $StockManager->invoice_id=$Query->id;
+            $StockManager->flow="In";
+            $StockManager->price=$this->product_rate[$key];
             $StockManager->stock_in_purchase=$StockManager->stock_in_purchase+$this->product_quantity[$key];
             $StockManager->warehouse_id=$this->warehouse_id[$key];
             $StockManager->branch_id=Auth::user()->branch_id;
@@ -247,6 +252,12 @@ class Purchase extends Component
             $this->expense_point_amount = $this->PurchaseInvoice->expense_point_amount;
             $this->due = $this->PurchaseInvoice->due;
             $this->note = $this->PurchaseInvoice->note;
+
+            $stock_managers=StockManager::whereInvoiceId($id)->get();
+            foreach($stock_managers as $stock_manager){
+                $this->warehouse_id[$stock_manager->product_id]=$stock_manager->warehouse_id;
+            }
+
             $this->paid_amount=PurchasePayment::wherePurchaseInvoiceId($id)->sum('total_amount');
             $PurchaseInvoiceDetail = PurchaseInvoiceDetail::wherePurchaseInvoiceId($this->PurchaseInvoice->id)->get();
             // dd($PurchaseInvoiceDetail);

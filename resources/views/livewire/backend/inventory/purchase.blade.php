@@ -133,7 +133,7 @@
                                                    <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
                                                 @endforeach
                                             </select>
-                                            {{-- @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror --}}
+                                            @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </td>
                                     <td>
