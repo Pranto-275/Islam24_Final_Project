@@ -45,6 +45,22 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
+    public function ChangeProfilePhoto(Request $request){
+        $this->validate($request,[
+            'profile_photo_path'        =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $imageName = time().'.'.$request->profile_photo_path->extension();
+
+        $request->profile_photo_path->move(public_path('images'), $imageName);
+
+         $User=User::find(Auth::user()->id);
+
+         $User->profile_photo_path=$imageName;
+         $User->save();
+
+         return redirect()->back();
+    }
     public function EditContactById(Request $request){
         $Query=User::find(Auth::user()->id);
         $Query->name=$request->name;

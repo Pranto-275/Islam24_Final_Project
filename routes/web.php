@@ -93,6 +93,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('change-password-customer', [HomeController::class, 'ChangePassword'])->name('change-password-customer');
+Route::post('change-profile-photo', [HomeController::class, 'ChangeProfilePhoto'])->name('change-profile-photo');
 Route::get('edit/{id?}', [HomeController::class, 'EditContact'])->name('edit');
 Route::post('edit', [HomeController::class, 'EditContactById']);
 

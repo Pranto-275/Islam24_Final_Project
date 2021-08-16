@@ -143,9 +143,11 @@
                                     <li><a href="{{route('search-category-wise')}}">Shop</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
+                                    @if(Auth::user())
                                     <li>
                                         <a href="{{ route('my-account') }}">My Account</a>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">
@@ -164,7 +166,7 @@
                                             @include('frontend.header-card-popup')
                                         </ul>
                                     </li>
-                                     <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account</li>
+                                     {{-- <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account</li> --}}
                                 </ul>
                             </div>
 

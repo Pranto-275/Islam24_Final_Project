@@ -206,8 +206,14 @@
                                                      {{ $totalPrice }}
                                                 </span></li>
                                             <li>
-                                                <span>SHIPPING</span>
-                                                <div class="shop-check-wrap">
+                                                <span>Discount</span>
+                                                <span class="cart-total-price">
+                                                    @if($currencySymbol)
+                                                        {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                     {{-- {{ $totalPrice }} --}}
+                                                </span></li>
+                                                {{-- <div class="shop-check-wrap">
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                                         <label class="custom-control-label" for="customCheck1">FLAT RATE: $15</label>
@@ -216,7 +222,7 @@
                                                         <input type="checkbox" class="custom-control-input" id="customCheck2">
                                                         <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </li>
                                             <li class="cart-total-amount">
                                                 <span>TOTAL</span>
