@@ -42,7 +42,7 @@
 
                                 <input id="file-input" name="profile_photo_path" type="file"/>
                             </div>
-                            <button class="mb-1" type="submit" id="profile-submit-button">Save</button>
+                            <button class="text-dark mb-1 mt-0 pt-0" type="submit" id="profile-submit-button" style="border-radius: 80%; border: 1px solid red;font-size:12px;">Save</button>
                             </form>
                             {{-- End Profile Photo Change --}}
                             </center>
