@@ -77,17 +77,17 @@
 
                         <div class="col-lg-3">
                             <div class="form-group">
-                                {{-- <label for="basicpill-firstname-input">Search Sale Code</label>
+                                <label for="basicpill-firstname-input">Search Sale Code</label>
                                 <livewire:component.sale-invoice-search-dropdown/>
-                                @error('ProductName') <span class="error">{{ $message }}</span> @enderror --}}
-                                <label for="basicpill-firstname-input">Sale Code</label>
+
+                                {{-- <label for="basicpill-firstname-input">Sale Code</label>
                                 <select class="form-control" wire:model.lazy="sale_code">
                                     <option value="">Select Code</option>
                                     @foreach ($sale_codes as $sale_code)
                                          <option value="{{$sale_code->code}}">{{$sale_code->code}}</option>
                                     @endforeach
-                                </select>
-                                @error('sale_code') <span class="error">{{ $message }}</span> @enderror
+                                </select> --}}
+
                             </div>
                         </div>
                         <div class="col-lg-3">

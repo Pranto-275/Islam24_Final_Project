@@ -3,31 +3,29 @@
     .custom-search-dropdown {
         z-index: 10001;
     }
+
 </style>
 @endpush
 <div>
-    <form class="form-horizontal validatable ">
-        <div class="search-box mr-2">
-            <div class="form-group">
-                <input type="text" wire:model.debounce.500ms="search" class="form-control border-1"
-                    placeholder="Sale Invoice...">
-                <i class="bx bx-search-alt search-icon"></i>
-                @if (strlen($search) >= 2)
-                <div class="col-16" >
-                    <div class="list-group" style="position: absolute; z-index: 999;">
-                        @if ($search_list->count() > 0)
-                            @foreach ($search_list as $invoice)
-                            <a href="javascript:void(0)" class="list-group-item list-group-item-action" wire:click="searchSelect({{$invoice}})">{{$invoice->code}}</a>
-                            @endforeach
-                            @else
-                              <a href="javascript:void(0)" class="list-group-item list-group-item-action">No result found for {{$search}}</a>
-                            @endif
-                    </div>
-                </div>
+    <div class="position-relative">
+        <input type="text" wire:model.debounce.500ms="search" placeholder=" Code" value=""
+            class="form-control" id="basicpill-firstname-input">
+
+        @if (strlen($search) >= 2 && $selected)
+        <div class="custom-search-dropdown position-absolute text-center rounded mt-1">
+            <div class="list-group">
+                @if ($search_list->count() > 0)
+                @foreach ($search_list as $order)
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action"
+                    wire:click="searchSelect({{$order}})">{{$order->code}}</a>
+                @endforeach
+                @else
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action">No result found for
+                    {{$search}}</a>
                 @endif
             </div>
         </div>
-
-    </form>
+        @endif
+    </div>
 </div>
 
