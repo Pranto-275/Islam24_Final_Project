@@ -1,7 +1,16 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+    .image-upload>input {
+  display: none;
+}
+#profile-submit-button{
+    display: none;
+}
+</style>
     <x-slot name="title">
         Category
     </x-slot>
@@ -22,16 +31,29 @@
                          {{-- Start First Card --}}
                         <div class="card shadow-sm mb-3">
                             <center>
-                            <img class="card-img-top rounded-circle mt-1" src="{{ asset('storage/photo/'.Auth::user()->profile_photo_path) }}" style="width:100px;height:100px;" alt="Profile Photo">
+                            <img class="card-img-top rounded-circle mt-1" src="{{ asset('images/'.Auth::user()->profile_photo_path) }}" style="width:100px;height:100px;" alt="Profile Photo">
+                            {{-- Start Profile Photo Change --}}
+                            <form enctype="multipart/form-data" id="profile_photo_path" action="{{ route('change-profile-photo') }}" method="POST">
+                                @csrf
+                            <div class="image-upload">
+                                <label for="file-input">
+                                    <i class="fas fa-camera font-size-large"></i>
+                                </label>
+
+                                <input id="file-input" name="profile_photo_path" type="file"/>
+                            </div>
+                            <button class="text-dark mb-1 mt-0 pt-0" type="submit" id="profile-submit-button" style="border-radius: 80%; border: 1px solid red;font-size:12px;">Save</button>
+                            </form>
+                            {{-- End Profile Photo Change --}}
                             </center>
-                            <div class="card-body">
+                            <div class="card-body pt-0">
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                               <center>
                               {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
+                                <li class="list-group-item active"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
                                 {{-- <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">Orders</a></li>
                                 {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li> --}}
@@ -226,52 +248,7 @@
     <!-- end row -->
 
 </div>
-@endsection
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
- $.ajaxSetup({
 
-headers: {
-
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
-}
-
-});
-
-  $(".btn-submit").click(function(e){
-   e.preventDefault();
-   let fName = $("#fName").val();
-   let lName = $("#lName").val();
-   let mobile = $("#mobile").val();
-   let shipping_address = $("#shipping_address").val();
-   let district = $("#district").val();
-  $.ajax({
-
-   type:'POST',
-   url:"{{ route('confirm-order') }}",
-   data:{"_token": "{{ csrf_token() }}", fName:fName, lName:lName, mobile:mobile, shipping_address:shipping_address, district:district},
-
-   success:function(response){
-        // console.log(data);
-  },
-
-   });
-
-// console.log(fName);
-});
-</script> --}}
-{{-- @push('scripts')
-
-<script src="assets/libs/select2/js/select2.min.js"></script>
-
-<!-- init js -->
-<script src="assets/js/pages/ecommerce-select2.init.js"></script>
-
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-@endpush --}}
-@section('script')
 <script>
 	$(document).ready(function(){
 		$('#change-password-customer').ajaxForm({
@@ -299,5 +276,39 @@ headers: {
 			resetForm: true
 		});
 	});
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+//   $("#file-input").click(function(){
+//     let profile=$(this).val();
+//     $.ajax({
+//     url: '{{ url('change-profile-photo') }}',
+//     type: 'POST',
+//     data: profile,
+//     cache: false,
+//     success: function(data) {
+//       console.log(profile);
+//     },
+//   });
+//   });
+// $("#file-input").click(function(){
+  $('#profile_photo_path').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+  });
+//   });
+});
+$( "#profile_photo_path" ).change(function() {
+    $("#profile-submit-button").css("display", "block");
+});
 </script>
 @endsection
