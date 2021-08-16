@@ -80,7 +80,7 @@
                                 {{-- <label for="basicpill-firstname-input">Search Sale Code</label>
                                 <livewire:component.sale-invoice-search-dropdown/>
                                 @error('ProductName') <span class="error">{{ $message }}</span> @enderror --}}
-                                <label for="basicpill-firstname-input">Sale Code</label>
+                                <label for="basicpill-firstname-input">Purchase Code</label>
                                 <select class="form-control" wire:model.lazy="purchase_code">
                                     <option value="">Select Code</option>
                                     @foreach ($purchase_codes as $purchase_code)
