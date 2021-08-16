@@ -122,7 +122,7 @@
                                 <div wire:ignore class="form-group">
                                     <label for="basicpill-lastname-input"> Description</label>
                                     <textarea class="form-control" id="description" rows="3"
-                                        wire:model.lazy="description" placeholder="Description"></textarea>
+                                        wire:model.lazy="description" placeholder="Description">{{$description}}</textarea>
                                 </div>
                             </div>
 

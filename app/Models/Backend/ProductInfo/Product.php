@@ -39,7 +39,7 @@ class Product extends Model
 
     public function ProductImageTop4()
     {
-        return $this->hasMany(ProductImage::class)->take(4);
+        return $this->hasMany(ProductImage::class);
     }
 
     public function SubSubCategory()

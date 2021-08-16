@@ -13,6 +13,7 @@ use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\PurchasePayment;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Setting\Warehouse;
+use App\Models\Backend\Setting\ShippingCharge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -47,6 +48,7 @@ class Purchase extends Component
     public $special_price;
     public $wholesale_price;
     public $purchase_price;
+    public $shipping_fee;
     public $transaction_id;
     public $warehouse_id;
     public $is_active;
@@ -63,6 +65,7 @@ class Purchase extends Component
             'contact_id' => 'required',
             'date' => 'required',
             'subtotal' => 'required',
+            'warehouse_id' => 'required',
         ]);
         //$serverMemo = $request->get("serverMemo");
         //dd($serverMemo['data']['orderProductList']);
@@ -75,7 +78,7 @@ class Purchase extends Component
             }
 
             $Query->purchase_date = $this->date;
-            // $Query->code = $this->code;
+            $Query->code = $this->code;
             $Query->contact_id = $this->contact_id;
             $Query->total_amount = $this->subtotal;
             $Query->discount = $this->discount;
@@ -125,8 +128,12 @@ class Purchase extends Component
         // Start Purchase Product Stock Manager
         foreach ($this->orderProductList as $key => $value) {
             $product = Product::find($key);
+            // dd($key);
             $StockManager = StockManager::whereProductId($key)->whereWarehouseId($this->warehouse_id[$key])->firstOrNew();
             $StockManager->product_id=$key;
+            $StockManager->invoice_id=$Query->id;
+            $StockManager->flow="In";
+            $StockManager->price=$this->product_rate[$key];
             $StockManager->stock_in_purchase=$StockManager->stock_in_purchase+$this->product_quantity[$key];
             $StockManager->warehouse_id=$this->warehouse_id[$key];
             $StockManager->branch_id=Auth::user()->branch_id;
@@ -245,6 +252,12 @@ class Purchase extends Component
             $this->expense_point_amount = $this->PurchaseInvoice->expense_point_amount;
             $this->due = $this->PurchaseInvoice->due;
             $this->note = $this->PurchaseInvoice->note;
+
+            $stock_managers=StockManager::whereInvoiceId($id)->get();
+            foreach($stock_managers as $stock_manager){
+                $this->warehouse_id[$stock_manager->product_id]=$stock_manager->warehouse_id;
+            }
+
             $this->paid_amount=PurchasePayment::wherePurchaseInvoiceId($id)->sum('total_amount');
             $PurchaseInvoiceDetail = PurchaseInvoiceDetail::wherePurchaseInvoiceId($this->PurchaseInvoice->id)->get();
             // dd($PurchaseInvoiceDetail);
@@ -282,6 +295,11 @@ class Purchase extends Component
         }
     }
     public function updated(){
+        if($this->shipping_fee){
+        //   dd($this->shipping_fee);
+           $this->shipping_charge=$this->shipping_fee;
+           $this->shipping_fee=NULL;
+        }
         $this->updateProductCal();
     }
     public function render()
@@ -296,6 +314,7 @@ class Purchase extends Component
             'vats'=> Vat::get(),
             'branches'=> Branch::get(),
             'warehouses'=>Warehouse::get(),
+            'shipping_charges'=>ShippingCharge::get(),
         ]);
     }
 }

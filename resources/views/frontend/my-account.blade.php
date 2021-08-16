@@ -1,7 +1,16 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+    .image-upload>input {
+  display: none;
+}
+#profile-submit-button{
+    display: none;
+}
+</style>
     <x-slot name="title">
         Category
     </x-slot>
@@ -22,24 +31,37 @@
                          {{-- Start First Card --}}
                         <div class="card shadow-sm mb-3">
                             <center>
-                            <img class="card-img-top" src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png" style="width:100px;height:100px;border-radius:100%;" alt="Profile Photo">
+                            <img class="card-img-top rounded-circle mt-1" src="{{ asset('images/'.Auth::user()->profile_photo_path) }}" style="width:100px;height:100px;" alt="Profile Photo">
+                            {{-- Start Profile Photo Change --}}
+                            <form enctype="multipart/form-data" id="profile_photo_path" action="{{ route('change-profile-photo') }}" method="POST">
+                                @csrf
+                            <div class="image-upload">
+                                <label for="file-input">
+                                    <i class="fas fa-camera font-size-large"></i>
+                                </label>
+
+                                <input id="file-input" name="profile_photo_path" type="file"/>
+                            </div>
+                            <button class="text-dark mb-1 mt-0 pt-0" type="submit" id="profile-submit-button" style="border-radius: 80%; border: 1px solid red;font-size:12px;">Save</button>
+                            </form>
+                            {{-- End Profile Photo Change --}}
                             </center>
-                            <div class="card-body">
-                              <h5 class="card-title text-center">Alamin</h5>
+                            <div class="card-body pt-0">
+                              <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                               <center>
-                              <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a>
+                              {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
-                                <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Orders</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Reviews</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Refund Settlements</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Change Password</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Appointment</a></li>
-                                <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Transactions</a></li>
+                                <li class="list-group-item active"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
+                                {{-- <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li> --}}
+                                <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">Orders</a></li>
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li> --}}
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Reviews</a></li> --}}
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Refund Settlements</a></li> --}}
+                                <li class="list-group-item"><a class="text-dark" href="#change-password" data-toggle="tab">Change Password</a></li>
+                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Appointment</a></li> --}}
+                                <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li>
                             </ul>
                           </div>
                          {{-- End First Card --}}
@@ -52,38 +74,40 @@
                          <div class="card shadow-sm tab-content clearfix">
                             {{-- Start Basic Information Card --}}
                             <div class="card-body basic tab-pane active" id="basic-information">
-                                <h5 class="card-title">Personal Information</h5>
+                                <form id="edit-info-customer" action="{{ route('edit') }}" method="POST">
+                                    @csrf
                                 <hr class="mt-2">
                                 <div class="row">
-                                  <div class="col-6 pb-2 font-weight-bold">Paikary Number:</div>
-                                  <div class="col-6 pb-2">01710000000</div>
-                                  <div class="col-6 pb-2 font-weight-bold">First Name:</div>
-                                  <div class="col-6 pb-2">Iqbal</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Last Name:</div>
-                                  <div class="col-6 pb-2">Hossain</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Contact Number:</div>
-                                  <div class="col-6 pb-2">0140000000</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Gender:</div>
-                                  <div class="col-6 pb-2">Male</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Date of Birth:</div>
-                                  <div class="col-6 pb-2">N/A</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Member Since:</div>
-                                  <div class="col-6 pb-2">11 Sep 2019</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Organization:</div>
-                                  <div class="col-6 pb-2">N/A</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Occupation:</div>
-                                  <div class="col-6 pb-2">N/A</div>
+                                  <div class="col-6 pb-2 font-weight-bold">Name:</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->first_name}} --}}
+                                      <input class="form-control" type="text" name="name" value="{{Auth::user()->name}}" name="first_name"/>
+                                  </div>
+                                  <div class="col-6 pb-2 font-weight-bold">Mobile:</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->phone}} --}}
+                                      <input class="form-control" type="text" name="mobile" value="{{Auth::user()->mobile}}" name="phone"/>
+                                  </div>
+                                  <div class="col-6 pb-2 font-weight-bold">Address:</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->phone}} --}}
+                                      <input class="form-control" type="text" name="address" value="{{Auth::user()->address}}" name="address"/>
+                                  </div>
                                   <hr>
                                 </div>
                                 <h5 class="card-title">EMAIL ADDRESS</h5>
                                 <hr class="mt-2">
                                 <div class="row">
                                   <div class="col-6 pb-2 font-weight-bold">Primary Email:</div>
-                                  <div class="col-6 pb-2">N/A</div>
-                                  <div class="col-6 pb-2 font-weight-bold">Other:</div>
-                                  <div class="col-6 pb-2">N/A</div>
+                                  <div class="col-6 pb-2">
+                                      {{-- {{$contact->email}} --}}
+                                      <input class="form-control" type="email" name="email" value="{{Auth::user()->email}}" name="email"/>
+                                  </div>
                                   <hr>
                                 </div>
+                                <button type="submit" class="float-right border p-1 rounded text-info bg-info text-light">Save Change</button>
+                                <br>
+                               </form>
                               </div>
                               {{-- End Basic Information Card --}}
                               {{-- Start Address Card --}}
@@ -110,6 +134,105 @@
                                 </div>
                               </div>
                               {{-- End Address Card --}}
+                              {{-- Start Order Card --}}
+                              <div class="card-body basic tab-pane" id="order">
+                                <h5 class="card-title">Order</h5>
+                                <hr class="mt-2">
+                                <div class="row" style="overflow: scroll;">
+                                    <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Discount</th>
+                                            <th>S. Charge</th>
+                                            <th>Payable</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i=0;
+                                            @endphp
+                                        @foreach ($contacts as $contact)
+                                          @foreach ($contact->Order as $order)
+                                          <tr>
+                                            <th scope="row">{{++$i}}</th>
+                                            <td>{{$order->order_date}}</td>
+                                            <td>{{$order->total_amount}}</td>
+                                            <td>{{$order->discount}}</td>
+                                            <td>{{$order->shipping_charge}}</td>
+                                            <td>{{$order->payable_amount}}</td>
+                                          </tr>
+                                          @endforeach
+                                        @endforeach
+
+                                        </tbody>
+                                      </table>
+                                </div>
+                              </div>
+                              {{-- End Order Card --}}
+                               {{-- Start Change Password Card --}}
+                               <div class="card-body basic tab-pane" id="change-password">
+                                <h5 class="card-title">Change Password</h5>
+                                <hr class="mt-2">
+                                <form id="change-password-customer" action="{{ route('change-password-customer') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input name="oldpassword" id="oldpassword" type="text" class="form-control" placeholder="Old Password" required/>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <input name="newpassword" id="newpassword" type="password" class="form-control" placeholder="New Password" required/>
+                                        </div>
+                                        <div class="col-md-6 mt-2">
+                                            <input name="password_confirmation" id="password_confirmation" type="password" class="form-control" placeholder="Confirm Password" required/>
+                                        </div>
+                                        <div class="col-md-12">
+                                         <center>
+                                             <button type="submit" style="background:rgb(9, 154, 238);margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;">Change</button>
+                                         </center>
+                                        </div>
+                                     </div>
+                                </form>
+                              </div>
+                              {{-- End Change Password Card --}}
+                              {{-- Start Transaction Card --}}
+                              <div class="card-body basic tab-pane" id="transaction">
+                                <h5 class="card-title">Order</h5>
+                                <hr class="mt-2">
+                                <div class="row" style="overflow: scroll;">
+                                    <table class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>#</th>
+                                            <th>Date</th>
+                                            <th>Payment Method</th>
+                                            <th>Transaction Id</th>
+                                            <th>Amount</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $i=0;
+                                            @endphp
+                                        @foreach ($contacts as $contact)
+                                           @foreach ($contact->Payment as $payment)
+                                          <tr>
+                                            <th scope="row">{{++$i}}</th>
+                                            <td>{{$payment->date}}</td>
+                                            <td>@if($payment->PaymentMethod) {{$payment->PaymentMethod->name}} @endif</td>
+                                            <td>{{$payment->transaction_id}}</td>
+                                            <td>{{$payment->amount}}</td>
+                                          </tr>
+                                           @endforeach
+                                        @endforeach
+
+                                        </tbody>
+                                      </table>
+                                </div>
+                              </div>
+                              {{-- End Transaction Card --}}
                           </div>
 
                          {{-- End Card For Basic Information --}}
@@ -125,51 +248,67 @@
     <!-- end row -->
 
 </div>
-@endsection
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
- $.ajaxSetup({
 
-headers: {
+<script>
+	$(document).ready(function(){
+		$('#change-password-customer').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+		});
+	});
+    $(document).ready(function(){
+		$('#edit-info-customer').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+		});
+	});
 
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
-}
-
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+//   $("#file-input").click(function(){
+//     let profile=$(this).val();
+//     $.ajax({
+//     url: '{{ url('change-profile-photo') }}',
+//     type: 'POST',
+//     data: profile,
+//     cache: false,
+//     success: function(data) {
+//       console.log(profile);
+//     },
+//   });
+//   });
+// $("#file-input").click(function(){
+  $('#profile_photo_path').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+  });
+//   });
 });
-
-  $(".btn-submit").click(function(e){
-   e.preventDefault();
-   let fName = $("#fName").val();
-   let lName = $("#lName").val();
-   let mobile = $("#mobile").val();
-   let shipping_address = $("#shipping_address").val();
-   let district = $("#district").val();
-  $.ajax({
-
-   type:'POST',
-   url:"{{ route('confirm-order') }}",
-   data:{"_token": "{{ csrf_token() }}", fName:fName, lName:lName, mobile:mobile, shipping_address:shipping_address, district:district},
-
-   success:function(response){
-        // console.log(data);
-  },
-
-   });
-
-// console.log(fName);
+$( "#profile_photo_path" ).change(function() {
+    $("#profile-submit-button").css("display", "block");
 });
-</script> --}}
-{{-- @push('scripts')
-
-<script src="assets/libs/select2/js/select2.min.js"></script>
-
-<!-- init js -->
-<script src="assets/js/pages/ecommerce-select2.init.js"></script>
-
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-@endpush --}}
-@section('script')
-
+</script>
 @endsection

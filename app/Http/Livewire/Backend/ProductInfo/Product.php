@@ -93,6 +93,8 @@ class Product extends Component
                 $this->meta_keyword = $productInfo->meta_keyword;
                 $this->short_description = $productInfo->short_description;
                 $this->long_description = $productInfo->long_description;
+                $this->privacy_policy = $productInfo->privacy_policy;
+                $this->terms_condition = $productInfo->terms_condition;
             }
 
             // $i = 0;
@@ -118,7 +120,13 @@ class Product extends Component
         // Product Code
         $this->code = 'P'.floor(time() - 999999999);
     }
-
+    public function imageDelete($id){
+    //    dd($id);
+       ProductImage::whereId($id)->delete();
+       $this->emit('success', [
+        'text' => 'Deleted Image Successfully',
+        ]);
+    }
     public function productSave()
     {
         $this->validate([
@@ -179,10 +187,6 @@ class Product extends Component
             $productInfo->save();
 
             if ($this->images) {
-                if ($this->ProductId) {
-                    // Delete Old Image
-                    ProductImage::whereProductId($this->ProductId)->delete();
-                }
                 //   Image Save
                 foreach ($this->images as $image) {
                     $QueryImage = new ProductImage();
@@ -249,12 +253,13 @@ class Product extends Component
 
             // End Product Save Stock Manager
         });
+        // dd("OK");
         if (!$this->ProductId) {
             $this->reset();
             $this->code = 'P'.floor(time() - 999999999);
 
             $this->emit('success', [
-        'text' => 'Product C/U Successfully',
+            'text' => 'Product C/U Successfully',
         ]);
         } else {
             $this->emit('success_redirect', [

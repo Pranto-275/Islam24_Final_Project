@@ -59,7 +59,7 @@
                                             {{Auth::user()->name}}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                            <a class="dropdown-item" href="my-account.html">My Account</a>
+                                            <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
                                             <a class="log-out-btn dropdown-item text-danger" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Sign Out </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -143,6 +143,11 @@
                                     <li><a href="{{route('search-category-wise')}}">Shop</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
+                                    @if(Auth::user())
+                                    <li>
+                                        <a href="{{ route('my-account') }}">My Account</a>
+                                    </li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">
@@ -161,12 +166,10 @@
                                             @include('frontend.header-card-popup')
                                         </ul>
                                     </li>
-                                     <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account</li>
+                                     {{-- <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account</li> --}}
                                 </ul>
                             </div>
-                            <div>
-                                <a href="{{ route('my-account') }}">My Account</a>
-                            </div>
+
                         </nav>
                     </div>
                     <!-- Mobile Menu  -->

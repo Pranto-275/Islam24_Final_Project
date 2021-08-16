@@ -13,6 +13,7 @@ use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Inventory\SalePayment;
 use App\Models\Backend\Setting\Warehouse;
+use App\Models\Backend\Setting\ShippingCharge;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -50,6 +51,7 @@ class Sale extends Component
     public $warehouse_id;
     public $warehouse_error;
     public $is_active;
+    public $shipping_fee;
     public $paymentMethodList = [];
     public $orderProductList = [];
     protected $listeners = [
@@ -63,6 +65,7 @@ class Sale extends Component
             'contact_id' => 'required',
             'date' => 'required',
             'subtotal' => 'required',
+            'warehouse_id' => 'required',
         ]);
         DB::transaction(function(){
         if($this->SaleInvoice){
@@ -72,7 +75,7 @@ class Sale extends Component
             $Query->created_by = Auth::id();
         }
         $Query->sale_date = $this->date;
-        // $Query->code = $this->code;
+        $Query->code = $this->code;
         $Query->contact_id = $this->contact_id;
         $Query->total_amount = $this->subtotal;
         $Query->discount = $this->discount;
@@ -120,6 +123,9 @@ class Sale extends Component
                 $SaleInvoiceDetail = SaleInvoiceDetail::whereProductId($key)->get();
                 $StockManager = StockManager::whereProductId($key)->whereWarehouseId($this->warehouse_id[$key])->firstOrNew();
                 $StockManager->product_id=$key;
+                $StockManager->invoice_id=$Query->id;
+                $StockManager->flow="Out";
+                $StockManager->price=$this->product_rate[$key];
                 $StockManager->stock_out_sale=$SaleInvoiceDetail->sum('quantity');
                 $StockManager->stock_in_inventory=$StockManager->stock_in_opening + $StockManager->stock_in_purchase - $SaleInvoiceDetail->sum('quantity');
                 $StockManager->warehouse_id=$this->warehouse_id[$key];
@@ -236,6 +242,12 @@ class Sale extends Component
             $this->expense_point_amount = $this->SaleInvoice->expense_point_amount;
             $this->due = $this->SaleInvoice->due;
             $this->note = $this->SaleInvoice->note;
+
+            $stock_managers=StockManager::whereInvoiceId($id)->get();
+            foreach($stock_managers as $stock_manager){
+                $this->warehouse_id[$stock_manager->product_id]=$stock_manager->warehouse_id;
+            }
+
             $this->paid_amount=SalePayment::whereSaleInvoiceId($id)->sum('total_amount');
             $SaleInvoiceDetail = SaleInvoiceDetail::whereSaleInvoiceId($this->SaleInvoice->id)->get();
             // dd($SaleInvoiceDetail);
@@ -275,6 +287,11 @@ class Sale extends Component
         }
     }
     public function updated(){
+        if($this->shipping_fee){
+            //   dd($this->shipping_fee);
+               $this->shipping_charge=$this->shipping_fee;
+               $this->shipping_fee=NULL;
+        }
         $this->updateProductCal();
     }
     public function render()
@@ -289,6 +306,7 @@ class Sale extends Component
             'vats'=> Vat::get(),
             'branches'=> Branch::get(),
             'warehouses'=>Warehouse::get(),
+            'shipping_charges'=>ShippingCharge::get(),
         ]);
     }
 }

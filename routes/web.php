@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\FrontEnt\HomeController;
 use App\Http\Controllers\FrontEnt\LoginController;
@@ -56,6 +57,8 @@ use App\Http\Livewire\Backend\Setting\Warehouse;
 use App\Http\Livewire\Backend\Transaction\CustomerPayment;
 use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
 use App\Http\Livewire\Backend\Transaction\Payment;
+use App\Http\Livewire\Backend\Transaction\SupplierPayment;
+use App\Http\Livewire\Backend\Transaction\SupplierPaymentReport;
 use App\Http\Livewire\Frontend\About as AboutUs;
 use App\Http\Livewire\Frontend\Cart;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
@@ -64,15 +67,15 @@ use App\Http\Livewire\FrontEnd\CheckOut;
 use App\Http\Livewire\Frontend\Contact as ContactUs;
 use App\Http\Livewire\Frontend\Customer;
 use App\Http\Livewire\Frontend\Error;
+use App\Http\Livewire\Frontend\Myprofile;
 use App\Http\Livewire\Frontend\OrderCompleted;
+use App\Http\Livewire\Frontend\PrivacyPolicy;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Frontend\SignIn;
 use App\Http\Livewire\Frontend\SignUp;
 use App\Http\Livewire\Frontend\LogIn;
 use App\Http\Livewire\Frontend\TermsConditios;
-use App\Http\Livewire\Frontend\PrivacyPolicy;
 use App\Http\Livewire\Frontend\Wishlist;
-use App\Http\Livewire\Frontend\Myprofile;
 use App\Http\Livewire\Inventory\DelieveryMethod;
 use App\Http\Livewire\Inventory\Language;
 use App\Http\Livewire\UserManagement\UserList;
@@ -91,6 +94,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('change-password-customer', [HomeController::class, 'ChangePassword'])->name('change-password-customer');
+Route::post('change-profile-photo', [HomeController::class, 'ChangeProfilePhoto'])->name('change-profile-photo');
+Route::get('edit/{id?}', [HomeController::class, 'EditContact'])->name('edit');
+Route::post('edit', [HomeController::class, 'EditContactById']);
 
  Route::get('/', function () {
      return view('auth.login');
@@ -100,6 +107,7 @@ Route::group(['prefix' => 'customer'], function () {
     Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
     Route::get('product_view/{id?}', ProductView::class)->name('product_view');
 });
+Route::get('privacy-policy', PrivacyPolicy::class)->name('privacy-policy');
 
 Route::get('privacy-policy',PrivacyPolicy::class)->name('privacy-policy');
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -117,6 +125,7 @@ Route::post('/confirm-order', [HomeController::class, 'confirmOrder'])->name('co
 Route::get('/order-completed', [HomeController::class, 'orderComplete'])->name('order-completed');
 Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
 Route::get('my-account', [HomeController::class, 'MyAccount'])->name('my-account');
+// Route::get('change-password', [HomeController::class, 'ChangePassword'])->name('change-password');
 // Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
@@ -126,7 +135,7 @@ Route::get('log-in',LogIn::class)->name('log-in');
 //Route::get('check-out', Checkout::class)->name('check-out');
 Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
-Route::get('my-profile',MyProfile::class)->name('my-profile');
+Route::get('my-profile', MyProfile::class)->name('my-profile');
 
 Route::get('about', AboutUs::class)->name('about');
 Route::get('error', Error::class)->name('error');
@@ -200,8 +209,10 @@ Route::group(['middleware' => ['role:admin']], function () {
 
         Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
             Route::get('payment', Payment::class)->name('payment');
-            Route::get('customer-payment', CustomerPayment::class)->name('customer-payment');
+            Route::get('customer-payment/{id?}', CustomerPayment::class)->name('customer-payment');
+            Route::get('supplier-payment/{id?}', SupplierPayment::class)->name('supplier-payment');
             Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
+            Route::get('supplier-payment-report', SupplierPaymentReport::class)->name('supplier-payment-report');
         });
         Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
             Route::get('order-list', OrderList::class)->name('order-list');

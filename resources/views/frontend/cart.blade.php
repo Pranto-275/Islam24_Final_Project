@@ -6,9 +6,15 @@
         #cartForMobile{
             display: none;
         }
+        #subtotal{
+            display: none;
+        }
        }
        @media only screen and (max-width: 768px) {
         #cartForDeskTop{
+            display: none;
+        }
+        #headerCart{
             display: none;
         }
        }
@@ -47,8 +53,8 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
-                        <div class="col-lg-8 mb-1" id="">
-                            <div class="table-responsive-xl">
+                        <div class="col-md-8 mb-1" id="">
+                            {{-- <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
                                     @php $totalPrice = $cardBadge['data']['total_price'] @endphp
@@ -97,52 +103,77 @@
                                             </td>
                                             </tr>
                                         @endforeach
-                                        {{--<tr>
-                                            <td class="product-thumbnail"><a href="#" class="wishlist-remove"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
-                                            </td>
-                                            <td class="product-name">
-                                                <h4><a href="{{route('product-view')}}">Woman Lathers Jacket</a></h4>
-                                                <p>Cramond Leopard & Pythong Anorak</p>
-                                                <span>65% poly, 35% rayon</span>
-                                            </td>
-                                            <td class="product-price">$ 29.00</td>
-                                            <td class="product-quantity">
-                                                <div class="cart-plus">
-                                                    <form action="#">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="2">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                            <td class="product-subtotal"><span>$ 68.00</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#" class="wishlist-remove"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb02.jpg" alt=""></a>
-                                            </td>
-                                            <td class="product-name">
-                                                <h4><a href="{{route('product-view')}}">Woman Lathers Jacket</a></h4>
-                                                <p>Cramond Leopard & Pythong Anorak</p>
-                                                <span>65% poly, 35% rayon</span>
-                                            </td>
-                                            <td class="product-price">$ 29.00</td>
-                                            <td class="product-quantity">
-                                                <div class="cart-plus">
-                                                    <form action="#">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="2">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                            <td class="product-subtotal"><span>$ 68.00</span></td>
-                                        </tr>--}}
                                         </tbody>
                                     </table>
                                 @else
                                     <div class="alert alert-warning text-center">Op's there is no product</div>
                                 @endif
-                            </div>
+                            </div> --}}
+                             {{-- Start Responsive Cart --}}
+                             @php $totalPrice = 0; @endphp
+                             @if($cardBadge['data']['products'])
+                             @php $totalPrice = $cardBadge['data']['total_price'] @endphp
+                             <div class="row" id="headerCart">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-3 font-weight-bold">Product</div>
+                                <div class="col-md-2 font-weight-bold">Price</div>
+                                <div class="col-md-3 font-weight-bold">QUANTITY</div>
+                                <div class="col-md-2 font-weight-bold">SUBTOTAL</div>
+                             </div>
+                             <hr class="mt-1">
+                                <div class="row">
+                                    {{-- <tr>
+                                        <th class="product-thumbnail"></th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">QUANTITY</th>
+                                        <th class="product-subtotal">SUBTOTAL</th>
+                                    </tr> --}}
+
+                                   @foreach($cardBadge['data']['products'] as $productId => $product)
+                                   <div class="col-6 col-md-2">
+                                    <a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
+                                   </div>
+                                   <div class="col-6 col-md-3">
+                                    <h4><a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a></h4>
+                                    <p>Cramond Leopard & Pythong Anorak</p>
+                                    <span>65% poly, 35% rayon</span>
+                                   </div>
+                                   <div class="col-4 col-md-2 mt-3">
+                                   <span class="mt-3">
+                                    @if($currencySymbol)
+                                       {{ $currencySymbol->symbol }}
+                                    @endif
+                                    {{ $product['unit_price'] }}
+                                   </span>
+                                   </div>
+                                   <div class="col-4 col-md-3">
+                                    <div class="cart-plus">
+                                        <form action="#">
+                                            <div class="cart-plus-minus" data-product-id="{{ $productId }}">
+                                                <input type="text" class="product_quantity product-quantity-cart" id="product_quantity_{{ $productId }}" data-product-id="{{ $productId }}" data-minimum-quantity="{{ $product['minimum_order_quantity'] }}" value="{{ $product['quantity'] }}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                   </div>
+                                   <div class="col-4 col-md-2 text-info mt-3">
+                                    <span class="mt-3">
+                                        @if($currencySymbol)
+                                           {{ $currencySymbol->symbol }}
+                                        @endif
+                                        {{ $product['total_price'] }}
+                                        <span class="text-dark" id="subtotal">(subtotal)</span>
+                                    </span>
+                                   </div>
+                                       <div class="col-12">
+                                           <hr>
+                                       </div>
+                                   @endforeach
+                                </div>
+                                @else
+                                    <div class="alert alert-warning text-center">Op's there is no product</div>
+                                @endif
+                             {{-- End Responsive Cart --}}
                             <div class="shop-cart-bottom mt-20">
                                 <div class="row">
                                     <div class="col-md-7">
@@ -175,8 +206,14 @@
                                                      {{ $totalPrice }}
                                                 </span></li>
                                             <li>
-                                                <span>SHIPPING</span>
-                                                <div class="shop-check-wrap">
+                                                <span>Discount</span>
+                                                <span class="cart-total-price">
+                                                    @if($currencySymbol)
+                                                        {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                     {{-- {{ $totalPrice }} --}}
+                                                </span></li>
+                                                {{-- <div class="shop-check-wrap">
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                                         <label class="custom-control-label" for="customCheck1">FLAT RATE: $15</label>
@@ -185,7 +222,7 @@
                                                         <input type="checkbox" class="custom-control-input" id="customCheck2">
                                                         <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </li>
                                             <li class="cart-total-amount">
                                                 <span>TOTAL</span>

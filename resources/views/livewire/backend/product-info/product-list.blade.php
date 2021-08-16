@@ -55,7 +55,8 @@
                                                  <td>{{ $product->code }}</td>
                                                  <td>{{ $product->name }}</td>
                                                  <td>
-                                                     <img src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}"/>
+                                                     <img @if($product->ProductImageFirst) src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}" @endif style="height:100px;"/>
+
                                                  </td>
                                                  <td>
                                                     @if($product->SubSubCategory)

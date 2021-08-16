@@ -133,7 +133,7 @@
                                                    <option value="{{ $warehouse->id }}">{{ $warehouse->name }}</option>
                                                 @endforeach
                                             </select>
-                                            {{-- @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror --}}
+                                            @error('warehouse_id') <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                     </td>
                                     <td>
@@ -160,6 +160,7 @@
                                     <th>Bill Total</th>
                                     <th>Discount</th>
                                     <th>Shipping Charge</th>
+                                    <th>Shipping Charge</th>
                                     <th>Amt to Pay</th>
                                     <th>Paid Amount</th>
                                     <th>Due</th>
@@ -170,10 +171,18 @@
                                     <td>
                                         <input type="number" step="any" class="form-control" name="BillTotal"  style="width: 200px;"  wire:model.debounce.500ms="subtotal" placeholder="Bill Total" readonly>
                                         @error('subtotal') <span class="error">{{ $message }}</span> @enderror
-
                                     </td>
                                     <td>
                                         <input type="number" step="any" class="form-control" name="Discount" style="width: 200px;" placeholder="Discount" wire:model.debounce.500ms="discount">
+                                    </td>
+                                    <td>
+                                        <select class="form-control" wire:model.lazy="shipping_fee">
+                                           <option value="">--Select--</option>
+                                        @foreach ($shipping_charges as $shipping_charge)
+                                           {{-- <input type="number" step="any" class="form-control" name="Discount" style="width: 200px;" placeholder="Discount" wire:model.debounce.500ms="discount"> --}}
+                                           <option value="{{$shipping_charge->shipping_fee}}">{{$shipping_charge->title}}</option>
+                                        @endforeach
+                                        </select>
                                     </td>
                                     <td>
                                         <input type="number" step="any" class="form-control" name="ShippingCharge" style="width: 200px;" placeholder="Shipping Charge" wire:model.debounce.500ms="shipping_charge">

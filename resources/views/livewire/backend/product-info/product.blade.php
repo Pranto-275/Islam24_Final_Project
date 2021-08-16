@@ -2,7 +2,17 @@
 
 @endpush
 <div>
-
+<style>
+    .img_wrp {
+  display: inline-block;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+</style>
     <x-slot name="title">
         Add New Product
     </x-slot>
@@ -25,7 +35,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form wire:ignore.self wire:submit.prevent="productSave">
+            <form wire:ignore wire:submit.prevent="productSave">
 
                 <div class="card">
                     <div class="card-body">
@@ -203,7 +213,7 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div wire:ignore class="form-group">
                             <label for="basicpill-lastname-input">Short Description</label>
                             <textarea class="form-control" id="short_description" rows="3"
@@ -211,7 +221,7 @@
                                 placeholder="Short Description"> {{$short_description}}</textarea>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div wire:ignore class="form-group">
                             <label for="basicpill-lastname-input">Long Description</label>
                             <textarea class="form-control" id="long_description" rows="3"
@@ -234,11 +244,17 @@
                 <div class="col-md-4">
                     Product Image (600*600)
                 </div>
+
                 <div class="col-md-8">
+
                     @if($QueryUpdate)
                     @foreach ($QueryUpdate->ProductImageTop4 as $image)
-                    <img class="rounded mb-1" src="{{ asset('storage/photo/'.$image->image) }}"
-                        style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                        <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
+                            <img style="height:30px; weight:30px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
+                            <div class="close text-danger" wire:click="imageDelete({{$image->id}})">
+                                <span aria-hidden="true">&times;</span>
+                            </div>
+                        </div>
                     @endforeach
                     @endif
                     <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images"
@@ -357,7 +373,7 @@
   if ($("#long_description").length > 0) {
     tinymce.init({
       selector: "textarea#long_description",
-      height: 300,
+      height: 200,
 	   forced_root_block: false,
         setup: function (editor) {
             editor.on('init change', function () {

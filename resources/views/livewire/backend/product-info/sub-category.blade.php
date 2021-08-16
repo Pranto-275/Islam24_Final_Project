@@ -55,7 +55,6 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input"> Category</label>
-
                                     <select class="form-control" wire:model.lazy="category_id">
                                        <option value="">Select Category</option>
                                        @foreach ($categories as $category)

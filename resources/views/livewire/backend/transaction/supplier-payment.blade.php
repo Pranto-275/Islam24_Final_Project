@@ -7,7 +7,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        CUSTOMER PAYMENT
+        Supplier PAYMENT
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -17,13 +17,13 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4 class="card-title">Customer Payment Report</h4>
+                                    <h4 class="card-title">Supplier Payment</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <a href="{{route('transaction.customer-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Customer Payment Report</button></a>
+                                <a href="{{route('transaction.supplier-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Supplier Payment Report</button></a>
                             </div>
                         </div><!-- end col-->
                     </div><hr>
@@ -64,9 +64,9 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label class="control-label">Customer</label>
+                                <label class="control-label">Supplier</label>
                                 <select class="form-control" wire:model.lazy="contact_id" id="select2-dropdown">
-                                    <option>Select Customer</option>
+                                    <option>Select Supplier</option>
                                    @foreach ($contacts as $contact)
                                        <option value="{{ $contact->id }}">{{ $contact->first_name }} {{ $contact->last_name }}</option>
                                    @endforeach
@@ -77,8 +77,8 @@
 
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label for="basicpill-firstname-input">Search Sale Code</label>
-                                <livewire:component.sale-invoice-search-dropdown/>
+                                <label for="basicpill-firstname-input">Search Purchase Code</label>
+                                <livewire:component.purchase-invoice-search-dropdown/>
 
                                 {{-- <label for="basicpill-firstname-input">Sale Code</label>
                                 <select class="form-control" wire:model.lazy="sale_code">
