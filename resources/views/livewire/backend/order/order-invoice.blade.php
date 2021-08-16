@@ -81,7 +81,7 @@
                                 </tr>
                               @endforeach
                               <tr>
-                                <td colspan="3" class="text-right">Sub Total</td>
+                                <td colspan="4" class="text-right">Sub Total</td>
                                 <td class="text-right">
                                     @if($currencySymbol)
                                          {{ $currencySymbol->symbol }}
@@ -90,7 +90,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="border-0 text-right">
+                                <td colspan="4" class="border-0 text-right">
                                     <strong>Discount</strong></td>
                                 <td class="border-0 text-right">
                                     @if($currencySymbol)
@@ -100,7 +100,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="border-0 text-right">
+                                <td colspan="4" class="border-0 text-right">
                                     <strong>Shipping</strong></td>
                                 <td class="border-0 text-right">
                                     @if($currencySymbol)
@@ -110,7 +110,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="border-0 text-right">
+                                <td colspan="4" class="border-0 text-right">
                                     <strong>Total</strong></td>
                                 <td class="border-0 text-right">
                                     <h4 class="m-0">

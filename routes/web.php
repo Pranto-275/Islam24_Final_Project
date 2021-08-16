@@ -207,7 +207,7 @@ Route::group(['middleware' => ['role:admin']], function () {
         Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
             Route::get('payment', Payment::class)->name('payment');
             Route::get('customer-payment/{id?}', CustomerPayment::class)->name('customer-payment');
-            Route::get('supplier-payment/{purchase_code?}', SupplierPayment::class)->name('supplier-payment');
+            Route::get('supplier-payment/{id?}', SupplierPayment::class)->name('supplier-payment');
             Route::get('customer-payment-report', CustomerPaymentReport::class)->name('customer-payment-report');
             Route::get('supplier-payment-report', SupplierPaymentReport::class)->name('supplier-payment-report');
         });

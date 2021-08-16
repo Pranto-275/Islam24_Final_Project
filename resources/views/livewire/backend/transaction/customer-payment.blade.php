@@ -93,8 +93,8 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Amount</label>
-                                <input class="form-control" type="text" wire:model.lazy="amount" placeholder="Amount">
-                                 @error('amount') <span class="error">{{ $message }}</span> @enderror
+                                <input class="form-control" type="text" wire:model.lazy="total_amount" placeholder="Amount">
+                                 @error('total_amount') <span class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -149,7 +149,7 @@
                                         {{$payment->date}}
                                     </td>
                                     <td>
-                                        {{$payment->amount}}
+                                        {{$payment->total_amount}}
                                     </td>
                                     <td>
                                         {{$payment->Branch->name}}

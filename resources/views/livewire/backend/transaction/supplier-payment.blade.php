@@ -77,24 +77,24 @@
 
                         <div class="col-lg-3">
                             <div class="form-group">
-                                {{-- <label for="basicpill-firstname-input">Search Sale Code</label>
-                                <livewire:component.sale-invoice-search-dropdown/>
-                                @error('ProductName') <span class="error">{{ $message }}</span> @enderror --}}
-                                <label for="basicpill-firstname-input">Purchase Code</label>
-                                <select class="form-control" wire:model.lazy="purchase_code">
+                                <label for="basicpill-firstname-input">Search Purchase Code</label>
+                                <livewire:component.purchase-invoice-search-dropdown/>
+
+                                {{-- <label for="basicpill-firstname-input">Sale Code</label>
+                                <select class="form-control" wire:model.lazy="sale_code">
                                     <option value="">Select Code</option>
-                                    @foreach ($purchase_codes as $purchase_code)
-                                         <option value="{{$purchase_code->code}}">{{$purchase_code->code}}</option>
+                                    @foreach ($sale_codes as $sale_code)
+                                         <option value="{{$sale_code->code}}">{{$sale_code->code}}</option>
                                     @endforeach
-                                </select>
-                                @error('purchase_code') <span class="error">{{ $message }}</span> @enderror
+                                </select> --}}
+
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Amount</label>
-                                <input class="form-control" type="text" wire:model.lazy="amount" placeholder="Amount">
-                                 @error('amount') <span class="error">{{ $message }}</span> @enderror
+                                <input class="form-control" type="text" wire:model.lazy="total_amount" placeholder="Amount">
+                                 @error('total_amount') <span class="error">{{ $message }}</span> @enderror
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -149,7 +149,7 @@
                                         {{$payment->date}}
                                     </td>
                                     <td>
-                                        {{$payment->amount}}
+                                        {{$payment->total_amount}}
                                     </td>
                                     <td>
                                         {{$payment->Branch->name}}

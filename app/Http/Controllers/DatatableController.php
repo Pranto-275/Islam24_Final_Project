@@ -90,7 +90,7 @@ class DatatableController extends Controller
         })
         ->addColumn('action', function ($data) {
             return '<a class="btn btn-info btn-sm" href="'.route('inventory.purchase-invoice', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="fas fa-eye font-size-18"></i></a>
-                    <a class="btn btn-success btn-sm" href="'.route('transaction.supplier-payment', ['purchase_code' => $data->code]).'" data-id="'.$data->code.'"><i class="fas fa-coins font-size-18"></i></a>
+            <a class="btn btn-success btn-sm" href="'.route('transaction.supplier-payment', ['search' => $data->code]).'" data-id="'.$data->id.'"><i class="fas fa-coins font-size-18"></i></a>
                     <a class="btn btn-primary btn-sm" href="'.route('inventory.purchase', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="bx bx-edit font-size-18"></i></a>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
         })
