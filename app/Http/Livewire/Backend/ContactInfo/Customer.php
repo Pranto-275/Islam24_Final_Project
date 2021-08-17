@@ -1,32 +1,31 @@
 <?php
 
 namespace App\Http\Livewire\Backend\ContactInfo;
+
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ContactInfo\ContactCategory;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Customer extends Component
 {
-   public $type;
-   public $first_name;
-   public $last_name;
-   public $address;
-   public $shipping_address;
-   public $phone;
-   public $mobile;
-   public $email;
-   public $due_date;
-   public $birthday;
-   public $opening_balance;
-   public $password;
-   public $contact_category_id;
-   public $CustomerCategoryId;
-   public $is_active;
+    public $type;
+    public $first_name;
+    public $last_name;
+    public $address;
+    public $shipping_address;
+    public $phone;
+    public $mobile;
+    public $email;
+    public $due_date;
+    public $birthday;
+    public $opening_balance;
+    public $contact_category_id;
+    public $CustomerCategoryId;
+    public $is_active;
 
-    public function ContactInfoSave(){
+    public function ContactInfoSave()
+    {
         $this->validate([
             'contact_category_id' => 'required',
             'first_name' => 'required',
@@ -36,29 +35,12 @@ class Customer extends Component
             'mobile' => 'required',
             'is_active' => 'required',
         ]);
-        if ($this->CustomerCategoryId){
-           $Query = Contact::find($this->CustomerCategoryId);
-        }else{
-            $Query = new Contact();
+        // dd($this->contact_category_id);
+        if ($this->CustomerCategoryId) {
+            $Query = Contact::find($this->CustomerCategoryId);
+        } else {
+            $Query           = new Contact();
             $Query->created_by  = Auth::id();
-            // Start Create User
-            if($this->password){
-                $this->validate([
-                    'email' => 'required',
-                ]);
-
-                  $User=new User();
-                  $User->name=$this->first_name.' '.$this->last_name;
-                //   $User->last_name=$this->last_name;
-                  $User->mobile=$this->mobile;
-                  $User->email=$this->email;
-                  $User->address=$this->address;
-                  $User->type="Customer";
-                  $User->password=Hash::make($this->password);
-                  $User->branch_id = Auth::user()->branch_id;
-                  $User->save();
-            }
-            // End Create User
         }
         $Query->type = "Customer";
         $Query->first_name = $this->first_name;
@@ -77,49 +59,52 @@ class Customer extends Component
         $Query->save();
         $this->reset();
         $this->ContactModal();
-        $this->emit('success',[
+        $this->emit('success', [
             'text' => 'Customer C/U Successfully',
         ]);
     }
 
-    public function contactDelete($id){
+    public function contactDelete($id)
+    {
         Contact::find($id)->delete();
 
-        $this->emit('success',[
-           'text' => 'Customer deleted successfully',
+        $this->emit('success', [
+            'text' => 'Customer deleted successfully',
         ]);
     }
 
-    public function contactEdit($id){
-       $this->QueryUpdate         = Contact::find($id);
-       $this->CustomerCategoryId  = $this->QueryUpdate->id;
-       $this->type                = $this->QueryUpdate->type;
-       $this->first_name                = $this->QueryUpdate->first_name;
-       $this->last_name                = $this->QueryUpdate->last_name;
-       $this->address             = $this->QueryUpdate->address;
-       $this->shipping_address    = $this->QueryUpdate->shipping_address;
-       $this->phone               = $this->QueryUpdate->phone;
-       $this->mobile              = $this->QueryUpdate->mobile;
-       $this->email               = $this->QueryUpdate->email;
-       $this->due_date            = $this->QueryUpdate->due_date;
-       $this->birthday            = $this->QueryUpdate->birthday;
-       $this->opening_balance     = $this->QueryUpdate->opening_balance;
-       $this->contact_category_id     = $this->QueryUpdate->contact_category_id;
-       $this->is_active              = $this->QueryUpdate->is_active;
-       $this->ContactModal();
+    public function contactEdit($id)
+    {
+        $this->QueryUpdate         = Contact::find($id);
+        $this->CustomerCategoryId  = $this->QueryUpdate->id;
+        $this->type                = $this->QueryUpdate->type;
+        $this->first_name          = $this->QueryUpdate->first_name;
+        $this->last_name           = $this->QueryUpdate->last_name;
+        $this->address             = $this->QueryUpdate->address;
+        $this->shipping_address    = $this->QueryUpdate->shipping_address;
+        $this->phone               = $this->QueryUpdate->phone;
+        $this->mobile              = $this->QueryUpdate->mobile;
+        $this->email               = $this->QueryUpdate->email;
+        $this->due_date            = $this->QueryUpdate->due_date;
+        $this->birthday            = $this->QueryUpdate->birthday;
+        $this->opening_balance     = $this->QueryUpdate->opening_balance;
+        $this->contact_category_id = $this->QueryUpdate->contact_category_id;
+        $this->is_active           = $this->QueryUpdate->is_active;
+        $this->ContactModal();
     }
 
 
-    public function ContactModal(){
-        $this->code  = 'C'.floor(time()-999999);
-        $this->emit('modal','ContactModal');
+    public function ContactModal()
+    {
+        $this->code  = 'C' . floor(time() - 999999);
+        $this->emit('modal', 'ContactModal');
     }
 
 
     public function render()
     {
-        return view('livewire.backend.contact-info.customer',[
-            'customerCategories'=>ContactCategory::whereType('Customer')->get(),
+        return view('livewire.backend.contact-info.customer', [
+            'customerCategories' => ContactCategory::whereType('Customer')->get(),
         ]);
     }
 }

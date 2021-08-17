@@ -269,9 +269,7 @@ class Product extends Component
         }
     }
     public function updated(){
-        if($this->category_id){
-
-        }
+        dd("OK");
     }
     public function render()
     {

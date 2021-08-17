@@ -1,86 +1,95 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
-    <style>
 
-.global-container{
-	height:100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #f5f5f5;
-}
-
-form{
-	/* padding-top: 10px; */
-	font-size: 14px;
-}
-
-.card-title{ font-weight:300; }
-
-.btn{
-	font-size: 14px;
-	/* margin-top:20px; */
-}
-
-
-.login-form{
-	width:330px;
-	margin:20px;
-}
-
-.sign-up{
-	text-align:center;
-	padding:20px 0 0;
-}
-
-.alert{
-	margin-bottom:-30px;
-	font-size: 13px;
-	margin-top:20px;
-}
-    </style>
     <x-slot name="title">
-        Login
+        Category
     </x-slot>
     <x-slot name="header">
-        Login
+       Category
     </x-slot>
-    <main>
+   <!-- main-area -->
+   <main>
 
-      {{-- Start Login --}}
-      <div class="global-container">
-        <div class="card login-form">
-        <div class="card-body">
-            <h3 class="card-title text-center">Log in to Codepen</h3>
-            <div class="card-text">
-                <!--
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
-                <form>
-                    <!-- to error: add class "has-danger" -->
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <!-- breadcrumb-area -->
+    {{-- <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg"> --}}
+        {{-- <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content text-center">
+                        <h2>আপনার অ্যাকাউন্টে লগইন করুন</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{url('/')}}">হোম</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">আমার অ্যাকাউন্ট</li>
+                            </ol>
+                        </nav>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <a href="#" style="float:right;font-size:12px;">Forgot password?</a>
-                        <input type="password" class="form-control form-control-sm" id="exampleInputPassword1">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                </div>
+            </div>
+        </div> --}}
+    {{-- </section> --}}
+    <!-- breadcrumb-area-end -->
 
-                    <div class="sign-up">
-                        Don't have an account? <a href="#">Create One</a>
+    <!-- my-account-area -->
+    {{-- <section class="my-account-area pattern-bg pt-100 pb-100" data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg"> --}}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-10">
+                    <br>
+                    <div class="my-account-bg" data-background="{{ URL::asset('venam/') }}/img/bg/my_account_bg.png">
+                        <div class="my-account-content">
+                            <div class="login-page-title">
+                                <h2 class="title"><span>লগইন করুন</span></h2>
+                            </div>
+                            {{-- <p>Welcome Vanam Please Login Your <span>Account</span></p> --}}
+                            {{-- <div class="direct-login">
+                                <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
+                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
+                            </div> --}}
+                            {{-- <span class="or">- OR -</span> --}}
+                            <form method="POST" action="{{ route('customer_sign_in') }}" class="login-form">
+                                @csrf
+                                <div class="form-grp">
+                                    <x-jet-label for="email" value="{{ __('Email') }}" />
+                                     <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                                </div>
+                                <div class="form-grp">
+                                    <x-jet-label for="password" value="{{ __('Password') }}" />
+                                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                                    <i class="far fa-eye"></i>
+                                </div>
+                                <div class="form-grp-bottom">
+                                    <div class="remember">
+                                        <label for="remember_me" class="flex items-center">
+                                            <x-jet-checkbox id="remember_me" name="remember" />
+                                            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                                        </label>
+                                    </div>
+                                    <div class="forget-pass">
+                                        <a href="#">forgot password</a>
+                                    </div>
+                                </div>
+                                <div class="form-grp-btn">
+                                    {{-- <a href="#" class="btn">Login</a> --}}
+                                    <button class="btn" type="submit" style="background: #ff6000;color:white;">
+                                        {{ __('Login') }}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                    <br>
+                    <br>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
+    {{-- </section> --}}
+    <!-- my-account-area-end -->
+</main>
+<!-- main-area-end -->
 
-      {{-- End Login --}}
-    </main>
 </div>
-
-
 @endsection
+
+

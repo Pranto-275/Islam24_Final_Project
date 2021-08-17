@@ -108,7 +108,6 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Email</label>
                                     <input class="form-control" type="text" wire:model.lazy="email" placeholder="Enter email address">
-                                    @error('email') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
 
@@ -133,15 +132,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6">
+                            {{-- <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Add password</label>
-                                    <input class="form-control" type="text" wire:model.lazy="password" placeholder="Add password">
-                                    @error('password') <span class="error">{{ $message }}</span> @enderror
+                                    <input class="form-control" type="text" wire:model.lazy="opening_balance" placeholder="Add password">
+                                    @error('opening_balance') <span class="error">{{ $message }}</span> @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
                                     <select class="form-control" wire:model.lazy="is_active">
