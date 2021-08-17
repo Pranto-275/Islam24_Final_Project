@@ -47,7 +47,7 @@
                                             <th>Shipping Charge</th>
                                             <th>Payable Amount</th>
                                             {{-- <th>Status</th> --}}
-                                            {{-- <th colspan="2">Action</th> --}}
+                                            <th colspan="2">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -88,6 +88,9 @@
                                                      <option value="cancel {{$pendingOrder->id}}">Cancel</option>
                                                 </select>
                                             </td> --}}
+                                            <td>
+                                                <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.cancel-order-invoice',['id'=>$cancelOrder->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
+                                            </td>
                                         </tr>
                                          @endforeach
                                         </tbody>

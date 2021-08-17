@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <a href="{{route('transaction.supplier-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Supplier Payment Report</button></a>
+                                <a href="{{route('transaction.supplier-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Payment Report</button></a>
                             </div>
                         </div><!-- end col-->
                     </div><hr>

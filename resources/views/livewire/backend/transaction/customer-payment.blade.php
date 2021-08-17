@@ -17,13 +17,13 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4 class="card-title">Customer Payment Report</h4>
+                                    <h4 class="card-title">Customer Payment</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <a href="{{route('transaction.customer-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Customer Payment Report</button></a>
+                                <a href="{{route('transaction.customer-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Payment Report</button></a>
                             </div>
                         </div><!-- end col-->
                     </div><hr>

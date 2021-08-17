@@ -45,6 +45,9 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
+    public function CustomerLogin(){
+        return view('frontend.customer-login');
+    }
     public function ChangeProfilePhoto(Request $request){
         $this->validate($request,[
             'profile_photo_path'        =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
