@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Backend\ContactInfo;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ContactInfo\ContactCategory;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class Customer extends Component
@@ -19,41 +21,59 @@ class Customer extends Component
    public $due_date;
    public $birthday;
    public $opening_balance;
+   public $password;
    public $contact_category_id;
    public $CustomerCategoryId;
    public $is_active;
 
     public function ContactInfoSave(){
         $this->validate([
-            'contact_category_id'                   => 'required',
-            'first_name'                   => 'required',
-            'last_name'                   => 'required',
-            'address'                   => 'required',
-            'shipping_address'                   => 'required',
-            'mobile'                   => 'required',
-            'is_active'                   => 'required',
+            'contact_category_id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'address' => 'required',
+            'shipping_address' => 'required',
+            'mobile' => 'required',
+            'is_active' => 'required',
         ]);
-// dd($this->contact_category_id);
         if ($this->CustomerCategoryId){
            $Query = Contact::find($this->CustomerCategoryId);
         }else{
-            $Query           = new Contact();
+            $Query = new Contact();
             $Query->created_by  = Auth::id();
+            // Start Create User
+            if($this->password){
+                $this->validate([
+                    'email' => 'required',
+                ]);
+
+                  $User=new User();
+                  $User->name=$this->first_name.' '.$this->last_name;
+                //   $User->last_name=$this->last_name;
+                  $User->mobile=$this->mobile;
+                  $User->email=$this->email;
+                  $User->address=$this->address;
+                  $User->type="Customer";
+                  $User->password=Hash::make($this->password);
+                  $User->branch_id = Auth::user()->branch_id;
+                  $User->save();
+            }
+            // End Create User
         }
-        $Query->type                  = "Customer";
-        $Query->first_name                  = $this->first_name;
-        $Query->last_name                  = $this->last_name;
-        $Query->address               = $this->address;
-        $Query->shipping_address      = $this->shipping_address;
-        $Query->phone                 = $this->phone;
-        $Query->mobile                = $this->mobile;
-        $Query->email                 = $this->email;
-        $Query->due_date              = $this->due_date;
-        $Query->birthday              = $this->birthday;
-        $Query->opening_balance       = $this->opening_balance;
-        $Query->contact_category_id       = $this->contact_category_id;
-        $Query->is_active                = $this->is_active;
-        $Query->branch_id             = Auth::user()->branch_id;
+        $Query->type = "Customer";
+        $Query->first_name = $this->first_name;
+        $Query->last_name = $this->last_name;
+        $Query->address = $this->address;
+        $Query->shipping_address = $this->shipping_address;
+        $Query->phone = $this->phone;
+        $Query->mobile = $this->mobile;
+        $Query->email = $this->email;
+        $Query->due_date = $this->due_date;
+        $Query->birthday = $this->birthday;
+        $Query->opening_balance = $this->opening_balance;
+        $Query->contact_category_id = $this->contact_category_id;
+        $Query->is_active = $this->is_active;
+        $Query->branch_id = Auth::user()->branch_id;
         $Query->save();
         $this->reset();
         $this->ContactModal();
