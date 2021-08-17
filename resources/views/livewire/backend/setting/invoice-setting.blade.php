@@ -82,7 +82,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Invoice Title:</label>
                                     <input class="form-control" type="text" wire:model.lazy="invoice_title" placeholder="Invoice Title:">
-                                    @error('invoice_title') <span class="error">{{ $message }}</span> @enderror
+                                    {{-- @error('invoice_title') <span class="error">{{ $message }}</span> @enderror --}}
                                 </div>
                             </div>
 

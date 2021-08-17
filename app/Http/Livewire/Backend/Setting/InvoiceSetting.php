@@ -37,7 +37,7 @@ class InvoiceSetting extends Component
 
         $this->validate([
             'type'              => 'required',
-            'invoice_title'    => 'required',
+            // 'invoice_title'    => 'required',
             'currency_id'    => 'required',
         ]);
         $this->invoiceInfoDetails=InvoiceSettingInfo::whereCreatedBy(Auth::user()->id)->first();

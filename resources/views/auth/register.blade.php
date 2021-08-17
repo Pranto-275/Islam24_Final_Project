@@ -168,7 +168,7 @@
                                     </div>
                                 </div>
                                 <div class="form-grp-btn" >
-                                    <button type="submit" class="btn">Sign up</button>
+                                    <button type="submit" class="btn" style="background: #ff6000;color:white;">Sign up</button>
 
                                     {{-- <x-jet-button class="ml-4" type="submit">
                                         {{ __('Register') }}

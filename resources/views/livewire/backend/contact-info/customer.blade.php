@@ -207,13 +207,6 @@
                         data:  'mobile',
                         name:  'mobile'
                     },
-
-                    {
-                        title: 'password',
-                        data:  'phone',
-                        name:  'phone'
-                    },
-
                     {
                         title: 'Action',
                         data:  'action',

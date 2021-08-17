@@ -5,11 +5,11 @@
                 <div class="card-body">
                     <div class="invoice-title">
                         <h4 class="float-right font-size-16">
-                            Cancelled Order # {{$OrderId}}<br>
+                            Order # {{$OrderId}}<br>
                             Date: {{$OrderInvoice->order_date}}
                         </h4>
                         <div class="mb-4">
-                            <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
+                            <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="height:40px;"/>
                         </div>
                     </div>
                     <hr>
@@ -96,7 +96,11 @@
                                     @if($currencySymbol)
                                         {{ $currencySymbol->symbol }}
                                     @endif
-                                    {{$OrderInvoice->discount}}
+                                    @if($OrderInvoice->discount)
+                                         {{$OrderInvoice->discount}}
+                                    @else
+                                    0
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
@@ -106,7 +110,11 @@
                                     @if($currencySymbol)
                                        {{ $currencySymbol->symbol }}
                                     @endif
-                                    {{$OrderInvoice->shipping_charge}}
+                                    @if($OrderInvoice->shipping_charge)
+                                       {{$OrderInvoice->shipping_charge}}
+                                       @else
+                                       0
+                                       @endif
                                 </td>
                             </tr>
                             <tr>
@@ -124,8 +132,13 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="d-print-none">
-                        <div class="float-right">
+                    <div>
+                        <div class="float-left p-1">
+                            @if($InvoiceSetting)
+                               {{$InvoiceSetting->invoice_footer}}
+                            @endif
+                        </div>
+                        <div class="float-right d-print-none">
                             <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light mr-1"><i class="fa fa-print"></i></a>
                         </div>
                     </div>

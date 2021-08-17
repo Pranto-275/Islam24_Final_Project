@@ -95,7 +95,7 @@ class HomeController extends Controller
 
                 //   session()->flash('message','password updated successfully');
                 //   return redirect()->back();
-                return redirect(route('my-account'));
+                return redirect()->route('my-account');
                 }
 
              }
