@@ -3,19 +3,19 @@
 namespace App\Http\Livewire\Backend\ProductInfo;
 
 use App\Models\Backend\ContactInfo\Contact;
+use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\ProductInfo\Brand;
+use App\Models\Backend\ProductInfo\Category;
 use App\Models\Backend\ProductInfo\Color;
 use App\Models\Backend\ProductInfo\Product as ProductTable;
 use App\Models\Backend\ProductInfo\ProductImage;
 use App\Models\Backend\ProductInfo\ProductInfo;
 use App\models\Backend\ProductInfo\ProductProperties;
-use App\Models\Backend\Inventory\StockManager;
-use App\Models\Backend\Setting\Warehouse;
 use App\Models\Backend\ProductInfo\Size;
-use App\Models\Backend\ProductInfo\Category;
 use App\Models\Backend\ProductInfo\SubCategory;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\Setting\Vat;
+use App\Models\Backend\Setting\Warehouse;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -112,21 +112,24 @@ class Product extends Component
         }
         // Stock Manager
         $StockManager = StockManager::whereProductId($id)->first();
-        if($StockManager){
-        $this->stock_in_opening=$StockManager->stock_in_opening;
-        $this->warehouse_id=$StockManager->warehouse_id;
+        if ($StockManager) {
+            $this->stock_in_opening = $StockManager->stock_in_opening;
+            $this->warehouse_id = $StockManager->warehouse_id;
         }
 
         // Product Code
         $this->code = 'P'.floor(time() - 999999999);
     }
-    public function imageDelete($id){
-    //    dd($id);
-       ProductImage::whereId($id)->delete();
-       $this->emit('success', [
+
+    public function imageDelete($id)
+    {
+        //    dd($id);
+        ProductImage::whereId($id)->delete();
+        $this->emit('success', [
         'text' => 'Deleted Image Successfully',
         ]);
     }
+
     public function productSave()
     {
         $this->validate([
@@ -139,7 +142,7 @@ class Product extends Component
             'brand_id' => 'required',
             'regular_price' => 'required',
             'special_price' => 'required',
-            'wholesale_price' =>'required',
+            'wholesale_price' => 'required',
             'purchase_price' => 'required',
             'is_active' => 'required',
         ]);
@@ -237,17 +240,17 @@ class Product extends Component
             // }
 
             // Start Product Save Stock Manager
-            if($this->stock_in_opening){
+            if ($this->stock_in_opening) {
                 $this->validate([
                     'warehouse_id' => 'required',
                 ]);
                 $StockManager = StockManager::whereProductId($Query->id)->firstOrNew();
-                $StockManager->date=Carbon::now();
-                $StockManager->product_id=$Query->id;
-                $StockManager->stock_in_opening=$this->stock_in_opening;
-                $StockManager->warehouse_id=$this->warehouse_id;
-                $StockManager->branch_id=Auth::user()->branch_id;
-                $StockManager->created_by=Auth::user()->id;
+                $StockManager->date = Carbon::now();
+                $StockManager->product_id = $Query->id;
+                $StockManager->stock_in_opening = $this->stock_in_opening;
+                $StockManager->warehouse_id = $this->warehouse_id;
+                $StockManager->branch_id = Auth::user()->branch_id;
+                $StockManager->created_by = Auth::user()->id;
                 $StockManager->save();
             }
 
@@ -268,21 +271,24 @@ class Product extends Component
             ]);
         }
     }
-    public function updated(){
-        dd("OK");
+
+    public function updated()
+    {
+        // dd("OK");
     }
+
     public function render()
     {
-        if($this->category_id){
-            $subCat=SubCategory::whereCategoryId($this->category_id)->get();
-        }else{
-            $subCat=SubCategory::get();
+        if ($this->category_id) {
+            $subCat = SubCategory::whereCategoryId($this->category_id)->get();
+        } else {
+            $subCat = SubCategory::get();
         }
 
-        if($this->sub_category_id){
-            $subSubCat=SubSubCategory::whereSubCategoryId($this->sub_category_id)->get();
-        }else{
-            $subSubCat=SubSubCategory::get();
+        if ($this->sub_category_id) {
+            $subSubCat = SubSubCategory::whereSubCategoryId($this->sub_category_id)->get();
+        } else {
+            $subSubCat = SubSubCategory::get();
         }
 
         return view('livewire.backend.product-info.product', [
