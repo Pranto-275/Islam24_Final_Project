@@ -1,13 +1,13 @@
 @extends('layouts.front_end')
 @section('content')
 
-<div>
-    <x-slot name="title">
-        Product View
-    </x-slot>
-    <x-slot name="header">
-        Product View
-    </x-slot>
+    <div>
+        <x-slot name="title">
+            Product View
+        </x-slot>
+        <x-slot name="header">
+            Product View
+        </x-slot>
         <!-- main-area -->
         <main>
             <!-- breadcrumb-area -->
@@ -38,30 +38,30 @@
                             <div class="shop-details-nav-wrap">
                                 <div class="shop-details-nav">
                                     @foreach ($productDetails->ProductImages as $productImage)
-                                    <div class="shop-nav-item">
-                                        <img src="{{ asset('storage/photo/'.$productImage->image) }}" alt="">
-                                    </div>
-                                    {{-- <div class="shop-nav-item">
-                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom02.jpg" alt="">
-                                    </div>
-                                    <div class="shop-nav-item">
-                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom03.jpg" alt="">
-                                    </div>
-                                    <div class="shop-nav-item">
-                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom04.jpg" alt="">
-                                    </div>
-                                    <div class="shop-nav-item">
-                                        <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom03.jpg" alt="">
-                                    </div> --}}
+                                        <div class="shop-nav-item">
+                                            <img src="{{ asset('storage/photo/'.$productImage->image) }}" alt="">
+                                        </div>
+                                        {{-- <div class="shop-nav-item">
+                                            <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom02.jpg" alt="">
+                                        </div>
+                                        <div class="shop-nav-item">
+                                            <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom03.jpg" alt="">
+                                        </div>
+                                        <div class="shop-nav-item">
+                                            <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom04.jpg" alt="">
+                                        </div>
+                                        <div class="shop-nav-item">
+                                            <img src="{{ URL::asset('venam/') }}/img/product/sd_bottom03.jpg" alt="">
+                                        </div> --}}
                                     @endforeach
                                 </div>
                             </div>
                             <div class="shop-details-img-wrap">
                                 <div class="shop-details-active">
                                     @foreach ($productDetails->ProductImages as $productImage)
-                                    <div class="shop-details-img">
-                                        <a href="{{ asset('storage/photo/'.$productImage->image) }}" class="popup-image"><img src="{{ asset('storage/photo/'.$productImage->image) }}" alt=""></a>
-                                    </div>
+                                        <div class="shop-details-img">
+                                            <a href="{{ asset('storage/photo/'.$productImage->image) }}" class="popup-image"><img src="{{ asset('storage/photo/'.$productImage->image) }}" alt=""></a>
+                                        </div>
 
                                     @endforeach
 
@@ -127,9 +127,9 @@
                                 <div class="perched-info">
                                     <div class="cart-plus">
                                         <form action="#">
-                                            <div class="cart-plus-minus" data-product-id="{{ $productDetails->id }}">
+                                            <div class="cart-plus-minus" data-product-id="{{ $productDetails->id }}" data-device="desktop">
                                                 @php
-                                                $productQuantity = isset($cardBadge['data']['products'][$productDetails->id]['quantity']) ? $cardBadge['data']['products'][$productDetails->id]['quantity'] : 0;
+                                                    $productQuantity = isset($cardBadge['data']['products'][$productDetails->id]['quantity']) ? $cardBadge['data']['products'][$productDetails->id]['quantity'] : 0;
                                                 @endphp
                                                 <input type="text" class="product_quantity" id="product_quantity_{{ $productDetails->id }}" data-minimum-quantity="{{ $productDetails->min_order_qty }}" value="{{ $productQuantity ? $productQuantity : $productDetails->min_order_qty }}" >
                                             </div>
@@ -162,23 +162,23 @@
                                 <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
-                                            aria-selected="true">Product Details</a>
+                                           aria-selected="true">Product Details</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="val-tab" data-toggle="tab" href="#val" role="tab" aria-controls="val"
-                                            aria-selected="false">Viewers Also Like</a>
+                                           aria-selected="false">Viewers Also Like</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="looks-tab" data-toggle="tab" href="#looks" role="tab" aria-controls="looks"
-                                            aria-selected="false">Looks</a>
+                                           aria-selected="false">Looks</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-                                            aria-selected="false">Product Reviews</a>
+                                           aria-selected="false">Product Reviews</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="qa-tab" data-toggle="tab" href="#qa" role="tab" aria-controls="qa"
-                                            aria-selected="false">Q&A</a>
+                                           aria-selected="false">Q&A</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
@@ -207,8 +207,8 @@
                                                     </ul> --}}
                                                     <p>
                                                         @if($productDetails->ProductInfo->youtube_link)
-                                                             <span><i class="fab fa-youtube text-danger"></i></span>
-                                                             <a href="{{$productDetails->ProductInfo->youtube_link}}">Youtube Link</a>
+                                                            <span><i class="fab fa-youtube text-danger"></i></span>
+                                                            <a href="{{$productDetails->ProductInfo->youtube_link}}">Youtube Link</a>
                                                         @endif
                                                     </p>
                                                 </div>
@@ -227,8 +227,8 @@
                                                 <div class="col-xl-9 col-md-8">
                                                     <h5 class="small-title">The Christina Fashion</h5>
                                                     <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
-                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                        Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                     <ul class="product-desc-list">
                                                         <li>65% poly, 35% rayon</li>
                                                         <li>Hand wash cold</li>
@@ -253,8 +253,8 @@
                                                 <div class="col-xl-9 col-md-8">
                                                     <h5 class="small-title">The Christina Fashion</h5>
                                                     <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
-                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                        Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                     <ul class="product-desc-list">
                                                         <li>65% poly, 35% rayon</li>
                                                         <li>Hand wash cold</li>
@@ -279,8 +279,8 @@
                                                 <div class="col-xl-9 col-md-8">
                                                     <h5 class="small-title">The Christina Fashion</h5>
                                                     <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
-                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                        Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                     <ul class="product-desc-list">
                                                         <li>65% poly, 35% rayon</li>
                                                         <li>Hand wash cold</li>
@@ -305,8 +305,8 @@
                                                 <div class="col-xl-9 col-md-8">
                                                     <h5 class="small-title">The Christina Fashion</h5>
                                                     <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
-                                                    Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                        Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                     <ul class="product-desc-list">
                                                         <li>65% poly, 35% rayon</li>
                                                         <li>Hand wash cold</li>
@@ -616,6 +616,6 @@
             <!-- shop-details-area-end -->
         </main>
         <!-- main-area-end -->
-</div>
+    </div>
 @endsection
 

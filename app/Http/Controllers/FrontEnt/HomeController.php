@@ -246,7 +246,6 @@ class HomeController extends Controller
     public function addToCardStore(Request $request): array
     {
         $quantity = $request->get('product_quantity') ? $request->get('product_quantity') : 1;
-
         return $this->addToCardService::addCardStore($request->get('product_id'), $quantity);
     }
 
@@ -258,9 +257,11 @@ class HomeController extends Controller
     public function cartProductQuantityUpdate(Request $request): array
     {
         $quantity = $request->get('quantity');
-        if ($request->get('state') == 'decrease') {
+        /*if ($request->get('state') == 'decrease') {
             $quantity = ($quantity * (-1));
         }
+
+        dd($quantity);*/
 
         return $this->addToCardService::addCardStore($request->get('product_id'), $quantity);
     }
