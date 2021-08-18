@@ -45,11 +45,11 @@
                                             <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                             <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                         </a>
-                                        <ul class="action">
-                                            {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
+                                        {{-- <ul class="action">
+                                            <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
                                             <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                             <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div class="exclusive-item-content">
                                         <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>

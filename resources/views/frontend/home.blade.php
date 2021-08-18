@@ -191,11 +191,11 @@
                                     <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
                                     @endif
                                     <span class="sd-meta">New!</span>
-                                    <ul class="action">
-                                        {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
+                                    {{-- <ul class="action">
+                                        <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
                                         <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                         <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                                 <div class="exclusive-item-content">
                                     <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
@@ -340,11 +340,11 @@
                                         @if($product['discount'])
                                         <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
                                         @endif
-                                        <ul class="action">
-                                            {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
+                                        {{-- <ul class="action">
+                                            <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
                                             <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                             <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                     <div class="exclusive-item-content">
                                         <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
