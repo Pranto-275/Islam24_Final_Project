@@ -139,8 +139,8 @@
                        <form action="{{ route('product-search') }}" method="GET">
                         <center>
                             <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
-                                <input type="text" class="form-control mb-2" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
-                                <div class="input-group-append">
+                                <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
+                                {{-- <div class="input-group-append">
                                     <select class="custom-select mb-2" name="search_product_category" id="search_product_category" style="width:110px;">
                                         <option selected="" value="" >Category</option>
                                         @foreach ($categories as $category)
@@ -148,7 +148,7 @@
                                         @endforeach
                                         <option>In All Categories</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit" style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i class="fa fa-search text-light"></i></button>
                                   {{-- <div class="dropdown-menu">
