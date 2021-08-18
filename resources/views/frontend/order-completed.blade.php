@@ -17,7 +17,7 @@
                 <div class="col-xl-8 col-lg-10">
                     <div class="order-complete-bg" data-background="img/bg/order_comp_bg.png">
                         <div class="order-complete-content">
-                            <h3><span>your</span> Order Is Completed!</h3>
+                            <h3><span>your</span> Order Is Completed! Order No-{{$order}}</h3>
                             <div class="check mb-25">
                                 <img src="img/icon/check.png" alt="">
                             </div>

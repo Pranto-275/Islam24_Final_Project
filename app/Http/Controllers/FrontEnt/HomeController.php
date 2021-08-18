@@ -11,14 +11,14 @@ use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
+use App\Models\User;
 use App\Services\AddToCardService;
 use Carbon\Carbon;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -45,67 +45,75 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
-    public function CustomerLogin(){
+
+    public function CustomerLogin()
+    {
         return view('frontend.customer-login');
     }
-    public function ChangeProfilePhoto(Request $request){
-        $this->validate($request,[
-            'profile_photo_path'        =>  'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+
+    public function ChangeProfilePhoto(Request $request)
+    {
+        $this->validate($request, [
+            'profile_photo_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $imageName = time().'.'.$request->profile_photo_path->extension();
 
         $request->profile_photo_path->move(public_path('images'), $imageName);
 
-         $User=User::find(Auth::user()->id);
+        $User = User::find(Auth::user()->id);
 
-         $User->profile_photo_path=$imageName;
-         $User->save();
+        $User->profile_photo_path = $imageName;
+        $User->save();
 
-         return redirect()->back();
+        return redirect()->back();
     }
-    public function EditContactById(Request $request){
-        $Query=User::find(Auth::user()->id);
-        $Query->name=$request->name;
-        $Query->mobile=$request->mobile;
-        $Query->email=$request->email;
-        $Query->address=$request->address;
+
+    public function EditContactById(Request $request)
+    {
+        $Query = User::find(Auth::user()->id);
+        $Query->name = $request->name;
+        $Query->mobile = $request->mobile;
+        $Query->email = $request->email;
+        $Query->address = $request->address;
         $Query->save();
 
         return redirect()->back();
     }
-    public function ChangePassword(Request $request){
+
+    public function ChangePassword(Request $request)
+    {
         // dd($request->oldpassword);
 
         $this->validate($request, [
             'oldpassword' => 'required',
             'newpassword' => 'required',
-            'password_confirmation' => 'required_with:oldpassword|same:newpassword|min:6'
+            'password_confirmation' => 'required_with:oldpassword|same:newpassword|min:6',
         ]);
 
-           $hashedPassword = Auth::user()->password;
+        $hashedPassword = Auth::user()->password;
 
-           if (Hash::check($request->oldpassword , $hashedPassword )) {
-
-             if (!Hash::check($request->newpassword , $hashedPassword)) {
-
-                  $users =User::find(Auth::user()->id);
-                  $users->password = bcrypt($request->newpassword);
-                  User::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
+        if (Hash::check($request->oldpassword, $hashedPassword)) {
+            if (!Hash::check($request->newpassword, $hashedPassword)) {
+                $users = User::find(Auth::user()->id);
+                $users->password = bcrypt($request->newpassword);
+                User::where('id', Auth::user()->id)->update(['password' => $users->password]);
 
                 //   session()->flash('message','password updated successfully');
                 //   return redirect()->back();
                 return redirect()->route('my-account');
-                }
-
-             }
+            }
+        }
     }
-    public function MyAccount(){
+
+    public function MyAccount()
+    {
         // dd(Contact::whereCreatedBy(Auth::user()->id)->get());
-        return view('frontend.my-account',[
-            'contacts'=>Contact::whereCreatedBy(Auth::user()->id)->get(),
+        return view('frontend.my-account', [
+            'contacts' => Contact::whereCreatedBy(Auth::user()->id)->get(),
         ]);
     }
+
     public function index(Request $request)
     {
         $data['html'] = view('frontend.header-card-popup')->render();
@@ -117,9 +125,12 @@ class HomeController extends Controller
         ]);
     }
 
-    public function orderComplete()
+    public function orderComplete($id = null)
     {
-        return view('frontend.order-completed');
+        // dd($id);
+        $order = $id;
+
+        return view('frontend.order-completed', compact('order'));
     }
 
     public function confirmOrder(Request $request)
@@ -170,12 +181,14 @@ class HomeController extends Controller
 
             //   Delete Add To Cart
             AddToCard::wheresessionId($sessionId)->delete();
+            $this->orderComplete($Order->id);
         });
         // return response()->json([
         //     'status' => 'success',
         //     'message' => 'Successfully',
         //     'redirect_url' => route('order-completed'),
         // ]);
+
         return redirect(route('order-completed'));
         //    return redirect()->route('/order-completed');
     }
@@ -227,6 +240,7 @@ class HomeController extends Controller
     public function addToCardStore(Request $request): array
     {
         $quantity = $request->get('product_quantity') ? $request->get('product_quantity') : 1;
+
         return $this->addToCardService::addCardStore($request->get('product_id'), $quantity);
     }
 
