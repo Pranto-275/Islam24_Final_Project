@@ -22,6 +22,7 @@ use App\Models\Backend\Setting\PaymentMethod;
 use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\Backend\Setting\Vat;
 use App\Models\Backend\Setting\Warehouse;
+use App\Models\Backend\Setting\BreakingNews;
 use App\Models\Inventory\Category;
 use App\Models\Inventory\Currency;
 use App\Models\Inventory\DeliveryMethod;
@@ -31,6 +32,25 @@ use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
+    public function NewsListTable(){
+        $Query = BreakingNews::query()->orderBy('id', 'desc');
+
+        $this->i = 1;
+
+        return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
+        ->addColumn('is_active', function ($data) {
+            return $data->is_active == 1 ? 'Active' : 'Inactive';
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action', 'is_active'])
+        ->toJSON();
+    }
     public function ShippingChargeTable()
     {
         $Query = ShippingCharge::query()->orderBy('id', 'desc');

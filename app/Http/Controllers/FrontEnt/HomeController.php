@@ -12,6 +12,7 @@ use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
 use App\Models\User;
+use App\Models\Backend\Setting\BreakingNews;
 use App\Services\AddToCardService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
-    // public $EditId;
+    public $OrdetCode;
     /**
      * @var Product
      */
@@ -122,6 +123,7 @@ class HomeController extends Controller
         // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
             'data' => $data,
+            // 'BreakingNews'=>BreakingNews::get(),
         ]);
     }
 
@@ -129,7 +131,7 @@ class HomeController extends Controller
     {
         // dd($id);
         $order = $id;
-
+        //  dd($order);
         return view('frontend.order-completed', compact('order'));
     }
 
@@ -157,6 +159,7 @@ class HomeController extends Controller
 
             //    Add Order
             $Order = new Order();
+            $Order->code = 'OC'.floor(time() - 999999999);
             $Order->contact_id = $Query->id;
             $Order->order_date = Carbon::now();
             //    Cart Detail
@@ -181,15 +184,18 @@ class HomeController extends Controller
 
             //   Delete Add To Cart
             AddToCard::wheresessionId($sessionId)->delete();
-            $this->orderComplete($Order->id);
+            // $this->orderComplete($Order->id);
+            $this->OrdetCode=$Order->code;
         });
         // return response()->json([
         //     'status' => 'success',
         //     'message' => 'Successfully',
         //     'redirect_url' => route('order-completed'),
         // ]);
-
-        return redirect(route('order-completed'));
+        return View('frontend.order-completed',[
+            'orderCode'=>$this->OrdetCode,
+        ]);
+        // return redirect(route('order-completed'));
         //    return redirect()->route('/order-completed');
     }
 
