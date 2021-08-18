@@ -57,6 +57,7 @@ use App\Http\Livewire\Backend\Setting\ShippingCharge;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
+use App\Http\Livewire\Backend\Setting\BreakingNews;
 use App\Http\Livewire\Backend\Transaction\CustomerPayment;
 use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
 use App\Http\Livewire\Backend\Transaction\Payment;
@@ -195,6 +196,7 @@ Route::group(['middleware' => ['role:admin']], function () {
             Route::get('warehouse', Warehouse::class)->name('warehouse');
             Route::get('slider', Slider::class)->name('slider');
             Route::get('point-policy', PointPolicy::class)->name('point-policy');
+            Route::get('breaking-news', BreakingNews::class)->name('breaking-news');
         });
 
         Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
@@ -281,6 +283,7 @@ Route::group(['middleware' => ['role:admin']], function () {
             Route::get('contact_category_table', [DatatableController::class, 'ContactCategoryTable'])->name('contact_category_table');
             Route::get('purchase_list', [DatatableController::class, 'PurchaseListTable'])->name('purchase_list');
             Route::get('sale_list', [DatatableController::class, 'SaleListTable'])->name('sale_list');
+            Route::get('news_list', [DatatableController::class, 'NewsListTable'])->name('news_list');
         });
     });
 });

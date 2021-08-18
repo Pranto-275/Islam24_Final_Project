@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->nullable();
             $table->foreignId('contact_id')->nullable();
             $table->dateTime('order_date')->nullable();
             $table->double('total_amount')->nullable();

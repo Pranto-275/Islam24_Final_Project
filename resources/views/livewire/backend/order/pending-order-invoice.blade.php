@@ -135,7 +135,7 @@
                     <div>
                         <div class="float-left p-1">
                             @if($InvoiceSetting)
-                               {{$InvoiceSetting->invoice_footer}}
+                               {!!$InvoiceSetting->invoice_footer!!}
                             @endif
                         </div>
                         <div class="float-right d-print-none">

@@ -1,5 +1,45 @@
 <header class="header-style-two header-style-three">
     <!-- header-top -->
+    <style>
+        .blue {
+    background: #347fd0;
+}
+
+.news {
+    box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4), 0 5px 10px rgba(0,0,0,0.5);
+       /* width: 890px; */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 4px;
+    /* padding: 1px; */
+    -webkit-user-select: none;
+}
+
+.news span {
+    float: left;
+    color: #fff;
+    padding: 9px;
+    position: relative;
+    top: 1%;
+    box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4);
+    font: 16px 'Raleway', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+.text1{
+
+ box-shadow:none !important;
+    width: 60%;
+}
+
+@media only screen and (min-width: 768px) {
+    #breakingNews{
+        display: none;
+    }
+}
+    </style>
     <div class="header-top-area">
         <div class="custom-container-two">
             <div class="row">
@@ -99,8 +139,8 @@
                        <form action="{{ route('product-search') }}" method="GET">
                         <center>
                             <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
-                                <input type="text" class="form-control mb-2" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
-                                <div class="input-group-append">
+                                <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
+                                {{-- <div class="input-group-append">
                                     <select class="custom-select mb-2" name="search_product_category" id="search_product_category" style="width:110px;">
                                         <option selected="" value="" >Category</option>
                                         @foreach ($categories as $category)
@@ -108,7 +148,7 @@
                                         @endforeach
                                         <option>In All Categories</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit" style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i class="fa fa-search text-light"></i></button>
                                   {{-- <div class="dropdown-menu">
@@ -123,6 +163,17 @@
                         </center>
                        </form>
                         {{-- End Mobile Responsive Search Box --}}
+                        {{-- Start Breaking News --}}
+                        <div id="breakingNews" class="news blue my-1">
+                            <span>Latest News</span><span class="text1" >
+                              <marquee>
+                               @foreach ($BreakingNews as $news)
+                               <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}
+                               @endforeach
+                              </marquee>
+                            </span>
+                        </div>
+                        {{-- End Breaking News --}}
                         {{-- &nbsp;&nbsp; --}}
                     <div class="menu-wrap">
                         <nav class="menu-nav show">
@@ -203,7 +254,6 @@
         </div>
     </div>
     <!-- menu-area-end -->
-
     <!-- header-search-area -->
     <div class="header-search-area d-none d-md-block">
         <div class="custom-container-two">
@@ -264,6 +314,17 @@
                     </div>
                 </div>
             </div>
+             {{-- Start Breaking News --}}
+             <div id="breakingNews1" class="news blue my-1">
+                <span>Latest News</span><span class="text1" >
+                  <marquee>
+                   @foreach ($BreakingNews as $news)
+                   <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}
+                   @endforeach
+                  </marquee>
+                </span>
+            </div>
+            {{-- End Breaking News --}}
         </div>
     </div>
     <!-- header-search-area-end -->
