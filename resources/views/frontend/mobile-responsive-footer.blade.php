@@ -9,22 +9,22 @@
             </div> --}}
             <div class="col-3 pt-1 text-center">
                 {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-                <li class="header-shop-cart"><a href="{{url('/')}}"><i class="fas fa-home" style="font-size: 20px;"></i></a><br>
+                <li class="header-shop-cart"><a href="{{url('/')}}"><i class="fas fa-home text-dark" style="font-size: 20px;"></i></a><br>
                     <span style="font-size:10px;">PAIKARI</span>
             </div>
             <div class="col-3 pt-1 text-center">
                 {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-                <li class="header-shop-cart"><a href="{{url('/')}}"><i class="fas fa-bullhorn" style="font-size: 20px;"></i></a><br>
+                <li class="header-shop-cart"><a href="{{url('/')}}"><i class="fas fa-bullhorn text-dark" style="font-size: 20px;"></i></a><br>
                     <span style="font-size:10px;">Campaign</span>
             </div>
             <div class="col-3 pt-1 text-center">
                 {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-                <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="fas fa-store-alt" style="font-size: 20px;"></i></a><br>
+                <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="fas fa-store-alt text-dark" style="font-size: 20px;"></i></a><br>
                     <span style="font-size:10px;">Order List</span>
             </div>
             <div class="col-3 pt-1 text-center">
                 {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-                <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="fas fa-shopping-cart" style="font-size: 20px;"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a><br>
+                <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="fas fa-shopping-cart text-dark" style="font-size: 20px;"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a><br>
                     <span style="font-size:10px;">Bag</span>
             </div>
           </div>

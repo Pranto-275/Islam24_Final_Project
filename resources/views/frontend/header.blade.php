@@ -2,11 +2,11 @@
     <!-- header-top -->
     <style>
         .blue {
-    background: #347fd0;
+         background: #ffffff;
 }
 
 .news {
-    box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4), 0 5px 10px rgba(0,0,0,0.5);
+    /* box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4), 0 5px 10px rgba(0,0,0,0.5); */
        /* width: 890px; */
     margin: 20px auto;
     overflow: hidden;
@@ -17,11 +17,11 @@
 
 .news span {
     float: left;
-    color: #fff;
+    color: rgb(19, 10, 10);
     padding: 9px;
     position: relative;
     top: 1%;
-    box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4);
+    /* box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4); */
     font: 16px 'Raleway', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -webkit-user-select: none;
@@ -165,7 +165,7 @@
                         {{-- End Mobile Responsive Search Box --}}
                         {{-- Start Breaking News --}}
                         <div id="breakingNews" class="news blue my-1">
-                            <span>Latest News</span><span class="text1" >
+                            <span style="background-color: #f7ba01;z-index:2;">Latest News</span><span class="text1" >
                               <marquee>
                                @foreach ($BreakingNews as $news)
                                <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}
@@ -316,10 +316,10 @@
             </div>
              {{-- Start Breaking News --}}
              <div id="breakingNews1" class="news blue my-1">
-                <span>Latest News</span><span class="text1" >
+                <span style="background-color: #ffc001;z-index:2;">Latest News</span><span class="text1" >
                   <marquee>
                    @foreach ($BreakingNews as $news)
-                   <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}
+                   <i class="fas fa-star"></i><i class="fas fa-star"></i>{{$news->news}}
                    @endforeach
                   </marquee>
                 </span>

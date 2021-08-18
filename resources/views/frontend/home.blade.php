@@ -31,9 +31,6 @@
     .cartModal1{
         display: none;
     }
-    #breakingNews{
-        display: none;
-    }
 }
 @media only screen and (max-width: 768px) {
     .slider-image{
@@ -49,6 +46,8 @@
     .cartModal{
         display: none;
     }
+
+
 }
 /* .footer-area{
     position:relative;
