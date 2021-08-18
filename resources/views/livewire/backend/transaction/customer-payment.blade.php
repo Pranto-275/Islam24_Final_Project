@@ -101,7 +101,7 @@
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Receipt No</label>
                                 <input class="form-control" type="text" wire:model.lazy="receipt_no" placeholder="Receipt No">
-                                 @error('receipt_no') <span class="error">{{ $message }}</span> @enderror
+                                 {{-- @error('receipt_no') <span class="error">{{ $message }}</span> @enderror --}}
                             </div>
                         </div>
 
@@ -139,10 +139,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i=0;
+                                @endphp
                                 @foreach ($payments as $payment)
 
                                 <tr>
-                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">1</a> </td>
+                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a> </td>
                                     <td>{{$payment->code}}</td>
                                     <td>{{$payment->Contact->first_name}} {{$payment->Contact->last_name}}</td>
                                     <td>

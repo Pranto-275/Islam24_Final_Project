@@ -252,7 +252,7 @@
                                 <tr>
                                     <td>Payment Date</td>
                                     <th>
-                                        <input type="text" class="form-control" placeholder="dd M, yyyy"  data-date-format="dd M, yyyy" data-provide="datepicker">
+                                        <input type="date" class="form-control" wire:model.lazy="purchase_payment_date">
                                     </th>
                                 </tr>
                                 <tr>
