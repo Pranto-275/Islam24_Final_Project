@@ -179,7 +179,7 @@
                         {{-- End Breaking News --}}
                         {{-- &nbsp;&nbsp; --}}
                     <div class="menu-wrap">
-                        <nav class="menu-nav show" style="display:inline;">
+                        <nav class="menu-nav show">
                             <div class="logo" id="paikaryLogo">
                                 <a href="{{url('/')}}"><img src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif" style="height:39.9px;background-image: cover;" alt="Logo"></a>
                             </div>
@@ -210,7 +210,7 @@
 
                                     <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
-                                    <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
+                                    <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
                                         <span class="cart-total-price" style="width: 120px;">
                                             @if($currencySymbol)
                                                 {{ $currencySymbol->symbol }}

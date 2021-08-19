@@ -143,7 +143,6 @@
        <br>
 
 		<!-- JS here -->
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" data-semver="3.3.1" data-require="bootstrap-css" />
         <script src="{{ URL::asset('venam/') }}/js/vendor/jquery-3.5.0.min.js"></script>
         <script src="{{ URL::asset('venam/') }}/js/popper.min.js"></script>
         <script src="{{ URL::asset('venam/') }}/js/bootstrap.min.js"></script>

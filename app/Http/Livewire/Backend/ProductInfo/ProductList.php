@@ -10,6 +10,8 @@ use Livewire\Component;
 class ProductList extends Component
 {
     public function deleteProduct($id){
+
+
         Product::find($id)->delete();
         ProductInfo::whereProductId($id)->delete();
         ProductImage::whereProductId($id)->delete();

@@ -40,7 +40,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', Category::orderBy('id', 'desc')->get());
             // $view->with('skipTopTencategories', Category::orderBy('id', 'desc')->skip(10)->get());
             // $view->with('topCategories', Category::whereTopShow(1)->get());
-            $view->with('topSixCategories', Category::whereTopShow(1)->take(6)->get());
+            $view->with('topFourCategories', Category::whereTopShow(1)->take(4)->get());
+            $view->with('topCategories', Category::whereTopShow(1)->skip(4)->take(200)->get());
             $view->with('categoryImageLast', Category::whereTopShow(1)->orderBy('id', 'desc')->first());
             $view->with('subCategories', SubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
