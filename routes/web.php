@@ -69,7 +69,7 @@ use App\Http\Livewire\Frontend\CategoryWiseProduct;
 use App\Http\Livewire\Frontend\Contact as ContactUs;
 use App\Http\Livewire\Frontend\Customer;
 use App\Http\Livewire\Frontend\Error;
-use App\Http\Livewire\Frontend\Myprofile;
+use App\Http\Livewire\Frontend\MyProfile;
 use App\Http\Livewire\Frontend\PrivacyPolicy;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Frontend\SignIn;
