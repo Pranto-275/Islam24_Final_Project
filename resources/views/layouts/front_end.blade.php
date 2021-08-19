@@ -46,6 +46,7 @@
 	background: #ff6000;
 	color: #fff;
 	font-size: 12px;
+    
 	line-height: 21px;
 	padding: 0 8px;
 	border-radius: 3px;

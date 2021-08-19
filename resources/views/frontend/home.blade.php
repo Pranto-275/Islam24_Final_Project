@@ -141,7 +141,7 @@
             {{-- Start Top Category Show Slider --}}
             <h5 class="text-center">Top Categories</h5>
             <hr class="mt-0 pt-0">
-                <div class="row mx-1">
+                {{-- <div class="row mx-1">
                     @foreach ($topSixCategories as $topCategory)
                     <div class="col-xl-2 col-4">
                         <div class="text-center">
@@ -164,7 +164,8 @@
                 <div>
                     <center><a href="{{route('search-category-wise')}}" class="btn btn-sm" style="padding:10px;margin-bottom:10px;width:100px;height:30px;color:#03030a;background-color:rgb(236, 240, 14);">See More</a></center>
                 </div>
-                @endif
+                @endif --}}
+
             {{-- End Top Category Show Slider --}}
             <div class="custom-container-two mt-5">
                  <!-- exclusive-collection-area -->
