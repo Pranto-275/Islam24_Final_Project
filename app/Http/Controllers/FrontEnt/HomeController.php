@@ -279,8 +279,10 @@ class HomeController extends Controller
 
     public function productDetails($id = null)
     {
+        $ProductDetail=Product::whereId($id)->first();
         return view('frontend.product-details', [
-            'productDetails' => Product::whereId($id)->first(),
+            'productDetails' => $ProductDetail,
+            'similarProducts' => Product::whereSubSubCategoryId($ProductDetail->sub_sub_category_id)->get(),
         ]);
     }
 

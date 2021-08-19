@@ -11,7 +11,7 @@
         <!-- main-area -->
         <main>
             <!-- breadcrumb-area -->
-            <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
+            <section class="breadcrumb-area breadcrumb-bg py-2" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -159,7 +159,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="product-desc-wrap mb-100">
-                                <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
+                                {{-- <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
                                             aria-selected="true">Product Details</a>
@@ -180,7 +180,8 @@
                                         <a class="nav-link" id="qa-tab" data-toggle="tab" href="#qa" role="tab" aria-controls="qa"
                                             aria-selected="false">Q&A</a>
                                     </li>
-                                </ul>
+                                </ul> --}}
+                                <hr>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                                         <div class="product-desc-content">
@@ -321,167 +322,65 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="shop-details-add mb-95">
+                            {{-- <div class="shop-details-add mb-95">
                                 <a href="#"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_add.jpg" alt=""></a>
-                            </div>
+                            </div> --}}
                             <div class="related-product-wrap pb-95">
                                 <div class="deal-day-top">
                                     <div class="deal-day-title">
-                                        <h4 class="title">Viewers Also Liked</h4>
+                                        <h4 class="title">Similar Product</h4>
                                     </div>
                                     <div class="related-slider-nav">
                                         <div class="slider-nav"></div>
                                     </div>
                                 </div>
                                 <div class="row ">
+                                    {{-- Start Similar Product --}}
+                                    @foreach ($similarProducts as $similarProduct)
                                     <div class="col-xl-3">
                                         <div class="exclusive-item exclusive-item-three text-center">
                                             <div class="exclusive-item-thumb">
-                                                <a href="shop-details.html">
-                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img01.jpg" alt="">
-                                                    <img class="overlay-product-thumb" src="img/product/t_exclusive_product01.jpg" alt="">
+                                                <a href="{{route('product-details',['id'=>$similarProduct->id])}}">
+                                                    <img @if($similarProduct->ProductImageFirst)src="{{ asset('storage/photo/'.$similarProduct->ProductImageFirst->image) }}"@endif alt="">
+                                                    <img class="overlay-product-thumb" @if($similarProduct->ProductImageLast)src="{{ asset('storage/photo/'.$similarProduct->ProductImageLast->image) }}"@endif alt="">
                                                 </a>
-                                                <ul class="action">
+                                                {{-- <ul class="action">
                                                     <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
                                                     <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
                                                     <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                                </ul>
+                                                </ul> --}}
                                             </div>
                                             <div class="exclusive-item-content">
-                                                <h5><a href="shop-details.html">Farfetch Mulberry Belted</a></h5>
+                                                <h5><a href="shop-details.html">{{ $similarProduct->name }}</a></h5>
                                                 <div class="exclusive--item--price">
-                                                    <del class="old-price">$69.00</del>
-                                                    <span class="new-price">$58.00</span>
+                                                    <del class="old-price">
+                                                        @if($currencySymbol)
+                                                           {{ $currencySymbol->symbol }}
+                                                        @endif
+                                                        {{ $similarProduct->regular_price }}
+                                                    </del>
+                                                    <span class="new-price">
+                                                        @if($currencySymbol)
+                                                           {{ $currencySymbol->symbol }}
+                                                        @endif
+                                                        {{ $similarProduct->special_price }}
+                                                    </span>
                                                 </div>
-                                                <div class="rating">
+                                                {{-- <div class="rating">
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3">
-                                        <div class="exclusive-item exclusive-item-three text-center">
-                                            <div class="exclusive-item-thumb">
-                                                <a href="shop-details.html">
-                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img02.jpg" alt="">
-                                                    <img class="overlay-product-thumb" src="img/product/td_product_img05.jpg" alt="">
-                                                </a>
-                                                <ul class="action">
-                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="exclusive-item-content">
-                                                <h5><a href="shop-details.html">Luxury Fashion Bag</a></h5>
-                                                <div class="exclusive--item--price">
-                                                    <del class="old-price">$69.00</del>
-                                                    <span class="new-price">$29.00</span>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <div class="exclusive-item exclusive-item-three text-center">
-                                            <div class="exclusive-item-thumb">
-                                                <a href="shop-details.html">
-                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img03.jpg" alt="">
-                                                    <img class="overlay-product-thumb" src="img/product/t_exclusive_product04.jpg" alt="">
-                                                </a>
-                                                <ul class="action">
-                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="exclusive-item-content">
-                                                <h5><a href="shop-details.html">Men's Lathers Jacket</a></h5>
-                                                <div class="exclusive--item--price">
-                                                    <del class="old-price">$69.00</del>
-                                                    <span class="new-price">$58.00</span>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <div class="exclusive-item exclusive-item-three text-center">
-                                            <div class="exclusive-item-thumb">
-                                                <a href="shop-details.html">
-                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img04.jpg" alt="">
-                                                    <img class="overlay-product-thumb" src="img/product/td_product_img05.jpg" alt="">
-                                                </a>
-                                                <ul class="action">
-                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="exclusive-item-content">
-                                                <h5><a href="shop-details.html">Women Brand T-shirt</a></h5>
-                                                <div class="exclusive--item--price">
-                                                    <del class="old-price">$49.00</del>
-                                                    <span class="new-price">$21.00</span>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3">
-                                        <div class="exclusive-item exclusive-item-three text-center">
-                                            <div class="exclusive-item-thumb">
-                                                <a href="shop-details.html">
-                                                    <img src="{{ URL::asset('venam/') }}/img/product/td_product_img02.jpg" alt="">
-                                                    <img class="overlay-product-thumb" src="img/product/td_product_img05.jpg" alt="">
-                                                </a>
-                                                <ul class="action">
-                                                    <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-supermarket"></i></a></li>
-                                                    <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="exclusive-item-content">
-                                                <h5><a href="shop-details.html">Luxury Fashion Bag</a></h5>
-                                                <div class="exclusive--item--price">
-                                                    <del class="old-price">$69.00</del>
-                                                    <span class="new-price">$29.00</span>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                    {{-- End Similar Product --}}
                                 </div>
                             </div>
-                            <div class="product-reviews-wrap">
+                            {{-- <div class="product-reviews-wrap">
                                 <div class="deal-day-top">
                                     <div class="deal-day-title">
                                         <h4 class="title">Product Reviews</h4>
@@ -608,7 +507,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

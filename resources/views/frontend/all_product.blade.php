@@ -75,15 +75,20 @@
                                                         <a href="{{route('product-details',['id'=>$newProduct->id])}}"><img @if($newProduct->ProductImageFirst) src="{{ asset('storage/photo/'.$newProduct->ProductImageFirst->image)}}" @endif style="width:30px;height:30px;" alt="Image"></a>
                                                     </div>
                                                     <div class="sidebar-product-content">
-                                                        <div class="rating">
+                                                        {{-- <div class="rating">
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
-                                                        </div>
+                                                        </div> --}}
                                                         <h5><a href="{{route('product-details',['id'=>$newProduct['id']])}}" style="text-transform: capitalize;">{{$newProduct->name}}</a></h5>
-                                                        <span>$ 39.00</span>
+                                                        <span>
+                                                            @if($currencySymbol)
+                                                               {{ $currencySymbol->symbol }}
+                                                            @endif
+                                                            {{ $newProduct->regular_price }}
+                                                        </span>
                                                     </div>
                                                 </li>
 
@@ -221,7 +226,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                              <span class="sd-meta" style="width:70px;">ছাড়-{{ $product['discount'] }}%</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>

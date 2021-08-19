@@ -38,6 +38,9 @@
     #breakingNews{
         display: none;
     }
+    #privacyPolicy, #termCondition, #aboutUs{
+        display: none;
+    }
 }
     </style>
     <div class="header-top-area">
@@ -199,6 +202,15 @@
                                         <a href="{{ route('my-account') }}">My Account</a>
                                     </li>
                                     @endif
+                                    <li>
+                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('terms-conditios')}}" id="termCondition">Terms & Conditions</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('about')}}" id="aboutUs">About Us</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">

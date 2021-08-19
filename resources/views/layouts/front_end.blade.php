@@ -31,6 +31,9 @@
                #scrollTop{
                   display: none;
                }
+               #desktopFooter{
+                  display: none;
+               }
             }
             .super-deal-thumb span.sd-meta,
 .exclusive-item-thumb .sd-meta,

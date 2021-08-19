@@ -1,5 +1,5 @@
 <footer class="footer-area footer-style-two">
-    <div class="footer-top pt-35 pb-25">
+    <div class="footer-top pt-35 pb-25" id="desktopFooter">
         <div class="custom-container-two">
             {{-- <div class="footer-newsletter-wrap footer-newsletter-two">
                 <div class="row justify-content-center align-items-center">
@@ -100,4 +100,5 @@
             </div>
         </div>
     </div>
+    <br>
 </footer>
