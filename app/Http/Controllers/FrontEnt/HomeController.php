@@ -166,6 +166,8 @@ class HomeController extends Controller
             $AddToCart = AddToCard::wheresessionId($sessionId)->get();
             //    Cart Detail
             $Order->total_amount = $AddToCart->sum('total_price');
+            $Order->shipping_charge = $request->get('shipping_charge');//$request->get('check_out_total_amount');
+            $Order->payable_amount = ($AddToCart->sum('total_price')+$request->get('shipping_charge'));//$request->get('check_out_total_amount');
             $Order->status = 'pending';
             $Order->is_active = 1;
             $Order->save();
