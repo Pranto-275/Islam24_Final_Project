@@ -90,7 +90,62 @@
                 background-color: #4CAF50;
                 color: white;
             }
+            /* Put your css in here */
+
+.carousel-inner .item .active .left {
+  left: -25%;
+}
+
+.carousel-inner .item .active .right {
+  left: 25%;
+}
+
+.carousel-inner .next {
+  left: 25%
+}
+
+.carousel-inner .prev {
+  left: -25%
+}
+
+.carousel-control.left {
+  background-image: none;
+}
+
+.carousel-control.right {
+  background-image: none;
+}
+
+.carousel-inner .item {
+  /* background: red; */
+}
         </style>
+          <script src="http://code.jquery.com/jquery-2.1.3.min.js" data-semver="2.1.3" data-require="jquery"></script>
+          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" data-semver="3.3.2" data-require="bootstrap"></script>
+          <script>
+              $(function() {
+
+// $('#myCarousel').carousel({
+//   interval: 10000
+// })
+console.log($('.item'))
+$('.item').each(function() {
+
+  var next = $(this).next();
+  console.log(next);
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+
+  if (next.next().length > 0) {
+    next.next().children(':first-child').clone().appendTo($(this));
+  } else {
+    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+  }
+});
+});
+          </script>
         <x-slot name="title">
             Home
         </x-slot>
@@ -139,30 +194,35 @@
                 {{-- Start Top Category Show Slider --}}
                 <h5 class="text-center">Top Categories</h5>
                 <hr class="mt-0 pt-0">
-                <div class="row mx-1">
-                    @foreach ($topSixCategories as $topCategory)
-                        <div class="col-xl-2 col-4">
-                            <div class="text-center">
-                                <div class="exclusive-item-thumb">
-                                    <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
-                                        <center>
-                                            <img class="rounded topCategoryImage" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="Image">
-                                            <img class="rounded topCategoryImage overlay-product-thumb" src="{{ asset('storage/photo/'.$topCategory->image2) }}" alt="">
-                                        </center>
-                                    </a>
-                                </div>
-                                <div class="exclusive-item-content">
-                                    <h5 id="categoryName" class="text-center"><a href="shop-details.html">{{$topCategory->name}}</a></h5>
-                                </div>
-                            </div>
+                <div class="">
+                    <div id="myCarousel" class="carousel slide">
+
+                      <div class="carousel-inner">
+                        <div class="item active">
+                          <div class="col-xs-3">
+                            <a href="#"><img src="{{ asset('storage/photo/'.$categoryImageLast->image1) }}" class="img-responsive"></a>
+                          </div>
                         </div>
-                    @endforeach
-                </div>
-                @if(count($topSixCategories)>0)
-                    <div>
-                        <center><a href="{{route('search-category-wise')}}" class="btn btn-sm" style="padding:10px;margin-bottom:10px;width:100px;height:30px;color:#03030a;background-color:rgb(236, 240, 14);">See More</a></center>
+                        @foreach ($topSixCategories as $topCategory)
+                        <div class="item">
+                          <div class="col-xs-3">
+                            <a href="#"><img src="{{ asset('storage/photo/'.$topCategory->image1) }}" class="img-responsive"></a>
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+
+                      <!-- Controls -->
+                      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
                     </div>
-                @endif
+                    </div>
                 {{-- End Top Category Show Slider --}}
                 <div class="custom-container-two mt-5">
                     <!-- exclusive-collection-area -->
@@ -186,14 +246,14 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                                <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                              <span class="sd-meta" style="width:70px;">ছাড়-{{ $product['discount'] }}%</span>
                                             @endif
-                                            <span class="sd-meta">New!</span>
-                                            <ul class="action">
-                                                {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
+                                            {{-- <span class="sd-meta">New!</span> --}}
+                                            {{-- <ul class="action">
+                                                <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
                                                 <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                                 <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                            </ul>
+                                            </ul> --}}
                                         </div>
                                         <div class="exclusive-item-content">
                                             <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
@@ -339,13 +399,13 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                                <span class="discount" style="width:46px;">{{ $product['discount'] }}%</span>
+                                              <span class="sd-meta" style="width:70px;">ছাড়-{{ $product['discount'] }}%</span>
                                             @endif
-                                            <ul class="action">
-                                                {{-- <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li> --}}
+                                            {{-- <ul class="action">
+                                                <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
                                                 <li><a href="javascript:void(0)" class="add-to-card" data-product-id="{{ $product['id'] }}"><i class="flaticon-supermarket"></i></a></li>
                                                 <li><a href="#"><i class="flaticon-witness"></i></a></li>
-                                            </ul>
+                                            </ul> --}}
                                         </div>
                                         <div class="exclusive-item-content">
                                             <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>

@@ -341,8 +341,8 @@
                                         <div class="exclusive-item exclusive-item-three text-center">
                                             <div class="exclusive-item-thumb">
                                                 <a href="{{route('product-details',['id'=>$similarProduct->id])}}">
-                                                    <img @if($similarProduct->ProductImageFirst)src="{{ asset('storage/photo/'.$similarProduct->ProductImageFirst->image) }}"@endif alt="">
-                                                    <img class="overlay-product-thumb" @if($similarProduct->ProductImageLast)src="{{ asset('storage/photo/'.$similarProduct->ProductImageLast->image) }}"@endif alt="">
+                                                    <img @if($similarProduct->ProductImageFirst)src="{{ asset('storage/photo/'.$similarProduct->ProductImageFirst->image) }}"@endif style="height: 190px;" alt="">
+                                                    <img class="overlay-product-thumb" @if($similarProduct->ProductImageLast)src="{{ asset('storage/photo/'.$similarProduct->ProductImageLast->image) }}"@endif style="height: 190px;" alt="">
                                                 </a>
                                                 {{-- <ul class="action">
                                                     <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>

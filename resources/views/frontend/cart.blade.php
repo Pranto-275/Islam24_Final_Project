@@ -47,6 +47,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
+                        {{-- Start Cart --}}
                         <div class="col-lg-8 mb-1" id="">
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
@@ -161,6 +162,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- End Cart --}}
                         <div class="col-lg-4 col-md-8">
                             <aside class="shop-cart-sidebar">
                                 <div class="shop-cart-widget">

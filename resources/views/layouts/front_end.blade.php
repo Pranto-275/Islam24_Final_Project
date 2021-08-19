@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/default.css">
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/style.css">
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/responsive.css">
+
         <style>
             @media only screen and (max-width: 768px) {
                #scrollTop{
@@ -46,7 +47,7 @@
 	background: #ff6000;
 	color: #fff;
 	font-size: 12px;
-    
+
 	line-height: 21px;
 	padding: 0 8px;
 	border-radius: 3px;
@@ -142,6 +143,7 @@
        <br>
 
 		<!-- JS here -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" data-semver="3.3.1" data-require="bootstrap-css" />
         <script src="{{ URL::asset('venam/') }}/js/vendor/jquery-3.5.0.min.js"></script>
         <script src="{{ URL::asset('venam/') }}/js/popper.min.js"></script>
         <script src="{{ URL::asset('venam/') }}/js/bootstrap.min.js"></script>

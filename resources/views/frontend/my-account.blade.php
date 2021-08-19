@@ -48,6 +48,7 @@
                             </center>
                             <div class="card-body pt-0">
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
+                              <div class="card-title text-center">{{ Auth::user()->mobile }}</div>
                               <center>
                               {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>

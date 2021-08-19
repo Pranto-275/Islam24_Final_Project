@@ -179,21 +179,13 @@
                         {{-- End Breaking News --}}
                         {{-- &nbsp;&nbsp; --}}
                     <div class="menu-wrap">
-                        <nav class="menu-nav show">
+                        <nav class="menu-nav show" style="display:inline;">
                             <div class="logo" id="paikaryLogo">
                                 <a href="{{url('/')}}"><img src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif" style="height:39.9px;background-image: cover;" alt="Logo"></a>
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
                                     <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                    {{-- <li><a href="about">About Us</a></li> --}}
-                                    {{-- <li class="dropdown"><a href="#">PAGES</a>
-                                        <ul class="submenu">
-                                            <li><a href="sign-in">My Account</a></li>
-                                            <li><a href="error">404 Page</a></li>
-                                            <li><a href="terms-conditios">Terms and Conditions</a></li>
-                                        </ul>
-                                    </li> --}}
                                     <li><a href="{{route('search-category-wise')}}">Shop</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
