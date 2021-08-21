@@ -7,6 +7,7 @@ use App\Models\Backend\Inventory\SaleInvoice;
 use App\Models\Backend\Setting\PaymentMethod;
 use App\Models\Backend\Inventory\SalePayment;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class CustomerPayment extends Component
@@ -28,6 +29,8 @@ class CustomerPayment extends Component
     public function InvoiceIdSearch($invoice)
     {
       $this->sale_invoice_id=$invoice['id'];
+      $SaleInvoice=SaleInvoice::find($this->sale_invoice_id);
+      $this->total_amount=$SaleInvoice->total_amount;
     }
 
     public function editPayment($id)
@@ -61,7 +64,6 @@ class CustomerPayment extends Component
             'contact_id' => 'required',
             'transaction_id' => 'required',
             'payment_method_id' => 'required',
-            'receipt_no' => 'required',
             'total_amount' => 'required',
         ]);
 
@@ -100,6 +102,7 @@ class CustomerPayment extends Component
             $this->sale_code=request()->search;
         }
         //   dd($this->sale_code);
+        $this->date=date('Y-m-d', time());
     }
 
     public function render()

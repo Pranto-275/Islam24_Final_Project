@@ -12,7 +12,6 @@
         </div>
     </div>
 </footer>
-
 {{-- <div class="col-xl-12 GTFixed">
     <div class="card">
         <div class="card-body">

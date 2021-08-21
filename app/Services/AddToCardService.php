@@ -50,13 +50,14 @@ class AddToCardService extends Controller
             ];
 
             $productCard = AddToCardModel::where(['session_id' => $sessionId,'product_id' => $productId])->with('getProduct')->first();
+
             if ($productCard) {
                 if ($quantity > 1) {
                     $requestQuantity = $quantity;
                 } else {
                     $requestQuantity = ($productCard->quantity + $quantity);
                 }
-
+                //dd($requestQuantity);
                 if(! ($requestQuantity >= $productCard['getProduct']['min_order_qty'])){
                     return [
                         'errorStatus' => true,

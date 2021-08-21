@@ -251,7 +251,7 @@
                     @foreach ($QueryUpdate->ProductImageTop4 as $image)
                         <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
                             <img style="height:30px; weight:30px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
-                            <div class="close text-danger" wire:click="imageDelete({{$image->id}})">
+                            <div class="close text-danger" wire:click="imageDelete({{$image->id}})" style="cursor:pointer;">
                                 <span aria-hidden="true">&times;</span>
                             </div>
                         </div>

@@ -17,13 +17,13 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4 class="card-title">Customer Payment Report</h4>
+                                    <h4 class="card-title">Customer Payment</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <a href="{{route('transaction.customer-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Customer Payment Report</button></a>
+                                <a href="{{route('transaction.customer-payment-report')}}"><button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2">Payment Report</button></a>
                             </div>
                         </div><!-- end col-->
                     </div><hr>
@@ -101,7 +101,7 @@
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Receipt No</label>
                                 <input class="form-control" type="text" wire:model.lazy="receipt_no" placeholder="Receipt No">
-                                 @error('receipt_no') <span class="error">{{ $message }}</span> @enderror
+                                 {{-- @error('receipt_no') <span class="error">{{ $message }}</span> @enderror --}}
                             </div>
                         </div>
 
@@ -139,10 +139,13 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $i=0;
+                                @endphp
                                 @foreach ($payments as $payment)
 
                                 <tr>
-                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">1</a> </td>
+                                    <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a> </td>
                                     <td>{{$payment->code}}</td>
                                     <td>{{$payment->Contact->first_name}} {{$payment->Contact->last_name}}</td>
                                     <td>

@@ -10,6 +10,9 @@ use Livewire\Component;
 
 class SupplierPayment extends Component
 {
+    protected $listeners = [
+        'search' => 'InvoiceIdSearch',
+    ];
     public $contact_id;
     public $date;
     public $purchase_code;
@@ -24,6 +27,8 @@ class SupplierPayment extends Component
     public function InvoiceIdSearch($invoice)
     {
       $this->purchase_invoice_id=$invoice['id'];
+      $PurchaseInvoice=PurchaseInvoice::find($this->purchase_invoice_id);
+      $this->total_amount=$PurchaseInvoice->total_amount;
     }
 
     public function editPayment($id){
@@ -52,7 +57,6 @@ class SupplierPayment extends Component
             'contact_id' => 'required',
             'transaction_id' => 'required',
             'payment_method_id' => 'required',
-            'receipt_no' => 'required',
             'total_amount' => 'required',
         ]);
 
@@ -90,6 +94,7 @@ class SupplierPayment extends Component
             $this->purchase_code=request()->search;
         }
         //   dd($this->sale_code);
+        $this->date=date('Y-m-d', time());
     }
     public function render()
     {

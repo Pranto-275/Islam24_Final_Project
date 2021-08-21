@@ -24,6 +24,7 @@ class Sale extends Component
 {
     public $code;
     public $date;
+    public $sale_payment_date;
     public $contact_id;
     public $product_quantity;
     public $product_sale_price;
@@ -106,7 +107,7 @@ class Sale extends Component
                 $SalePayment = new SalePayment();
             }
 
-            $SalePayment->date = Carbon::now();
+            $SalePayment->date = $value['date'];
             $SalePayment->contact_id = $Query->contact_id;
             $SalePayment->sale_invoice_id = $Query->id;
             $SalePayment->payment_method_id = $value['payment_method_id'];
@@ -163,6 +164,7 @@ class Sale extends Component
         $cartItem = [
             'id' => null,
             'payment_method_id' => $PaymentMethod->id,
+            'date' => $this->sale_payment_date,
             'payment_method_name' => $PaymentMethod->name,
             'payment_amount' => $this->payment_amount,
             'payment_code' => $this->payment_code,
@@ -285,6 +287,8 @@ class Sale extends Component
             $this->paymentMethodList = $cartPayment;
             $this->updateProductCal();
         }
+        $this->date=date('Y-m-d', time());
+        $this->sale_payment_date=date('Y-m-d', time());
     }
     public function updated(){
         if($this->shipping_fee){

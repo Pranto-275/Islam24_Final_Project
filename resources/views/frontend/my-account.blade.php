@@ -31,7 +31,7 @@
                          {{-- Start First Card --}}
                         <div class="card shadow-sm mb-3">
                             <center>
-                            <img class="card-img-top rounded-circle mt-1" src="{{ asset('images/'.Auth::user()->profile_photo_path) }}" style="width:100px;height:100px;" alt="Profile Photo">
+                            <img id="imagePreview" class="card-img-top rounded-circle mt-1" src="{{ asset('images/'.Auth::user()->profile_photo_path) }}" style="width:100px;height:100px;" alt="Profile Photo">
                             {{-- Start Profile Photo Change --}}
                             <form enctype="multipart/form-data" id="profile_photo_path" action="{{ route('change-profile-photo') }}" method="POST">
                                 @csrf
@@ -48,6 +48,7 @@
                             </center>
                             <div class="card-body pt-0">
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
+                              <div class="card-title text-center">{{ Auth::user()->mobile }}</div>
                               <center>
                               {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>
@@ -180,7 +181,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <input name="oldpassword" id="oldpassword" type="text" class="form-control" placeholder="Old Password" required/>
+                                            <input name="oldpassword" id="oldpassword" type="password" class="form-control" placeholder="Old Password" required/>
                                         </div>
                                         <div class="col-md-6 mt-2">
                                             <input name="newpassword" id="newpassword" type="password" class="form-control" placeholder="New Password" required/>
@@ -281,19 +282,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-//   $("#file-input").click(function(){
-//     let profile=$(this).val();
-//     $.ajax({
-//     url: '{{ url('change-profile-photo') }}',
-//     type: 'POST',
-//     data: profile,
-//     cache: false,
-//     success: function(data) {
-//       console.log(profile);
-//     },
-//   });
-//   });
-// $("#file-input").click(function(){
+    // Start Image Image Preview
+    $('#file-input').change(function(){
+
+            let reader = new FileReader();
+
+            reader.onload = (e) => {
+
+              $('#imagePreview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(this.files[0]);
+
+    });
+    // End Image Preview
   $('#profile_photo_path').ajaxForm({
 			beforeSend: formBeforeSend,
 			beforeSubmit: formBeforeSubmit,
@@ -305,7 +307,6 @@ $(document).ready(function(){
 			clearForm: true,
 			resetForm: true
   });
-//   });
 });
 $( "#profile_photo_path" ).change(function() {
     $("#profile-submit-button").css("display", "block");

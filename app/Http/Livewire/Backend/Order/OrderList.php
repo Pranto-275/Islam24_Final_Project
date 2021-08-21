@@ -23,6 +23,7 @@ class OrderList extends Component
              $order=Order::find($id);
              $saleInvoice=SaleInvoice::whereOrderId($order->id)->firstOrNew();
              $saleInvoice->order_id=$order->id;
+             $saleInvoice->code='SI'.floor(time() - 999999999);
              $saleInvoice->contact_id=$order->contact_id;
              $saleInvoice->sale_date=Carbon::now();
              $saleInvoice->total_amount	=$order->total_amount;

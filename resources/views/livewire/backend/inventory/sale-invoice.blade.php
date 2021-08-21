@@ -9,7 +9,7 @@
                                         Date: {{$SaleInvoice->sale_date}}
                                     </h4>
                                     <div class="mb-4">
-                                        <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="border-radius: 50%;height:40px;width:40px;"/>
+                                        <img src="@if($InvoiceSetting) {{ asset('storage/photo/'.$InvoiceSetting->logo)}}@endif" alt="logo" style="height:40px;"/>
                                     </div>
                                 </div>
                                 <hr>
@@ -89,28 +89,67 @@
                                                 {{$subTotal}}
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td colspan="4" class="border-0 text-right">
+                                        <tr >
+                                            <td rowspan="3" colspan="3" style="border: none;">
+                                                {{-- Start Payment Method --}}
+                                                <center>
+                                                <table class="table-info">
+                                                    <thead>
+                                                        <tr>
+                                                          <th>Method</th>
+                                                          <th>Date</th>
+                                                          <th>Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($SaleInvoice->SalePayment as $SalePayment)
+                                                        <tr>
+                                                           <td>{{$SalePayment->PaymentMethod->name}}</td>
+                                                           <td>{{$SalePayment->date}}</td>
+                                                           <td>
+                                                            @if($currencySymbol)
+                                                               {{ $currencySymbol->symbol }}
+                                                            @endif
+                                                               {{$SalePayment->total_amount}}
+                                                           </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                                </center>
+                                                {{-- End Payment Method --}}
+                                            </td>
+                                            <td colspan="1" class="border-0 text-right">
                                                 <strong>Discount</strong></td>
                                             <td class="border-0 text-right">
                                                 @if($currencySymbol)
                                                     {{ $currencySymbol->symbol }}
                                                 @endif
-                                                {{$SaleInvoice->discount}}
+                                                @if($SaleInvoice->discount)
+                                                     {{$SaleInvoice->discount}}
+                                                @else
+                                                0
+                                                @endif
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" class="border-0 text-right">
+                                            {{-- <td colspan="3"></td> --}}
+                                            <td colspan="1" class="border-0 text-right">
                                                 <strong>Shipping</strong></td>
                                             <td class="border-0 text-right">
                                                 @if($currencySymbol)
                                                    {{ $currencySymbol->symbol }}
                                                 @endif
-                                                {{$SaleInvoice->shipping_charge}}
+                                                @if($SaleInvoice->shipping_charge)
+                                                   {{$SaleInvoice->shipping_charge}}
+                                                   @else
+                                                   0
+                                                   @endif
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="4" class="border-0 text-right">
+                                            {{-- <td colspan="3"></td> --}}
+                                            <td colspan="1" class="border-0 text-right">
                                                 <strong>Total</strong></td>
                                             <td class="border-0 text-right">
                                                 <h4 class="m-0">
@@ -124,8 +163,13 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="d-print-none">
-                                    <div class="float-right">
+                                <div>
+                                    <div class="float-left p-1">
+                                        @if($InvoiceSetting)
+                                           {!!$InvoiceSetting->invoice_footer!!}
+                                        @endif
+                                    </div>
+                                    <div class="float-right d-print-none">
                                         <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light mr-1"><i class="fa fa-print"></i></a>
                                     </div>
                                 </div>
