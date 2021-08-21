@@ -160,7 +160,7 @@
                         @php
                             $check=count($topCategories);
                             $p=0;
-                            $count=($check/4)+1;
+                            $count=($check/4);
                         @endphp
                         @while($count>0)
                         <div class="carousel-item">
