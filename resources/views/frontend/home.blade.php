@@ -154,16 +154,37 @@
                           </div>
                         </div>
 
-                        @if(count($topCategories)!=0)
+                         @if(count($topCategories)!=0)
+                        @php
+                            $check=count($topCategories);
+                            $p=0;
+                            $count=($check/4)+1;
+                        @endphp
+                        @while($count!=0)
                         <div class="carousel-item">
                           <div class="row">
-                            @foreach ($topCategories as $topCategory)
+                              @php
+                                  $flag=0;
+                              @endphp
+                            @foreach ($topCategories->skip($p) as $topCategory)
+                            @if($flag<3)
+                            @php
+                                $p++;
+                            @endphp
+                            @endif
                             <div class="col-3">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
                             </div>
+                            @php
+                                $flag++;
+                            @endphp
                             @endforeach
                           </div>
                         </div>
+                        @php
+                           $count--;
+                        @endphp
+                        @endwhile
                         @endif
 
                       </div>
