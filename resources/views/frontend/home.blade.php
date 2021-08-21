@@ -139,7 +139,7 @@
             <!-- slider-area-end -->
             <section class="exclusive-collection pt-20 pb-55">
                 {{-- Start Top Category Show Slider --}}
-                <h5 class="text-center">Top Categories</h5>
+                <h5 class="text-center">Top Categories1</h5>
                 <hr class="mt-0 pt-0">
                 <div class="container">
                     <div class="carousel slide" data-ride="carousel" id="multi_item">
