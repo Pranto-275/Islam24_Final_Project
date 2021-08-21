@@ -14,7 +14,7 @@ class CreateSaleInvoicesTable extends Migration
     public function up()
     {
         Schema::create('sale_invoices', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('code', 191);
             $table->foreignId('order_id')->nullable();
             $table->foreignId('contact_id')->nullable();

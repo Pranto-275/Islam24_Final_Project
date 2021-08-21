@@ -71,9 +71,11 @@ use App\Http\Livewire\Frontend\Customer;
 use App\Http\Livewire\Frontend\Error;
 use App\Http\Livewire\Frontend\MyProfile;
 use App\Http\Livewire\Frontend\PrivacyPolicy;
+use App\Http\Livewire\Frontend\ReturnPolicy;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Frontend\SignIn;
 use App\Http\Livewire\Frontend\SignUp;
+use App\Http\Livewire\Frontend\LogIn;
 use App\Http\Livewire\Frontend\TermsConditios;
 use App\Http\Livewire\Frontend\Wishlist;
 use App\Http\Livewire\Inventory\DelieveryMethod;
@@ -107,8 +109,9 @@ Route::group(['prefix' => 'customer'], function () {
     Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
     Route::get('product_view/{id?}', ProductView::class)->name('product_view');
 });
-Route::get('privacy-policy', PrivacyPolicy::class)->name('privacy-policy');
 
+
+Route::get('privacy-policy',PrivacyPolicy::class)->name('privacy-policy');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/customer-login', [HomeController::class, 'CustomerLogin'])->name('customer-login');
@@ -130,11 +133,13 @@ Route::get('my-account', [HomeController::class, 'MyAccount'])->name('my-account
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
 Route::get('sign-up', SignUp::class)->name('sign-up');
+Route::get('log-in',LogIn::class)->name('log-in');
 //Route::get('cart', Cart::class)->name('cart');
 //Route::get('check-out', Checkout::class)->name('check-out');
 Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
 Route::get('my-profile', MyProfile::class)->name('my-profile');
+Route::get('return-policy', ReturnPolicy::class)->name('return-policy');
 
 Route::get('about', AboutUs::class)->name('about');
 Route::get('error', Error::class)->name('error');
