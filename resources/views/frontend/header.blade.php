@@ -281,8 +281,8 @@
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>Categories</a>
-                        <ul class="category-menu">
-                            @foreach ($categories as $category)
+                        <ul class="category-menu" style="z-index: 3;">
+                        @foreach ($categories as $category)
                             <li class="has-dropdown">
                                 <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
                                     <div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}"

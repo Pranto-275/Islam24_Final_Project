@@ -139,7 +139,9 @@
             <!-- slider-area-end -->
             <section class="exclusive-collection pt-20 pb-55">
                 {{-- Start Top Category Show Slider --}}
-                <h5 class="text-center">Top Categories</h5>
+                @if(count($topFourCategories)>0)
+                  <h5 class="text-center">Top Categories</h5>
+                @endif
                 <hr class="mt-0 pt-0">
                 <div class="container">
                     <div class="carousel slide" data-ride="carousel" id="multi_item">
@@ -158,23 +160,24 @@
                         @php
                             $check=count($topCategories);
                             $p=0;
-                            $count=($check/4)+1;
+                            $count=($check/4);
                         @endphp
-                        @while($count!=0)
+                        @while($count>0)
                         <div class="carousel-item">
                           <div class="row">
                               @php
                                   $flag=0;
                               @endphp
                             @foreach ($topCategories->skip($p) as $topCategory)
-                            @if($flag<3)
+                            @if($flag<4)
                             @php
                                 $p++;
                             @endphp
-                            @endif
                             <div class="col-3">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
                             </div>
+                            @endif
+
                             @php
                                 $flag++;
                             @endphp
