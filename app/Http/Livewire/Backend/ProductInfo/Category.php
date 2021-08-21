@@ -82,7 +82,8 @@ class Category extends Component
             $path = $this->image2->store('/public/photo');
             $Query->image2 = basename($path);
         }
-        $Query->branch_id = Auth::user()->branch_id;
+        // $Query->branch_id = Auth::user()->branch_id;
+        $Query->branch_id = 1;
         $Query->is_active = $this->is_active;
         if ($this->top_show) {
             $Query->top_show = 1;
