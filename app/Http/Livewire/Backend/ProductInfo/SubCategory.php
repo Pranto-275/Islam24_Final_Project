@@ -71,6 +71,7 @@ class SubCategory extends Component
         ]);
     }
     public function SubCategoryModal(){
+        
         $this->code = 'SC'.floor(time() - 999999999);
         $this->emit('modal','SubCategoryModal');
     }
