@@ -169,14 +169,15 @@
                                   $flag=0;
                               @endphp
                             @foreach ($topCategories->skip($p) as $topCategory)
-                            @if($flag<3)
+                            @if($flag<4)
                             @php
                                 $p++;
                             @endphp
-                            @endif
                             <div class="col-3">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
                             </div>
+                            @endif
+
                             @php
                                 $flag++;
                             @endphp
