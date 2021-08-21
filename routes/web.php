@@ -69,6 +69,7 @@ use App\Http\Livewire\Frontend\Customer;
 use App\Http\Livewire\Frontend\Error;
 use App\Http\Livewire\Frontend\Myprofile;
 use App\Http\Livewire\Frontend\OrderCompleted;
+use App\Http\Livewire\Frontend\OrderTrack;
 use App\Http\Livewire\Frontend\PrivacyPolicy;
 use App\Http\Livewire\Frontend\ProductView;
 use App\Http\Livewire\Frontend\SignIn;
@@ -136,6 +137,7 @@ Route::get('log-in',LogIn::class)->name('log-in');
 Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
 Route::get('my-profile', MyProfile::class)->name('my-profile');
+Route::get('order-track', OrderTrack::class)->name('order-track');
 
 Route::get('about', AboutUs::class)->name('about');
 Route::get('error', Error::class)->name('error');

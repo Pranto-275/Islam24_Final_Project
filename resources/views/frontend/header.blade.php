@@ -10,13 +10,16 @@
                                 <div class="ship-to">
                                     <span>Language</span>
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <img src="img/icon/bng.png" alt=""> BANGLA
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#"><img src="{{ URL::asset('venam/') }}/img/icon/bng.png" alt="">BANGLA</a>
-                                            <a class="dropdown-item" href="#"><img src="{{ URL::asset('venam/') }}/img/icon/australia.png" alt="">ENGLISH</a>
+                                            <a class="dropdown-item" href="#"><img
+                                                    src="{{ URL::asset('venam/') }}/img/icon/bng.png" alt="">BANGLA</a>
+                                            <a class="dropdown-item" href="#"><img
+                                                    src="{{ URL::asset('venam/') }}/img/icon/australia.png"
+                                                    alt="">ENGLISH</a>
                                         </div>
                                     </div>
                                 </div>
@@ -24,8 +27,7 @@
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
-                                        <button
-                                            aria-haspopup="true" aria-expanded="false">
+                                        <button aria-haspopup="true" aria-expanded="false">
                                             অর্ডার করার নিয়ম
                                         </button>
                                     </div>
@@ -34,10 +36,11 @@
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
-                                        <button
-                                            aria-haspopup="true" aria-expanded="false">
-                                            অর্ডার ট্র্যাক করুন
-                                        </button>
+                                        <a href="{{route('order-track')}}">
+                                            <button aria-haspopup="true" aria-expanded="false">
+                                                অর্ডার ট্র্যাক করুন
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                             </li>
@@ -54,16 +57,21 @@
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false" style="background-color: #f8f9fa; color: black;border: none;color: rgb(12, 6, 6);padding: 7px 16px; text-align: center;text-decoration: none;font-size: 14px;cursor: pointer;">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton3"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            style="background-color: #f8f9fa; color: black;border: none;color: rgb(12, 6, 6);padding: 7px 16px; text-align: center;text-decoration: none;font-size: 14px;cursor: pointer;">
                                             {{Auth::user()->name}}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
                                             <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
-                                            <a class="log-out-btn dropdown-item text-danger" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Sign Out </a>
+                                            <a class="log-out-btn dropdown-item text-danger" href="#"
+                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                                    class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
+                                                Sign Out </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    {{ csrf_field() }}
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                {{ csrf_field() }}
                                             </form>
                                         </div>
                                     </div>
@@ -95,23 +103,30 @@
             <div class="row">
                 <div class="col-12" id="responsive-header">
                     <div class="mobile-nav-toggler float-left mt-1"><i class="fas fa-bars"></i>&nbsp;</div>
-                       {{-- Start Mobile Responsive Search Box --}}
-                       <form action="{{ route('product-search') }}" method="GET">
+                    {{-- Start Mobile Responsive Search Box --}}
+                    <form action="{{ route('product-search') }}" method="GET">
                         <center>
                             <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
-                                <input type="text" class="form-control mb-2" name="search_product_category" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
+                                <input type="text" class="form-control mb-2" name="search_product_category"
+                                    id="search_product_category" style="border-radius: 30px 0px 0px 30px;"
+                                    aria-label="Text input with dropdown button" placeholder="Search..">
                                 <div class="input-group-append">
-                                    <select class="custom-select mb-2" name="search_product_category" id="search_product_category" style="width:110px;">
-                                        <option selected="" value="" >Category</option>
+                                    <select class="custom-select mb-2" name="search_product_category"
+                                        id="search_product_category" style="width:110px;">
+                                        <option selected="" value="">Category</option>
                                         @foreach ($categories as $category)
-                                            <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
+                                        <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        </a>
                                         @endforeach
                                         <option>In All Categories</option>
                                     </select>
                                 </div>
                                 <div class="input-group-append mb-2" style="width: 20px;">
-                                    <button type="submit" style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i class="fa fa-search text-light"></i></button>
-                                  {{-- <div class="dropdown-menu">
+                                    <button type="submit"
+                                        style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
+                                            class="fa fa-search text-light"></i></button>
+                                    {{-- <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Action</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
@@ -121,13 +136,15 @@
                                 </div>
                             </div>
                         </center>
-                       </form>
-                        {{-- End Mobile Responsive Search Box --}}
-                        {{-- &nbsp;&nbsp; --}}
+                    </form>
+                    {{-- End Mobile Responsive Search Box --}}
+                    {{-- &nbsp;&nbsp; --}}
                     <div class="menu-wrap">
                         <nav class="menu-nav show">
                             <div class="logo" id="paikaryLogo">
-                                <a href="{{url('/')}}"><img src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif" style="height:39.9px;background-image: cover;" alt="Logo"></a>
+                                <a href="{{url('/')}}"><img
+                                        src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif"
+                                        style="height:39.9px;background-image: cover;" alt="Logo"></a>
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
@@ -155,18 +172,20 @@
 
                                     <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
-                                    <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
+                                    <li class="header-shop-cart"><a href="#"><i class="flaticon-shopping-bag"></i><span
+                                                class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
                                         <span class="cart-total-price" style="width: 120px;">
                                             @if($currencySymbol)
-                                                {{ $currencySymbol->symbol }}
+                                            {{ $currencySymbol->symbol }}
                                             @endif
-                                             {{ $cardBadge['data']['total_price'] }}
+                                            {{ $cardBadge['data']['total_price'] }}
                                         </span>
                                         <ul class="minicart">
                                             @include('frontend.header-card-popup')
                                         </ul>
                                     </li>
-                                     {{-- <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account</li> --}}
+                                    {{-- <li><a href="{{route('my-profile')}}"><i class="fas fa-user"></i></a>My account
+                                    </li> --}}
                                 </ul>
                             </div>
 
@@ -180,7 +199,8 @@
                         <nav class="menu-box">
                             <div class="nav-logo">
                                 <a href="{{url('/')}}">
-                                    <img src="@if($companyInfo) {{'storage/photo/'.$companyInfo->logo}} @endif" style="height:39.9px;background-image: cover;" alt="Logo">
+                                    <img src="@if($companyInfo) {{'storage/photo/'.$companyInfo->logo}} @endif"
+                                        style="height:39.9px;background-image: cover;" alt="Logo">
                                 </a>
                             </div>
                             <div class="menu-outer">
@@ -212,31 +232,48 @@
                     <div class="header-category d-none d-lg-block">
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>Categories</a>
                         <ul class="category-menu">
-                        @foreach ($categories as $category)
+                            @foreach ($categories as $category)
                             <li class="has-dropdown">
                                 <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
-                                    <div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}" alt="" style="width:35px;height:35px;"></div>
+                                    <div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}"
+                                            alt="" style="width:35px;height:35px;"></div>
                                     {{$category->name}}
                                 </a>
                                 <ul class="mega-menu">
                                     @foreach ($category->SubCategory as $subCategory)
                                     <li>
                                         <ul>
-                                            <li class="dropdown-title"><a href="{{ route('search-subCategory-wise',['id'=>$subCategory->id]) }}">{{ $subCategory->name }}</a></li>
+                                            <li class="dropdown-title"><a
+                                                    href="{{ route('search-subCategory-wise',['id'=>$subCategory->id]) }}">{{ $subCategory->name }}</a>
+                                            </li>
                                             @foreach ($subCategory->SubSubCategory as $subSubCategory)
-                                            <li><a href="{{ route('search-subSubCategory-wise',['id'=>$subSubCategory->id]) }}">{{$subSubCategory->name}}</a></li>
+                                            <li><a
+                                                    href="{{ route('search-subSubCategory-wise',['id'=>$subSubCategory->id]) }}">{{$subSubCategory->name}}</a>
+                                            </li>
                                             @endforeach
                                         </ul>
                                     </li>
                                     @endforeach
                                 </ul>
                             </li>
-                        @endforeach
+                            @endforeach
                             <li>
                                 <ul class="more_slide_open">
-                                    <li><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img01.png" alt=""></div> Western woman</a></li>
-                                    <li><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img02.png" alt=""></div> Health Product</a></li>
-                                    <li><a href="#"><div class="cat-menu-img"><img src="{{ URL::asset('venam/') }}/img/product/category_menu_img03.png" alt=""></div> Industrial Product</a></li>
+                                    <li><a href="#">
+                                            <div class="cat-menu-img"><img
+                                                    src="{{ URL::asset('venam/') }}/img/product/category_menu_img01.png"
+                                                    alt=""></div> Western woman
+                                        </a></li>
+                                    <li><a href="#">
+                                            <div class="cat-menu-img"><img
+                                                    src="{{ URL::asset('venam/') }}/img/product/category_menu_img02.png"
+                                                    alt=""></div> Health Product
+                                        </a></li>
+                                    <li><a href="#">
+                                            <div class="cat-menu-img"><img
+                                                    src="{{ URL::asset('venam/') }}/img/product/category_menu_img03.png"
+                                                    alt=""></div> Industrial Product
+                                        </a></li>
                                 </ul>
                             </li>
                             <li class="more_categories">More Categories<i class="fas fa-angle-down"></i></li>
@@ -247,15 +284,20 @@
                     <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
                         <div class="header-search-wrap">
                             <form action="{{ route('product-search') }}" method="GET">
-                                <input type="text" name="search_product_name" id="search_product_name" placeholder="Search for your item's type.....">
-                                <select class="custom-select" name="search_product_category" id="search_product_category">
+                                <input type="text" name="search_product_name" id="search_product_name"
+                                    placeholder="Search for your item's type.....">
+                                <select class="custom-select" name="search_product_category"
+                                    id="search_product_category">
                                     <option selected="" value="">All Categories</option>
                                     @foreach ($categories as $category)
-                                        <a href="{{ route('search-category-wise',['id'=>$category->id]) }}"><option value="{{$category->id}}">{{$category->name}}</option></a>
+                                    <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    </a>
                                     @endforeach
                                     <option>In All Categories</option>
                                 </select>
-                                <button type="submit" id="btn-product-search"><i class="flaticon-magnifying-glass-1"></i></button>
+                                <button type="submit" id="btn-product-search"><i
+                                        class="flaticon-magnifying-glass-1"></i></button>
                             </form>
                         </div>
                         <div class="header-free-shopping">
