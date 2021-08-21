@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace App\Http\Controllers\FrontEnt;
-
 use App\Http\Controllers\Controller;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ProductInfo\Product;

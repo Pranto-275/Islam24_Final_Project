@@ -41,7 +41,7 @@
                         <div class="fw-link">
                             <ul>
                                 <li><a href="#">Help Center</a></li>
-                                <li><a href="#">Returns</a></li>
+                                <li><a href="{{route('return-policy')}}">Returns policy</a></li>
                                 <li><a href="#">Product Recalls</a></li>
                                 <li><a href="#">Accessibility</a></li>
                                 <li><a href="{{route('contact-us')}}">Contact Us</a></li>
