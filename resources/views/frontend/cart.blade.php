@@ -66,7 +66,10 @@
                                         <tbody>
                                         @foreach($cardBadge['data']['products'] as $productId => $product)
                                             <tr id="row_{{ $productId }}">
-                                                <td class="product-thumbnail"><a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
+                                                <td class="product-thumbnail"><a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1"></i></a>
+                                                    <a href="shop-details.html">
+                                                       <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" style="width:103px;129px;" alt="">
+                                                    </a>
                                                 </td>
                                                 <td class="product-name">
                                                     <h4><a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a></h4>

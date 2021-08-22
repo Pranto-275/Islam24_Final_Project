@@ -185,7 +185,7 @@
                         <div class="form-group">
                             <label for="min_order_qty">Minimum Order Quantity</label>
                             <input id="min_order_qty" type="number" step="any" class="form-control"
-                                wire:model.lazy="min_order_qty" placeholder="Opening Stock">
+                                wire:model.lazy="min_order_qty" placeholder="Minimum Order Quantity">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Warehouse</label>

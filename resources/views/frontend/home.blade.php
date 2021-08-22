@@ -150,7 +150,12 @@
                           <div class="row">
                         @foreach ($topFourCategories as $topFourCategory)
                             <div class="col-3">
+                                <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
                                 <img class="d-block w-100" src="{{ asset('storage/photo/'.$topFourCategory->image1) }}" alt="{{$topFourCategory->id}}">
+                                <div class="text-center bg-dark text-light">
+                                    {{$topFourCategory->name}}
+                                </div>
+                               </a>
                             </div>
                         @endforeach
                           </div>
@@ -174,7 +179,12 @@
                                 $p++;
                             @endphp
                             <div class="col-3">
+                                 <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
+                                 <div class="text-center bg-dark text-light">
+                                    {{$topFourCategory->name}}
+                                </div>
+                                </a>
                             </div>
                             @endif
 
@@ -234,7 +244,15 @@
                                             </ul> --}}
                                         </div>
                                         <div class="exclusive-item-content">
-                                            <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
+                                            <h5>
+                                                <a href="shop-details.html" style="text-transform: capitalize;">
+                                                @if(strlen($product['name'])>20)
+                                                      {{ substr($product['name'], 0,19).'...' }}
+                                                @else
+                                                      {{ $product['name'] }}
+                                                @endif
+                                                </a>
+                                            </h5>
                                             <div class="exclusive--item--price">
                                                 <del class="old-price">
                                                     @if($currencySymbol)
@@ -281,7 +299,7 @@
                                 </div>
                             @endforeach
                         @else
-                            <div class="col-md-12">
+                            <div class="col-md-12"> 
                                 <div class="alert alert-info text-center"> Op's there is no products </div>
                             </div>
                         @endif
@@ -309,7 +327,7 @@
                                         <div class="col-8">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <span id="mobile-modal-product-name">Kali Baush Fish-Small-1Kg-3101596 </span><br>
+                                                    <span id="mobile-modal-product-name"></span><br>
                                                     @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
                                                     @endif
@@ -343,12 +361,12 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <center>
-                                                <a class="cart-button cart-button1 mobile-modal-add-to-card">Add To Cart</a>
+                                                <a id="addToCart" class="cart-button cart-button1 mobile-modal-add-to-card">Add To Cart</a>
                                             </center>
                                         </div>
                                         <div class="col-6">
                                             <center>
-                                                <a class="cart-button cart-button2">Checkout</a>
+                                                <a href="{{ route('check-out') }}" class="cart-button cart-button2">Checkout</a>
                                             </center>
                                         </div>
                                     </div>
@@ -386,7 +404,16 @@
                                             </ul> --}}
                                         </div>
                                         <div class="exclusive-item-content">
-                                            <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
+                                            <h5>
+                                                <a href="shop-details.html" style="text-transform: capitalize;">
+
+                                                    @if(strlen($product['name'])>20)
+                                                      {{ substr($product['name'], 0,19).'...' }}
+                                                    @else
+                                                      {{ $product['name'] }}
+                                                    @endif
+                                                </a>
+                                            </h5>
                                             <div class="exclusive--item--price">
                                                 <del class="old-price">
                                                     @if($currencySymbol)
@@ -546,7 +573,9 @@
         </li>
     </div>--}}
     <script>
-
+      $("#addToCart").on("click", function (event) {
+      $('.modal').modal('hide');
+      });
     </script>
     <style>
         .col-6 {

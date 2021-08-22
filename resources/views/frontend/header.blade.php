@@ -313,7 +313,12 @@
                             </form>
                         </div>
                         <div class="header-free-shopping">
-                            <p>Free Shipping on Orders <span>$39+</span></p>
+                            <p>Free Shipping on Orders
+                                @if($currencySymbol)
+                                    {{ $currencySymbol->symbol }}
+                                @endif
+                                39
+                            </p>
                         </div>
                     </div>
                 </div>
