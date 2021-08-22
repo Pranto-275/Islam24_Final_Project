@@ -159,16 +159,16 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="product-desc-wrap mb-100">
-                                {{-- <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
+                                <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
                                            aria-selected="true">Product Details</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="val-tab" data-toggle="tab" href="#val" role="tab" aria-controls="val"
-                                           aria-selected="false">Viewers Also Like</a>
+                                           aria-selected="false">Return Policy</a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a class="nav-link" id="looks-tab" data-toggle="tab" href="#looks" role="tab" aria-controls="looks"
                                            aria-selected="false">Looks</a>
                                     </li>
@@ -179,8 +179,8 @@
                                     <li class="nav-item">
                                         <a class="nav-link" id="qa-tab" data-toggle="tab" href="#qa" role="tab" aria-controls="qa"
                                            aria-selected="false">Q&A</a>
-                                    </li>
-                                </ul> --}}
+                                    </li> --}}
+                                </ul>
                                 <hr>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
@@ -218,25 +218,25 @@
                                     </div>
                                     <div class="tab-pane fade" id="val" role="tabpanel" aria-labelledby="val-tab">
                                         <div class="product-desc-content">
-                                            <h4 class="title">Product Details</h4>
+                                            <h4 class="title">Return Policy</h4>
                                             <div class="row">
-                                                <div class="col-xl-3 col-md-4">
+                                                {{-- <div class="col-xl-3 col-md-4">
                                                     <div class="product-desc-img">
                                                         <img src="{{ URL::asset('venam/') }}/img/product/desc_img.jpg" alt="">
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-9 col-md-8">
-                                                    <h5 class="small-title">The Christina Fashion</h5>
+                                                </div> --}}
+                                                <div class="col-xl-12 col-md-12">
+                                                    {{-- <h5 class="small-title">The Christina Fashion</h5>
                                                     <p>Cramond Leopard & Pythong Print Anorak Jacket In Beige but also the leap into electronic typesetting, remaining Lorem
                                                         Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-                                                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                        text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> --}}
                                                     <ul class="product-desc-list">
-                                                        <li>65% poly, 35% rayon</li>
-                                                        <li>Hand wash cold</li>
+                                                        <li>  {!! $companyInfo->return_policy !!}</li>
+                                                        {{-- <li>Hand wash cold</li>
                                                         <li>Partially lined</li>
                                                         <li>Hidden front button closure with keyhole accents</li>
                                                         <li>Button cuff sleeves</li>
-                                                        <li>Made in USA</li>
+                                                        <li>Made in USA</li> --}}
                                                     </ul>
                                                 </div>
                                             </div>
