@@ -27,6 +27,7 @@ class CreateCompanyInfosTable extends Migration
             $table->text('youtube_link')->nullable();
             $table->text('privacy_policy')->nullable();
             $table->text('terms_condition')->nullable();
+            $table->text('return_policy')->nullable();
             $table->foreignId('branch_id');
             $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);

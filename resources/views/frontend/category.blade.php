@@ -10,7 +10,6 @@
     </x-slot>
         <!-- main-area -->
         <main>
-
             <!-- breadcrumb-area -->
             <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
                 <div class="container">

@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Image 1 (517.38*492 jpg)</label>
+                                    <label class="control-label">Image 1 (221*179 jpg)</label>
                                     <div class="custom-file">
                                         {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
@@ -89,7 +89,7 @@
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="control-label">Image 2 (517.38*492 jpg)</label>
+                                    <label class="control-label">Image 2 (221*179 jpg)</label>
                                     <div class="custom-file">
                                         {{-- <input type="file" wire:model.lazy="image" class="custom-file-input" id="customFile"> --}}
 
