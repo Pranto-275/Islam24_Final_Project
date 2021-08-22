@@ -10,8 +10,6 @@
     </x-slot>
 
     <main>
-
-
         <!-- checkout-area -->
         <section class="checkout-area pt-50 pb-100">
             <div class="container">
@@ -64,26 +62,31 @@
                             <div class="shop-cart-widget">
                                 <h6 class="title">Cart Totals</h6>
                                     <ul>
-                                        <li><span>SUBTOTAL</span> $ 136.00</li>
+                                        <li><span>SUBTOTAL</span> {{ $cardBadge['data']['total_price'] }}</li>
                                         <li>
                                             <span>SHIPPING</span>
                                             <div class="shop-check-wrap">
                                                 @if($shipping_charge)
                                                 @foreach ($shipping_charge as $shippingCharge )
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">{{$shippingCharge->title}}: {{$shippingCharge->shipping_fee}}</label>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="shipping_charge" class="shipping-charge" required id="customCheck_" value="{{$shippingCharge->shipping_fee}}">{{$shippingCharge->title}}: {{$shippingCharge->shipping_fee}}
+                                                    {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
+                                                    <label class="custom-control-label" for="customCheck1">{{$shippingCharge->title}}: {{$shippingCharge->shipping_fee}}</label>--}}
                                                 </div>
                                                 @endforeach
                                                 @else
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" name="shipping_charge" class="shipping-charge" id="customCheck_" value="0" checked> FREE SHIPPING
+                                                    {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
+                                                    <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>--}}
                                                 </div>
                                                 @endif
                                             </div>
                                         </li>
-                                        <li class="cart-total-amount"><span>TOTAL</span> <span class="amount">$ 151.00</span></li>
+                                        <li class="cart-total-amount"><span>TOTAL</span>
+                                            <input type="hidden" name="check_out_total_amount" class="check-out-total-amount" value="{{ $cardBadge['data']['total_price'] }}">
+                                            <span class="amount check-out-total-amount" >{{ $cardBadge['data']['total_price'] }}</span>
+                                        </li>
                                     </ul>
                                     <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
@@ -200,6 +203,19 @@
     <!-- end row -->
 
 </div>
+<script>
+    $(document).ready(function (){
+        $('.shipping-charge').on('change', function (){
+            var subTotal = {{ $cardBadge['data']['total_price'] }}
+            var shippingCharge = 0;
+            if( $(this).is(":checked") ){
+                shippingCharge = parseFloat($(this).val());
+            }
+            $(".check-out-total-amount").html(shippingCharge+subTotal)
+            $(".check-out-total-amount").val(shippingCharge+subTotal)
+        })
+    })
+</script>
 @endsection
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -259,6 +275,7 @@ headers: {
 			clearForm: true,
 			resetForm: true
 		});
+
 
 	});
 </script>

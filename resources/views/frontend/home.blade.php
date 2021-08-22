@@ -320,7 +320,7 @@
                                 @if($currencySymbol)
                                       {{ $currencySymbol->symbol }}
                                   @endif
-                                <span class="mobile-modal-product-price cart-total-price"></span>
+                                <span class="mobile-modal-product-price"></span>
                               </span>
                                                 </div>
                                                 <div class="col-8 text-center">
