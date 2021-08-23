@@ -27,7 +27,7 @@
                                     <div class="navbar-header">
                                         <button type="button" id="show-verticalmenu" data-toggle="collapse" class="navbar-toggle">
                                             <i class="fa fa-bars"></i>
-                                            <span>  All Categories1     </span>
+                                            <span>  All Categories     </span>
                                         </button>
                                     </div>
                                     <div class="vertical-wrapper" >

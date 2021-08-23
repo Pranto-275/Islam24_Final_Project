@@ -82,7 +82,15 @@
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                         </div> --}}
-                                                        <h5><a href="{{route('product-details',['id'=>$newProduct['id']])}}" style="text-transform: capitalize;">{{$newProduct->name}}</a></h5>
+                                                        <h5>
+                                                            <a href="{{route('product-details',['id'=>$newProduct['id']])}}" style="text-transform: capitalize;">
+                                                                @if(strlen($newProduct->name)>20)
+                                                                  {{ substr($newProduct->name, 0,19).'...' }}
+                                                                @else
+                                                                  {{ $newProduct->name }}
+                                                                @endif
+                                                            </a>
+                                                        </h5>
                                                         <span>
                                                             @if($currencySymbol)
                                                                {{ $currencySymbol->symbol }}
@@ -235,7 +243,15 @@
                                             </ul> --}}
                                         </div>
                                         <div class="exclusive-item-content">
-                                            <h5><a href="{{route('product-details',['id'=>$product['id']])}}">{{ $product['name'] }}</a></h5>
+                                            <h5>
+                                                <a href="{{route('product-details',['id'=>$product['id']])}}">
+                                                    @if(strlen($product['name'])>40)
+                                                        {{ substr($product['name'], 0,19).'...' }}
+                                                    @else
+                                                        {{ $product['name'] }}
+                                                    @endif
+                                                </a>
+                                            </h5>
                                             <div class="exclusive--item--price">
                                                 @if($currencySymbol)
                                                      {{ $currencySymbol->symbol }}
@@ -257,7 +273,16 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
                                             </div> --}}
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                            @php
+                                            $minimumQuantity = $product['min_order_qty'];
+                                            $orderQuantity = 0;
+                                            if(isset($cardBadge['data']['products'][$product['id']])) {
+                                                $minimumQuantity = $cardBadge['data']['products'][$product['id']]['minimum_order_quantity'];
+                                                $orderQuantity = $cardBadge['data']['products'][$product['id']]['quantity'];
+                                            }
+                                            @endphp
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">Buy Now</a>
                                         </div>
                                     </div>
                                 </div>

@@ -27,8 +27,8 @@
                         </div>
                         <div class="footer-text mb-35">
                             <h5 class="call-us">Got Question? Call us 24/7</h5>
-                            <h6 class="number">+88 01828-862147</h6>
-                            <p>Block-A, Meraj Nagar, Rayerbag, kadamtali, Dhaka - 1362</p>
+                            <h6 class="number">{!! $companyInfo->mobile !!}</h6>
+                            <p>{!! $companyInfo->address !!}</p>
                             <a href="#" class="btn"><i class="fas fa-map-marker-alt"></i>view on map</a>
                         </div>
                     </div>
