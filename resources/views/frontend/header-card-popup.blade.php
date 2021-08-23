@@ -10,7 +10,13 @@
                 </div>
                 <div class="cart-content">
                     <h4>
-                        <a href="#" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a>
+                        <a href="#" style="text-transform: capitalize;">
+                            @if(strlen($product['Info']['product_name'])>20)
+                                {{ substr($product['Info']['product_name'], 0,19).'...' }}
+                            @else
+                                {{ $product['Info']['product_name'] }}
+                            @endif
+                        </a>
                     </h4>
                     <div class="cart-price">
                         <span class="new">{{ $product['Info']['special_price'] }}</span>

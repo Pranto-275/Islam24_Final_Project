@@ -52,7 +52,11 @@
                                         </ul> --}}
                                     </div>
                                     <div class="exclusive-item-content">
-                                        <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
+                                        <h5>
+                                            <a href="shop-details.html" style="text-transform: capitalize;">
+                                                {{ substr($product['name'],0,39).'...' }}
+                                            </a>
+                                        </h5>
                                         <div class="exclusive--item--price">
                                             <del class="old-price">
                                                 @if($currencySymbol)
@@ -74,7 +78,8 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                         </div> --}}
-                                        <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                        <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
+                                        <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">Buy Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -90,4 +95,5 @@
 
     </main>
 </div>
+
 @endsection

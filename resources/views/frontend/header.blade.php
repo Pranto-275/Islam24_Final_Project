@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-md-8 col-sm-7">
                     <div class="header-top-left">
-                        <ul>
+                        {{-- <ul id="headerTop">
                             <li>
                                 <div class="ship-to">
                                     <span>Language</span>
@@ -79,9 +79,23 @@
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
-                                        {{-- <a href="{{route('order-track')}}"> --}}
                                             <button aria-haspopup="true" aria-expanded="false">
                                                 অর্ডার ট্র্যাক করুন
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul> --}}
+                        <ul>
+                            <li>
+                                <div class="heder-top-guide">
+                                    <div class="dropdown">
+                                            <button aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-phone text-success"></i>
+                                                <span style="font-size: 15px;">
+                                                    {{$companyInfo->hotline}}
+                                                </span>
                                             </button>
                                         </a>
                                     </div>
@@ -287,7 +301,7 @@
                                 <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
                                     <div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}"
                                             alt="" style="width:35px;height:35px;"></div>
-                                    {{$category->name}}
+                                        {{$category->name}}
                                 </a>
                                 <ul class="mega-menu">
                                     @foreach ($category->SubCategory as $subCategory)
@@ -351,7 +365,12 @@
                             </form>
                         </div>
                         <div class="header-free-shopping">
-                            <p>Free Shipping on Orders <span>$39+</span></p>
+                            <p>Free Shipping on Orders
+                                @if($currencySymbol)
+                                    {{ $currencySymbol->symbol }}
+                                @endif
+                                39
+                            </p>
                         </div>
                     </div>
                 </div>

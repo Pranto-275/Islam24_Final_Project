@@ -1,98 +1,6 @@
 @extends('layouts.front_end')
 @section('content')
     <div>
-        <style>
-            .buy-now{
-                border: 2px solid black;
-                background-color: white;
-                color: black;
-                padding: 7px 22px;
-                font-size: 16px;
-                border-radius: 25px;
-                cursor: pointer;
-            }
-            .buy-now-button:hover{
-                background: black;
-                color: white;
-                font-weight: bold;
-            }
-            .topCategoryImage{
-                width:150px;
-                height:177px;
-            }
-
-            @media only screen and (min-width: 768px) {
-                .slider-image{
-                    height: 470px;background-repeat: no-repeat;background-size: cover;
-                }
-                #paymentCard{
-                    height: 100px;
-                }
-                .cartModal1{
-                    display: none;
-                }
-            }
-            @media only screen and (max-width: 768px) {
-                .slider-image{
-                    height: 200px;background-repeat: no-repeat;background-size: cover;
-                }
-                .topCategoryImage{
-                    height:80px;
-                    /* width: 20px; */
-                }
-                #categoryName{
-                    font-size: 12px;
-                }
-                .cartModal{
-                    display: none;
-                }
-            }
-            /* .footer-area{
-                position:relative;
-            } */
-
-            .modal-dialog {
-                position:absolute;
-                /* top: 200px; */
-                right: 0px;
-                bottom: 0;
-                left: 0;
-                z-index: 10040;
-            }
-            .cart-button{
-                background-color: #4CAF50; /* Green */
-                border: none;
-                color: rgb(12, 1, 1);
-                padding: 8px 20px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 12px;
-                margin: 4px 2px;
-                transition-duration: 0.4s;
-                cursor: pointer;
-            }
-            .cart-button1{
-                background-color: white;
-                color: black;
-                border: 2px solid #e7e7e7;
-            }
-            .cart-button1:hover {
-                background-color: #555555;
-                color:white;
-            }
-            .cart-button2{
-                background-color: white;
-                color: black;
-                border: 2px solid #4CAF50;
-            }
-            .cart-button2:hover {
-                background-color: #4CAF50;
-                color: white;
-            }
-
-        </style>
-
         <x-slot name="title">
             Home
         </x-slot>
@@ -150,7 +58,13 @@
                           <div class="row">
                         @foreach ($topFourCategories as $topFourCategory)
                             <div class="col-3">
+                                <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
                                 <img class="d-block w-100" src="{{ asset('storage/photo/'.$topFourCategory->image1) }}" alt="{{$topFourCategory->id}}">
+                                <div class="text-center bg-dark text-light">
+                                    {{$topFourCategory->name}}
+                                    {{-- Q --}}
+                                </div>
+                               </a>
                             </div>
                         @endforeach
                           </div>
@@ -174,7 +88,12 @@
                                 $p++;
                             @endphp
                             <div class="col-3">
+                                 <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
+                                 <div class="text-center bg-dark text-light">
+                                    {{$topFourCategory->name}}
+                                </div>
+                                </a>
                             </div>
                             @endif
 
@@ -234,7 +153,15 @@
                                             </ul> --}}
                                         </div>
                                         <div class="exclusive-item-content">
-                                            <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
+                                            <h5>
+                                                <a href="shop-details.html" style="text-transform: capitalize;">
+                                                @if(strlen($product['name'])>20)
+                                                      {{ substr($product['name'], 0,19).'...' }}
+                                                @else
+                                                      {{ $product['name'] }}
+                                                @endif
+                                                </a>
+                                            </h5>
                                             <div class="exclusive--item--price">
                                                 <del class="old-price">
                                                     @if($currencySymbol)
@@ -256,17 +183,17 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
                                             </div> --}}
-                                            <?php
+                                            @php
                                             $minimumQuantity = $product['min_order_qty'];
                                             $orderQuantity = 0;
                                             if(isset($cardBadge['data']['products'][$product['id']])) {
                                                 $minimumQuantity = $cardBadge['data']['products'][$product['id']]['minimum_order_quantity'];
                                                 $orderQuantity = $cardBadge['data']['products'][$product['id']]['quantity'];
                                             }
-                                            ?>
+                                            @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
                                             <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile 2</a>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">Buy Now</a>
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
                                             <?php
                                             /*echo "<pre>";
@@ -289,76 +216,8 @@
 
                     </div>
                     <!-- exclusive-collection-area-end -->
-                    {{-- Start Modal --}}
 
-                    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm m-0">
-                            <div class="modal-content p-3" style="">
-                                <div class="mobile-modal">
-                                    <h5>
-                    <span>
-                        <i class="fas fa-shopping-basket"></i>
-                    </span>
-                                        PAIKARI Express Shahbagh
-                                    </h5>
-                                    <hr class="m-0 p-0">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <img src="{{ asset('img/logo/logo.png') }}" class="img img-thumbnail"/>
-                                        </div>
-                                        <div class="col-8">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <span id="mobile-modal-product-name">Kali Baush Fish-Small-1Kg-3101596 </span><br>
-                                                    @if($currencySymbol)
-                                                        {{ $currencySymbol->symbol }}
-                                                    @endif
-                                                    <span class="mobile-modal-product-unit-price"></span> x <span class="mobile-modal-product-quantity-label"></span>
-                                                </div>
-                                                <div class="col-4">
-                              <span class="text-danger" style="font-size: 18px;">
-                                @if($currencySymbol)
-                                      {{ $currencySymbol->symbol }}
-                                  @endif
-                                <span class="mobile-modal-product-price"></span>
-                              </span>
-                                                </div>
-                                                <div class="col-8 text-center">
-                                                    <td class="product-quantity">
-                                                        <div class="cart-plus">
-                                                            <form action="#">
-                                                                {{--<input type="text" class="mobile-modal-product-quantity " >--}}
-                                                                <div class="cart-plus-minus mobile-modal-cart-plus-minus" data-device="mobile">
-                                                                    <input type="text" class="mobile-modal-product-quantity " >
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </td>
-                                                    {{-- <a class="px-2 border" style="border-radius: 100%;font-weight:bold;font-size:28px;">-</a><span class="px-2" style="font-weight:bold;font-size:28px;">10</span><a class="px-2 border" style="border-radius: 100%;font-weight:bold;font-size:28px;">+</a> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr class="my-2">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <center>
-                                                <a class="cart-button cart-button1 mobile-modal-add-to-card">Add To Cart</a>
-                                            </center>
-                                        </div>
-                                        <div class="col-6">
-                                            <center>
-                                                <a class="cart-button cart-button2">Checkout</a>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                {{-- End Modal --}}
-                <!-- testimonial-area -->
+                    <!-- testimonial-area -->
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="section-title text-center mb-60">
@@ -386,7 +245,16 @@
                                             </ul> --}}
                                         </div>
                                         <div class="exclusive-item-content">
-                                            <h5><a href="shop-details.html" style="text-transform: capitalize;">{{ $product['name'] }}</a></h5>
+                                            <h5>
+                                                <a href="shop-details.html" style="text-transform: capitalize;">
+
+                                                    @if(strlen($product['name'])>20)
+                                                      {{ substr($product['name'], 0,19).'...' }}
+                                                    @else
+                                                      {{ $product['name'] }}
+                                                    @endif
+                                                </a>
+                                            </h5>
                                             <div class="exclusive--item--price">
                                                 <del class="old-price">
                                                     @if($currencySymbol)
@@ -408,10 +276,17 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
                                             </div> --}}
+                                            @php
+                                            $minimumQuantity = $product['min_order_qty'];
+                                            $orderQuantity = 0;
+                                            if(isset($cardBadge['data']['products'][$product['id']])) {
+                                                $minimumQuantity = $cardBadge['data']['products'][$product['id']]['minimum_order_quantity'];
+                                                $orderQuantity = $cardBadge['data']['products'][$product['id']]['quantity'];
+                                            }
+                                            @endphp
+                                            <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
                                             <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1" data-product-id="{{ $product['id'] }}" data-toggle="modal" data-target=".bd-example-modal-sm">B Mobile 1</a>
-
-
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -545,9 +420,6 @@
             </div>
         </li>
     </div>--}}
-    <script>
-
-    </script>
     <style>
         .col-6 {
             margin-bottom: 50px !important;
