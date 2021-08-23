@@ -109,9 +109,13 @@ class HomeController extends Controller
     public function MyAccount()
     {
         // dd(Contact::whereCreatedBy(Auth::user()->id)->get());
-        return view('frontend.my-account', [
-            'contacts' => Contact::whereCreatedBy(Auth::user()->id)->get(),
-        ]);
+        if(Auth::user()){
+            return view('frontend.my-account', [
+                'contacts' => Contact::whereCreatedBy(Auth::user()->id)->get(),
+            ]);
+        }else{
+            return view('frontend.sign-in');
+        }
     }
 
     public function index(Request $request)

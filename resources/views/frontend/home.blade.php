@@ -88,10 +88,10 @@
                                 $p++;
                             @endphp
                             <div class="col-3">
-                                 <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
+                                 <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
                                  <div class="text-center bg-dark text-light">
-                                    {{$topFourCategory->name}}
+                                    {{$topCategory->name}}
                                 </div>
                                 </a>
                             </div>
