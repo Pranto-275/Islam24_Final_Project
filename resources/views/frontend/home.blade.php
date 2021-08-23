@@ -47,7 +47,7 @@
             <!-- slider-area-end -->
             <section class="exclusive-collection pt-20 pb-55">
                 {{-- Start Top Category Show Slider --}}
-                {{--@if(count($topFourCategories)>0)
+                @if(count($topFourCategories)>0)
                   <h5 class="text-center">Top Categories</h5>
                 @endif
                 <hr class="mt-0 pt-0">
@@ -119,78 +119,7 @@
                         <span class="sr-only">Next</span>
                       </a>
                     </div>
-                  </div> --}}
-                  @if(count($topFourCategories)>0)
-                  <h5 class="text-center">Top Categories</h5>
-                  <hr class="mt-0 pt-0">
-                  @endif
-                  <div class="container">
-                      <div class="carousel slide" data-ride="carousel" id="multi_item">
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <div class="row">
-                          @foreach ($topFourCategories as $topFourCategory)
-                              <div class="col-3">
-                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topFourCategory->image1) }}" alt="{{$topFourCategory->id}}">
-                              </div>
-                          @endforeach
-                            </div>
-                          </div>
-
-                          @if(count($topCategories)!=0)
-                          @php
-                              $check=count($topCategories);
-                              $count=0;
-                              $p=0;
-                              $count=($check/4);
-                          @endphp
-                          {{-- @if ($check%4==0)
-                              @php
-                                   $count=($check/4);
-                              @endphp
-                          @else
-                              @php
-                                   $count=($check/4)+1;
-                              @endphp
-                          @endif --}}
-                          @while($count>0)
-                          <div class="carousel-item">
-                            <div class="row">
-                                @php
-                                    $flag=0;
-                                @endphp
-                              @foreach ($topCategories->skip($p) as $topCategory)
-                              @if($flag<4)
-                              @php
-                                  $p++;
-                              @endphp
-                              <div class="col-3">
-                                   <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
-                              </div>
-                              @endif
-                              @php
-                                  $flag++;
-                              @endphp
-                              @endforeach
-                            </div>
-                          </div>
-                          @php
-                             $count--;
-                          @endphp
-                          @endwhile
-                          @endif
-
-                        </div>
-                        <a class="carousel-control-prev" href="#multi_item" role="button" data-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#multi_item" role="button" data-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="sr-only">Next</span>
-                        </a>
-                      </div>
-                    </div>
+                  </div>
                 {{-- End Top Category Show Slider --}}
                 <div class="custom-container-two mt-5">
                     <!-- exclusive-collection-area -->
