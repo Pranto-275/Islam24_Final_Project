@@ -62,6 +62,7 @@
                                 <img class="d-block w-100" src="{{ asset('storage/photo/'.$topFourCategory->image1) }}" alt="{{$topFourCategory->id}}">
                                 <div class="text-center bg-dark text-light">
                                     {{$topFourCategory->name}}
+                                    {{-- Q --}}
                                 </div>
                                </a>
                             </div>
