@@ -10,8 +10,9 @@ class LoginController extends Controller
 {
     public function authenticate(Request $request)
     {
+        // dd($request->mobile);
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'mobile' => ['required'],
             'password' => ['required'],
         ]);
 
@@ -22,7 +23,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'mobile' => 'The provided credentials do not match our records.',
         ]);
     }
 }

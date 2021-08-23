@@ -43,18 +43,18 @@
                         <div class="my-account-content">
                             <p>Welcome Vanam Please Login Your <span>Account</span></p>
                             <div class="direct-login">
-                                <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
-                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
+                                <a href="{{route('register')}}"><i class="form-grp-btn"></i>রেজিস্টার</a>
+                                {{-- <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
                             </div>
                             <span class="or">- OR -</span>
                             <form method="POST" action="{{ route('customer_sign_in') }}" class="login-form">
                                 @csrf
                                 <div class="form-grp">
-                                    <x-jet-label for="email" value="{{ __('Email') }}" />
-                                     <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                                    <x-jet-label for="mobile" value="{{ __('মোবাইল নং') }}" />
+                                     <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required autofocus />
                                 </div>
                                 <div class="form-grp">
-                                    <x-jet-label for="password" value="{{ __('Password') }}" />
+                                    <x-jet-label for="password" value="{{ __('পাসওয়ার্ড') }}" />
                                     <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
                                     <i class="far fa-eye"></i>
                                 </div>
