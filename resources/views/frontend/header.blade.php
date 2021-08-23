@@ -14,7 +14,6 @@
     /* padding: 1px; */
     -webkit-user-select: none;
 }
-
 .news span {
     float: left;
     color: rgb(19, 10, 10);
@@ -27,7 +26,6 @@
     -webkit-user-select: none;
     cursor: pointer;
 }
-
 .text1{
 
     box-shadow:none !important;
@@ -355,8 +353,8 @@
                         <div class="header-search-wrap">
                             <form action="{{ route('product-search') }}" method="GET">
                                 <input type="text" name="search_product_name" id="search_product_name"
-                                    placeholder="পণ্য খুজুন....">
-                                <select class="custom-select" name="search_product_category"
+                                    placeholder="পণ্য খুজুন...." style="width: 90%;">
+                                {{-- <select class="custom-select" name="search_product_category"
                                     id="search_product_category">
                                     <option selected="" value="">All Categories</option>
                                     @foreach ($categories as $category)
@@ -365,7 +363,7 @@
                                     </a>
                                     @endforeach
                                     <option>In All Categories</option>
-                                </select>
+                                </select> --}}
                                 <button type="submit" id="btn-product-search"><i
                                         class="flaticon-magnifying-glass-1"></i></button>
                             </form>
