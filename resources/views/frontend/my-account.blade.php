@@ -50,6 +50,29 @@
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                               <div class="card-title text-center">{{ Auth::user()->mobile }}</div>
                               <center>
+                                <div class="heder-top-guide">
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton3"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                            style="background-color: #f8f9fa; color: black;border: none;color: rgb(12, 6, 6);padding: 7px 16px; text-align: center;text-decoration: none;font-size: 14px;cursor: pointer;">
+                                            {{Auth::user()->name}}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                            <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
+                                            <a class="log-out-btn dropdown-item text-danger" href="#"
+                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                                    class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
+                                                Sign Out </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                              </center>
+                              <center>
                               {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>
                             </div>
