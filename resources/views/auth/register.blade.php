@@ -104,8 +104,9 @@
                         <div class="my-account-content">
                             <p>Welcome Vanam Please Login Your <span>Account</span></p>
                             <div class="direct-login">
-                                <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
-                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
+                                {{-- <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
+                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
+                                <a href="{{route('sign-in')}}"><i class="form-grp-btn"></i>লগইন </a>
                             </div>
                             <span class="or">- OR -</span>
                             {{-- <x-jet-authentication-card> --}}
@@ -161,11 +162,11 @@
                                 <div class="form-grp-bottom">
                                     <div class="remember">
                                         <input type="checkbox" id="check">
-                                        <label for="check">Remember me</label>
+                                        <label for="check">I agree to the <a href="{{route('privacy-policy')}}">Privacy Policy</a> and <a href="{{route('terms-conditios')}}"> Terms & Conditions </a> of Paikari Electronics.</label>
                                     </div>
-                                    <div class="forget-pass">
+                                    {{-- <div class="forget-pass">
                                         <a href="#">forgot password</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="form-grp-btn" >
                                     <button type="submit" class="btn" style="background: #ff6000;color:white;">Sign up</button>
