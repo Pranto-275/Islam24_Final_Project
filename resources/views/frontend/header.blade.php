@@ -92,7 +92,7 @@
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
                                             <button aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-phone text-success"></i>
+                                                <i class="fas fa-phone-alt text-info"></i>
                                                 <span style="font-size: 15px;">
                                                     {{$companyInfo->hotline}}
                                                 </span>
