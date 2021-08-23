@@ -100,6 +100,9 @@
                                             </button>
                                         </a>
                                     </div>
+                                    <div class="float-right">
+                                    <i class="fas fa-bell font-size-large rounded-circle mr-0" style="font-size: 20px;"></i><sub class="badge badge-danger p-1 m-0" style="border-radius: 50%;">10</sub>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -108,11 +111,8 @@
                 <div class="col-md-4 col-sm-5">
                     <div class="header-top-right">
                         <ul>
-                            <li>
-                                <a href="#"><i class="fas fa-user"></i></a>
-                            </li>
                             @if(Auth::user())
-                            <li>
+                            {{-- <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
                                         <button class="dropdown-toggle" type="button" id="dropdownMenuButton3"
@@ -134,10 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li>
-                                <i class="fas fa-bell font-size-large rounded-circle mr-0" style="font-size: 20px;"></i><sub class="badge badge-danger p-1 m-0" style="border-radius: 50%;">10</sub>
-                            </li>
+                            </li> --}}
                             @else
                             <li id="signInSignOut">
 
@@ -299,7 +296,7 @@
     <!-- header-search-area -->
     <div class="header-search-area d-none d-md-block">
         <div class="custom-container-two">
-            <div class="row align-items-center">
+            <div class="row align-items-center px-0">
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ক্যাটাগরি</a>
