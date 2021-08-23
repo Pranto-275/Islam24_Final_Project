@@ -65,6 +65,94 @@
     right: 3px;
     left: auto;
 }
+.buy-now{
+                border: 2px solid black;
+                background-color: white;
+                color: black;
+                padding: 7px 22px;
+                font-size: 16px;
+                border-radius: 25px;
+                cursor: pointer;
+            }
+            .buy-now-button:hover{
+                background: black;
+                color: white;
+                font-weight: bold;
+            }
+            .topCategoryImage{
+                width:150px;
+                height:177px;
+            }
+
+            @media only screen and (min-width: 768px) {
+                .slider-image{
+                    height: 470px;background-repeat: no-repeat;background-size: cover;
+                }
+                #paymentCard{
+                    height: 100px;
+                }
+                .cartModal1{
+                    display: none;
+                }
+            }
+            @media only screen and (max-width: 768px) {
+                .slider-image{
+                    height: 200px;background-repeat: no-repeat;background-size: cover;
+                }
+                .topCategoryImage{
+                    height:80px;
+                    /* width: 20px; */
+                }
+                #categoryName{
+                    font-size: 12px;
+                }
+                .cartModal{
+                    display: none;
+                }
+            }
+            /* .footer-area{
+                position:relative;
+            } */
+
+            .modal-dialog {
+                position:absolute;
+                /* top: 200px; */
+                right: 0px;
+                bottom: 0;
+                left: 0;
+                z-index: 10040;
+            }
+            .cart-button{
+                background-color: #4CAF50; /* Green */
+                border: none;
+                color: rgb(12, 1, 1);
+                padding: 8px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 12px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+            }
+            .cart-button1{
+                background-color: white;
+                color: black;
+                border: 2px solid #e7e7e7;
+            }
+            .cart-button1:hover {
+                background-color: #555555;
+                color:white;
+            }
+            .cart-button2{
+                background-color: white;
+                color: black;
+                border: 2px solid #4CAF50;
+            }
+            .cart-button2:hover {
+                background-color: #4CAF50;
+                color: white;
+            }
          </style>
     </head>
     <body>

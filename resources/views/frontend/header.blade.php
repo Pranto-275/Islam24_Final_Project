@@ -287,7 +287,7 @@
                                 <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
                                     <div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}"
                                             alt="" style="width:35px;height:35px;"></div>
-                                    {{$category->name}}
+                                        {{$category->name}}
                                 </a>
                                 <ul class="mega-menu">
                                     @foreach ($category->SubCategory as $subCategory)

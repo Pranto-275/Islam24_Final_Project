@@ -72,7 +72,15 @@
                                                     </a>
                                                 </td>
                                                 <td class="product-name">
-                                                    <h4><a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">{{ $product['Info']['product_name'] }}</a></h4>
+                                                    <h4>
+                                                        <a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">
+                                                            @if(strlen($product['Info']['product_name'])>20)
+                                                              {{ substr($product['Info']['product_name'], 0,19).'...' }}
+                                                            @else
+                                                              {{ $product['Info']['product_name'] }}
+                                                            @endif
+                                                        </a>
+                                                    </h4>
                                                     <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span>
                                                 </td>
@@ -101,46 +109,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                        {{--<tr>
-                                            <td class="product-thumbnail"><a href="#" class="wishlist-remove"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb01.jpg" alt=""></a>
-                                            </td>
-                                            <td class="product-name">
-                                                <h4><a href="{{route('product-view')}}">Woman Lathers Jacket</a></h4>
-                                                <p>Cramond Leopard & Pythong Anorak</p>
-                                                <span>65% poly, 35% rayon</span>
-                                            </td>
-                                            <td class="product-price">$ 29.00</td>
-                                            <td class="product-quantity">
-                                                <div class="cart-plus">
-                                                    <form action="#">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="2">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                            <td class="product-subtotal"><span>$ 68.00</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail"><a href="#" class="wishlist-remove"><i class="flaticon-cancel-1"></i></a><a href="shop-details.html"><img src="{{ URL::asset('venam/') }}/img/product/wishlist_thumb02.jpg" alt=""></a>
-                                            </td>
-                                            <td class="product-name">
-                                                <h4><a href="{{route('product-view')}}">Woman Lathers Jacket</a></h4>
-                                                <p>Cramond Leopard & Pythong Anorak</p>
-                                                <span>65% poly, 35% rayon</span>
-                                            </td>
-                                            <td class="product-price">$ 29.00</td>
-                                            <td class="product-quantity">
-                                                <div class="cart-plus">
-                                                    <form action="#">
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="2">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                            <td class="product-subtotal"><span>$ 68.00</span></td>
-                                        </tr>--}}
                                         </tbody>
                                     </table>
                                 @else
