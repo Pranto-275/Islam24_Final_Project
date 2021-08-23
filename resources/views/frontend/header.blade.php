@@ -39,7 +39,7 @@
     #breakingNews{
         display: none;
     }
-    #privacyPolicy, #termCondition, #aboutUs{
+    #privacyPolicy, #termCondition, #aboutUs, #sign-in, #sign-up{
         display: none;
     }
 }
@@ -221,6 +221,10 @@
                                     <li><a href="{{route('search-category-wise')}}">Shop</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}">contacts</a></li>
+                                    @if (!Auth::user())
+                                    <li id="sign-in"><a href="{{route('register')}}">Sign Up</a></li>
+                                    <li id="sign-up"><a href="{{route('sign-in')}}">Sign In</a></li>
+                                    @endif
                                     @if(Auth::user())
                                     <li>
                                         <a href="{{ route('my-account') }}">My Account</a>
