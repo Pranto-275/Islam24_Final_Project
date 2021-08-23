@@ -19,7 +19,7 @@
                             </div>
                             <div class="contact-info-content">
                                 <h5>Our Location</h5>
-                                <p>W898 RTower Stat, Suite 56 Brockland, CA 9622 United States</p>
+                                <p>{!! $companyInfo->address !!}</p>
                             </div>
                         </div>
                     </div>
@@ -30,8 +30,7 @@
                             </div>
                             <div class="contact-info-content">
                                 <h5>Our Email</h5>
-                                <p>Email Us: Support@info.Com</p>
-                                <p>Vanamsupport.com</p>
+                                <p>Email Us: {!! $companyInfo->email !!}</p>
                             </div>
                         </div>
                     </div>
@@ -42,8 +41,7 @@
                             </div>
                             <div class="contact-info-content">
                                 <h5>Phone Number</h5>
-                                <p>Contacr Numbers: 458-965-3224</p>
-                                <p>458-965-3224</p>
+                                <p>Contacr Numbers: {!! $companyInfo->phone !!}</p>
                             </div>
                         </div>
                     </div>
