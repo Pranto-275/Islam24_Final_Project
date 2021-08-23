@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-md-8 col-sm-7">
                     <div class="header-top-left">
-                        <ul>
+                        {{-- <ul id="headerTop">
                             <li>
                                 <div class="ship-to">
                                     <span>Language</span>
@@ -79,9 +79,23 @@
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
-                                        {{-- <a href="{{route('order-track')}}"> --}}
                                             <button aria-haspopup="true" aria-expanded="false">
                                                 অর্ডার ট্র্যাক করুন
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul> --}}
+                        <ul>
+                            <li>
+                                <div class="heder-top-guide">
+                                    <div class="dropdown">
+                                            <button aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-phone text-success"></i>
+                                                <span style="font-size: 15px;">
+                                                    {{$companyInfo->hotline}}
+                                                </span>
                                             </button>
                                         </a>
                                     </div>

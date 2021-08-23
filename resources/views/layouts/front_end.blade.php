@@ -29,7 +29,7 @@
 
         <style>
             @media only screen and (max-width: 768px) {
-               #scrollTop{
+               #scrollTop, #headerTop{
                   display: none;
                }
                #desktopFooter{

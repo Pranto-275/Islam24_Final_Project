@@ -24,7 +24,7 @@
                                     @endif
                                     <span class="mobile-modal-product-unit-price"></span> x <span class="mobile-modal-product-quantity-label"></span>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-5">
                                   <span class="text-danger" style="font-size: 18px;">
                                     @if($currencySymbol)
                                      {{ $currencySymbol->symbol }}
@@ -32,7 +32,7 @@
                                     <span class="mobile-modal-product-price"></span>
                                   </span>
                                 </div>
-                                <div class="col-8 text-center">
+                                <div class="col-7 text-center">
                                     <td class="product-quantity">
                                         <div class="cart-plus">
                                             <form action="#">
@@ -86,7 +86,7 @@
             </div>
             <div class="col-3 pt-1 text-center">
                 {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-                <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="fas fa-store-alt text-dark" style="font-size: 20px;"></i></a><br>
+                <li class="header-shop-cart"><a href="{{ route('my-account') }}"><i class="fas fa-store-alt text-dark" style="font-size: 20px;"></i></a><br>
                     <span style="font-size:10px;">Order List</span>
             </div>
             <div class="col-3 pt-1 text-center">
