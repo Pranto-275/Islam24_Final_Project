@@ -16,7 +16,7 @@ class CreateProductInfosTable extends Migration
         Schema::create('product_infos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->nullable();
-            $table->string('short_description', 250)->nullable();
+            $table->text('short_description')->nullable();
             $table->text('long_description')->nullable();
             $table->text('youtube_link')->nullable();
             $table->text('meta_title')->nullable();

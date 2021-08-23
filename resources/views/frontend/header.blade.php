@@ -14,7 +14,6 @@
     /* padding: 1px; */
     -webkit-user-select: none;
 }
-
 .news span {
     float: left;
     color: rgb(19, 10, 10);
@@ -27,13 +26,15 @@
     -webkit-user-select: none;
     cursor: pointer;
 }
-
 .text1{
 
- box-shadow:none !important;
-    width: 60%;
+    box-shadow:none !important;
+    width: 90%;
 }
-
+.text2{
+    box-shadow:none !important;
+    width: 80%;
+}
 @media only screen and (min-width: 768px) {
     #breakingNews{
         display: none;
@@ -92,7 +93,7 @@
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
                                             <button aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-phone text-success"></i>
+                                                <i class="fas fa-phone-alt text-info"></i>
                                                 <span style="font-size: 15px;">
                                                     {{$companyInfo->hotline}}
                                                 </span>
@@ -134,8 +135,11 @@
                                     </div>
                                 </div>
                             </li>
-                            @else
                             <li>
+                                <i class="fas fa-bell font-size-large rounded-circle mr-0" style="font-size: 20px;"></i><sub class="badge badge-danger p-1 m-0" style="border-radius: 50%;">10</sub>
+                            </li>
+                            @else
+                            <li id="signInSignOut">
 
 
 
@@ -164,7 +168,7 @@
                     <form action="{{ route('product-search') }}" method="GET">
                         <center>
                             <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
-                                <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="Search..">
+                                <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="পণ্য খুজুন..">
                                 {{-- <div class="input-group-append">
                                     <select class="custom-select mb-2" name="search_product_category" id="search_product_category" style="width:110px;">
                                         <option selected="" value="" >Category</option>
@@ -194,7 +198,7 @@
                         {{-- End Mobile Responsive Search Box --}}
                         {{-- Start Breaking News --}}
                         <div id="breakingNews" class="news blue my-1">
-                            <span style="background-color: #f7ba01;z-index:2;">Latest News</span><span class="text1" >
+                            <span style="background-color: #f7ba01;z-index:2;">ঘোষণা</span><span class="text2" >
                               <marquee>
                                @foreach ($BreakingNews as $news)
                                <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}
@@ -294,7 +298,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
-                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>Categories</a>
+                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ক্যাটাগরি</a>
                         <ul class="category-menu" style="z-index: 3;">
                         @foreach ($categories as $category)
                             <li class="has-dropdown">
@@ -349,8 +353,8 @@
                         <div class="header-search-wrap">
                             <form action="{{ route('product-search') }}" method="GET">
                                 <input type="text" name="search_product_name" id="search_product_name"
-                                    placeholder="Search for your item's type.....">
-                                <select class="custom-select" name="search_product_category"
+                                    placeholder="পণ্য খুজুন...." style="width: 90%;">
+                                {{-- <select class="custom-select" name="search_product_category"
                                     id="search_product_category">
                                     <option selected="" value="">All Categories</option>
                                     @foreach ($categories as $category)
@@ -359,7 +363,7 @@
                                     </a>
                                     @endforeach
                                     <option>In All Categories</option>
-                                </select>
+                                </select> --}}
                                 <button type="submit" id="btn-product-search"><i
                                         class="flaticon-magnifying-glass-1"></i></button>
                             </form>
@@ -377,10 +381,13 @@
             </div>
              {{-- Start Breaking News --}}
              <div id="breakingNews1" class="news blue my-1">
-                <span style="background-color: #ffc001;z-index:2;">Latest News</span><span class="text1" >
+                <span style="background-color: #ffc001;z-index:2;">ঘোষণা</span><span class="text1" >
                   <marquee>
                    @foreach ($BreakingNews as $news)
-                   <i class="fas fa-star"></i><i class="fas fa-star"></i>{{$news->news}}
+                   <span style="font-size:12px;" class="p-0 m-0">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    {{$news->news}}
+                   </span>
                    @endforeach
                   </marquee>
                 </span>
