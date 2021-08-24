@@ -73,7 +73,7 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <div class="contact-form">
                             <form id="messages" method="POST" action="{{ route('send-message') }}"
                                 enctype="multipart/form-data" class="" accept-charset="utf-8">
