@@ -72,42 +72,19 @@
    <!-- main-area -->
    <main>
 
-    <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2>আপনার অ্যাকাউন্ট নিবন্ধন করুন</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/')}}">হোম</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">রেজিস্ট্রেশন</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- breadcrumb-area-end -->
-
     <!-- my-account-area -->
-    <section class="my-account-area pattern-bg pt-100 pb-100" data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg">
+    <section class="my-account-area pattern-bg pt-20 pb-20" data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10">
-                    <div class="login-page-title">
-                        <h2 class="title">প্রবেশ / নিবন্ধন</h2>
-                    </div>
                     <div class="my-account-bg" data-background="{{ URL::asset('venam/') }}/img/bg/my_account_bg.png">
                         <div class="my-account-content">
-                            <p>Welcome Vanam Please Login Your <span>Account</span></p>
+                            <p>Welcome To PAIKARI ELECTRONICS Please Login Your <span>Account</span></p>
                             <div class="direct-login">
-                                <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
-                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
+                                {{-- <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
+                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
+                                <a href="{{route('sign-in')}}"><i class="form-grp-btn"></i>লগইন </a>
                             </div>
-                            <span class="or">- OR -</span>
                             {{-- <x-jet-authentication-card> --}}
                                 <x-slot name="logo">
                                     {{-- <x-jet-authentication-card-logo /> --}}
@@ -161,11 +138,11 @@
                                 <div class="form-grp-bottom">
                                     <div class="remember">
                                         <input type="checkbox" id="check">
-                                        <label for="check">Remember me</label>
+                                        <label for="check">I agree to the <a href="{{route('privacy-policy')}}">Privacy Policy</a> and <a href="{{route('terms-conditios')}}"> Terms & Conditions </a> of Paikari Electronics.</label>
                                     </div>
-                                    <div class="forget-pass">
+                                    {{-- <div class="forget-pass">
                                         <a href="#">forgot password</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="form-grp-btn" >
                                     <button type="submit" class="btn" style="background: #ff6000;color:white;">Sign up</button>

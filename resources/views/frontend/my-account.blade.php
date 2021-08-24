@@ -46,22 +46,30 @@
                             </form>
                             {{-- End Profile Photo Change --}}
                             </center>
-                            <div class="card-body pt-0">
+                            <div class="card-body pt-0 mt-0">
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                               <div class="card-title text-center">{{ Auth::user()->mobile }}</div>
+                              <center>
+                                <div class="heder-top-guide">
+                                            <a class="log-out-btn text-danger" href="#"
+                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                                    class="bx bx-power-off font-size-16 align-middle text-danger"></i>
+                                                Sign Out </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                </div>
+                              </center>
                               <center>
                               {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item active"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
-                                {{-- <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">Orders</a></li>
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li> --}}
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Reviews</a></li> --}}
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Refund Settlements</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#change-password" data-toggle="tab">Change Password</a></li>
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Appointment</a></li> --}}
+                                <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li>
                             </ul>
                           </div>
@@ -74,7 +82,7 @@
                          {{-- Start Card For Basic Information --}}
                          <div class="card shadow-sm tab-content clearfix">
                             {{-- Start Basic Information Card --}}
-                            <div class="card-body basic tab-pane active" id="basic-information">
+                            <div class="card-body basic tab-pane" id="basic-information">
                                 <form id="edit-info-customer" action="{{ route('edit') }}" method="POST">
                                     @csrf
                                 <hr class="mt-2">

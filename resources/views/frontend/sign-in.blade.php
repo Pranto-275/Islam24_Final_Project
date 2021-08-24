@@ -11,50 +11,26 @@
    <!-- main-area -->
    <main>
 
-    <!-- breadcrumb-area -->
-    {{-- <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg"> --}}
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb-content text-center">
-                        <h2>আপনার অ্যাকাউন্টে লগইন করুন</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{url('/')}}">হোম</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">আমার অ্যাকাউন্ট</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {{-- </section> --}}
-    <!-- breadcrumb-area-end -->
-
     <!-- my-account-area -->
-    {{-- <section class="my-account-area pattern-bg pt-100 pb-100" data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg"> --}}
+    <section class="my-account-area pattern-bg pt-20 pb-20" data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10">
-                    <div class="login-page-title">
-                        <h2 class="title"><span>লগইন করুন</span></h2>
-                    </div>
                     <div class="my-account-bg" data-background="{{ URL::asset('venam/') }}/img/bg/my_account_bg.png">
                         <div class="my-account-content">
-                            <p>Welcome Vanam Please Login Your <span>Account</span></p>
+                            <p>Welcome To PAIKARI ELECTRONICS Please Login Your <span>Account</span></p>
                             <div class="direct-login">
-                                <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
-                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
+                                <a href="{{route('register')}}"><i class="form-grp-btn"></i>রেজিস্টার</a>
+                                {{-- <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
                             </div>
-                            <span class="or">- OR -</span>
                             <form method="POST" action="{{ route('customer_sign_in') }}" class="login-form">
                                 @csrf
                                 <div class="form-grp">
-                                    <x-jet-label for="email" value="{{ __('Email') }}" />
-                                     <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                                    <x-jet-label for="mobile" value="{{ __('মোবাইল নং') }}" />
+                                     <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required autofocus />
                                 </div>
                                 <div class="form-grp">
-                                    <x-jet-label for="password" value="{{ __('Password') }}" />
+                                    <x-jet-label for="password" value="{{ __('পাসওয়ার্ড') }}" />
                                     <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
                                     <i class="far fa-eye"></i>
                                 </div>
@@ -81,7 +57,7 @@
                 </div>
             </div>
         </div>
-    {{-- </section> --}}
+    </section>
     <!-- my-account-area-end -->
 </main>
 <!-- main-area-end -->

@@ -88,10 +88,10 @@
                                 $p++;
                             @endphp
                             <div class="col-3">
-                                 <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
+                                 <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
                                  <div class="text-center bg-dark text-light">
-                                    {{$topFourCategory->name}}
+                                    {{$topCategory->name}}
                                 </div>
                                 </a>
                             </div>
@@ -192,8 +192,8 @@
                                             }
                                             @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">Buy Now</a>
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">ক্রয় করুণ</a>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">ক্রয় করুণ</a>
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
                                             <?php
                                             /*echo "<pre>";
@@ -285,8 +285,8 @@
                                             }
                                             @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">Buy Now</a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">Buy Now</a>
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">ক্রয় করুণ</a>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">ক্রয় করুণ</a>
                                         </div>
                                     </div>
                                 </div>
@@ -301,7 +301,7 @@
                 </div>
             </section>
             <!-- furniture-cat-banner -->
-            <div class="furniture-cat-banner-area">
+            {{-- <div class="furniture-cat-banner-area">
                 <div class="custom-container-three">
                     <div class="row">
                         <div class="col-12">
@@ -337,10 +337,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- furniture-cat-banner-end -->
             <!-- core-features -->
-            <section class="core-features-area core-features-style-two">
+            {{-- <section class="core-features-area core-features-style-two">
                 <div class="container">
                     <div class="core-features-border">
                         <div class="row justify-content-center">
@@ -391,7 +391,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             <!-- core-features-end -->
         </main>
     </div>

@@ -69,7 +69,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label class="control-label">Logo  (517.38*492 jpg)
+                                    <label class="control-label">Logo  (141*29 PNG)
                                         @if (!$logo)
                                         @if($CompanyInfo)
                                            <img src="{{ asset('storage/photo/'.$CompanyInfo->logo)}}"  style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">

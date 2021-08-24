@@ -272,9 +272,24 @@ class Product extends Component
         }
     }
 
-    public function updated()
+    public function updatedRegularPrice()
     {
         // dd("OK");
+        $this->discountCalculate();
+    }
+
+    public function updatedSpecialPrice()
+    {
+        // dd("OK");
+        $this->discountCalculate();
+    }
+
+    public function discountCalculate()
+    {
+        if ((is_numeric($this->regular_price) && !empty($this->regular_price) && isset($this->regular_price)) || is_numeric($this->special_price) && !empty($this->special_price) || is_numeric($this->special_price)) {
+            $discount = floatval($this->regular_price) - floatval($this->special_price);
+            $this->discount = $discount * 100 / floatval($this->regular_price);
+        }
     }
 
     public function render()
