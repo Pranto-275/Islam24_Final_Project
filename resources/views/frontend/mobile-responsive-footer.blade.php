@@ -53,11 +53,13 @@
                                 <a id="addToCart" class="cart-button cart-button1 mobile-modal-add-to-card">Add To Cart</a>
                             </center>
                         </div>
+
                         <div class="col-6">
                             <center>
-                                <a href="{{ route('check-out') }}" class="cart-button cart-button2">Checkout</a>
+                              <a  id="addToCart" class="cart-button cart-button1 mobile-modal-add-to-card" href="{{ route('check-out') }}">Checkout</a>
                             </center>
                         </div>
+
                     </div>
                 </div>
             </div>

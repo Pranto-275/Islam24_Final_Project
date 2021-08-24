@@ -145,14 +145,19 @@
                             <div class="form-group">
                                 <label for="regular_price">Regular Price</label>
                                 <input id="regular_price" type="number" step="any" class="form-control"
-                                    wire:model.lazy="regular_price" placeholder="Regular Price">
+                                    wire:model.debounce.150ms="regular_price" placeholder="Regular Price">
                                 @error('regular_price') <span class="error">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
                                 <label for="special_price">Special Price</label>
                                 <input id="special_price" type="number" step="any" class="form-control"
-                                    wire:model.lazy="special_price" placeholder="Special Price">
+                                    wire:model.debounce.150ms="special_price" placeholder="Special Price">
                                 @error('special_price') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="discount">Discount(%)</label>
+                                <input id="discount" type="number" step="any" class="form-control"
+                                    wire:model.debounce.150ms="discount" placeholder="Discount" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="wholesale_price">Wholesale Price</label>
@@ -160,11 +165,7 @@
                                     wire:model.lazy="wholesale_price" placeholder="Wholesale Price">
                                 @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
                             </div>
-                            <div class="form-group">
-                                <label for="discount">Discount</label>
-                                <input id="discount" type="number" step="any" class="form-control"
-                                    wire:model.lazy="discount" placeholder="Discount">
-                            </div>
+
                             <div class="form-group">
                                 <label for="min_order_qty">Minimum Order Quantity</label>
                                 <input id="min_order_qty" type="number" step="any" class="form-control"
