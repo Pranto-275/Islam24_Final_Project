@@ -6,14 +6,14 @@ namespace App\Http\Controllers\FrontEnt;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\ContactInfo\Contact;
-use App\Models\Backend\ProductInfo\Product;
-use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\Backend\ContactUs\Message;
+use App\Models\Backend\ProductInfo\Product;
+use App\Models\Backend\Setting\BreakingNews;
+use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
 use App\Models\User;
-use App\Models\Backend\Setting\BreakingNews;
 use App\Services\AddToCardService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -47,13 +47,16 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
-    public function EditShippingAddress(Request $request){
-        $QueryUpdate=Contact::whereUserId(Auth::user()->id)->first();
-        $QueryUpdate->shipping_address=$request->shipping_address;
+
+    public function EditShippingAddress(Request $request)
+    {
+        $QueryUpdate = Contact::whereUserId(Auth::user()->id)->first();
+        $QueryUpdate->shipping_address = $request->shipping_address;
         $QueryUpdate->save();
 
         return back();
     }
+
     public function CustomerLogin()
     {
         return view('frontend.customer-login');
@@ -65,7 +68,7 @@ class HomeController extends Controller
             'profile_photo_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imageName = time() . '.' . $request->profile_photo_path->extension();
+        $imageName = time().'.'.$request->profile_photo_path->extension();
 
         $request->profile_photo_path->move(public_path('images'), $imageName);
 
@@ -117,11 +120,11 @@ class HomeController extends Controller
     public function MyAccount()
     {
         // dd(Contact::whereCreatedBy(Auth::user()->id)->get());
-        if(Auth::user()){
+        if (Auth::user()) {
             return view('frontend.my-account', [
                 'contacts' => Contact::whereCreatedBy(Auth::user()->id)->get(),
             ]);
-        }else{
+        } else {
             return view('frontend.sign-in');
         }
     }
@@ -129,7 +132,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $data['html'] = view('frontend.header-card-popup')->render();
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('Best Selling Product')->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->limit(50)->get()->toArray();
         $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->orderBy('id', 'desc')->get()->toArray();
         // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
@@ -170,7 +173,7 @@ class HomeController extends Controller
 
             //    Add Order
             $Order = new Order();
-            $Order->code = 'OC' . floor(time() - 999999999);
+            $Order->code = 'OC'.floor(time() - 999999999);
             $Order->contact_id = $Query->id;
             $Order->order_date = Carbon::now();
             //    Cart Detail
@@ -245,9 +248,9 @@ class HomeController extends Controller
     public function searchByCategory($catId = null)
     {
         if ($catId) {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->limit(100)->get()->toArray();
         } else {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->limit(100)->get()->toArray();
         }
 
         return view('frontend.all_product', [
@@ -259,6 +262,7 @@ class HomeController extends Controller
     public function addToCardStore(Request $request): array
     {
         $quantity = $request->get('product_quantity') ? $request->get('product_quantity') : 1;
+
         return $this->addToCardService::addCardStore($request->get('product_id'), $quantity);
     }
 
@@ -296,9 +300,9 @@ class HomeController extends Controller
         DB::transaction(function () use ($request) {
             $Query = new Message();
             $Query->first_name = $request->first_name;
-            $Query->last_name  = $request->last_name;
-            $Query->email  = $request->email;
-            $Query->phone  = $request->phone;
+            $Query->last_name = $request->last_name;
+            $Query->email = $request->email;
+            $Query->phone = $request->phone;
             $Query->subject = $request->subject;
             $Query->message = $request->message;
             $Query->user_id = 1;
@@ -311,6 +315,7 @@ class HomeController extends Controller
     public function productDetails($id = null)
     {
         $ProductDetail = Product::whereId($id)->first();
+
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,
             'similarProducts' => Product::whereSubSubCategoryId($ProductDetail->sub_sub_category_id)->get(),
@@ -322,7 +327,7 @@ class HomeController extends Controller
         $query = $this->product->with(['ProductImageFirst', 'ProductImageLast']);
 
         if ($request->get('search_product_name')) {
-            $query->where('name', 'like', '%' . $request->get('search_product_name') . '%');
+            $query->where('name', 'like', '%'.$request->get('search_product_name').'%');
         }
         if ($request->get('search_product_category')) {
             $query->where('sub_sub_category_id', $request->get('search_product_category'));

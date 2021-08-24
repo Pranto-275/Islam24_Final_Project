@@ -162,19 +162,19 @@
                 <div class="animation-preloader">
                     <div class="spinner"></div>
                     <div class="txt-loading">
-                        <span data-text-preloader="P" class="letters-loading">
-                            P
+                        <span data-text-preloader="পা" class="letters-loading">
+                            পা
                         </span>
-                        <span data-text-preloader="A" class="letters-loading">
-                            A
+                        <span data-text-preloader="ই" class="letters-loading">
+                            ই
                         </span>
-                        <span data-text-preloader="I" class="letters-loading">
-                            I
+                        <span data-text-preloader="কা" class="letters-loading">
+                            কা
                         </span>
-                        <span data-text-preloader="K" class="letters-loading">
-                            K
+                        <span data-text-preloader="রী" class="letters-loading">
+                            রী
                         </span>
-                        <span data-text-preloader="A" class="letters-loading">
+                        {{-- <span data-text-preloader="A" class="letters-loading">
                             A
                         </span>
                         <span data-text-preloader="R" class="letters-loading">
@@ -182,7 +182,7 @@
                         </span>
                         <span data-text-preloader="I" class="letters-loading">
                             I
-                        </span>
+                        </span> --}}
                     </div>
                 </div>
                 <div class="loader">

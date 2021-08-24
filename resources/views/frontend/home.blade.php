@@ -126,7 +126,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="section-title text-center mb-60">
-                                <span class="sub-title">exclusive collection</span>
+                                {{-- <span class="sub-title">exclusive collection</span> --}}
                                 <h2 class="title">নতুন ইলেকট্রনিক্স পণ্য</h2>
                             </div>
                         </div>
@@ -296,6 +296,11 @@
                                 <div class="alert alert-info text-center"> Op's there is no products </div>
                             </div>
                         @endif
+                        <div class="col-md-12">
+                            <center>
+                            <a class="btn text-center" style="background: #ff6000;color:white;"  href="{{route('search-category-wise')}}">Read More</a>
+                        </center>
+                        </div>
                     </div>
                     <!-- testimonial-area-end -->
                 </div>
