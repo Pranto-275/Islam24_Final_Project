@@ -21,6 +21,7 @@ class CreateProductImagesTable extends Migration
             $table->foreignId('created_by');
             $table->foreignId('branch_id');
             $table->boolean('is_active')->nullable()->default(1);
+            $table->boolean('is_default')->nullable()->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

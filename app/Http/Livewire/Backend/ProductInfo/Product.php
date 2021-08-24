@@ -35,13 +35,13 @@ class Product extends Component
     public $long_description;
     public $regular_price;
     public $special_price;
-    public $wholesale_price;
-    public $purchase_price;
+    public $wholesale_price=0;
+    public $purchase_price=0;
     public $discount;
     public $warehouse_id;
     public $stock_in_opening;
     public $min_order_qty;
-    public $featured;
+    public $featured='None';
     public $brand_id;
     public $contact_id;
     public $low_alert;
@@ -50,8 +50,9 @@ class Product extends Component
     public $meta_description;
     public $meta_keyword;
     public $vat_id;
-    public $is_active;
+    public $is_active=1;
 
+    public $product_image;
     public $images = [];
     public $selectedColors = [];
     public $selectedSizes = [];
@@ -136,21 +137,31 @@ class Product extends Component
             'code' => 'required',
             'name' => 'required',
             'category_id' => 'required',
-            'sub_category_id' => 'required',
-            'sub_sub_category_id' => 'required',
+            // 'sub_category_id' => 'required',
+            // 'sub_sub_category_id' => 'required',
             'featured' => 'required',
             'brand_id' => 'required',
             'regular_price' => 'required',
             'special_price' => 'required',
             'wholesale_price' => 'required',
             'purchase_price' => 'required',
-            'is_active' => 'required',
+            // 'is_active' => 'required',
         ]);
         DB::transaction(function () {
             // dd();
             // Product Save
             if ($this->ProductId) {
                 $Query = ProductTable::find($this->ProductId);
+                if($this->product_image){
+                    $QueryImage = ProductImage::whereProductId($this->ProductId)->whereIsDefault(1)->first();
+                    $QueryImage->product_id = $this->ProductId;
+                    $path = $this->product_image->store('/public/photo');
+                    $QueryImage->image = basename($path);
+                    $QueryImage->created_by = Auth::user()->id;
+                    $QueryImage->branch_id = Auth::user()->branch_id;
+                    $QueryImage->is_active = 1;
+                    $QueryImage->save();
+                }
             } else {
                 $Query = new ProductTable();
                 $Query->created_by = Auth::user()->id;
@@ -165,8 +176,8 @@ class Product extends Component
             $Query->purchase_price = $this->purchase_price;
             $Query->discount = $this->discount;
             $Query->category_id = $this->category_id;
-            $Query->sub_category_id = $this->sub_category_id;
-            $Query->sub_sub_category_id = $this->sub_sub_category_id;
+            // $Query->sub_category_id = $this->sub_category_id;
+            // $Query->sub_sub_category_id = $this->sub_sub_category_id;
             $Query->brand_id = $this->brand_id;
             $Query->featured = $this->featured;
             $Query->min_order_qty = $this->min_order_qty;
@@ -189,6 +200,19 @@ class Product extends Component
             $productInfo->created_by = Auth::user()->id;
             $productInfo->save();
 
+            if(!$this->ProductId){
+                if($this->product_image){
+                    $QueryImage = new ProductImage();
+                    $QueryImage->product_id=$productInfo->id;
+                    $path = $this->product_image->store('/public/photo');
+                    $QueryImage->image = basename($path);
+                    $QueryImage->created_by = Auth::user()->id;
+                    $QueryImage->branch_id = Auth::user()->branch_id;
+                    $QueryImage->is_active = 1;
+                    $QueryImage->is_default = 1;
+                    $QueryImage->save();
+                }
+            }
             if ($this->images) {
                 //   Image Save
                 foreach ($this->images as $image) {
