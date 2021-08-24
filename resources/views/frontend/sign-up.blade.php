@@ -12,7 +12,7 @@
    <main>
 
     <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
+    {{-- <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- breadcrumb-area-end -->
 
     <!-- my-account-area -->
@@ -36,9 +36,6 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10">
-                    <div class="login-page-title">
-                        <h2 class="title">প্রবেশ / নিবন্ধন</h2>
-                    </div>
                     <div class="my-account-bg" data-background="{{ URL::asset('venam/') }}/img/bg/my_account_bg.png">
                         <div class="my-account-content">
                             <p>Welcome Vanam Please Login Your <span>Account</span></p>

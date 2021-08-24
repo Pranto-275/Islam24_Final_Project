@@ -301,7 +301,7 @@
                 </div>
             </section>
             <!-- furniture-cat-banner -->
-            <div class="furniture-cat-banner-area">
+            {{-- <div class="furniture-cat-banner-area">
                 <div class="custom-container-three">
                     <div class="row">
                         <div class="col-12">
@@ -337,10 +337,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- furniture-cat-banner-end -->
             <!-- core-features -->
-            <section class="core-features-area core-features-style-two">
+            {{-- <section class="core-features-area core-features-style-two">
                 <div class="container">
                     <div class="core-features-border">
                         <div class="row justify-content-center">
@@ -391,7 +391,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             <!-- core-features-end -->
         </main>
     </div>

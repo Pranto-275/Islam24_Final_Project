@@ -46,30 +46,20 @@
                             </form>
                             {{-- End Profile Photo Change --}}
                             </center>
-                            <div class="card-body pt-0">
+                            <div class="card-body pt-0 mt-0">
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
                               <div class="card-title text-center">{{ Auth::user()->mobile }}</div>
                               <center>
                                 <div class="heder-top-guide">
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton3"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                            style="background-color: #f8f9fa; color: black;border: none;color: rgb(12, 6, 6);padding: 7px 16px; text-align: center;text-decoration: none;font-size: 14px;cursor: pointer;">
-                                            {{Auth::user()->name}}
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                            <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
-                                            <a class="log-out-btn dropdown-item text-danger" href="#"
+                                            <a class="log-out-btn text-danger" href="#"
                                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-                                                    class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
+                                                    class="bx bx-power-off font-size-16 align-middle text-danger"></i>
                                                 Sign Out </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                 style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
-                                        </div>
-                                    </div>
                                 </div>
                               </center>
                               <center>
@@ -77,14 +67,9 @@
                               </center>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item active"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
-                                {{-- <li class="list-group-item"><a class="text-dark" href="#address" data-toggle="tab">Addresses</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">Orders</a></li>
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Unconfirmed Orders</a></li> --}}
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Reviews</a></li> --}}
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Refund Settlements</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#change-password" data-toggle="tab">Change Password</a></li>
-                                {{-- <li class="list-group-item"><a id="#" class="text-dark" href="#" data-toggle="tab">Appointment</a></li> --}}
+                                <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li>
                             </ul>
                           </div>
@@ -97,7 +82,7 @@
                          {{-- Start Card For Basic Information --}}
                          <div class="card shadow-sm tab-content clearfix">
                             {{-- Start Basic Information Card --}}
-                            <div class="card-body basic tab-pane active" id="basic-information">
+                            <div class="card-body basic tab-pane" id="basic-information">
                                 <form id="edit-info-customer" action="{{ route('edit') }}" method="POST">
                                     @csrf
                                 <hr class="mt-2">
