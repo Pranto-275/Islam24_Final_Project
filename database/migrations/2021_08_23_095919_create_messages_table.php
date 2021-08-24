@@ -17,7 +17,7 @@ class CreateMessagesTable extends Migration
             $table->increments('id');
             $table->string('first_name', 100);
             $table->string('last_name', 100);
-            $table->string('email', 191);
+            $table->string('email', 191)->nullable();
             $table->string('phone', 100);
             $table->text('subject');
             $table->text('message');
