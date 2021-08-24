@@ -58,7 +58,7 @@
                 <div class="col-xl-5 col-lg-7 col-md-9">
                     <div class="contact-title text-center mb-60">
                         <div class="section-title text-center">
-                            <span class="sub-title">LET’S TALK</span>
+                            <span class="sub-title">Complain Box</span>
                             <h2 class="title">Send Us a Massage</h2>
                         </div>
                         <p>We are always happy to talk with you. Be sure to write to us if you have any
@@ -67,32 +67,45 @@
                 </div>
             </div>
             <div class="contact-wrap-padding">
+                @if(session()->has('message'))
+                <div class="alert alert-success col-6">
+                    {{ session()->get('message') }}
+                </div>
+                @endif
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="contact-form">
-                            <form action="#">
+                            <form id="messages" method="POST" action="{{ route('send-message') }}"
+                                enctype="multipart/form-data" class="" accept-charset="utf-8">
+                                @csrf
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-grp">
-                                            <input type="text" placeholder="First Name*">
+                                            <input type="text" name="first_name" placeholder="First Name*">
                                             <i class="far fa-user"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-grp">
-                                            <input type="text" placeholder="Last Name*">
+                                            <input type="text" name="last_name" placeholder="Last Name*">
                                             <i class="far fa-user"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-grp">
-                                            <input type="email" required placeholder="Your Email*">
+                                            <input type="email" name="email" required placeholder="Your Email*">
                                             <i class="far fa-envelope"></i>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-grp">
-                                            <input type="text" placeholder="Phone*">
+                                            <input type="text" name="phone" placeholder="Phone*">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <input type="text" name="subject" placeholder="Subject*">
                                             <i class="fas fa-mobile-alt"></i>
                                         </div>
                                     </div>
@@ -114,4 +127,23 @@
     <!-- contact-area-end -->
 
 </div>
+@endsection
+
+
+@section('script')
+<script>
+    $(document).ready(function(){
+		$('#messages').ajaxForm({
+			beforeSend: formBeforeSend,
+			beforeSubmit: formBeforeSubmit,
+			error: formError,
+			success: function (responseText, statusText, xhr, $form) {
+				// window.location.replace(responseText.redirect_url);
+                formSuccess(responseText, statusText, xhr, $form);
+			},
+			clearForm: true,
+			resetForm: true
+		});
+	});
+</script>
 @endsection

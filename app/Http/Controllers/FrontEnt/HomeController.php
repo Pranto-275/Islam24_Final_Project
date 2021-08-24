@@ -3,16 +3,18 @@
 declare(strict_types=1);
 
 namespace App\Http\Controllers\FrontEnt;
+
 use App\Http\Controllers\Controller;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\Backend\Setting\ShippingCharge;
+use App\Models\Backend\ContactUs\Message;
 use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
 use App\Models\User;
 use App\Models\Backend\Setting\BreakingNews;
-use App\Services\AddToCardService; 
+use App\Services\AddToCardService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +59,7 @@ class HomeController extends Controller
             'profile_photo_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $imageName = time().'.'.$request->profile_photo_path->extension();
+        $imageName = time() . '.' . $request->profile_photo_path->extension();
 
         $request->profile_photo_path->move(public_path('images'), $imageName);
 
@@ -158,15 +160,15 @@ class HomeController extends Controller
 
             //    Add Order
             $Order = new Order();
-            $Order->code = 'OC'.floor(time() - 999999999);
+            $Order->code = 'OC' . floor(time() - 999999999);
             $Order->contact_id = $Query->id;
             $Order->order_date = Carbon::now();
             //    Cart Detail
             $AddToCart = AddToCard::wheresessionId($sessionId)->get();
             //    Cart Detail
             $Order->total_amount = $AddToCart->sum('total_price');
-            $Order->shipping_charge = $request->get('shipping_charge');//$request->get('check_out_total_amount');
-            $Order->payable_amount = ($AddToCart->sum('total_price')+$request->get('shipping_charge'));//$request->get('check_out_total_amount');
+            $Order->shipping_charge = $request->get('shipping_charge'); //$request->get('check_out_total_amount');
+            $Order->payable_amount = ($AddToCart->sum('total_price') + $request->get('shipping_charge')); //$request->get('check_out_total_amount');
             $Order->status = 'pending';
             $Order->is_active = 1;
             $Order->save();
@@ -186,15 +188,15 @@ class HomeController extends Controller
             //   Delete Add To Cart
             AddToCard::wheresessionId($sessionId)->delete();
             // $this->orderComplete($Order->id);
-            $this->OrdetCode=$Order->code;
+            $this->OrdetCode = $Order->code;
         });
         // return response()->json([
         //     'status' => 'success',
         //     'message' => 'Successfully',
         //     'redirect_url' => route('order-completed'),
         // ]);
-        return View('frontend.order-completed',[
-            'orderCode'=>$this->OrdetCode,
+        return View('frontend.order-completed', [
+            'orderCode' => $this->OrdetCode,
         ]);
         // return redirect(route('order-completed'));
         //    return redirect()->route('/order-completed');
@@ -279,9 +281,26 @@ class HomeController extends Controller
         return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get()]);
     }
 
+    public function messages(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $Query = new Message();
+            $Query->first_name = $request->first_name;
+            $Query->last_name  = $request->last_name;
+            $Query->email  = $request->email;
+            $Query->phone  = $request->phone;
+            $Query->subject = $request->subject;
+            $Query->message = $request->message;
+            $Query->user_id = 1;
+            $Query->save();
+        });
+
+        return redirect()->back()->with('message', 'Complain has been sent Successfully');
+    }
+
     public function productDetails($id = null)
     {
-        $ProductDetail=Product::whereId($id)->first();
+        $ProductDetail = Product::whereId($id)->first();
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,
             'similarProducts' => Product::whereSubSubCategoryId($ProductDetail->sub_sub_category_id)->get(),
@@ -293,7 +312,7 @@ class HomeController extends Controller
         $query = $this->product->with(['ProductImageFirst', 'ProductImageLast']);
 
         if ($request->get('search_product_name')) {
-            $query->where('name', 'like', '%'.$request->get('search_product_name').'%');
+            $query->where('name', 'like', '%' . $request->get('search_product_name') . '%');
         }
         if ($request->get('search_product_category')) {
             $query->where('sub_sub_category_id', $request->get('search_product_category'));
