@@ -145,6 +145,7 @@ class Product extends Component
             'special_price' => 'required',
             'wholesale_price' => 'required',
             'purchase_price' => 'required',
+            'product_image' => 'required',
             // 'is_active' => 'required',
         ]);
         DB::transaction(function () {

@@ -249,6 +249,7 @@
                         <div class="form-group">
                             <label for="low_alert">Product Image</label>
                             <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="product_image"/>
+                            @error('product_image') <span class="error">{{ $message }}</span> @enderror
                         </div>
                     </div>
                     <div class="col-md-6">
