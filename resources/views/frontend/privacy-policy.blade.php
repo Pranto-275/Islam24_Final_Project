@@ -9,7 +9,7 @@
     </x-slot>
 
     <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
+    {{-- <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -25,11 +25,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- breadcrumb-area-end -->
 
     <!-- terms-and-conditions-area -->
-    <section class="terms-and-conditions-area pt-100 pb-95">
+    <section class="terms-and-conditions-area pt-20 pb-20">
         <div class="container">
             <div class="row">
                 <div class="col-12">

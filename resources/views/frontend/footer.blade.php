@@ -94,7 +94,11 @@
                 </div>
                 <div class="col-lg-6 col-md-6 d-none d-md-block">
                     <div class="payment-method-img text-right">
-                        <img src="{{ URL::asset('venam/') }}/img/images/card_img.png" alt="img">
+                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" style="width:60px; height: 30px;" alt=""></a>
+                        {{-- <img src="{{ URL::asset('venam/') }}/img/images/card_img.png" alt="img"> --}}
                     </div>
                 </div>
             </div>

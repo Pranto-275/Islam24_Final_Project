@@ -126,7 +126,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="section-title text-center mb-60">
-                                <span class="sub-title">exclusive collection</span>
+                                {{-- <span class="sub-title">exclusive collection</span> --}}
                                 <h2 class="title">নতুন ইলেকট্রনিক্স পণ্য</h2>
                             </div>
                         </div>
@@ -192,8 +192,20 @@
                                             }
                                             @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">ক্রয় করুণ</a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">ক্রয় করুণ</a>
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
+                                                @if($product['in_stock']=="Out of Stock")
+                                                Sold Out
+                                               @else
+                                                ক্রয় করুণ
+                                               @endif
+                                            </a>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first']) data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif data-toggle="modal" data-target=".bd-example-modal-sm" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
+                                                @if($product['in_stock']=="Out of Stock")
+                                                 Sold Out
+                                                @else
+                                                 ক্রয় করুণ
+                                                @endif
+                                            </a>
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
                                             <?php
                                             /*echo "<pre>";
@@ -285,8 +297,20 @@
                                             }
                                             @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">ক্রয় করুণ</a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">ক্রয় করুণ</a>
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">
+                                                @if($product['in_stock']=="Out of Stock")
+                                                 Sold Out
+                                                @else
+                                                 ক্রয় করুণ
+                                                @endif
+                                            </a>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                                @if($product['in_stock']=="Out of Stock")
+                                                Sold Out
+                                               @else
+                                                ক্রয় করুণ
+                                               @endif
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -296,12 +320,17 @@
                                 <div class="alert alert-info text-center"> Op's there is no products </div>
                             </div>
                         @endif
+                        <div class="col-md-12">
+                            <center>
+                            <a class="btn text-center" style="background: #ff6000;color:white;"  href="{{route('search-category-wise')}}">Read More</a>
+                        </center>
+                        </div>
                     </div>
                     <!-- testimonial-area-end -->
                 </div>
             </section>
             <!-- furniture-cat-banner -->
-            <div class="furniture-cat-banner-area">
+            {{-- <div class="furniture-cat-banner-area">
                 <div class="custom-container-three">
                     <div class="row">
                         <div class="col-12">
@@ -337,7 +366,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- furniture-cat-banner-end -->
             <!-- core-features -->
             <section class="core-features-area core-features-style-two">

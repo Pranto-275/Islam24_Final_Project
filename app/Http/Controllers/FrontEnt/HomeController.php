@@ -3,16 +3,18 @@
 declare(strict_types=1);
 
 namespace App\Http\Controllers\FrontEnt;
+
 use App\Http\Controllers\Controller;
 use App\Models\Backend\ContactInfo\Contact;
+use App\Models\Backend\ContactUs\Message;
 use App\Models\Backend\ProductInfo\Product;
+use App\Models\Backend\Setting\BreakingNews;
 use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
 use App\Models\User;
-use App\Models\Backend\Setting\BreakingNews;
-use App\Services\AddToCardService; 
+use App\Services\AddToCardService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +46,15 @@ class HomeController extends Controller
         $this->product = $product;
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
+    }
+
+    public function EditShippingAddress(Request $request)
+    {
+        $QueryUpdate = Contact::whereUserId(Auth::user()->id)->first();
+        $QueryUpdate->shipping_address = $request->shipping_address;
+        $QueryUpdate->save();
+
+        return back();
     }
 
     public function CustomerLogin()
@@ -109,11 +120,11 @@ class HomeController extends Controller
     public function MyAccount()
     {
         // dd(Contact::whereCreatedBy(Auth::user()->id)->get());
-        if(Auth::user()){
+        if (Auth::user()) {
             return view('frontend.my-account', [
                 'contacts' => Contact::whereCreatedBy(Auth::user()->id)->get(),
             ]);
-        }else{
+        } else {
             return view('frontend.sign-in');
         }
     }
@@ -121,7 +132,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $data['html'] = view('frontend.header-card-popup')->render();
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('Best Selling Product')->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->limit(50)->get()->toArray();
         $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->orderBy('id', 'desc')->get()->toArray();
         // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
@@ -169,8 +180,8 @@ class HomeController extends Controller
             $AddToCart = AddToCard::wheresessionId($sessionId)->get();
             //    Cart Detail
             $Order->total_amount = $AddToCart->sum('total_price');
-            $Order->shipping_charge = $request->get('shipping_charge');//$request->get('check_out_total_amount');
-            $Order->payable_amount = ($AddToCart->sum('total_price')+$request->get('shipping_charge'));//$request->get('check_out_total_amount');
+            $Order->shipping_charge = $request->get('shipping_charge'); //$request->get('check_out_total_amount');
+            $Order->payable_amount = ($AddToCart->sum('total_price') + $request->get('shipping_charge')); //$request->get('check_out_total_amount');
             $Order->status = 'pending';
             $Order->is_active = 1;
             $Order->save();
@@ -190,15 +201,15 @@ class HomeController extends Controller
             //   Delete Add To Cart
             AddToCard::wheresessionId($sessionId)->delete();
             // $this->orderComplete($Order->id);
-            $this->OrdetCode=$Order->code;
+            $this->OrdetCode = $Order->code;
         });
         // return response()->json([
         //     'status' => 'success',
         //     'message' => 'Successfully',
         //     'redirect_url' => route('order-completed'),
         // ]);
-        return View('frontend.order-completed',[
-            'orderCode'=>$this->OrdetCode,
+        return View('frontend.order-completed', [
+            'orderCode' => $this->OrdetCode,
         ]);
         // return redirect(route('order-completed'));
         //    return redirect()->route('/order-completed');
@@ -237,9 +248,9 @@ class HomeController extends Controller
     public function searchByCategory($catId = null)
     {
         if ($catId) {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->limit(100)->get()->toArray();
         } else {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->limit(100)->get()->toArray();
         }
 
         return view('frontend.all_product', [
@@ -251,6 +262,7 @@ class HomeController extends Controller
     public function addToCardStore(Request $request): array
     {
         $quantity = $request->get('product_quantity') ? $request->get('product_quantity') : 1;
+
         return $this->addToCardService::addCardStore($request->get('product_id'), $quantity);
     }
 
@@ -283,9 +295,27 @@ class HomeController extends Controller
         return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get()]);
     }
 
+    public function messages(Request $request)
+    {
+        DB::transaction(function () use ($request) {
+            $Query = new Message();
+            $Query->first_name = $request->first_name;
+            $Query->last_name = $request->last_name;
+            $Query->email = $request->email;
+            $Query->phone = $request->phone;
+            $Query->subject = $request->subject;
+            $Query->message = $request->message;
+            $Query->user_id = 1;
+            $Query->save();
+        });
+
+        return redirect()->back()->with('message', 'Complain has been sent Successfully');
+    }
+
     public function productDetails($id = null)
     {
-        $ProductDetail=Product::whereId($id)->first();
+        $ProductDetail = Product::whereId($id)->first();
+
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,
             'similarProducts' => Product::whereSubSubCategoryId($ProductDetail->sub_sub_category_id)->get(),

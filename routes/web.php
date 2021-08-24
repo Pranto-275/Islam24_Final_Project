@@ -58,6 +58,7 @@ use App\Http\Livewire\Backend\Setting\ShippingCharge;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
+use App\Http\Livewire\Backend\ContactUs\Message;
 use App\Http\Livewire\Backend\Transaction\CustomerPayment;
 use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
 use App\Http\Livewire\Backend\Transaction\Payment;
@@ -100,6 +101,7 @@ Route::post('change-password-customer', [HomeController::class, 'ChangePassword'
 Route::post('change-profile-photo', [HomeController::class, 'ChangeProfilePhoto'])->name('change-profile-photo');
 Route::get('edit/{id?}', [HomeController::class, 'EditContact'])->name('edit');
 Route::post('edit', [HomeController::class, 'EditContactById']);
+Route::post('edit-shipping-address', [HomeController::class, 'EditShippingAddress'])->name('edit-shipping-address');
 
  Route::get('/', function () {
      return view('auth.login');
@@ -125,6 +127,7 @@ Route::post('/ajax/add-to-card-store', [HomeController::class, 'addToCardStore']
 Route::post('/ajax/add-to-card-quantity-update', [HomeController::class, 'cartProductQuantityUpdate'])->name('ajax-add-to-card-quantity-update');
 Route::post('/ajax/add-to-card-product-delete', [HomeController::class, 'cartProductDelete'])->name('ajax-add-to-card-product-delete');
 Route::post('/confirm-order', [HomeController::class, 'confirmOrder'])->name('confirm-order');
+Route::post('/ajax/send-message', [HomeController::class, 'messages'])->name('send-message');
 Route::get('/order-completed/{id?}', [HomeController::class, 'orderComplete'])->name('order-completed');
 Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
 Route::get('my-account', [HomeController::class, 'MyAccount'])->name('my-account');
@@ -140,6 +143,8 @@ Route::get('contact-us', ContactUs::class)->name('contact-us');
 Route::get('terms-conditios', TermsConditios::class)->name('terms-conditios');
 Route::get('my-profile', MyProfile::class)->name('my-profile');
 Route::get('return-policy', ReturnPolicy::class)->name('return-policy');
+Route::get('message', Message::class)->name('message');
+
 
 Route::get('about', AboutUs::class)->name('about');
 Route::get('error', Error::class)->name('error');

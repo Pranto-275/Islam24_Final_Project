@@ -2,16 +2,11 @@
 
 namespace App\Models\Backend\ProductInfo;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\Backend\ProductInfo\ProductImage;
-use App\Models\Backend\ProductInfo\SubSubCategory;
-use App\Models\Backend\ProductInfo\Brand;
-use App\Models\Backend\ProductInfo\ProductProperties;
-use App\Models\Backend\ProductInfo\ProductInfo;
 use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
-use App\Models\Backend\Setting\Vat;
 use App\Models\Backend\Inventory\StockManager;
+use App\Models\Backend\Setting\Vat;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -22,6 +17,7 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
+
     public function ProductImage()
     {
         return $this->hasMany(ProductImage::class)->take(1);
@@ -29,7 +25,7 @@ class Product extends Model
 
     public function ProductImageFirst()
     {
-        return $this->hasOne(ProductImage::class);
+        return $this->hasOne(ProductImage::class)->whereIsDefault(1);
     }
 
     public function ProductImageLast()
@@ -61,16 +57,24 @@ class Product extends Model
     {
         return $this->belongsTo(Vat::class);
     }
-    public function StockManager(){
-       return $this->hasOne(StockManager::class);
+
+    public function StockManager()
+    {
+        return $this->hasOne(StockManager::class);
     }
-    public function PurchaseInvoiceDetail(){
+
+    public function PurchaseInvoiceDetail()
+    {
         return $this->hasMany(PurchaseInvoiceDetail::class);
     }
-    public function SaleInvoiceDetail(){
+
+    public function SaleInvoiceDetail()
+    {
         return $this->hasMany(SaleInvoiceDetail::class);
     }
-    public function ProductInfo(){
+
+    public function ProductInfo()
+    {
         return $this->hasOne(ProductInfo::class);
     }
 }

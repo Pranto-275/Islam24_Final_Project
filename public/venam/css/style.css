@@ -5008,7 +5008,7 @@ label {
 .ctn-preloader .animation-preloader .txt-loading .letters-loading:before {
   -webkit-animation: letters-loading 4s infinite;
   animation: letters-loading 4s infinite;
-  color: #000000;
+  color: #ff5c00;
   content: attr(data-text-preloader);
   left: 0;
   opacity: 0;
@@ -5072,7 +5072,7 @@ label {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 8px;
-  color: #3b3b3b;
+  color: #ff5c00;
 }
 
 .ctn-preloader .loader {
