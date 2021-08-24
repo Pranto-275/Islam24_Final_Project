@@ -40,7 +40,7 @@ class Product extends Component
     public $discount;
     public $warehouse_id;
     public $stock_in_opening;
-    public $min_order_qty;
+    public $min_order_qty=1;
     public $featured='None';
     public $brand_id;
     public $contact_id;
@@ -49,6 +49,7 @@ class Product extends Component
     public $meta_title;
     public $meta_description;
     public $meta_keyword;
+    public $in_stock='In Stock';
     public $vat_id;
     public $is_active=1;
 
@@ -56,7 +57,7 @@ class Product extends Component
     public $images = [];
     public $selectedColors = [];
     public $selectedSizes = [];
-    public $ProductId = null;
+    public $ProductId;
     public $QueryUpdate;
 
     public function mount($id = null)
@@ -81,6 +82,7 @@ class Product extends Component
             $this->min_order_qty = $this->QueryUpdate->min_order_qty;
             // $this->contact_id=$this->QueryUpdate->contact_id;
             $this->low_alert = $this->QueryUpdate->low_alert;
+            $this->in_stock = $this->QueryUpdate->in_stock;
 
             $this->vat_id = $this->QueryUpdate->vat_id;
             $this->is_active = $this->QueryUpdate->is_active;
@@ -145,9 +147,15 @@ class Product extends Component
             'special_price' => 'required',
             'wholesale_price' => 'required',
             'purchase_price' => 'required',
-            'product_image' => 'required',
+            'in_stock' => 'required',
             // 'is_active' => 'required',
         ]);
+        if(!$this->ProductId){
+            $this->validate([
+                'product_image' => 'required',
+                // 'is_active' => 'required',
+            ]);
+        }
         DB::transaction(function () {
             // dd();
             // Product Save
@@ -186,6 +194,7 @@ class Product extends Component
             $Query->low_alert = $this->low_alert;
             $Query->vat_id = $this->vat_id;
             $Query->is_active = $this->is_active;
+            $Query->in_stock = $this->in_stock;
             $Query->branch_id = Auth::user()->branch_id;
             $Query->save();
 

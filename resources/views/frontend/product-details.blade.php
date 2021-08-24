@@ -10,25 +10,6 @@
         </x-slot>
         <!-- main-area -->
         <main>
-            <!-- breadcrumb-area -->
-            <section class="breadcrumb-area breadcrumb-bg py-2" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="breadcrumb-content text-center">
-                                <h2>Shop Single</h2>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Shop Details</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- breadcrumb-area-end -->
 
             <!-- shop-details-area -->
             <section class="shop-details-area pt-100 pb-100">
@@ -82,9 +63,8 @@
                         </div>
                         <div class="col-xl-5 col-lg-6">
                             <div class="shop-details-content">
-                                <span class="stock-info">In Stock</span>
                                 <h2>{{ $productDetails->name }}</h2>
-                                <div class="shop-details-review">
+                                {{-- <div class="shop-details-review">
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -93,7 +73,7 @@
                                         <i class="fas fa-star"></i>
                                     </div>
                                     <span>- 3 Customer Reviews</span>
-                                </div>
+                                </div> --}}
                                 <div class="shop-details-price">
                                     <h2>
                                         @if($currencySymbol)
@@ -135,10 +115,16 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <a href="javascript:void(0)" class="btn add-card-btn add-to-card" data-product-id="{{ $productDetails->id }}">ADD TO CART</a>
+                                    <a href="javascript:void(0)" class="btn add-card-btn add-to-card" data-product-id="{{ $productDetails->id }}" @if($productDetails->in_stock=="Out of Stock") style="pointer-events: none;" @endif>ADD TO CART</a>
                                 </div>
                                 <div class="shop-details-bottom">
-                                    <h5><a href="#"><i class="far fa-heart"></i> Add To Wishlist</a></h5>
+                                    <h5>
+                                        <a href="#">
+                                            <i class="far fa-heart"></i> Add To Wishlist
+                                        </a>
+                                        <span class="stock-info m-0 ml-2">{{ $productDetails->in_stock }}</span>
+                                    </h5>
+
                                     <ul>
                                         <li>
                                             <span>Tag : </span>

@@ -93,6 +93,15 @@
                                             wire:model.lazy="min_order_qty" placeholder="Minimum Order Quantity">
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label">Stock</label>
+                                        <select class="form-control" wire:model.lazy="in_stock">
+                                            {{-- <option value="">Select</option> --}}
+                                            <option value="In Stock">In Stock</option>
+                                            <option value="Out of Stock">Out of Stock</option>
+                                        </select>
+                                        @error('in_stock') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label class="control-label">Featured</label>
                                         <select class="form-control" wire:model.lazy="featured">
                                             {{-- <option value="">Select</option> --}}
