@@ -159,7 +159,7 @@
     <div id="sticky-header" class="main-header menu-area mb-0 pb-0">
         <div class="custom-container-two">
             <div class="row">
-                <div class="col-12" id="responsive-header">
+                <div class="col-12 m-0 p-0" id="responsive-header">
                     <div class="mobile-nav-toggler float-left mt-1"><i class="fas fa-bars"></i>&nbsp;</div>
                     {{-- Start Mobile Responsive Search Box --}}
                     <form action="{{ route('product-search') }}" method="GET">
@@ -191,12 +191,12 @@
                                 </div>
                             </div>
                         </center>
-                       </form>
+                    </form>
                         {{-- End Mobile Responsive Search Box --}}
                         {{-- Start Breaking News --}}
                         <div id="breakingNews" class="news blue my-1">
                             <span style="background-color: #f7ba01;z-index:2;">ঘোষণা</span><span class="text2" >
-                              <marquee>
+                              <marquee scrollamount="5">
                                @foreach ($BreakingNews as $news)
                                <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}
                                @endforeach
@@ -383,7 +383,7 @@
              {{-- Start Breaking News --}}
              <div id="breakingNews1" class="news blue my-1">
                 <span style="background-color: #ffc001;z-index:2;">ঘোষণা</span><span class="text1" >
-                  <marquee>
+                  <marquee scrollamount="5">
                    @foreach ($BreakingNews as $news)
                    <span style="font-size:12px;" class="p-0 m-0">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i>

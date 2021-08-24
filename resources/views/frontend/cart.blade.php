@@ -23,7 +23,7 @@
         <main>
 
             <!-- breadcrumb-area -->
-            <section class="breadcrumb-area breadcrumb-bg py-2" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
+            {{-- <section class="breadcrumb-area breadcrumb-bg py-2" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -39,11 +39,11 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
             <!-- breadcrumb-area-end -->
 
             <!-- shop-cart-area -->
-            <section class="shop-cart-area wishlist-area pt-100 pb-100">
+            <section class="shop-cart-area wishlist-area pt-20 pb-100">
                 <div class="container">
                     <div class="row justify-content-center">
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
@@ -115,7 +115,7 @@
                                     <div class="alert alert-warning text-center">Op's there is no product</div>
                                 @endif
                             </div>
-                            <div class="shop-cart-bottom mt-20">
+                            {{-- <div class="shop-cart-bottom mt-20">
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="cart-coupon">
@@ -131,7 +131,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         {{-- End Cart --}}
                         <div class="col-lg-4 col-md-8">
@@ -140,16 +140,24 @@
                                     <h6 class="title">Cart Totals</h6>
                                     <form action="{{ route('check-out') }}">
                                         <ul>
-                                            <li><span>SUBTOTAL</span>
+                                            <li>
+                                                <span>SUBTOTAL</span>
                                                 <span class="cart-total-price">
                                                     @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
                                                     @endif
                                                     {{ $totalPrice }}
-                                                </span></li>
+                                                </span>
+                                            </li>
                                             <li>
-                                                <span>SHIPPING</span>
-                                                <div class="shop-check-wrap">
+                                                <span>Discount</span>
+                                                <span class="cart-total-price">
+                                                    @if($currencySymbol)
+                                                        {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                    0
+                                                </span>
+                                                {{-- <div class="shop-check-wrap">
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                                         <label class="custom-control-label" for="customCheck1">FLAT RATE: $15</label>
@@ -158,7 +166,7 @@
                                                         <input type="checkbox" class="custom-control-input" id="customCheck2">
                                                         <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </li>
                                             <li class="cart-total-amount">
                                                 <span>TOTAL</span>
