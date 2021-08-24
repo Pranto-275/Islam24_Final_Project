@@ -100,6 +100,7 @@ Route::post('change-password-customer', [HomeController::class, 'ChangePassword'
 Route::post('change-profile-photo', [HomeController::class, 'ChangeProfilePhoto'])->name('change-profile-photo');
 Route::get('edit/{id?}', [HomeController::class, 'EditContact'])->name('edit');
 Route::post('edit', [HomeController::class, 'EditContactById']);
+Route::post('edit-shipping-address', [HomeController::class, 'EditShippingAddress'])->name('edit-shipping-address');
 
  Route::get('/', function () {
      return view('auth.login');

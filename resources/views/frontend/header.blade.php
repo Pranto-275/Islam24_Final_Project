@@ -49,45 +49,6 @@
             <div class="row">
                 <div class="col-md-8 col-sm-7">
                     <div class="header-top-left">
-                        {{-- <ul id="headerTop">
-                            <li>
-                                <div class="ship-to">
-                                    <span>Language</span>
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <img src="img/icon/bng.png" alt=""> BANGLA
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#"><img
-                                                    src="{{ URL::asset('venam/') }}/img/icon/bng.png" alt="">BANGLA</a>
-                                            <a class="dropdown-item" href="#"><img
-                                                    src="{{ URL::asset('venam/') }}/img/icon/australia.png"
-                                                    alt="">ENGLISH</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="heder-top-guide">
-                                    <div class="dropdown">
-                                        <button aria-haspopup="true" aria-expanded="false">
-                                            অর্ডার করার নিয়ম
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="heder-top-guide">
-                                    <div class="dropdown">
-                                            <button aria-haspopup="true" aria-expanded="false">
-                                                অর্ডার ট্র্যাক করুন
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul> --}}
                         <ul>
                             <li>
                                 <div class="heder-top-guide">
@@ -100,15 +61,14 @@
                                             </button>
                                         </a>
                                     </div>
-                                    <div class="float-right">
-                                    <i class="fas fa-bell font-size-large rounded-circle mr-0" style="font-size: 20px;"></i><sub class="badge badge-danger p-1 m-0" style="border-radius: 50%;">10</sub>
-                                    </div>
                                 </div>
                             </li>
+            <i class="fas fa-bell font-size-large rounded-circle mr-0 float-right" style="font-size: 20px;"></i><sub class="badge badge-danger p-1 m-0" style="border-radius: 50%;">10</sub>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-5">
+
                     <div class="header-top-right">
                         <ul>
                             @if(Auth::user())
@@ -147,6 +107,7 @@
 
                             </li>
                             @endif
+
                         </ul>
                     </div>
                 </div>
@@ -159,7 +120,7 @@
     <div id="sticky-header" class="main-header menu-area mb-0 pb-0">
         <div class="custom-container-two">
             <div class="row">
-                <div class="col-12 m-0 p-0" id="responsive-header">
+                <div class="col-12 m-0" id="responsive-header">
                     <div class="mobile-nav-toggler float-left mt-1"><i class="fas fa-bars"></i>&nbsp;</div>
                     {{-- Start Mobile Responsive Search Box --}}
                     <form action="{{ route('product-search') }}" method="GET">

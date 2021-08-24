@@ -68,6 +68,7 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">Orders</a></li>
+                                <li class="list-group-item"><a class="text-dark" href="#delivery-address" data-toggle="tab">Delivery Address</a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#change-password" data-toggle="tab">Change Password</a></li>
                                 <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">Basic Information</a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li>
@@ -81,6 +82,24 @@
                      <div class="col-md-8">
                          {{-- Start Card For Basic Information --}}
                          <div class="card shadow-sm tab-content clearfix">
+                             {{-- Start Delivery Address --}}
+                             <div class="card-body basic tab-pane" id="delivery-address">
+                                <form action="{{ route('edit-shipping-address') }}" method="POST">
+                                    @csrf
+                                <h5 class="card-title">Delivery Address</h5>
+                                <hr class="mt-2">
+                                <div class="row">
+                                  <div class="col-6 pb-2 font-weight-bold">Delivery Address:</div>
+                                  <div class="col-6 pb-2">
+                                      <input class="form-control" type="shipping_address" name="shipping_address" value="@if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif" name="email"/>
+                                  </div>
+                                  <hr>
+                                </div>
+                                <button type="submit" class="float-right border p-1 rounded text-info bg-info text-light">Save Change</button>
+                                <br>
+                               </form>
+                              </div>
+                             {{-- End Delivery Address --}}
                             {{-- Start Basic Information Card --}}
                             <div class="card-body basic tab-pane" id="basic-information">
                                 <form id="edit-info-customer" action="{{ route('edit') }}" method="POST">

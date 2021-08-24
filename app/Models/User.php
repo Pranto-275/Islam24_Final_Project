@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
+use App\Models\Backend\ContactInfo\Contact;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -65,5 +66,8 @@ class User extends Authenticatable
     public function Branch()
     {
         return $this->belongsTo(Branch::class);
+    }
+    public function Contact(){
+        return $this->hasOne(Contact::class);
     }
 }

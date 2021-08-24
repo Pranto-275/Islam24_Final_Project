@@ -45,7 +45,13 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
+    public function EditShippingAddress(Request $request){
+        $QueryUpdate=Contact::whereUserId(Auth::user()->id)->first();
+        $QueryUpdate->shipping_address=$request->shipping_address;
+        $QueryUpdate->save();
 
+        return back();
+    }
     public function CustomerLogin()
     {
         return view('frontend.customer-login');
