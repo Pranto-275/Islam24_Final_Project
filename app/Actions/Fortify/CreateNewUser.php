@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +41,12 @@ class CreateNewUser implements CreatesNewUsers
             ]), function (User $user) {
                 $this->createTeam($user);
                 $user->assignRole('customer');
+                $contact = Contact::whereUserId($user->id)->firstOrNew();
+                $contact->first_name = $user->name;
+                $contact->user_id = $user->id;
+                // $contact->branch_id = 1;
+                $contact->created_by = $user->id;
+                $contact->save();
             });
         });
     }

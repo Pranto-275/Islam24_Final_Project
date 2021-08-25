@@ -31,7 +31,7 @@ class CreateContactsTable extends Migration
             $table->date('birthday')->nullable();
             $table->double('opening_balance')->nullable()->default(0);
             $table->foreignId('contact_category_id')->nullable();
-            $table->foreignId('branch_id');
+            $table->foreignId('branch_id')->nullable();
             $table->foreignId('created_by');
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();

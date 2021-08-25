@@ -52,6 +52,7 @@ class HomeController extends Controller
     {
         $QueryUpdate = Contact::whereUserId(Auth::user()->id)->first();
         $QueryUpdate->shipping_address = $request->shipping_address;
+        $QueryUpdate->created_by = Auth::user()->id;
         $QueryUpdate->save();
 
         return back();
@@ -300,7 +301,7 @@ class HomeController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone' =>  'required',
+            'phone' => 'required',
             'subject' => 'required',
             'message' => 'required',
         ]);
@@ -324,6 +325,7 @@ class HomeController extends Controller
     {
         $ProductDetail = Product::whereId($id)->first();
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereId($id)->get()->toArray();
+
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,
             'data' => $data,
