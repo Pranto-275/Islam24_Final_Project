@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-map">
-                            <img src="{{ URL::asset('venam/') }}/img/images/map.jpg" alt="">
+                            {!! $companyInfo->google_map_location !!}
                         </div>
                     </div>
                 </div>

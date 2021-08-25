@@ -1,3 +1,20 @@
+@push('css')
+<div>
+    <style>
+        .move {
+            margin-left: 189px;
+            margin-right: auto;
+            width: 8em
+        }
+        .font{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</div>
+
+@endpush
 <div>
     <x-slot name="title">
         Product List
@@ -93,6 +110,7 @@
                                                  <td>{{ $product->wholesale_price }}</td>
                                                  <td>{{ $product->purchase_price }}</td>
                                                  <td>
+                                                    <a class="btn btn-info btn-sm btn-block mb-1" wire:click="ProductDetails({{$product->id}})"><i class="fas fa-eye font-size-12"></i></a>
                                                     <a href="{{ route('product.product', ['id'=>$product->id]) }}" class="btn btn-primary btn-sm"><i class="bx bx-edit font-size-12"></i></a>
                                                     <button class="btn btn-danger btn-sm" wire:click="deleteProduct({{ $product->id }})"><i class="bx bx-window-close font-size-12"></i></button>
                                                  </td>
@@ -111,4 +129,112 @@
             </div>
         </div>
     </div>
+        <!--  Modal content for the above example -->
+        <div wire:ignore.self class="modal fade" id="productDetailModal" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Product Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group move">
+                                    <label for="basicpill-firstname-input">Image</label>
+                                    <div class="card" style="width: 15rem;">
+                                        <img @if($ProductDetail) src="{{ asset('storage/photo/'.$ProductDetail->ProductImageFirst->image)}}" @endif
+                                            class="card-img-top" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Name: @if($ProductDetail) {{$ProductDetail->name}} @endif</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Category: @if($ProductDetail) {{$ProductDetail->Category->name}} @endif </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Sub Category: @if($ProductDetail) {{$ProductDetail->SubCategory->name}} @endif</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Sub Sub Category: @if($ProductDetail) {{$ProductDetail->SubSubCategory->name}} @endif</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Brand: @if($ProductDetail) {{$ProductDetail->Brand->name}} @endif</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Regular price: @if($ProductDetail) {{$ProductDetail->regular_price}} @endif</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Special price: @if($ProductDetail) {{$ProductDetail->special_price}} @endif</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">wholesale_price: @if($ProductDetail) {{$ProductDetail->wholesale_price}} @endif</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">purchase price: @if($ProductDetail) {{$ProductDetail->purchase_price}} @endif</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">discount: @if($ProductDetail) {{$ProductDetail->discount}} @endif</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Low alert: @if($ProductDetail) {{$ProductDetail->low_alert}} @endif</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Minium Order Quantity: @if($ProductDetail)  {{$ProductDetail->min_order_qty}} @endif</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">VaT Rate: @if($ProductDetail) {{$ProductDetail->Vat->name}} @endif</label>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Branch: @if($ProductDetail) {{$ProductDetail->Branch->name}} @endif</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div>

@@ -26,6 +26,7 @@ class CreateCompanyInfosTable extends Migration
             $table->text('facebook_link')->nullable();
             $table->text('youtube_link')->nullable();
             $table->text('privacy_policy')->nullable();
+            $table->text('google_map_location')->nullable();
             $table->text('terms_condition')->nullable();
             $table->text('return_policy')->nullable();
             $table->foreignId('branch_id');

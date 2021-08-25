@@ -297,6 +297,14 @@ class HomeController extends Controller
 
     public function messages(Request $request)
     {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' =>  'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
         DB::transaction(function () use ($request) {
             $Query = new Message();
             $Query->first_name = $request->first_name;

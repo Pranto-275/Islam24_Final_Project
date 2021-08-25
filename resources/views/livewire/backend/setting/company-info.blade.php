@@ -112,6 +112,13 @@
                                 </div>
                             </div>
 
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Google Map Location</label>
+                                    <textarea class="form-control" type="text" wire:model.lazy="google_map_location" placeholder="google_map_location"></textarea>
+                                </div>
+                            </div>
+
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Facebook Link</label>

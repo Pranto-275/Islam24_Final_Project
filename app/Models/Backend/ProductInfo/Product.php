@@ -2,6 +2,18 @@
 
 namespace App\Models\Backend\ProductInfo;
 
+<<<<<<< Updated upstream
+=======
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Backend\ProductInfo\ProductImage;
+use App\Models\Backend\ProductInfo\Category;
+use App\Models\Backend\ProductInfo\SubCategory;
+use App\Models\Backend\ProductInfo\SubSubCategory;
+use App\Models\Backend\ProductInfo\Brand;
+use App\Models\Backend\Setting\Branch;
+use App\Models\Backend\ProductInfo\ProductProperties;
+use App\Models\Backend\ProductInfo\ProductInfo;
+>>>>>>> Stashed changes
 use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use App\Models\Backend\Inventory\StockManager;
@@ -40,10 +52,28 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+    public function Category(){
+        return $this->belongsTo(Category::class);
+
+    }
+
+    public function Branch(){
+        return $this->belongsTo(Branch::class);
+
+    }
+
+
+    public function SubCategory()
+    {
+        return $this->belongsTo(SubCategory::class);
+    }
+
     public function SubSubCategory()
     {
         return $this->belongsTo(SubSubCategory::class);
     }
+
+
 
     public function Brand()
     {

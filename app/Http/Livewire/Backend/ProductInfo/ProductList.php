@@ -9,6 +9,12 @@ use Livewire\Component;
 
 class ProductList extends Component
 {
+    public $ProductDetail;
+    public function ProductDetails($id){
+        $this->ProductDetail=Product::find($id);
+        $this->emit('modal', 'productDetailModal');
+        // dd($this->ProductDetail);
+    }
     public function deleteProduct($id){
 
 
