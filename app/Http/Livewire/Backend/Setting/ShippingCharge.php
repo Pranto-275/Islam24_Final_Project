@@ -14,7 +14,7 @@ class ShippingCharge extends Component
     public $to;
     public $shipping_fee;
     public $country_id;
-    public $is_active;
+    public $is_active=1;
     public $ShippingChargeId;
 
     public function ShippingChargeEdit($id){

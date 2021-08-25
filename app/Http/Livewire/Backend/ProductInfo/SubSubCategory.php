@@ -15,7 +15,7 @@ class SubSubCategory extends Component
     public $image;
     public $description;
     public $sub_category_id;
-    public $is_active;
+    public $is_active=1;
     public $subSubCategoryId=NULL;
     public $QueryUpdate=NULL;
 

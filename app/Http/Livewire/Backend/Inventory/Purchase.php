@@ -52,7 +52,7 @@ class Purchase extends Component
     public $shipping_fee;
     public $transaction_id;
     public $warehouse_id;
-    public $is_active;
+    public $is_active=1;
     public $paymentMethodList = [];
     public $orderProductList = [];
     protected $listeners = [

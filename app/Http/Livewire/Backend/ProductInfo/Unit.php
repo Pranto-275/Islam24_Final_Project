@@ -10,7 +10,7 @@ class Unit extends Component
     public $code;
     public $name;
     public $rate;
-    public $is_active;
+    public $is_active=1;
     public $UnitId;
 
     public function unitEdit($id){

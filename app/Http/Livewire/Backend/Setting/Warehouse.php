@@ -11,7 +11,7 @@ class Warehouse extends Component
     public $code;
     public $name;
     public $address;
-    public $is_active;
+    public $is_active=1;
     public $branch_id;
     public $WarehouseId;
 

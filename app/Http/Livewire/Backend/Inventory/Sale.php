@@ -51,7 +51,7 @@ class Sale extends Component
     public $transaction_id;
     public $warehouse_id;
     public $warehouse_error;
-    public $is_active;
+    public $is_active=1;
     public $shipping_fee;
     public $paymentMethodList = [];
     public $orderProductList = [];

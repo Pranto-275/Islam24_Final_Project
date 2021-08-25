@@ -127,7 +127,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <center><button type="submit" class="btn btn-success w-lg waves-effect waves-light">Update</button></center>
+                                <center><button type="submit" class="btn btn-success w-lg waves-effect waves-light" wire:target="logo" wire:loading.attr="disabled">Update</button></center>
                             </div>
                         </div>
                     </div>

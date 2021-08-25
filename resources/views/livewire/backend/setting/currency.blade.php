@@ -124,7 +124,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
                                     <select class="form-control" wire:model.lazy="is_active">
-                                        <option>Select Status</option>
+                                        {{-- <option>Select Status</option> --}}
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>

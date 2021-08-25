@@ -13,7 +13,7 @@ class Slider extends Component
     public $title;
     public $image;
     public $position;
-    public $is_active;
+    public $is_active=1;
     public $SliderId;
     public $QueryUpdate;
     public function sliderImageEdit($id)
