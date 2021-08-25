@@ -6,8 +6,6 @@ use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Setting\Vat;
-use app\Models\Backend\ProductInfo\Category;
-use App\Models\Backend\ProductInfo\Brand;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,16 +38,15 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    public function Category(){
+    public function Category()
+    {
         return $this->belongsTo(Category::class);
-
     }
 
-    public function Branch(){
+    public function Branch()
+    {
         return $this->belongsTo(Branch::class);
-
     }
-
 
     public function SubCategory()
     {
@@ -60,8 +57,6 @@ class Product extends Model
     {
         return $this->belongsTo(SubSubCategory::class);
     }
-
-
 
     public function Brand()
     {
@@ -97,6 +92,4 @@ class Product extends Model
     {
         return $this->hasOne(ProductInfo::class);
     }
-
-
 }

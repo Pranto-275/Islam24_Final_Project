@@ -218,17 +218,17 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 font">
+                            {{-- <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">VaT Rate: @if($ProductDetail) {{$ProductDetail->Vat->name}} @endif</label>
                                 </div>
 
-                            </div>
-                            <div class="col-lg-6 font">
+                            </div> --}}
+                            {{-- <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Branch: @if($ProductDetail) {{$ProductDetail->Branch->name}} @endif</label>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="modal-footer">
