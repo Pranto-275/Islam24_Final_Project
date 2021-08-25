@@ -54,8 +54,11 @@
                                                   <td>{{ ++$p }}</td>
                                                  <td>{{ $product->code }}</td>
                                                  <td>
-                                                     {{-- {{ $product->name }} --}}
-                                                     {{ substr($product->name,0,39).'...' }}
+                                                     @if(strlen($product->name)>40)
+                                                      {{ substr($product->name, 0,39).'...' }}
+                                                    @else
+                                                      {{ $product->name }}
+                                                    @endif
                                                 </td>
                                                  <td>
                                                      <img @if($product->ProductImageFirst) src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}" @endif style="height:100px;"/>

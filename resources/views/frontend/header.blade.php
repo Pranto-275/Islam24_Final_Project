@@ -120,43 +120,25 @@
     <div id="sticky-header" class="main-header menu-area mb-0 pb-0">
         <div class="custom-container-two">
             <div class="row">
-                <div class="col-12 m-0" id="responsive-header">
-                    <div class="mobile-nav-toggler float-left mt-1"><i class="fas fa-bars"></i>&nbsp;</div>
+                <div class="col-12 m-0 mx-0 px-0" id="responsive-header">
+                    <div class="mobile-nav-toggler float-left mt-1 mx-1"><i class="fas fa-bars"></i>&nbsp;</div>
                     {{-- Start Mobile Responsive Search Box --}}
                     <form action="{{ route('product-search') }}" method="GET">
                         <center>
                             <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
                                 <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="পণ্য খুজুন..">
-                                {{-- <div class="input-group-append">
-                                    <select class="custom-select mb-2" name="search_product_category" id="search_product_category" style="width:110px;">
-                                        <option selected="" value="" >Category</option>
-                                        @foreach ($categories as $category)
-                                        <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                        </a>
-                                        @endforeach
-                                        <option>In All Categories</option>
-                                    </select>
-                                </div> --}}
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
                                         style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
-                                            class="fa fa-search text-light"></i></button>
-                                    {{-- <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                  </div> --}}
+                                            class="fa fa-search text-light px-1"></i></button>
                                 </div>
                             </div>
                         </center>
                     </form>
                         {{-- End Mobile Responsive Search Box --}}
                         {{-- Start Breaking News --}}
-                        <div id="breakingNews" class="news blue my-1">
-                            <span style="background-color: #f7ba01;z-index:2;">ঘোষণা</span><span class="text2" >
+                        <div id="breakingNews" class="news blue my-1 mx-0 px-0">
+                            <span class="mx-0" style="background-color: #f7ba01;z-index:2;">ঘোষণা</span><span class="text2" >
                               <marquee scrollamount="5">
                                @foreach ($BreakingNews as $news)
                                <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}

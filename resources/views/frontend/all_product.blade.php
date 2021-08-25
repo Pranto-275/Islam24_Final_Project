@@ -83,7 +83,7 @@
                                                             <i class="fas fa-star"></i>
                                                         </div> --}}
                                                         <h5>
-                                                            <a href="{{route('product-details',['id'=>$newProduct['id']])}}" style="text-transform: capitalize;">
+                                                            <a href="{{route('product-details',['id'=>$newProduct['id']])}}" style="text-transform: capitalize;font-size: 12px;">
                                                                 @if(strlen($newProduct->name)>20)
                                                                   {{ substr($newProduct->name, 0,19).'...' }}
                                                                 @else
@@ -234,7 +234,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">ছাড়-{{ $product['discount'] }}%</span>
+                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -244,27 +244,31 @@
                                         </div>
                                         <div class="exclusive-item-content">
                                             <h5>
-                                                <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                                    @if(strlen($product['name'])>40)
-                                                        {{ substr($product['name'], 0,19).'...' }}
+                                                <a href="{{route('product-details',['id'=>$product['id']])}}" style="text-transform: capitalize; font-size: 12px;">
+                                                    @if(strlen($product['name'])>50)
+                                                        {{ substr($product['name'], 0,49).'...' }}
                                                     @else
                                                         {{ $product['name'] }}
                                                     @endif
                                                 </a>
                                             </h5>
                                             <div class="exclusive--item--price">
-                                                @if($currencySymbol)
-                                                     {{ $currencySymbol->symbol }}
-                                                @endif
-                                                <del class="old-price">
-                                                    {{ $product['regular_price'] }}
-                                                </del>
-                                                <span class="new-price">
+                                                <span class="new-price" style="color:#ff0000;">
                                                     @if($currencySymbol)
-                                                     {{ $currencySymbol->symbol }}
+                                                          <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
+                                                    @else
+                                                          {{ $product['special_price'] }}
                                                     @endif
-                                                    {{ $product['special_price'] }}
-                                                </span>
+
+                                                    </span>
+                                                  <del class="old-price">
+                                                      @if($currencySymbol)
+                                                      <span class="text-dark"><span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['regular_price'] }}</span>
+                                                      @else
+                                                          {{ $product['regular_price'] }}
+                                                      @endif
+
+                                                  </del>
                                             </div>
                                             {{-- <div class="rating">
                                                 <i class="fas fa-star"></i>
@@ -282,18 +286,18 @@
                                             }
                                             @endphp
                                             <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
-                                                @if($product['in_stock']=="Out of Stock")
-                                                Sold Out
+                                              @if($product['in_stock']=="Out of Stock")
+                                                 স্টক শেষ
                                                @else
-                                                ক্রয় করুণ
+                                                 ক্রয় করুণ
                                                @endif
                                             </a>
                                             <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" @if($product['product_image_first']) data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif data-toggle="modal" data-target=".bd-example-modal-sm" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
                                                 @if($product['in_stock']=="Out of Stock")
-                                                Sold Out
-                                               @else
-                                                ক্রয় করুণ
-                                               @endif
+                                                  স্টক শেষ
+                                                @else
+                                                  ক্রয় করুণ
+                                                @endif
                                             </a>
                                         </div>
                                     </div>
