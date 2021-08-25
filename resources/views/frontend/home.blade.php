@@ -48,7 +48,7 @@
             <section class="exclusive-collection pt-20 pb-55">
                 {{-- Start Top Category Show Slider --}}
                 @if(count($topFourCategories)>0)
-                  <h5 class="text-center">Top Categories</h5>
+                  <h5 class="text-center">ক্যাটাগরি সমূহ</h5>
                 @endif
                 <hr class="mt-0 pt-0">
                 <div class="container">
@@ -143,7 +143,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">ছাড়-{{ $product['discount'] }}%</span>
+                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <span class="sd-meta">New!</span> --}}
                                             {{-- <ul class="action">
@@ -154,27 +154,31 @@
                                         </div>
                                         <div class="exclusive-item-content">
                                             <h5>
-                                                <a href="shop-details.html" style="text-transform: capitalize;">
-                                                @if(strlen($product['name'])>20)
-                                                      {{ substr($product['name'], 0,19).'...' }}
+                                                <a href="{{route('product-details',['id'=>$product['id']])}}" style="text-transform: capitalize; font-size: 14px;">
+                                                @if(strlen($product['name'])>50)
+                                                      {{ substr($product['name'], 0,49).'...' }}
                                                 @else
                                                       {{ $product['name'] }}
                                                 @endif
                                                 </a>
                                             </h5>
-                                            <div class="exclusive--item--price">
+                                            <div class="exclusive--item--price" >
+                                                <span class="new-price" style="color:#ff0000;">
+                                                  @if($currencySymbol)
+                                                        <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
+                                                  @else
+                                                        {{ $product['special_price'] }}
+                                                  @endif
+
+                                                  </span>
                                                 <del class="old-price">
                                                     @if($currencySymbol)
-                                                        {{ $currencySymbol->symbol }}
+                                                    <span class="text-dark"><span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['regular_price'] }}</span>
+                                                    @else
+                                                        {{ $product['regular_price'] }}
                                                     @endif
-                                                    {{ $product['regular_price'] }}
+
                                                 </del>
-                                                <span class="new-price">
-                                            @if($currencySymbol)
-                                                        {{ $currencySymbol->symbol }}
-                                                    @endif
-                                                    {{ $product['special_price'] }}
-                                        </span>
                                             </div>
                                             {{-- <div class="rating">
                                                 <i class="fas fa-star"></i>
@@ -194,14 +198,14 @@
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
                                             <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
                                                 @if($product['in_stock']=="Out of Stock")
-                                                Sold Out
+                                                স্টক শেষ
                                                @else
                                                 ক্রয় করুণ
                                                @endif
                                             </a>
                                             <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first']) data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif data-toggle="modal" data-target=".bd-example-modal-sm" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
                                                 @if($product['in_stock']=="Out of Stock")
-                                                 Sold Out
+                                                স্টক শেষ
                                                 @else
                                                  ক্রয় করুণ
                                                 @endif
@@ -248,7 +252,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">ছাড়-{{ $product['discount'] }}%</span>
+                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -258,29 +262,33 @@
                                         </div>
                                         <div class="exclusive-item-content">
                                             <h5>
-                                                <a href="shop-details.html" style="text-transform: capitalize;">
+                                                <a href="{{route('product-details',['id'=>$product['id']])}}" style="text-transform: capitalize; font-size: 14px;">
 
-                                                    @if(strlen($product['name'])>20)
-                                                      {{ substr($product['name'], 0,19).'...' }}
+                                                    @if(strlen($product['name'])>50)
+                                                      {{ substr($product['name'], 0,49).'...' }}
                                                     @else
                                                       {{ $product['name'] }}
                                                     @endif
                                                 </a>
                                             </h5>
                                             <div class="exclusive--item--price">
-                                                <del class="old-price">
+                                                <span class="new-price" style="color:#ff0000;">
                                                     @if($currencySymbol)
-                                                        {{ $currencySymbol->symbol }}
+                                                          <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
+                                                    @else
+                                                          {{ $product['special_price'] }}
                                                     @endif
-                                                    {{ $product['regular_price'] }}
-                                                </del>
-                                                <span class="new-price">
-                                                @if($currencySymbol)
-                                                        {{ $currencySymbol->symbol }}
-                                                    @endif
-                                                    {{ $product['special_price'] }}
-                                            </span>
-                                            </div>
+
+                                                    </span>
+                                                  <del class="old-price">
+                                                      @if($currencySymbol)
+                                                      <span class="text-dark"><span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['regular_price'] }}</span>
+                                                      @else
+                                                          {{ $product['regular_price'] }}
+                                                      @endif
+
+                                                  </del>
+                                           </div>
                                             {{-- <div class="rating">
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
@@ -322,7 +330,7 @@
                         @endif
                         <div class="col-md-12">
                             <center>
-                            <a class="btn text-center" style="background: #ff6000;color:white;"  href="{{route('search-category-wise')}}">Read More</a>
+                            <a class="btn text-center" style="background: #ff6000;color:white;"  href="{{route('search-category-wise')}}">আরও পণ্য দেখুন</a>
                         </center>
                         </div>
                     </div>

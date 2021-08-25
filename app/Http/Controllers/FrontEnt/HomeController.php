@@ -315,10 +315,10 @@ class HomeController extends Controller
     public function productDetails($id = null)
     {
         $ProductDetail = Product::whereId($id)->first();
-
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereId($id)->get()->toArray();
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,
-            'similarProducts' => Product::whereSubSubCategoryId($ProductDetail->sub_sub_category_id)->get(),
+            'data' => $data,
         ]);
     }
 

@@ -6,9 +6,9 @@
                 <div class="mobile-modal">
                     <h5>
                      <span>
-                       <i class="fas fa-shopping-basket"></i>
+                       <i class="fas fa-shopping-basket" style="color: #ff5c00;"></i>
                      </span>
-                        PAIKARI Express Shahbagh
+                        <span style="color: #ff5c00;">PAIKARI ELECTRONICS</span>
                     </h5>
                     <hr class="m-0 p-0">
                     <div class="row">
@@ -50,13 +50,13 @@
                     <div class="row">
                         <div class="col-6">
                             <center>
-                                <a id="addToCart" class="cart-button cart-button1 mobile-modal-add-to-card">Add To Cart</a>
+                                <a id="addToCart" class="cart-button cart-button1 mobile-modal-add-to-card" style="background-color: rgb(139, 39, 39); color: white; font-weight: bold;">আরও পণ্য কিনুন</a>
                             </center>
                         </div>
 
                         <div class="col-6">
                             <center>
-                              <a  id="addToCart" class="cart-button cart-button1 mobile-modal-add-to-card" href="{{ route('check-out') }}">Checkout</a>
+                              <a  id="addToCart" class="cart-button cart-button1 mobile-modal-add-to-card" href="{{ route('check-out') }}" style="background-color: rgb(139, 39, 39); color: white; font-weight: bold;">অর্ডার শেষ করুন</a>
                             </center>
                         </div>
 
