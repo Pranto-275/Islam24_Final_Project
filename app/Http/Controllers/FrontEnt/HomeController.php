@@ -123,7 +123,7 @@ class HomeController extends Controller
         // dd(Contact::whereCreatedBy(Auth::user()->id)->get());
         if (Auth::user()) {
             return view('frontend.my-account', [
-                'contacts' => Contact::whereCreatedBy(Auth::user()->id)->get(),
+                'contacts' => Contact::whereUserId(Auth::user()->id)->get(),
             ]);
         } else {
             return view('frontend.sign-in');
