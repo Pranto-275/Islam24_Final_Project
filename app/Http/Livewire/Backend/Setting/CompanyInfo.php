@@ -25,7 +25,7 @@ class CompanyInfo extends Component
     public $web;
     public $facebook_link;
     public $youtube_link;
-    public $is_active;
+    public $is_active=1;
     public $CompanyInfo;
 
 

@@ -15,7 +15,7 @@ class Currency extends Component
     public $in_word_surfix;
     public $in_word_prefix_position;
     public $in_word_surfix_position;
-    public $is_active;
+    public $is_active=1;
     public $CurrencyId=NULL;
 
     public function currencyEdit($id)

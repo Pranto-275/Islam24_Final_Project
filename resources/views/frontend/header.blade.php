@@ -219,6 +219,54 @@
                             <div class="menu-outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                             </div>
+                            <div>
+                                <div class="row justify-content-center">
+                                    <div class="col-6">
+                                        <div class="core-features-item mb-10">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features01.png" alt="">
+                                            </div>
+                                            <div class="core-features-content">
+                                                <div class="text-info">Free Shipping On Over $ 50</div>
+                                                {{-- <span>Agricultural mean crops livestock</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="core-features-item mb-10">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features02.png" alt="">
+                                            </div>
+                                            <div class="core-features-content">
+                                                <div class="text-info">Membership Discount</div>
+                                                {{-- <span>Only MemberAgricultural livestock</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="core-features-item mb-10">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features03.png" alt="">
+                                            </div>
+                                            <div class="core-features-content">
+                                                <div class="text-info">Money Return</div>
+                                                {{-- <span>30 days money back guarantee</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="core-features-item mb-10">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png" alt="">
+                                            </div>
+                                            <div class="core-features-content">
+                                                <div class="text-info">24/7 Support !</div>
+                                                {{-- <span>Saving Every Moments</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="social-links">
                                 <ul class="clearfix">
                                     <li><a href="#"><span class="fab fa-twitter"></span></a></li>

@@ -13,7 +13,7 @@ class PointPolicy extends Component
     public $point_value;
     public $point_amount;
     public $description;
-    public $is_active;
+    public $is_active=1;
     public $PointPolicy;
 
     public function mount()

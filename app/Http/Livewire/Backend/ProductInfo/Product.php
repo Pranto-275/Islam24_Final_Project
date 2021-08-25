@@ -10,7 +10,6 @@ use App\Models\Backend\ProductInfo\Color;
 use App\Models\Backend\ProductInfo\Product as ProductTable;
 use App\Models\Backend\ProductInfo\ProductImage;
 use App\Models\Backend\ProductInfo\ProductInfo;
-use App\models\Backend\ProductInfo\ProductProperties;
 use App\Models\Backend\ProductInfo\Size;
 use App\Models\Backend\ProductInfo\SubCategory;
 use App\Models\Backend\ProductInfo\SubSubCategory;

@@ -13,7 +13,7 @@ class Vat extends Component
     public $name;
     public $rate_percent;
     public $rate_fixed;
-    public $is_active;
+    public $is_active=1;
     public $vat_id;
 
 

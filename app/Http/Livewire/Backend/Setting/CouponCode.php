@@ -15,7 +15,7 @@ class CouponCode extends Component
     public $offer_type;
     public $offer_amount;
     public $min_buy_amount;
-    public $is_active;
+    public $is_active=1;
     public $CouponCodeId;
 
 

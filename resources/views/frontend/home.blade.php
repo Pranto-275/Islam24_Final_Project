@@ -377,9 +377,10 @@
             </div> --}}
             <!-- furniture-cat-banner-end -->
             <!-- core-features -->
-            <section class="core-features-area core-features-style-two">
+            <section class="core-features-area core-features-style-two" id="footerTopMenu">
                 <div class="container">
-                    <div class="core-features-border">
+                    <hr>
+                    <div>
                         <div class="row justify-content-center">
                             <div class="col-xl-3 col-lg-4 col-sm-6">
                                 <div class="core-features-item mb-10">

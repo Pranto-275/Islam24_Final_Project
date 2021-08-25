@@ -12,7 +12,7 @@ class DeliveryMethod extends Component
     public $name;
     public $address;
     public $branch_id;
-    public $is_active;
+    public $is_active=1;
     public $description;
     public $DeliveryId=NULL;
 

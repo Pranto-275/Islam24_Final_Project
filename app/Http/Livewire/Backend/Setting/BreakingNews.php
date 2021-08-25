@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class BreakingNews extends Component
 {
     public $news;
-    public $is_active;
+    public $is_active=1;
     public $BreakingNewsId;
 
     public function newsEdit($id)
