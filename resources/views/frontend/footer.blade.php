@@ -27,8 +27,8 @@
                         </div>
                         <div class="footer-text mb-35">
                             <h5 class="call-us">Got Question? Call us 24/7</h5>
-                            <h6 class="number">{!! $companyInfo->mobile !!}</h6>
-                            <p>{!! $companyInfo->address !!}</p>
+                            <h6 class="number">@if($companyInfo) {!! $companyInfo->mobile !!} @endif</h6>
+                            <p>@if($companyInfo) {!! $companyInfo->address !!} @endif</p>
                             <a href="#" class="btn"><i class="fas fa-map-marker-alt"></i>view on map</a>
                         </div>
                     </div>
@@ -83,15 +83,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright-text">
-                        <p>Copyright © 2020 <a href="#">Paikari Electronics</a> All Rights Reserved.</p>
+                        <p>Copyright © {{ date("Y") }} <a href="#">Paikari Electronics</a> All Rights Reserved.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 d-none d-md-block">
                     <div class="payment-method-img text-right">
-                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" style="width:60px; height: 30px;" alt=""></a>
-                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" style="width:60px; height: 30px;" alt=""></a>
-                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" style="width:60px; height: 30px;" alt=""></a>
-                        <a href="shop-left-sidebar.html"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" style="width:60px; height: 30px;" alt=""></a>
                         {{-- <img src="{{ URL::asset('venam/') }}/img/images/card_img.png" alt="img"> --}}
                     </div>
                 </div>

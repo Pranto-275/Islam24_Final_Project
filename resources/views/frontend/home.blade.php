@@ -20,7 +20,7 @@
                         </ol> --}}
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100 slider-image" src="{{ asset('storage/photo/'.$sliderImageLast->image) }}" alt="First slide">
+                                <img class="d-block w-100 slider-image" @if($sliderImageLast) src="{{ asset('storage/photo/'.$sliderImageLast->image) }}" @endif alt="First slide">
                             </div>
                             @foreach ($sliderImages as $sliderImage)
 
@@ -60,7 +60,7 @@
                             <div class="col-3">
                                 <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
                                 <img class="d-block w-100" src="{{ asset('storage/photo/'.$topFourCategory->image1) }}" alt="{{$topFourCategory->id}}">
-                                <div class="text-center bg-dark text-light">
+                                <div class="text-center" style="color: #ff0000; font-weight: bold;font-size: 14px;">
                                     {{$topFourCategory->name}}
                                     {{-- Q --}}
                                 </div>
@@ -143,7 +143,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta" style="background-color: #ff5c00;">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <span class="sd-meta">New!</span> --}}
                                             {{-- <ul class="action">
@@ -196,14 +196,14 @@
                                             }
                                             @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
-                                                 @if($product['in_stock']=="Out of Stock")
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif style="color: #ff5c00;">
+                                                @if($product['in_stock']=="Out of Stock")
                                                 স্টক শেষ
                                                @else
                                                 ক্রয় করুণ
                                                @endif
                                             </a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first']) data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif data-toggle="modal" data-target=".bd-example-modal-sm" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first']) data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif data-toggle="modal" data-target=".bd-example-modal-sm" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif style="color: #ff5c00;">
                                                 @if($product['in_stock']=="Out of Stock")
                                                 স্টক শেষ
                                                 @else
@@ -252,7 +252,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -305,14 +305,14 @@
                                             }
                                             @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" style="color: #ff5c00;">
                                                 @if($product['in_stock']=="Out of Stock")
                                                  Sold Out
                                                 @else
                                                  ক্রয় করুণ
                                                 @endif
                                             </a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
                                                 @if($product['in_stock']=="Out of Stock")
                                                 Sold Out
                                                @else

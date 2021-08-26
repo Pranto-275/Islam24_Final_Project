@@ -12,6 +12,105 @@
                     display: none;
                 }
             }
+            table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* general styling */
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.25;
+}
         </style>
         <x-slot name="title">
             Cart
@@ -49,18 +148,19 @@
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
                         {{-- Start Cart --}}
                         <div class="col-lg-8 mb-1" id="">
+                            <h3 class="text-center">শপিং ব্যাগ</h3>
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
                                     @php $totalPrice = $cardBadge['data']['total_price'] @endphp
-                                    <table class="table mb-0">
+                                    <table class="">
                                         <thead>
                                         <tr>
                                             <th class="product-thumbnail"></th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">QUANTITY</th>
-                                            <th class="product-subtotal">SUBTOTAL</th>
+                                            <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th>
+                                            <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
+                                            <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
+                                            <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -84,22 +184,23 @@
                                                     <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span>
                                                 </td>
-                                                <td class="product-price">
+                                                <td data-label="মূল্য" class="product-price">
                                                     @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
                                                     @endif
                                                     {{ $product['unit_price'] }}
                                                 </td>
-                                                <td class="product-quantity">
-                                                    <div class="cart-plus">
+                                                <td data-label="সংখ্যা" class="product-quantity">
+                                                    <div class="cart-plus float-right">
                                                         <form action="#">
                                                             <div class="cart-plus-minus" data-product-id="{{ $productId }}" data-device="desktop">
                                                                 <input type="text" class="product_quantity product-quantity-cart" id="product_quantity_{{ $productId }}" data-product-id="{{ $productId }}" data-minimum-quantity="{{ $product['minimum_order_quantity'] }}" value="{{ $product['quantity'] }}">
                                                             </div>
                                                         </form>
                                                     </div>
+                                                    <br>
                                                 </td>
-                                                <td class="product-subtotal" id="product_subtotal_{{ $productId }}">
+                                                <td data-label="SUBTOTAL" class="product-subtotal" id="product_subtotal_{{ $productId }}">
                                                 <span>
                                                     @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
@@ -137,7 +238,7 @@
                         <div class="col-lg-4 col-md-8">
                             <aside class="shop-cart-sidebar">
                                 <div class="shop-cart-widget">
-                                    <h6 class="title">Cart Totals</h6>
+                                    <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
                                     <form action="{{ route('check-out') }}">
                                         <ul>
                                             <li>
@@ -150,7 +251,7 @@
                                                 </span>
                                             </li>
                                             <li>
-                                                <span>Discount</span>
+                                                <span>ডিসকাউন্ট</span>
                                                 <span class="cart-total-price">
                                                     @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
@@ -169,7 +270,7 @@
                                                 </div> --}}
                                             </li>
                                             <li class="cart-total-amount">
-                                                <span>TOTAL</span>
+                                                <span>সর্বমোট</span>
                                                 <span class="amount cart-total-price">
                                                 @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
@@ -178,7 +279,7 @@
                                                 </span>
                                             </li>
                                         </ul>
-                                        <button class="btn">PROCEED TO CHECKOUT</button>
+                                        <button class="btn">অর্ডার শেষ করুন</button>
                                     </form>
                                 </div>
                             </aside>

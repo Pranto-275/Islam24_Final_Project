@@ -22,7 +22,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-grp">
-                                            <label for="fName">First Name <span>*</span></label>
+                                            <label for="fName">আপনার নাম<span>*</span></label>
                                             <input type="text" name="fName" required value="@if(Auth::user()){{Auth::user()->name}}@endif">
                                         </div>
                                     </div>
@@ -34,33 +34,33 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="mobile">Your Mobile <span>*</span></label>
+                                            <label for="mobile">মোবাইল নাম্বার<span>*</span></label>
                                             <input type="text" name="mobile" required value="@if(Auth::user()){{Auth::user()->mobile}}@endif">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-grp">
-                                            <label for="shipping_address">Shipping ADDRESS *</label>
+                                            <label for="shipping_address">পূর্ণ ঠিকানা*</label>
                                             <input type="text" name="shipping_address" required value="@if(Auth::user()){{Auth::user()->address}}@endif">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label>District *</label>
+                                            <label>জেলা *</label>
                                             <select class="custom-select" id="district" name="district" required>
+                                                <option value="Dhaka">Dhaka</option>
                                                 <option value="New York">Chittagang</option>
                                                 <option value="California">Barisal</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-8">
                         <aside class="shop-cart-sidebar checkout-sidebar">
                             <div class="shop-cart-widget">
-                                <h6 class="title">Cart Totals</h6>
+                                <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
                                     <ul>
                                         <li><span>SUBTOTAL</span> {{ $cardBadge['data']['total_price'] }}</li>
                                         <li>
@@ -91,7 +91,7 @@
                                     <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                            <label class="custom-control-label" for="customCheck4">Cash On Delivery</label>
+                                            <label class="custom-control-label" for="customCheck4">ক্যাশ অন ডেলিভারি</label>
                                         </div>
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck3">
@@ -134,7 +134,7 @@
                                             and conditions *</label>
                                         </div>
                                     </div>
-                                    <button class="btn btn-submit" type="submit">Confirm</button>
+                                    <button class="btn btn-submit" type="submit">অর্ডার শেষ করুন</button>
                             </div>
                         </aside>
                     </div>
