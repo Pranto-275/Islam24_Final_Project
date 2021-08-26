@@ -40,10 +40,8 @@
                         </div>
                         <div class="fw-link">
                             <ul>
-                                <li><a href="#">Help Center</a></li>
+                                <li><a href="{{route('contact-us')}}">Help Center</a></li>
                                 <li><a href="{{route('return-policy')}}">Returns policy</a></li>
-                                <li><a href="#">Product Recalls</a></li>
-                                <li><a href="#">Accessibility</a></li>
                                 <li><a href="{{route('contact-us')}}">Contact Us</a></li>
                             </ul>
                         </div>
@@ -59,8 +57,6 @@
                                 <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
                                 <li><a href="{{route('terms-conditios')}}">Terms & Conditions</a></li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
-                                <li><a href="#">Los Angeles</a></li>
-                                <li><a href="#">Chicago</a></li>
                             </ul>
                         </div>
                     </div>
@@ -73,8 +69,6 @@
                         <div class="fw-link">
                             <ul>
                                 <li><a href="#">My Account</a></li>
-                                <li><a href="#">Discount</a></li>
-                                <li><a href="#">Returns</a></li>
                                 <li><a href="#">Orders History</a></li>
                                 <li><a href="#">Order Tracking</a></li>
                             </ul>

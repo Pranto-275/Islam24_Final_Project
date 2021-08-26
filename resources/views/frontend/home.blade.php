@@ -197,7 +197,7 @@
                                             @endphp
                                             <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
                                             <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif>
-                                                @if($product['in_stock']=="Out of Stock")
+                                                 @if($product['in_stock']=="Out of Stock")
                                                 স্টক শেষ
                                                @else
                                                 ক্রয় করুণ

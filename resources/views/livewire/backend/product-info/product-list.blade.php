@@ -82,8 +82,8 @@
 
                                                  </td>
                                                  <td>
-                                                    @if($product->SubSubCategory)
-                                                      @if($product->SubSubCategory) {{ $product->SubSubCategory->name }} @endif
+                                                    @if($product->Category)
+                                                      @if($product->Category) {{ $product->Category->name }} @endif
                                                     @endif
                                                  </td>
                                                  <td>
@@ -162,16 +162,16 @@
                                     <label for="basicpill-firstname-input">Category: @if($ProductDetail) {{$ProductDetail->Category->name}} @endif </label>
                                 </div>
                             </div>
-                            <div class="col-lg-6 font">
+                            {{-- <div class="col-lg-6 font">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sub Category: @if($ProductDetail) {{$ProductDetail->SubCategory->name}} @endif</label>
+                                    <label for="basicpill-firstname-input">Sub Category: @if($ProductDetail->SubCategory) {{$ProductDetail->SubCategory->name}} @endif</label>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 font">
+                            </div> --}}
+                            {{-- <div class="col-lg-6 font">
                                 <div class="form-group">
-                                    <label for="basicpill-firstname-input">Sub Sub Category: @if($ProductDetail) {{$ProductDetail->SubSubCategory->name}} @endif</label>
+                                    <label for="basicpill-firstname-input">Sub Sub Category: @if($ProductDetail->SubSubCategory) {{$ProductDetail->SubSubCategory->name}} @endif</label>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Brand: @if($ProductDetail) {{$ProductDetail->Brand->name}} @endif</label>
@@ -221,9 +221,9 @@
                             {{-- <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">VaT Rate: @if($ProductDetail) {{$ProductDetail->Vat->name}} @endif</label>
-                                </div>
+                                </div> --}}
 
-                            </div> --}}
+                            </div>
                             {{-- <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Branch: @if($ProductDetail) {{$ProductDetail->Branch->name}} @endif</label>
