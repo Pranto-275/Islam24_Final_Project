@@ -143,7 +143,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;height: 70px; background-color: #ff5c00;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta" style="background-color: #ff5c00;">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <span class="sd-meta">New!</span> --}}
                                             {{-- <ul class="action">
@@ -252,7 +252,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
