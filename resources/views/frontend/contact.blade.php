@@ -19,7 +19,7 @@
                             </div>
                             <div class="contact-info-content">
                                 <h5>Our Location</h5>
-                                <p>{!! $companyInfo->address !!}</p>
+                                <p>@if($companyInfo) {!! $companyInfo->address !!} @endif</p>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="contact-info-content">
                                 <h5>Our Email</h5>
-                                <p>Email Us: {!! $companyInfo->email !!}</p>
+                                <p>Email Us: @if($companyInfo) {!! $companyInfo->email !!} @endif</p>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="contact-info-content">
                                 <h5>Phone Number</h5>
-                                <p>Contacr Numbers: {!! $companyInfo->phone !!}</p>
+                                <p>Contacr Numbers: @if($companyInfo) {!! $companyInfo->phone !!} @endif</p>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-map">
-                            <img src="{{ URL::asset('venam/') }}/img/images/map.jpg" alt="">
+                            @if($companyInfo) {!! $companyInfo->google_map_location !!} @endif
                         </div>
                     </div>
                 </div>

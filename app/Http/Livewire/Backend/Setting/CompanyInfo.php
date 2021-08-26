@@ -20,11 +20,12 @@ class CompanyInfo extends Component
     public $privacy_policy;
     public $terms_condition;
     public $return_policy;
+    public $google_map_location;
     public $email;
     public $web;
     public $facebook_link;
     public $youtube_link;
-    public $is_active;
+    public $is_active=1;
     public $CompanyInfo;
 
 
@@ -41,6 +42,7 @@ public function mount(){
         $this->privacy_policy=$this->CompanyInfo->privacy_policy;
         $this->terms_condition=$this->CompanyInfo->terms_condition;
         $this->return_policy=$this->CompanyInfo->return_policy;
+        $this->google_map_location = $this->CompanyInfo->google_map_location;
         $this->web= $this->CompanyInfo->web;
         $this->facebook_link= $this->CompanyInfo->facebook_link;
         $this->youtube_link= $this->CompanyInfo->youtube_link;
@@ -69,6 +71,7 @@ public function companyInfoSave(){
           $Query->privacy_policy = $this->privacy_policy;
           $Query->terms_condition = $this->terms_condition;
           $Query->return_policy  = $this->return_policy;
+          $Query->google_map_location = $this->google_map_location;
           $Query->web = $this->web;
           $Query->facebook_link = $this->facebook_link;
           $Query->youtube_link = $this->youtube_link;

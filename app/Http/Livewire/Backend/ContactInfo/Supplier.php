@@ -21,7 +21,7 @@ class Supplier extends Component
    public $opening_balance;
    public $contact_category_id;
    public $CustomerCategoryId;
-   public $is_active;
+   public $is_active=1;
 
 
 

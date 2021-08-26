@@ -29,7 +29,7 @@
 .text1{
 
     box-shadow:none !important;
-    width: 90%;
+    width: 92%;
 }
 .text2{
     box-shadow:none !important;
@@ -39,12 +39,12 @@
     #breakingNews{
         display: none;
     }
-    #privacyPolicy, #termCondition, #aboutUs, #sign-in, #sign-up{
+    #privacyPolicy, #termCondition, #aboutUs, #sign-in, #sign-up, #contact-us{
         display: none;
     }
 }
     </style>
-    <div class="header-top-area">
+    <div class="header-top-area pb-0">
         <div class="custom-container-two">
             <div class="row">
                 <div class="col-md-8 col-sm-7">
@@ -54,9 +54,9 @@
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
                                             <button aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-phone-alt text-info"></i>
-                                                <span style="font-size: 15px;">
-                                                    {{$companyInfo->hotline}}
+                                                <i class="fas fa-phone-alt" style="color: #ff5c00;font-size: 13px;"></i>
+                                                <span class="pt-1" style="font-size: 14px;font-weight: bold;color: #ff5c00;">
+                                                    @if($companyInfo) {{$companyInfo->hotline}} @endif
                                                 </span>
                                             </button>
                                         </a>
@@ -117,15 +117,15 @@
     <!-- header-top-end -->
 
     <!-- menu-area -->
-    <div id="sticky-header" class="main-header menu-area mb-0 pb-0">
+    <div id="sticky-header" class="main-header menu-area mb-0 pb-0 pt-2">
         <div class="custom-container-two">
             <div class="row">
-                <div class="col-12 m-0 mx-0 px-0" id="responsive-header">
-                    <div class="mobile-nav-toggler float-left mt-1 mx-1"><i class="fas fa-bars"></i>&nbsp;</div>
+                <div class="col-12 mx-0 px-0" id="responsive-header">
+                    <div class="mobile-nav-toggler float-left mt-1 pl-2"><i class="fas fa-bars"></i>&nbsp;</div>
                     {{-- Start Mobile Responsive Search Box --}}
                     <form action="{{ route('product-search') }}" method="GET">
                         <center>
-                            <div class="input-group" id="mobile-response-search-box" style="width: 80%;">
+                            <div class="input-group pr-3" id="mobile-response-search-box" style="width: 80%;">
                                 <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="পণ্য খুজুন..">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
@@ -137,11 +137,12 @@
                     </form>
                         {{-- End Mobile Responsive Search Box --}}
                         {{-- Start Breaking News --}}
-                        <div id="breakingNews" class="news blue my-1 mx-0 px-0">
-                            <span class="mx-0" style="background-color: #f7ba01;z-index:2;">ঘোষণা</span><span class="text2" >
+                        <div id="breakingNews" class="news blue my-1 mx-0 px-0" style="height: 38px;border-style: solid;border-color: brown">
+                            <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+                            <span class="text2" >
                               <marquee scrollamount="5">
                                @foreach ($BreakingNews as $news)
-                               <i class="fas fa-star"></i><i class="fas fa-star"></i> {{$news->news}}
+                               <i class="fas fa-star"></i><i class="fas fa-star"><a style="font-size: 14px;font-family: SolaimanLipi;">{{$news->news}}</a>
                                @endforeach
                               </marquee>
                             </span>
@@ -157,27 +158,29 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{url('/')}}">Home</a></li>
-                                    <li><a href="{{route('search-category-wise')}}">Shop</a></li>
-                                    {{-- <li><a href="#">SPECIAL</a></li> --}}
-                                    <li><a href="{{route('contact-us')}}">contacts</a></li>
-                                    @if (!Auth::user())
-                                    <li id="sign-in"><a href="{{route('register')}}">Sign Up</a></li>
-                                    <li id="sign-up"><a href="{{route('sign-in')}}">Sign In</a></li>
-                                    @endif
+                                    <li class="active"><a href="{{url('/')}}">হোম</a></li>
                                     @if(Auth::user())
                                     <li>
-                                        <a href="{{ route('my-account') }}">My Account</a>
+                                        <a href="{{ route('my-account') }}">আমার একাউন্ট</a>
                                     </li>
                                     @endif
+                                    <li><a href="{{url('/')}}">প্রডাক্ট ক্যাটাগরি সমূহ</a></li>
+                                    <li><a href="{{route('search-category-wise')}}">শপ পেইজ</a></li>
+                                    {{-- <li><a href="#">SPECIAL</a></li> --}}
+                                    <li><a href="{{route('contact-us')}}">অভিযোগ/মতামত</a></li>
+                                    <li><a href="{{route('contact-us')}}" id="contact-us">যোগাযোগ</a></li>
+                                    @if (!Auth::user())
+                                    <li id="sign-in"><a href="{{route('register')}}">রেজিষ্ট্রেশন</a></li>
+                                    <li id="sign-up"><a href="{{route('sign-in')}}">লগইন</a></li>
+                                    @endif
                                     <li>
-                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy">Privacy Policy</a>
+                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy">প্রাইভেসি পলিসি</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('terms-conditios')}}" id="termCondition">Terms & Conditions</a>
+                                        <a href="{{route('terms-conditios')}}" id="termCondition">শর্তাবলী</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('about')}}" id="aboutUs">About Us</a>
+                                        <a href="{{route('about')}}" id="aboutUs">পাইকারি মিশন & ভিশন</a>
                                     </li>
                                 </ul>
                             </div>
@@ -219,13 +222,61 @@
                             <div class="menu-outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                             </div>
+                            <div>
+                                <div class="row justify-content-center">
+                                    <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
+                                        <div class="core-features-item">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features01.png" alt="">
+                                            </div>
+                                            <div class="core-features-content my-0 py-0">
+                                                <div class="text-danger my-0 py-0">Free Shipping On Over $ 50</div>
+                                                {{-- <span>Agricultural mean crops livestock</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
+                                        <div class="core-features-item">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features02.png" alt="">
+                                            </div>
+                                            <div class="core-features-content my-0 py-0">
+                                                <div class="text-danger my-0 py-0">Membership Discount</div>
+                                                {{-- <span>Only MemberAgricultural livestock</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
+                                        <div class="core-features-item">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features03.png" alt="">
+                                            </div>
+                                            <div class="core-features-content my-0 py-0">
+                                                <div class="text-danger my-0 py-0">Money Return</div>
+                                                {{-- <span>30 days money back guarantee</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 my-0 py-0">
+                                        <div class="core-features-item">
+                                            <div class="core-features-icon">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png" alt="">
+                                            </div>
+                                            <div class="core-features-content my-0 py-0">
+                                                <div class="text-danger my-0 py-0">24/7 Support !</div>
+                                                {{-- <span>Saving Every Moments</span> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="social-links">
                                 <ul class="clearfix">
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-instagram"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                                    {{-- <li><a href="#"><span class="fab fa-twitter"></span></a></li> --}}
+                                    <li><a href="#"><span class="fab fa-facebook-square" style="font-size: 30px;"></span></a></li>
+                                    {{-- <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li> --}}
+                                    {{-- <li><a href="#"><span class="fab fa-instagram"></span></a></li> --}}
+                                    <li><a href="#"><span class="fab fa-youtube" style="font-size: 30px;"></span></a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -324,14 +375,24 @@
                 </div>
             </div>
              {{-- Start Breaking News --}}
-             <div id="breakingNews1" class="news blue my-1">
-                <span style="background-color: #ffc001;z-index:2;">ঘোষণা</span><span class="text1" >
+             {{-- <div id="breakingNews1" class="news blue my-1">
+                <span style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+                <span class="text1" style="height: 38px;border-style: solid;border-color: brown">
                   <marquee scrollamount="5">
                    @foreach ($BreakingNews as $news)
                    <span style="font-size:12px;" class="p-0 m-0">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    {{$news->news}}
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>{{$news->news}}
                    </span>
+                   @endforeach
+                  </marquee>
+                </span>
+            </div> --}}
+            <div id="breakingNews1" class="news blue my-1" style="height: 38px;border-style: solid;border-color: brown">
+                <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+                <span class="text1" >
+                  <marquee scrollamount="5">
+                   @foreach ($BreakingNews as $news)
+                   <i class="fas fa-star"></i><i class="fas fa-star"><a style="font-size: 12px;font-family: SolaimanLipi;">{{$news->news}}</a>
                    @endforeach
                   </marquee>
                 </span>

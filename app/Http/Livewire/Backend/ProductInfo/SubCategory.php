@@ -15,7 +15,7 @@ class SubCategory extends Component
     public $image;
     public $description;
     public $category_id;
-    public $is_active;
+    public $is_active=1;
     public $QueryUpdate;
     public $SubCategoryId;
 
@@ -71,7 +71,7 @@ class SubCategory extends Component
         ]);
     }
     public function SubCategoryModal(){
-        
+
         $this->code = 'SC'.floor(time() - 999999999);
         $this->emit('modal','SubCategoryModal');
     }

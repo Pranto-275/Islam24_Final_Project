@@ -52,6 +52,7 @@ class HomeController extends Controller
     {
         $QueryUpdate = Contact::whereUserId(Auth::user()->id)->first();
         $QueryUpdate->shipping_address = $request->shipping_address;
+        $QueryUpdate->created_by = Auth::user()->id;
         $QueryUpdate->save();
 
         return back();
@@ -122,7 +123,7 @@ class HomeController extends Controller
         // dd(Contact::whereCreatedBy(Auth::user()->id)->get());
         if (Auth::user()) {
             return view('frontend.my-account', [
-                'contacts' => Contact::whereCreatedBy(Auth::user()->id)->get(),
+                'contacts' => Contact::whereUserId(Auth::user()->id)->get(),
             ]);
         } else {
             return view('frontend.sign-in');
@@ -297,6 +298,14 @@ class HomeController extends Controller
 
     public function messages(Request $request)
     {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
         DB::transaction(function () use ($request) {
             $Query = new Message();
             $Query->first_name = $request->first_name;
@@ -316,6 +325,7 @@ class HomeController extends Controller
     {
         $ProductDetail = Product::whereId($id)->first();
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereId($id)->get()->toArray();
+
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,
             'data' => $data,

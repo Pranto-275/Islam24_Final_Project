@@ -403,7 +403,7 @@
         </div>
         <!-- furniture-cat-banner-end -->
         <!-- core-features -->
-        <section class="core-features-area core-features-style-two">
+        <section class="core-features-area core-features-style-two" id="footerTopMenu">
             <div class="container">
                 <div class="core-features-border">
                     <div class="row justify-content-center">

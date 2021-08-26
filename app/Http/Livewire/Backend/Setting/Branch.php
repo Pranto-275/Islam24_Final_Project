@@ -11,7 +11,7 @@ class Branch extends Component
     public $name;
     public $mobile;
     public $address;
-    public $is_active;
+    public $is_active=1;
     public $BranchId;
     public $QueryUpdate;
 

@@ -16,7 +16,7 @@ class Brand extends Component
     public $name;
     public $image;
     public $description;
-    public $is_active;
+    public $is_active=1;
     public $brand_id;
     public $QueryUpdate;
 

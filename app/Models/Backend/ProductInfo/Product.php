@@ -6,8 +6,6 @@ use App\Models\Backend\Inventory\PurchaseInvoiceDetail;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use App\Models\Backend\Inventory\StockManager;
 use App\Models\Backend\Setting\Vat;
-use app\Models\Backend\ProductInfo\Category;
-use App\Models\Backend\ProductInfo\Brand;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,7 +35,22 @@ class Product extends Model
 
     public function ProductImageTop4()
     {
-        return $this->hasMany(ProductImage::class);
+        return $this->hasMany(ProductImage::class)->where('is_default','!=', 1);
+    }
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function Branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    public function SubCategory()
+    {
+        return $this->belongsTo(SubCategory::class);
     }
 
     public function SubSubCategory()
@@ -78,8 +91,5 @@ class Product extends Model
     public function ProductInfo()
     {
         return $this->hasOne(ProductInfo::class);
-    }
-    public function Category(){
-        return $this->belongsTo(Category::class);
     }
 }

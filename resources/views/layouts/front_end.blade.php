@@ -106,7 +106,7 @@
                 #categoryName{
                     font-size: 12px;
                 }
-                .cartModal, #signInSignOut{
+                .cartModal, #signInSignOut, #footerTopMenu{
                     display: none;
                 }
             }

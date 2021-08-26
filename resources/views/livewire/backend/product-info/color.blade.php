@@ -3,7 +3,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        Color
+        Colors
     </x-slot>
     <h4 class="pb-2">All Colors</h4>
     <div class="row">

@@ -12,7 +12,7 @@ class ContactCategory extends Component
     public $type;
     public $code;
     public $name;
-    public $is_active;
+    public $is_active=1;
     public $contact_Category_id;
 
 

@@ -256,21 +256,47 @@
                     </div> --}}
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="low_alert">Product Image</label>
+                            <label for="low_alert"> Image </label>
+                            {{-- <div wire:loading wire:target="product_image">
+                                Processing Image...
+                            </div> --}}
                             <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="product_image"/>
                             @error('product_image') <span class="error">{{ $message }}</span> @enderror
+                                @if ($product_image)
+                                    <img src="{{ $product_image->temporaryUrl() }}" style="height:80px; weight:80px;"
+                                            alt="Image" class="img-circle img-fluid">
+                                @endif
+                                @if($QueryUpdate && !$product_image)
+                                    <img @if($QueryUpdate->ProductImageFirst) src="{{ asset('storage/photo/'.$QueryUpdate->ProductImageFirst->image)}}" @endif
+                                            style="height:80px; weight:80px;" alt="Product Image" class="img-circle img-fluid">
+                                @endif
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="low_alert">Product Gallery Image</label>
+                            <label for="low_alert">Product Gallery Image</label><br>
                             <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images" multiple />
                         </div>
+                        @if($QueryUpdate)
+                        @foreach ($QueryUpdate->ProductImageTop4 as $image)
+                         <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
+                           <img style="height:80px; weight:80px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
+                           <div class="close text-danger" wire:click="imageDelete({{$image->id}})" style="cursor:pointer;">
+                               <span aria-hidden="true">&times;</span>
+                           </div>
+                         </div>
+                        @endforeach
+                       @endif
+                       @foreach ($images as $image)
+                       <img src="{{ $image->temporaryUrl() }}" style="height:80px; weight:80px;"
+                       alt="Image" class="img-circle img-fluid">
+                       @endforeach
                     </div>
                 </div>
             </div>
+
            <center>
-            <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light">Publish</button>
+            <button type="submit" class="btn btn-primary mr-1 waves-effect waves-light" wire:target="product_image, images" wire:loading.attr="disabled">Publish</button>
            </center>
         </div> <!-- end card-->
 {{--

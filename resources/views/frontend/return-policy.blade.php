@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    {!! $companyInfo->return_policy !!}
+                    @if($companyInfo) {!! $companyInfo->return_policy !!} @endif
                 </div>
             </div>
         </div>

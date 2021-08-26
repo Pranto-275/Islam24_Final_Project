@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-lastname-input">Status</label>
                                     <select class="form-control" wire:model.lazy="is_active">
-                                        <option value="">Select Status</option>
+                                        {{-- <option value="">Select Status</option> --}}
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" >Submit</button>
+                        <button type="submit" class="btn btn-primary" wire:target="image" wire:loading.attr="disabled">Submit</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->

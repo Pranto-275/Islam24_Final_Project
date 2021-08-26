@@ -15,7 +15,7 @@ class PaymentMethod extends Component
     public $account_no;
     public $opening_balance=0;
     public $created_by;
-    public $is_active;
+    public $is_active=1;
     public $paymentMethod_id;
 
 

@@ -18,7 +18,7 @@ class Category extends Component
     public $image1;
     public $image2;
     public $description;
-    public $is_active;
+    public $is_active=1;
     public $top_show;
     public $CategoryId = null;
     public $QueryUpdate = null;

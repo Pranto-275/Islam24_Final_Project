@@ -64,6 +64,7 @@ use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
 use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Backend\Transaction\SupplierPayment;
 use App\Http\Livewire\Backend\Transaction\SupplierPaymentReport;
+use App\Http\Livewire\Backend\ProductInfo\PreviewProduct;
 use App\Http\Livewire\Frontend\About as AboutUs;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\CategoryWiseProduct;
@@ -187,6 +188,7 @@ Route::group(['middleware' => ['role:admin']], function () {
             Route::get('brand', Brand::class)->name('brand');
             Route::get('product/{id?}', Product::class)->name('product');
             Route::get('product-list', ProductList::class)->name('product-list');
+            Route::get('preview-product/{id?}', PreviewProduct::class)->name('preview-product');
             Route::get('sub-sub-category', SubSubCategory::class)->name('sub-sub-category');
             Route::get('unit', Unit::class)->name('unit');
             Route::get('color', Color::class)->name('color');
