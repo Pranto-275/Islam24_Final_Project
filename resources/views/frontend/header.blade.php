@@ -29,7 +29,7 @@
 .text1{
 
     box-shadow:none !important;
-    width: 90%;
+    width: 92%;
 }
 .text2{
     box-shadow:none !important;
@@ -142,7 +142,7 @@
                             <span class="text2" >
                               <marquee scrollamount="5">
                                @foreach ($BreakingNews as $news)
-                                <a style="font-size: 14px;font-family: SolaimanLipi;">{{$news->news}}</a>
+                               <i class="fas fa-star"></i><i class="fas fa-star"><a style="font-size: 14px;font-family: SolaimanLipi;">{{$news->news}}</a>
                                @endforeach
                               </marquee>
                             </span>
@@ -375,14 +375,24 @@
                 </div>
             </div>
              {{-- Start Breaking News --}}
-             <div id="breakingNews1" class="news blue my-1">
-                <span style="background-color: #ffc001;z-index:2;">ঘোষণা</span><span class="text1" >
+             {{-- <div id="breakingNews1" class="news blue my-1">
+                <span style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+                <span class="text1" style="height: 38px;border-style: solid;border-color: brown">
                   <marquee scrollamount="5">
                    @foreach ($BreakingNews as $news)
                    <span style="font-size:12px;" class="p-0 m-0">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    {{$news->news}}
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i>{{$news->news}}
                    </span>
+                   @endforeach
+                  </marquee>
+                </span>
+            </div> --}}
+            <div id="breakingNews1" class="news blue my-1" style="height: 38px;border-style: solid;border-color: brown">
+                <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+                <span class="text1" >
+                  <marquee scrollamount="5">
+                   @foreach ($BreakingNews as $news)
+                   <i class="fas fa-star"></i><i class="fas fa-star"><a style="font-size: 12px;font-family: SolaimanLipi;">{{$news->news}}</a>
                    @endforeach
                   </marquee>
                 </span>

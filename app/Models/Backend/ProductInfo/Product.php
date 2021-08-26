@@ -35,7 +35,7 @@ class Product extends Model
 
     public function ProductImageTop4()
     {
-        return $this->hasMany(ProductImage::class);
+        return $this->hasMany(ProductImage::class)->where('is_default','!=', 1);
     }
 
     public function Category()

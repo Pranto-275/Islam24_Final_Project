@@ -267,7 +267,7 @@
                                             alt="Image" class="img-circle img-fluid">
                                 @endif
                                 @if($QueryUpdate && !$product_image)
-                                    <img src="{{ asset('storage/photo/'.$QueryUpdate->ProductImageFirst->image)}}"
+                                    <img @if($QueryUpdate->ProductImageFirst) src="{{ asset('storage/photo/'.$QueryUpdate->ProductImageFirst->image)}}" @endif
                                             style="height:80px; weight:80px;" alt="Product Image" class="img-circle img-fluid">
                                 @endif
                         </div>
@@ -277,22 +277,20 @@
                             <label for="low_alert">Product Gallery Image</label><br>
                             <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images" multiple />
                         </div>
-                    </div>
-                    <div class="col-12" style="display: flex;justify-content: flex-end;">
                         @if($QueryUpdate)
-                             @foreach ($QueryUpdate->ProductImageTop4 as $image)
-                              <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
-                                <img style="height:80px; weight:80px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
-                                <div class="close text-danger" wire:click="imageDelete({{$image->id}})" style="cursor:pointer;">
-                                    <span aria-hidden="true">&times;</span>
-                                </div>
-                              </div>
-                             @endforeach
-                            @endif
-                            @foreach ($images as $image)
-                            <img src="{{ $image->temporaryUrl() }}" style="height:80px; weight:80px;"
-                            alt="Image" class="img-circle img-fluid">
-                            @endforeach
+                        @foreach ($QueryUpdate->ProductImageTop4 as $image)
+                         <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
+                           <img style="height:80px; weight:80px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
+                           <div class="close text-danger" wire:click="imageDelete({{$image->id}})" style="cursor:pointer;">
+                               <span aria-hidden="true">&times;</span>
+                           </div>
+                         </div>
+                        @endforeach
+                       @endif
+                       @foreach ($images as $image)
+                       <img src="{{ $image->temporaryUrl() }}" style="height:80px; weight:80px;"
+                       alt="Image" class="img-circle img-fluid">
+                       @endforeach
                     </div>
                 </div>
             </div>
