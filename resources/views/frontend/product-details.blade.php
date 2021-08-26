@@ -3,7 +3,7 @@
 
     <div>
         <x-slot name="title">
-            Product View
+            Product Views
         </x-slot>
         <x-slot name="header">
             Product View
