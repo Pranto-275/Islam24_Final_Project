@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    {!! $companyInfo->terms_condition !!}
+                    @if($companyInfo) {!! $companyInfo->terms_condition !!} @endif
                 </div>
             </div>
         </div>

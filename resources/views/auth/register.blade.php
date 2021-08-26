@@ -94,28 +94,28 @@
                             <form method="POST" action="{{ route('register') }}" class="login-form">
                                 @csrf
                                 <div class="form-grp">
-                                    <x-jet-label for="name" value="{{ __('Name') }}" />
+                                    <x-jet-label for="name" value="{{ __('আপনার নাম') }}" />
                                     <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                                 </div>
                                 <div class="form-grp">
-                                    <x-jet-label for="mobile" value="{{ __('Mobile') }}" />
+                                    <x-jet-label for="mobile" value="{{ __('মোবাইল নাম্বার') }}" />
                                     <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required />
                                 </div>
-                                <div class="form-grp">
+                                {{-- <div class="form-grp">
                                     <x-jet-label for="email" value="{{ __('Email') }}" />
                                     <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                                </div>
+                                </div> --}}
                                 <div class="form-grp">
-                                    <x-jet-label for="address" value="{{ __('Address') }}" />
+                                    <x-jet-label for="address" value="{{ __('পূর্ণ ঠিকানা') }}" />
                                     <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" />
                                 </div>
                                 <div class="form-grp">
-                                    <x-jet-label for="password" value="{{ __('Password') }}" />
+                                    <x-jet-label for="password" value="{{ __('পাসওয়ার্ড') }}" />
                                     <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
                                     {{-- <i class="far fa-eye"></i> --}}
                                 </div>
                                 <div class="form-grp">
-                                    <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                                    <x-jet-label for="password_confirmation" value="{{ __('কনফার্ম পাসওয়ার্ড') }}" />
                                     <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
                                 </div>
                                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -145,7 +145,8 @@
                                     </div> --}}
                                 </div>
                                 <div class="form-grp-btn" >
-                                    <button type="submit" class="btn" style="background: #ff6000;color:white;">Sign up</button>
+                                    <button type="submit" class="btn" style="background: #ff6000;color:white;">রেজিস্ট্রার
+                                    </button>
 
                                     {{-- <x-jet-button class="ml-4" type="submit">
                                         {{ __('Register') }}

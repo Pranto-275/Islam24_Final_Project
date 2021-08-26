@@ -49,6 +49,7 @@
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
                         {{-- Start Cart --}}
                         <div class="col-lg-8 mb-1" id="">
+                            <h3 class="text-center">শপিং ব্যাগ</h3>
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
@@ -57,10 +58,10 @@
                                         <thead>
                                         <tr>
                                             <th class="product-thumbnail"></th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">QUANTITY</th>
-                                            <th class="product-subtotal">SUBTOTAL</th>
+                                            <th class="product-name" style="font-weight: bold;">পণ্য</th>
+                                            <th class="product-price" style="font-weight: bold;">মূল্য</th>
+                                            <th class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
+                                            <th class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -137,7 +138,7 @@
                         <div class="col-lg-4 col-md-8">
                             <aside class="shop-cart-sidebar">
                                 <div class="shop-cart-widget">
-                                    <h6 class="title">Cart Totals</h6>
+                                    <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
                                     <form action="{{ route('check-out') }}">
                                         <ul>
                                             <li>
@@ -150,7 +151,7 @@
                                                 </span>
                                             </li>
                                             <li>
-                                                <span>Discount</span>
+                                                <span>ডিসকাউন্ট</span>
                                                 <span class="cart-total-price">
                                                     @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
@@ -169,7 +170,7 @@
                                                 </div> --}}
                                             </li>
                                             <li class="cart-total-amount">
-                                                <span>TOTAL</span>
+                                                <span>সর্বমোট</span>
                                                 <span class="amount cart-total-price">
                                                 @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
@@ -178,7 +179,7 @@
                                                 </span>
                                             </li>
                                         </ul>
-                                        <button class="btn">PROCEED TO CHECKOUT</button>
+                                        <button class="btn">অর্ডার শেষ করুন</button>
                                     </form>
                                 </div>
                             </aside>

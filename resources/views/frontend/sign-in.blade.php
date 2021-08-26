@@ -48,7 +48,7 @@
                                 <div class="form-grp-btn">
                                     {{-- <a href="#" class="btn">Login</a> --}}
                                     <button class="btn" type="submit" style="background: #ff6000;color:white;">
-                                        {{ __('Login') }}
+                                        {{ __('লগইন') }}
                                     </button>
                                 </div>
                             </form>

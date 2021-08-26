@@ -393,14 +393,14 @@
                                                 }
                                                 @endphp
                                                 <input type="hidden" class="product_quantity" id="product_quantity_{{ $product['id'] }}" data-minimum-quantity="{{ $minimumQuantity }}" value="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" >
-                                                <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}">
+                                                <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" style="color: #ff5c00;">
                                                     @if($product['in_stock']=="Out of Stock")
                                                      Sold Out
                                                     @else
                                                      ক্রয় করুণ
                                                     @endif
                                                 </a>
-                                                <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm">
+                                                <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
                                                     @if($product['in_stock']=="Out of Stock")
                                                     Sold Out
                                                    @else
