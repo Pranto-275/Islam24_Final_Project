@@ -4986,9 +4986,9 @@ label {
   border-radius: 50%;
   border: 3px solid rgba(0, 0, 0, 0.2);
   border-top-color: #ff6000;
-  height: 150px;
+  height: 50px;
   margin: 0 auto 3.5em auto;
-  width: 150px;
+  width: 50px;
 }
 
 .ctn-preloader .animation-preloader .txt-loading {

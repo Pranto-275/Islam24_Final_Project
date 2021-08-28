@@ -12,7 +12,7 @@
         <main>
 
             <!-- shop-details-area -->
-            <section class="shop-details-area pt-100 pb-100">
+            <section class="shop-details-area pt-40 pb-20">
                 <div class="container">
                     <div class="row mb-95">
                         <div class="col-xl-7 col-lg-6">
@@ -100,8 +100,9 @@
                                     </h2>
                                     <div>
                                         <div class="mt-1">
-                                            <span>সর্বনিম্ন অর্ডার: </span>
-                                            <span class="badge badge-success">{{$productDetails->min_order_qty}}</span>
+                                            <span style="color: black;">সর্বনিম্ন অর্ডার: </span>
+                                            <span class="badge badge-light" style="color: red;font-weight: bold;font-size: 12px;">{{$productDetails->min_order_qty}} পিছ</span>
+
                                         <span class="stock-info m-0 mt-3 ml-2">{{ $productDetails->in_stock }}</span>
                                         </div>
                                     </div>
@@ -120,7 +121,7 @@
                                     </ul>
                                 </div> --}}
                                 @if($productDetails->in_stock!="Out of Stock")
-                                <div class="perched-info">
+                                <div class="perched-info mb-0">
                                     <div class="cart-plus">
                                         <form action="#">
                                             <div class="cart-plus-minus" data-product-id="{{ $productDetails->id }}" data-device="desktop">
@@ -162,7 +163,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="product-desc-wrap mb-100">
+                            <div class="product-desc-wrap mb-20">
                                 <ul class="nav nav-tabs mb-25" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details"
@@ -185,7 +186,6 @@
                                            aria-selected="false">Q&A</a>
                                     </li> --}}
                                 </ul>
-                                <hr>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                                         <div class="product-desc-content">
@@ -217,7 +217,7 @@
                                     </div>
                                     <div class="tab-pane fade" id="val" role="tabpanel" aria-labelledby="val-tab">
                                         <div class="product-desc-content">
-                                            <h4 class="title">Return Policy</h4>
+                                            <h4 class="title text-center">Return Policy</h4>
                                             <div class="row">
                                                 {{-- <div class="col-xl-3 col-md-4">
                                                     <div class="product-desc-img">
@@ -243,7 +243,7 @@
                                     </div>
                                     <div class="tab-pane fade" id="looks" role="tabpanel" aria-labelledby="looks-tab">
                                         <div class="product-desc-content">
-                                            <h4 class="title">Product Details</h4>
+                                            <h4 class="title text-center">Product Details</h4>
                                             <div class="row">
                                                 <div class="col-xl-3 col-md-4">
                                                     <div class="product-desc-img">
@@ -324,7 +324,7 @@
                             {{-- <div class="shop-details-add mb-95">
                                 <a href="#"><img src="{{ URL::asset('venam/') }}/img/product/shop_details_add.jpg" alt=""></a>
                             </div> --}}
-                            <div class="related-product-wrap pb-95">
+                            <div class="related-product-wrap pb-20">
                                 <div class="deal-day-top">
                                     <div class="deal-day-title">
                                         <h4 class="title">Similar Product</h4>
@@ -363,7 +363,7 @@
                                                         @endif
                                                     </a>
                                                 </h5>
-                                                <div class="exclusive--item--price">
+                                                <div class="exclusive--item--price pb-10">
                                                     <span class="new-price">
                                                        @if($currencySymbol)
                                                         {{ $currencySymbol->symbol }}
@@ -412,6 +412,11 @@
                                     </div>
                                     @endforeach
                                     {{-- End Similar Product --}}
+                                    <div class="col-md-12">
+                                    <center>
+                                        <a class="btn text-center" style="background: #ff6000;color:white;"  href="{{route('search-category-wise',['id'=>$product['category_id']])}}">আরও পণ্য দেখুন</a>
+                                    </center>
+                                    </div>
                                 </div>
                             </div>
                             {{-- <div class="product-reviews-wrap">

@@ -16,15 +16,13 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>
-                        <span>Inventory</span>
+                        <span>Order</span>
                     </a>
-
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('inventory.purchase')}}">Purchase</a></li>
-                        <li><a href="{{route('inventory.sale')}}">Sale</a></li>
-                        <li><a href="{{route('inventory.purchase-list')}}">Purchase List</a></li>
-                        <li><a href="{{route('inventory.sale-list')}}">Sale List</a></li>
-                        <li><a href="{{route('inventory.stock-adjustment')}}">Stock Adjustment</a></li>
+                        <li><a href="{{route('order.order-list')}}">Order List</a></li>
+                        <li><a href="{{route('order.order-pending')}}">Pending Order</a></li>
+                        <li><a href="{{route('order.order-approve')}}">Approved Order</a></li>
+                        <li><a href="{{route('order.order-cancel')}}">Cancelled Order</a></li>
                     </ul>
                 </li>
                 <li>
@@ -120,17 +118,17 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>
-                        <span>Order</span>
+                        <span>Inventory</span>
                     </a>
+
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('order.order-list')}}">Order List</a></li>
-                        <li><a href="{{route('order.order-pending')}}">Pending Order</a></li>
-                        <li><a href="{{route('order.order-approve')}}">Approved Order</a></li>
-                        <li><a href="{{route('order.order-cancel')}}">Cancelled Order</a></li>
+                        <li><a href="{{route('inventory.purchase')}}">Purchase</a></li>
+                        <li><a href="{{route('inventory.sale')}}">Sale</a></li>
+                        <li><a href="{{route('inventory.purchase-list')}}">Purchase List</a></li>
+                        <li><a href="{{route('inventory.sale-list')}}">Sale List</a></li>
+                        <li><a href="{{route('inventory.stock-adjustment')}}">Stock Adjustment</a></li>
                     </ul>
                 </li>
-
-
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-list-ul"></i>

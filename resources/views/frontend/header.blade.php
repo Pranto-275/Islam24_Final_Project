@@ -44,7 +44,7 @@
     }
 }
     </style>
-    <div class="header-top-area pb-0">
+    <div class="header-top-area pb-0" id="headerOneCheckOut">
         <div class="custom-container-two">
             <div class="row">
                 <div class="col-md-8 col-sm-7">
@@ -126,7 +126,7 @@
                     <form action="{{ route('product-search') }}" method="GET">
                         <center>
                             <div class="input-group pr-3" id="mobile-response-search-box" style="width: 80%;">
-                                <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="পণ্য খুজুন..">
+                                <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="পন্য খুঁজুন এখানে..">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
                                         style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
@@ -187,7 +187,7 @@
                             <div class="header-action d-none d-md-block">
                                 <ul>
 
-                                    <li><a href="#"><i class="flaticon-two-arrows"></i></a></li>
+                                    {{-- <li><a href="#"><i class="flaticon-two-arrows"></i></a></li> --}}
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
                                     <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
                                         <span class="cart-total-price" style="width: 120px;">
@@ -289,11 +289,11 @@
     <!-- menu-area-end -->
     <!-- header-search-area -->
     <div class="header-search-area d-none d-md-block">
-        <div class="custom-container-two">
+        <div class="custom-container-two" id="headerThreeCheckout">
             <div class="row align-items-center px-0">
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
-                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>ক্যাটাগরি</a>
+                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>মেন্যু</a>
                         <ul class="category-menu" style="z-index: 3;">
                         @foreach ($categories as $category)
                             <li class="has-dropdown">
@@ -348,7 +348,7 @@
                         <div class="header-search-wrap">
                             <form action="{{ route('product-search') }}" method="GET">
                                 <input type="text" name="search_product_name" id="search_product_name"
-                                    placeholder="পণ্য খুজুন...." style="width: 90%;">
+                                    placeholder="পন্য খুঁজুন এখানে.." style="width: 90%;">
                                 {{-- <select class="custom-select" name="search_product_category"
                                     id="search_product_category">
                                     <option selected="" value="">All Categories</option>
@@ -364,7 +364,7 @@
                             </form>
                         </div>
                         <div class="header-free-shopping">
-                            <p>Free Shipping on Orders
+                            <p style="visibility: hidden;">Free Shipping on Orders
                                 @if($currencySymbol)
                                     {{ $currencySymbol->symbol }}
                                 @endif

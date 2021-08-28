@@ -8,7 +8,7 @@
                 }
             }
             @media only screen and (max-width: 768px) {
-                #cartForDeskTop{
+                #cartForDeskTop, #headerOneCheckOut, #sticky-header, #headerThreeCheckout{
                     display: none;
                 }
             }
@@ -27,7 +27,7 @@ table caption {
 }
 
 table tr {
-  background-color: #f8f8f8;
+  background-color: #fdfdfd;
   border: 1px solid #ddd;
   padding: .35em;
 }
@@ -142,13 +142,14 @@ body {
             <!-- breadcrumb-area-end -->
 
             <!-- shop-cart-area -->
-            <section class="shop-cart-area wishlist-area pt-20 pb-100">
+            <section class="shop-cart-area wishlist-area pt-20 pb-10">
                 <div class="container">
+                    <a href="{{ route('home') }}" class="pt-10"><i class="fas fa-backspace" style="color: red;font-size: 30px;"></i></a>
                     <div class="row justify-content-center">
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
                         {{-- Start Cart --}}
                         <div class="col-lg-8 mb-1" id="">
-                            <h3 class="text-center">শপিং ব্যাগ</h3>
+                            <h3 class="text-center" style="color: #ff5c00;">শপিং ব্যাগ</h3>
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
@@ -157,7 +158,7 @@ body {
                                         <thead>
                                         <tr>
                                             <th class="product-thumbnail"></th>
-                                            <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th>
+                                            {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
                                             <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
                                             <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
                                             <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
@@ -166,23 +167,25 @@ body {
                                         <tbody>
                                         @foreach($cardBadge['data']['products'] as $productId => $product)
                                             <tr id="row_{{ $productId }}">
-                                                <td class="product-thumbnail"><a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1"></i></a>
-                                                    <a href="shop-details.html">
-                                                       <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" style="width:103px;129px;" alt="">
+                                                <td class="product-thumbnail">
+                                                    <a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i class="flaticon-cancel-1 text-danger" style="font-weight: bold;"></i></a>
+                                                    <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
+                                                       <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" style="height: 90px;width:103px;129px;" alt="">
                                                     </a>
-                                                </td>
+                                                {{-- </td>
                                                 <td class="product-name">
-                                                    <h4>
-                                                        <a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;">
-                                                            @if(strlen($product['Info']['product_name'])>20)
-                                                              {{ substr($product['Info']['product_name'], 0,19).'...' }}
+                                                    <h4> --}}
+                                                        <a href="{{ route('product-details',['id'=>$productId]) }}" style="text-transform: capitalize;float: left;">
+                                                            @if(strlen($product['Info']['product_name'])>23)
+                                                              {{ substr($product['Info']['product_name'], 0,22).'...' }}
                                                             @else
                                                               {{ $product['Info']['product_name'] }}
                                                             @endif
                                                         </a>
-                                                    </h4>
-                                                    <p>Cramond Leopard & Pythong Anorak</p>
-                                                    <span>65% poly, 35% rayon</span>
+
+                                                    {{-- </h4> --}}
+                                                    {{-- <p>Cramond Leopard & Pythong Anorak</p>
+                                                    <span>65% poly, 35% rayon</span> --}}
                                                 </td>
                                                 <td data-label="মূল্য" class="product-price">
                                                     @if($currencySymbol)
@@ -236,7 +239,7 @@ body {
                         </div>
                         {{-- End Cart --}}
                         <div class="col-lg-4 col-md-8">
-                            <aside class="shop-cart-sidebar">
+                            <aside class="shop-cart-sidebar pt-3">
                                 <div class="shop-cart-widget">
                                     <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
                                     <form action="{{ route('check-out') }}">

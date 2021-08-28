@@ -40,13 +40,13 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', Category::orderBy('id', 'desc')->get());
             // $view->with('skipTopTencategories', Category::orderBy('id', 'desc')->skip(10)->get());
             // $view->with('topCategories', Category::whereTopShow(1)->get());
-            $view->with('topFourCategories', Category::whereTopShow(1)->take(4)->get());
-            $view->with('topCategories', Category::whereTopShow(1)->skip(4)->take(200)->get());
+            $view->with('topFourCategories', Category::take(4)->get());
+            $view->with('topCategories', Category::skip(4)->take(200)->get());
             $view->with('categoryImageLast', Category::whereTopShow(1)->orderBy('id', 'desc')->first());
             $view->with('subCategories', SubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
-            $view->with('newProducts', Product::whereFeatured('New Product')->orderBy('id', 'desc')->take(3)->get());
+            $view->with('newProducts', Product::whereFeatured('New Product')->whereIsActive(1)->orderBy('id', 'desc')->take(3)->get());
             $view->with('brands', Brand::get());
             // $view->with('products', Product::orderBy('id', 'desc')->get());
             $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
