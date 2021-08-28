@@ -34,7 +34,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 order-2 order-lg-0">
                             <aside class="shop-sidebar">
-                                <div class="widget shop-widget mb-30">
+                                <div class="widget shop-widget mb-30" id="productCategoryMobile">
                                     <div class="shop-widget-title">
                                         <h6 class="title">Product Categories</h6>
                                     </div>
@@ -48,7 +48,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="widget shop-widget mb-30">
+                                <div class="widget shop-widget mb-30" id="productSearchMobile">
                                     <div class="shop-widget-title">
                                         <h6 class="title">Filter By Price</h6>
                                     </div>
@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card widget shop-widget mb-30">
+                                <div class="card widget shop-widget mb-30" id="productNewProductMobile">
                                     <div class="shop-widget-title">
                                         <h6 class="title">NEW PRODUCT</h6>
                                         <div class="slider-nav"></div>
@@ -158,7 +158,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget shop-widget mb-30">
+                                <div class="widget shop-widget mb-30" id="productBrandMobile">
                                     <div class="shop-widget-title">
                                         <h6 class="title">Product Brand</h6>
                                     </div>
@@ -207,7 +207,7 @@
                         <div class="col-xl-9 col-lg-8">
                             <div class="shop-top-meta mb-40">
                                 <p class="show-result">Showing Products 1-12 Of 10 Result</p>
-                                <div class="shop-meta-right">
+                                <div class="shop-meta-right" id="productSearchByCustomSelect">
                                     <ul>
                                         <li class="active"><a href="#"><i class="flaticon-grid"></i></a></li>
                                         <li><a href="#"><i class="flaticon-list"></i></a></li>
@@ -234,7 +234,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta" style="width:70px;">{{ intval($product['discount']) }}% ছাড়</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -285,19 +285,19 @@
                                                 $orderQuantity = $cardBadge['data']['products'][$product['id']]['quantity'];
                                             }
                                             @endphp
-                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif style="color: #ff5c00;">
-                                              @if($product['in_stock']=="Out of Stock")
-                                                 স্টক শেষ
-                                               @else
-                                                 ক্রয় করুণ
-                                               @endif
-                                            </a>
-                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" @if($product['product_image_first']) data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif data-toggle="modal" data-target=".bd-example-modal-sm" @if($product['in_stock']=="Out of Stock") style="pointer-events: none;" @endif style="color: #ff5c00;">
+                                            <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $product['id'] }}" style="color: #ff5c00;">
                                                 @if($product['in_stock']=="Out of Stock")
-                                                  স্টক শেষ
+                                                 Sold Out
                                                 @else
-                                                  ক্রয় করুণ
+                                                 ক্রয় করুণ
                                                 @endif
+                                            </a>
+                                            <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-price="{{ $product['special_price'] }}" data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}" data-product-minimum-quantity="{{ $minimumQuantity }}" data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
+                                                @if($product['in_stock']=="Out of Stock")
+                                                Sold Out
+                                               @else
+                                                ক্রয় করুণ
+                                               @endif
                                             </a>
                                         </div>
                                     </div>
@@ -308,8 +308,8 @@
                             <div class="pagination-wrap">
                                 <ul>
                                     <li class="prev"><a href="#"><i class="fas fa-long-arrow-alt-left"></i> Prev</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li class="active"><a href="#">2</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
                                     <li><a href="#">3</a></li>
                                     <li><a href="#">4</a></li>
                                     <li><a href="#">...</a></li>

@@ -79,11 +79,10 @@
                 <div class="col-xl-8 col-lg-10">
                     <div class="my-account-bg" data-background="{{ URL::asset('venam/') }}/img/bg/my_account_bg.png">
                         <div class="my-account-content">
-                            <p>Welcome To PAIKARI ELECTRONICS Please Login Your <span>Account</span></p>
+                            <p style="color: #ff5c00;">আপনাকে স্বাগতম পাইকারী ইলেকট্রনিক্স এপে</p>
                             <div class="direct-login">
-                                {{-- <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
-                                <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
-                                <a href="{{route('sign-in')}}"><i class="form-grp-btn"></i>লগইন </a>
+                                <a href="{{route('sign-in')}}" style="background-color: red;font-weight: bold;"><i class="form-grp-btn"></i>লগইন</a>
+                                {{-- <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
                             </div>
                             {{-- <x-jet-authentication-card> --}}
                                 <x-slot name="logo">
@@ -95,11 +94,11 @@
                                 @csrf
                                 <div class="form-grp">
                                     <x-jet-label for="name" value="{{ __('আপনার নাম') }}" />
-                                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                                    <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="আপনার নাম লিখুন"/>
                                 </div>
                                 <div class="form-grp">
                                     <x-jet-label for="mobile" value="{{ __('মোবাইল নাম্বার') }}" />
-                                    <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required />
+                                    <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required placeholder="মোবাইল নাম্বার লিখুন"/>
                                 </div>
                                 {{-- <div class="form-grp">
                                     <x-jet-label for="email" value="{{ __('Email') }}" />
@@ -107,16 +106,16 @@
                                 </div> --}}
                                 <div class="form-grp">
                                     <x-jet-label for="address" value="{{ __('পূর্ণ ঠিকানা') }}" />
-                                    <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" />
+                                    <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" placeholder="আপনার পূর্ণ ঠিকানা লিখুন"/>
                                 </div>
                                 <div class="form-grp">
                                     <x-jet-label for="password" value="{{ __('পাসওয়ার্ড') }}" />
-                                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" placeholder="পাসওয়ার্ড"/>
                                     {{-- <i class="far fa-eye"></i> --}}
                                 </div>
                                 <div class="form-grp">
                                     <x-jet-label for="password_confirmation" value="{{ __('কনফার্ম পাসওয়ার্ড') }}" />
-                                    <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                                    <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="কনফার্ম পাসওয়ার্ড"/>
                                 </div>
                                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                                 <div class="mt-4">

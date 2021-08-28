@@ -136,7 +136,7 @@
                                     </div>
                                     <div class="col-12">
                                         <center>
-                                            <button type="submit" class="border p-1 mt-3 rounded text-info text-light" style="background-color: #ff5c00;">Save</button>
+                                            <button type="submit" class="border p-1 mt-3 rounded text-info text-light px-3" style="background-color: #ff5c00;">Save</button>
                                         </center>
                                     </div>
                                 </div>
@@ -151,34 +151,33 @@
                                     @csrf
                                 <hr class="mt-2">
                                 <div class="row">
-                                  <div class="col-6 pb-2 font-weight-bold">Name:</div>
+                                  <div class="col-6 pb-2 font-weight-bold">আপনার নাম:</div>
                                   <div class="col-6 pb-2">
                                       {{-- {{$contact->first_name}} --}}
-                                      <input class="form-control" type="text" name="name" value="{{Auth::user()->name}}" name="first_name"/>
+                                      <input class="form-control" type="text" name="name" value="{{Auth::user()->name}}" name="first_name" placeholder="আপনার নাম লিখুন"/>
                                   </div>
-                                  <div class="col-6 pb-2 font-weight-bold">Mobile:</div>
+                                  <div class="col-6 pb-2 font-weight-bold">মোবাইল নাম্বার:</div>
                                   <div class="col-6 pb-2">
                                       {{-- {{$contact->phone}} --}}
-                                      <input class="form-control" type="text" name="mobile" value="{{Auth::user()->mobile}}" name="phone"/>
+                                      <input class="form-control" type="text" name="mobile" value="{{Auth::user()->mobile}}" name="phone" placeholder="মোবাইল নাম্বার লিখুন"/>
                                   </div>
-                                  <div class="col-6 pb-2 font-weight-bold">Address:</div>
+                                  <div class="col-6 pb-2 font-weight-bold">পূর্ণ ঠিকানা :</div>
                                   <div class="col-6 pb-2">
                                       {{-- {{$contact->phone}} --}}
-                                      <input class="form-control" type="text" name="address" value="{{Auth::user()->address}}" name="address"/>
+                                      <input class="form-control" type="text" name="address" value="{{Auth::user()->address}}" name="address" placeholder="আপনার পূর্ণ ঠিকানা লিখুন"/>
                                   </div>
                                   <hr>
                                 </div>
-                                <h5 class="card-title">EMAIL ADDRESS</h5>
+                                {{-- <h5 class="card-title">EMAIL ADDRESS</h5>
                                 <hr class="mt-2">
                                 <div class="row">
                                   <div class="col-6 pb-2 font-weight-bold">Primary Email:</div>
                                   <div class="col-6 pb-2">
-                                      {{-- {{$contact->email}} --}}
                                       <input class="form-control" type="email" name="email" value="{{Auth::user()->email}}" name="email"/>
                                   </div>
                                   <hr>
-                                </div>
-                                <button type="submit" class="float-right border p-1 rounded text-info bg-info text-light" style="background-color: #ff5c00;">Save</button>
+                                </div> --}}
+                                <button type="submit" class="float-right border p-1 rounded text-info text-light px-3" style="background-color: #ff5c00;">Save</button>
                                 <br>
                                </form>
                               </div>
