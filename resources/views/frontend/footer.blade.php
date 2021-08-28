@@ -1,4 +1,4 @@
-<footer class="footer-area footer-style-two">
+<footer class="footer-area footer-style-two" id="footerOneCheckOut">
     <div class="footer-top pt-35 pb-25" id="desktopFooter">
         <div class="custom-container-two">
             {{-- <div class="footer-newsletter-wrap footer-newsletter-two">
@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <div class="copyright-wrap copyright-style-two">
+    <div class="copyright-wrap copyright-style-two" id="footerDesktop">
         <div class="custom-container-two">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">

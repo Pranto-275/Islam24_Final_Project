@@ -106,7 +106,7 @@
                 #categoryName{
                     font-size: 12px;
                 }
-                .cartModal, #signInSignOut, #footerTopMenu{
+                .cartModal, #signInSignOut, #footerTopMenu, #footerDesktop{
                     display: none;
                 }
             }
@@ -160,7 +160,6 @@
         <div id="preloader">
             <div id="ctn-preloader" class="ctn-preloader">
                 <div class="animation-preloader">
-                    <div class="spinner"></div>
                     <div class="txt-loading">
                         <span data-text-preloader="পা" class="letters-loading">
                             পা
@@ -174,15 +173,27 @@
                         <span data-text-preloader="রী" class="letters-loading">
                             রী
                         </span>
-                        {{-- <span data-text-preloader="A" class="letters-loading">
-                            A
+                    </div>
+                    <div class="spinner my-0 my-0" style="width: 80px; height: 80px;"></div>
+                    <div class="txt-loading">
+                        <span data-text-preloader="ই" class="letters-loading">
+                            ই
                         </span>
-                        <span data-text-preloader="R" class="letters-loading">
-                            R
+                        <span data-text-preloader="লে" class="letters-loading">
+                            লে
                         </span>
-                        <span data-text-preloader="I" class="letters-loading">
-                            I
-                        </span> --}}
+                        <span data-text-preloader="ক" class="letters-loading">
+                            ক
+                        </span>
+                        <span data-text-preloader="ট্র" class="letters-loading">
+                            ট্র
+                        </span>
+                        <span data-text-preloader="নি" class="letters-loading">
+                            নি
+                        </span>
+                        <span data-text-preloader="ক্স" class="letters-loading">
+                            ক্স
+                        </span>
                     </div>
                 </div>
                 <div class="loader">

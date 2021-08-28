@@ -99,13 +99,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-grp">
                                             <label for="fName">দোকানের নাম<span>*</span></label>
-                                            <input type="text" name="fName" required value="@if(Auth::user()){{Auth::user()->name}}@endif">
+                                            <input type="text" name="fName" required value="@if(Auth::user()){{Auth::user()->name}}@endif" placeholder="আপনার দোকানের নাম লিখুন">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="mobile">মোবাইল নাম্বার<span>*</span></label>
-                                            <input type="text" name="mobile" required value="@if(Auth::user()){{Auth::user()->mobile}}@endif">
+                                            <input type="text" name="mobile" required value="@if(Auth::user()){{Auth::user()->mobile}}@endif" placeholder="মোবাইল নাম্বার লিখুন">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -131,7 +131,7 @@
                                     <div class="col-12">
                                         <div class="form-grp">
                                             <label for="shipping_address">পূর্ণ ঠিকানা*</label>
-                                            <input type="text" name="shipping_address" required value="@if(Auth::user()){{Auth::user()->address}}@endif">
+                                            <input type="text" name="shipping_address" required value="@if(Auth::user()){{Auth::user()->address}}@endif" placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
                                         </div>
                                     </div>
                                     <div class="col-12">

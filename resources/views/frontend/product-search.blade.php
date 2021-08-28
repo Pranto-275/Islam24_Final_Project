@@ -61,7 +61,7 @@
                                                 @endif
                                             </a>
                                         </h5>
-                                        <div class="exclusive--item--price">
+                                        <div class="exclusive--item--price pb-10">
                                             <span class="new-price" style="color:#ff0000;">
                                                 @if($currencySymbol)
                                                       <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}

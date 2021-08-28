@@ -17,7 +17,12 @@
                         <img src="{{URL::asset('public/assets/images/logo.svg')}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{URL::asset('assets/images/logo-light.png')}}" alt="" height="19">
+                        {{-- <img src="{{URL::asset('assets/images/logo-light.png')}}" alt="" height="19"> --}}
+                        <div class="logo" id="paikaryLogo">
+                            <a href="{{url('/')}}"><img
+                                    src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif"
+                                    style="height:39.9px;background-image: cover;" alt="Logo"></a>
+                        </div>
                     </span>
                 </a>
             </div>

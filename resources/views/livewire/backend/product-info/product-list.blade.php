@@ -47,17 +47,17 @@
 
                                         <tr>
                                             <th>Sr.</th>
-                                            <th>Code</th>
+                                            {{-- <th>Code</th> --}}
                                             <th>Name</th>
                                             <th>image</th>
                                             <th>Category</th>
-                                            <th>Brand</th>
+                                            {{-- <th>Brand</th> --}}
                                             {{-- <th>Color</th> --}}
                                             {{-- <th>Size</th> --}}
                                             <th>Regular Price</th>
                                             <th>Special Price</th>
-                                            <th>Wholesale Price</th>
-                                            <th>Purchase Price</th>
+                                            {{-- <th>Wholesale Price</th>
+                                            <th>Purchase Price</th> --}}
                                             <th>Action</th>
                                         </tr>
 
@@ -69,7 +69,7 @@
                                             @foreach($products as $product)
                                               <tr>
                                                   <td>{{ ++$p }}</td>
-                                                 <td>{{ $product->code }}</td>
+                                                 {{-- <td>{{ $product->code }}</td> --}}
                                                  <td>
                                                      @if(strlen($product->name)>40)
                                                       {{ substr($product->name, 0,39).'...' }}
@@ -79,18 +79,17 @@
                                                 </td>
                                                  <td>
                                                      <img @if($product->ProductImageFirst) src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}" @endif style="height:100px;"/>
-
                                                  </td>
                                                  <td>
-                                                    @if($product->SubSubCategory)
-                                                      @if($product->SubSubCategory) {{ $product->SubSubCategory->name }} @endif
+                                                    @if($product->Category)
+                                                      @if($product->Category) {{ $product->Category->name }} @endif
                                                     @endif
                                                  </td>
-                                                 <td>
+                                                 {{-- <td>
                                                      @if($product->Brand)
                                                          @if($product->Brand) {{ $product->Brand->name }} @endif
                                                      @endif
-                                                 </td>
+                                                 </td> --}}
                                                  {{-- <td>
                                                      @foreach($product->ProductProperties->unique('color_id') as $color)
                                                        @if($color->Color) {{ $color->Color->name }} @endif
@@ -107,8 +106,8 @@
 
                                                  <td>{{ $product->regular_price }}</td>
                                                  <td>{{ $product->special_price }}</td>
-                                                 <td>{{ $product->wholesale_price }}</td>
-                                                 <td>{{ $product->purchase_price }}</td>
+                                                 {{-- <td>{{ $product->wholesale_price }}</td>
+                                                 <td>{{ $product->purchase_price }}</td> --}}
                                                  <td>
                                                     <a class="btn btn-info btn-sm btn-block mb-1" wire:click="ProductDetails({{$product->id}})"><i class="fas fa-eye font-size-12"></i></a>
                                                     <a href="{{ route('product.product', ['id'=>$product->id]) }}" class="btn btn-primary btn-sm"><i class="bx bx-edit font-size-12"></i></a>
@@ -162,7 +161,7 @@
                                     <label for="basicpill-firstname-input">Category: @if($ProductDetail) {{$ProductDetail->Category->name}} @endif </label>
                                 </div>
                             </div>
-                            <div class="col-lg-6 font">
+                            {{-- <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Sub Category: @if($ProductDetail) {{$ProductDetail->SubCategory->name}} @endif</label>
                                 </div>
@@ -176,7 +175,7 @@
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Brand: @if($ProductDetail) {{$ProductDetail->Brand->name}} @endif</label>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Regular price: @if($ProductDetail) {{$ProductDetail->regular_price}} @endif</label>
@@ -215,6 +214,20 @@
                             <div class="col-lg-6 font">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Minium Order Quantity: @if($ProductDetail)  {{$ProductDetail->min_order_qty}} @endif</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 font">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">
+                                        Status:
+                                        @if($ProductDetail)
+                                          @if($ProductDetail->is_active==1)
+                                          <span class="badge badge-info">Active</span>
+                                          @else
+                                          <span class="badge badge-danger">Inactive</span>
+                                          @endif
+                                        @endif
+                                    </label>
                                 </div>
                             </div>
 
