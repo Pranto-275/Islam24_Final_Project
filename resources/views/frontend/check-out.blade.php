@@ -1,7 +1,11 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
-
+    <style>
+        #headerOneCheckOut, #sticky-header, #headerThreeCheckout, #footerOneCheckOut{
+            display: none;
+        }
+    </style>
     <x-slot name="title">
         Category
     </x-slot>
@@ -11,19 +15,20 @@
 
     <main>
         <!-- checkout-area -->
-        <section class="checkout-area pt-50 pb-100">
+        <section class="checkout-area pt-10 pb-20">
             <div class="container">
+                <a href="{{ route('home') }}" class="pt-10"><i class="fas fa-backspace" style="color: red;font-size: 30px;"></i></a>
                 <form id="checkout" method="POST" action="{{ route('confirm-order') }}" enctype="multipart/form-data" class="checkout-form" accept-charset="utf-8">
                    @csrf
                    <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="checkout-wrap">
-                            <h5 class="title">Quick Checkout</h5>
+                            <h5 class="title text-center" style="color: #ff5c00;">কুইক চেকআউট</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-grp">
                                             <label for="fName">আপনার নাম<span>*</span></label>
-                                            <input type="text" name="fName" required value="@if(Auth::user()){{Auth::user()->name}}@endif">
+                                            <input type="text" name="fName" required value="@if(Auth::user()){{Auth::user()->name}}@endif" placeholder="আপনার নাম লিখুন">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -35,13 +40,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="mobile">মোবাইল নাম্বার<span>*</span></label>
-                                            <input type="text" name="mobile" required value="@if(Auth::user()){{Auth::user()->mobile}}@endif">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-grp">
-                                            <label for="shipping_address">পূর্ণ ঠিকানা*</label>
-                                            <input type="text" name="shipping_address" required value="@if(Auth::user()){{Auth::user()->address}}@endif">
+                                            <input type="text" name="mobile" required value="@if(Auth::user()){{Auth::user()->mobile}}@endif" placeholder="মোবাইল নাম্বার লিখুন">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -54,11 +53,28 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label>উপজেলা *</label>
+                                            <select class="custom-select" id="district" name="district" required>
+                                                <option value="Dhaka">Dhaka</option>
+                                                <option value="New York">Chittagang</option>
+                                                <option value="California">Barisal</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-grp">
+                                            <label for="shipping_address">পূর্ণ ঠিকানা*</label>
+                                            <input type="text" name="shipping_address" required value="@if(Auth::user()){{Auth::user()->address}}@endif" placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
+                                        </div>
+                                    </div>
+
                                 </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-8">
-                        <aside class="shop-cart-sidebar checkout-sidebar">
+                        <aside class="shop-cart-sidebar checkout-sidebar py-3">
                             <div class="shop-cart-widget">
                                 <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
                                     <ul>
@@ -134,7 +150,7 @@
                                             and conditions *</label>
                                         </div>
                                     </div>
-                                    <button class="btn btn-submit" type="submit">অর্ডার শেষ করুন</button>
+                                    <button class="btn btn-submit" type="submit" style="background-color:red;">অর্ডার সম্পন্ন করুন</button>
                             </div>
                         </aside>
                     </div>
@@ -144,61 +160,6 @@
             </div>
         </section>
         <!-- checkout-area-end -->
-
-                    <!-- core-features -->
-                    <section class="core-features-area core-features-style-two">
-                        <div class="container">
-                            <div class="core-features-border">
-                                <div class="row justify-content-center">
-                                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <div class="core-features-item mb-50">
-                                            <div class="core-features-icon">
-                                                <img src="img/icon/core_features01.png" alt="">
-                                            </div>
-                                            <div class="core-features-content">
-                                                <h6>Free Shipping On Over $ 50</h6>
-                                                <span>Agricultural mean crops livestock</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <div class="core-features-item mb-50">
-                                            <div class="core-features-icon">
-                                                <img src="img/icon/core_features02.png" alt="">
-                                            </div>
-                                            <div class="core-features-content">
-                                                <h6>Membership Discount</h6>
-                                                <span>Only MemberAgricultural livestock</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <div class="core-features-item mb-50">
-                                            <div class="core-features-icon">
-                                                <img src="img/icon/core_features03.png" alt="">
-                                            </div>
-                                            <div class="core-features-content">
-                                                <h6>Money Return</h6>
-                                                <span>30 days money back guarantee</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <div class="core-features-item mb-50">
-                                            <div class="core-features-icon">
-                                                <img src="img/icon/core_features04.png" alt="">
-                                            </div>
-                                            <div class="core-features-content">
-                                                <h6>Online Support</h6>
-                                                <span>30 days money back guarantee</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- core-features-end -->
     </main>
     <!-- end row -->
 

@@ -90,8 +90,9 @@
                             <div class="col-3">
                                  <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
-                                 <div class="text-center bg-dark text-light">
+                                 <div class="text-center" style="color: #ff0000; font-weight: bold;font-size: 14px;">
                                     {{$topCategory->name}}
+                                    {{-- Q --}}
                                 </div>
                                 </a>
                             </div>
@@ -143,7 +144,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;height: 70px; background-color: #ff5c00;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta" style="background-color: #ff5c00;">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <span class="sd-meta">New!</span> --}}
                                             {{-- <ul class="action">
@@ -162,7 +163,7 @@
                                                 @endif
                                                 </a>
                                             </h5>
-                                            <div class="exclusive--item--price" >
+                                            <div class="exclusive--item--price pb-10">
                                                 <span class="new-price" style="color:#ff0000;">
                                                   @if($currencySymbol)
                                                         <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
@@ -252,7 +253,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="width:70px;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta">{{ $product['discount'] }}% ছাড়</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -271,7 +272,7 @@
                                                     @endif
                                                 </a>
                                             </h5>
-                                            <div class="exclusive--item--price">
+                                            <div class="exclusive--item--price pb-10">
                                                 <span class="new-price" style="color:#ff0000;">
                                                     @if($currencySymbol)
                                                           <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}

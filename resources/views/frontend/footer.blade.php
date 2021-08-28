@@ -1,4 +1,4 @@
-<footer class="footer-area footer-style-two">
+<footer class="footer-area footer-style-two" id="footerOneCheckOut">
     <div class="footer-top pt-35 pb-25" id="desktopFooter">
         <div class="custom-container-two">
             {{-- <div class="footer-newsletter-wrap footer-newsletter-two">
@@ -40,10 +40,8 @@
                         </div>
                         <div class="fw-link">
                             <ul>
-                                <li><a href="#">Help Center</a></li>
+                                <li><a href="{{route('contact-us')}}">Help Center</a></li>
                                 <li><a href="{{route('return-policy')}}">Returns policy</a></li>
-                                <li><a href="#">Product Recalls</a></li>
-                                <li><a href="#">Accessibility</a></li>
                                 <li><a href="{{route('contact-us')}}">Contact Us</a></li>
                             </ul>
                         </div>
@@ -59,8 +57,6 @@
                                 <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
                                 <li><a href="{{route('terms-conditios')}}">Terms & Conditions</a></li>
                                 <li><a href="{{route('about')}}">About Us</a></li>
-                                <li><a href="#">Los Angeles</a></li>
-                                <li><a href="#">Chicago</a></li>
                             </ul>
                         </div>
                     </div>
@@ -73,8 +69,6 @@
                         <div class="fw-link">
                             <ul>
                                 <li><a href="#">My Account</a></li>
-                                <li><a href="#">Discount</a></li>
-                                <li><a href="#">Returns</a></li>
                                 <li><a href="#">Orders History</a></li>
                                 <li><a href="#">Order Tracking</a></li>
                             </ul>
@@ -84,7 +78,7 @@
             </div>
         </div>
     </div>
-    <div class="copyright-wrap copyright-style-two">
+    <div class="copyright-wrap copyright-style-two" id="footerDesktop">
         <div class="custom-container-two">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">

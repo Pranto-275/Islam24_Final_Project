@@ -263,12 +263,20 @@
                             <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="product_image"/>
                             @error('product_image') <span class="error">{{ $message }}</span> @enderror
                                 @if ($product_image)
-                                    <img src="{{ $product_image->temporaryUrl() }}" style="height:80px; weight:80px;"
+                                    <img src="{{ $product_image->temporaryUrl() }}" style="height:150px; weight:150px;"
                                             alt="Image" class="img-circle img-fluid">
                                 @endif
                                 @if($QueryUpdate && !$product_image)
-                                    <img @if($QueryUpdate->ProductImageFirst) src="{{ asset('storage/photo/'.$QueryUpdate->ProductImageFirst->image)}}" @endif
-                                            style="height:80px; weight:80px;" alt="Product Image" class="img-circle img-fluid">
+                                    {{-- <img @if($QueryUpdate->ProductImageFirst) src="{{ asset('storage/photo/'.$QueryUpdate->ProductImageFirst->image)}}" @endif
+                                            style="height:150px; weight:150px;" alt="Product Image" class="img-circle img-fluid"> --}}
+                                            <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
+                                                @if($QueryUpdate->ProductImageFirst)
+                                                <img style="height:150px; weight:150px;" src="{{ asset('storage/photo/'.$QueryUpdate->ProductImageFirst->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
+                                                <div class="close text-danger" wire:click="imageDelete({{$QueryUpdate->ProductImageFirst->id}})" style="cursor:pointer;">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </div>
+                                                @endif
+                                              </div>
                                 @endif
                         </div>
                     </div>
@@ -280,7 +288,7 @@
                         @if($QueryUpdate)
                         @foreach ($QueryUpdate->ProductImageTop4 as $image)
                          <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
-                           <img style="height:80px; weight:80px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
+                           <img style="height:100px; weight:100px;" src="{{ asset('storage/photo/'.$image->image) }}" class="rounded mb-1 imgResponsiveMax" alt="" />
                            <div class="close text-danger" wire:click="imageDelete({{$image->id}})" style="cursor:pointer;">
                                <span aria-hidden="true">&times;</span>
                            </div>
@@ -288,7 +296,7 @@
                         @endforeach
                        @endif
                        @foreach ($images as $image)
-                       <img src="{{ $image->temporaryUrl() }}" style="height:80px; weight:80px;"
+                       <img src="{{ $image->temporaryUrl() }}" style="height:100px; weight:100px;"
                        alt="Image" class="img-circle img-fluid">
                        @endforeach
                     </div>

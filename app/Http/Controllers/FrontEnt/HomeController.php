@@ -133,8 +133,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $data['html'] = view('frontend.header-card-popup')->render();
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->limit(50)->get()->toArray();
-        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->orderBy('id', 'desc')->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->limit(50)->get()->toArray();
+        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->whereIsActive(1)->orderBy('id', 'desc')->get()->toArray();
         // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
             'data' => $data,
@@ -218,7 +218,7 @@ class HomeController extends Controller
 
     public function searchByBrand($brandId = null)
     {
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereBrandId($brandId)->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereBrandId($brandId)->whereIsActive(1)->get()->toArray();
 
         return view('frontend.all_product', [
             'data' => $data,
@@ -228,7 +228,7 @@ class HomeController extends Controller
 
     public function searchBySubSubCategory($subSubCatId = null)
     {
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($subSubCatId)->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($subSubCatId)->whereIsActive(1)->get()->toArray();
 
         return view('frontend.all_product', [
             'data' => $data,
@@ -238,7 +238,7 @@ class HomeController extends Controller
 
     public function searchBySubCategory($subCatId = null)
     {
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->whereIsActive(1)->get()->toArray();
 
         return view('frontend.all_product', [
             'data' => $data,
@@ -249,9 +249,9 @@ class HomeController extends Controller
     public function searchByCategory($catId = null)
     {
         if ($catId) {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->limit(100)->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->whereIsActive(1)->limit(100)->get()->toArray();
         } else {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->limit(100)->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->limit(100)->get()->toArray();
         }
 
         return view('frontend.all_product', [
@@ -324,7 +324,7 @@ class HomeController extends Controller
     public function productDetails($id = null)
     {
         $ProductDetail = Product::whereId($id)->first();
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereId($id)->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->where('id','!=',$id)->whereCategoryId($ProductDetail->category_id)->get()->toArray();
 
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,
@@ -343,7 +343,7 @@ class HomeController extends Controller
             $query->where('sub_sub_category_id', $request->get('search_product_category'));
         }
 
-        $data['products'] = $query->get()->toArray();
+        $data['products'] = $query->whereIsActive(1)->get()->toArray();
 
         return view('frontend.all_product', [
             'data' => $data,

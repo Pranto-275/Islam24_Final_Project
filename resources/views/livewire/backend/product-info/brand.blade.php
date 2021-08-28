@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="BrandAInfoModal"><i class="mdi mdi-plus mr-1"></i>Brand Info</button>
+                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="BrandAInfoModal"><i class="mdi mdi-plus mr-1"></i>Brand Add</button>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -37,7 +37,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Brand Info</h5>
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Brand Add</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -70,11 +70,11 @@
                                         <input type="file" wire:model.lazy="image" x-ref="image">
                                         @if (!$image)
                                         @if($QueryUpdate)
-                                        <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        <img src="{{ asset('storage/photo')}}/{{ $QueryUpdate->image }}"  style="height:100px; weight:100px;" alt="Image" class="img-circle img-fluid">
                                         @endif
                                         @endif
                                         @if ($image)
-                                        <img src="{{ $image->temporaryUrl() }}" style="height:30px; weight:30px;" alt="Image" class="img-circle img-fluid">
+                                        <img src="{{ $image->temporaryUrl() }}" style="height:100px; weight:100px;" alt="Image" class="img-circle img-fluid">
                                         @endif
                                         {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
                                         {{-- @error('image') <span class="error">{{ $message }}</span> @enderror --}}

@@ -75,11 +75,11 @@
                                         @if (!$image1)
                                         @if($QueryUpdate)
                                         <img src="{{ asset('storage/photo/'.$QueryUpdate->image1)}}"
-                                            style="height:30px; weight:30px;" alt="Image1" class="img-circle img-fluid">
+                                        style="height:100px; weight:100px;" alt="Image1" class="img-circle img-fluid">
                                         @endif
                                         @endif
                                         @if ($image1)
-                                        <img src="{{ $image1->temporaryUrl() }}" style="height:30px; weight:30px;"
+                                        <img src="{{ $image1->temporaryUrl() }}" style="height:100px; weight:100px;"
                                             alt="Image" class="img-circle img-fluid">
                                         @endif
                                         {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
@@ -97,11 +97,11 @@
                                         @if (!$image2)
                                         @if($QueryUpdate)
                                         <img src="{{ asset('storage/photo/'.$QueryUpdate->image2)}}"
-                                            style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">
+                                        style="height:100px; weight:100px;" alt="Image2" class="img-circle img-fluid">
                                         @endif
                                         @endif
                                         @if ($image2)
-                                        <img src="{{ $image2->temporaryUrl() }}" style="height:30px; weight:30px;"
+                                        <img src="{{ $image2->temporaryUrl() }}" style="height:100px; weight:100px;"
                                             alt="Image" class="img-circle img-fluid">
                                         @endif
                                         {{-- <label class="custom-file-label" for="customFile">Choose file</label> --}}
