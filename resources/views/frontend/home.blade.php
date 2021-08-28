@@ -45,7 +45,7 @@
 
             </section>
             <!-- slider-area-end -->
-            <section class="exclusive-collection pt-20 pb-55">
+            <section class="exclusive-collection pt-20 pb-20">
                 {{-- Start Top Category Show Slider --}}
                 @if(count($topFourCategories)>0)
                   <h5 class="text-center">ক্যাটাগরি সমূহ</h5>
@@ -144,7 +144,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta" style="background-color: #ff5c00;">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta" style="background-color: #ff5c00;">{{ intval($product['discount']) }}% ছাড়</span>
                                             @endif
                                             {{-- <span class="sd-meta">New!</span> --}}
                                             {{-- <ul class="action">
@@ -237,7 +237,7 @@
                     <!-- testimonial-area -->
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <div class="section-title text-center mb-60">
+                            <div class="section-title text-center mb-20">
                                 <h2 class="title">সর্বাধিক বিক্রিত পণ্য</h2>
                             </div>
                         </div>
@@ -253,7 +253,7 @@
                                                 <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
                                             </a>
                                             @if($product['discount'])
-                                              <span class="sd-meta">{{ $product['discount'] }}% ছাড়</span>
+                                              <span class="sd-meta">{{ intval($product['discount']) }}% ছাড়</span>
                                             @endif
                                             {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -460,9 +460,9 @@
         </li>
     </div>--}}
     <style>
-        .col-6 {
+        /* .col-6 {
             margin-bottom: 50px !important;
-        }
+        } */
     </style>
 @endsection
 

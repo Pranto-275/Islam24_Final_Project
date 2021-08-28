@@ -106,7 +106,10 @@
                 #categoryName{
                     font-size: 12px;
                 }
-                .cartModal, #signInSignOut, #footerTopMenu, #footerDesktop{
+                .cartModal, #signInSignOut, #footerTopMenu,
+                #footerDesktop, #productCategoryMobile, #productSearchMobile,
+                #productNewProductMobile, #productBrandMobile,
+                #productSearchByCustomSelect{
                     display: none;
                 }
             }
@@ -131,7 +134,7 @@
                 text-decoration: none;
                 display: inline-block;
                 font-size: 12px;
-                margin: 4px 2px;
+                margin: 0px;
                 transition-duration: 0.4s;
                 cursor: pointer;
             }
