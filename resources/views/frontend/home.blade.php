@@ -90,8 +90,9 @@
                             <div class="col-3">
                                  <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
-                                 <div class="text-center bg-dark text-light">
+                                 <div class="text-center" style="color: #ff0000; font-weight: bold;font-size: 14px;">
                                     {{$topCategory->name}}
+                                    {{-- Q --}}
                                 </div>
                                 </a>
                             </div>
@@ -162,7 +163,7 @@
                                                 @endif
                                                 </a>
                                             </h5>
-                                            <div class="exclusive--item--price" >
+                                            <div class="exclusive--item--price pb-10">
                                                 <span class="new-price" style="color:#ff0000;">
                                                   @if($currencySymbol)
                                                         <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
@@ -271,7 +272,7 @@
                                                     @endif
                                                 </a>
                                             </h5>
-                                            <div class="exclusive--item--price">
+                                            <div class="exclusive--item--price pb-10">
                                                 <span class="new-price" style="color:#ff0000;">
                                                     @if($currencySymbol)
                                                           <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
