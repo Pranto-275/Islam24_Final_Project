@@ -25,18 +25,18 @@
                         <div class="checkout-wrap">
                             <h5 class="title text-center" style="color: #ff5c00;">কুইক চেকআউট</h5>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="fName">আপনার নাম<span>*</span></label>
                                             <input type="text" name="fName" required value="@if(Auth::user()){{Auth::user()->name}}@endif" placeholder="আপনার নাম লিখুন">
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    {{-- <div class="col-sm-6">
                                         <div class="form-grp">
                                             <label for="fName">Last Name <span>*</span></label>
                                             <input type="text" name="lName" required>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="mobile">মোবাইল নাম্বার<span>*</span></label>
