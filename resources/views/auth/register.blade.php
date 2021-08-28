@@ -137,7 +137,7 @@
 
                                 <div class="form-grp-bottom">
                                     <div class="remember">
-                                        <input type="checkbox" id="check">
+                                        <input type="checkbox" id="check" checked>
                                         <label for="check">I agree to the <a href="{{route('privacy-policy')}}">Privacy Policy</a> and <a href="{{route('terms-conditios')}}"> Terms & Conditions </a> of Paikari Electronics.</label>
                                     </div>
                                     {{-- <div class="forget-pass">
