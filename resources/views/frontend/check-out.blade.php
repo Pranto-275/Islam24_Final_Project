@@ -115,89 +115,6 @@
             <section class="checkout-area pt-10 pb-20">
                 <a href="{{ route('home') }}" class="pt-10"><i class="fas fa-backspace"
                         style="color: red;font-size: 30px;"></i></a>
-
-                {{-- Start Cart Product --}}
-                <h3 class="text-center" style="color: #ff5c00;">শপিং ব্যাগ</h3>
-                <div class="table-responsive-xl">
-                    @php $totalPrice = 0; @endphp
-                    @if($cardBadge['data']['products'])
-                    @php $totalPrice = $cardBadge['data']['total_price'] @endphp
-                    <table class="" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th class="product-thumbnail"></th>
-                                {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
-                                <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
-                                <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
-                                <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($cardBadge['data']['products'] as $productId => $product)
-                            <tr id="row_{{ $productId }}">
-                                <td class="product-thumbnail">
-                                    <a href="javascript:void(0)" class="wishlist-remove"
-                                        data-product-id="{{ $productId }}"><i class="flaticon-cancel-1 text-danger"
-                                            style="font-weight: bold;"></i></a>
-                                    <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
-                                        <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
-                                            style="height: 90px;width:103px;129px;" alt="">
-                                    </a>
-                                    {{-- </td>
-                                 <td class="product-name">
-                                     <h4> --}}
-                                    <a href="{{ route('product-details',['id'=>$productId]) }}"
-                                        style="text-transform: capitalize;float: left;">
-                                        @if(strlen($product['Info']['product_name'])>23)
-                                        {{ substr($product['Info']['product_name'], 0,22).'...' }}
-                                        @else
-                                        {{ $product['Info']['product_name'] }}
-                                        @endif
-                                    </a>
-
-                                    {{-- </h4> --}}
-                                    {{-- <p>Cramond Leopard & Pythong Anorak</p>
-                                     <span>65% poly, 35% rayon</span> --}}
-                                </td>
-                                <td data-label="মূল্য" class="product-price">
-                                    @if($currencySymbol)
-                                    {{ $currencySymbol->symbol }}
-                                    @endif
-                                    {{ $product['unit_price'] }}
-                                </td>
-                                <td data-label="সংখ্যা" class="product-quantity py-0" style="height: 50px;">
-                                    <div class="cart-plus float-right">
-                                        <form action="#">
-                                            <div class="cart-plus-minus" data-product-id="{{ $productId }}"
-                                                data-device="desktop">
-                                                <input type="text" class="product_quantity product-quantity-cart"
-                                                    id="product_quantity_{{ $productId }}"
-                                                    data-product-id="{{ $productId }}"
-                                                    data-minimum-quantity="{{ $product['minimum_order_quantity'] }}"
-                                                    value="{{ $product['quantity'] }}">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <br>
-                                </td>
-                                <td data-label="SUBTOTAL" class="product-subtotal"
-                                    id="product_subtotal_{{ $productId }}">
-                                    <span>
-                                        @if($currencySymbol)
-                                        {{ $currencySymbol->symbol }}
-                                        @endif
-                                        {{ $product['total_price'] }}
-                                    </span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    @else
-                    <div class="alert alert-warning text-center">Op's there is no product</div>
-                    @endif
-                </div>
-                {{-- End Cart Product --}}
                 <div class="container">
 
                     @csrf
@@ -353,6 +270,91 @@
                             </aside>
                         </div>
                     </div>
+                </div>
+
+                <div class="container">
+                      {{-- Start Cart Product --}}
+                <h5 class="text-center" style="color: #ff5c00;">আপনার অর্ডারকৃত পণ্যসমূহ</h5>
+                <div class="table-responsive-xl">
+                    @php $totalPrice = 0; @endphp
+                    @if($cardBadge['data']['products'])
+                    @php $totalPrice = $cardBadge['data']['total_price'] @endphp
+                    <table class="" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail"></th>
+                                {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
+                                <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
+                                <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
+                                <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($cardBadge['data']['products'] as $productId => $product)
+                            <tr id="row_{{ $productId }}">
+                                <td class="product-thumbnail">
+                                    <a href="javascript:void(0)" class="wishlist-remove"
+                                        data-product-id="{{ $productId }}"><i class="flaticon-cancel-1 text-danger"
+                                            style="font-weight: bold;"></i></a>
+                                    <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
+                                        <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
+                                            style="height: 90px;width:103px;129px;" alt="">
+                                    </a>
+                                    {{-- </td>
+                                 <td class="product-name">
+                                     <h4> --}}
+                                    <a href="{{ route('product-details',['id'=>$productId]) }}"
+                                        style="text-transform: capitalize;float: left;">
+                                        @if(strlen($product['Info']['product_name'])>23)
+                                        {{ substr($product['Info']['product_name'], 0,22).'...' }}
+                                        @else
+                                        {{ $product['Info']['product_name'] }}
+                                        @endif
+                                    </a>
+
+                                    {{-- </h4> --}}
+                                    {{-- <p>Cramond Leopard & Pythong Anorak</p>
+                                     <span>65% poly, 35% rayon</span> --}}
+                                </td>
+                                <td data-label="মূল্য" class="product-price">
+                                    @if($currencySymbol)
+                                    {{ $currencySymbol->symbol }}
+                                    @endif
+                                    {{ $product['unit_price'] }}
+                                </td>
+                                <td data-label="সংখ্যা" class="product-quantity py-0" style="height: 50px;">
+                                    <div class="cart-plus float-right">
+                                        <form action="#">
+                                            <div class="cart-plus-minus" data-product-id="{{ $productId }}"
+                                                data-device="desktop">
+                                                <input type="text" class="product_quantity product-quantity-cart"
+                                                    id="product_quantity_{{ $productId }}"
+                                                    data-product-id="{{ $productId }}"
+                                                    data-minimum-quantity="{{ $product['minimum_order_quantity'] }}"
+                                                    value="{{ $product['quantity'] }}">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <br>
+                                </td>
+                                <td data-label="SUBTOTAL" class="product-subtotal"
+                                    id="product_subtotal_{{ $productId }}">
+                                    <span>
+                                        @if($currencySymbol)
+                                        {{ $currencySymbol->symbol }}
+                                        @endif
+                                        {{ $product['total_price'] }}
+                                    </span>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @else
+                    <div class="alert alert-warning text-center">Op's there is no product</div>
+                    @endif
+                </div>
+                {{-- End Cart Product --}}
                 </div>
             </section>
             <!-- checkout-area-end -->
