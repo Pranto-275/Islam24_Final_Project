@@ -11,20 +11,23 @@
 
 
     <!-- order-complete-area -->
-    <section class="order-complete-area pattern-bg pt-20 pb-100" data-background="img/bg/pattern_bg.jpg">
+    <section class="order-complete-area pt-20 pb-20">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10">
-                    <div class="order-complete-bg" data-background="img/bg/order_comp_bg.png">
+                    <div class="order-complete-bg" data-background="img/bg/order_comp_bg.png" style="background-color: rgb(241, 232, 232);">
                         <div class="order-complete-content">
-                            <h3><span>your</span> Order Is Completed! Order No-{{$orderCode}}</h3>
-                            <div class="check mb-25">
+                            <div style="color: black; font-weight: bold;"> আপনার অর্ডারটি কমপ্লিট হয়েছে!</div>
+                            <div class="pt-2" style="color: black;font-size: 15px;"><span class="" style="color: red; font-size: 25px;">*</span>অর্ডার নাম্বার - <span style="color: red; font-weight: bold;">{{$orderCode}}</span></div>
+                            {{-- <div class="check mb-5">
                                 <img src="img/icon/check.png" alt="">
-                            </div>
-                            <p>Thank you for your order! Your order is being processed and will be completed within 6-12 Hours. You will receive an
-                            email confirmation when your order is completed.</p>
-                            <a href="{{route('home')}}" class="btn">CONTINUE SHOPPING</a>
-                            <p class="get-ans">Get answers to all your <a href="#">Questions</a> you might have.</p>
+                            </div> --}}
+                            <br><br>
+                            <div style="color: black;font-weight: bold;">অর্ডার করার জন্যে আপনাকে অসংখ্য ধন্যবাদ!</div>
+                            <div class="py-0 my-0" style="color: black;">আপনার অর্ডারটি প্রসেসিং অবস্থায় আছে,আমরা খুব অল্প সময়ের মধ্যে আপনার অর্ডারটি ডেলিভারি করে দিব,ইনশা-আল্লাহ।</div>
+                            <a href="{{route('my-account')}}" class="btn" style="background-color: brown;">আপনার অর্ডার গুলি দেখুন</a>
+                            <a href="{{route('home')}}" class="btn mt-2">আরও অর্ডার করুন</a>
+                            {{-- <p class="get-ans">Get answers to all your <a href="#">Questions</a> you might have.</p> --}}
                         </div>
                     </div>
                 </div>
