@@ -91,7 +91,7 @@
                 #paymentCard{
                     height: 100px;
                 }
-                .cartModal1{
+                .cartModal1, #orderFinish, #orderFinishCheckoutMobile{
                     display: none;
                 }
             }
@@ -109,7 +109,7 @@
                 .cartModal, #signInSignOut, #footerTopMenu,
                 #footerDesktop, #productCategoryMobile, #productSearchMobile,
                 #productNewProductMobile, #productBrandMobile,
-                #productSearchByCustomSelect{
+                #productSearchByCustomSelect, #orderFinishMobile, #orderFinishCheckout{
                     display: none;
                 }
             }

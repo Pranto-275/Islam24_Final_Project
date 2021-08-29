@@ -1,5 +1,6 @@
 
     {{-- Start Modal --}}
+
        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm m-0">
             <div class="modal-content p-3" style="">
@@ -64,9 +65,9 @@
                 </div>
             </div>
         </div>
-    </div>
+       </div>
 
-{{-- End Modal --}}
+    {{-- End Modal --}}
 <footer id="mobileResponsiveFooter" style="z-index: 1;">
     <div class="card">
         <div class="card-body m-0 p-0">
@@ -106,6 +107,6 @@
 </footer>
 <script>
     $("#addToCart").on("click", function (event) {
-    $('.modal').modal('hide');
+        $('.modal').modal('hide');
     });
   </script>

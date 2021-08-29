@@ -414,7 +414,9 @@
                                     {{-- End Similar Product --}}
                                     <div class="col-md-12">
                                     <center>
+                                       @if(isset($product['category_id']))
                                         <a class="btn text-center" style="background: #ff6000;color:white;"  href="{{route('search-category-wise',['id'=>$product['category_id']])}}">আরও পণ্য দেখুন</a>
+                                       @endif
                                     </center>
                                     </div>
                                 </div>
