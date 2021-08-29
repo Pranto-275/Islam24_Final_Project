@@ -23,7 +23,10 @@ class CreateContactsTable extends Migration
             $table->string('shipping_address', 255)->nullable();
             $table->string('post_code', 6)->nullable();
             $table->string('state', 100)->nullable();
-            $table->foreignId('country_id')->nullable();
+            $table->foreignId('upazilla_id')->nullable()->unsigned();
+            $table->foreignId('district_id')->nullable()->unsigned();
+            $table->foreignId('division_id')->nullable()->unsigned();
+            $table->foreignId('country_id')->nullable()->unsigned();
             $table->string('phone', 20)->nullable();
             $table->string('mobile', 20)->nullable();
             $table->string('email', 100)->nullable();
