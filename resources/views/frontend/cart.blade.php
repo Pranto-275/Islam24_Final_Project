@@ -267,7 +267,7 @@
                     </li>
                     <li>
                         <span>ডিসকাউন্ট</span>
-                        <span class="cart-total-price">
+                        <span class="">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
                             @endif
