@@ -295,9 +295,14 @@
                          </div>
                         @endforeach
                        @endif
-                       @foreach ($images as $image)
+                       @foreach ($images as $key=>$image)
+                       <div ng-repeat="file in imagefinaldata" class="img_wrp m-1">
                        <img src="{{ $image->temporaryUrl() }}" style="height:100px; weight:100px;"
-                       alt="Image" class="img-circle img-fluid">
+                       alt="Image" class="img-circle img-fluid rounded mb-1 imgResponsiveMax">
+                       <div class="close text-danger" wire:click="removeMe({{ $key }})" style="cursor:pointer;">
+                        <span aria-hidden="true">&times;</span>
+                       </div>
+                       </div>
                        @endforeach
                     </div>
                 </div>

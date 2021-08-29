@@ -122,11 +122,15 @@ class Product extends Component
         // Product Code
         $this->code = 'P'.floor(time() - 999999999);
     }
-
+    public function removeMe($index)
+    {
+            array_splice($this->images, $index, 1);
+    }
     public function imageDelete($id)
     {
         //    dd($id);
         ProductImage::whereId($id)->delete();
+        $this->QueryUpdate = ProductTable::find($this->ProductId);
         $this->emit('success', [
         'text' => 'Deleted Image Successfully',
         ]);

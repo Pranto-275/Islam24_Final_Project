@@ -14,7 +14,7 @@
             <!-- shop-details-area -->
             <section class="shop-details-area pt-40 pb-20">
                 <div class="container">
-                    <div class="row mb-95">
+                    <div class="row mb-5">
                         <div class="col-xl-7 col-lg-6">
                             <div class="shop-details-nav-wrap">
                                 <div class="shop-details-nav">
@@ -150,6 +150,11 @@
                                             <span class="text-dark">ব্রান্ড:</span>
                                             <span style="color: #ff0000; font-weight:bold;">{{$productDetails->Brand->name}}</span>
                                         </p>
+                                        <div class="social-links pt-2">
+                                                <a href="{{$companyInfo->facebook_link}}" target="_blank"><span class="fab fa-facebook-square"
+                                                            style="font-size: 20px;"></span></a>
+                                                <a href="{{$companyInfo->youtube_link}}" target="_blank"><span class="fab fa-youtube" style="font-size: 20px;color: red;"></span></a>
+                                        </div>
                                         <p class="m-0">
                                             @if($productDetails->ProductInfo->youtube_link)
                                                 <span><i class="fab fa-youtube text-danger"></i></span>
@@ -414,7 +419,9 @@
                                     {{-- End Similar Product --}}
                                     <div class="col-md-12">
                                     <center>
+                                       @if(isset($product['category_id']))
                                         <a class="btn text-center" style="background: #ff6000;color:white;"  href="{{route('search-category-wise',['id'=>$product['category_id']])}}">আরও পণ্য দেখুন</a>
+                                       @endif
                                     </center>
                                     </div>
                                 </div>

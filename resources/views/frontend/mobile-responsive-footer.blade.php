@@ -1,5 +1,6 @@
 
     {{-- Start Modal --}}
+
        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm m-0">
             <div class="modal-content p-3" style="">
@@ -18,11 +19,12 @@
                         <div class="col-8">
                             <div class="row">
                                 <div class="col-12">
-                                    <span id="mobile-modal-product-name"></span><br>
+                                    <span id="mobile-modal-product-name" style="color: black;font-weight: bold;"></span><br>
+                                    <span style="color: rgb(8, 0, 0);">সর্বনিম্ন অর্ডার: </span> <span class="mobile-modal-product-min_qty" style="color: red;font-weight: bold;font-size: 12px;"></span> <span style="color: red;">পিছ</span><br>
                                     @if($currencySymbol)
                                         {{ $currencySymbol->symbol }}
                                     @endif
-                                    <span class="mobile-modal-product-unit-price"></span> x <span class="mobile-modal-product-quantity-label"></span>
+                                    <span class="mobile-modal-product-unit-price" style="color: rgb(0, 0, 0);"></span> x <span class="mobile-modal-product-quantity-label" style="color: rgb(0, 0, 0);"></span>
                                 </div>
                                 <div class="col-5">
                                   <span class="text-danger" style="font-size: 18px;">
@@ -32,6 +34,12 @@
                                     <span class="mobile-modal-product-price"></span>
                                   </span>
                                 </div>
+                                {{-- <div class="col-12">
+                                    <span class="text-danger" style="font-size: 18px;">
+                                      Minimum order Qty <span class="mobile-modal-product-min_qty"></span>
+                                    </span>
+                                  </div> --}}
+
                                 <div class="col-7 text-center">
                                     <td class="product-quantity">
                                         <div class="cart-plus">
@@ -64,9 +72,9 @@
                 </div>
             </div>
         </div>
-    </div>
+       </div>
 
-{{-- End Modal --}}
+    {{-- End Modal --}}
 <footer id="mobileResponsiveFooter" style="z-index: 1;">
     <div class="card">
         <div class="card-body m-0 p-0">
@@ -106,6 +114,6 @@
 </footer>
 <script>
     $("#addToCart").on("click", function (event) {
-    $('.modal').modal('hide');
+        $('.modal').modal('hide');
     });
   </script>
