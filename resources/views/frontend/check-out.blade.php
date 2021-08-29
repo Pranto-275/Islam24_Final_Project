@@ -266,13 +266,13 @@
                                     <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
                                     <ul>
                                         <li><span>SUBTOTAL</span> {{ $cardBadge['data']['total_price'] }}</li>
-                                        <li>
+                                        <li >
                                             <span>SHIPPING</span>
                                             <div class="shop-check-wrap">
                                                 @if($shipping_charge)
                                                 @foreach ($shipping_charge as $shippingCharge )
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" name="shipping_charge" class="shipping-charge"
+                                                    <input type="radio" name="shipping_charge"
                                                         required id="customCheck_"
                                                         value="{{$shippingCharge->shipping_fee}}">{{$shippingCharge->title}}:
                                                     {{$shippingCharge->shipping_fee}}
@@ -301,7 +301,7 @@
                                     </ul>
                                     <div class="bank-transfer">
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
                                             <label class="custom-control-label" for="customCheck4">ক্যাশ অন
                                                 ডেলিভারি</label>
                                         </div>
@@ -340,11 +340,11 @@
                                         </div>
                                     </div> --}}
                                     <div class="payment-terms">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                            <label class="custom-control-label" for="customCheck7">I have read and agree
-                                                to the website terms
-                                                and conditions *</label>
+                                        <div class="custom-control">
+
+                                            <label class="" > * I have read and agree
+                                                to the website <a href="{{route('terms-conditios')}}">terms
+                                                and conditions</a> *</label>
                                         </div>
                                     </div>
                                     <button class="btn btn-submit" type="submit" style="background-color:red;width: 100%;" id="orderFinishCheckout">অর্ডার
