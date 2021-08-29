@@ -42,13 +42,13 @@
 
                                 <input id="file-input" name="profile_photo_path" type="file"/>
                             </div>
-                            <button class="text-dark mb-1 mt-0 pt-0" type="submit" id="profile-submit-button" style="border-radius: 80%; border: 1px solid red;font-size:12px;">Save</button>
+                            <button class="mb-1 mt-0 py-1 px-2" type="submit" id="profile-submit-button" style="border-radius: 80%; border: 1px solid red;font-size:12px;color: red;">Save</button>
                             </form>
                             {{-- End Profile Photo Change --}}
                             </center>
                             <div class="card-body pt-0 mt-0">
                               <h5 class="card-title text-center">{{ Auth::user()->name }}</h5>
-                              <div class="card-title text-center">{{ Auth::user()->mobile }}</div>
+                              <div class="card-title text-center" style="font-weight: bold;color: black;">{{ Auth::user()->mobile }}</div>
                               <center>
                                 <div class="heder-top-guide">
                                             <a class="log-out-btn text-danger" href="#"
@@ -66,8 +66,8 @@
                               {{-- <a href="#" class="btn px-0 py-2" style="width: 130px;background-color:rgb(110, 231, 175);">Check Account</a> --}}
                               </center>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab">অর্ডার লিস্ট</a></li>
+                            <ul class="list-group list-group-flush" style="font-weight: bold;">
+                                <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab"><span style="color: #ff5c00;">অর্ডার লিস্ট</span></a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#delivery-address" data-toggle="tab">ডেলিভারি এড্রেস</a></li>
                                 <li class="list-group-item"><a href="#basic-information" class="text-dark" data-toggle="tab">প্রোফাইল</a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#change-password" data-toggle="tab">পাসওয়ার্ড পরিবর্তন</a></li>

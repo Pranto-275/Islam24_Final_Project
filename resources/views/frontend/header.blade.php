@@ -2,47 +2,57 @@
     <!-- header-top -->
     <style>
         .blue {
-         background: #ffffff;
-}
+            background: #ffffff;
+        }
 
-.news {
-    /* box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4), 0 5px 10px rgba(0,0,0,0.5); */
-       /* width: 890px; */
-    margin: 20px auto;
-    overflow: hidden;
-    border-radius: 4px;
-    /* padding: 1px; */
-    -webkit-user-select: none;
-}
-.news span {
-    float: left;
-    color: rgb(19, 10, 10);
-    padding: 9px;
-    position: relative;
-    top: 1%;
-    /* box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4); */
-    font: 16px 'Raleway', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -webkit-user-select: none;
-    cursor: pointer;
-}
-.text1{
+        .news {
+            /* box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4), 0 5px 10px rgba(0,0,0,0.5); */
+            /* width: 890px; */
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 4px;
+            /* padding: 1px; */
+            -webkit-user-select: none;
+        }
 
-    box-shadow:none !important;
-    width: 92%;
-}
-.text2{
-    box-shadow:none !important;
-    width: 80%;
-}
-@media only screen and (min-width: 768px) {
-    #breakingNews{
-        display: none;
-    }
-    #privacyPolicy, #termCondition, #aboutUs, #sign-in, #sign-up, #contact-us{
-        display: none;
-    }
-}
+        .news span {
+            float: left;
+            color: rgb(19, 10, 10);
+            padding: 9px;
+            position: relative;
+            top: 1%;
+            /* box-shadow: inset 0 -15px 30px rgba(0,0,0,0.4); */
+            font: 16px 'Raleway', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -webkit-user-select: none;
+            cursor: pointer;
+        }
+
+        .text1 {
+
+            box-shadow: none !important;
+            width: 92%;
+        }
+
+        .text2 {
+            box-shadow: none !important;
+            width: 80%;
+        }
+
+        @media only screen and (min-width: 768px) {
+            #breakingNews {
+                display: none;
+            }
+
+            #privacyPolicy,
+            #termCondition,
+            #aboutUs,
+            #sign-in,
+            #sign-up,
+            #contact-us {
+                display: none;
+            }
+        }
     </style>
     <div class="header-top-area pb-0" id="headerOneCheckOut">
         <div class="custom-container-two">
@@ -53,17 +63,20 @@
                             <li>
                                 <div class="heder-top-guide">
                                     <div class="dropdown">
-                                            <button aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-phone-alt" style="color: #ff5c00;font-size: 13px;"></i>
-                                                <span class="pt-1" style="font-size: 14px;font-weight: bold;color: #ff5c00;">
-                                                    @if($companyInfo) {{$companyInfo->hotline}} @endif
-                                                </span>
-                                            </button>
+                                        <button aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-phone-alt" style="color: #ff5c00;font-size: 13px;"></i>
+                                            <span class="pt-1"
+                                                style="font-size: 14px;font-weight: bold;color: #ff5c00;">
+                                                @if($companyInfo) {{$companyInfo->hotline}} @endif
+                                            </span>
+                                        </button>
                                         </a>
                                     </div>
                                 </div>
                             </li>
-            <i class="fas fa-bell font-size-large rounded-circle mr-0 float-right" style="font-size: 20px;"></i><sub class="badge badge-danger p-1 m-0" style="border-radius: 50%;">10</sub>
+                            <i class="fas fa-bell font-size-large rounded-circle mr-0 float-right"
+                                style="font-size: 20px;"></i><sub class="badge badge-danger p-1 m-0"
+                                style="border-radius: 50%;">10</sub>
                         </ul>
                     </div>
                 </div>
@@ -79,40 +92,40 @@
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                             style="background-color: #f8f9fa; color: black;border: none;color: rgb(12, 6, 6);padding: 7px 16px; text-align: center;text-decoration: none;font-size: 14px;cursor: pointer;">
                                             {{Auth::user()->name}}
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                            <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
-                                            <a class="log-out-btn dropdown-item text-danger" href="#"
-                                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-                                                    class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
-                                                Sign Out </a>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                <a class="dropdown-item" href="{{ route('my-account') }}">My Account</a>
+                                <a class="log-out-btn dropdown-item text-danger" href="#"
+                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                        class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
+                                    Sign Out </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                style="display: none;">
-                                                {{ csrf_field() }}
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> --}}
-                            @else
-                            <li id="signInSignOut">
-
-
-
-                                <a href="{{route('register')}}"><i class="flaticon-user"></i>Sign Up</a>
-                                <span>Or</span>
-                                <a href="{{route('sign-in')}}">Sign In</a>
-
-
-                            </li>
-                            @endif
-
-                        </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
                     </div>
                 </div>
+                </li> --}}
+                @else
+                <li id="signInSignOut">
+
+
+
+                    <a href="{{route('register')}}"><i class="flaticon-user"></i>Sign Up</a>
+                    <span>Or</span>
+                    <a href="{{route('sign-in')}}">Sign In</a>
+
+
+                </li>
+                @endif
+
+                </ul>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <!-- header-top-end -->
 
@@ -126,7 +139,9 @@
                     <form action="{{ route('product-search') }}" method="GET">
                         <center>
                             <div class="input-group pr-3" id="mobile-response-search-box" style="width: 80%;">
-                                <input type="text" class="form-control mb-2" name="search_product_name" id="search_product_category" style="border-radius: 30px 0px 0px 30px;" aria-label="Text input with dropdown button" placeholder="পন্য খুঁজুন এখানে..">
+                                <input type="text" class="form-control mb-2" name="search_product_name"
+                                    id="search_product_category" style="border-radius: 30px 0px 0px 30px;"
+                                    aria-label="Text input with dropdown button" placeholder="পন্য খুঁজুন এখানে..">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
                                         style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
@@ -135,20 +150,23 @@
                             </div>
                         </center>
                     </form>
-                        {{-- End Mobile Responsive Search Box --}}
-                        {{-- Start Breaking News --}}
-                        <div id="breakingNews" class="news blue my-1 mx-0 px-0" style="height: 38px;border-style: solid;border-color: brown">
-                            <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
-                            <span class="text2" >
-                              <marquee scrollamount="5">
-                               @foreach ($BreakingNews as $news)
-                               <i class="fas fa-star"></i><i class="fas fa-star"><a style="font-size: 14px;font-family: SolaimanLipi;">{{$news->news}}</a>
-                               @endforeach
-                              </marquee>
-                            </span>
-                        </div>
-                        {{-- End Breaking News --}}
-                        {{-- &nbsp;&nbsp; --}}
+                    {{-- End Mobile Responsive Search Box --}}
+                    {{-- Start Breaking News --}}
+                    <div id="breakingNews" class="news blue my-1 mx-0 px-0"
+                        style="height: 38px;border-style: solid;border-color: brown">
+                        <span class="pt-1 px-1"
+                            style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+                        <span class="text2">
+                            <marquee scrollamount="5">
+                                @foreach ($BreakingNews as $news)
+                                <i class="fas fa-star"></i><i class="fas fa-star"><a
+                                        style="font-size: 14px;font-family: SolaimanLipi;">{{$news->news}}</a>
+                                    @endforeach
+                            </marquee>
+                        </span>
+                    </div>
+                    {{-- End Breaking News --}}
+                    {{-- &nbsp;&nbsp; --}}
                     <div class="menu-wrap">
                         <nav class="menu-nav show">
                             <div class="logo" id="paikaryLogo">
@@ -189,7 +207,9 @@
 
                                     {{-- <li><a href="#"><i class="flaticon-two-arrows"></i></a></li> --}}
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
-                                    <li class="header-shop-cart"><a href="{{ route('cart') }}"><i class="flaticon-shopping-bag"></i><span class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
+                                    <li class="header-shop-cart"><a href="{{ route('cart') }}"><i
+                                                class="flaticon-shopping-bag"></i><span
+                                                class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
                                         <span class="cart-total-price" style="width: 120px;">
                                             @if($currencySymbol)
                                             {{ $currencySymbol->symbol }}
@@ -222,61 +242,63 @@
                             <div class="menu-outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                             </div>
-                            <div>
+                            {{-- <div>
                                 <div class="row justify-content-center">
                                     <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
                                         <div class="core-features-item">
                                             <div class="core-features-icon">
-                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features01.png" alt="">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features01.png"
+                                                    alt="">
                                             </div>
                                             <div class="core-features-content my-0 py-0">
                                                 <div class="text-danger my-0 py-0">Free Shipping On Over $ 50</div>
-                                                {{-- <span>Agricultural mean crops livestock</span> --}}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
                                         <div class="core-features-item">
                                             <div class="core-features-icon">
-                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features02.png" alt="">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features02.png"
+                                                    alt="">
                                             </div>
                                             <div class="core-features-content my-0 py-0">
                                                 <div class="text-danger my-0 py-0">Membership Discount</div>
-                                                {{-- <span>Only MemberAgricultural livestock</span> --}}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
                                         <div class="core-features-item">
                                             <div class="core-features-icon">
-                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features03.png" alt="">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features03.png"
+                                                    alt="">
                                             </div>
                                             <div class="core-features-content my-0 py-0">
                                                 <div class="text-danger my-0 py-0">Money Return</div>
-                                                {{-- <span>30 days money back guarantee</span> --}}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6 my-0 py-0">
                                         <div class="core-features-item">
                                             <div class="core-features-icon">
-                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png" alt="">
+                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png"
+                                                    alt="">
                                             </div>
                                             <div class="core-features-content my-0 py-0">
                                                 <div class="text-danger my-0 py-0">24/7 Support !</div>
-                                                {{-- <span>Saving Every Moments</span> --}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="social-links">
                                 <ul class="clearfix">
                                     {{-- <li><a href="#"><span class="fab fa-twitter"></span></a></li> --}}
-                                    <li><a href="#"><span class="fab fa-facebook-square" style="font-size: 30px;"></span></a></li>
+                                    <li><a href="{{$companyInfo->facebook_link}}" target="_blank"><span class="fab fa-facebook-square"
+                                                style="font-size: 30px;"></span></a></li>
                                     {{-- <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li> --}}
                                     {{-- <li><a href="#"><span class="fab fa-instagram"></span></a></li> --}}
-                                    <li><a href="#"><span class="fab fa-youtube" style="font-size: 30px;"></span></a></li>
+                                    <li><a href="{{$companyInfo->youtube_link}}" target="_blank"><span class="fab fa-youtube" style="font-size: 30px;"></span></a>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
@@ -295,12 +317,12 @@
                     <div class="header-category d-none d-lg-block">
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>মেন্যু</a>
                         <ul class="category-menu" style="z-index: 3;">
-                        @foreach ($categories as $category)
+                            @foreach ($categories as $category)
                             <li class="has-dropdown">
                                 <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
                                     <div class="cat-menu-img"><img src="{{ asset('storage/photo/'.$category->image1) }}"
                                             alt="" style="width:35px;height:35px;"></div>
-                                        {{$category->name}}
+                                    {{$category->name}}
                                 </a>
                                 <ul class="mega-menu">
                                     @foreach ($category->SubCategory as $subCategory)
@@ -354,10 +376,10 @@
                                     <option selected="" value="">All Categories</option>
                                     @foreach ($categories as $category)
                                     <a href="{{ route('search-category-wise',['id'=>$category->id]) }}">
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                    </a>
-                                    @endforeach
-                                    <option>In All Categories</option>
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                </a>
+                                @endforeach
+                                <option>In All Categories</option>
                                 </select> --}}
                                 <button type="submit" id="btn-product-search"><i
                                         class="flaticon-magnifying-glass-1"></i></button>
@@ -366,7 +388,7 @@
                         <div class="header-free-shopping">
                             <p style="visibility: hidden;">Free Shipping on Orders
                                 @if($currencySymbol)
-                                    {{ $currencySymbol->symbol }}
+                                {{ $currencySymbol->symbol }}
                                 @endif
                                 39
                             </p>
@@ -374,31 +396,32 @@
                     </div>
                 </div>
             </div>
-             {{-- Start Breaking News --}}
-             {{-- <div id="breakingNews1" class="news blue my-1">
+            {{-- Start Breaking News --}}
+            {{-- <div id="breakingNews1" class="news blue my-1">
                 <span style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
                 <span class="text1" style="height: 38px;border-style: solid;border-color: brown">
                   <marquee scrollamount="5">
                    @foreach ($BreakingNews as $news)
                    <span style="font-size:12px;" class="p-0 m-0">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i>{{$news->news}}
-                   </span>
-                   @endforeach
-                  </marquee>
-                </span>
-            </div> --}}
-            <div id="breakingNews1" class="news blue my-1" style="height: 38px;border-style: solid;border-color: brown">
-                <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
-                <span class="text1" >
-                  <marquee scrollamount="5">
-                   @foreach ($BreakingNews as $news)
-                   <i class="fas fa-star"></i><i class="fas fa-star"><a style="font-size: 12px;font-family: SolaimanLipi;">{{$news->news}}</a>
-                   @endforeach
-                  </marquee>
-                </span>
-            </div>
-            {{-- End Breaking News --}}
+            </span>
+            @endforeach
+            </marquee>
+            </span>
+        </div> --}}
+        <div id="breakingNews1" class="news blue my-1" style="height: 38px;border-style: solid;border-color: brown">
+            <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+            <span class="text1">
+                <marquee scrollamount="5">
+                    @foreach ($BreakingNews as $news)
+                    <i class="fas fa-star"></i><i class="fas fa-star"><a
+                            style="font-size: 12px;font-family: SolaimanLipi;">{{$news->news}}</a>
+                        @endforeach
+                </marquee>
+            </span>
         </div>
+        {{-- End Breaking News --}}
+    </div>
     </div>
     <!-- header-search-area-end -->
 </header>
