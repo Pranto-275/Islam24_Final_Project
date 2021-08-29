@@ -266,14 +266,14 @@
                                     <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
                                     <ul>
                                         <li><span>SUBTOTAL</span> {{ $cardBadge['data']['total_price'] }}</li>
-                                        <li >
+                                        <li style="display: none">
                                             <span>SHIPPING</span>
                                             <div class="shop-check-wrap">
                                                 @if($shipping_charge)
                                                 @foreach ($shipping_charge as $shippingCharge )
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" name="shipping_charge"
-                                                        required id="customCheck_"
+                                                    <input type="radio" name="shipping_charge" class="shipping-charge"
+                                                         id="customCheck_"
                                                         value="{{$shippingCharge->shipping_fee}}">{{$shippingCharge->title}}:
                                                     {{$shippingCharge->shipping_fee}}
                                                     {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">

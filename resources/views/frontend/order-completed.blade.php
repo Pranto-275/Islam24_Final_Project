@@ -32,60 +32,6 @@
         </div>
     </section>
     <!-- order-complete-area-end -->
-        <!-- core-features -->
-        <section class="core-features-area core-features-style-two">
-            <div class="container">
-                <div class="core-features-border">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
-                                <div class="core-features-icon">
-                                    <img src="{{ URL::asset('venam/') }}/img/icon/core_features01.png" alt="">
-                                </div>
-                                <div class="core-features-content">
-                                    <h6>Free Shipping On Over $ 50</h6>
-                                    <span>Agricultural mean crops livestock</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
-                                <div class="core-features-icon">
-                                    <img src="{{ URL::asset('venam/') }}/img/icon/core_features02.png" alt="">
-                                </div>
-                                <div class="core-features-content">
-                                    <h6>Membership Discount</h6>
-                                    <span>Only MemberAgricultural livestock</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
-                                <div class="core-features-icon">
-                                    <img src="{{ URL::asset('venam/') }}/img/icon/core_features03.png" alt="">
-                                </div>
-                                <div class="core-features-content">
-                                    <h6>Money Return</h6>
-                                    <span>30 days money back guarantee</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="core-features-item mb-50">
-                                <div class="core-features-icon">
-                                    <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png" alt="">
-                                </div>
-                                <div class="core-features-content">
-                                    <h6>24/7 Support !</h6>
-                                    <span>Saving Every Moments</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- core-features-end -->
     </main>
 </div>
 {{--<div class="hide" id="clone_mini_cart">
