@@ -20,6 +20,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <span id="mobile-modal-product-name"></span><br>
+                                    Minimum order Qty <span class="mobile-modal-product-min_qty"></span><br>
                                     @if($currencySymbol)
                                         {{ $currencySymbol->symbol }}
                                     @endif
@@ -33,6 +34,12 @@
                                     <span class="mobile-modal-product-price"></span>
                                   </span>
                                 </div>
+                                {{-- <div class="col-12">
+                                    <span class="text-danger" style="font-size: 18px;">
+                                      Minimum order Qty <span class="mobile-modal-product-min_qty"></span>
+                                    </span>
+                                  </div> --}}
+
                                 <div class="col-7 text-center">
                                     <td class="product-quantity">
                                         <div class="cart-plus">
