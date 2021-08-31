@@ -98,8 +98,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::post('change-password-customer', [HomeController::class, 'ChangePassword'])->name('change-password-customer');
 Route::post('change-profile-photo', [HomeController::class, 'ChangeProfilePhoto'])->name('change-profile-photo');
+Route::post('upazila-search', [HomeController::class, 'SearchUpazila'])->name('upazila-search');
 Route::get('edit/{id?}', [HomeController::class, 'EditContact'])->name('edit');
 Route::post('edit', [HomeController::class, 'EditContactById']);
 Route::post('edit-shipping-address', [HomeController::class, 'EditShippingAddress'])->name('edit-shipping-address');
