@@ -167,10 +167,10 @@
                                     </thead>
                                     <tbody>
                                         @foreach($cardBadge['data']['products'] as $productId => $product)
-                                        <tr id="row_{{ $productId }}">
-                                            <td class="product-thumbnail">
+                                        <tr id="row_{{ $productId }}" style="color: black;">
+                                            <td class="product-thumbnail" style="border-style: none;">
                                                 <a href="javascript:void(0)" class="wishlist-remove"
-                                                    data-product-id="{{ $productId }}"><i
+                                                    data-product-id="{{ $productId }}" ><i
                                                         class="flaticon-cancel-1 text-danger"
                                                         style="font-weight: bold;"></i></a>
                                                 <a href="{{ route('product-details',['id'=>$productId]) }}"
@@ -182,7 +182,7 @@
                                                 <td class="product-name">
                                                     <h4> --}}
                                                 <a href="{{ route('product-details',['id'=>$productId]) }}"
-                                                    style="text-transform: capitalize;float: left;">
+                                                    style="text-transform: capitalize;float: left;color: black;font-weight: bold;">
                                                     @if(strlen($product['Info']['product_name'])>23)
                                                     {{ substr($product['Info']['product_name'], 0,22).'...' }}
                                                     @else
@@ -194,13 +194,13 @@
                                                 {{-- <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span> --}}
                                             </td>
-                                            <td data-label="মূল্য" class="product-price">
+                                            <td data-label="মূল্য" class="product-price" style="border-style: none;color: black;">
                                                 @if($currencySymbol)
                                                 {{ $currencySymbol->symbol }}
                                                 @endif
                                                 {{ $product['unit_price'] }}
                                             </td>
-                                            <td data-label="সংখ্যা" class="product-quantity">
+                                            <td data-label="সংখ্যা" class="product-quantity" style="color: black;">
                                                 <div class="cart-plus float-right">
                                                     <form action="#">
                                                         <div class="cart-plus-minus" data-product-id="{{ $productId }}"
@@ -217,8 +217,8 @@
                                                 <br>
                                             </td>
                                             <td data-label="SUBTOTAL" class="product-subtotal"
-                                                id="product_subtotal_{{ $productId }}">
-                                                <span>
+                                                id="product_subtotal_{{ $productId }}" style="color: black;">
+                                                <span style="color: black;">
                                                     @if($currencySymbol)
                                                     {{ $currencySymbol->symbol }}
                                                     @endif
@@ -255,10 +255,10 @@
 {{-- End Cart --}}
 <div class="col-lg-4 col-md-8">
     <aside class="shop-cart-sidebar pt-3">
-        <div class="shop-cart-widget">
-            <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
+        <div class="shop-cart-widget py-0 my-0 pt-1">
+            <h6 class="title text-center pt-3">শপিংব্যাগ সর্বমোট বিল</h6>
             <ul>
-                <li>
+                <li style="color: black;">
                     <span>SUBTOTAL</span>
                     <span class="cart-total-price">
                         @if($currencySymbol)
@@ -267,7 +267,7 @@
                         {{ $totalPrice }}
                     </span>
                 </li>
-                <li>
+                <li class="py-1" style="color: black;">
                     <span>ডিসকাউন্ট</span>
                     <span class="">
                         @if($currencySymbol)
@@ -276,13 +276,15 @@
                         0
                     </span>
                 </li>
-                <li class="cart-total-amount">
+                <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
                     <span>সর্বমোট</span>
                     <span class="amount cart-total-price">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
                         @endif
                         {{ $totalPrice }}
+                    <br>
+                    <br>
                     </span>
                 </li>
             </ul>
