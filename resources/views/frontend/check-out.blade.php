@@ -159,7 +159,7 @@
                                         <div class="form-grp">
                                             <label>Division *</label>
                                             <select class="custom-select division"  name="division_id">
-                                                <option value="">Select Division</option>
+                                                <option value="">সিলেক্ট করুন</option>
                                                 @foreach ($Divisions as $item)
                                                 <option value="{{$item->id}}">{{$item->bn_name}}</option>
                                                 @endforeach
@@ -170,7 +170,7 @@
                                         <div class="form-grp">
                                             <label>জেলা *</label>
                                             <select class="custom-select district"  name="district_id" required>
-                                                <option value="">Select Zilla</option>
+                                                <option value="">সিলেক্ট করুন</option>
                                                 @foreach ($Districts as $zilla)
                                                 <option value="{{$zilla->id}}"
                                                     class="district-items division_id_{{$zilla->division_id}} ">{{$zilla->bn_name}}</option>
@@ -182,7 +182,7 @@
                                         <div class="form-grp">
                                             <label>উপজেলা *</label>
                                             <select class="custom-select upazila" name="upazila_id" required>
-                                                <option value="">Select Upazilla</option>
+                                                <option value="">সিলেক্ট করুন</option>
                                                 @foreach ($Upazilas as $upazilla)
                                                 <option value="{{ $upazilla->id}}" class="upazila-items district_id_{{$upazilla->district_id}}">{{ $upazilla->bn_name}}</option>
                                                 @endforeach
