@@ -178,6 +178,9 @@ class HomeController extends Controller
             $Query->first_name = $request->fName;
             $Query->last_name = $request->lName;
             $Query->shipping_address = $request->shipping_address;
+            $Query->division_id = $request->division_id;
+            $Query->district_id = $request->district_id;
+            $Query->upazila_id = $request->upazila_id;
             $Query->mobile = $request->mobile;
             $Query->is_active = 1;
             $Query->branch_id = 1;

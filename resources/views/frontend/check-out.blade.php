@@ -158,11 +158,11 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label>Division *</label>
-                                            <select class="custom-select division"  name="division_id">
+                                            <label>বিভাগ *</label>
+                                            <select class="custom-select division"  name="division_id" required>
                                                 <option value="">সিলেক্ট করুন</option>
                                                 @foreach ($Divisions as $item)
-                                                <option value="{{$item->id}}">{{$item->bn_name}}</option>
+                                                <option value="{{$item->id}}" @if($item->bn_name=='ঢাকা') selected @endif>{{$item->bn_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -174,12 +174,12 @@
                                                 <option value="">সিলেক্ট করুন</option>
                                                 @foreach ($Districts as $zilla)
                                                 <option value="{{$zilla->id}}"
-                                                    class="district-items division_id_{{$zilla->division_id}} ">{{$zilla->bn_name}}</option>
+                                                    class="district-items division_id_{{$zilla->division_id}} " @if($zilla->bn_name=='ঢাকা') selected @endif>{{$zilla->bn_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    {{-- <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>উপজেলা *</label>
                                             <select class="custom-select upazila" name="upazila_id" required>
@@ -189,7 +189,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-12">
                                         <div class="form-grp">
@@ -314,11 +314,23 @@
                             <div class="shop-cart-widget py-0 my-0 pt-1">
                                 <h6 class="title text-center">শপিংব্যাগ সর্বমোট বিল</h6>
                                 <ul>
-                                    <li style="color: black;"><span>SUBTOTAL:</span>
+                                    {{-- <li style="color: black;"><span>SUBTOTAL:</span>
                                         @if($currencySymbol)
                                             {{ $currencySymbol->symbol }}
                                             @endif
                                         {{ $cardBadge['data']['total_price'] }}
+                                    </li> --}}
+                                    <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
+
+                                        <span>সাবটোটাল</span>
+                                        <span class="amount cart-total-price">
+                                                @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $totalPrice }}
+                                            <br>
+                                            <br>
+                                        </span>
                                     </li>
                                     <li style="display: none">
                                         <span>SHIPPING</span>
@@ -354,8 +366,9 @@
                                             0
                                         </span>
                                     </li>
+
                                     <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
-                                        <span>সর্বমোট বিল:</span>
+                                        {{-- <span>সর্বমোট বিল:</span>
                                         <input type="hidden" name="check_out_total_amount"
                                             class="check-out-total-amount"
                                             value="{{ $cardBadge['data']['total_price'] }}">
@@ -364,6 +377,15 @@
                                             {{ $currencySymbol->symbol }}
                                             @endif
                                             {{ $cardBadge['data']['total_price'] }}
+                                        </span> --}}
+                                        <span>সর্বমোট</span>
+                                        <span class="amount cart-total-price">
+                                                @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $totalPrice }}
+                                            <br>
+                                            <br>
                                         </span>
                                     </li>
                                 </ul>
