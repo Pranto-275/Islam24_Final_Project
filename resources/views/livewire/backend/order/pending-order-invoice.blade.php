@@ -15,7 +15,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
-                            <address>
+                            <address style="font-size: 15px;">
                                 <strong>Billed To:</strong><br>
                                 {{$OrderInvoice->Contact->first_name}} {{$OrderInvoice->Contact->last_name}}<br>
                                 {{$OrderInvoice->Contact->address}}<br>
@@ -24,7 +24,7 @@
                             </address>
                         </div>
                         <div class="col-sm-6 text-sm-right">
-                            <address class="mt-2 mt-sm-0">
+                            <address class="mt-2 mt-sm-0" style="font-size: 15px;">
                                 <strong>Shipped To:</strong><br>
                                 {{$OrderInvoice->Contact->first_name}} {{$OrderInvoice->Contact->last_name}}<br>
                                 {{$OrderInvoice->Contact->shipping_address}}<br>
@@ -51,7 +51,7 @@
                         <h3 class="font-size-15 font-weight-bold">Order summary</h3>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-nowrap">
+                        <table class="table table-nowrap" style="font-size: 15px;">
                             <thead>
                                 <tr>
                                     <th style="width: 70px;">Sr.</th>
@@ -70,7 +70,7 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>
-                                        <img class="rounded" @if($orderDetail->Product->ProductImageFirst) src="{{ asset('storage/photo/'.$orderDetail->Product->ProductImageFirst->image)}}" @endif  style="height:30px; weight:30px;" alt="Image2" class="img-circle img-fluid">
+                                        <img class="rounded" @if($orderDetail->Product->ProductImageFirst) src="{{ asset('storage/photo/'.$orderDetail->Product->ProductImageFirst->image)}}" @endif  style="height:80px; weight:80px;" alt="Image2" class="img-circle img-fluid">
                                     </td>
                                     <td>{{$orderDetail->Product->name}}</td>
                                     <td>{{$orderDetail->quantity}}</td>

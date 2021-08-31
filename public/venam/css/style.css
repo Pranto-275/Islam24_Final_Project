@@ -4277,7 +4277,7 @@ label {
     top: 1px;
     left: -25px;
 }
-.different-address .custom-control-input:checked~.custom-control-label::before {
+.different-address .qtybutton:checked~.custom-control-label::before {
     color: #fff;
     border-color: #ff6000;
     background-color: #ff6000;

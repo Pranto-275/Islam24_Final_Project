@@ -10,9 +10,12 @@ use App\Models\Backend\ContactUs\Message;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\Backend\Setting\BreakingNews;
 use App\Models\Backend\Setting\ShippingCharge;
+use App\Models\District;
+use App\Models\Division;
 use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
+use App\Models\Upazila;
 use App\Models\User;
 use App\Services\AddToCardService;
 use Carbon\Carbon;
@@ -46,6 +49,14 @@ class HomeController extends Controller
         $this->product = $product;
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
+    }
+
+    public function SearchUpazila(Request $request)
+    {
+        $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
+        $upazillas = DB::table('upazilas')->where('district_id', '=', 1)->get();
+
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'zillas' => DB::table('districts')->get(), 'upazillas' => $upazillas]);
     }
 
     public function EditShippingAddress(Request $request)
@@ -124,6 +135,7 @@ class HomeController extends Controller
         if (Auth::user()) {
             return view('frontend.my-account', [
                 'contacts' => Contact::whereUserId(Auth::user()->id)->get(),
+                'contact' => Contact::whereUserId(Auth::user()->id)->first(),
             ]);
         } else {
             return view('frontend.sign-in');
@@ -134,7 +146,7 @@ class HomeController extends Controller
     {
         $data['html'] = view('frontend.header-card-popup')->render();
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->limit(50)->get()->toArray();
-        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->whereIsActive(1)->orderBy('id', 'desc')->get()->toArray();
+        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->whereIsActive(1)->limit(6)->orderBy('id', 'desc')->get()->toArray();
         // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
             'data' => $data,
@@ -166,6 +178,9 @@ class HomeController extends Controller
             $Query->first_name = $request->fName;
             $Query->last_name = $request->lName;
             $Query->shipping_address = $request->shipping_address;
+            $Query->division_id = $request->division_id;
+            $Query->district_id = $request->district_id;
+            $Query->upazila_id = $request->upazila_id;
             $Query->mobile = $request->mobile;
             $Query->is_active = 1;
             $Query->branch_id = 1;
@@ -293,7 +308,7 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
 
-        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get()]);
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'Divisions' => Division::all(), 'Districts' => District::all(), 'Upazilas' => Upazila::all()]);
     }
 
     public function messages(Request $request)

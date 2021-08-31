@@ -93,6 +93,7 @@
                     border-bottom: 0;
                 }
             }
+
             /* general styling */
             body {
                 font-family: "Open Sans", sans-serif;
@@ -112,17 +113,27 @@
 
         <main>
             <!-- checkout-area -->
-            <section class="checkout-area pt-10 pb-20">
-                <a href="{{ route('home') }}" class="pt-10"><i class="fas fa-backspace"
-                        style="color: red;font-size: 30px;"></i></a>
-                <div class="container">
+            <section class="checkout-area pb-20">
+                <div class="text-center py-2 rounded" style="background-color: black;">
+                    <a href="{{ route('home') }}" class="float-left">
+                        {{-- <i class="fas fa-backspace"
+                        style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
+                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+                    </a>
+                        <span class="mt-1" style="color: white;font-weight: bold; font-size: 16px;">কুইক চেকআউট</span>
+                </div>
+                {{-- <hr class="mb-0 mt-3">
+                <br>
+                <br> --}}
+                <div class="container pt-10">
 
                     @csrf
                     <div class="row justify-content-center">
-                        <div class="col-lg-8">
+                        <div class="col-12">
                             <div class="checkout-wrap">
-                                <h5 class="title text-center mt-2" style="color: #ff5c00;">কুইক চেকআউট</h5>
+                                {{-- <h5 class="title text-center mt-2" style="color: #ff5c00;">কুইক চেকআউট</h5> --}}
                                 <div class="row">
+                                    @if(!Auth::user())
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="fName">আপনার নাম<span>*</span></label>
@@ -147,24 +158,39 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label>জেলা *</label>
-                                            <select class="custom-select" id="district" name="district" required>
-                                                <option value="Dhaka">Dhaka</option>
-                                                <option value="New York">Chittagang</option>
-                                                <option value="California">Barisal</option>
+                                            <label>বিভাগ *</label>
+                                            <select class="custom-select division"  name="division_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Divisions as $item)
+                                                <option value="{{$item->id}}" @if($item->bn_name=='ঢাকা') selected @endif>{{$item->bn_name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label>উপজেলা *</label>
-                                            <select class="custom-select" id="district" name="district" required>
-                                                <option value="Dhaka">Dhaka</option>
-                                                <option value="New York">Chittagang</option>
-                                                <option value="California">Barisal</option>
+                                            <label>জেলা *</label>
+                                            <select class="custom-select district"  name="district_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Districts as $zilla)
+                                                <option value="{{$zilla->id}}"
+                                                    class="district-items division_id_{{$zilla->division_id}} " @if($zilla->bn_name=='ঢাকা') selected @endif>{{$zilla->bn_name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
+                                    {{-- <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label>উপজেলা *</label>
+                                            <select class="custom-select upazila" name="upazila_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Upazilas as $upazilla)
+                                                <option value="{{ $upazilla->id}}" class="upazila-items district_id_{{$upazilla->district_id}}">{{ $upazilla->bn_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div> --}}
+
                                     <div class="col-12">
                                         <div class="form-grp">
                                             <label for="shipping_address">পূর্ণ ঠিকানা*</label>
@@ -173,188 +199,252 @@
                                                 placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
                                         </div>
                                     </div>
+                                    @endif
+                                    @if(Auth::user())
+                                    <div class="col-12 mt-0 mb-0 pb-0 pt-4">
+                                        <div class="form-grp mt-0 pt-1">
+                                            <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
+                                            <input type="text" name="shipping_address" required
+                                                value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-0 pt-0">
+                                        <div class="form-grp mt-0 pt-0">
+                                            <label for="shipping_address" style="font-weight: bold;">মোবাইল নাম্বার</label>
+                                            <input type="text" name="shipping_address" required
+                                                value="@if(Auth::user()){{Auth::user()->Contact->mobile}}@endif" readonly>
+                                        </div>
+                                    </div>
 
+                                    @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-8">
-                            <aside class="shop-cart-sidebar checkout-sidebar py-3">
-                                <div class="shop-cart-widget">
-                                    <h6 class="title">শপিংব্যাগ সর্বমোট বিল</h6>
-                                    <ul>
-                                        <li><span>SUBTOTAL</span> {{ $cardBadge['data']['total_price'] }}</li>
-                                        <li style="display: none">
-                                            <span>SHIPPING</span>
-                                            <div class="shop-check-wrap">
-                                                @if($shipping_charge)
-                                                @foreach ($shipping_charge as $shippingCharge )
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" name="shipping_charge" class="shipping-charge"
-                                                         id="customCheck_"
-                                                        value="{{$shippingCharge->shipping_fee}}">{{$shippingCharge->title}}:
-                                                    {{$shippingCharge->shipping_fee}}
-                                                    {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
-                                                    <label class="custom-control-label" for="customCheck1">{{$shippingCharge->title}}:
-                                                    {{$shippingCharge->shipping_fee}}</label>--}}
-                                                </div>
-                                                @endforeach
-                                                @else
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" name="shipping_charge" class="shipping-charge"
-                                                        id="customCheck_" value="0" checked> FREE SHIPPING
-                                                    {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
-                                                    <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>--}}
-                                                </div>
-                                                @endif
-                                            </div>
-                                        </li>
-                                        <li class="cart-total-amount"><span>TOTAL</span>
-                                            <input type="hidden" name="check_out_total_amount"
-                                                class="check-out-total-amount"
-                                                value="{{ $cardBadge['data']['total_price'] }}">
-                                            <span
-                                                class="amount check-out-total-amount">{{ $cardBadge['data']['total_price'] }}</span>
-                                        </li>
-                                    </ul>
-                                    <div class="bank-transfer">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
-                                            <label class="custom-control-label" for="customCheck4">ক্যাশ অন
-                                                ডেলিভারি</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">bKash</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">Nagad</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                            <label class="custom-control-label" for="customCheck3">Rocket</label>
-                                        </div>
-                                    </div>
-
-                                    {{-- <div class="paypal-method">
-                                        <div class="paypal-method-flex">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                                <label class="custom-control-label" for="customCheck5">Nagad</label>
-                                            </div>
-                                            <div class="paypal-logo"><img src="img/images/paypal_logo.png" alt=""></div>
-                                        </div>
-                                        <p>Pay via PayPal; you can pay with your credit
-                                        card if you don’t have a PayPal account</p>
-                                    </div> --}}
-                                    {{-- <div class="paypal-method">
-                                        <div class="paypal-method-flex">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                                <label class="custom-control-label" for="customCheck6">Payments on Card</label>
-                                            </div>
-                                            <div class="paypal-logo"><img src="img/images/payment_card.png" alt=""></div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="payment-terms">
-                                        <div class="custom-control">
-
-                                            <label class="" > * I have read and agree
-                                                to the website <a href="{{route('terms-conditios')}}">terms
-                                                and conditions</a> *</label>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-submit" type="submit" style="background-color:red;width: 100%;" id="orderFinishCheckout">অর্ডার
-                                        সম্পন্ন করুন</button>
-                                </div>
-                            </aside>
                         </div>
                     </div>
                 </div>
 
                 <div class="container">
-                      {{-- Start Cart Product --}}
-                <h5 class="text-center" style="color: #ff5c00;">আপনার অর্ডারকৃত পণ্যসমূহ</h5>
-                <div class="table-responsive-xl">
-                    @php $totalPrice = 0; @endphp
-                    @if($cardBadge['data']['products'])
-                    @php $totalPrice = $cardBadge['data']['total_price'] @endphp
-                    <table class="" style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th class="product-thumbnail"></th>
-                                {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
-                                <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
-                                <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
-                                <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($cardBadge['data']['products'] as $productId => $product)
-                            <tr id="row_{{ $productId }}">
-                                <td class="product-thumbnail">
-                                    <a href="javascript:void(0)" class="wishlist-remove"
-                                        data-product-id="{{ $productId }}"><i class="flaticon-cancel-1 text-danger"
-                                            style="font-weight: bold;"></i></a>
-                                    <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
-                                        <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
-                                            style="height: 90px;width:103px;129px;" alt="">
-                                    </a>
-                                    {{-- </td>
+                    {{-- Start Cart Product --}}
+                    <h5 class="text-center" style="color: #ff5c00;">আপনার অর্ডারকৃত পণ্যসমূহ</h5>
+                    <div class="table-responsive-xl">
+                        @php $totalPrice = 0; @endphp
+                        @if($cardBadge['data']['products'])
+                        @php $totalPrice = $cardBadge['data']['total_price'] @endphp
+                        <table class="" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail"></th>
+                                    {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
+                                    <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
+                                    <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
+                                    <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($cardBadge['data']['products'] as $productId => $product)
+                                <tr id="row_{{ $productId }}" style="color: black;">
+                                    <td class="product-thumbnail" style="border-style: none;">
+                                        <a href="javascript:void(0)" class="wishlist-remove"
+                                            data-product-id="{{ $productId }}"><i class="flaticon-cancel-1 text-danger"
+                                                style="font-weight: bold;"></i></a>
+                                        <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
+                                            <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
+                                                style="height: 90px;width:103px;129px;" alt="">
+                                        </a>
+                                        {{-- </td>
                                  <td class="product-name">
                                      <h4> --}}
-                                    <a href="{{ route('product-details',['id'=>$productId]) }}"
-                                        style="text-transform: capitalize;float: left;">
-                                        @if(strlen($product['Info']['product_name'])>23)
-                                        {{ substr($product['Info']['product_name'], 0,22).'...' }}
-                                        @else
-                                        {{ $product['Info']['product_name'] }}
-                                        @endif
-                                    </a>
+                                        <a href="{{ route('product-details',['id'=>$productId]) }}"
+                                            style="text-transform: capitalize;float: left;font-weight: bold;color: black;">
+                                            @if(strlen($product['Info']['product_name'])>23)
+                                            {{ substr($product['Info']['product_name'], 0,22).'...' }}
+                                            @else
+                                            {{ $product['Info']['product_name'] }}
+                                            @endif
+                                        </a>
 
-                                    {{-- </h4> --}}
-                                    {{-- <p>Cramond Leopard & Pythong Anorak</p>
+                                        {{-- </h4> --}}
+                                        {{-- <p>Cramond Leopard & Pythong Anorak</p>
                                      <span>65% poly, 35% rayon</span> --}}
-                                </td>
-                                <td data-label="মূল্য" class="product-price">
-                                    @if($currencySymbol)
-                                    {{ $currencySymbol->symbol }}
-                                    @endif
-                                    {{ $product['unit_price'] }}
-                                </td>
-                                <td data-label="সংখ্যা" class="product-quantity py-0" style="height: 50px;">
-                                    <div class="cart-plus float-right">
-                                        <form action="#">
-                                            <div class="cart-plus-minus" data-product-id="{{ $productId }}"
-                                                data-device="desktop">
-                                                <input type="text" class="product_quantity product-quantity-cart"
-                                                    id="product_quantity_{{ $productId }}"
-                                                    data-product-id="{{ $productId }}"
-                                                    data-minimum-quantity="{{ $product['minimum_order_quantity'] }}"
-                                                    value="{{ $product['quantity'] }}">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <br>
-                                </td>
-                                <td data-label="SUBTOTAL" class="product-subtotal"
-                                    id="product_subtotal_{{ $productId }}">
-                                    <span>
+                                    </td>
+                                    <td data-label="মূল্য" class="product-price" style="border-style: none;">
                                         @if($currencySymbol)
                                         {{ $currencySymbol->symbol }}
                                         @endif
-                                        {{ $product['total_price'] }}
-                                    </span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    @else
-                    <div class="alert alert-warning text-center">Op's there is no product</div>
-                    @endif
+                                        {{ $product['unit_price'] }}
+                                    </td>
+                                    <td data-label="সংখ্যা" class="product-quantity py-0 mt-3 pl-2"
+                                        style="height: 50px;color: black;">
+                                        <div class="cart-plus float-right">
+                                            <form action="#">
+                                                <div class="cart-plus-minus" data-product-id="{{ $productId }}"
+                                                    data-device="desktop">
+                                                    <input type="text" class="product_quantity product-quantity-cart"
+                                                        id="product_quantity_{{ $productId }}"
+                                                        data-product-id="{{ $productId }}"
+                                                        data-minimum-quantity="{{ $product['minimum_order_quantity'] }}"
+                                                        value="{{ $product['quantity'] }}">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <br>
+                                    </td>
+                                    <td data-label="SUBTOTAL" class="product-subtotal"
+                                        id="product_subtotal_{{ $productId }}" style="font-weight: bold;">
+                                        <span>
+                                            @if($currencySymbol)
+                                            {{ $currencySymbol->symbol }}
+                                            @endif
+                                            {{ $product['total_price'] }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        @else
+                        <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট শপিংব্যাগে যুক্ত করেননি,দুঃখিত।</div>
+                        @endif
+                    </div>
+                    {{-- End Cart Product --}}
                 </div>
-                {{-- End Cart Product --}}
+                <div class="row">
+                    <div class="col-12">
+                        <aside class="shop-cart-sidebar checkout-sidebar py-1">
+                            <div class="shop-cart-widget py-0 my-0 pt-1">
+                                <h6 class="title text-center">শপিংব্যাগ সর্বমোট বিল</h6>
+                                <ul>
+                                    {{-- <li style="color: black;"><span>SUBTOTAL:</span>
+                                        @if($currencySymbol)
+                                            {{ $currencySymbol->symbol }}
+                                            @endif
+                                        {{ $cardBadge['data']['total_price'] }}
+                                    </li> --}}
+                                    <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
+
+                                        <span>সাবটোটাল</span>
+                                        <span class="amount cart-total-price">
+                                                @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $totalPrice }}
+                                            <br>
+                                            <br>
+                                        </span>
+                                    </li>
+                                    <li style="display: none">
+                                        <span>SHIPPING</span>
+                                        <div class="shop-check-wrap">
+                                            @if($shipping_charge)
+                                            @foreach ($shipping_charge as $shippingCharge )
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" name="shipping_charge" class="shipping-charge"
+                                                    id="customCheck_"
+                                                    value="{{$shippingCharge->shipping_fee}}">{{$shippingCharge->title}}:
+                                                {{$shippingCharge->shipping_fee}}
+                                                {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
+                                                <label class="custom-control-label" for="customCheck1">{{$shippingCharge->title}}:
+                                                {{$shippingCharge->shipping_fee}}</label>--}}
+                                            </div>
+                                            @endforeach
+                                            @else
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" name="shipping_charge" class="shipping-charge"
+                                                    id="customCheck_" value="0" checked> FREE SHIPPING
+                                                {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
+                                                <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>--}}
+                                            </div>
+                                            @endif
+                                        </div>
+                                    </li>
+                                    <li class="cart-total-amount py-1" style="color: black; ">
+                                        <span>ডিসকাউন্ট:</span>
+                                        <span>
+                                            @if($currencySymbol)
+                                            {{ $currencySymbol->symbol }}
+                                            @endif
+                                            0
+                                        </span>
+                                    </li>
+
+                                    <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
+                                        {{-- <span>সর্বমোট বিল:</span>
+                                        <input type="hidden" name="check_out_total_amount"
+                                            class="check-out-total-amount"
+                                            value="{{ $cardBadge['data']['total_price'] }}">
+                                        <span class="amount check-out-total-amount">
+                                            @if($currencySymbol)
+                                            {{ $currencySymbol->symbol }}
+                                            @endif
+                                            {{ $cardBadge['data']['total_price'] }}
+                                        </span> --}}
+                                        <span>সর্বমোট</span>
+                                        <span class="amount cart-total-price">
+                                                @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $totalPrice }}
+                                            <br>
+                                            <br>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <div class="bank-transfer">
+                                    {{-- <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
+                                        <label class="custom-control-label" for="customCheck4">ক্যাশ অন
+                                            ডেলিভারি</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">bKash</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">Nagad</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">Rocket</label>
+                                    </div> --}}
+                                    <input type="checkbox" class="mb-3" id="customCheck4" checked>
+                                    <label class="mb-3" for="customCheck4" style="color: black;">ক্যাশ অন
+                                        ডেলিভারি</label>
+                                </div>
+
+                                {{-- <div class="paypal-method">
+                                    <div class="paypal-method-flex">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                            <label class="custom-control-label" for="customCheck5">Nagad</label>
+                                        </div>
+                                        <div class="paypal-logo"><img src="img/images/paypal_logo.png" alt=""></div>
+                                    </div>
+                                    <p>Pay via PayPal; you can pay with your credit
+                                    card if you don’t have a PayPal account</p>
+                                </div> --}}
+                                {{-- <div class="paypal-method">
+                                    <div class="paypal-method-flex">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                            <label class="custom-control-label" for="customCheck6">Payments on Card</label>
+                                        </div>
+                                        <div class="paypal-logo"><img src="img/images/payment_card.png" alt=""></div>
+                                    </div>
+                                </div> --}}
+                                <div class="payment-terms py-0 my-0" style="color: black; font-size: 12px;">
+                                    * I have read and agree to the website
+                                    <a href="{{route('terms-conditios')}}">terms
+                                        and conditions</a>
+                                </div>
+                                <button class="btn btn-submit" type="submit" style="background-color:red;width: 100%;"
+                                    id="orderFinishCheckout">অর্ডার
+                                    সম্পন্ন করুন</button>
+                            </div>
+                            <br>
+                            <br>
+                        </aside>
+                    </div>
                 </div>
             </section>
             <!-- checkout-area-end -->
@@ -362,8 +452,12 @@
         <!-- end row -->
 
     </div>
-    <button class="btn btn-submit" type="submit" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;" id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
+    <button class="btn btn-submit" type="submit"
+        style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
+        id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
 </form>
+@endsection
+@section('script')
 <script>
     $(document).ready(function (){
         $('.shipping-charge').on('change', function (){
@@ -374,71 +468,43 @@
             }
             $(".check-out-total-amount").html(shippingCharge+subTotal)
             $(".check-out-total-amount").val(shippingCharge+subTotal)
-        })
-    })
-</script>
-@endsection
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
- $.ajaxSetup({
+        });
 
-headers: {
+    $(document).on('change', '.division', function () {
+        // console.log("It works");
+            $('.district').prop('selectedIndex', 0);
+            $('.upazila').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            // console.log(Id);
+            if (Id == 0) {
+                $(".district-items").show();
+            } else {
+                $(".district-items").hide();
+                $(".division_id_" + Id).show();
+            }
+        });
+    $(document).on('change', '.district', function () {
+            $('.upazila').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            if (Id == 0) {
+                $(".upazila-items").show();
+            } else {
+                $(".upazila-items").hide();
+                $(".district_id_" + Id).show();
+            }
+        });
 
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        $(document).on('change', '.upazila', function () {
+            $('.union').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            // if (Id == 0) {
+                $(".upazila-items").show();
+            // } else {
+                // $(".union-items").hide();
+                $(".upazila_id_" + Id).show();
+            // }
+        });
 
-}
-
-});
-
-  $(".btn-submit").click(function(e){
-   e.preventDefault();
-   let fName = $("#fName").val();
-   let lName = $("#lName").val();
-   let mobile = $("#mobile").val();
-   let shipping_address = $("#shipping_address").val();
-   let district = $("#district").val();
-  $.ajax({
-
-   type:'POST',
-   url:"{{ route('confirm-order') }}",
-data:{"_token": "{{ csrf_token() }}", fName:fName, lName:lName, mobile:mobile, shipping_address:shipping_address,
-district:district},
-
-success:function(response){
-// console.log(data);
-},
-
-});
-
-// console.log(fName);
-});
-</script> --}}
-{{-- @push('scripts')
-
-<script src="assets/libs/select2/js/select2.min.js"></script>
-
-<!-- init js -->
-<script src="assets/js/pages/ecommerce-select2.init.js"></script>
-
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-@endpush --}}
-@section('script')
-<script>
-    $(document).ready(function(){
-		$('#checkout').ajaxForm({
-			beforeSend: formBeforeSend,
-			beforeSubmit: formBeforeSubmit,
-			error: formError,
-			success: function (responseText, statusText, xhr, $form) {
-				// window.location.replace(responseText.redirect_url);
-                formSuccess(responseText, statusText, xhr, $form);
-			},
-			clearForm: true,
-			resetForm: true
-		});
-
-
-	});
+    });
 </script>
 @endsection
