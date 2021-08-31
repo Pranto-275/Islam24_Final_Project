@@ -19,12 +19,12 @@
                         <div class="col-8">
                             <div class="row">
                                 <div class="col-12">
-                                    <span id="mobile-modal-product-name"></span><br>
-                                    Minimum order Qty <span class="mobile-modal-product-min_qty"></span><br>
+                                    <span id="mobile-modal-product-name" style="color: black;font-weight: bold;"></span><br>
+                                    <span style="color: rgb(8, 0, 0);">সর্বনিম্ন অর্ডার: </span> <span class="mobile-modal-product-min_qty" style="color: red;font-weight: bold;font-size: 12px;"></span> <span style="color: red;">পিছ</span><br>
                                     @if($currencySymbol)
                                         {{ $currencySymbol->symbol }}
                                     @endif
-                                    <span class="mobile-modal-product-unit-price"></span> x <span class="mobile-modal-product-quantity-label"></span>
+                                    <span class="mobile-modal-product-unit-price" style="color: rgb(0, 0, 0);"></span> x <span class="mobile-modal-product-quantity-label" style="color: rgb(0, 0, 0);"></span>
                                 </div>
                                 <div class="col-5">
                                   <span class="text-danger" style="font-size: 18px;">

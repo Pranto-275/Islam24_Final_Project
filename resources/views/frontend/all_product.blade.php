@@ -29,7 +29,7 @@
 
 
             <!-- shop-area -->
-            <div class="shop-area gray-bg pt-20 pb-100">
+            <div class="shop-area gray-bg pt-20 pb-0">
                 <div class="custom-container-two">
                     <div class="row justify-content-center">
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 order-2 order-lg-0">
