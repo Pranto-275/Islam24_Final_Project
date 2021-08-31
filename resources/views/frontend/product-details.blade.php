@@ -152,9 +152,38 @@
                                 </div>
                             </form>
                         </div>
-                        <a href="javascript:void(0)" class="btn add-card-btn add-to-card" data-product-id="{{ $productDetails->id }}">
+                        {{-- <a href="javascript:void(0)" class="btn add-card-btn add-to-card" data-product-id="{{ $productDetails->id }}">
                             ক্রয় করুণ
-                        </a>
+                        </a> --}}
+                        <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal"
+                        data-product-id="{{ $productDetails->id }}" style="color: #ff5c00;">
+                        @if($productDetails->in_stock=="Out of Stock")
+                        Sold Out
+                        @else
+                        ক্রয় করুণ
+                        @endif
+                    </a>
+                    @php
+                    $minimumQuantity = $productDetails->min_order_qty;
+                    $orderQuantity = 0;
+                    if(isset($cardBadge['data']['products'][$productDetails->id])) {
+                    $minimumQuantity = $cardBadge['data']['products'][$productDetails->id]['minimum_order_quantity'];
+                    $orderQuantity = $cardBadge['data']['products'][$productDetails->id]['quantity'];
+                    }
+                    @endphp
+                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
+                        data-product-id="{{ $productDetails->id }}" data-product-name="{{ $productDetails->name }}"
+                        data-product-price="{{ $productDetails->special_price }}"
+                        data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
+                        data-product-minimum-quantity="{{ $minimumQuantity }}"
+                        data-product-image="{{ asset('storage/photo/'.$productDetails->ProductImageFirst->image) }}"
+                        data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
+                        @if($productDetails->in_stock=="Out of Stock")
+                        Sold Out
+                        @else
+                        ক্রয় করুণ
+                        @endif
+                    </a>
                     </div>
                     @endif
                     <div class="shop-details-bottom">

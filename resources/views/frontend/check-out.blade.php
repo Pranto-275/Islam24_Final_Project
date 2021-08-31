@@ -120,7 +120,7 @@
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                        <span class="mt-1" style="color: white;font-weight: bold;">কুইক চেকআউট</span>
+                        <span class="mt-1" style="color: white;font-weight: bold; font-size: 16px;">কুইক চেকআউট</span>
                 </div>
                 {{-- <hr class="mb-0 mt-3">
                 <br>
@@ -133,6 +133,7 @@
                             <div class="checkout-wrap">
                                 {{-- <h5 class="title text-center mt-2" style="color: #ff5c00;">কুইক চেকআউট</h5> --}}
                                 <div class="row">
+                                    @if(!Auth::user())
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="fName">আপনার নাম<span>*</span></label>
@@ -190,7 +191,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-12">
                                         <div class="form-grp">
                                             <label for="shipping_address">পূর্ণ ঠিকানা*</label>
@@ -199,7 +199,24 @@
                                                 placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
                                         </div>
                                     </div>
+                                    @endif
+                                    @if(Auth::user())
+                                    <div class="col-12 mt-0 mb-0 pb-0 pt-4">
+                                        <div class="form-grp mt-0 pt-1">
+                                            <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
+                                            <input type="text" name="shipping_address" required
+                                                value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-0 pt-0">
+                                        <div class="form-grp mt-0 pt-0">
+                                            <label for="shipping_address" style="font-weight: bold;">মোবাইল নাম্বার</label>
+                                            <input type="text" name="shipping_address" required
+                                                value="@if(Auth::user()){{Auth::user()->Contact->mobile}}@endif" readonly>
+                                        </div>
+                                    </div>
 
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -328,7 +345,7 @@
                                             @endif
                                         </div>
                                     </li>
-                                    <li class="cart-total-amount py-1" style="color: black;">
+                                    <li class="cart-total-amount py-1" style="color: black; ">
                                         <span>ডিসকাউন্ট:</span>
                                         <span>
                                             @if($currencySymbol)
@@ -368,8 +385,8 @@
                                         <input type="checkbox" class="custom-control-input" id="customCheck3">
                                         <label class="custom-control-label" for="customCheck3">Rocket</label>
                                     </div> --}}
-                                    <input type="checkbox" class="" id="customCheck4" checked>
-                                    <label class="" for="customCheck4" style="color: black;">ক্যাশ অন
+                                    <input type="checkbox" class="mb-3" id="customCheck4" checked>
+                                    <label class="mb-3" for="customCheck4" style="color: black;">ক্যাশ অন
                                         ডেলিভারি</label>
                                 </div>
 

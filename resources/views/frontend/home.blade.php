@@ -54,7 +54,7 @@
                 <div class="container">
                     <div class="carousel slide" data-ride="carousel" id="multi_item">
                       <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" data-interval="1600">
                           <div class="row">
                         @foreach ($topFourCategories as $topFourCategory)
                             <div class="col-3">
@@ -77,7 +77,7 @@
                             $count=($check/4);
                         @endphp
                         @while($count>0)
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-interval="1600">
                           <div class="row">
                               @php
                                   $flag=0;
@@ -111,14 +111,14 @@
                         @endif
 
                       </div>
-                      <a class="carousel-control-prev" href="#multi_item" role="button" data-slide="prev">
+                      {{-- <a class="carousel-control-prev" href="#multi_item" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                       </a>
                       <a class="carousel-control-next" href="#multi_item" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
-                      </a>
+                      </a> --}}
                     </div>
                   </div>
                 {{-- End Top Category Show Slider --}}
@@ -141,7 +141,7 @@
                                         <div class="exclusive-item-thumb">
                                             <a href="{{route('product-details',['id'=>$product['id']])}}">
                                                 <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
-                                                <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
+                                                {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                                             </a>
                                             @if($product['discount'])
                                               <span class="sd-meta" style="background-color: #ff5c00;">{{ intval($product['discount']) }}% ছাড়</span>
@@ -250,7 +250,7 @@
                                         <div class="exclusive-item-thumb">
                                             <a href="{{route('product-details',['id'=>$product['id']])}}">
                                                 <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
-                                                <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}">
+                                                {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                                             </a>
                                             @if($product['discount'])
                                               <span class="sd-meta">{{ intval($product['discount']) }}% ছাড়</span>

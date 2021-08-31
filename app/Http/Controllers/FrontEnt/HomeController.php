@@ -135,6 +135,7 @@ class HomeController extends Controller
         if (Auth::user()) {
             return view('frontend.my-account', [
                 'contacts' => Contact::whereUserId(Auth::user()->id)->get(),
+                'contact' => Contact::whereUserId(Auth::user()->id)->first(),
             ]);
         } else {
             return view('frontend.sign-in');
@@ -145,7 +146,7 @@ class HomeController extends Controller
     {
         $data['html'] = view('frontend.header-card-popup')->render();
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->limit(50)->get()->toArray();
-        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->whereIsActive(1)->orderBy('id', 'desc')->get()->toArray();
+        $data['products_desc'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereFeatured('New Product')->whereIsActive(1)->limit(6)->orderBy('id', 'desc')->get()->toArray();
         // dd($data['products'][1]['product_image_first']['image']);
         return view('frontend.home', [
             'data' => $data,
