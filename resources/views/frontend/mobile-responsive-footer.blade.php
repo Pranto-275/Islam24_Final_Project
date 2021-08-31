@@ -31,7 +31,7 @@
                                 <span class="mobile-modal-product-quantity-label" style="color: rgb(0, 0, 0);"></span>
                             </div>
                             <div class="col-5">
-                                <span class="text-danger" style="font-size: 18px;">
+                                <span class="text-danger" style="font-size: 16px;">
                                     @if($currencySymbol)
                                     {{ $currencySymbol->symbol }}
                                     @endif

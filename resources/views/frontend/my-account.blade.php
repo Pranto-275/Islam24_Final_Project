@@ -57,7 +57,7 @@
                                     {{ Auth::user()->mobile }}</div>
                                 <center>
                                     <div class="heder-top-guide">
-                                        <a class="log-out-btn text-danger" href="#"
+                                        <a class="log-out-btn text-danger border border-danger p-1 pt-2 rounded" href="#"
                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                                 class="bx bx-power-off font-size-16 align-middle text-danger"></i>
                                             লগ আউট</a>
@@ -73,15 +73,15 @@
                                 </center>
                             </div>
                             <ul class="list-group list-group-flush" style="font-weight: bold;">
-                                <li class="list-group-item"><a class="text-dark" href="#order" data-toggle="tab"><span
-                                            style="color: #ff5c00;">অর্ডার লিস্ট</span></a></li>
                                 <li class="list-group-item"><a class="text-dark" href="#delivery-address"
                                         data-toggle="tab">ডেলিভারি এড্রেস</a></li>
-                                <li class="list-group-item"><a href="#basic-information" class="text-dark"
-                                        data-toggle="tab">প্রোফাইল</a></li>
+                                {{-- <li class="list-group-item"><a href="#basic-information" class="text-dark"
+                                        data-toggle="tab">প্রোফাইল</a></li> --}}
                                 <li class="list-group-item"><a class="text-dark" href="#change-password"
                                         data-toggle="tab">পাসওয়ার্ড পরিবর্তন</a></li>
                                 {{-- <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li> --}}
+                                <li class="list-group-item active"><a class="text-dark" href="#order" data-toggle="tab"><span
+                                    style="color: #ff5c00;">অর্ডার লিস্ট</span></a></li>
                             </ul>
                         </div>
                         {{-- End First Card --}}
@@ -96,7 +96,7 @@
                             <div class="card-body basic tab-pane" id="delivery-address">
                                 <form action="{{ route('edit-shipping-address') }}" method="POST">
                                     @csrf
-                                    <h5 class="card-title">শিপিং এড্রেস</h5>
+                                    <h5 class="card-title">ডেলিভারি এড্রেস</h5>
                                     <hr class="mt-2">
                                     {{-- <div class="row">
                                   <div class="col-6 pb-2 font-weight-bold">Delivery Address:</div>
@@ -109,7 +109,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-grp">
-                                    <label for="fName">দোকানের নাম<span>*</span></label>
+                                    <label for="fName" style="color: black;">দোকানের নাম<span>*</span></label>
                                     <input class="form-control" type="text" name="fName" required
                                         value="@if(Auth::user()){{Auth::user()->name}}@endif"
                                         placeholder="আপনার দোকানের নাম লিখুন">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-grp">
-                                    <label for="mobile">মোবাইল নাম্বার<span>*</span></label>
+                                    <label for="mobile" style="color: black;">মোবাইল নাম্বার<span>*</span></label>
                                     <input class="form-control" type="text" name="mobile" required
                                         value="@if(Auth::user()){{Auth::user()->mobile}}@endif"
                                         placeholder="মোবাইল নাম্বার লিখুন">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="col-sm-6 mt-1">
                                 <div class="form-grp">
-                                    <label>জেলা *</label>
+                                    <label style="color: black;">জেলা *</label>
                                     <select class="custom-select form-control" id="district" name="district" required>
                                         <option value="Dhaka">Dhaka</option>
                                         <option value="New York">Chittagang</option>
@@ -135,7 +135,7 @@
                             </div>
                             <div class="col-sm-6 mt-1">
                                 <div class="form-grp">
-                                    <label>উপজেলা *</label>
+                                    <label style="color: black;">উপজেলা *</label>
                                     <select class="custom-select form-control" id="district" name="district" required>
                                         <option value="Dhaka">Dhaka</option>
                                         <option value="New York">Chittagang</option>
@@ -145,7 +145,7 @@
                             </div>
                             <div class="col-12 mt-1">
                                 <div class="form-grp">
-                                    <label for="shipping_address">পূর্ণ ঠিকানা*</label>
+                                    <label for="shipping_address" style="color: black;">পূর্ণ ঠিকানা*</label>
                                     <input class="form-control" type="text" name="shipping_address" required
                                         value="@if(Auth::user()){{Auth::user()->address}}@endif"
                                         placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
@@ -232,36 +232,38 @@
             </div>
             {{-- End Address Card --}}
             {{-- Start Order Card --}}
-            <div class="card-body basic tab-pane" id="order">
-                <h5 class="card-title">Order</h5>
-                <hr class="mt-2">
+            <div class="card-body basic tab-pane active" id="order">
+                <h5 class="card-title text-center">অর্ডার লিস্ট</h5>
                 <div class="row" style="overflow: scroll;">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Date</th>
-                                <th>Total</th>
-                                <th>Discount</th>
-                                <th>S. Charge</th>
-                                <th>Payable</th>
+                                <th>আইডি</th>
+                                <th>তারিখ</th>
+                                <th>সর্বমোট</th>
+                                <th>অর্ডার স্ট্যাটাস</th>
+                                {{-- <th>S. Charge</th>
+                                <th>Payable</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             @php
                             $i=0;
                             @endphp
-                            @foreach ($contacts as $contact)
                             @foreach ($contact->Order as $order)
                             <tr>
-                                <th scope="row">{{++$i}}</th>
+                                <th scope="row">{{$order->code}}</th>
                                 <td>{{$order->order_date}}</td>
-                                <td>{{$order->total_amount}}</td>
-                                <td>{{$order->discount}}</td>
-                                <td>{{$order->shipping_charge}}</td>
-                                <td>{{$order->payable_amount}}</td>
+                                <td>
+                                    @if($currencySymbol)
+                                        <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>
+                                    @endif
+                                    {{$order->total_amount}}
+                                </td>
+                                <td>{{$order->status}}</td>
+                                {{-- <td>{{$order->shipping_charge}}</td>
+                                <td>{{$order->payable_amount}}</td> --}}
                             </tr>
-                            @endforeach
                             @endforeach
 
                         </tbody>
@@ -271,31 +273,32 @@
             {{-- End Order Card --}}
             {{-- Start Change Password Card --}}
             <div class="card-body basic tab-pane" id="change-password">
-                <h5 class="card-title">Change Password</h5>
+                <h5 class="card-title">পাসওয়ার্ড পরিবর্তন</h5>
                 <hr class="mt-2">
                 <form id="change-password-customer" action="{{ route('change-password-customer') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <input name="oldpassword" id="oldpassword" type="password" class="form-control"
-                                placeholder="Old Password" required />
+                                placeholder="পূর্বের পাসওয়ার্ড" required />
                         </div>
                         <div class="col-md-6 mt-2">
                             <input name="newpassword" id="newpassword" type="password" class="form-control"
-                                placeholder="New Password" required />
+                                placeholder="নতুন পাসওয়ার্ড" required />
                         </div>
                         <div class="col-md-6 mt-2">
                             <input name="password_confirmation" id="password_confirmation" type="password"
-                                class="form-control" placeholder="Confirm Password" required />
+                                class="form-control" placeholder="কনফার্ম পাসওয়ার্ড" required />
                         </div>
                         <div class="col-md-12">
                             <center>
                                 <button type="submit"
-                                    style="background:rgb(9, 154, 238);margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;">Change</button>
+                                    style="background-color: #ff5c00;;margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;font-weight:bold;">Change</button>
                             </center>
                         </div>
                     </div>
                 </form>
+                <br>
             </div>
             {{-- End Change Password Card --}}
             {{-- Start Transaction Card --}}
