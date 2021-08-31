@@ -140,15 +140,21 @@
             <!-- breadcrumb-area-end -->
 
             <!-- shop-cart-area -->
-            <section class="shop-cart-area wishlist-area pt-20 pb-10">
-                <div class="container">
-                    <a href="{{ route('home') }}" class="pt-10"><i class="fas fa-backspace"
-                            style="color: red;font-size: 30px;"></i></a>
+            <section class="shop-cart-area wishlist-area">
+                <div class="text-center py-2 rounded" style="background-color: black;">
+                    <a href="{{ route('home') }}" class="float-left">
+                        {{-- <i class="fas fa-backspace"
+                        style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
+                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+                    </a>
+                        <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">শপিং ব্যাগ</span>
+                </div>
+                <div class="container pt-10">
                     <div class="row justify-content-center">
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
                         {{-- Start Cart --}}
                         <div class="col-lg-8 mb-1" id="">
-                            <h3 class="text-center" style="color: #ff5c00;">শপিং ব্যাগ</h3>
+                            {{-- <h6 class="text-center" style="color: #ff5c00;">শপিং ব্যাগ</h6> --}}
                             <div class="table-responsive-xl">
                                 @php $totalPrice = 0; @endphp
                                 @if($cardBadge['data']['products'])
@@ -230,7 +236,7 @@
                                     </tbody>
                                 </table>
                                 @else
-                                <div class="alert alert-warning text-center">Op's there is no product</div>
+                                <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট শপিংব্যাগে যুক্ত করেননি,দুঃখিত।</div>
                                 @endif
                             </div>
                             {{-- <div class="shop-cart-bottom mt-20">
@@ -256,7 +262,7 @@
 <div class="col-lg-4 col-md-8">
     <aside class="shop-cart-sidebar pt-3">
         <div class="shop-cart-widget py-0 my-0 pt-1">
-            <h6 class="title text-center pt-3">শপিংব্যাগ সর্বমোট বিল</h6>
+            <h6 class="title text-center pt-3" style="font-size: 14px;">শপিংব্যাগ সর্বমোট বিল</h6>
             <ul>
                 <li style="color: black;">
                     <span>SUBTOTAL</span>

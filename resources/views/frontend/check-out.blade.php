@@ -113,16 +113,25 @@
 
         <main>
             <!-- checkout-area -->
-            <section class="checkout-area pt-10 pb-20">
-                <a href="{{ route('home') }}" class="pt-10"><i class="fas fa-backspace"
-                        style="color: red;font-size: 30px;"></i></a>
-                <div class="container">
+            <section class="checkout-area pb-20">
+                <div class="text-center py-2 rounded" style="background-color: black;">
+                    <a href="{{ route('home') }}" class="float-left">
+                        {{-- <i class="fas fa-backspace"
+                        style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
+                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+                    </a>
+                        <span class="mt-1" style="color: white;font-weight: bold;">কুইক চেকআউট</span>
+                </div>
+                {{-- <hr class="mb-0 mt-3">
+                <br>
+                <br> --}}
+                <div class="container pt-10">
 
                     @csrf
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="checkout-wrap">
-                                <h5 class="title text-center mt-2" style="color: #ff5c00;">কুইক চেকআউট</h5>
+                                {{-- <h5 class="title text-center mt-2" style="color: #ff5c00;">কুইক চেকআউট</h5> --}}
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-grp">
@@ -262,7 +271,7 @@
                             </tbody>
                         </table>
                         @else
-                        <div class="alert alert-warning text-center">Op's there is no product</div>
+                        <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট শপিংব্যাগে যুক্ত করেননি,দুঃখিত।</div>
                         @endif
                     </div>
                     {{-- End Cart Product --}}
