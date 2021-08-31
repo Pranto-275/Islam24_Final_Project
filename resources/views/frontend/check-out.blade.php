@@ -157,11 +157,23 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
+                                            <label>Division *</label>
+                                            <select class="custom-select division"  name="division_id">
+                                                <option value="">Select Division</option>
+                                                @foreach ($Divisions as $item)
+                                                <option value="{{$item->id}}">{{$item->bn_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-grp">
                                             <label>জেলা *</label>
-                                            <select class="custom-select" id="district" name="district" required>
-                                                @foreach ($zillas as $zilla)
-                                                <option value="{{$zilla->id}}" @if($zilla->bn_name=="ঢাকা") selected
-                                                    @endif>{{$zilla->bn_name}}</option>
+                                            <select class="custom-select district"  name="district_id" required>
+                                                <option value="">Select Zilla</option>
+                                                @foreach ($Districts as $zilla)
+                                                <option value="{{$zilla->id}}"
+                                                    class="district-items division_id_{{$zilla->division_id}} ">{{$zilla->bn_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -169,13 +181,16 @@
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>উপজেলা *</label>
-                                            <select class="custom-select" id="district" name="district" required>
-                                                @foreach ($upazillas as $upazilla)
-                                                <option value="{{ $upazilla->bn_name}}">{{ $upazilla->bn_name}}</option>
+                                            <select class="custom-select upazila" name="upazila_id" required>
+                                                <option value="">Select Upazilla</option>
+                                                @foreach ($Upazilas as $upazilla)
+                                                <option value="{{ $upazilla->id}}" class="upazila-items district_id_{{$upazilla->district_id}}">{{ $upazilla->bn_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
+
+
                                     <div class="col-12">
                                         <div class="form-grp">
                                             <label for="shipping_address">পূর্ণ ঠিকানা*</label>
@@ -402,6 +417,8 @@
         style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
         id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
 </form>
+@endsection
+@section('script')
 <script>
     $(document).ready(function (){
         $('.shipping-charge').on('change', function (){
@@ -412,99 +429,43 @@
             }
             $(".check-out-total-amount").html(shippingCharge+subTotal)
             $(".check-out-total-amount").val(shippingCharge+subTotal)
-        })
-    })
-</script>
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-</script>
-<script>
-    jQuery(document).ready(function(){
-jQuery('#district').change(function(e){
-e.preventDefault();
-// alert(jQuery('#district').val());
-$.ajaxSetup({
-   headers: {
-       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-   }
-});
-jQuery.ajax({
-   url: "{{ url('upazila-search') }}",
-   method: 'post',
-   data: {
-      name: jQuery('#district').val(),
-   },
-   success: function(result){
-      jQuery('.alert').show();
-      jQuery('.alert').html(result.success);
-   }});
-});
-});
-</script>
+        });
 
-@endsection
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
- $.ajaxSetup({
+    $(document).on('change', '.division', function () {
+        // console.log("It works");
+            $('.district').prop('selectedIndex', 0);
+            $('.upazila').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            // console.log(Id);
+            if (Id == 0) {
+                $(".district-items").show();
+            } else {
+                $(".district-items").hide();
+                $(".division_id_" + Id).show();
+            }
+        });
+    $(document).on('change', '.district', function () {
+            $('.upazila').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            if (Id == 0) {
+                $(".upazila-items").show();
+            } else {
+                $(".upazila-items").hide();
+                $(".district_id_" + Id).show();
+            }
+        });
 
-headers: {
+        $(document).on('change', '.upazila', function () {
+            $('.union').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            // if (Id == 0) {
+                $(".upazila-items").show();
+            // } else {
+                // $(".union-items").hide();
+                $(".upazila_id_" + Id).show();
+            // }
+        });
 
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
-}
-
-});
-
-  $(".btn-submit").click(function(e){
-   e.preventDefault();
-   let fName = $("#fName").val();
-   let lName = $("#lName").val();
-   let mobile = $("#mobile").val();
-   let shipping_address = $("#shipping_address").val();
-   let district = $("#district").val();
-  $.ajax({
-
-   type:'POST',
-   url:"{{ route('confirm-order') }}",
-data:{"_token": "{{ csrf_token() }}", fName:fName, lName:lName, mobile:mobile, shipping_address:shipping_address,
-district:district},
-
-success:function(response){
-// console.log(data);
-},
-
-});
-
-// console.log(fName);
-});
-</script> --}}
-{{-- @push('scripts')
-
-<script src="assets/libs/select2/js/select2.min.js"></script>
-
-<!-- init js -->
-<script src="assets/js/pages/ecommerce-select2.init.js"></script>
-
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-@endpush --}}
-@section('script')
-<script>
-    // $(document).ready(function(){
-
-	// 	$('#checkout').ajaxForm({
-	// 		beforeSend: formBeforeSend,
-	// 		beforeSubmit: formBeforeSubmit,
-	// 		error: formError,
-	// 		success: function (responseText, statusText, xhr, $form) {
-	// 			// window.location.replace(responseText.redirect_url);
-    //             formSuccess(responseText, statusText, xhr, $form);
-	// 		},
-	// 		clearForm: true,
-	// 		resetForm: true
-	// 	});
-
-
-	// });
+    });
 </script>
 @endsection
