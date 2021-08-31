@@ -9,7 +9,7 @@ class PendingOrderList extends Component
     public function render()
     {
         return view('livewire.backend.order.pending-order-list',[
-            'pendingOrders'=> Order::whereStatus('pending')->get(),
+            'pendingOrders'=> Order::whereStatus('pending')->orderBy('id', 'DESC')->get(),
         ]);
     }
 }

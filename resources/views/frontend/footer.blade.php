@@ -23,7 +23,9 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget mb-50">
                         <div class="footer-logo mb-30">
-                            <a href="{{url('/')}}"><img src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif" style="height:39.9px;background-image: cover;" alt=""></a>
+                            <a href="{{url('/')}}"><img
+                                    src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif"
+                                    style="height:39.9px;background-image: cover;" alt=""></a>
                         </div>
                         <div class="footer-text mb-35">
                             <h5 class="call-us">Got Question? Call us 24/7</h5>
@@ -88,10 +90,14 @@
                 </div>
                 <div class="col-lg-6 col-md-6 d-none d-md-block">
                     <div class="payment-method-img text-right">
-                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png" style="width:60px; height: 30px;" alt=""></a>
-                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png" style="width:60px; height: 30px;" alt=""></a>
-                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png" style="width:60px; height: 30px;" alt=""></a>
-                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png" style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/bkash.png"
+                                style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/nagad.png"
+                                style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/rocket.png"
+                                style="width:60px; height: 30px;" alt=""></a>
+                        <a href="#"><img src="{{ URL::asset('venam/') }}/img/payment_method/shiurcash.png"
+                                style="width:60px; height: 30px;" alt=""></a>
                         {{-- <img src="{{ URL::asset('venam/') }}/img/images/card_img.png" alt="img"> --}}
                     </div>
                 </div>

@@ -1,43 +1,43 @@
 @if($cardBadge['data']['products'])
-    <div style="height: 300px;overflow-y: scroll;">
-        @foreach($cardBadge['data']['products'] as $productId => $product)
+<div style="height: 300px;overflow-y: scroll;">
+    @foreach($cardBadge['data']['products'] as $productId => $product)
 
-            <li class="d-flex align-items-start" id="li_row_{{ $productId }}" style="margin-left: 0px !important;">
-                <div class="cart-img">
-                    <a href="#">
-                        <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" alt="">
-                    </a>
-                </div>
-                <div class="cart-content">
-                    <h4>
-                        <a href="#" style="text-transform: capitalize;">
-                            @if(strlen($product['Info']['product_name'])>20)
-                                {{ substr($product['Info']['product_name'], 0,19).'...' }}
-                            @else
-                                {{ $product['Info']['product_name'] }}
-                            @endif
-                        </a>
-                    </h4>
-                    <div class="cart-price">
-                        <span class="new">{{ $product['Info']['special_price'] }}</span>
-                        <span>
-                        <del>{{ $product['Info']['regular_price'] }}</del>
-                    </span>
-                    </div>
-                    <div id="quantity_{{ $productId }}">
-                        {{ $product['quantity'] }} X {{ $product['unit_price'] }} = {{ $product['total_price'] }}
-                    </div>
-                </div>
-                <div class="del-icon" >
-                    <a href="javascript:void(0)" class="btn-product-delete"  data-product-id="{{ $productId }}">
-                        <i class="far fa-trash-alt"></i>
-                    </a>
-                </div>
-            </li>
-        @endforeach
-    </div>
-    {{-- @else --}}
-    {{--<li class="d-flex align-items-start">
+    <li class="d-flex align-items-start" id="li_row_{{ $productId }}" style="margin-left: 0px !important;">
+        <div class="cart-img">
+            <a href="#">
+                <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" alt="">
+            </a>
+        </div>
+        <div class="cart-content">
+            <h4>
+                <a href="#" style="text-transform: capitalize;">
+                    @if(strlen($product['Info']['product_name'])>20)
+                    {{ substr($product['Info']['product_name'], 0,19).'...' }}
+                    @else
+                    {{ $product['Info']['product_name'] }}
+                    @endif
+                </a>
+            </h4>
+            <div class="cart-price">
+                <span class="new">{{ $product['Info']['special_price'] }}</span>
+                <span>
+                    <del>{{ $product['Info']['regular_price'] }}</del>
+                </span>
+            </div>
+            <div id="quantity_{{ $productId }}">
+                {{ $product['quantity'] }} X {{ $product['unit_price'] }} = {{ $product['total_price'] }}
+            </div>
+        </div>
+        <div class="del-icon">
+            <a href="javascript:void(0)" class="btn-product-delete" data-product-id="{{ $productId }}">
+                <i class="far fa-trash-alt"></i>
+            </a>
+        </div>
+    </li>
+    @endforeach
+</div>
+{{-- @else --}}
+{{--<li class="d-flex align-items-start">
 
         <div class="cart-content">
             <h4>
@@ -51,7 +51,7 @@
         <span class="f-left">Total:</span>
         <span class="f-right" id="total_mini_cart_amount">
             @if($currencySymbol)
-                {{ $currencySymbol->symbol }}
+            {{ $currencySymbol->symbol }}
             @endif
             {{ $cardBadge['data']['total_price'] }}
         </span>
@@ -75,6 +75,7 @@
         });*/
 
         $(".btn-mobile-modal").on('click', function (){
+
             $('.mobile-modal img').attr('src', '');
             $("#mobile-modal-product-name").html('');
             $(".mobile-modal-product-price").html('');
@@ -114,7 +115,19 @@
         });
 
         $(document).on('click', '.add-to-card', function () {
-            //alert($(this).attr('data-product-id'))
+            // alert($(this).attr('data-product-id'))
+            // Start Notification Sound
+            var obj = document.createElement("audio");
+            obj.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3";
+            obj.volume = 1;
+            obj.autoPlay = false;
+            obj.preLoad = true;
+            obj.controls = true;
+
+            // $(".add-to-card").click(function() {
+              obj.play();
+            // });
+            // End Notification Sound
             var productId = $(this).attr('data-product-id');
             var productQuantity = 1;
             if ($("#product_quantity_"+productId).length) {
@@ -162,7 +175,19 @@
         })
 
         $(document).on('click', '.mobile-modal-add-to-card', function () {
-            //alert($(this).attr('data-product-id'))
+            // alert($(this).attr('data-product-id'))
+            // Start Notification Sound
+            var obj = document.createElement("audio");
+            obj.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3";
+            obj.volume = 1;
+            obj.autoPlay = false;
+            obj.preLoad = true;
+            obj.controls = true;
+
+            // $(".add-to-card").click(function() {
+              obj.play();
+            // });
+            // End Notification Sound
             var productId = $(this).attr('data-product-id');
             var productQuantity = 1;
             if ($("#mobile_modal_product_quantity_"+productId).length) {
@@ -274,6 +299,18 @@
         });
 
         $('.inc.qtybutton').on('click', function () {
+            // Start Notification Sound
+            var obj = document.createElement("audio");
+            obj.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3";
+            obj.volume = 1;
+            obj.autoPlay = false;
+            obj.preLoad = true;
+            obj.controls = true;
+
+            // $(".add-to-card").click(function() {
+              obj.play();
+            // });
+            // End Notification Sound
             var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
             var device = $(this).parent('.cart-plus-minus').attr('data-device');
             //console.log($(this).parent('.cart-plus-minus').attr('data-device')) //data-device
@@ -281,6 +318,18 @@
         });
 
         $('.dec.qtybutton').on('click', function () {
+            // Start Notification Sound
+            var obj = document.createElement("audio");
+            obj.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/success.mp3";
+            obj.volume = 1;
+            obj.autoPlay = false;
+            obj.preLoad = true;
+            obj.controls = true;
+
+            // $(".add-to-card").click(function() {
+              obj.play();
+            // });
+            // End Notification Sound
             var productId = $(this).parent('.cart-plus-minus').attr('data-product-id');
             var device = $(this).parent('.cart-plus-minus').attr('data-device');
             //console.log($('#product_quantity_'+productId).val())
