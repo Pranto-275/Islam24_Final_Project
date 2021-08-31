@@ -217,7 +217,7 @@
                     </span>
                 </div>
                 <div class="spinner my-0 my-0" style="width: 80px; height: 80px;"></div>
-                <div class="txt-loading">
+                <div class="txt-loading mt-2">
                     <span data-text-preloader="ই" class="letters-loading">
                         ই
                     </span>
