@@ -9,7 +9,7 @@ class CancelOrderList extends Component
     public function render()
     {
         return view('livewire.backend.order.cancel-order-list',[
-            'cancelOrders'=> Order::whereStatus('cancel')->get(),
+            'cancelOrders'=> Order::whereStatus('cancel')->orderBy('id', 'DESC')->get(),
         ]);
     }
 }

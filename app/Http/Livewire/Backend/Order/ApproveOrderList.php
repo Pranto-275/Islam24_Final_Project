@@ -9,7 +9,7 @@ class ApproveOrderList extends Component
     public function render()
     {
         return view('livewire.backend.order.approve-order-list',[
-            'approveOrders'=> Order::whereStatus('approved')->get(),
+            'approveOrders'=> Order::whereStatus('approved')->orderBy('id','DESC')->get(),
         ]);
     }
 }
