@@ -253,7 +253,7 @@
                             @foreach ($contact->Order as $order)
                             <tr>
                                 <th scope="row">{{$order->code}}</th>
-                                <td>{{$order->order_date}}</td>
+                                <td>{{date('d F Y', strtotime($order->order_date))}}</td>
                                 <td>
                                     @if($currencySymbol)
                                         <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>
