@@ -122,11 +122,11 @@
                     </div>
                   </div>
                 {{-- End Top Category Show Slider --}}
-                <div class="custom-container-two mt-5">
+                <div class="custom-container-two mt-3">
                     <!-- exclusive-collection-area -->
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center pb-2">
                         <div class="col-lg-8">
-                            <div class="section-title text-center mb-60">
+                            <div class="section-title text-center">
                                 {{-- <span class="sub-title">exclusive collection</span> --}}
                                 <h2 class="title">নতুন ইলেকট্রনিক্স পণ্য</h2>
                             </div>
@@ -237,7 +237,7 @@
                     <!-- testimonial-area -->
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
-                            <div class="section-title text-center mb-20">
+                            <div class="section-title text-center mb-5">
                                 <h2 class="title">সর্বাধিক বিক্রিত পণ্য</h2>
                             </div>
                         </div>
