@@ -147,7 +147,7 @@
                                 <div class="form-grp">
                                     <label for="shipping_address" style="color: black;">পূর্ণ ঠিকানা*</label>
                                     <input class="form-control" type="text" name="shipping_address" required
-                                        value="@if(Auth::user()){{Auth::user()->address}}@endif"
+                                        value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif"
                                         placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
                                 </div>
                             </div>
