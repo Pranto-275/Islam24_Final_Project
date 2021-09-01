@@ -17,6 +17,7 @@ class UserList extends Component
 
     public function UserSave()
     {
+        // validation
         $this->validate([
             'name' => 'required',
             'mobile' => 'required',
