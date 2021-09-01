@@ -29,8 +29,8 @@ class Category extends Component
         $this->CategoryId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
-        $this->image1 = $this->QueryUpdate->image1;
-        $this->image2 = $this->QueryUpdate->image2;
+        // $this->image1 = $this->QueryUpdate->image1;
+        // $this->image2 = $this->QueryUpdate->image2;
         $this->description = $this->QueryUpdate->description;
         $this->is_active = $this->QueryUpdate->is_active;
         $this->top_show = $this->QueryUpdate->top_show;
@@ -58,6 +58,7 @@ class Category extends Component
     {
         $this->validate([
             'code' => 'required',
+            'image1' => 'required',
             'name' => 'required',
             'is_active' => 'required',
         ]);
