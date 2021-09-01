@@ -230,8 +230,8 @@
                                     <div class="exclusive-item exclusive-item-three text-center mb-50">
                                         <div class="exclusive-item-thumb">
                                             <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                                <img @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image'])}}" @endif style="height:200px;" alt="{{$product['name']}}">
-                                                <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}">
+                                                <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image'])}}" @endif style="height:200px;" alt="{{$product['name']}}">
+                                                {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}"> --}}
                                             </a>
                                             @if($product['discount'])
                                               <span class="sd-meta" style="width:70px;">{{ intval($product['discount']) }}% ছাড়</span>

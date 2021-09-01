@@ -264,13 +264,21 @@
         <div class="shop-cart-widget py-0 my-0 pt-1">
             <h6 class="title text-center pt-3" style="font-size: 14px;">শপিংব্যাগ সর্বমোট বিল</h6>
             <ul>
-                <li style="color: black;">
-                    <span>SUBTOTAL</span>
-                    <span class="cart-total-price">
+                <li class="cart-total-amount pt-2" style="color: black;">
+                    <span>সাবটোটাল</span>
+                    {{-- <span class="cart-total-price">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
                         @endif
                         {{ $totalPrice }}
+                    </span> --}}
+                    <span class="amount cart-total-price">
+                        @if($currencySymbol)
+                        {{ $currencySymbol->symbol }}
+                        @endif
+                        {{ $totalPrice }}
+                    <br>
+                    <br>
                     </span>
                 </li>
                 <li class="py-1" style="color: black;">

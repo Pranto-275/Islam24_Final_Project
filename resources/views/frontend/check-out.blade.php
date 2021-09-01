@@ -120,7 +120,7 @@
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                        <span class="mt-1" style="color: white;font-weight: bold;">কুইক চেকআউট</span>
+                        <span class="mt-1" style="color: white;font-weight: bold; font-size: 16px;">কুইক চেকআউট</span>
                 </div>
                 {{-- <hr class="mb-0 mt-3">
                 <br>
@@ -133,6 +133,7 @@
                             <div class="checkout-wrap">
                                 {{-- <h5 class="title text-center mt-2" style="color: #ff5c00;">কুইক চেকআউট</h5> --}}
                                 <div class="row">
+                                    @if(!Auth::user())
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="fName">আপনার নাম<span>*</span></label>
@@ -157,25 +158,39 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label>জেলা *</label>
-                                            <select class="custom-select" id="district" name="district" required>
-                                                @foreach ($zillas as $zilla)
-                                                <option value="{{$zilla->id}}" @if($zilla->bn_name=="ঢাকা") selected
-                                                    @endif>{{$zilla->bn_name}}</option>
+                                            <label>বিভাগ *</label>
+                                            <select class="custom-select division"  name="division_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Divisions as $item)
+                                                <option value="{{$item->id}}" @if($item->bn_name=='ঢাকা') selected @endif>{{$item->bn_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label>উপজেলা *</label>
-                                            <select class="custom-select" id="district" name="district" required>
-                                                @foreach ($upazillas as $upazilla)
-                                                <option value="{{ $upazilla->bn_name}}">{{ $upazilla->bn_name}}</option>
+                                            <label>জেলা *</label>
+                                            <select class="custom-select district"  name="district_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Districts as $zilla)
+                                                <option value="{{$zilla->id}}"
+                                                    class="district-items division_id_{{$zilla->division_id}} " @if($zilla->bn_name=='ঢাকা') selected @endif>{{$zilla->bn_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
+                                    {{-- <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label>উপজেলা *</label>
+                                            <select class="custom-select upazila" name="upazila_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Upazilas as $upazilla)
+                                                <option value="{{ $upazilla->id}}" class="upazila-items district_id_{{$upazilla->district_id}}">{{ $upazilla->bn_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div> --}}
+
                                     <div class="col-12">
                                         <div class="form-grp">
                                             <label for="shipping_address">পূর্ণ ঠিকানা*</label>
@@ -184,7 +199,24 @@
                                                 placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
                                         </div>
                                     </div>
+                                    @endif
+                                    @if(Auth::user())
+                                    <div class="col-12 mt-0 mb-0 pb-0 pt-4">
+                                        <div class="form-grp mt-0 pt-1">
+                                            <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
+                                            <input type="text" name="shipping_address" required
+                                                value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-0 pt-0">
+                                        <div class="form-grp mt-0 pt-0">
+                                            <label for="shipping_address" style="font-weight: bold;">মোবাইল নাম্বার</label>
+                                            <input type="text" name="shipping_address" required
+                                                value="@if(Auth::user()){{Auth::user()->Contact->mobile}}@endif" readonly>
+                                        </div>
+                                    </div>
 
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -282,11 +314,23 @@
                             <div class="shop-cart-widget py-0 my-0 pt-1">
                                 <h6 class="title text-center">শপিংব্যাগ সর্বমোট বিল</h6>
                                 <ul>
-                                    <li style="color: black;"><span>SUBTOTAL:</span>
+                                    {{-- <li style="color: black;"><span>SUBTOTAL:</span>
                                         @if($currencySymbol)
                                             {{ $currencySymbol->symbol }}
                                             @endif
                                         {{ $cardBadge['data']['total_price'] }}
+                                    </li> --}}
+                                    <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
+
+                                        <span>সাবটোটাল</span>
+                                        <span class="amount cart-total-price">
+                                                @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $totalPrice }}
+                                            <br>
+                                            <br>
+                                        </span>
                                     </li>
                                     <li style="display: none">
                                         <span>SHIPPING</span>
@@ -313,7 +357,7 @@
                                             @endif
                                         </div>
                                     </li>
-                                    <li class="cart-total-amount py-1" style="color: black;">
+                                    <li class="cart-total-amount py-1" style="color: black; ">
                                         <span>ডিসকাউন্ট:</span>
                                         <span>
                                             @if($currencySymbol)
@@ -322,8 +366,9 @@
                                             0
                                         </span>
                                     </li>
+
                                     <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
-                                        <span>সর্বমোট বিল:</span>
+                                        {{-- <span>সর্বমোট বিল:</span>
                                         <input type="hidden" name="check_out_total_amount"
                                             class="check-out-total-amount"
                                             value="{{ $cardBadge['data']['total_price'] }}">
@@ -332,6 +377,15 @@
                                             {{ $currencySymbol->symbol }}
                                             @endif
                                             {{ $cardBadge['data']['total_price'] }}
+                                        </span> --}}
+                                        <span>সর্বমোট</span>
+                                        <span class="amount cart-total-price">
+                                                @if($currencySymbol)
+                                                {{ $currencySymbol->symbol }}
+                                                @endif
+                                                {{ $totalPrice }}
+                                            <br>
+                                            <br>
                                         </span>
                                     </li>
                                 </ul>
@@ -353,8 +407,8 @@
                                         <input type="checkbox" class="custom-control-input" id="customCheck3">
                                         <label class="custom-control-label" for="customCheck3">Rocket</label>
                                     </div> --}}
-                                    <input type="checkbox" class="" id="customCheck4" checked>
-                                    <label class="" for="customCheck4" style="color: black;">ক্যাশ অন
+                                    <input type="checkbox" class="mb-3" id="customCheck4" checked>
+                                    <label class="mb-3" for="customCheck4" style="color: black;">ক্যাশ অন
                                         ডেলিভারি</label>
                                 </div>
 
@@ -402,6 +456,8 @@
         style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
         id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
 </form>
+@endsection
+@section('script')
 <script>
     $(document).ready(function (){
         $('.shipping-charge').on('change', function (){
@@ -412,99 +468,43 @@
             }
             $(".check-out-total-amount").html(shippingCharge+subTotal)
             $(".check-out-total-amount").val(shippingCharge+subTotal)
-        })
-    })
-</script>
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-</script>
-<script>
-    jQuery(document).ready(function(){
-jQuery('#district').change(function(e){
-e.preventDefault();
-// alert(jQuery('#district').val());
-$.ajaxSetup({
-   headers: {
-       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-   }
-});
-jQuery.ajax({
-   url: "{{ url('upazila-search') }}",
-   method: 'post',
-   data: {
-      name: jQuery('#district').val(),
-   },
-   success: function(result){
-      jQuery('.alert').show();
-      jQuery('.alert').html(result.success);
-   }});
-});
-});
-</script>
+        });
 
-@endsection
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
- $.ajaxSetup({
+    $(document).on('change', '.division', function () {
+        // console.log("It works");
+            $('.district').prop('selectedIndex', 0);
+            $('.upazila').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            // console.log(Id);
+            if (Id == 0) {
+                $(".district-items").show();
+            } else {
+                $(".district-items").hide();
+                $(".division_id_" + Id).show();
+            }
+        });
+    $(document).on('change', '.district', function () {
+            $('.upazila').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            if (Id == 0) {
+                $(".upazila-items").show();
+            } else {
+                $(".upazila-items").hide();
+                $(".district_id_" + Id).show();
+            }
+        });
 
-headers: {
+        $(document).on('change', '.upazila', function () {
+            $('.union').prop('selectedIndex', 0);
+            let Id = $(this).val();
+            // if (Id == 0) {
+                $(".upazila-items").show();
+            // } else {
+                // $(".union-items").hide();
+                $(".upazila_id_" + Id).show();
+            // }
+        });
 
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-
-}
-
-});
-
-  $(".btn-submit").click(function(e){
-   e.preventDefault();
-   let fName = $("#fName").val();
-   let lName = $("#lName").val();
-   let mobile = $("#mobile").val();
-   let shipping_address = $("#shipping_address").val();
-   let district = $("#district").val();
-  $.ajax({
-
-   type:'POST',
-   url:"{{ route('confirm-order') }}",
-data:{"_token": "{{ csrf_token() }}", fName:fName, lName:lName, mobile:mobile, shipping_address:shipping_address,
-district:district},
-
-success:function(response){
-// console.log(data);
-},
-
-});
-
-// console.log(fName);
-});
-</script> --}}
-{{-- @push('scripts')
-
-<script src="assets/libs/select2/js/select2.min.js"></script>
-
-<!-- init js -->
-<script src="assets/js/pages/ecommerce-select2.init.js"></script>
-
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-@endpush --}}
-@section('script')
-<script>
-    // $(document).ready(function(){
-
-	// 	$('#checkout').ajaxForm({
-	// 		beforeSend: formBeforeSend,
-	// 		beforeSubmit: formBeforeSubmit,
-	// 		error: formError,
-	// 		success: function (responseText, statusText, xhr, $form) {
-	// 			// window.location.replace(responseText.redirect_url);
-    //             formSuccess(responseText, statusText, xhr, $form);
-	// 		},
-	// 		clearForm: true,
-	// 		resetForm: true
-	// 	});
-
-
-	// });
+    });
 </script>
 @endsection
