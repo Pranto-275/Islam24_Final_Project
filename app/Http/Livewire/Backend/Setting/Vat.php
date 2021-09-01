@@ -57,7 +57,7 @@ class Vat extends Component
         $this->rate_percent = $this->QueryUpdate->rate_percent;
         $this->rate_fixed   = $this->QueryUpdate->rate_fixed;
         $this->is_active       = $this->QueryUpdate->is_active;
-        $this->VatModal();
+        $this->emit('modal', 'VatModal');
     }
 
     public function vatDelete($id){
@@ -69,6 +69,7 @@ class Vat extends Component
 
 
     public function VatModal(){
+        $this->reset();
         $this->code = 'V'. floor(time()-999999);
         $this->emit('modal','VatModal');
     }

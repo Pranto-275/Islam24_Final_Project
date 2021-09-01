@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('mobile')->unique()->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('address', 500)->nullable();
             $table->enum('type', ['Admin', 'User', 'Customer', 'Seller'])->nullable();
             $table->timestamp('email_verified_at')->nullable();

@@ -34,8 +34,6 @@ class ProductList extends Component
 
     public function render()
     {
-        return view('livewire.backend.product-info.product-list', [
-            'products' => Product::orderBy('id', 'desc')->get(),
-        ]);
+        return view('livewire.backend.product-info.product-list');
     }
 }

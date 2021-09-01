@@ -54,6 +54,7 @@ class BreakingNews extends Component
     }
 
     public function breakingNewsModal(){
+        $this->reset();
         $this->emit('modal','breakingNews');
     }
     public function render()

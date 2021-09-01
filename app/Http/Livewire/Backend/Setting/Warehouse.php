@@ -64,6 +64,7 @@ class Warehouse extends Component
         ]);
     }
     public function warehouseModal(){
+        $this->reset();
         $this->code = 'W'.floor(time() - 999999999);
         $this->emit('modal','warehouseModal');
     }

@@ -299,14 +299,25 @@
                                         @error('name') <span class="error">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                {{-- <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="basicpill-firstname-input">Email</label>
                                         <input class="form-control" type="text" wire:model.lazy="email"
                                             placeholder="Enter Email">
                                         @error('email') <span class="error">{{ $message }}</span> @enderror
                                     </div>
+                                </div> --}}
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="basicpill-firstname-input">Mobile</label>
+                                        <input class="form-control" type="text" wire:model.lazy="mobile"
+                                            placeholder="Enter mobile">
+                                        @error('mobile') <span class="error">{{ $message }}</span> @enderror
+                                    </div>
                                 </div>
+
+
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="basicpill-firstname-input">Password</label>
@@ -382,11 +393,11 @@
                     data: 'name',
                     name:'name'
                 },
-                {
-                    title: 'Email',
-                    data: 'email',
-                    name:'email'
-                },
+                // {
+                //     title: 'Email',
+                //     data: 'email',
+                //     name:'email'
+                // },
                 {
                     title: 'Mobile',
                     data: 'mobile',

@@ -49,7 +49,7 @@ class Category extends Component
 
     public function categoryModal()
     {
-        // $this->reset();
+        $this->reset();
         $this->code = 'C'.floor(time() - 999999999);
         $this->emit('modal', 'categoryModal');
     }
@@ -58,11 +58,14 @@ class Category extends Component
     {
         $this->validate([
             'code' => 'required',
-            'image1' => 'required',
             'name' => 'required',
             'is_active' => 'required',
         ]);
-
+        if(!$this->CategoryId){
+            $this->validate([
+                'image1' => 'required',
+            ]);
+        }
         if ($this->CategoryId) {
             $Query = ProductInfoCategory::find($this->CategoryId);
         } else {

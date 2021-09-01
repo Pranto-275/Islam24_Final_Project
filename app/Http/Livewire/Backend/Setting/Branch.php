@@ -61,6 +61,7 @@ class Branch extends Component
     }
 
     public function branchInfoModal(){
+        $this->reset();
         $this->code = 'B'.floor(time() - 999999999);
         $this->emit('modal','branchInfoModal');
     }

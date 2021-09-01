@@ -526,14 +526,24 @@ class DatatableController extends Controller
         ->addColumn('id', function ($data) {
             return $this->i++;
         })
-        ->addColumn('sub_sub_category_id', function ($data) {
-            return $data->SubSubCategory ? $data->SubSubCategory->name : '';
+        ->addColumn('category_id', function ($data) {
+            return $data->Category ? $data->Category->name : '';
+        })
+        ->addColumn('product_id', function ($data) {
+            // return $data->ProductImageFirst ? $data->ProductImageFirst->image : '';
+            $url = asset('storage/photo/'.$data->ProductImageFirst->image);
+
+            return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
+        })
+        ->addColumn('is_active', function ($data) {
+            return $data->is_active == 1 ? 'Active' : 'Inactive';
         })
         ->addColumn('action', function ($data) {
-            return '<button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
-                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+            return '<button class="btn btn-info btn-sm" onclick="callDetail('.$data->id.')"><i class="fas fa-eye font-size-12"></i></button>
+                    <a class="btn btn-primary btn-sm" href="'.route('product.product', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="bx bx-edit font-size-12"></i></a>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-12"></i></button>';
         })
-        ->rawColumns(['sub_sub_category_id', 'action'])
+        ->rawColumns(['category_id', 'image','product_id', 'is_active', 'action'])
         ->toJSON();
     }
 

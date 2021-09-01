@@ -52,7 +52,7 @@ class ContactCategory extends Component
      $this->code                = $this->QueryUpdate->code;
      $this->name                = $this->QueryUpdate->name;
      $this->is_active              = $this->QueryUpdate->is_active;
-     $this->ContactCategoryModal();
+     $this->emit('modal','ContactCategoryModal');
   }
 
   public function contactCategoryDelete($id){
@@ -63,6 +63,7 @@ class ContactCategory extends Component
   }
 
     public function ContactCategoryModal(){
+        $this->reset();
         $this->code = 'C'.floor(time()- 999999);
         $this->emit('modal','ContactCategoryModal');
     }

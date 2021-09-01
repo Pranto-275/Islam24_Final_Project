@@ -10,17 +10,19 @@ use Livewire\Component;
 class UserList extends Component
 {
     public $name;
-    public $email;
+    public $mobile;
     public $password;
     public $type;
     public $user_id = null;
 
     public function UserSave()
     {
+        // validation
         $this->validate([
             'name' => 'required',
-            'email' => 'required',
+            'mobile' => 'required',
             'type' => 'required',
+            'password' => 'required'
         ]);
         if ($this->user_id) {
             $Query = User::find($this->user_id);
@@ -29,7 +31,7 @@ class UserList extends Component
             $Query->current_team_id = Auth::id();
         }
         $Query->name = $this->name;
-        $Query->email = $this->email;
+        $Query->mobile = $this->mobile;
         $Query->password = Hash::make($this->password);
         $Query->type = $this->type;
         $Query->save();
@@ -47,7 +49,8 @@ class UserList extends Component
         $Query = User::find($id);
         $this->user_id = $Query->id;
         $this->name = $Query->name;
-        $this->email = $Query->email;
+        // $this->email = $Query->email;
+        $this->mobile   = $Query->mobile;
         if (!empty($this->password)) {
             $this->password = Hash::make($Query->password);
         }

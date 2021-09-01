@@ -76,8 +76,8 @@ class Currency extends Component
         ]);
     }
     public function currencyInfoModal(){
+        $this->reset();
         $this->code = 'C'.floor(time() - 999999999);
-
         $this->emit('modal','currencyInfoModal');
     }
     public function render()
