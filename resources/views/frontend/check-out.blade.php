@@ -207,9 +207,7 @@
                             <div class="col-12">
                                 <div class="form-grp">
                                     <label for="shipping_address">পূর্ণ ঠিকানা*</label>
-                                    {{-- <input type="text" name="shipping_address" required
-                                        value="@if(Auth::user()){{Auth::user()->address}}@endif"
-                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন"> --}}
+
                                         <textarea id="shipping_address"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" cols="50" rows="1" required >  @if(Auth::user()){{Auth::user()->address}}@endif </textarea>
                                 </div>
                             </div>
