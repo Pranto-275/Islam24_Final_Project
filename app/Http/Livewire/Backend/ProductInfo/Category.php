@@ -49,7 +49,7 @@ class Category extends Component
 
     public function categoryModal()
     {
-        $this->reset();
+        // $this->reset();
         $this->code = 'C'.floor(time() - 999999999);
         $this->emit('modal', 'categoryModal');
     }

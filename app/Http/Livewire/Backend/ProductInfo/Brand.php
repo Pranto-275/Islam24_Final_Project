@@ -72,7 +72,7 @@ class Brand extends Component
 
     public function BrandAInfoModal()
     {
-        $this->reset();
+        // $this->reset();
         $this->code = 'C'.floor(time() - 999999);
         $this->emit('modal', 'BrandAInfoModal');
     }
