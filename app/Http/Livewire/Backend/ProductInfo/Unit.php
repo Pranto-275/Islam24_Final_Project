@@ -65,7 +65,7 @@ class Unit extends Component
 
     public function productUnitInfoModal()
     {
-        $this->reset();
+        // $this->reset();
         $this->code = 'C'.floor(time() - 999999999);
         $this->emit('modal', 'productUnitInfoModal');
     }
