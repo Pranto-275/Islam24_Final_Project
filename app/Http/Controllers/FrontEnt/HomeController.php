@@ -310,7 +310,7 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
 
-        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'Divisions' => Division::all(), 'Districts' => District::all(), 'Upazilas' => Upazila::all()]);
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'Divisions' => Division::all(), 'Districts' => District::orderBy('name', 'asc')->get(), 'Upazilas' => Upazila::all()]);
     }
 
     public function messages(Request $request)
