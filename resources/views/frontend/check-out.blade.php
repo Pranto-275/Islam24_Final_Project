@@ -165,7 +165,7 @@
                                                 placeholder="মোবাইল নাম্বার লিখুন">
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    {{-- <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>বিভাগ *</label>
                                             <select class="custom-select division" name="division_id" required>
@@ -176,7 +176,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>জেলা *</label>
@@ -185,7 +185,7 @@
                                                 @foreach ($Districts as $zilla)
                                                 <option value="{{$zilla->id}}"
                                                     class="district-items division_id_{{$zilla->division_id}} "
-                                                    @if($zilla->bn_name=='ঢাকা') selected @endif>{{$zilla->bn_name}}
+                                                    @if($zilla->name=='Dhaka') selected @endif style="color:black;">{{$zilla->name}}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -207,9 +207,10 @@
                             <div class="col-12">
                                 <div class="form-grp">
                                     <label for="shipping_address">পূর্ণ ঠিকানা*</label>
-                                    <input type="text" name="shipping_address" required
+                                    {{-- <input type="text" name="shipping_address" required
                                         value="@if(Auth::user()){{Auth::user()->address}}@endif"
-                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
+                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন"> --}}
+                                        <textarea id="shipping_address"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" cols="50" rows="1" required >  @if(Auth::user()){{Auth::user()->address}}@endif </textarea>
                                 </div>
                             </div>
                             @endif
