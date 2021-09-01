@@ -174,9 +174,11 @@ class HomeController extends Controller
             //    Add Customer
             $Query = Contact::whereMobile($request->mobile)->firstOrNew();
             $Query->type = 'Customer';
+            // $Query->user_id = Auth::user()->id;
             $Query->first_name = $request->fName;
             $Query->last_name = $request->lName;
             $Query->shipping_address = $request->shipping_address;
+            $Query->business_name = $request->business_name;
             $Query->division_id = $request->division_id;
             $Query->district_id = $request->district_id;
             $Query->upazila_id = $request->upazila_id;
@@ -307,7 +309,7 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
 
-        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'Divisions' => Division::all(), 'Districts' => District::all(), 'Upazilas' => Upazila::all()]);
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'Divisions' => Division::all(), 'Districts' => District::orderBy('name', 'asc')->get(), 'Upazilas' => Upazila::all()]);
     }
 
     public function messages(Request $request)
