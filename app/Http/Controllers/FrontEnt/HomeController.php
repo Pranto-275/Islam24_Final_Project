@@ -63,6 +63,9 @@ class HomeController extends Controller
     {
         $QueryUpdate = Contact::whereUserId(Auth::user()->id)->first();
         $QueryUpdate->shipping_address = $request->shipping_address;
+        $QueryUpdate->district_id = $request->district_id;
+        $QueryUpdate->mobile = $request->mobile;
+        $QueryUpdate->business_name = $request->business_name;
         $QueryUpdate->created_by = Auth::user()->id;
         $QueryUpdate->save();
 
@@ -136,6 +139,7 @@ class HomeController extends Controller
             return view('frontend.my-account', [
                 'contacts' => Contact::whereUserId(Auth::user()->id)->get(),
                 'contact' => Contact::whereUserId(Auth::user()->id)->first(),
+                'Districts' => District::orderBy('name', 'asc')->get(),
             ]);
         } else {
             return view('frontend.sign-in');

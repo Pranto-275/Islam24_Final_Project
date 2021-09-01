@@ -458,7 +458,7 @@
             <br>
         </div>
         <button class="btn btn-submit" type="submit"
-            style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
+            style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
             id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
 
         </aside>
