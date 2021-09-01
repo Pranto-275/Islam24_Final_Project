@@ -531,7 +531,12 @@ class DatatableController extends Controller
         })
         ->addColumn('product_id', function ($data) {
             // return $data->ProductImageFirst ? $data->ProductImageFirst->image : '';
-            $url = asset('storage/photo/'.$data->ProductImageFirst->image);
+            if($data->ProductImageFirst ){
+                $url = asset('storage/photo/'.$data->ProductImageFirst->image);
+            }else{
+                $url='';
+            }
+
 
             return '<img src="'.$url.'" style="height:92px; weight:138px;" alt="Image" class="img-fluid mx-auto d-block"/>';
         })
