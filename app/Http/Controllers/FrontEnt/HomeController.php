@@ -55,7 +55,6 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
         $upazillas = DB::table('upazilas')->where('district_id', '=', 1)->get();
-
         return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'zillas' => DB::table('districts')->get(), 'upazillas' => $upazillas]);
     }
 
