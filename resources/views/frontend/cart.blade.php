@@ -141,7 +141,7 @@
 
             <!-- shop-cart-area -->
             <section class="shop-cart-area wishlist-area">
-                <div class="text-center py-2 rounded" style="background-color: black;">
+                <div class="text-center py-2 rounded" style="background-color: black;position: fixed;width: 100%;z-index: 2;">
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
@@ -149,7 +149,7 @@
                     </a>
                         <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">শপিং ব্যাগ</span>
                 </div>
-                <div class="container pt-10">
+                <div class="container pt-50">
                     <div class="row justify-content-center">
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
                         {{-- Start Cart --}}

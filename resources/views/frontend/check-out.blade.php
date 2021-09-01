@@ -113,18 +113,18 @@
             class="checkout-form" accept-charset="utf-8">
             <!-- checkout-area -->
             <section class="checkout-area pb-20">
-                <div class="text-center py-2 rounded" style="background-color: black;">
+                <div class="text-center py-2 rounded" style="background-color: black;position: fixed;width: 100%;z-index: 2;">
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                    <span class="mt-1" style="color: white;font-weight: bold; font-size: 16px;">কুইক চেকআউট</span>
+                    <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">কুইক চেকআউট</span>
                 </div>
                 {{-- <hr class="mb-0 mt-3">
                 <br>
                 <br> --}}
-                <div class="container pt-10">
+                <div class="container pt-40">
 
                     @csrf
                     <div class="row justify-content-center">
@@ -449,7 +449,7 @@
                 <a href="{{route('terms-conditios')}}">terms
                     and conditions</a>
             </div>
-            <button class="btn btn-submit" type="submit" style="background-color:red;" id="orderFinishCheckout">অর্ডার
+            <button class="btn btn-submit mt-2" type="submit" id="orderFinishCheckout">অর্ডার
                 সম্পন্ন করুন</button>
             <br>
             <br>
