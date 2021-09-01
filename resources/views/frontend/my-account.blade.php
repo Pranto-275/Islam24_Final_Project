@@ -110,8 +110,8 @@
                             <div class="col-sm-6">
                                 <div class="form-grp">
                                     <label for="fName" style="color: black;">দোকানের নাম<span>*</span></label>
-                                    <input class="form-control" type="text" name="fName" required
-                                        value="@if(Auth::user()){{Auth::user()->name}}@endif"
+                                    <input class="form-control" type="text" name="business_name" required
+                                        value="@if(Auth::user()){{Auth::user()->Contact->business_name}}@endif"
                                         placeholder="আপনার দোকানের নাম লিখুন">
                                 </div>
                             </div>
@@ -119,21 +119,25 @@
                                 <div class="form-grp">
                                     <label for="mobile" style="color: black;">মোবাইল নাম্বার<span>*</span></label>
                                     <input class="form-control" type="text" name="mobile" required
-                                        value="@if(Auth::user()){{Auth::user()->mobile}}@endif"
+                                        value="@if(Auth::user()){{Auth::user()->Contact->mobile}}@endif"
                                         placeholder="মোবাইল নাম্বার লিখুন">
                                 </div>
                             </div>
-                            <div class="col-sm-6 mt-1">
+                            <div class="col-sm-12 mt-1">
                                 <div class="form-grp">
                                     <label style="color: black;">জেলা *</label>
-                                    <select class="custom-select form-control" id="district" name="district" required>
-                                        <option value="Dhaka">Dhaka</option>
-                                        <option value="New York">Chittagang</option>
-                                        <option value="California">Barisal</option>
-                                    </select>
+                                    <select class="custom-select district" name="district_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Districts as $zilla)
+                                                <option value="{{$zilla->id}}"
+                                                    class="district-items division_id_{{$zilla->division_id}} "
+                                                    @if($zilla->name=='Dhaka') selected @endif style="color:black;">{{$zilla->name}}
+                                                </option>
+                                                @endforeach
+                                            </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6 mt-1">
+                            {{-- <div class="col-sm-6 mt-1">
                                 <div class="form-grp">
                                     <label style="color: black;">উপজেলা *</label>
                                     <select class="custom-select form-control" id="district" name="district" required>
@@ -142,7 +146,7 @@
                                         <option value="California">Barisal</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-12 mt-1">
                                 <div class="form-grp">
                                     <label for="shipping_address" style="color: black;">পূর্ণ ঠিকানা*</label>
