@@ -2,6 +2,12 @@
 @section('content')
 <div>
     <style>
+           #headerOneCheckOut,
+        #sticky-header,
+        #headerThreeCheckout,
+        #footerOneCheckOut {
+            display: none;
+        }
         @media only screen and (min-width: 768px) {
             #cartForMobile {
                 display: none;
@@ -141,7 +147,7 @@
 
             <!-- shop-cart-area -->
             <section class="shop-cart-area wishlist-area">
-                <div class="text-center py-2 rounded" style="background-color: black;">
+                <div class="text-center py-2 rounded" style="background-color: black;position:fixed;width: 100%; z-index:2;">
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
@@ -149,7 +155,7 @@
                     </a>
                         <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">শপিং ব্যাগ</span>
                 </div>
-                <div class="container pt-10">
+                <div class="container pt-50">
                     <div class="row justify-content-center">
                         {{-- For Block In Mobile id="cartForDeskTop" --}}
                         {{-- Start Cart --}}
@@ -264,21 +270,13 @@
         <div class="shop-cart-widget py-0 my-0 pt-1">
             <h6 class="title text-center pt-3" style="font-size: 14px;">শপিংব্যাগ সর্বমোট বিল</h6>
             <ul>
-                <li class="cart-total-amount pt-2" style="color: black;">
-                    <span>সাবটোটাল</span>
-                    {{-- <span class="cart-total-price">
+                <li style="color: black;">
+                    <span>SUBTOTAL</span>
+                    <span class="cart-total-price">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
                         @endif
                         {{ $totalPrice }}
-                    </span> --}}
-                    <span class="amount cart-total-price">
-                        @if($currencySymbol)
-                        {{ $currencySymbol->symbol }}
-                        @endif
-                        {{ $totalPrice }}
-                    <br>
-                    <br>
                     </span>
                 </li>
                 <li class="py-1" style="color: black;">
@@ -302,7 +300,7 @@
                     </span>
                 </li>
             </ul>
-            <button class="btn" id="orderFinishMobile">অর্ডার শেষ করুন</button>
+            <button class="btn mb-3" id="orderFinishMobile">অর্ডার শেষ করুন</button>
         </div>
     </aside>
 </div>

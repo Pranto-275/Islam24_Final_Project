@@ -21,6 +21,7 @@ class CreateContactsTable extends Migration
             $table->string('last_name', 100)->nullable();
             $table->string('address', 255)->nullable();
             $table->string('shipping_address', 255)->nullable();
+            $table->string('business_name', 191)->nullable();
             $table->string('post_code', 6)->nullable();
             $table->string('state', 100)->nullable();
             $table->foreignId('upazilla_id')->nullable()->unsigned();
