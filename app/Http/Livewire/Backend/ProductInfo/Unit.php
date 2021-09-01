@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\Backend\ProductInfo;
+
 use App\Models\Backend\ProductInfo\Unit as UnitInfo;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -10,10 +11,11 @@ class Unit extends Component
     public $code;
     public $name;
     public $rate;
-    public $is_active=1;
+    public $is_active = 1;
     public $UnitId;
 
-    public function unitEdit($id){
+    public function unitEdit($id)
+    {
         $this->QueryUpdate = UnitInfo::find($id);
         $this->UnitId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
@@ -23,14 +25,18 @@ class Unit extends Component
 
         $this->productUnitInfoModal();
     }
-    public function unitDelete($id){
+
+    public function unitDelete($id)
+    {
         UnitInfo::find($id)->delete();
 
         $this->emit('success', [
             'text' => 'Unit Deleted Successfully',
         ]);
     }
-    public function saveUnit(){
+
+    public function saveUnit()
+    {
         $this->validate([
             'code' => 'required',
             'name' => 'required',
@@ -38,9 +44,9 @@ class Unit extends Component
             'is_active' => 'required',
         ]);
 
-        if($this->UnitId){
+        if ($this->UnitId) {
             $Query = UnitInfo::find($this->UnitId);
-        }else{
+        } else {
             $Query = new UnitInfo();
             $Query->created_by = Auth::user()->id;
         }
@@ -56,10 +62,14 @@ class Unit extends Component
             'text' => 'Unit C/U Successfully',
         ]);
     }
-    public function productUnitInfoModal(){
+
+    public function productUnitInfoModal()
+    {
+        // $this->reset();
         $this->code = 'C'.floor(time() - 999999999);
-        $this->emit('modal','productUnitInfoModal');
+        $this->emit('modal', 'productUnitInfoModal');
     }
+
     public function render()
     {
         return view('livewire.backend.product-info.unit');
