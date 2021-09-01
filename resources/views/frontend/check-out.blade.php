@@ -163,7 +163,7 @@
                                                 placeholder="মোবাইল নাম্বার লিখুন">
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    {{-- <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>বিভাগ *</label>
                                             <select class="custom-select division" name="division_id" required>
@@ -174,7 +174,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>জেলা *</label>
