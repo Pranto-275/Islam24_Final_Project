@@ -256,7 +256,7 @@
                     </div> --}}
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="low_alert"> Image </label>
+                            <label for="low_alert"> Image(Max height 190px) </label>
                             {{-- <div wire:loading wire:target="product_image">
                                 Processing Image...
                             </div> --}}
@@ -282,7 +282,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="low_alert">Product Gallery Image</label><br>
+                            <label for="low_alert">Product Gallery Image(Max height 190px)</label><br>
                             <input type="file" class="form-control form-control-lg inputBox" wire:model.lazy="images" multiple />
                         </div>
                         @if($QueryUpdate)
