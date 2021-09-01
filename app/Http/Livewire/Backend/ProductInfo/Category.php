@@ -18,7 +18,7 @@ class Category extends Component
     public $image1;
     public $image2;
     public $description;
-    public $is_active=1;
+    public $is_active = 1;
     public $top_show;
     public $CategoryId = null;
     public $QueryUpdate = null;
@@ -29,6 +29,8 @@ class Category extends Component
         $this->CategoryId = $this->QueryUpdate->id;
         $this->code = $this->QueryUpdate->code;
         $this->name = $this->QueryUpdate->name;
+        $this->image1 = $this->QueryUpdate->image1;
+        $this->image2 = $this->QueryUpdate->image2;
         $this->description = $this->QueryUpdate->description;
         $this->is_active = $this->QueryUpdate->is_active;
         $this->top_show = $this->QueryUpdate->top_show;
@@ -47,6 +49,7 @@ class Category extends Component
 
     public function categoryModal()
     {
+        $this->reset();
         $this->code = 'C'.floor(time() - 999999999);
         $this->emit('modal', 'categoryModal');
     }
