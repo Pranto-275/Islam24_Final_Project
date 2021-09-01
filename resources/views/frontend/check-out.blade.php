@@ -113,7 +113,8 @@
             class="checkout-form" accept-charset="utf-8">
             <!-- checkout-area -->
             <section class="checkout-area pb-20">
-                <div class="text-center py-2 rounded" style="background-color: black;position: fixed;width: 100%;z-index: 2;">
+                <div class="text-center py-2 rounded"
+                    style="background-color: black;position: fixed;width: 100%;z-index: 2;">
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
@@ -135,7 +136,8 @@
                                     @if(!Auth::user())
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="business_name" style="color: black;">দোকানের নাম<span>*</span></label>
+                                            <label for="business_name" style="color: black;">দোকানের
+                                                নাম<span>*</span></label>
                                             <input class="form-control" type="text" name="business_name" required
                                                 value="@if(Auth::user()){{Auth::user()->Contact->business_name}}@endif"
                                                 placeholder="আপনার দোকানের নাম লিখুন">

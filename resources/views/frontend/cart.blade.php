@@ -2,12 +2,13 @@
 @section('content')
 <div>
     <style>
-           #headerOneCheckOut,
+        #headerOneCheckOut,
         #sticky-header,
         #headerThreeCheckout,
         #footerOneCheckOut {
             display: none;
         }
+
         @media only screen and (min-width: 768px) {
             #cartForMobile {
                 display: none;
@@ -147,13 +148,14 @@
 
             <!-- shop-cart-area -->
             <section class="shop-cart-area wishlist-area">
-                <div class="text-center py-2 rounded" style="background-color: black;position:fixed;width: 100%; z-index:2;">
+                <div class="text-center py-2 rounded"
+                    style="background-color: black;position:fixed;width: 100%; z-index:2;">
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                        <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">শপিং ব্যাগ</span>
+                    <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">শপিং ব্যাগ</span>
                 </div>
                 <div class="container pt-50">
                     <div class="row justify-content-center">
@@ -182,7 +184,7 @@
                                         <tr id="row_{{ $productId }}" style="color: black;">
                                             <td class="product-thumbnail" style="border-style: none;">
                                                 <a href="javascript:void(0)" class="wishlist-remove"
-                                                    data-product-id="{{ $productId }}" ><i
+                                                    data-product-id="{{ $productId }}"><i
                                                         class="flaticon-cancel-1 text-danger"
                                                         style="font-weight: bold;"></i></a>
                                                 <a href="{{ route('product-details',['id'=>$productId]) }}"
@@ -206,7 +208,8 @@
                                                 {{-- <p>Cramond Leopard & Pythong Anorak</p>
                                                     <span>65% poly, 35% rayon</span> --}}
                                             </td>
-                                            <td data-label="মূল্য" class="product-price" style="border-style: none;color: black;">
+                                            <td data-label="মূল্য" class="product-price"
+                                                style="border-style: none;color: black;">
                                                 @if($currencySymbol)
                                                 {{ $currencySymbol->symbol }}
                                                 @endif
@@ -242,7 +245,8 @@
                                     </tbody>
                                 </table>
                                 @else
-                                <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট শপিংব্যাগে যুক্ত করেননি,দুঃখিত।</div>
+                                <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট
+                                    শপিংব্যাগে যুক্ত করেননি,দুঃখিত।</div>
                                 @endif
                             </div>
                             {{-- <div class="shop-cart-bottom mt-20">
@@ -295,8 +299,8 @@
                         {{ $currencySymbol->symbol }}
                         @endif
                         {{ $totalPrice }}
-                    <br>
-                    <br>
+                        <br>
+                        <br>
                     </span>
                 </li>
             </ul>
