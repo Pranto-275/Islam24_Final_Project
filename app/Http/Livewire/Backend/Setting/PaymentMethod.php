@@ -58,7 +58,7 @@ class PaymentMethod extends Component
         $this->account_holder_name     = $this->QueryUpdate->account_holder_name;
         $this->account_no              = $this->QueryUpdate->account_no;
         $this->opening_balance         = $this->QueryUpdate->opening_balance;
-        $this->PaymentMethodModal();
+        $this->emit('modal','PaymentMethodModal');
     }
 
     public function paymentMethodDelete($id){
@@ -70,6 +70,7 @@ class PaymentMethod extends Component
 
 
     public function PaymentMethodModal(){
+        $this->reset();
         $this->code = 'C'. floor(time()-99999);
         $this->emit('modal','PaymentMethodModal');
     }

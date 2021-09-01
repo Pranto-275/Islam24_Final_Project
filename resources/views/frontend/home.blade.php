@@ -54,7 +54,7 @@
                 <div class="container">
                     <div class="carousel slide" data-ride="carousel" id="multi_item">
                       <div class="carousel-inner">
-                        <div class="carousel-item active" data-interval="1600">
+                        <div class="carousel-item active" data-interval="4000">
                           <div class="row">
                         @foreach ($topFourCategories as $topFourCategory)
                             <div class="col-3">
@@ -82,7 +82,7 @@
                             $count=($check/4);
                         @endphp
                         @while($count>0)
-                        <div class="carousel-item" data-interval="1600">
+                        <div class="carousel-item" data-interval="4000">
                           <div class="row">
                               @php
                                   $flag=0;

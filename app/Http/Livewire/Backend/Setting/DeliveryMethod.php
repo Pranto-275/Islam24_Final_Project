@@ -67,6 +67,7 @@ class DeliveryMethod extends Component
         ]);
     }
     public function deliveryMethodModal(){
+        $this->reset();
         $this->code = 'D'.floor(time() - 999999999);
         $this->emit('modal','deliveryMethodInfoModal');
     }

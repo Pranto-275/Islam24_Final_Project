@@ -59,7 +59,8 @@ class Brand extends Component
         $this->name = $this->QueryUpdate->name;
         $this->description = $this->QueryUpdate->description;
         $this->is_active = $this->QueryUpdate->is_active;
-        $this->BrandAInfoModal();
+        // $this->BrandAInfoModal();
+        $this->emit('modal', 'BrandAInfoModal');
     }
 
     public function brandDelete($id)
@@ -72,7 +73,7 @@ class Brand extends Component
 
     public function BrandAInfoModal()
     {
-        // $this->reset();
+        $this->reset();
         $this->code = 'C'.floor(time() - 999999);
         $this->emit('modal', 'BrandAInfoModal');
     }

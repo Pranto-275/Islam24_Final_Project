@@ -23,7 +23,7 @@ class Unit extends Component
         $this->rate = $this->QueryUpdate->rate;
         $this->is_active = $this->QueryUpdate->is_active;
 
-        $this->productUnitInfoModal();
+        $this->emit('modal', 'productUnitInfoModal');
     }
 
     public function unitDelete($id)
@@ -65,7 +65,7 @@ class Unit extends Component
 
     public function productUnitInfoModal()
     {
-        // $this->reset();
+        $this->reset();
         $this->code = 'C'.floor(time() - 999999999);
         $this->emit('modal', 'productUnitInfoModal');
     }

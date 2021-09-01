@@ -28,7 +28,7 @@ class ShippingCharge extends Component
         $this->shipping_fee = $QueryUpdate->shipping_fee;
         $this->country_id = $QueryUpdate->country_id;
         $this->is_active = $QueryUpdate->is_active;
-		$this->ShippingChargeModal();
+		$this->emit('modal', 'ShippingChargeMOdal');
     }
     public function ShippingChargeDelete($id){
         ShippingChargeInfo::find($id)->delete();
@@ -41,9 +41,9 @@ class ShippingCharge extends Component
             'code'            => 'required',
             'title'            => 'required',
             'type'            => 'required',
-            'from'            => 'required',
-            'to'            => 'required',
-            'shipping_fee'    => 'required',
+            'from'            => 'required|numeric',
+            'to'            => 'required|numeric',
+            'shipping_fee'    => 'required|numeric',
             'country_id'      => 'required',
             'is_active'      => 'required',
         ]);
@@ -73,6 +73,7 @@ class ShippingCharge extends Component
         ]);
     }
     public function ShippingChargeModal(){
+        $this->reset();
         $this->code = 'SC'. floor(time()-999999);
         $this->emit('modal','ShippingChargeMOdal');
     }

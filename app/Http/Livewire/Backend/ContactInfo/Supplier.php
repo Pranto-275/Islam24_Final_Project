@@ -89,11 +89,12 @@ class Supplier extends Component
        $this->opening_balance     = $this->QueryUpdate->opening_balance;
        $this->contact_category_id     = $this->QueryUpdate->contact_category_id;
        $this->is_active              = $this->QueryUpdate->is_active;
-       $this->ContactModal();
+       $this->emit('modal','ContactModal');
     }
 
 
     public function ContactModal(){
+        $this->reset();
         $this->code  = 'C'.floor(time()-999999);
         $this->emit('modal','ContactModal');
     }

@@ -70,6 +70,7 @@ class Slider extends Component
     }
 
     public function sliderImageModal(){
+        $this->reset();
         $this->emit('modal','sliderImage');
     }
     public function render()
