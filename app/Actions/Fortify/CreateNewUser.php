@@ -44,6 +44,8 @@ class CreateNewUser implements CreatesNewUsers
                 $contact = Contact::whereUserId($user->id)->firstOrNew();
                 $contact->first_name = $user->name;
                 $contact->user_id = $user->id;
+                $contact->type = 'Customer';
+                $contact->mobile = $user->mobile;
                 // $contact->branch_id = 1;
                 $contact->created_by = $user->id;
                 $contact->save();

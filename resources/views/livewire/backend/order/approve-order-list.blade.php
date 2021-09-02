@@ -40,6 +40,7 @@
                                         <thead class="thead-light">
                                         <tr>
                                             <th>SL</th>
+                                            <th>Business Name</th>
                                             <th>Customer</th>
                                             <th>Order Date</th>
                                             <th>Total Amount</th>
@@ -60,6 +61,9 @@
                                         <tr>
                                             <td>
                                                 <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
+                                            </td>
+                                            <td>
+                                                {{$approveOrder->Contact->business_name}}
                                             </td>
                                             <td>
                                                 {{$approveOrder->Contact->first_name}}
