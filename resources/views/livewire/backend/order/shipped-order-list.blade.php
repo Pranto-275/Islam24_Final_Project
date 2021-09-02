@@ -21,7 +21,7 @@
                             <div class="text-sm-right">
                                 <a href="{{ route('order.order-list') }}">
                                     <button type="button"
-                                            class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
+                                        class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
                                             class="mdi mdi-plus mr-1"></i>Order List
                                     </button>
                                 </a>
@@ -36,63 +36,67 @@
                             </div>
                             <div class="table-responsive">
                                 <div class="table-responsive">
-                                    <table class="table table-centered mb-0 table-nowrap">
+                                    <table class="table table-centered mb-0 table-nowrap table-responsive-stack"
+                                    id="tableOne">
                                         <thead class="thead-light">
-                                        <tr>
-                                            <th>SL</th>
-                                            <th>Customer</th>
-                                            <th>Order Date</th>
-                                            <th>Total Amount</th>
-                                            <th>Discount</th>
-                                            <th>Shipping Charge</th>
-                                            <th>Payable Amount</th>
-                                            {{-- <th>Status</th> --}}
-                                            <th colspan="2">Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th>SL</th>
+                                                <th>Customer</th>
+                                                <th>Order Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Discount</th>
+                                                <th>Shipping Charge</th>
+                                                <th>Payable Amount</th>
+                                                {{-- <th>Status</th> --}}
+                                                <th colspan="2">Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        @php
+                                            @php
                                             $i=0;
-                                        @endphp
+                                            @endphp
 
-                                         @foreach ($shippedOrders as $shippedOrder)
+                                            @foreach ($shippedOrders as $shippedOrder)
 
-                                        <tr>
-                                            <td>
-                                                <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
-                                            </td>
-                                            <td>
-                                                {{$shippedOrder->Contact->first_name}}
-                                            </td>
-                                            <td>
-                                                {{$shippedOrder->order_date}}
-                                            </td>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript: void(0);"
+                                                        class="text-body font-weight-bold">{{ ++$i }}</a>
+                                                </td>
+                                                <td>
+                                                    {{$shippedOrder->Contact->first_name}}
+                                                </td>
+                                                <td>
+                                                    {{$shippedOrder->order_date}}
+                                                </td>
 
-                                            <td>
-                                              {{$shippedOrder->total_amount}}
-                                            </td>
+                                                <td>
+                                                    {{$shippedOrder->total_amount}}
+                                                </td>
 
-                                            <td>
-                                              {{$shippedOrder->discount}}
-                                            </td>
-                                            <td>
-                                                {{$shippedOrder->shipping_charge}}
-                                            </td>
-                                            <td>
-                                                {{$shippedOrder->payable_amount}}
-                                            </td>
-                                            {{-- <td wire:ignore>
+                                                <td>
+                                                    {{$shippedOrder->discount}}
+                                                </td>
+                                                <td>
+                                                    {{$shippedOrder->shipping_charge}}
+                                                </td>
+                                                <td>
+                                                    {{$shippedOrder->payable_amount}}
+                                                </td>
+                                                {{-- <td wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">
                                                      <option value="">Status</option>
                                                      <option value="approved {{$pendingOrder->id}}">Approved</option>
-                                                     <option value="cancel {{$pendingOrder->id}}">Cancel</option>
+                                                <option value="cancel {{$pendingOrder->id}}">Cancel</option>
                                                 </select>
-                                            </td> --}}
-                                            <td>
-                                                <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.pending-order-invoice',['id'=>$shippedOrder->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
-                                            </td>
-                                        </tr>
-                                         @endforeach
+                                                </td> --}}
+                                                <td>
+                                                    <a class="btn btn-info btn-sm btn-block mb-1"
+                                                        href="{{ route('order.pending-order-invoice',['id'=>$shippedOrder->id]) }}"><i
+                                                            class="fas fa-eye font-size-18"></i></a>
+                                                </td>
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -103,8 +107,8 @@
             </div>
         </div>
 
-      {{--Invoice Modal goes here--}}
-{{--
+        {{--Invoice Modal goes here--}}
+        {{--
         <div class="modal fade exampleModal" id="popupInvoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -187,13 +191,73 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <a href="{{route('order.print-order')}}" class="btn btn-secondary">Print</a>
-                    </div>
+    </div>
 
-                </div>
-            </div>
-        </div> --}}
-        @push('scripts')
+</div>
+</div>
+</div> --}}
+@push('scripts')
+<script>
+    $(document).ready(function() {
 
+
+        // inspired by http://jsfiddle.net/arunpjohny/564Lxosz/1/
+        $('.table-responsive-stack').each(function (i) {
+           var id = $(this).attr('id');
+           //alert(id);
+           $(this).find("th").each(function(i) {
+              $('#'+id + ' td:nth-child(' + (i + 1) + ')').prepend('<span class="table-responsive-stack-thead">'+             $(this).text() + ':</span> ');
+              $('.table-responsive-stack-thead').hide();
+
+           });
+
+
+
+        });
+
+
+
+
+
+        $( '.table-responsive-stack' ).each(function() {
+        var thCount = $(this).find("th").length;
+        var rowGrow = 100 / thCount + '%';
+        //console.log(rowGrow);
+        $(this).find("th, td").css('flex-basis', rowGrow);
+        });
+
+
+
+
+        function flexTable(){
+        if ($(window).width() < 768) {
+
+        $(".table-responsive-stack").each(function (i) {
+           $(this).find(".table-responsive-stack-thead").show();
+           $(this).find('thead').hide();
+        });
+
+
+        // window is less than 768px
+        } else {
+
+
+        $(".table-responsive-stack").each(function (i) {
+           $(this).find(".table-responsive-stack-thead").hide();
+           $(this).find('thead').show();
+        });
+
+
+
+        }
+        // flextable
+        }
+
+        flexTable();
+
+        window.onresize = function(event) {
+         flexTable();
+        };
+
+        });
         @endpush
-
-

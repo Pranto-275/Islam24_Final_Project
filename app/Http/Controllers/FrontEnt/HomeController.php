@@ -55,6 +55,7 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
         $upazillas = DB::table('upazilas')->where('district_id', '=', 1)->get();
+
         return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'zillas' => DB::table('districts')->get(), 'upazillas' => $upazillas]);
     }
 
@@ -168,11 +169,11 @@ class HomeController extends Controller
     public function confirmOrder(Request $request)
     {
         // dd($request);
-        // $request->validate([
-        //     'fName' => 'required',
-        //     'mobile' => 'required',
-
-        // ]);
+        $request->validate([
+            'business_name' => 'required',
+            'fName' => 'required',
+            'mobile' => 'required',
+        ]);
         DB::transaction(function () use ($request) {
             $sessionId = Session::getId();
             //    Add Customer
