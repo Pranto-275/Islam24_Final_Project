@@ -140,7 +140,7 @@
             #productBrandMobile,
             #productSearchByCustomSelect,
             #orderFinishMobile,
-            #orderFinishCheckout {
+            #orderFinishCheckout ,#headerTopbarLogo{
                 display: none;
             }
         }

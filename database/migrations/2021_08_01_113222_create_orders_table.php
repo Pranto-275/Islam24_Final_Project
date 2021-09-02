@@ -26,7 +26,7 @@ class CreateOrdersTable extends Migration
             $table->double('payable_amount')->nullable();
             $table->text('note')->nullable();
             $table->foreignId('coupon_code_id')->nullable();
-            $table->enum('status',['pending','approved','cancel']);
+            $table->enum('status',['processing', 'shipped', 'delivered', 'returned', 'cancelled']);
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();

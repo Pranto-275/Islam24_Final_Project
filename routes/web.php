@@ -20,9 +20,12 @@ use App\Http\Livewire\Backend\Order\CancelOrderInvoice;
 use App\Http\Livewire\Backend\Order\CancelOrderList;
 use App\Http\Livewire\Backend\Order\OrderInvoice;
 use App\Http\Livewire\Backend\Order\OrderList;
+use App\Http\Livewire\Backend\Order\ReturnedOrderList;
 use App\Http\Livewire\Backend\Order\PendingOrderInvoice;
 use App\Http\Livewire\Backend\Order\PendingOrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
+use App\Http\Livewire\Backend\Order\ShippedOrderList;
+use App\Http\Livewire\Backend\Order\DeliveredOrderList;
 use App\Http\Livewire\Backend\ProductInfo\Brand;
 use App\Http\Livewire\Backend\ProductInfo\Category;
 use App\Http\Livewire\Backend\ProductInfo\Color;
@@ -215,8 +218,11 @@ Route::group(['middleware' => ['role:admin|user']], function () {
 
         Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
             Route::get('order-list', OrderList::class)->name('order-list');
-            Route::get('order-pending', PendingOrderList::class)->name('order-pending');
+            // Route::get('order-pending', PendingOrderList::class)->name('order-pending');
             Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
+            Route::get('order-shipped', ShippedOrderList::class)->name('order-shipped');
+            Route::get('order-delivered', DeliveredOrderList::class)->name('order-delivered');
+            Route::get('order-returned', ReturnedOrderList::class)->name('order-returned');
             Route::get('order-cancel', CancelOrderList::class)->name('order-cancel');
             Route::get('print-order', PrintOrder::class)->name('print-order');
         });

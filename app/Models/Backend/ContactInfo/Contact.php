@@ -6,6 +6,7 @@ namespace App\Models\Backend\ContactInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\FrontEnd\Order;
 use App\Models\Backend\Transaction\Payment;
+use App\Models\District;
 use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
@@ -19,5 +20,8 @@ class Contact extends Model
     }
     public function Payment(){
         return $this->hasMany(Payment::class);
+    }
+    public function District(){
+        return $this->belongsTo(District::class);
     }
 }
