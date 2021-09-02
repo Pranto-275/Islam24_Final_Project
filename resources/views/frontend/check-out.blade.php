@@ -244,8 +244,8 @@
                             </div>
                             <div class="col-12 mt-0 pt-0">
                                 <div class="form-grp mt-0 pt-0">
-                                    <label for="shipping_address" style="font-weight: bold;">মোবাইল নাম্বার</label>
-                                    <input type="text" name="shipping_address" required
+                                    <label for="mobile" style="font-weight: bold;">মোবাইল নাম্বার</label>
+                                    <input type="text" name="mobile" required
                                         value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif" placeholder="মোবাইল নাম্বার" readonly>
                                 </div>
                             </div>
