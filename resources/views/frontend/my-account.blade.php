@@ -131,7 +131,7 @@
                                                 @foreach ($Districts as $zilla)
                                                 <option value="{{$zilla->id}}"
                                                     class="district-items division_id_{{$zilla->division_id}} "
-                                                    @if($zilla->name=='Dhaka') selected @endif style="color:black;">{{$zilla->name}}
+                                                    @if(!Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected @endif @elseif($zilla->name==Auth::user()->Contact->District->name) selected @endif style="color:black;">{{$zilla->name}}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -150,9 +150,10 @@
                             <div class="col-12 mt-1">
                                 <div class="form-grp">
                                     <label for="shipping_address" style="color: black;">পূর্ণ ঠিকানা*</label>
-                                    <input class="form-control" type="text" name="shipping_address" required
+                                    {{-- <input class="form-control" type="text" name="shipping_address" required
                                         value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif"
-                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
+                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 50px;"> --}}
+                                        <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 100px;" required placeholder="আপনার পূর্ণ ঠিকানা লিখুন">@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif</textarea>
                                 </div>
                             </div>
                             <div class="col-12">

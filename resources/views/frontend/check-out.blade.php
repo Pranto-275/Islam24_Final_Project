@@ -208,24 +208,45 @@
                                 <div class="form-grp">
                                     <label for="shipping_address">পূর্ণ ঠিকানা*</label>
 
-                                        <textarea id="shipping_address"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" cols="50" rows="1" required >  @if(Auth::user()){{Auth::user()->address}}@endif </textarea>
+                                        <textarea id="shipping_address"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" required >@if(Auth::user()){{Auth::user()->address}}@endif</textarea>
                                 </div>
                             </div>
                             @endif
                             @if(Auth::user())
-                            <div class="col-12 mt-0 mb-0 pb-0 pt-4">
-                                <div class="form-grp mt-0 pt-1">
+                            <div class="col-12 mt-0 mb-0 pb-0 pt-3">
+                                <div class="form-grp mt-0 pt-0">
+                                    <label for="business_name" style="font-weight: bold;">দোকানের নাম</label>
+                                    <input type="text" name="business_name" required
+                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->business_name}} @endif @endif"
+                                        placeholder="দোকানের নাম" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-0 mb-0 pb-0 pt-0">
+                                <div class="form-grp mt-0 pt-0">
+                                    <label for="business_name" style="font-weight: bold;">জেলা</label>
+                                    <input type="text" name="business_name" required
+                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->District->name}} @endif @endif"
+                                        placeholder="জেলা" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-0 mb-0 pb-0 pt-0">
+                                <div class="form-grp mt-0 pt-0">
                                     <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
-                                    <input type="text" name="shipping_address" required
-                                        value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif"
-                                        readonly>
+                                    {{-- <input type="text" name="shipping_address" required
+                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif"
+                                        placeholder="ডেলিভারি এড্রেস" readonly> --}}
+                                        {{-- <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="text-align: left;" required>
+                                            @if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif
+                                        </textarea> --}}
+                                        <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" required readonly style="background-color: white;">@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif</textarea>
+
                                 </div>
                             </div>
                             <div class="col-12 mt-0 pt-0">
                                 <div class="form-grp mt-0 pt-0">
                                     <label for="shipping_address" style="font-weight: bold;">মোবাইল নাম্বার</label>
                                     <input type="text" name="shipping_address" required
-                                        value="@if(Auth::user()){{Auth::user()->Contact->mobile}}@endif" readonly>
+                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif" placeholder="মোবাইল নাম্বার" readonly>
                                 </div>
                             </div>
 
@@ -313,7 +334,7 @@
         </table>
         @else
         <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট শপিংব্যাগে যুক্ত
-            করেননি,দুঃখিত।</div>
+            করেননি।</div>
         @endif
     </div>
     {{-- End Cart Product --}}

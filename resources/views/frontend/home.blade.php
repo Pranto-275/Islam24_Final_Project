@@ -60,13 +60,13 @@
                             <div class="col-3">
                                 <a href="{{ route('search-category-wise',['id'=>$topFourCategory->id]) }}">
                                 <img class="d-block w-100" src="{{ asset('storage/photo/'.$topFourCategory->image1) }}" alt="{{$topFourCategory->id}}">
-                                <div class="text-center" style="color: #ff0000; font-weight: bold;font-size: 14px;height:60px;">
-                                    {{-- {{$topFourCategory->name}} --}}
-                                    @if(strlen($topFourCategory->name)>20)
+                                <div class="text-center" style="color: #ff0000; font-weight: bold;font-size: 14px;height:55px;">
+                                    {{$topFourCategory->name}}
+                                    {{-- @if(strlen($topFourCategory->name)>20)
                                        {{ substr($topFourCategory->name, 0,19).'...' }}
                                     @else
                                        {{ $topFourCategory->name }}
-                                    @endif
+                                    @endif --}}
                                     {{-- Q --}}
                                 </div>
                                </a>
@@ -95,13 +95,13 @@
                             <div class="col-3">
                                  <a href="{{ route('search-category-wise',['id'=>$topCategory->id]) }}">
                                  <img class="d-block w-100" src="{{ asset('storage/photo/'.$topCategory->image1) }}" alt="">
-                                 <div class="text-center" style="color: #ff0000; font-weight: bold;font-size: 12px;height: 60px;">
-                                    {{-- {{$topCategory->name}} --}}
-                                    @if(strlen($topCategory->name)>20)
+                                 <div class="text-center" style="color: #ff0000; font-weight: bold;font-size: 12px;height: 55px;">
+                                    {{$topCategory->name}}
+                                    {{-- @if(strlen($topCategory->name)>20)
                                        {{ substr($topCategory->name, 0,19).'...' }}
                                     @else
                                        {{ $topCategory->name }}
-                                    @endif
+                                    @endif --}}
                                     {{-- Q --}}
                                 </div>
                                 </a>
