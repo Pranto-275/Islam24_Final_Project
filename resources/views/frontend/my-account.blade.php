@@ -158,8 +158,8 @@
                             </div>
                             <div class="col-12">
                                 <center>
-                                    <button type="submit" class="border p-1 mt-3 rounded text-info text-light px-3"
-                                        style="background-color: #ff5c00;">Save</button>
+                                    <button type="submit" class="border py-2 px-5 mt-3 rounded text-info text-light px-3"
+                                        style="background-color: #ff5c00;font-size: 14px;">Save</button>
                                 </center>
                             </div>
                         </div>
