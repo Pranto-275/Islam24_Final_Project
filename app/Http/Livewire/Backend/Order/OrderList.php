@@ -17,7 +17,8 @@ class OrderList extends Component
         $IdStatus=explode(' ', $this->status);
         $this->status=$IdStatus['0'];
         $id=$IdStatus['1'];
-        if($this->status=="processing" || $this->status=="shipped" || $this->status=="delivered" || $this->status=="returned"){
+        $statusCheck=$this->status;
+        if($this->status=="delivered"){
             DB::transaction(function() use($id) {
         // Start Data From Order To Sale Invoice
              $order=Order::find($id);
@@ -59,10 +60,11 @@ class OrderList extends Component
                 'text' => 'Order Processing Successfully',
              ]);
         }
-        else if($this->status="cancelled"){
+        else if($this->status="cancelled" || $this->status=="processing" || $this->status=="shipped" || $this->status=="returned"){
         //  Approve Order
+        // dd($statusCheck);
             $order=Order::find($id);
-            $order->status="cancelled";
+            $order->status=$statusCheck;
             $order->save();
 
             $this->emit('success',[
