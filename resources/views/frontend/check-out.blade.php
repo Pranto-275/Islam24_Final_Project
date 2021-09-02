@@ -223,8 +223,8 @@
                             </div>
                             <div class="col-12 mt-0 mb-0 pb-0 pt-0">
                                 <div class="form-grp mt-0 pt-0">
-                                    <label for="business_name" style="font-weight: bold;">জেলা</label>
-                                    <input type="text" name="business_name" required
+                                    <label for="district_id" style="font-weight: bold;">জেলা</label>
+                                    <input type="text"  required
                                         value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->District->name}} @endif @endif"
                                         placeholder="জেলা" readonly>
                                 </div>
