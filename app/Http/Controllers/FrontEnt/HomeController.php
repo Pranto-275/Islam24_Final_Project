@@ -171,7 +171,7 @@ class HomeController extends Controller
         // dd($request);
         $request->validate([
             'business_name' => 'required',
-            'fName' => 'required',
+            // 'fName' => 'required',
             'mobile' => 'required',
         ]);
         DB::transaction(function () use ($request) {
