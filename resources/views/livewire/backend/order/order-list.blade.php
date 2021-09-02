@@ -42,11 +42,11 @@
                                             <th>SL</th>
                                             <th>Customer</th>
                                             <th>Order Date</th>
-                                            <th>Total Amount</th>
+                                            {{-- <th>Total Amount</th>
                                             <th>Discount</th>
-                                            <th>Shipping Charge</th>
-                                            <th>Payable Amount</th>
-                                            {{-- <th>Status</th> --}}
+                                            <th>Shipping Charge</th> --}}
+                                            <th>Total</th>
+                                            <th>Status</th>
                                             <th colspan="2">Action</th>
                                         </tr>
                                         </thead>
@@ -65,10 +65,11 @@
                                                 {{$order->Contact->first_name}}
                                             </td>
                                             <td>
-                                                {{$order->order_date}}
+                                                {{-- {{$order->order_date}} --}}
+                                                {{date('d F Y', strtotime($order->order_date))}}
                                             </td>
 
-                                            <td>
+                                            {{-- <td>
                                               {{$order->total_amount}}
                                             </td>
 
@@ -77,17 +78,23 @@
                                             </td>
                                             <td>
                                                 {{$order->shipping_charge}}
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 {{$order->payable_amount}}
+                                            </td>
+                                            <td>
+                                                {{$order->status}}
                                             </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.order-invoice',['id'=>$order->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
                                                 <div wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">
                                                      <option value="">Status</option>
-                                                     <option value="approved {{$order->id}}">Approved</option>
-                                                     <option value="cancel {{$order->id}}">Cancel</option>
+                                                     <option value="processing {{$order->id}}">Processing</option>
+                                                     <option value="shipped {{$order->id}}">Shipped</option>
+                                                     <option value="delivered {{$order->id}}">Delivered</option>
+                                                     <option value="returned {{$order->id}}">Returned</option>
+                                                     <option value="cancelled {{$order->id}}">Cancelled</option>
                                                 </select>
                                                 </div>
                                             </td>

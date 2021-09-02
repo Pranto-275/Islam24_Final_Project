@@ -17,7 +17,7 @@ class OrderList extends Component
         $IdStatus=explode(' ', $this->status);
         $this->status=$IdStatus['0'];
         $id=$IdStatus['1'];
-        if($this->status=="approved"){
+        if($this->status=="processing" || $this->status=="shipped" || $this->status=="delivered" || $this->status=="returned"){
             DB::transaction(function() use($id) {
         // Start Data From Order To Sale Invoice
              $order=Order::find($id);
@@ -52,20 +52,21 @@ class OrderList extends Component
         // End Order Detail To Sale Invoice Details
 
         // Approve Order
-             $order->status="approved";
+             $order->status=$this->status;
              $order->save();
             });
              $this->emit('success',[
-                'text' => 'Order Approved Successfully',
+                'text' => 'Order Processing Successfully',
              ]);
-        }else if($this->status="cancel"){
+        }
+        else if($this->status="cancelled"){
         //  Approve Order
             $order=Order::find($id);
-            $order->status="cancel";
+            $order->status="cancelled";
             $order->save();
 
             $this->emit('success',[
-                'text' => 'Order Cancel Successfully',
+                'text' => 'Order cancelled Successfully',
              ]);
         }
     }
@@ -81,7 +82,7 @@ class OrderList extends Component
     public function render()
     {
         return view('livewire.backend.order.order-list',[
-            'orders'=> Order::whereStatus('pending')->orderBy('id', 'DESC')->get(),
+            'orders'=> Order::orderBy('id', 'DESC')->get(),
         ]);
     }
 }
