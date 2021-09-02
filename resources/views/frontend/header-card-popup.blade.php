@@ -415,7 +415,16 @@
             success: function (result, text) {
                 if(result.errorStatus) {
                     alert(result.message);
-                    $('#product_quantity_'+productId).val(result.data.quantity)
+                    // $('#product_quantity_'+productId).val(result.data.quantity)
+                    if(device == 'desktop') {
+                        if ($("#product_quantity_"+productId).length) {
+                            $("#product_quantity_"+productId).val(result.data.quantity);
+                        }
+                    } else if (device == 'mobile') {
+                        if ($("#mobile_modal_product_quantity_"+productId).length) {
+                            $("#mobile_modal_product_quantity_"+productId).val(result.data.quantity);
+                        }
+                    }
                     return false;
                 }
 
