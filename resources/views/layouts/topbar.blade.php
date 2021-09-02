@@ -1,9 +1,16 @@
 <header id="page-topbar">
+    <style>
+         @media only screen and (max-width: 768px) {
+            #headerTopbarLogo{
+                display: none;
+            }
+        }
+    </style>
     <div class="navbar-header">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box">
+            <div class="navbar-brand-box" id="headerTopbarLogo">
                 <a href="{{url('/dashboard')}}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{URL::asset('public/assets/images/logo.svg')}}" alt="" height="22">

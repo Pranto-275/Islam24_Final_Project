@@ -131,7 +131,7 @@
                                                 @foreach ($Districts as $zilla)
                                                 <option value="{{$zilla->id}}"
                                                     class="district-items division_id_{{$zilla->division_id}} "
-                                                    @if($zilla->name=='Dhaka') selected @endif style="color:black;">{{$zilla->name}}
+                                                    @if(!Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected @endif @elseif($zilla->name==Auth::user()->Contact->District->name) selected @endif style="color:black;">{{$zilla->name}}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -150,15 +150,16 @@
                             <div class="col-12 mt-1">
                                 <div class="form-grp">
                                     <label for="shipping_address" style="color: black;">পূর্ণ ঠিকানা*</label>
-                                    <input class="form-control" type="text" name="shipping_address" required
+                                    {{-- <input class="form-control" type="text" name="shipping_address" required
                                         value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif"
-                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন">
+                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 50px;"> --}}
+                                        <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 100px;" required placeholder="আপনার পূর্ণ ঠিকানা লিখুন">@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif</textarea>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <center>
-                                    <button type="submit" class="border p-1 mt-3 rounded text-info text-light px-3"
-                                        style="background-color: #ff5c00;">Save</button>
+                                    <button type="submit" class="border py-2 px-5 mt-3 rounded text-info text-light px-3"
+                                        style="background-color: #ff5c00;font-size: 14px;">Save</button>
                                 </center>
                             </div>
                         </div>

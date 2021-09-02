@@ -3,7 +3,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        Processing Order List
+        Delivered Order List
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -13,7 +13,7 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Processing Order List</h4>
+                                    <h4>Delivered Order List</h4>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                                 <a href="{{ route('order.order-list') }}">
                                     <button type="button"
                                             class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
-                                            class="mdi mdi-plus mr-1"></i>Order List
+                                            class="mdi mdi-plus mr-1"></i>Delivered List
                                     </button>
                                 </a>
                             </div>
@@ -55,31 +55,31 @@
                                             $i=0;
                                         @endphp
 
-                                         @foreach ($approveOrders as $approveOrder)
+                                         @foreach ($deliveredOrders as $deliveredOrder)
 
                                         <tr>
                                             <td>
                                                 <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
                                             </td>
                                             <td>
-                                                {{$approveOrder->Contact->first_name}}
+                                                {{$deliveredOrder->Contact->first_name}}
                                             </td>
                                             <td>
-                                                {{$approveOrder->order_date}}
-                                            </td>
-
-                                            <td>
-                                              {{$approveOrder->total_amount}}
+                                                {{$deliveredOrder->order_date}}
                                             </td>
 
                                             <td>
-                                              {{$approveOrder->discount}}
+                                              {{$deliveredOrder->total_amount}}
+                                            </td>
+
+                                            <td>
+                                              {{$deliveredOrder->discount}}
                                             </td>
                                             <td>
-                                                {{$approveOrder->shipping_charge}}
+                                                {{$deliveredOrder->shipping_charge}}
                                             </td>
                                             <td>
-                                                {{$approveOrder->payable_amount}}
+                                                {{$deliveredOrder->payable_amount}}
                                             </td>
                                             {{-- <td wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">
@@ -89,7 +89,7 @@
                                                 </select>
                                             </td> --}}
                                             <td>
-                                                <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.approved-order-invoice',['id'=>$approveOrder->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
+                                                <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.pending-order-invoice',['id'=>$deliveredOrder->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
                                             </td>
                                         </tr>
                                          @endforeach
@@ -195,5 +195,6 @@
         @push('scripts')
 
         @endpush
+
 
 
