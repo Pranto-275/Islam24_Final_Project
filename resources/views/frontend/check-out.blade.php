@@ -225,7 +225,7 @@
                                 <div class="form-grp mt-0 pt-0">
                                     <label for="district_id" style="font-weight: bold;">জেলা</label>
                                     <input type="text"  required
-                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->District->name}} @endif @endif"
+                                        value="@if(Auth::user()->Contact) @if(Auth::user()->Contact->District) {{Auth::user()->Contact->District->name}} @endif @endif"
                                         placeholder="জেলা" readonly>
                                 </div>
                             </div>
