@@ -20,7 +20,7 @@
                         <div class="my-account-content">
                             <p style="color: #ff5c00;">আপনাকে স্বাগতম পাইকারী ইলেকট্রনিক্স অ্যাপে</p>
                             <div class="direct-login">
-                                <a href="{{route('register')}}" style="background-color: red;font-weight: bold;"><i class="form-grp-btn"></i>রেজিষ্ট্রেশন</a>
+                                <a href="{{route('register')}}" style="background-color: red;font-weight: bold;"><i class="form-grp-btn"></i>রেজিষ্ট্রেশন করুন</a>
                                 {{-- <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
                             </div>
                             <form method="POST" action="{{ route('customer_sign_in') }}" class="login-form">

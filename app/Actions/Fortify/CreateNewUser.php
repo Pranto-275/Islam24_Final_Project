@@ -24,6 +24,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'business_name' => ['required', 'string', 'max:255'],
             // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'mobile' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
@@ -38,11 +39,14 @@ class CreateNewUser implements CreatesNewUsers
                 'mobile' => $input['mobile'],
                 'type' => 'Customer',
                 'password' => Hash::make($input['password']),
-            ]), function (User $user) {
+            ]), function (User $user) use ($input) {
                 $this->createTeam($user);
                 $user->assignRole('customer');
                 $contact = Contact::whereUserId($user->id)->firstOrNew();
+                $contact->business_name = $input['business_name'];
                 $contact->first_name = $user->name;
+                $contact->address = $user->address;
+                $contact->shipping_address = $user->address;
                 $contact->user_id = $user->id;
                 $contact->type = 'Customer';
                 $contact->mobile = $user->mobile;
