@@ -178,9 +178,11 @@
                                 <ul class="navigation">
                                     <li class="active"><a href="{{url('/')}}">হোম</a></li>
                                     @if(Auth::user())
+                                    @if(Auth::user()->hasAnyRole('customer'))
                                     <li>
                                         <a href="{{ route('my-account') }}">আমার একাউন্ট</a>
                                     </li>
+                                    @endif
                                     @endif
                                     <li><a href="{{url('/')}}">প্রডাক্ট ক্যাটাগরি সমূহ</a></li>
                                     <li><a href="{{route('search-category-wise')}}">শপ পেইজ</a></li>
