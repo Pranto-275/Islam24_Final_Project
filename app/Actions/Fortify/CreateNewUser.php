@@ -25,6 +25,7 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'business_name' => ['required', 'string', 'max:255'],
+            'district_id' => ['required'],
             // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'mobile' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
@@ -50,7 +51,7 @@ class CreateNewUser implements CreatesNewUsers
                 $contact->user_id = $user->id;
                 $contact->type = 'Customer';
                 $contact->mobile = $user->mobile;
-                // $contact->branch_id = 1;
+                $contact->district_id = $input['district_id'];
                 $contact->created_by = $user->id;
                 $contact->save();
             });
