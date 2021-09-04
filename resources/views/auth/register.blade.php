@@ -97,6 +97,10 @@
                                     <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="আপনার নাম লিখুন"/>
                                 </div>
                                 <div class="form-grp">
+                                    <x-jet-label for="business_name" value="{{ __('দোকানের নাম') }}" />
+                                    <x-jet-input id="business_name" class="block mt-1 w-full" type="text" name="business_name" :value="old('business_name')" required autofocus autocomplete="name" placeholder="আপনার দোকানের নাম লিখুন"/>
+                                </div>
+                                <div class="form-grp">
                                     <x-jet-label for="mobile" value="{{ __('মোবাইল নাম্বার') }}" />
                                     <x-jet-input id="mobile" class="block mt-1 w-full" type="text" name="mobile" :value="old('mobile')" required placeholder="মোবাইল নাম্বার লিখুন"/>
                                 </div>
@@ -105,9 +109,22 @@
                                     <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                                 </div> --}}
                                 <div class="form-grp">
-                                    <x-jet-label for="address" value="{{ __('পূর্ণ ঠিকানা') }}" />
-                                    <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" placeholder="আপনার পূর্ণ ঠিকানা লিখুন"/>
+                                    <x-jet-label for="address" value="{{ __('জেলা') }}" />
+                                    <select class="custom-select district" name="district_id" required>
+                                        <option value="">সিলেক্ট করুন</option>
+                                        @foreach ($Districts as $zilla)
+                                        <option value="{{$zilla->id}}"
+                                            class="district-items division_id_{{$zilla->division_id}} "
+                                             style="color:black;">{{$zilla->name}}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                                <div class="form-grp">
+                                    <x-jet-label for="address" value="{{ __('ডেলিভারি এড্রেস') }}" />
+                                    <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" placeholder="আপনার ডেলিভারি ঠিকানা লিখুন"/>
+                                </div>
+
                                 <div class="form-grp">
                                     <x-jet-label for="password" value="{{ __('পাসওয়ার্ড') }}" />
                                     <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" placeholder="পাসওয়ার্ড"/>

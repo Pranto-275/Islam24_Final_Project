@@ -18,7 +18,7 @@
                             <address style="font-size: 15px;">
                                 <strong>Billed To:</strong><br>
                                 {{$OrderInvoice->Contact->business_name}}<br>
-                                {{$OrderInvoice->Contact->shipping_address}},@if($OrderInvoice->Contact->District){{($OrderInvoice->Contact->District->name)}}@endif<br>
+                                {{$OrderInvoice->Contact->shipping_address}},@if($OrderInvoice->Contact->District){{$OrderInvoice->Contact->District->name}}@endif<br>
                                 {{$OrderInvoice->Contact->mobile}}<br>
 
                             </address>
@@ -27,7 +27,7 @@
                             <address class="mt-2 mt-sm-0" style="font-size: 15px;">
                                 <strong>Shipped To:</strong><br>
                                 {{$OrderInvoice->Contact->business_name}}<br>
-                                {{$OrderInvoice->Contact->shipping_address}},@if($OrderInvoice->Contact->District){{($OrderInvoice->Contact->District->name)}}@endif<br>
+                                {{$OrderInvoice->Contact->shipping_address}},@if($OrderInvoice->Contact->District){{$OrderInvoice->Contact->District->name}}@endif<br>
                                 {{$OrderInvoice->Contact->mobile}}<br>
                             </address>
                         </div>

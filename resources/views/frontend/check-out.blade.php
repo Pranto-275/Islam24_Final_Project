@@ -223,12 +223,19 @@
                             </div>
                             <div class="col-12 mt-0 mb-0 pb-0 pt-0">
                                 <div class="form-grp mt-0 pt-0">
-                                    <label for="business_name" style="font-weight: bold;">জেলা</label>
-                                    <input type="text" name="business_name" required
-                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->District->name}} @endif @endif"
-                                        placeholder="জেলা" readonly>
+                                    <label for="district_id" style="font-weight: bold;">জেলা</label>
+                                    <select class="custom-select district" name="district_id" required>
+                                        <option value="">সিলেক্ট করুন</option>
+                                        @foreach ($Districts as $zilla)
+                                        <option value="{{$zilla->id}}"
+                                            class="district-items division_id_{{$zilla->division_id}} "
+                                            @if(!Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected @endif @elseif($zilla->name==Auth::user()->Contact->District->name) selected @endif style="color:black;">{{$zilla->name}}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
+
                             <div class="col-12 mt-0 mb-0 pb-0 pt-0">
                                 <div class="form-grp mt-0 pt-0">
                                     <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
@@ -244,8 +251,8 @@
                             </div>
                             <div class="col-12 mt-0 pt-0">
                                 <div class="form-grp mt-0 pt-0">
-                                    <label for="shipping_address" style="font-weight: bold;">মোবাইল নাম্বার</label>
-                                    <input type="text" name="shipping_address" required
+                                    <label for="mobile" style="font-weight: bold;">মোবাইল নাম্বার</label>
+                                    <input type="text" name="mobile" required
                                         value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif" placeholder="মোবাইল নাম্বার" readonly>
                                 </div>
                             </div>
