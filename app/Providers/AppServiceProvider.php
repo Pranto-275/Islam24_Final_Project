@@ -59,7 +59,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('cardBadge', AddToCardService::cardTotalProductAndAmount());
             $view->with('BreakingNews', BreakingNews::get());
             $view->with('Districts', District::orderBy('name', 'asc')->get());
-            $view->with('orders_count', Order::whereStatus('pending')->count());
+            $view->with('orders_count', Order::whereStatus('processing')->count());
         });
     }
 }
