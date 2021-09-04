@@ -20,7 +20,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         {{-- <li><a href="{{route('order.order-pending')}}">Pending Order</a></li> --}}
-                        <li><a href="{{route('order.order-approve')}}">Processing Order</a></li>
+                        <li><a href="{{route('order.order-processing')}}">Processing Order</a></li>
                         <li><a href="{{route('order.order-shipped')}}">Shipped Order</a></li>
                         <li><a href="{{route('order.order-delivered')}}">Delivered Order</a></li>
                         <li><a href="{{route('order.order-returned')}}">Returned Order</a></li>

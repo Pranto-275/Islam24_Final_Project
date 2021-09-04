@@ -134,8 +134,22 @@
                                                 </td> --}}
                                                 <td>
                                                     <a class="btn btn-info btn-sm btn-block mb-1"
-                                                        href="{{ route('order.cancel-order-invoice',['id'=>$cancelOrder->id]) }}"><i
+                                                        href="{{ route('order.order-invoice',['id'=>$cancelOrder->id]) }}"><i
                                                             class="fas fa-eye font-size-18"></i></a>
+                                                <div wire:ignore>
+                                                    @if($cancelOrder->status!='delivered')
+                                                    <select class="form-control"
+                                                        style="border-radius: 15px;background-color:rgb(229, 240, 219);"
+                                                        wire:model.lazy="status" wire:change="OrderStatus">
+                                                        <option value="">Status</option>
+                                                        <option value="processing {{$cancelOrder->id}}">Processing
+                                                        </option>
+                                                        <option value="shipped {{$cancelOrder->id}}">Shipped</option>
+                                                        <option value="delivered {{$cancelOrder->id}}">Delivered</option>
+                                                        <option value="returned {{$cancelOrder->id}}">Returned</option>
+                                                    </select>
+                                                    @endif
+                                                </div>
                                                 </td>
                                             </tr>
                                             @endforeach
