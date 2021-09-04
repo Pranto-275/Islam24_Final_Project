@@ -9,7 +9,7 @@ use App\Models\Backend\Inventory\SaleInvoice;
 use App\Models\Backend\Inventory\SaleInvoiceDetail;
 use Livewire\Component;
 
-class CancelOrderList extends Component
+class ProcessingOrderList extends Component
 {
     public $status;
 
@@ -60,7 +60,7 @@ class CancelOrderList extends Component
                 'text' => 'Order Delivered Successfully',
              ]);
         }
-        else if($this->status=="delivered" || $this->status=="processing" || $this->status=="shipped" || $this->status=="returned"){
+        else if($this->status=="delivered" || $this->status="cancelled" || $this->status=="processing" || $this->status=="shipped" || $this->status=="returned"){
         //  Approve Order
         // dd($statusCheck);
             $order=Order::find($id);
@@ -74,8 +74,8 @@ class CancelOrderList extends Component
     }
     public function render()
     {
-        return view('livewire.backend.order.cancel-order-list',[
-            'cancelOrders'=> Order::whereStatus('cancelled')->orderBy('id', 'DESC')->get(),
+        return view('livewire.backend.order.processing-order-list',[
+            'processingOrders'=> Order::whereStatus('processing')->orderBy('id','DESC')->get(),
         ]);
     }
 }

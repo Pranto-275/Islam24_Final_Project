@@ -57,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
             $view->with('cardBadge', AddToCardService::cardTotalProductAndAmount());
             $view->with('BreakingNews', BreakingNews::get());
-            $view->with('orders_count', Order::whereStatus('pending')->count());
+            $view->with('orders_count', Order::whereStatus('processing')->count());
         });
     }
 }
