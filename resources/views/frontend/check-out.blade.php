@@ -281,7 +281,12 @@
                         <a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i
                                 class="flaticon-cancel-1 text-danger" style="font-weight: bold;"></i></a>
                         <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
-                            <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
+                            <img
+                            @if($product['Info']['image']!='blank-product-image.png')
+                               src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
+                            @else
+                               src="{{ asset('image-not-available.jpg') }}"
+                            @endif
                                 style="height: 90px;width:103px;129px;" alt="">
                         </a>
                         {{-- </td>
