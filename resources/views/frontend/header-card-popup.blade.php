@@ -5,7 +5,13 @@
     <li class="d-flex align-items-start" id="li_row_{{ $productId }}" style="margin-left: 0px !important;">
         <div class="cart-img">
             <a href="#">
-                <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" alt="">
+                <img
+                @if($product['Info']['image']!='blank-product-image.png')
+                  src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
+                @else
+                  src="{{ asset('image-not-available.jpg') }}"
+                @endif
+                 alt="">
             </a>
         </div>
         <div class="cart-content">

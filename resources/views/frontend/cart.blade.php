@@ -189,8 +189,13 @@
                                                         style="font-weight: bold;"></i></a>
                                                 <a href="{{ route('product-details',['id'=>$productId]) }}"
                                                     style="float:left;">
-                                                    <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
-                                                        style="height: 90px;width:103px;129px;" alt="">
+                                                    <img
+                                                    @if($product['Info']['image']!='blank-product-image.png')
+                                                     src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
+                                                    @else
+                                                     src="{{ asset('image-not-available.jpg') }}"
+                                                    @endif
+                                                    style="height: 90px;width:103px;129px;" alt="">
                                                 </a>
                                                 {{-- </td>
                                                 <td class="product-name">

@@ -60,7 +60,7 @@ class OrderList extends Component
                 'text' => 'Order Processing Successfully',
              ]);
         }
-        else if($this->status="cancelled" || $this->status=="processing" || $this->status=="shipped" || $this->status=="returned"){
+        else if($this->status=="delivered" || $this->status="cancelled" || $this->status=="processing" || $this->status=="shipped" || $this->status=="returned"){
         //  Approve Order
         // dd($statusCheck);
             $order=Order::find($id);

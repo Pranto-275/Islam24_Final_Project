@@ -14,15 +14,11 @@ use App\Http\Livewire\Backend\Inventory\Sale;
 use App\Http\Livewire\Backend\Inventory\SaleInvoice;
 use App\Http\Livewire\Backend\Inventory\SaleList;
 use App\Http\Livewire\Backend\Inventory\StockAdjustment;
-use App\Http\Livewire\Backend\Order\ApprovedOrderInvoice;
-use App\Http\Livewire\Backend\Order\ApproveOrderList;
-use App\Http\Livewire\Backend\Order\CancelOrderInvoice;
+use App\Http\Livewire\Backend\Order\ProcessingOrderList;
 use App\Http\Livewire\Backend\Order\CancelOrderList;
 use App\Http\Livewire\Backend\Order\OrderInvoice;
 use App\Http\Livewire\Backend\Order\OrderList;
 use App\Http\Livewire\Backend\Order\ReturnedOrderList;
-use App\Http\Livewire\Backend\Order\PendingOrderInvoice;
-use App\Http\Livewire\Backend\Order\PendingOrderList;
 use App\Http\Livewire\Backend\Order\PrintOrder;
 use App\Http\Livewire\Backend\Order\ShippedOrderList;
 use App\Http\Livewire\Backend\Order\DeliveredOrderList;
@@ -218,8 +214,7 @@ Route::group(['middleware' => ['role:admin|user']], function () {
 
         Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
             Route::get('order-list', OrderList::class)->name('order-list');
-            // Route::get('order-pending', PendingOrderList::class)->name('order-pending');
-            Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
+            Route::get('order-processing', ProcessingOrderList::class)->name('order-processing');
             Route::get('order-shipped', ShippedOrderList::class)->name('order-shipped');
             Route::get('order-delivered', DeliveredOrderList::class)->name('order-delivered');
             Route::get('order-returned', ReturnedOrderList::class)->name('order-returned');
@@ -237,12 +232,7 @@ Route::group(['middleware' => ['role:admin|user']], function () {
         Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
             Route::get('order-list', OrderList::class)->name('order-list');
             Route::get('order-invoice/{id}', OrderInvoice::class)->name('order-invoice');
-            Route::get('order-pending', PendingOrderList::class)->name('order-pending');
-            Route::get('pending-order-invoice/{id}', PendingOrderInvoice::class)->name('pending-order-invoice');
-            Route::get('order-approve', ApproveOrderList::class)->name('order-approve');
-            Route::get('approved-order-invoice/{id}', ApprovedOrderInvoice::class)->name('approved-order-invoice');
             Route::get('order-cancel', CancelOrderList::class)->name('order-cancel');
-            Route::get('cancel-order-invoice/{id}', CancelOrderInvoice::class)->name('cancel-order-invoice');
             Route::get('print-order', PrintOrder::class)->name('print-order');
         });
 
@@ -266,7 +256,6 @@ Route::group(['middleware' => ['role:admin|user']], function () {
 
         Route::group(['prefix' => 'report', 'as' => 'report.'], function () {
             Route::get('stock-adjustment-report', StockAdjustmentReport::class)->name('stock-adjustment-report');
-
             Route::get('purchase-report', PurchaseReport::class)->name('purchase-report');
             Route::get('sale-report', SaleReport::class)->name('sale-report');
             Route::get('purchase-details-report', PurchaseDetailsReport::class)->name('purchase-details-report');

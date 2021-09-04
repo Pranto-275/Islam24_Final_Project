@@ -83,7 +83,7 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>SL</th>
-                                                <th>Customer</th>
+                                                <th>Business Name</th>
                                                 <th>Order Date</th>
                                                 <th>Total Amount</th>
                                                 <th>Discount</th>
@@ -106,7 +106,7 @@
                                                         class="text-body font-weight-bold">{{ ++$i }}</a>
                                                 </td>
                                                 <td>
-                                                    {{$cancelOrder->Contact->first_name}}
+                                                    {{$cancelOrder->Contact->business_name}}
                                                 </td>
                                                 <td>
                                                     {{$cancelOrder->order_date}}
@@ -134,8 +134,22 @@
                                                 </td> --}}
                                                 <td>
                                                     <a class="btn btn-info btn-sm btn-block mb-1"
-                                                        href="{{ route('order.cancel-order-invoice',['id'=>$cancelOrder->id]) }}"><i
+                                                        href="{{ route('order.order-invoice',['id'=>$cancelOrder->id]) }}"><i
                                                             class="fas fa-eye font-size-18"></i></a>
+                                                <div wire:ignore>
+                                                    @if($cancelOrder->status!='delivered')
+                                                    <select class="form-control"
+                                                        style="border-radius: 15px;background-color:rgb(229, 240, 219);"
+                                                        wire:model.lazy="status" wire:change="OrderStatus">
+                                                        <option value="">Status</option>
+                                                        <option value="processing {{$cancelOrder->id}}">Processing
+                                                        </option>
+                                                        <option value="shipped {{$cancelOrder->id}}">Shipped</option>
+                                                        <option value="delivered {{$cancelOrder->id}}">Delivered</option>
+                                                        <option value="returned {{$cancelOrder->id}}">Returned</option>
+                                                    </select>
+                                                    @endif
+                                                </div>
                                                 </td>
                                             </tr>
                                             @endforeach
