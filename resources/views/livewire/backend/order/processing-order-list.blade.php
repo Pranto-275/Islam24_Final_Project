@@ -40,7 +40,7 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>SL</th>
-                                                <th>Customer</th>
+                                                <th>Business Name</th>
                                                 <th>Order Date</th>
                                                 <th>Total Amount</th>
                                                 <th>Discount</th>
@@ -63,7 +63,7 @@
                                                         class="text-body font-weight-bold">{{ ++$i }}</a>
                                                 </td>
                                                 <td>
-                                                    {{$processingOrder->Contact->first_name}}
+                                                    {{$processingOrder->Contact->business_name}}
                                                 </td>
                                                 <td>
                                                     {{$processingOrder->order_date}}

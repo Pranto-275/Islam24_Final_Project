@@ -70,7 +70,13 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>
-                                        <img class="rounded" @if($orderDetail->Product->ProductImageFirst) src="{{ asset('storage/photo/'.$orderDetail->Product->ProductImageFirst->image)}}" @endif  style="height:80px; weight:80px;" alt="Image2" class="img-circle img-fluid">
+                                        <img class="rounded"
+                                         @if($orderDetail->Product->ProductImageFirst)
+                                           src="{{ asset('storage/photo/'.$orderDetail->Product->ProductImageFirst->image)}}"
+                                         @else
+                                           src="{{ asset('image-not-available.jpg')}}"
+                                         @endif
+                                         style="height:80px; weight:80px;" alt="Image2" class="img-circle img-fluid">
                                     </td>
                                     <td>{{$orderDetail->Product->name}}</td>
                                     <td>{{$orderDetail->quantity}}</td>

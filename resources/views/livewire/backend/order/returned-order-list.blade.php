@@ -40,7 +40,7 @@
                                         <thead class="thead-light">
                                         <tr>
                                             <th>SL</th>
-                                            <th>Customer</th>
+                                            <th>Business Name</th>
                                             <th>Order Date</th>
                                             <th>Total Amount</th>
                                             <th>Discount</th>
@@ -62,7 +62,7 @@
                                                 <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
                                             </td>
                                             <td>
-                                                {{$returnOrder->Contact->first_name}}
+                                                {{$returnOrder->Contact->business_name}}
                                             </td>
                                             <td>
                                                 {{$returnOrder->order_date}}

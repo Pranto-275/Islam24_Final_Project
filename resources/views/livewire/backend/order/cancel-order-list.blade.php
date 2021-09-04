@@ -83,7 +83,7 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>SL</th>
-                                                <th>Customer</th>
+                                                <th>Business Name</th>
                                                 <th>Order Date</th>
                                                 <th>Total Amount</th>
                                                 <th>Discount</th>
@@ -106,7 +106,7 @@
                                                         class="text-body font-weight-bold">{{ ++$i }}</a>
                                                 </td>
                                                 <td>
-                                                    {{$cancelOrder->Contact->first_name}}
+                                                    {{$cancelOrder->Contact->business_name}}
                                                 </td>
                                                 <td>
                                                     {{$cancelOrder->order_date}}
