@@ -17,18 +17,18 @@
                         <div class="col-sm-6">
                             <address style="font-size: 15px;">
                                 <strong>Billed To:</strong><br>
-                                {{$OrderInvoice->Contact->first_name}} {{$OrderInvoice->Contact->last_name}}<br>
-                                {{$OrderInvoice->Contact->address}}<br>
-                                {{$OrderInvoice->Contact->phone}}<br>
+                                {{$OrderInvoice->Contact->business_name}}<br>
+                                {{$OrderInvoice->Contact->shipping_address}},@if($OrderInvoice->Contact->District){{($OrderInvoice->Contact->District->name)}}@endif<br>
+                                {{$OrderInvoice->Contact->mobile}}<br>
 
                             </address>
                         </div>
                         <div class="col-sm-6 text-sm-right">
                             <address class="mt-2 mt-sm-0" style="font-size: 15px;">
                                 <strong>Shipped To:</strong><br>
-                                {{$OrderInvoice->Contact->first_name}} {{$OrderInvoice->Contact->last_name}}<br>
-                                {{$OrderInvoice->Contact->shipping_address}}<br>
-                                {{$OrderInvoice->Contact->phone}}<br>
+                                {{$OrderInvoice->Contact->business_name}}<br>
+                                {{$OrderInvoice->Contact->shipping_address}},@if($OrderInvoice->Contact->District){{($OrderInvoice->Contact->District->name)}}@endif<br>
+                                {{$OrderInvoice->Contact->mobile}}<br>
                             </address>
                         </div>
                     </div>
