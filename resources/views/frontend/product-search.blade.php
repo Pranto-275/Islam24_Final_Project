@@ -42,7 +42,7 @@
                                 <div class="exclusive-item exclusive-item-three text-center mb-40">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                            <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
+                                            <img @if($product['product_image_first']) src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif style="width: 100%;height: auto;" alt="{{$product['name']}}">
                                             <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 220px;" alt="{{$product['name']}}">
                                         </a>
                                         {{-- <ul class="action">

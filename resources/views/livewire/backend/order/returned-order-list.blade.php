@@ -42,11 +42,8 @@
                                             <th>SL</th>
                                             <th>Business Name</th>
                                             <th>Order Date</th>
-                                            <th>Total Amount</th>
-                                            <th>Discount</th>
-                                            <th>Shipping Charge</th>
-                                            <th>Payable Amount</th>
-                                            {{-- <th>Status</th> --}}
+                                            <th>Total</th>
+                                            <th>Status</th>
                                             <th colspan="2">Action</th>
                                         </tr>
                                         </thead>
@@ -65,29 +62,14 @@
                                                 {{$returnOrder->Contact->business_name}}
                                             </td>
                                             <td>
-                                                {{$returnOrder->order_date}}
-                                            </td>
-
-                                            <td>
-                                              {{$returnOrder->total_amount}}
-                                            </td>
-
-                                            <td>
-                                              {{$returnOrder->discount}}
-                                            </td>
-                                            <td>
-                                                {{$returnOrder->shipping_charge}}
+                                                {{date('d F Y', strtotime($returnOrder->order_date))}}
                                             </td>
                                             <td>
                                                 {{$returnOrder->payable_amount}}
                                             </td>
-                                            {{-- <td wire:ignore>
-                                                <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">
-                                                     <option value="">Status</option>
-                                                     <option value="approved {{$pendingOrder->id}}">Approved</option>
-                                                     <option value="cancel {{$pendingOrder->id}}">Cancel</option>
-                                                </select>
-                                            </td> --}}
+                                            <td>
+                                                {{$returnOrder->status}}
+                                            </td>
                                             <td>
                                                 <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.order-invoice',['id'=>$returnOrder->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
                                                 <div wire:ignore>

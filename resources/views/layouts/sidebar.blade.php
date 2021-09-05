@@ -113,8 +113,8 @@
                         <li><a href="{{route('report.purchase-return-report')}}">Purchase Return Report</a></li>
                         <li><a href="{{route('report.sales-return-report')}}">Sales Return Report</a></li>
                         <li><a href="{{route('report.supplier-ledger')}}">Supplier Ledger</a></li>
-                        <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li>
-                        <li><a href="{{route('report.order-report')}}">Order Report</a></li> --}}
+                        <li><a href="{{route('report.profit-loss')}}">Profit Loss</a></li> --}}
+                        <li><a href="{{route('report.order-report')}}">Order Report</a></li>
                     </ul>
 
                 </li>

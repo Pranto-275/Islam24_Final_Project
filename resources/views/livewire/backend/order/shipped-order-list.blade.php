@@ -42,11 +42,8 @@
                                             <th>SL</th>
                                             <th>Business Name</th>
                                             <th>Order Date</th>
-                                            <th>Total Amount</th>
-                                            <th>Discount</th>
-                                            <th>Shipping Charge</th>
-                                            <th>Payable Amount</th>
-                                            {{-- <th>Status</th> --}}
+                                            <th>Total</th>
+                                            <th>Status</th>
                                             <th colspan="2">Action</th>
                                         </tr>
                                         </thead>
@@ -65,21 +62,13 @@
                                                 {{$shippedOrder->Contact->business_name}}
                                             </td>
                                             <td>
-                                                {{$shippedOrder->order_date}}
-                                            </td>
-
-                                            <td>
-                                              {{$shippedOrder->total_amount}}
-                                            </td>
-
-                                            <td>
-                                              {{$shippedOrder->discount}}
-                                            </td>
-                                            <td>
-                                                {{$shippedOrder->shipping_charge}}
+                                                {{date('d F Y', strtotime($shippedOrder->order_date))}}
                                             </td>
                                             <td>
                                                 {{$shippedOrder->payable_amount}}
+                                            </td>
+                                            <td>
+                                                {{$shippedOrder->status}}
                                             </td>
                                             {{-- <td wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">

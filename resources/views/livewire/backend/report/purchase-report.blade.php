@@ -83,7 +83,7 @@
                             </thead>
                             <tbody>
                                 @php $i=0; $subTotal=0; $discount=0; $shipping_charge=0; $grand_total=0;$paid_amount=0;$due=0; @endphp
-                                @foreach ($purchasesInvoice as $purchaseInvoice)
+                                @foreach ($this->dateFilter($purchasesInvoice) as $purchaseInvoice)
                                 <tr>
                                     <td><a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a></td>
                                     <td>{{ $purchaseInvoice->purchase_date }}</td>

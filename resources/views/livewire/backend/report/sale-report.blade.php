@@ -24,14 +24,14 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">From Date</label>
-                                    <input type="date" class="form-control" wire:model.lazy="from_date"/>
+                                    <input type="date" class="form-control" wire:model.debounce.150ms="from_date"/>
                                 </div>
                               </div>
 
                               <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">To Date</label>
-                                    <input type="date" class="form-control" wire:model.lazy="to_date"/>
+                                    <input type="date" class="form-control" wire:model.debounce.150ms="to_date"/>
                                 </div>
                               </div>
                               <div class="col-md-4">

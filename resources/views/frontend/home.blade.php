@@ -156,7 +156,7 @@
                                                 @else
                                                 src="{{ asset('image-not-available.jpg') }}"
                                                 @endif
-                                                style="height: 190px;" alt="{{$product['name']}}"
+                                                style="width: 100%;height: auto;" alt="{{$product['name']}}"
                                                 >
                                                 {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                                             </a>
@@ -272,7 +272,7 @@
                                                 @else
                                                    src="{{ asset('image-not-available.jpg') }}"
                                                 @endif
-                                                style="height: 190px;"
+                                                style="width: 100%;height: auto;"
                                                 alt="{{$product['name']}}">
                                                 {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                                             </a>
