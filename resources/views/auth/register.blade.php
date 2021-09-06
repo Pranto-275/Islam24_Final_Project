@@ -80,7 +80,7 @@
                         <div class="my-account-content">
                             <p style="color: #ff5c00;">আপনাকে স্বাগতম পাইকারী ইলেকট্রনিক্স অ্যাপে</p>
                             <div class="direct-login">
-                                <a class="btn-hover" href="{{route('sign-in')}}" style="background-color: red;font-weight: bold;" onmouseover="play()"><i class="form-grp-btn"></i>লগইন</a>
+                                <a class="btn-hover" href="{{route('sign-in')}}" style="background-color: red;font-weight: bold;"><i class="form-grp-btn"></i>লগইন</a>
                                 {{-- <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
                             </div>
                             {{-- <x-jet-authentication-card> --}}
@@ -160,7 +160,7 @@
                                     </div> --}}
                                 </div>
                                 <div class="form-grp-btn" >
-                                    <button type="submit" class="btn" style="background: #ff6000;color:white;" onmouseover="play()">রেজিস্ট্রার
+                                    <button type="submit" class="btn" style="background: #ff6000;color:white;">রেজিস্ট্রার
                                     </button>
 
                                     {{-- <x-jet-button class="ml-4" type="submit">

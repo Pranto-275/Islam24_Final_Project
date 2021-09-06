@@ -69,7 +69,7 @@ class Customer extends Component
         Contact::find($id)->delete();
 
         $this->emit('success', [
-            'text' => 'Customer deleted successfully',
+            'text' => 'Customer Deleted Successfully',
         ]);
     }
 

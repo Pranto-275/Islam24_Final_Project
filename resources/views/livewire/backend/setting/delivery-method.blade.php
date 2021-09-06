@@ -48,7 +48,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Enter Currency ID">
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Code">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                         name:  'name'
                     },
                     {
-                        title: 'Branch Name',
+                        title: 'Branch',
                         data:  'branch_id',
                         name:  'branch_id'
                     },

@@ -66,7 +66,7 @@ class Staff extends Component
         Contact::find($id)->delete();
 
         $this->emit('success',[
-           'text' => 'Staff deleted successfully',
+           'text' => 'Staff Deleted successfully',
         ]);
     }
 

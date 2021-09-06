@@ -59,7 +59,9 @@
                                                 <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
                                             </td>
                                             <td>
+                                                @if($returnOrder->Contact)
                                                 {{$returnOrder->Contact->business_name}}
+                                                @endif
                                             </td>
                                             <td>
                                                 {{date('d F Y', strtotime($returnOrder->order_date))}}

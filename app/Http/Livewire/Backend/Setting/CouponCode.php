@@ -53,7 +53,7 @@ public function couponCodeSave(){
     $this->reset();
     $this->couponCodeModal();
     $this->emit('success',[
-       'text' => 'Coupon code saved successfully',
+       'text' => 'Coupon Code Saved successfully',
     ]);
 
 }
@@ -76,7 +76,7 @@ public function couponEdit($id){
 public function couponDelete($id){
     CouponCodeInfo::find($id)->delete();
     $this->emit('success',[
-       'text' => 'Coupon Code deleted successfully',
+       'text' => 'Coupon Code Deleted Successfully',
     ]);
 }
 

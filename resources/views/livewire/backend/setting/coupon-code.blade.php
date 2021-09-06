@@ -19,21 +19,23 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="couponCodeModal"><i class="mdi mdi-plus mr-1"></i>Coupon code</button>
+                                <button type="button"
+                                    class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"
+                                    wire:click="couponCodeModal"><i class="mdi mdi-plus mr-1"></i>Coupon code</button>
                             </div>
                         </div><!-- end col-->
                     </div>
                     <div wire:ignore class="table-responsive">
-                        <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="CouponTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
-                        </div>
+                        <table class="table table-bordered dt-responsive nowrap" id="CouponTable"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--  Modal content for the above example -->
-    <div wire:ignore.self class="modal fade" id="couponCodeModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div wire:ignore.self class="modal fade" id="couponCodeModal" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -48,28 +50,32 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Coupon Code</label>
-                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Coupon code">
+                                    <input class="form-control" type="text" wire:model.lazy="code"
+                                        placeholder="Coupon code">
                                     @error('code') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Expired Day</label>
-                                    <input class="form-control" type="number" wire:model.lazy="expired_day" placeholder="Expired Day">
+                                    <input class="form-control" type="number" wire:model.lazy="expired_day"
+                                        placeholder="Expired Day">
                                     @error('expired_day') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Offer Effect Date</label>
-                                    <input class="form-control" type="date" wire:model.lazy="after_effect_date" placeholder="Enter expired date">
+                                    <input class="form-control" type="date" wire:model.lazy="after_effect_date"
+                                        placeholder="Enter expired date">
                                     @error('after_effect_date') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Expired Date</label>
-                                    <input class="form-control" type="date" wire:model.lazy="expired_date" placeholder="Enter expired date">
+                                    <input class="form-control" type="date" wire:model.lazy="expired_date"
+                                        placeholder="Enter expired date">
                                     @error('expired_date') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -89,7 +95,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Offer Amount</label>
-                                    <input class="form-control" type="text" wire:model.lazy="offer_amount" placeholder="Offer Amount">
+                                    <input class="form-control" type="text" wire:model.lazy="offer_amount"
+                                        placeholder="Offer Amount">
                                     @error('offer_amount') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                             </div>
@@ -98,7 +105,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Min Buy Amount</label>
-                                    <input class="form-control" type="text" wire:model.lazy="min_buy_amount" placeholder="Enter Min Amount">
+                                    <input class="form-control" type="text" wire:model.lazy="min_buy_amount"
+                                        placeholder="Enter Min Amount">
                                 </div>
                             </div>
 
@@ -117,7 +125,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" >Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div><!-- /.modal-content -->
@@ -125,8 +133,8 @@
     </div><!-- /.modal -->
 </div>
 @push('scripts')
-    <script>
-        function callEdit(id) {
+<script>
+    function callEdit(id) {
         @this.call('couponEdit', id);
         }
         function callDelete(id) {
@@ -194,5 +202,5 @@
                 datatable.draw(true);
             });
         });
-    </script>
+</script>
 @endpush

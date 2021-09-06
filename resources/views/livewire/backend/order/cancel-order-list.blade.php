@@ -103,7 +103,9 @@
                                                         class="text-body font-weight-bold">{{ ++$i }}</a>
                                                 </td>
                                                 <td>
+                                                    @if($cancelOrder->Contact)
                                                     {{$cancelOrder->Contact->business_name}}
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     {{date('d F Y', strtotime($cancelOrder->order_date))}}

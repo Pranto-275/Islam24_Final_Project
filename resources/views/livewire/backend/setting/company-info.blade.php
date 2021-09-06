@@ -85,38 +85,38 @@
                             </div>
 
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div wire:ignore class="form-group">
                                     <label for="basicpill-lastname-input">Privacy Policy</label>
-                                    <textarea class="form-control" id="privacy_policy" rows="3"
+                                    <textarea class="form-control" id="privacy_policy"
                                         wire:model.lazy="privacy_policy"
-                                        placeholder="privacy policy"></textarea>
+                                        placeholder="Privacy Policy"></textarea>
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div wire:ignore class="form-group">
                                     <label for="basicpill-lastname-input">Terms & Condition</label>
-                                    <textarea class="form-control" id="terms_condition" rows="3"
+                                    <textarea class="form-control" id="terms_condition"
                                         wire:model.lazy="terms_condition"
                                         placeholder="Terms & Condition"></textarea>
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div wire:ignore class="form-group">
                                     <label for="basicpill-lastname-input">Return policy</label>
-                                    <textarea class="form-control" id="return_policy" rows="3"
+                                    <textarea class="form-control" id="return_policy"
                                         wire:model.lazy="return_policy"
                                         placeholder="Return policy"></textarea>
                                 </div>
                             </div>
 
 
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <div wire:ignore class="form-group">
                                     <label for="basicpill-lastname-input">About Us</label>
-                                    <textarea class="form-control" id="about_us" rows="3"
+                                    <textarea class="form-control" id="about_us"
                                         wire:model.lazy="about_us"
                                         placeholder="About Us"></textarea>
                                 </div>
@@ -159,7 +159,7 @@
   if ($("#privacy_policy").length > 0) {
     tinymce.init({
       selector: "textarea#privacy_policy",
-      height: 200,
+      height: 250,
 	   forced_root_block: false,
         setup: function (editor) {
             editor.on('init change', function () {
@@ -207,7 +207,7 @@
   if ($("#terms_condition").length > 0) {
     tinymce.init({
       selector: "textarea#terms_condition",
-      height: 300,
+      height: 250,
 	   forced_root_block: false,
         setup: function (editor) {
             editor.on('init change', function () {
@@ -256,7 +256,7 @@
   if ($("#return_policy").length > 0) {
     tinymce.init({
       selector: "textarea#return_policy",
-      height: 300,
+      height: 250,
 	   forced_root_block: false,
         setup: function (editor) {
             editor.on('init change', function () {
@@ -305,7 +305,7 @@
   if ($("#about_us").length > 0) {
     tinymce.init({
       selector: "textarea#about_us",
-      height: 300,
+      height: 250,
 	   forced_root_block: false,
         setup: function (editor) {
             editor.on('init change', function () {

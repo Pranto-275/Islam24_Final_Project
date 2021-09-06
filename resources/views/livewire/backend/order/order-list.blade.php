@@ -106,7 +106,9 @@
                                                         class="text-body font-weight-bold">{{ ++$i }}</a>
                                                 </td>
                                                 <td>
+                                                    @if($order->Contact)
                                                     {{$order->Contact->business_name}}
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     {{-- {{$order->order_date}} --}}

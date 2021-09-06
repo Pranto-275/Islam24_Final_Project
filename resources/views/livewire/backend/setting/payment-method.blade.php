@@ -13,7 +13,7 @@
                         <div class="col-sm-4">
                             <div class="search-box mr-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <h4>Payment Mathod Info</h4>
+                                    <h4>Payment Mathod</h4>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Payment Method Info</h5>
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Payment Method</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -45,6 +45,13 @@
                 <form wire:submit.prevent="PaymentMethodSave">
                     <div class="modal-body">
                         <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-firstname-input">Code</label>
+                                    <input class="form-control" type="text" wire:model.lazy="code" placeholder="Code">
+                                    @error('code') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="basicpill-firstname-input">Name</label>
@@ -114,6 +121,11 @@
                     {
                         title: 'SL',
                         data: 'id'
+                    },
+                    {
+                        title: 'Code',
+                        data:  'code',
+                        name:  'code'
                     },
                     {
                         title: 'Name',
