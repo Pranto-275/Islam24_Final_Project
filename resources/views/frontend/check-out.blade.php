@@ -118,7 +118,8 @@
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
-                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;" onmouseover="play()"></i>
+                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"
+                            onmouseover="play()"></i>
                     </a>
                     <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">কুইক চেকআউট</span>
                 </div>
@@ -172,95 +173,104 @@
                                                 <option value="">সিলেক্ট করুন</option>
                                                 @foreach ($Divisions as $item)
                                                 <option value="{{$item->id}}" @if($item->bn_name=='ঢাকা') selected
-                                                    @endif>{{$item->bn_name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div> --}}
-                                    <div class="col-sm-12">
-                                        <div class="form-grp">
-                                            <label>জেলা *</label>
-                                            <select class="custom-select district" name="district_id" required>
-                                                <option value="">সিলেক্ট করুন</option>
-                                                @foreach ($Districts as $zilla)
-                                                <option value="{{$zilla->id}}"
-                                                    class="district-items division_id_{{$zilla->division_id}} "
-                                                    @if($zilla->name=='Dhaka') selected @endif style="color:black;">{{$zilla->name}}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    {{-- <div class="col-sm-12">
+                                    @endif>{{$item->bn_name}}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                            </div> --}}
+                            <div class="col-sm-12">
+                                <div class="form-grp">
+                                    <label>জেলা *</label>
+                                    <select class="custom-select district" name="district_id" required>
+                                        <option value="">সিলেক্ট করুন</option>
+                                        @foreach ($Districts as $zilla)
+                                        <option value="{{$zilla->id}}"
+                                            class="district-items division_id_{{$zilla->division_id}} " @if($zilla->
+                                            name=='Dhaka') selected @endif style="color:black;">{{$zilla->name}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            {{-- <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label>উপজেলা *</label>
                                             <select class="custom-select upazila" name="upazila_id" required>
                                                 <option value="">সিলেক্ট করুন</option>
                                                 @foreach ($Upazilas as $upazilla)
                                                 <option value="{{ $upazilla->id}}" class="upazila-items
-                                    district_id_{{$upazilla->district_id}}">{{ $upazilla->bn_name}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                            </div> --}}
+                            district_id_{{$upazilla->district_id}}">{{ $upazilla->bn_name}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div> --}}
 
-                            <div class="col-12">
-                                <div class="form-grp">
-                                    <label for="shipping_address">পূর্ণ ঠিকানা*</label>
+                    <div class="col-12">
+                        <div class="form-grp">
+                            <label for="shipping_address">পূর্ণ ঠিকানা*</label>
 
-                                        <textarea id="shipping_address"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" required >@if(Auth::user()){{Auth::user()->address}}@endif</textarea>
-                                </div>
-                            </div>
-                            @endif
-                            @if(Auth::user())
-                            <div class="col-12 mt-0 mb-0 pb-0 pt-3">
-                                <div class="form-grp mt-0 pt-0">
-                                    <label for="business_name" style="font-weight: bold;">দোকানের নাম</label>
-                                    <input type="text" name="business_name" required
-                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->business_name}} @endif @endif"
-                                        placeholder="দোকানের নাম" readonly>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-0 mb-0 pb-0 pt-0">
-                                <div class="form-grp mt-0 pt-0">
-                                    <label for="district_id" style="font-weight: bold;">জেলা</label>
-                                    <select class="custom-select district" name="district_id" required>
-                                        <option value="">সিলেক্ট করুন</option>
-                                        @foreach ($Districts as $zilla)
-                                        <option value="{{$zilla->id}}"
-                                            class="district-items division_id_{{$zilla->division_id}} "
-                                            @if(!Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected @endif @elseif($zilla->name==Auth::user()->Contact->District->name) selected @endif style="color:black;">{{$zilla->name}}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-12 mt-0 mb-0 pb-0 pt-0">
-                                <div class="form-grp mt-0 pt-0">
-                                    <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
-                                    {{-- <input type="text" name="shipping_address" required
-                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif"
-                                        placeholder="ডেলিভারি এড্রেস" readonly> --}}
-                                        {{-- <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="text-align: left;" required>
-                                            @if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif
-                                        </textarea> --}}
-                                        <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" required readonly style="background-color: white;">@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif</textarea>
-
-                                </div>
-                            </div>
-                            <div class="col-12 mt-0 pt-0">
-                                <div class="form-grp mt-0 pt-0">
-                                    <label for="mobile" style="font-weight: bold;">মোবাইল নাম্বার</label>
-                                    <input type="text" name="mobile" required
-                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif" placeholder="মোবাইল নাম্বার" readonly>
-                                </div>
-                            </div>
-
-                            @endif
+                            <textarea id="shipping_address" name="shipping_address"
+                                placeholder="আপনার পূর্ণ ঠিকানা লিখুন"
+                                required>@if(Auth::user()){{Auth::user()->address}}@endif</textarea>
                         </div>
                     </div>
+                    @endif
+                    @if(Auth::user())
+                    <div class="col-12 mt-0 mb-0 pb-0 pt-3">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="business_name" style="font-weight: bold;">দোকানের নাম</label>
+                            <input type="text" name="business_name" required
+                                value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->business_name}} @endif @endif"
+                                placeholder="দোকানের নাম" readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-0 mb-0 pb-0 pt-0">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="district_id" style="font-weight: bold;">জেলা</label>
+                            <select class="custom-select district" name="district_id" required>
+                                <option value="">সিলেক্ট করুন</option>
+                                @foreach ($Districts as $zilla)
+                                <option value="{{$zilla->id}}"
+                                    class="district-items division_id_{{$zilla->division_id}} " @if(!Auth::user()->
+                                    Contact->District) @if($zilla->name=='Dhaka') selected @endif
+                                    @elseif($zilla->name==Auth::user()->Contact->District->name) selected @endif
+                                    style="color:black;">{{$zilla->name}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-0 mb-0 pb-0 pt-0">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
+                            {{-- <input type="text" name="shipping_address" required
+                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}}
+                            @endif @endif"
+                            placeholder="ডেলিভারি এড্রেস" readonly> --}}
+                            {{-- <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="text-align: left;" required>
+                                            @if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}}
+                            @endif @endif
+                            </textarea> --}}
+                            <textarea id="shipping_address" class="form-control" name="shipping_address"
+                                placeholder="আপনার পূর্ণ ঠিকানা লিখুন" required readonly
+                                style="background-color: white;">@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif</textarea>
+
+                        </div>
+                    </div>
+                    <div class="col-12 mt-0 pt-0">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="mobile" style="font-weight: bold;">মোবাইল নাম্বার</label>
+                            <input type="text" name="mobile" required
+                                value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif"
+                                placeholder="মোবাইল নাম্বার" readonly>
+                        </div>
+                    </div>
+
+                    @endif
                 </div>
+</div>
+</div>
 </div>
 </div>
 
@@ -288,12 +298,9 @@
                         <a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i
                                 class="flaticon-cancel-1 text-danger" style="font-weight: bold;"></i></a>
                         <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
-                            <img
-                            @if($product['Info']['image']!='blank-product-image.png')
-                               src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
-                            @else
-                               src="{{ asset('image-not-available.jpg') }}"
-                            @endif
+                            <img @if($product['Info']['image']!='blank-product-image.png' )
+                                src="{{ asset('storage/photo/'.$product['Info']['image']) }}" @else
+                                src="{{ asset('image-not-available.jpg') }}" @endif
                                 style="height: 90px;width:103px;129px;" alt="">
                         </a>
                         {{-- </td>
@@ -483,12 +490,13 @@
                 <a href="{{route('terms-conditios')}}">terms
                     and conditions</a>
             </div>
-            <button class="btn btn-submit mt-2" type="submit" id="orderFinishCheckout" onmouseover="play()">অর্ডার
+            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout"
+                onmouseover="play()">অর্ডার
                 সম্পন্ন করুন</button>
             <br>
             <br>
         </div>
-        <button class="btn btn-submit" type="submit"
+        <button class="btn btn-submit btn-hover" type="submit"
             style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
             id="orderFinishCheckoutMobile" onmouseover="play()">অর্ডার সম্পন্ন করুন</button>
 

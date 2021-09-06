@@ -309,7 +309,7 @@
                     </span>
                 </li>
             </ul>
-            <button class="btn mb-3" id="orderFinishMobile" onmouseover="play()">অর্ডার শেষ করুন</button>
+            <button class="btn mb-3 btn-hover" id="orderFinishMobile" onmouseover="play()">অর্ডার শেষ করুন</button>
         </div>
     </aside>
 </div>
@@ -317,7 +317,7 @@
 </div>
 </section>
 <!-- shop-cart-area-end -->
-<button class="btn" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
+<button class="btn btn-hover" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
     id="orderFinish" onmouseover="play()">অর্ডার শেষ করুন</button>
 </main>
 </form>

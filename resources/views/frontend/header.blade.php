@@ -52,6 +52,26 @@
             #contact-us {
                 display: none;
             }
+        }.btn-hover{
+            background: #ff6000;color:white;
+        }
+        .btn-hover:hover {
+            font-family: 'Nunito', sans-serif;
+            /* font-size: 22px; */
+            text-transform: uppercase;
+            /* letter-spacing: 1.3px; */
+            /* font-weight: 700; */
+            color: #313133;
+            background: #4FD1C5;
+            background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+            border: none;
+            /* border-radius: 1000px; */
+            box-shadow: 6px 6px 12px rgba(79, 209, 197, .64);
+            transition: all 0.3s ease-in-out 0s;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            /* padding: 10px; */
         }
     </style>
     <audio id="audio" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
@@ -151,8 +171,8 @@
                                     aria-label="Text input with dropdown button" placeholder="পন্য খুঁজুন এখানে..">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
-                                        style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);" onmouseover="play()"><i
-                                            class="fa fa-search text-light px-1"></i></button>
+                                        style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"
+                                        onmouseover="play()"><i class="fa fa-search text-light px-1"></i></button>
                                 </div>
                             </div>
                         </center>
@@ -192,22 +212,28 @@
                                     @endif
                                     @endif
                                     <li><a href="{{url('/')}}" onmouseover="play()">প্রডাক্ট ক্যাটাগরি সমূহ</a></li>
-                                    <li><a href="{{route('search-category-wise')}}" onmouseover="play()">শপ পেইজ</a></li>
+                                    <li><a href="{{route('search-category-wise')}}" onmouseover="play()">শপ পেইজ</a>
+                                    </li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li><a href="{{route('contact-us')}}" onmouseover="play()">অভিযোগ/মতামত</a></li>
-                                    <li><a href="{{route('contact-us')}}" id="contact-us" onmouseover="play()">যোগাযোগ</a></li>
+                                    <li><a href="{{route('contact-us')}}" id="contact-us"
+                                            onmouseover="play()">যোগাযোগ</a></li>
                                     @if (!Auth::user())
-                                    <li id="sign-in"><a href="{{route('register')}}" onmouseover="play()">রেজিষ্ট্রেশন</a></li>
+                                    <li id="sign-in"><a href="{{route('register')}}"
+                                            onmouseover="play()">রেজিষ্ট্রেশন</a></li>
                                     <li id="sign-up"><a href="{{route('sign-in')}}" onmouseover="play()">লগইন</a></li>
                                     @endif
                                     <li>
-                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy" onmouseover="play()">প্রাইভেসি পলিসি</a>
+                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy"
+                                            onmouseover="play()">প্রাইভেসি পলিসি</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('terms-conditios')}}" id="termCondition" onmouseover="play()">শর্তাবলী</a>
+                                        <a href="{{route('terms-conditios')}}" id="termCondition"
+                                            onmouseover="play()">শর্তাবলী</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('about')}}" id="aboutUs" onmouseover="play()">পাইকারি মিশন & ভিশন</a>
+                                        <a href="{{route('about')}}" id="aboutUs" onmouseover="play()">পাইকারি মিশন &
+                                            ভিশন</a>
                                     </li>
                                 </ul>
                             </div>
@@ -299,12 +325,12 @@
     <div class="social-links">
         <ul class="clearfix">
             {{-- <li><a href="#"><span class="fab fa-twitter"></span></a></li> --}}
-            <li><a href="{{$companyInfo->facebook_link}}" target="_blank" onmouseover="play()"><span class="fab fa-facebook-square"
-                        style="font-size: 30px;"></span></a></li>
+            <li><a href="{{$companyInfo->facebook_link}}" target="_blank" onmouseover="play()"><span
+                        class="fab fa-facebook-square" style="font-size: 30px;"></span></a></li>
             {{-- <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li> --}}
             {{-- <li><a href="#"><span class="fab fa-instagram"></span></a></li> --}}
-            <li><a href="{{$companyInfo->youtube_link}}" target="_blank" onmouseover="play()"><span class="fab fa-youtube"
-                        style="font-size: 30px;"></span></a>
+            <li><a href="{{$companyInfo->youtube_link}}" target="_blank" onmouseover="play()"><span
+                        class="fab fa-youtube" style="font-size: 30px;"></span></a>
             </li>
         </ul>
     </div>

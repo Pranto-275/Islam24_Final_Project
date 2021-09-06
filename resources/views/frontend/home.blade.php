@@ -1,6 +1,7 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
+
     <x-slot name="title">
         Home
     </x-slot>
@@ -367,7 +368,7 @@
         @endif
         <div class="col-md-12">
             <center>
-                <a class="btn text-center" style="background: #ff6000;color:white;"
+                <a class="btn text-center btn-hover"
                     href="{{route('search-category-wise')}}" onmouseover="play()">আরও পণ্য দেখুন</a>
             </center>
         </div>
