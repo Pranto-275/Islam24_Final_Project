@@ -65,8 +65,8 @@
 </li>
 <li>
     <div class="checkout-link">
-        <a href="{{ route('cart') }}">Shopping Cart</a>
-        <a class="red-color" href="{{ route('check-out') }}">Checkout</a>
+        <a href="{{ route('cart') }}" onmouseover="play()">Shopping Cart</a>
+        <a class="red-color" href="{{ route('check-out') }}" onmouseover="play()">Checkout</a>
     </div>
 </li>
 
