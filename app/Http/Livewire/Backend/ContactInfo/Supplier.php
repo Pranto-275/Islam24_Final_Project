@@ -69,7 +69,7 @@ class Supplier extends Component
         Contact::find($id)->delete();
 
         $this->emit('success',[
-           'text' => 'Supplier deleted successfully',
+           'text' => 'Supplier Deleted successfully',
         ]);
     }
 

@@ -60,7 +60,9 @@
                                                         class="text-body font-weight-bold">{{ ++$i }}</a>
                                                 </td>
                                                 <td>
-                                                    {{$processingOrder->Contact->business_name}}
+                                                    @if($processingOrder->Contact)
+                                                        {{$processingOrder->Contact->business_name}}
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     {{date('d F Y', strtotime($processingOrder->order_date))}}

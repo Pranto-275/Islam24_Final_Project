@@ -70,7 +70,9 @@
                                         {{ $order->code }}
                                     </td>
                                     <td>
-                                        {{ $order->Contact->business_name }}
+                                        @if($order->Contact)
+                                           {{ $order->Contact->business_name }}
+                                        @endif
                                     </td>
                                     <td>
                                         {{date('d F Y', strtotime($order->date))}}
