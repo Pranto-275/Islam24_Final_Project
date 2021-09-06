@@ -120,9 +120,9 @@
 
 
 
-                    <a href="{{route('register')}}"><i class="flaticon-user"></i>Sign Up</a>
+                    <a href="{{route('register')}}" onmouseover="play()"><i class="flaticon-user"></i>Sign Up</a>
                     <span>Or</span>
-                    <a href="{{route('sign-in')}}">Sign In</a>
+                    <a href="{{route('sign-in')}}" onmouseover="play()">Sign In</a>
 
 
                 </li>
@@ -151,7 +151,7 @@
                                     aria-label="Text input with dropdown button" placeholder="পন্য খুঁজুন এখানে..">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
-                                        style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
+                                        style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);" onmouseover="play()"><i
                                             class="fa fa-search text-light px-1"></i></button>
                                 </div>
                             </div>
@@ -183,31 +183,31 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{url('/')}}">হোম</a></li>
+                                    <li class="active"><a href="{{url('/')}}" onmouseover="play()">হোম</a></li>
                                     @if(Auth::user())
                                     @if(Auth::user()->hasAnyRole('customer'))
                                     <li>
-                                        <a href="{{ route('my-account') }}">আমার একাউন্ট</a>
+                                        <a href="{{ route('my-account') }}" onmouseover="play()">আমার একাউন্ট</a>
                                     </li>
                                     @endif
                                     @endif
-                                    <li><a href="{{url('/')}}">প্রডাক্ট ক্যাটাগরি সমূহ</a></li>
-                                    <li><a href="{{route('search-category-wise')}}">শপ পেইজ</a></li>
+                                    <li><a href="{{url('/')}}" onmouseover="play()">প্রডাক্ট ক্যাটাগরি সমূহ</a></li>
+                                    <li><a href="{{route('search-category-wise')}}" onmouseover="play()">শপ পেইজ</a></li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
-                                    <li><a href="{{route('contact-us')}}">অভিযোগ/মতামত</a></li>
-                                    <li><a href="{{route('contact-us')}}" id="contact-us">যোগাযোগ</a></li>
+                                    <li><a href="{{route('contact-us')}}" onmouseover="play()">অভিযোগ/মতামত</a></li>
+                                    <li><a href="{{route('contact-us')}}" id="contact-us" onmouseover="play()">যোগাযোগ</a></li>
                                     @if (!Auth::user())
-                                    <li id="sign-in"><a href="{{route('register')}}">রেজিষ্ট্রেশন</a></li>
-                                    <li id="sign-up"><a href="{{route('sign-in')}}">লগইন</a></li>
+                                    <li id="sign-in"><a href="{{route('register')}}" onmouseover="play()">রেজিষ্ট্রেশন</a></li>
+                                    <li id="sign-up"><a href="{{route('sign-in')}}" onmouseover="play()">লগইন</a></li>
                                     @endif
                                     <li>
-                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy">প্রাইভেসি পলিসি</a>
+                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy" onmouseover="play()">প্রাইভেসি পলিসি</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('terms-conditios')}}" id="termCondition">শর্তাবলী</a>
+                                        <a href="{{route('terms-conditios')}}" id="termCondition" onmouseover="play()">শর্তাবলী</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('about')}}" id="aboutUs">পাইকারি মিশন & ভিশন</a>
+                                        <a href="{{route('about')}}" id="aboutUs" onmouseover="play()">পাইকারি মিশন & ভিশন</a>
                                     </li>
                                 </ul>
                             </div>
@@ -216,7 +216,7 @@
 
                                     {{-- <li><a href="#"><i class="flaticon-two-arrows"></i></a></li> --}}
                                     <li><a href="{{route('wish-list')}}"><i class="flaticon-heart"></i></a></li>
-                                    <li class="header-shop-cart"><a href="{{ route('cart') }}"><i
+                                    <li class="header-shop-cart"><a href="{{ route('cart') }}" onmouseover="play()"><i
                                                 class="flaticon-shopping-bag"></i><span
                                                 class="cart-count">{{ $cardBadge['data']['number_of_product'] }}</span></a>
                                         <span class="cart-total-price" style="width: 120px;">
@@ -243,7 +243,7 @@
 
                         <nav class="menu-box">
                             <div class="nav-logo">
-                                <a href="{{url('/')}}">
+                                <a href="{{url('/')}}" onmouseover="play()">
                                     <img src="@if($companyInfo) {{'storage/photo/'.$companyInfo->logo}} @endif"
                                         style="height:39.9px;background-image: cover;" alt="Logo">
                                 </a>
@@ -299,11 +299,11 @@
     <div class="social-links">
         <ul class="clearfix">
             {{-- <li><a href="#"><span class="fab fa-twitter"></span></a></li> --}}
-            <li><a href="{{$companyInfo->facebook_link}}" target="_blank"><span class="fab fa-facebook-square"
+            <li><a href="{{$companyInfo->facebook_link}}" target="_blank" onmouseover="play()"><span class="fab fa-facebook-square"
                         style="font-size: 30px;"></span></a></li>
             {{-- <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li> --}}
             {{-- <li><a href="#"><span class="fab fa-instagram"></span></a></li> --}}
-            <li><a href="{{$companyInfo->youtube_link}}" target="_blank"><span class="fab fa-youtube"
+            <li><a href="{{$companyInfo->youtube_link}}" target="_blank" onmouseover="play()"><span class="fab fa-youtube"
                         style="font-size: 30px;"></span></a>
             </li>
         </ul>
