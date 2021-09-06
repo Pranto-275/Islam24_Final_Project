@@ -369,7 +369,7 @@
         <div class="col-md-12">
             <center>
                 <a class="btn text-center btn-hover"
-                    href="{{route('search-category-wise')}}" onmouseover="play()">আরও পণ্য দেখুন</a>
+                    href="{{route('search-category-wise')}}">আরও পণ্য দেখুন</a>
             </center>
         </div>
     </div>
