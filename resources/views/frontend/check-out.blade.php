@@ -118,7 +118,7 @@
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
-                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;" onmouseover="play()"></i>
                     </a>
                     <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">কুইক চেকআউট</span>
                 </div>
@@ -483,14 +483,14 @@
                 <a href="{{route('terms-conditios')}}">terms
                     and conditions</a>
             </div>
-            <button class="btn btn-submit mt-2" type="submit" id="orderFinishCheckout">অর্ডার
+            <button class="btn btn-submit mt-2" type="submit" id="orderFinishCheckout" onmouseover="play()">অর্ডার
                 সম্পন্ন করুন</button>
             <br>
             <br>
         </div>
         <button class="btn btn-submit" type="submit"
             style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
-            id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
+            id="orderFinishCheckoutMobile" onmouseover="play()">অর্ডার সম্পন্ন করুন</button>
 
         </aside>
     </div>

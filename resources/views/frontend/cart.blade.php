@@ -153,7 +153,7 @@
                     <a href="{{ route('home') }}" class="float-left">
                         {{-- <i class="fas fa-backspace"
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
-                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;" onmouseover="play()"></i>
                     </a>
                     <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">শপিং ব্যাগ</span>
                 </div>
@@ -309,7 +309,7 @@
                     </span>
                 </li>
             </ul>
-            <button class="btn mb-3" id="orderFinishMobile">অর্ডার শেষ করুন</button>
+            <button class="btn mb-3" id="orderFinishMobile" onmouseover="play()">অর্ডার শেষ করুন</button>
         </div>
     </aside>
 </div>
@@ -318,7 +318,7 @@
 </section>
 <!-- shop-cart-area-end -->
 <button class="btn" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
-    id="orderFinish">অর্ডার শেষ করুন</button>
+    id="orderFinish" onmouseover="play()">অর্ডার শেষ করুন</button>
 </main>
 </form>
 @endsection
