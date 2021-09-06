@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Intervention\Image\Facades\Image;
 use Livewire\WithFileUploads;
 
 class Product extends Component
@@ -213,6 +214,8 @@ class Product extends Component
                 $QueryImage->is_active = 1;
                 $QueryImage->is_default = 1;
                 $QueryImage->save();
+                $pro_image = Image::make(public_path('storage/photo/'.$QueryImage->image))->fit(221, 179);
+                $pro_image->save();
             }
 
             if ($this->images) {

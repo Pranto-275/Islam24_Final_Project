@@ -2,6 +2,7 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
+
     <x-slot name="title">
         Chechout
     </x-slot>

@@ -98,26 +98,28 @@
         <div class="col-3 pt-1 text-center">
             {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
             <li class="header-shop-cart">
-                <a href="{{url('/')}}">
+                <a href="{{url('/')}}" onmouseover="play()">
                     <i class="fas fa-home" style="font-size: 20px;color: #ff5c00;"></i>
                 </a><br>
                 <span style="font-size:10px;font-weight:bold;color:#ff5c00;">PAIKARI</span>
         </div>
         <div class="col-3 pt-1 text-center">
             {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-            <li class="header-shop-cart"><a href="{{url('/')}}"><i class="fas fa-bullhorn text-dark"
-                        style="font-size: 20px;"></i></a><br>
+            <li class="header-shop-cart">
+                <a href="{{url('/')}}" onmouseover="play()"><i class="fas fa-bullhorn text-dark" style="font-size: 20px;"></i>
+                </a>
+                <br>
                 <span class="text-dark" style="font-size:10px; font-weight:bold;">ক্যাম্পেইন</span>
         </div>
         <div class="col-3 pt-1 text-center">
             {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-            <li class="header-shop-cart"><a href="{{ route('my-account') }}"><i class="fas fa-store-alt text-dark"
+            <li class="header-shop-cart"><a href="{{ route('my-account') }}" onmouseover="play()"><i class="fas fa-store-alt text-dark"
                         style="font-size: 20px;"></i></a><br>
                 <span class="text-dark" style="font-size:10px; font-weight:bold;">অর্ডার লিস্ট</span>
         </div>
         <div class="col-3 pt-1 text-center">
             {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
-            <li class="header-shop-cart"><a href="{{ route('cart') }}">
+            <li class="header-shop-cart"><a href="{{ route('cart') }}" onmouseover="play()">
                     <i class="fas fa-shopping-cart text-dark" style="font-size: 20px;"></i><span class="cart-count"
                         style="background-color: #ff0000;">{{ $cardBadge['data']['number_of_product'] }}</span></a><br>
                 <span style="font-size:10px; font-weight:bold;color: #ff0000;">শপিংব্যাগ</span>

@@ -176,7 +176,9 @@
                         data-product-price="{{ $productDetails->special_price }}"
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                         data-product-minimum-quantity="{{ $minimumQuantity }}"
+                        @if($productDetails->ProductImageFirst)
                         data-product-image="{{ asset('storage/photo/'.$productDetails->ProductImageFirst->image) }}"
+                        @endif
                         data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
                         @if($productDetails->in_stock=="Out of Stock")
                         Sold Out
@@ -410,12 +412,16 @@ alt=""></a>
             <div class="exclusive-item exclusive-item-three text-center mb-40">
                 <div class="exclusive-item-thumb">
                     <a href="{{route('product-details',['id'=>$product['id']])}}">
-                        <img @if($product['product_image_first'])
-                            src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @endif
-                            style="height: 190px;" alt="{{$product['name']}}">
-                        <img class="overlay-product-thumb" @if($product['product_image_last'])
+                        <img
+                            @if($product['product_image_first'])
+                               src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
+                            @else
+                                src="{{ asset('image-not-available.jpg')}}"
+                            @endif
+                            style="width: 100%;height: auto;" alt="{{$product['name']}}">
+                        {{-- <img class="overlay-product-thumb" @if($product['product_image_last'])
                             src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif
-                            style="height: 190px;" alt="{{$product['name']}}">
+                            style="width: 100%;height: auto;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
                     <span class="sd-meta" style="width:70px;">{{ intval($product['discount']) }}% ছাড়</span>
@@ -484,7 +490,9 @@ alt=""></a>
                         data-product-price="{{ $product['special_price'] }}"
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                         data-product-minimum-quantity="{{ $minimumQuantity }}"
-                        data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
+                        @if($product['product_image_first'])
+                           data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
+                        @endif
                         data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
                         Sold Out

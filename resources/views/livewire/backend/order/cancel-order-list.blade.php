@@ -85,11 +85,8 @@
                                                 <th>SL</th>
                                                 <th>Business Name</th>
                                                 <th>Order Date</th>
-                                                <th>Total Amount</th>
-                                                <th>Discount</th>
-                                                <th>Shipping Charge</th>
-                                                <th>Payable Amount</th>
-                                                {{-- <th>Status</th> --}}
+                                                <th>Total</th>
+                                                <th>Status</th>
                                                 <th colspan="2">Action</th>
                                             </tr>
                                         </thead>
@@ -109,21 +106,13 @@
                                                     {{$cancelOrder->Contact->business_name}}
                                                 </td>
                                                 <td>
-                                                    {{$cancelOrder->order_date}}
-                                                </td>
-
-                                                <td>
-                                                    {{$cancelOrder->total_amount}}
-                                                </td>
-
-                                                <td>
-                                                    {{$cancelOrder->discount}}
-                                                </td>
-                                                <td>
-                                                    {{$cancelOrder->shipping_charge}}
+                                                    {{date('d F Y', strtotime($cancelOrder->order_date))}}
                                                 </td>
                                                 <td>
                                                     {{$cancelOrder->payable_amount}}
+                                                </td>
+                                                <td>
+                                                    {{$cancelOrder->status}}
                                                 </td>
                                                 {{-- <td wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">

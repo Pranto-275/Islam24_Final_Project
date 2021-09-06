@@ -235,7 +235,7 @@
                                                     src="{{ asset('storage/photo/'.$product['product_image_first']['image'])}}"
                                                 @else
                                                     src="{{ asset('image-not-available.jpg')}}"
-                                                @endif style="height:200px;"
+                                                @endif style="width: 100%;height: auto;"
                                                 alt="{{$product['name']}}">
                                                 {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif style="height:200px;" alt="{{$product['name']}}"> --}}
                                             </a>

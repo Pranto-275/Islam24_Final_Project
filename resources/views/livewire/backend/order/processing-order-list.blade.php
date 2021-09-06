@@ -42,11 +42,8 @@
                                                 <th>SL</th>
                                                 <th>Business Name</th>
                                                 <th>Order Date</th>
-                                                <th>Total Amount</th>
-                                                <th>Discount</th>
-                                                <th>Shipping Charge</th>
-                                                <th>Payable Amount</th>
-                                                {{-- <th>Status</th> --}}
+                                                <th>Total</th>
+                                                <th>Status</th>
                                                 <th colspan="2">Action</th>
                                             </tr>
                                         </thead>
@@ -66,21 +63,13 @@
                                                     {{$processingOrder->Contact->business_name}}
                                                 </td>
                                                 <td>
-                                                    {{$processingOrder->order_date}}
-                                                </td>
-
-                                                <td>
-                                                    {{$processingOrder->total_amount}}
-                                                </td>
-
-                                                <td>
-                                                    {{$processingOrder->discount}}
-                                                </td>
-                                                <td>
-                                                    {{$processingOrder->shipping_charge}}
+                                                    {{date('d F Y', strtotime($processingOrder->order_date))}}
                                                 </td>
                                                 <td>
                                                     {{$processingOrder->payable_amount}}
+                                                </td>
+                                                <td>
+                                                    {{$processingOrder->status}}
                                                 </td>
                                                 {{-- <td wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">

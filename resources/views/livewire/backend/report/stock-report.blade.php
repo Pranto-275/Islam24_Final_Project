@@ -40,7 +40,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">Brand</label>
-                                <select class="form-control" wire:model.lazy="brand">
+                                <select class="form-control" wire:model.lazy="brand_id">
                                     <option value="">Select Brand</option>
                                     @foreach($brands as $brand)
                                     <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -53,9 +53,9 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="basicpill-lastname-input">Product</label>
-                                <select class="form-control" wire:model.lazy="product">
+                                <select class="form-control" wire:model.lazy="product_id">
                                 <option value="">Select Product</option>
-                                @foreach($products as $product)
+                                @foreach($product as $product)
                                 <option value="{{ $product->id }}">{{ $product->name }}</option>
                                 @endforeach
                                 </select>
@@ -69,7 +69,7 @@
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
-                    <div wire:ignore class="table-responsive">
+                    <div class="table-responsive">
                         <table id="datatable-buttons" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                             <tr>
@@ -97,7 +97,11 @@
                                     <td>
                                         {{$product->name}}
                                     </td>
-                                    <td>{{$product->SubSubCategory->name}}</td>
+                                    <td>
+                                        @if($product->SubSubCategory)
+                                          {{$product->SubSubCategory->name}}
+                                        @endif
+                                    </td>
                                     <td>
                                         {{$product->Brand->name}}
                                     </td>
