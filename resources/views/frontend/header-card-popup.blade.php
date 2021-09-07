@@ -5,13 +5,9 @@
     <li class="d-flex align-items-start" id="li_row_{{ $productId }}" style="margin-left: 0px !important;">
         <div class="cart-img">
             <a href="#">
-                <img
-                @if($product['Info']['image']!='blank-product-image.png')
-                  src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
-                @else
-                  src="{{ asset('image-not-available.jpg') }}"
-                @endif
-                 alt="">
+                <img @if($product['Info']['image']!='blank-product-image.png' )
+                    src="{{ asset('storage/photo/'.$product['Info']['image']) }}" @else
+                    src="{{ asset('image-not-available.jpg') }}" @endif alt="">
             </a>
         </div>
         <div class="cart-content">
@@ -54,7 +50,13 @@
 @endif
 <li>
     <div class="total-price">
-        <span class="f-left">Total:</span>
+        <span class="f-left">
+            @if($language)
+            {{$language->total_amount}}
+            @else
+            Total:
+            @endif
+        </span>
         <span class="f-right" id="total_mini_cart_amount">
             @if($currencySymbol)
             {{ $currencySymbol->symbol }}
@@ -65,8 +67,20 @@
 </li>
 <li>
     <div class="checkout-link">
-        <a class="btn-hover" href="{{ route('cart') }}">Shopping Cart</a>
-        <a class="red-color btn-hover" href="{{ route('check-out') }}">Checkout</a>
+        <a class="btn-hover" href="{{ route('cart') }}">
+            @if($language)
+            {{$language->shopping_cart}}
+            @else
+            Shopping Cart
+            @endif
+        </a>
+        <a class="red-color btn-hover" href="{{ route('check-out') }}">
+            @if($language)
+            {{$language->checkout}}
+            @else
+            Checkout
+            @endif
+        </a>
     </div>
 </li>
 

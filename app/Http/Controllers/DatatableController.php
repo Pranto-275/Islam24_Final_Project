@@ -23,6 +23,7 @@ use App\Models\Backend\Setting\ShippingCharge;
 use App\Models\Backend\Setting\Vat;
 use App\Models\Backend\Setting\Warehouse;
 use App\Models\Backend\Setting\BreakingNews;
+use App\Models\Backend\Setting\Language;
 use App\Models\Inventory\Category;
 use App\Models\Inventory\Currency;
 use App\Models\Inventory\DeliveryMethod;
@@ -32,6 +33,25 @@ use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
+    public function LanguageListTable(){
+        $Query = Language::query()->orderBy('id', 'desc');
+
+        $this->i = 1;
+
+        return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
+        ->addColumn('is_default', function ($data) {
+            return $data->is_default==1 ? 'Active' : 'Inactive';
+        })
+        ->addColumn('action', function ($data) {
+            return '<a class="btn btn-primary btn-sm" href="'.route('setting.manage-language', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="fas fa-tasks font-size-18"></i></a>
+                    <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
+        })
+        ->rawColumns(['action', 'is_active'])
+        ->toJSON();
+    }
     public function NewsListTable(){
         $Query = BreakingNews::query()->orderBy('id', 'desc');
 

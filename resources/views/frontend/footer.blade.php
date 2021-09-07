@@ -43,8 +43,24 @@
                         <div class="fw-link">
                             <ul>
                                 <li><a href="{{route('contact-us')}}">Help Center</a></li>
-                                <li><a href="{{route('return-policy')}}">Returns policy</a></li>
-                                <li><a href="{{route('contact-us')}}">Contact Us</a></li>
+                                <li>
+                                    <a href="{{route('return-policy')}}">
+                                        @if($language)
+                                        {{$language->return_policy}}
+                                        @else
+                                        Returns policy
+                                        @endif
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('contact-us')}}">
+                                        @if($language)
+                                        {{$language->contact_us}}
+                                        @else
+                                        Contact Us
+                                        @endif
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -56,9 +72,33 @@
                         </div>
                         <div class="fw-link">
                             <ul>
-                                <li><a href="{{route('privacy-policy')}}">Privacy Policy</a></li>
-                                <li><a href="{{route('terms-conditios')}}">Terms & Conditions</a></li>
-                                <li><a href="{{route('about')}}">About Us</a></li>
+                                <li>
+                                    <a href="{{route('privacy-policy')}}">
+                                        @if($language)
+                                        {{$language->privacy_policy}}
+                                        @else
+                                        Privacy Policy
+                                        @endif
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('terms-conditios')}}">
+                                        @if($language)
+                                        {{$language->terms_and_condition}}
+                                        @else
+                                        Terms & Conditions
+                                        @endif
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('about')}}">
+                                        @if($language)
+                                        {{$language->about_us}}
+                                        @else
+                                        About Us
+                                        @endif
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -70,7 +110,15 @@
                         </div>
                         <div class="fw-link">
                             <ul>
-                                <li><a href="#">My Account</a></li>
+                                <li>
+                                    <a href="{{route('my-account')}}">
+                                        @if($language)
+                                        {{$language->my_account}}
+                                        @else
+                                        My Account
+                                        @endif
+                                    </a>
+                                </li>
                                 <li><a href="#">Orders History</a></li>
                                 <li><a href="#">Order Tracking</a></li>
                             </ul>

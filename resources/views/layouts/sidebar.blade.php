@@ -69,6 +69,8 @@
                         <li><a href="{{route('setting.slider')}}">Slider</a></li>
                         <li><a href="{{route('setting.point-policy')}}">Point Policy</a></li>
                         <li><a href="{{route('setting.breaking-news')}}">Breaking News</a></li>
+                        <li><a href="{{route('setting.language')}}">Language</a></li>
+                        <li><a href="{{route('setting.manage-language')}}">Manage Language</a></li>
                     </ul>
                 </li>
 

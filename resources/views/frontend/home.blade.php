@@ -51,7 +51,13 @@
         <section class="exclusive-collection pt-20 pb-20">
             {{-- Start Top Category Show Slider --}}
             @if(count($topFourCategories)>0)
-            <h5 class="text-center">ক্যাটাগরি সমূহ</h5>
+            <h5 class="text-center">
+                @if($language)
+                {{$language->product_categories}}
+                @else
+                ক্যাটাগরি সমূহ
+                @endif
+            </h5>
             @endif
             <hr class="mt-0 pt-0">
             <div class="container">
@@ -142,7 +148,13 @@
         <div class="col-lg-8">
             <div class="section-title text-center">
                 {{-- <span class="sub-title">exclusive collection</span> --}}
-                <h2 class="title">নতুন ইলেকট্রনিক্স পণ্য</h2>
+                <h2 class="title">
+                    @if($language)
+                    {{$language->new_product}}
+                    @else
+                    নতুন ইলেকট্রনিক্স পণ্য
+                    @endif
+                </h2>
             </div>
         </div>
     </div>
@@ -155,10 +167,8 @@
                 <div class="exclusive-item-thumb">
                     <a href="{{route('product-details',['id'=>$product['id']])}}">
                         <img @if($product['product_image_first'])
-                            src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
-                            @else
-                            src="{{ asset('image-not-available.jpg') }}"
-                            @endif style="width: 100%;height: auto;"
+                            src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @else
+                            src="{{ asset('image-not-available.jpg') }}" @endif style="width: 100%;height: auto;"
                             alt="{{$product['name']}}">
                         {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}"
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
@@ -264,7 +274,13 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="section-title text-center mb-5">
-                <h2 class="title">সর্বাধিক বিক্রিত পণ্য</h2>
+                <h2 class="title">
+                    @if($language)
+                    {{$language->best_selling_product}}
+                    @else
+                    সর্বাধিক বিক্রিত পণ্য
+                    @endif
+                </h2>
             </div>
         </div>
     </div>
@@ -368,8 +384,13 @@
         @endif
         <div class="col-md-12">
             <center>
-                <a class="btn text-center btn-hover"
-                    href="{{route('search-category-wise')}}">আরও পণ্য দেখুন</a>
+                <a class="btn text-center btn-hover" href="{{route('search-category-wise')}}">
+                    @if($language)
+                    {{$language->more_products}}
+                    @else
+                    আরও পণ্য দেখুন
+                    @endif
+                </a>
             </center>
         </div>
     </div>

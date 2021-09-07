@@ -9,7 +9,7 @@ use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\Setting\CompanyInfo;
 use App\Models\Backend\Setting\InvoiceSetting;
 use App\Models\Backend\Setting\BreakingNews;
-use App\Models\Backend\Setting\MultiLanguage;
+use App\Models\Backend\Setting\Language;
 use App\Models\Inventory\Currency;
 use App\Models\Setting\Slider;
 use App\Models\Backend\ProductInfo\Brand;
@@ -40,10 +40,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //Categories
         View::composer('*', function ($view) {
-            // $view->with('languages', MultiLanguage::get());
+            $view->with('language', Language::whereIsDefault(1)->first());
             $view->with('categories', Category::orderBy('id', 'desc')->get());
-            // $view->with('skipTopTencategories', Category::orderBy('id', 'desc')->skip(10)->get());
-            // $view->with('topCategories', Category::whereTopShow(1)->get());
             $view->with('topFourCategories', Category::take(4)->get());
             $view->with('topCategories', Category::skip(4)->take(200)->get());
             $view->with('categoryImageLast', Category::whereTopShow(1)->orderBy('id', 'desc')->first());
@@ -52,9 +50,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('newProducts', Product::whereFeatured('New Product')->whereIsActive(1)->orderBy('id', 'desc')->take(3)->get());
             $view->with('brands', Brand::get());
-            // $view->with('products', Product::orderBy('id', 'desc')->get());
             $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
-            $view->with('sliderImageLast', Slider::orderBy('id','desc')->whereIsActive(1)->first());
+            $view->with('sliderImageLast', Slider::orderBy('id', 'desc')->whereIsActive(1)->first());
             $view->with('companyInfo', CompanyInfo::first());
             $view->with('InvoiceSetting', InvoiceSetting::whereCreatedBy(Auth::id())->first());
             $view->with('currencySymbol', Currency::whereIsActive(1)->first());
