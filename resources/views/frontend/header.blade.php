@@ -140,14 +140,7 @@
 
                 </li>
                 @endif
-                <li>
-                    <select class="form-control">
-                        @foreach ($languages as $language)
-                          <option value="{{$language->id}}">{{$language->language}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                </li>
+
                 </ul>
             </div>
         </div>

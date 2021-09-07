@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Categories
         View::composer('*', function ($view) {
-            $view->with('languages', MultiLanguage::get());
+            // $view->with('languages', MultiLanguage::get());
             $view->with('categories', Category::orderBy('id', 'desc')->get());
             // $view->with('skipTopTencategories', Category::orderBy('id', 'desc')->skip(10)->get());
             // $view->with('topCategories', Category::whereTopShow(1)->get());
