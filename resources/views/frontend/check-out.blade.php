@@ -463,40 +463,19 @@
                 <label class="mb-3" for="customCheck4" style="color: black;">ক্যাশ অন
                     ডেলিভারি</label>
             </div>
-
-            {{-- <div class="paypal-method">
-                                    <div class="paypal-method-flex">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                            <label class="custom-control-label" for="customCheck5">Nagad</label>
-                                        </div>
-                                        <div class="paypal-logo"><img src="img/images/paypal_logo.png" alt=""></div>
-                                    </div>
-                                    <p>Pay via PayPal; you can pay with your credit
-                                    card if you don’t have a PayPal account</p>
-                                </div> --}}
-            {{-- <div class="paypal-method">
-                                    <div class="paypal-method-flex">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                            <label class="custom-control-label" for="customCheck6">Payments on Card</label>
-                                        </div>
-                                        <div class="paypal-logo"><img src="img/images/payment_card.png" alt=""></div>
-                                    </div>
-                                </div> --}}
             <div class="payment-terms py-0 my-0" style="color: black; font-size: 12px;">
                 * I have read and agree to the website
                 <a href="{{route('terms-conditios')}}">terms
                     and conditions</a>
             </div>
-            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishChecko>অর্ডার
+            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout">অর্ডার
                 সম্পন্ন করুন</button>
             <br>
             <br>
         </div>
         <button class="btn btn-submit btn-hover" type="submit"
             style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
-            id="orderFinishCheckout>অর্ডার সম্পন্ন করুন</button>
+            id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
 
         </aside>
     </div>
