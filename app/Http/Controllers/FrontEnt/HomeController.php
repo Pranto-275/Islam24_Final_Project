@@ -139,7 +139,7 @@ class HomeController extends Controller
             return view('frontend.my-account', [
                 'contacts' => Contact::whereUserId(Auth::user()->id)->get(),
                 'contact' => Contact::whereUserId(Auth::user()->id)->first(),
-                'Districts' => District::orderBy('name', 'asc')->get(),
+                // 'Districts' => District::orderBy('name', 'asc')->get(),
             ]);
         } else {
             return view('frontend.sign-in');
@@ -314,7 +314,11 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
 
-        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'Divisions' => Division::all(), 'Districts' => District::orderBy('name', 'asc')->get(), 'Upazilas' => Upazila::all()]);
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(),
+        'Divisions' => Division::all(),
+        //  'Districts' => District::orderBy('name', 'asc')->get(),
+        // 'Upazilas' => Upazila::all()
+    ]);
     }
 
     public function messages(Request $request)
