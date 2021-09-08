@@ -70,6 +70,23 @@
                             </div>
                         </div><!-- end col-->
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">From Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="from_date" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">To Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="to_date" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -79,7 +96,7 @@
                             <div class="table-responsive">
                                 <div class="table-responsive">
                                     <table class="table table-centered mb-0 table-nowrap table-responsive-stack"
-                                    id="tableOne">
+                                        id="tableOne">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>SL</th>
@@ -95,7 +112,7 @@
                                             $i=0;
                                             @endphp
 
-                                            @foreach ($cancelOrders as $cancelOrder)
+                                            @foreach ($this->dateFilter($cancelOrders) as $cancelOrder)
 
                                             <tr>
                                                 <td>
@@ -127,20 +144,23 @@
                                                     <a class="btn btn-info btn-sm btn-block mb-1"
                                                         href="{{ route('order.order-invoice',['id'=>$cancelOrder->id]) }}"><i
                                                             class="fas fa-eye font-size-18"></i></a>
-                                                <div wire:ignore>
-                                                    @if($cancelOrder->status!='delivered')
-                                                    <select class="form-control"
-                                                        style="border-radius: 15px;background-color:rgb(229, 240, 219);"
-                                                        wire:model.lazy="status" wire:change="OrderStatus">
-                                                        <option value="">Status</option>
-                                                        <option value="processing {{$cancelOrder->id}}">Processing
-                                                        </option>
-                                                        <option value="shipped {{$cancelOrder->id}}">Shipped</option>
-                                                        <option value="delivered {{$cancelOrder->id}}">Delivered</option>
-                                                        <option value="returned {{$cancelOrder->id}}">Returned</option>
-                                                    </select>
-                                                    @endif
-                                                </div>
+                                                    <div wire:ignore>
+                                                        @if($cancelOrder->status!='delivered')
+                                                        <select class="form-control"
+                                                            style="border-radius: 15px;background-color:rgb(229, 240, 219);"
+                                                            wire:model.lazy="status" wire:change="OrderStatus">
+                                                            <option value="">Status</option>
+                                                            <option value="processing {{$cancelOrder->id}}">Processing
+                                                            </option>
+                                                            <option value="shipped {{$cancelOrder->id}}">Shipped
+                                                            </option>
+                                                            <option value="delivered {{$cancelOrder->id}}">Delivered
+                                                            </option>
+                                                            <option value="returned {{$cancelOrder->id}}">Returned
+                                                            </option>
+                                                        </select>
+                                                        @endif
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach

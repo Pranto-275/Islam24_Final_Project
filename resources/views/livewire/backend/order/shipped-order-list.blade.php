@@ -21,12 +21,29 @@
                             <div class="text-sm-right">
                                 <a href="{{ route('order.order-list') }}">
                                     <button type="button"
-                                            class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
+                                        class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"><i
                                             class="mdi mdi-plus mr-1"></i>Order List
                                     </button>
                                 </a>
                             </div>
                         </div><!-- end col-->
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">From Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="from_date" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">To Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="to_date" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -38,67 +55,72 @@
                                 <div class="table-responsive">
                                     <table class="table table-centered mb-0 table-nowrap">
                                         <thead class="thead-light">
-                                        <tr>
-                                            <th>SL</th>
-                                            <th>Business Name</th>
-                                            <th>Order Date</th>
-                                            <th>Total</th>
-                                            <th>Status</th>
-                                            <th colspan="2">Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th>SL</th>
+                                                <th>Business Name</th>
+                                                <th>Order Date</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th colspan="2">Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        @php
+                                            @php
                                             $i=0;
-                                        @endphp
+                                            @endphp
 
-                                         @foreach ($shippedOrders as $shippedOrder)
+                                            @foreach ($this->dateFilter($shippedOrders) as $shippedOrder)
 
-                                        <tr>
-                                            <td>
-                                                <a href="javascript: void(0);" class="text-body font-weight-bold">{{ ++$i }}</a>
-                                            </td>
-                                            <td>
-                                                @if($shippedOrder->Contact)
-                                                {{$shippedOrder->Contact->business_name}}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                {{date('d F Y', strtotime($shippedOrder->order_date))}}
-                                            </td>
-                                            <td>
-                                                {{$shippedOrder->payable_amount}}
-                                            </td>
-                                            <td>
-                                                {{$shippedOrder->status}}
-                                            </td>
-                                            {{-- <td wire:ignore>
+                                            <tr>
+                                                <td>
+                                                    <a href="javascript: void(0);"
+                                                        class="text-body font-weight-bold">{{ ++$i }}</a>
+                                                </td>
+                                                <td>
+                                                    @if($shippedOrder->Contact)
+                                                    {{$shippedOrder->Contact->business_name}}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    {{date('d F Y', strtotime($shippedOrder->order_date))}}
+                                                </td>
+                                                <td>
+                                                    {{$shippedOrder->payable_amount}}
+                                                </td>
+                                                <td>
+                                                    {{$shippedOrder->status}}
+                                                </td>
+                                                {{-- <td wire:ignore>
                                                 <select class="form-control" style="border-radius: 15px;background-color:rgb(229, 240, 219);" wire:model.lazy="status" wire:change="OrderStatus">
                                                      <option value="">Status</option>
                                                      <option value="approved {{$pendingOrder->id}}">Approved</option>
-                                                     <option value="cancel {{$pendingOrder->id}}">Cancel</option>
+                                                <option value="cancel {{$pendingOrder->id}}">Cancel</option>
                                                 </select>
-                                            </td> --}}
-                                            <td>
-                                                <a class="btn btn-info btn-sm btn-block mb-1" href="{{ route('order.order-invoice',['id'=>$shippedOrder->id]) }}"><i class="fas fa-eye font-size-18"></i></a>
-                                                <div wire:ignore>
-                                                    @if($shippedOrder->status!='delivered')
-                                                    <select class="form-control"
-                                                        style="border-radius: 15px;background-color:rgb(229, 240, 219);"
-                                                        wire:model.lazy="status" wire:change="OrderStatus">
-                                                        <option value="">Status</option>
-                                                        <option value="processing {{$shippedOrder->id}}">Processing
-                                                        </option>
-                                                        <option value="delivered {{$shippedOrder->id}}">Delivered</option>
-                                                        <option value="returned {{$shippedOrder->id}}">Returned
-                                                        </option>
-                                                        <option value="cancelled {{$shippedOrder->id}}">Cancelled</option>
-                                                    </select>
-                                                    @endif
-                                                </div>
-                                            </td>
-                                        </tr>
-                                         @endforeach
+                                                </td> --}}
+                                                <td>
+                                                    <a class="btn btn-info btn-sm btn-block mb-1"
+                                                        href="{{ route('order.order-invoice',['id'=>$shippedOrder->id]) }}"><i
+                                                            class="fas fa-eye font-size-18"></i></a>
+                                                    <div wire:ignore>
+                                                        @if($shippedOrder->status!='delivered')
+                                                        <select class="form-control"
+                                                            style="border-radius: 15px;background-color:rgb(229, 240, 219);"
+                                                            wire:model.lazy="status" wire:change="OrderStatus">
+                                                            <option value="">Status</option>
+                                                            <option value="processing {{$shippedOrder->id}}">Processing
+                                                            </option>
+                                                            <option value="delivered {{$shippedOrder->id}}">Delivered
+                                                            </option>
+                                                            <option value="returned {{$shippedOrder->id}}">Returned
+                                                            </option>
+                                                            <option value="cancelled {{$shippedOrder->id}}">Cancelled
+                                                            </option>
+                                                        </select>
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -109,10 +131,8 @@
             </div>
         </div>
 
-      {{--Invoice Modal goes here--}}
+        {{--Invoice Modal goes here--}}
 
         @push('scripts')
 
         @endpush
-
-

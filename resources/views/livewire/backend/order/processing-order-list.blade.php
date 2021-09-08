@@ -28,6 +28,23 @@
                             </div>
                         </div><!-- end col-->
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">From Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="from_date" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">To Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="to_date" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -52,7 +69,7 @@
                                             $i=0;
                                             @endphp
 
-                                            @foreach ($processingOrders as $processingOrder)
+                                            @foreach ($this->dateFilter($processingOrders) as $processingOrder)
 
                                             <tr>
                                                 <td>
@@ -61,7 +78,7 @@
                                                 </td>
                                                 <td>
                                                     @if($processingOrder->Contact)
-                                                        {{$processingOrder->Contact->business_name}}
+                                                    {{$processingOrder->Contact->business_name}}
                                                     @endif
                                                 </td>
                                                 <td>

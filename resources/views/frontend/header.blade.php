@@ -52,9 +52,13 @@
             #contact-us {
                 display: none;
             }
-        }.btn-hover{
-            background: #ff6000;color:white;
         }
+
+        .btn-hover {
+            background: #ff6000;
+            color: white;
+        }
+
         .btn-hover:hover {
             font-family: 'Nunito', sans-serif;
             /* font-size: 22px; */
@@ -133,9 +137,21 @@
 
 
 
-                    <a href="{{route('register')}}"><i class="flaticon-user"></i>Sign Up</a>
+                    <a href="{{route('register')}}"><i class="flaticon-user"></i>
+                        @if($language)
+                        {{ $language->sign_up }}
+                        @else
+                        Sign Up
+                        @endif
+                    </a>
                     <span>Or</span>
-                    <a href="{{route('sign-in')}}">Sign In</a>
+                    <a href="{{route('sign-in')}}">
+                        @if($language)
+                        {{ $language->sign_in }}
+                        @else
+                        Sign In
+                        @endif
+                    </a>
 
 
                 </li>
@@ -164,8 +180,8 @@
                                     aria-label="Text input with dropdown button" placeholder="পন্য খুঁজুন এখানে..">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
-                                        style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"
-                                    ><i class="fa fa-search text-light px-1"></i></button>
+                                        style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
+                                            class="fa fa-search text-light px-1"></i></button>
                                 </div>
                             </div>
                         </center>
@@ -174,8 +190,13 @@
                     {{-- Start Breaking News --}}
                     <div id="breakingNews" class="news blue my-1 mx-0 px-0"
                         style="height: 38px;border-style: solid;border-color: brown">
-                        <span class="pt-1 px-1"
-                            style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+                        <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">
+                            @if($language)
+                            {{$language->beaking_news}}
+                            @else
+                            ঘোষণা
+                            @endif
+                        </span>
                         <span class="text2">
                             <marquee scrollamount="5">
                                 @foreach ($BreakingNews as $news)
@@ -196,37 +217,95 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{url('/')}}">হোম</a></li>
+                                    <li class="active">
+                                        <a href="{{url('/')}}">
+                                            @if($language)
+                                            {{$language->home}}
+                                            @else
+                                            হোম
+                                            @endif
+                                        </a>
+                                    </li>
                                     @if(Auth::user())
                                     @if(Auth::user()->hasAnyRole('customer'))
                                     <li>
-                                        <a href="{{ route('my-account') }}">আমার একাউন্ট</a>
+                                        <a href="{{ route('my-account') }}">
+                                            @if($language)
+                                            {{$language->my_account}}
+                                            @else
+                                            আমার একাউন্ট
+                                            @endif
+                                        </a>
                                     </li>
                                     @endif
                                     @endif
-                                    <li><a href="{{url('/')}}">প্রডাক্ট ক্যাটাগরি সমূহ</a></li>
-                                    <li><a href="{{route('search-category-wise')}}">শপ পেইজ</a>
+                                    <li>
+                                        <a href="{{url('/')}}">
+                                            @if($language)
+                                            {{$language->more_categories}}
+                                            @else
+                                            প্রডাক্ট ক্যাটাগরি সমূহ
+                                            @endif
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('search-category-wise')}}">
+                                            @if($language)
+                                            {{$language->shop_page}}
+                                            @else
+                                            শপ পেইজ
+                                            @endif
+                                        </a>
                                     </li>
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
-                                    <li><a href="{{route('contact-us')}}">অভিযোগ/মতামত</a></li>
-                                    <li><a href="{{route('contact-us')}}" id="contact-us"
-                                        >যোগাযোগ</a></li>
+                                    <li>
+                                        <a href="{{route('contact-us')}}">
+                                            @if($language)
+                                            {{$language->complain_or_opinion}}
+                                            @else
+                                            অভিযোগ/মতামত
+                                            @endif
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('contact-us')}}" id="contact-us">
+                                            @if($language)
+                                            {{$language->communication}}
+                                            @else
+                                            যোগাযোগ
+                                            @endif
+                                        </a>
+                                    </li>
                                     @if (!Auth::user())
-                                    <li id="sign-in"><a href="{{route('register')}}"
-                                        >রেজিষ্ট্রেশন</a></li>
+                                    <li id="sign-in"><a href="{{route('register')}}">রেজিষ্ট্রেশন</a></li>
                                     <li id="sign-up"><a href="{{route('sign-in')}}">লগইন</a></li>
                                     @endif
                                     <li>
-                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy"
-                                        >প্রাইভেসি পলিসি</a>
+                                        <a href="{{route('privacy-policy')}}" id="privacyPolicy">
+                                            @if($language)
+                                            {{$language->privacy_policy}}
+                                            @else
+                                            প্রাইভেসি পলিসি
+                                            @endif
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="{{route('terms-conditios')}}" id="termCondition"
-                                        >শর্তাবলী</a>
+                                        <a href="{{route('terms-conditios')}}" id="termCondition">
+                                            @if($language)
+                                            {{$language->terms_and_condition}}
+                                            @else
+                                            শর্তাবলী
+                                            @endif
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="{{route('about')}}" id="aboutUs">পাইকারি মিশন &
-                                            ভিশন</a>
+                                        <a href="{{route('about')}}" id="aboutUs">
+                                            @if($language)
+                                            {{$language->mission_and_vision}}
+                                            @else
+                                            পাইকারি মিশন & ভিশন
+                                            @endif
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -318,12 +397,12 @@
     <div class="social-links">
         <ul class="clearfix">
             {{-- <li><a href="#"><span class="fab fa-twitter"></span></a></li> --}}
-            <li><a href="{{$companyInfo->facebook_link}}" target="_blank"><span
-                        class="fab fa-facebook-square" style="font-size: 30px;"></span></a></li>
+            <li><a href="{{$companyInfo->facebook_link}}" target="_blank"><span class="fab fa-facebook-square"
+                        style="font-size: 30px;"></span></a></li>
             {{-- <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li> --}}
             {{-- <li><a href="#"><span class="fab fa-instagram"></span></a></li> --}}
-            <li><a href="{{$companyInfo->youtube_link}}" target="_blank"><span
-                        class="fab fa-youtube" style="font-size: 30px;"></span></a>
+            <li><a href="{{$companyInfo->youtube_link}}" target="_blank"><span class="fab fa-youtube"
+                        style="font-size: 30px;"></span></a>
             </li>
         </ul>
     </div>
@@ -341,7 +420,13 @@
             <div class="row align-items-center px-0">
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
-                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>মেন্যু</a>
+                        <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>
+                            @if($language)
+                            {{$language->menu}}
+                            @else
+                            মেন্যু
+                            @endif
+                        </a>
                         <ul class="category-menu" style="z-index: 3;">
                             @foreach ($categories as $category)
                             <li class="has-dropdown">
@@ -387,7 +472,14 @@
                                         </a></li>
                                 </ul>
                             </li>
-                            <li class="more_categories">More Categories<i class="fas fa-angle-down"></i></li>
+                            <li class="more_categories">
+                                @if($language)
+                                {{ $language->more_categories }}
+                                @else
+                                More Categories
+                                @endif
+                                <i class="fas fa-angle-down"></i>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -436,7 +528,13 @@
             </span>
         </div> --}}
         <div id="breakingNews1" class="news blue my-1" style="height: 38px;border-style: solid;border-color: brown">
-            <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">ঘোষণা</span>
+            <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">
+                @if($language)
+                {{$language->beaking_news}}
+                @else
+                ঘোষণা
+                @endif
+            </span>
             <span class="text1">
                 <marquee scrollamount="5">
                     @foreach ($BreakingNews as $news)

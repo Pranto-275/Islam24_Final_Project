@@ -57,6 +57,8 @@ use App\Http\Livewire\Backend\Setting\ShippingCharge;
 use App\Http\Livewire\Backend\Setting\Slider;
 use App\Http\Livewire\Backend\Setting\Vat;
 use App\Http\Livewire\Backend\Setting\Warehouse;
+use App\Http\Livewire\Backend\Setting\Language;
+use App\Http\Livewire\Backend\Setting\ManageLanguage;
 use App\Http\Livewire\Backend\ContactUs\Message;
 use App\Http\Livewire\Backend\Transaction\CustomerPayment;
 use App\Http\Livewire\Backend\Transaction\CustomerPaymentReport;
@@ -80,7 +82,7 @@ use App\Http\Livewire\Frontend\LogIn;
 use App\Http\Livewire\Frontend\TermsConditios;
 use App\Http\Livewire\Frontend\Wishlist;
 use App\Http\Livewire\Inventory\DelieveryMethod;
-use App\Http\Livewire\Inventory\Language;
+// use App\Http\Livewire\Inventory\Language;
 use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
@@ -166,7 +168,7 @@ Route::group(['middleware' => ['role:admin|user']], function () {
         Route::group(['prefix' => 'inventory', 'as' => 'inventory.'], function () {
             Route::get('category', Category::class)->name('category');
             Route::get('currency', Currency::class)->name('currency');
-            Route::get('language', Language::class)->name('language');
+            // Route::get('language', Language::class)->name('language');
             Route::get('delivery-method', DelieveryMethod::class)->name('delivery-method');
             Route::get('ware-house', WareHouse::class)->name('ware-house');
             Route::get('purchase/{id?}', Purchase::class)->name('purchase');
@@ -210,6 +212,8 @@ Route::group(['middleware' => ['role:admin|user']], function () {
             Route::get('slider', Slider::class)->name('slider');
             Route::get('point-policy', PointPolicy::class)->name('point-policy');
             Route::get('breaking-news', BreakingNews::class)->name('breaking-news');
+            Route::get('language', Language::class)->name('language');
+            Route::get('manage-language/{id?}', ManageLanguage::class)->name('manage-language');
         });
 
         Route::group(['prefix' => 'order',  'as' => 'order.'], function () {
@@ -293,6 +297,8 @@ Route::group(['middleware' => ['role:admin|user']], function () {
             Route::get('purchase_list', [DatatableController::class, 'PurchaseListTable'])->name('purchase_list');
             Route::get('sale_list', [DatatableController::class, 'SaleListTable'])->name('sale_list');
             Route::get('news_list', [DatatableController::class, 'NewsListTable'])->name('news_list');
+            Route::get('language_list', [DatatableController::class, 'LanguageListTable'])->name('language_list');
+            Route::get('manage_language_list', [DatatableController::class, 'LanguageListTable'])->name('manage_language_list');
         });
     });
 });

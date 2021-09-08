@@ -70,6 +70,38 @@
                             </div>
                         </div><!-- end col-->
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">From Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="from_date" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">To Date</label>
+                                <input type="date" class="form-control" wire:model.debounce.150ms="to_date" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="basicpill-firstname-input">Select Supplier</label>
+
+                                <select class="form-control" placeholder="Customer" wire:model.lazy="order_status">
+                                    <option value="">Status</option>
+                                    <option value="processing">Processing
+                                    </option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="returned">Returned</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -98,7 +130,7 @@
                                             $i=0;
                                             @endphp
 
-                                            @foreach ($orders as $order)
+                                            @foreach ($this->dateFilter($orders) as $order)
 
                                             <tr>
                                                 <td>
