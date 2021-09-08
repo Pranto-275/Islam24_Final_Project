@@ -41,13 +41,13 @@
                                     @csrf
                                     <div class="image-upload">
                                         <label for="file-input">
-                                            <i class="fas fa-camera font-size-large"></i>
+                                            <i style="font-size: 30px;" class="fas fa-camera"></i>
                                         </label>
 
                                         <input id="file-input" name="profile_photo_path" type="file" />
                                     </div>
-                                    <button class="mb-1 mt-0 py-1 px-2" type="submit" id="profile-submit-button"
-                                        style="border-radius: 80%; border: 1px solid red;font-size:12px;color: red;">Save</button>
+                                    <button class="mb-1 mt-0 py-2 px-3" type="submit" id="profile-submit-button"
+                                        style="border-radius: 80%; border: 1px solid red;font-size:14px;color: red;">Save</button>
                                 </form>
                                 {{-- End Profile Photo Change --}}
                             </center>
@@ -271,8 +271,6 @@
                                 <td>
                                     <a href="{{ route('order-details', ['id'=>$order->id]) }}" class="btn btn-info" style="background-color: #ff5c00;;margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;font-weight:bold;"><i class="fa fa-eye font-size-18" aria-hidden="true"></i></a>
                                 </td>
-                                {{-- <td>{{$order->shipping_charge}}</td>
-                                <td>{{$order->payable_amount}}</td> --}}
                             </tr>
                             @endforeach
 
