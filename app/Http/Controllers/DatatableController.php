@@ -46,7 +46,8 @@ class DatatableController extends Controller
             return $data->is_default==1 ? 'Active' : 'Inactive';
         })
         ->addColumn('action', function ($data) {
-            return '<a class="btn btn-primary btn-sm" href="'.route('setting.manage-language', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="fas fa-tasks font-size-18"></i></a>
+            return '<a class="btn btn-info btn-sm" href="'.route('setting.manage-language', ['id' => $data->id]).'" data-id="'.$data->id.'"><i class="fas fa-tasks font-size-18"></i></a>
+            <button class="btn btn-primary btn-sm" onclick="callEdit('.$data->id.')"><i class="bx bx-edit font-size-18"></i></button>
                     <button class="btn btn-danger btn-sm" onclick="callDelete('.$data->id.')"><i class="bx bx-window-close font-size-18"></i></button>';
         })
         ->rawColumns(['action', 'is_active'])

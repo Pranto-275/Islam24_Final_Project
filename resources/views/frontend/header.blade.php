@@ -472,7 +472,14 @@
                                         </a></li>
                                 </ul>
                             </li>
-                            <li class="more_categories">More Categories<i class="fas fa-angle-down"></i></li>
+                            <li class="more_categories">
+                                @if($language)
+                                {{ $language->more_categories }}
+                                @else
+                                More Categories
+                                @endif
+                                <i class="fas fa-angle-down"></i>
+                            </li>
                         </ul>
                     </div>
                 </div>

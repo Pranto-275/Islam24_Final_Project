@@ -29,7 +29,7 @@ class ManageLanguage extends Component
     public $menu;
     public $product_search;
     public $beaking_news;
-    public $total_amount;
+    public $total;
     public $more_categories;
     public $more_products;
     public $is_default;
@@ -59,7 +59,7 @@ class ManageLanguage extends Component
         $this->menu = $QueryUpdate->menu;
         $this->product_search = $QueryUpdate->product_search;
         $this->beaking_news = $QueryUpdate->beaking_news;
-        $this->total_amount = $QueryUpdate->total_amount;
+        $this->total = $QueryUpdate->total;
         $this->more_categories = $QueryUpdate->more_categories;
         $this->more_products = $QueryUpdate->more_products;
         $this->is_default = $QueryUpdate->is_default;
@@ -96,7 +96,7 @@ class ManageLanguage extends Component
         $Query->menu = $this->menu;
         $Query->product_search = $this->product_search;
         $Query->beaking_news = $this->beaking_news;
-        $Query->total_amount = $this->total_amount;
+        $Query->total = $this->total;
         $Query->more_categories = $this->more_categories;
         $Query->more_products = $this->more_products;
         if ($this->is_default) {

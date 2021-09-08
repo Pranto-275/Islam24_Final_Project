@@ -88,10 +88,6 @@
                                                         id="complain_or_opinion" placeholder="Complain/Opinion">
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row mx-md-1" style="background-color: #bedac2;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="communication">Communication</label>
@@ -120,6 +116,10 @@
                                                         name="privacy_policy" id="privacy_policy" placeholder="Privacy Policy">
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row mx-md-1" style="background-color: #bedac2;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="terms_and_condition">Terms And Condition</label>
@@ -150,10 +150,6 @@
                                                         name="my_account" id="my_account" placeholder="My Account">
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row" style="background-color: #bedac2;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="shopping_cart">Shopping Cart</label>
@@ -192,8 +188,15 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="total_amount">Total</label>
-                                                    <input type="text" class="form-control" wire:model.lazy="total_amount"
-                                                        name="total_amount" id="total_amount" placeholder="Total">
+                                                    <input type="text" class="form-control" wire:model.lazy="total"
+                                                        name="total" id="total" placeholder="Total">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="total_amount">Sub Total</label>
+                                                    <input type="text" class="form-control" wire:model.lazy="total"
+                                                        name="total" id="total" placeholder="Total">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -211,6 +214,10 @@
                                                         name="more_products" id="more_products" placeholder="More Products">
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row" style="background-color: #bedac2;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <input type="checkbox" name="is_default" wire:model.lazy="is_default">
