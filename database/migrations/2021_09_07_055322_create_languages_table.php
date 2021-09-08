@@ -40,6 +40,8 @@ class CreateLanguagesTable extends Migration
             $table->string('discount')->nullable();
             $table->string('more_categories')->nullable();
             $table->string('more_products')->nullable();
+            $table->string('shopping_cart')->nullable();
+            $table->string('checkout')->nullable();
             $table->string('shopping_cart_button_text')->nullable();
             $table->string('checkout_button_text')->nullable();
             $table->string('login_button_text')->nullable();
