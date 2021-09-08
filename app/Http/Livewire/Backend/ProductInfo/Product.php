@@ -18,8 +18,8 @@ use App\Models\Backend\Setting\Warehouse;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use Intervention\Image\Facades\Image;
+use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Product extends Component
@@ -123,10 +123,12 @@ class Product extends Component
         // Product Code
         $this->code = 'P'.floor(time() - 999999999);
     }
+
     public function removeMe($index)
     {
-            array_splice($this->images, $index, 1);
+        array_splice($this->images, $index, 1);
     }
+
     public function imageDelete($id)
     {
         //    dd($id);
@@ -214,7 +216,7 @@ class Product extends Component
                 $QueryImage->is_active = 1;
                 $QueryImage->is_default = 1;
                 $QueryImage->save();
-                $pro_image = Image::make(public_path('storage/photo/'.$QueryImage->image))->fit(221, 179);
+                $pro_image = Image::make(public_path('storage/photo/'.$QueryImage->image));
                 $pro_image->save();
             }
 
