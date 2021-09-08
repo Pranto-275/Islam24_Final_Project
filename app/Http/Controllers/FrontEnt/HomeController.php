@@ -50,13 +50,24 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
-
+    public function OrderDetail($id=NULL){
+        if (Auth::user()) {
+            return view('frontend.order-details', [
+                'orderDetails'=>OrderDetail::whereOrderId($id)->get(),
+                'order'=>Order::whereId($id)->first(),
+            ]);
+        } else {
+            return view('frontend.sign-in');
+        }
+    }
     public function SearchUpazila(Request $request)
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
-        $upazillas = DB::table('upazilas')->where('district_id', '=', 1)->get();
+        // $upazillas = DB::table('upazilas')->where('district_id', '=', 1)->get();
 
-        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'zillas' => DB::table('districts')->get(), 'upazillas' => $upazillas]);
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(),
+        // 'zillas' => DB::table('districts')->get(), 'upazillas' => $upazillas
+    ]);
     }
 
     public function EditShippingAddress(Request $request)
@@ -139,7 +150,7 @@ class HomeController extends Controller
             return view('frontend.my-account', [
                 'contacts' => Contact::whereUserId(Auth::user()->id)->get(),
                 'contact' => Contact::whereUserId(Auth::user()->id)->first(),
-                'Districts' => District::orderBy('name', 'asc')->get(),
+                // 'Districts' => District::orderBy('name', 'asc')->get(),
             ]);
         } else {
             return view('frontend.sign-in');
@@ -314,7 +325,11 @@ class HomeController extends Controller
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
 
-        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(), 'Divisions' => Division::all(), 'Districts' => District::orderBy('name', 'asc')->get(), 'Upazilas' => Upazila::all()]);
+        return view('frontend.check-out', ['data' => $data, 'shipping_charge' => ShippingCharge::whereIsActive(1)->get(),
+        // 'Divisions' => Division::all(),
+        //  'Districts' => District::orderBy('name', 'asc')->get(),
+        // 'Upazilas' => Upazila::all()
+    ]);
     }
 
     public function messages(Request $request)

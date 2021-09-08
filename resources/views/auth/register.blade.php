@@ -114,7 +114,8 @@
                                         @foreach ($Districts as $zilla)
                                         <option value="{{$zilla->id}}"
                                             class="district-items division_id_{{$zilla->division_id}} "
-                                             style="color:black;">{{$zilla->name}}
+                                             style="color:black;" @if($zilla->
+                                             name=='Dhaka') selected @endif>{{$zilla->name}}
                                         </option>
                                         @endforeach
                                     </select>

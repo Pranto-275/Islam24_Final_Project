@@ -135,6 +135,7 @@ Route::post('/ajax/send-message', [HomeController::class, 'messages'])->name('se
 Route::get('/order-completed/{id?}', [HomeController::class, 'orderComplete'])->name('order-completed');
 Route::get('product-details/{id?}', [HomeController::class, 'productDetails'])->name('product-details');
 Route::get('my-account', [HomeController::class, 'MyAccount'])->name('my-account');
+Route::get('order-details/{id?}', [HomeController::class, 'OrderDetail'])->name('order-details');
 // Route::get('change-password', [HomeController::class, 'ChangePassword'])->name('change-password');
 // Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
 Route::get('category', FrontEndCategory::class)->name('category');
