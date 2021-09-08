@@ -50,7 +50,16 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
-
+    public function OrderDetail($id=NULL){
+        if (Auth::user()) {
+            return view('frontend.order-details', [
+                'orderDetails'=>OrderDetail::whereOrderId($id)->get(),
+                'order'=>Order::whereId($id)->first(),
+            ]);
+        } else {
+            return view('frontend.sign-in');
+        }
+    }
     public function SearchUpazila(Request $request)
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();

@@ -30,7 +30,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-4"></div>
+                        {{-- <div class="col-md-4"></div> --}}
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="basicpill-firstname-input">From Date</label>

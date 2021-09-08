@@ -16,6 +16,7 @@ class OrderList extends Component
     public $to_date='01-01-3000';
     public $order_status;
     public $status;
+    public $search_order;
 
     public function dateFilter($model){
         return $model->where('order_date', '>=', Carbon::parse($this->from_date)->format('Y-m-d'))->where('order_date', '<=', Carbon::parse($this->to_date)->format('Y-m-d'));
@@ -93,6 +94,9 @@ class OrderList extends Component
         $order=Order::orderBy('id', 'DESC');
         if($this->order_status){
            $order->whereStatus($this->order_status);
+        }
+        if($this->search_order){
+        //    dd($order->leftJoin('contacts', 'contact_id', 'contacts.id')->get());
         }
         return view('livewire.backend.order.order-list',[
             'orders'=> $order->get(),

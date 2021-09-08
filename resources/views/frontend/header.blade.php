@@ -217,15 +217,6 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li class="active">
-                                        <a href="{{url('/')}}">
-                                            @if($language)
-                                            {{$language->home}}
-                                            @else
-                                            হোম
-                                            @endif
-                                        </a>
-                                    </li>
                                     @if(Auth::user())
                                     @if(Auth::user()->hasAnyRole('customer'))
                                     <li>
@@ -239,6 +230,15 @@
                                     </li>
                                     @endif
                                     @endif
+                                    <li class="active">
+                                        <a href="{{url('/')}}">
+                                            @if($language)
+                                            {{$language->home}}
+                                            @else
+                                            হোম
+                                            @endif
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{url('/')}}">
                                             @if($language)
