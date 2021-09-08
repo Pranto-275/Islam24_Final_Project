@@ -58,7 +58,8 @@
                                     <th>Image</th>
                                     <th>Product</th>
                                     <th>Quantity</th>
-                                    <th class="text-right">Price</th>
+                                    <th class="text-right">MRP</th>
+                                    <th class="text-right">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,6 +81,7 @@
                                     </td>
                                     <td>{{$orderDetail->Product->name}}</td>
                                     <td>{{$orderDetail->quantity}}</td>
+                                    <td class="text-right">{{$orderDetail->unit_price}}</td>
                                     <td class="text-right">{{$orderDetail->unit_price * $orderDetail->quantity}}</td>
                                     @php
                                         $subTotal += $orderDetail->unit_price * $orderDetail->quantity;
@@ -87,7 +89,7 @@
                                 </tr>
                               @endforeach
                               <tr>
-                                <td colspan="4" class="text-right">Sub Total</td>
+                                <td colspan="5" class="text-right">Sub Total</td>
                                 <td class="text-right">
                                     @if($currencySymbol)
                                          {{ $currencySymbol->symbol }}
@@ -96,7 +98,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="border-0 text-right">
+                                <td colspan="5" class="border-0 text-right">
                                     <strong>Discount</strong></td>
                                 <td class="border-0 text-right">
                                     @if($currencySymbol)
@@ -110,7 +112,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="border-0 text-right">
+                                <td colspan="5" class="border-0 text-right">
                                     <strong>Shipping</strong></td>
                                 <td class="border-0 text-right">
                                     @if($currencySymbol)
@@ -124,7 +126,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="border-0 text-right">
+                                <td colspan="5" class="border-0 text-right">
                                     <strong>Total</strong></td>
                                 <td class="border-0 text-right">
                                     <h4 class="m-0">
