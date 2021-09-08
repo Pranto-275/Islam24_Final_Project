@@ -120,7 +120,7 @@
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                    <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">কুইক চেকআউট</span>
+                    <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">Quick Checkout</span>
                 </div>
                 {{-- <hr class="mb-0 mt-3">
                 <br>
@@ -136,8 +136,7 @@
                                     @if(!Auth::user())
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="business_name" style="color: black;">দোকানের
-                                                নাম<span>*</span></label>
+                                            <label for="business_name" style="color: black;">Business Name<span>*</span></label>
                                             <input class="form-control" type="text" name="business_name" required
                                                 value="@if(Auth::user()){{Auth::user()->Contact->business_name}}@endif"
                                                 placeholder="আপনার দোকানের নাম লিখুন">
@@ -145,7 +144,7 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="fName">আপনার নাম<span>*</span></label>
+                                            <label for="fName">Name<span>*</span></label>
                                             <input type="text" name="fName" required
                                                 value="@if(Auth::user()){{Auth::user()->name}}@endif"
                                                 placeholder="আপনার নাম লিখুন">
@@ -159,7 +158,7 @@
                                     </div> --}}
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="mobile">মোবাইল নাম্বার<span>*</span></label>
+                                            <label for="mobile">Mobile Number<span>*</span></label>
                                             <input type="text" name="mobile" required
                                                 value="@if(Auth::user()){{Auth::user()->mobile}}@endif"
                                                 placeholder="মোবাইল নাম্বার লিখুন">
@@ -179,7 +178,7 @@
                             </div> --}}
                             <div class="col-sm-12">
                                 <div class="form-grp">
-                                    <label>জেলা *</label>
+                                    <label>Zilla *</label>
                                     <select class="custom-select district" name="district_id" required>
                                         <option value="">সিলেক্ট করুন</option>
                                         @foreach ($Districts as $zilla)
@@ -206,7 +205,7 @@
 
                     <div class="col-12">
                         <div class="form-grp">
-                            <label for="shipping_address">পূর্ণ ঠিকানা*</label>
+                            <label for="shipping_address">Full address*</label>
 
                             <textarea id="shipping_address" name="shipping_address"
                                 placeholder="আপনার পূর্ণ ঠিকানা লিখুন"
@@ -217,7 +216,7 @@
                     @if(Auth::user())
                     <div class="col-12 mt-0 mb-0 pb-0 pt-3">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="business_name" style="font-weight: bold;">দোকানের নাম</label>
+                            <label for="business_name" style="font-weight: bold;">Business Name</label>
                             <input type="text" name="business_name" required
                                 value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->business_name}} @endif @endif"
                                 placeholder="দোকানের নাম" readonly>
@@ -225,7 +224,7 @@
                     </div>
                     <div class="col-12 mt-0 mb-0 pb-0 pt-0">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="district_id" style="font-weight: bold;">জেলা</label>
+                            <label for="district_id" style="font-weight: bold;">Zilla</label>
                             <select class="custom-select district" name="district_id" required>
                                 <option value="">সিলেক্ট করুন</option>
                                 @foreach ($Districts as $zilla)
@@ -242,7 +241,7 @@
 
                     <div class="col-12 mt-0 mb-0 pb-0 pt-0">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="shipping_address" style="font-weight: bold;">ডেলিভারি এড্রেস</label>
+                            <label for="shipping_address" style="font-weight: bold;">Delivery address</label>
                             {{-- <input type="text" name="shipping_address" required
                                         value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}}
                             @endif @endif"
@@ -259,7 +258,7 @@
                     </div>
                     <div class="col-12 mt-0 pt-0">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="mobile" style="font-weight: bold;">মোবাইল নাম্বার</label>
+                            <label for="mobile" style="font-weight: bold;">Mobile Address</label>
                             <input type="text" name="mobile" required
                                 value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif"
                                 placeholder="মোবাইল নাম্বার" readonly>

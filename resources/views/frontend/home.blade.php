@@ -152,7 +152,7 @@
                     @if($language)
                     {{$language->new_product}}
                     @else
-                    নতুন ইলেকট্রনিক্স পণ্য
+                    New Electronics Products
                     @endif
                 </h2>
             </div>
@@ -175,7 +175,7 @@
                     </a>
                     @if($product['discount'])
                     <span class="sd-meta" style="background-color: #ff5c00;">{{ intval($product['discount']) }}%
-                        ছাড়</span>
+                        Discount</span>
                     @endif
                     {{-- <span class="sd-meta">New!</span> --}}
                     {{-- <ul class="action">
@@ -231,9 +231,9 @@
                         data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock" )
                         style="pointer-events: none;" @endif style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
-                        স্টক শেষ
+                        Sold Out
                         @else
-                        ক্রয় করুণ
+                        Buy Now
                         @endif
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
@@ -246,9 +246,9 @@
                         @if($product['in_stock']=="Out of Stock" ) style="pointer-events: none;" @endif
                         style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
-                        স্টক শেষ
+                        Sold Out
                         @else
-                        ক্রয় করুণ
+                        Buy Now
                         @endif
                     </a>
                     {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
@@ -278,7 +278,7 @@
                     @if($language)
                     {{$language->best_selling_product}}
                     @else
-                    সর্বাধিক বিক্রিত পণ্য
+                    Best Selling Products
                     @endif
                 </h2>
             </div>
@@ -299,7 +299,7 @@
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta">{{ intval($product['discount']) }}% ছাড়</span>
+                    <span class="sd-meta">{{ intval($product['discount']) }}% Discount</span>
                     @endif
                 </div>
                 <div class="exclusive-item-content">
@@ -357,7 +357,7 @@
                         @if($product['in_stock']=="Out of Stock")
                         Sold Out
                         @else
-                        ক্রয় করুণ
+                        Buy Now
                         @endif
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
@@ -370,7 +370,7 @@
                         @if($product['in_stock']=="Out of Stock")
                         Sold Out
                         @else
-                        ক্রয় করুণ
+                        Buy Now
                         @endif
                     </a>
                 </div>
@@ -388,7 +388,7 @@
                     @if($language)
                     {{$language->more_products}}
                     @else
-                    আরও পণ্য দেখুন
+                    See More
                     @endif
                 </a>
             </center>
