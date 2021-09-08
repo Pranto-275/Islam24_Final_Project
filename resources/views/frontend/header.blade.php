@@ -177,7 +177,7 @@
                             <div class="input-group pr-3" id="mobile-response-search-box" style="width: 80%;">
                                 <input type="text" class="form-control mb-2" name="search_product_name"
                                     id="search_product_category" style="border-radius: 30px 0px 0px 30px;"
-                                    aria-label="Text input with dropdown button" placeholder="পন্য খুঁজুন এখানে..">
+                                    aria-label="Text input with dropdown button" placeholder="Product Search..">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
                                         style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
@@ -194,7 +194,7 @@
                             @if($language)
                             {{$language->beaking_news}}
                             @else
-                            ঘোষণা
+                            Breaking News
                             @endif
                         </span>
                         <span class="text2">
@@ -224,7 +224,7 @@
                                             @if($language)
                                             {{$language->my_account}}
                                             @else
-                                            আমার একাউন্ট
+                                            My Account
                                             @endif
                                         </a>
                                     </li>
@@ -235,7 +235,7 @@
                                             @if($language)
                                             {{$language->home}}
                                             @else
-                                            হোম
+                                            Home
                                             @endif
                                         </a>
                                     </li>
@@ -244,7 +244,7 @@
                                             @if($language)
                                             {{$language->more_categories}}
                                             @else
-                                            প্রডাক্ট ক্যাটাগরি সমূহ
+                                            Product Categories
                                             @endif
                                         </a>
                                     </li>
@@ -253,7 +253,7 @@
                                             @if($language)
                                             {{$language->shop_page}}
                                             @else
-                                            শপ পেইজ
+                                            Shop Page
                                             @endif
                                         </a>
                                     </li>
@@ -263,7 +263,7 @@
                                             @if($language)
                                             {{$language->complain_or_opinion}}
                                             @else
-                                            অভিযোগ/মতামত
+                                            Complain/Opinion
                                             @endif
                                         </a>
                                     </li>
@@ -272,20 +272,20 @@
                                             @if($language)
                                             {{$language->communication}}
                                             @else
-                                            যোগাযোগ
+                                            Contact
                                             @endif
                                         </a>
                                     </li>
                                     @if (!Auth::user())
-                                    <li id="sign-in"><a href="{{route('register')}}">রেজিষ্ট্রেশন</a></li>
-                                    <li id="sign-up"><a href="{{route('sign-in')}}">লগইন</a></li>
+                                    <li id="sign-in"><a href="{{route('register')}}">Registration</a></li>
+                                    <li id="sign-up"><a href="{{route('sign-in')}}">Login</a></li>
                                     @endif
                                     <li>
                                         <a href="{{route('privacy-policy')}}" id="privacyPolicy">
                                             @if($language)
                                             {{$language->privacy_policy}}
                                             @else
-                                            প্রাইভেসি পলিসি
+                                            Privacy Policy
                                             @endif
                                         </a>
                                     </li>
@@ -294,7 +294,7 @@
                                             @if($language)
                                             {{$language->terms_and_condition}}
                                             @else
-                                            শর্তাবলী
+                                            Rules & Regulations
                                             @endif
                                         </a>
                                     </li>
@@ -303,7 +303,7 @@
                                             @if($language)
                                             {{$language->mission_and_vision}}
                                             @else
-                                            পাইকারি মিশন & ভিশন
+                                            Mission & Vision
                                             @endif
                                         </a>
                                     </li>
@@ -424,7 +424,7 @@
                             @if($language)
                             {{$language->menu}}
                             @else
-                            মেন্যু
+                            Menu
                             @endif
                         </a>
                         <ul class="category-menu" style="z-index: 3;">
@@ -488,7 +488,7 @@
                         <div class="header-search-wrap">
                             <form action="{{ route('product-search') }}" method="GET">
                                 <input type="text" name="search_product_name" id="search_product_name"
-                                    placeholder="পন্য খুঁজুন এখানে.." style="width: 90%;">
+                                    placeholder="Product Search.." style="width: 90%;">
                                 {{-- <select class="custom-select" name="search_product_category"
                                     id="search_product_category">
                                     <option selected="" value="">All Categories</option>
@@ -532,7 +532,7 @@
                 @if($language)
                 {{$language->beaking_news}}
                 @else
-                ঘোষণা
+                Breaking News
                 @endif
             </span>
             <span class="text1">

@@ -28,6 +28,7 @@ class CreateCompanyInfosTable extends Migration
             $table->text('privacy_policy')->nullable();
             $table->text('google_map_location')->nullable();
             $table->text('terms_condition')->nullable();
+            $table->text('about_us')->nullable();
             $table->text('return_policy')->nullable();
             $table->foreignId('branch_id');
             $table->foreignId('created_by');

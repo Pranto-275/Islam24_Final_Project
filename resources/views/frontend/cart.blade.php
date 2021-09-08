@@ -155,7 +155,7 @@
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                    <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">শপিং ব্যাগ</span>
+                    <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">Shopping Bag</span>
                 </div>
                 <div class="container pt-50">
                     <div class="row justify-content-center">
@@ -172,8 +172,8 @@
                                         <tr>
                                             <th class="product-thumbnail"></th>
                                             {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
-                                            <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
-                                            <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা
+                                            <th scope="col" class="product-price" style="font-weight: bold;">Price</th>
+                                            <th scope="col" class="product-quantity" style="font-weight: bold;">Quantity
                                             </th>
                                             <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL
                                             </th>
@@ -277,7 +277,7 @@
 <div class="col-lg-4 col-md-8">
     <aside class="shop-cart-sidebar pt-3">
         <div class="shop-cart-widget py-0 my-0 pt-1">
-            <h6 class="title text-center pt-3" style="font-size: 14px;">শপিংব্যাগ সর্বমোট বিল</h6>
+            <h6 class="title text-center pt-3" style="font-size: 14px;">Bill Total</h6>
             <ul>
                 <li style="color: black;">
                     <span>SUBTOTAL</span>
@@ -289,7 +289,7 @@
                     </span>
                 </li>
                 <li class="py-1" style="color: black;">
-                    <span>ডিসকাউন্ট</span>
+                    <span>Discount</span>
                     <span class="">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
@@ -298,7 +298,7 @@
                     </span>
                 </li>
                 <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
-                    <span>সর্বমোট</span>
+                    <span>Total</span>
                     <span class="amount cart-total-price">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
@@ -309,7 +309,7 @@
                     </span>
                 </li>
             </ul>
-            <button class="btn mb-3 btn-hover" id="orderFinishMobile">অর্ডার শেষ করুন</button>
+            <button class="btn mb-3 btn-hover" id="orderFinishMobile">Finish Order</button>
         </div>
     </aside>
 </div>
@@ -318,7 +318,7 @@
 </section>
 <!-- shop-cart-area-end -->
 <button class="btn btn-hover" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
-    id="orderFinish">অর্ডার শেষ করুন</button>
+    id="orderFinish">Finish Order</button>
 </main>
 </form>
 @endsection
