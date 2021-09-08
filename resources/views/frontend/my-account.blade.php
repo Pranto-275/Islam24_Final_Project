@@ -238,6 +238,7 @@
             {{-- End Address Card --}}
             {{-- Start Order Card --}}
             <div class="card-body basic tab-pane active" id="order">
+
                 <h5 class="card-title text-center">অর্ডার লিস্ট</h5>
                 <div class="row" style="overflow: scroll;">
                     <table class="table table-hover">
@@ -247,6 +248,7 @@
                                 <th>তারিখ</th>
                                 <th>সর্বমোট</th>
                                 <th>অর্ডার স্ট্যাটাস</th>
+                                <th>ডিটেইলস</th>
                                 {{-- <th>S. Charge</th>
                                 <th>Payable</th> --}}
                             </tr>
@@ -266,6 +268,9 @@
                                     {{$order->total_amount}}
                                 </td>
                                 <td>{{$order->status}}</td>
+                                <td>
+                                    <a href="{{ route('order-details', ['id'=>$order->id]) }}" class="btn btn-info" style="background-color: #ff5c00;;margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;font-weight:bold;"><i class="fa fa-eye font-size-18" aria-hidden="true"></i></a>
+                                </td>
                                 {{-- <td>{{$order->shipping_charge}}</td>
                                 <td>{{$order->payable_amount}}</td> --}}
                             </tr>
@@ -274,6 +279,7 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
             {{-- End Order Card --}}
             {{-- Start Change Password Card --}}
