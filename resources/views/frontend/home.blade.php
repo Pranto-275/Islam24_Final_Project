@@ -55,7 +55,7 @@
                 @if($language)
                 {{$language->product_categories}}
                 @else
-                ক্যাটাগরি সমূহ
+                Categories
                 @endif
             </h5>
             @endif
@@ -175,7 +175,12 @@
                     </a>
                     @if($product['discount'])
                     <span class="sd-meta" style="background-color: #ff5c00;">{{ intval($product['discount']) }}%
-                        Discount</span>
+                        @if($language->discount)
+                        {{$language->discount}}
+                        @else
+                        discount
+                        @endif
+                    </span>
                     @endif
                     {{-- <span class="sd-meta">New!</span> --}}
                     {{-- <ul class="action">
@@ -231,9 +236,17 @@
                         data-product-id="{{ $product['id'] }}" @if($product['in_stock']=="Out of Stock" )
                         style="pointer-events: none;" @endif style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
+                        @if($language->sold_out_button_text)
+                        {{$language->sold_out_button_text}}
+                        @else
                         Sold Out
+                        @endif
+                        @else
+                        @if($language->sell_button_text)
+                        {{$language->sell_button_text}}
                         @else
                         Buy Now
+                        @endif
                         @endif
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
@@ -246,9 +259,17 @@
                         @if($product['in_stock']=="Out of Stock" ) style="pointer-events: none;" @endif
                         style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
+                        @if($language->sold_out_button_text)
+                        {{$language->sold_out_button_text}}
+                        @else
                         Sold Out
+                        @endif
+                        @else
+                        @if($language->sell_button_text)
+                        {{$language->sell_button_text}}
                         @else
                         Buy Now
+                        @endif
                         @endif
                     </a>
                     {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> --}}
@@ -262,7 +283,13 @@
         @endforeach
         @else
         <div class="col-md-12">
-            <div class="alert alert-info text-center"> Op's there is no products </div>
+            <div class="alert alert-info text-center">
+                @if($language->no_product_alert)
+                {{$language->no_product_alert}}
+                @else
+                Op's there is no products
+                @endif
+            </div>
         </div>
         @endif
         {{-- End New Electronics --}}
@@ -299,7 +326,13 @@
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta">{{ intval($product['discount']) }}% Discount</span>
+                    <span class="sd-meta">{{ intval($product['discount']) }}%
+                        @if($language->discount)
+                        {{$language->discount}}
+                        @else
+                        discount
+                        @endif
+                    </span>
                     @endif
                 </div>
                 <div class="exclusive-item-content">
@@ -355,9 +388,17 @@
                     <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal"
                         data-product-id="{{ $product['id'] }}" style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
+                        @if($language->sold_out_button_text)
+                        {{$language->sold_out_button_text}}
+                        @else
                         Sold Out
+                        @endif
+                        @else
+                        @if($language->sell_button_text)
+                        {{$language->sell_button_text}}
                         @else
                         Buy Now
+                        @endif
                         @endif
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
@@ -368,9 +409,17 @@
                         data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
                         @endif data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
+                        @if($language->sold_out_button_text)
+                        {{$language->sold_out_button_text}}
+                        @else
                         Sold Out
+                        @endif
+                        @else
+                        @if($language->sell_button_text)
+                        {{$language->sell_button_text}}
                         @else
                         Buy Now
+                        @endif
                         @endif
                     </a>
                 </div>
@@ -379,7 +428,13 @@
         @endforeach
         @else
         <div class="col-md-12">
-            <div class="alert alert-info text-center"> Op's there is no products </div>
+            <div class="alert alert-info text-center">
+                @if($language->no_product_alert)
+                {{$language->no_product_alert}}
+                @else
+                Op's there is no products
+                @endif
+             </div>
         </div>
         @endif
         <div class="col-md-12">

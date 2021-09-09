@@ -177,7 +177,7 @@
                             <div class="input-group pr-3" id="mobile-response-search-box" style="width: 80%;">
                                 <input type="text" class="form-control mb-2" name="search_product_name"
                                     id="search_product_category" style="border-radius: 30px 0px 0px 30px;"
-                                    aria-label="Text input with dropdown button" placeholder="Product Search..">
+                                    aria-label="Text input with dropdown button" placeholder="@if($language->product_search) {{$language->product_search}} @else Product Search... @endif">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
                                         style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
@@ -488,7 +488,7 @@
                         <div class="header-search-wrap">
                             <form action="{{ route('product-search') }}" method="GET">
                                 <input type="text" name="search_product_name" id="search_product_name"
-                                    placeholder="Product Search.." style="width: 90%;">
+                                    placeholder="@if($language->product_search) {{$language->product_search}} @else Product Search... @endif" style="width: 90%;">
                                 {{-- <select class="custom-select" name="search_product_category"
                                     id="search_product_category">
                                     <option selected="" value="">All Categories</option>

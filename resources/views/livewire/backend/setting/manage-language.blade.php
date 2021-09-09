@@ -80,9 +80,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="shop_page">Shop Page</label>
-                                                    <input type="text" class="form-control"
-                                                        wire:model.lazy="shop_page" name="shop_page" id="shop_page"
-                                                        placeholder="Shop Page">
+                                                    <input type="text" class="form-control" wire:model.lazy="shop_page"
+                                                        name="shop_page" id="shop_page" placeholder="Shop Page">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -112,9 +111,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="contact_us">Contact Us</label>
-                                                    <input type="text" class="form-control"
-                                                        wire:model.lazy="contact_us" name="contact_us" id="contact_us"
-                                                        placeholder="Contact Us">
+                                                    <input type="text" class="form-control" wire:model.lazy="contact_us"
+                                                        name="contact_us" id="contact_us" placeholder="Contact Us">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -150,12 +148,6 @@
                                                         name="about_us" id="about_us" placeholder="About Us">
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row mx-md-1" style="background-color: #bedac2;">
-
-
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="mission_and_vision">Mission And Vision</label>
@@ -167,9 +159,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="my_account">My Account</label>
-                                                    <input type="text" class="form-control"
-                                                        wire:model.lazy="my_account" name="my_account" id="my_account"
-                                                        placeholder="My Account">
+                                                    <input type="text" class="form-control" wire:model.lazy="my_account"
+                                                        name="my_account" id="my_account" placeholder="My Account">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -202,6 +193,10 @@
                                                         id="product_search" placeholder="Product Search">
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row mx-md-1" style="background-color: #bedac2;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="beaking_news">Breaking News</label>
@@ -273,10 +268,6 @@
                                                         placeholder="Register Button Text">
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="row" style="background-color: #bedac2;">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="logout_button_text">Log Out Button Text</label>
@@ -307,7 +298,8 @@
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="cart_page_order_finish_button_text">Cart Page Order Finish Button
+                                                    <label for="cart_page_order_finish_button_text">Cart Page Order
+                                                        Finish Button
                                                         Text</label>
                                                     <input type="text" class="form-control"
                                                         wire:model.lazy="cart_page_order_finish_button_text"
@@ -319,7 +311,8 @@
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="checkout_page_order_done_button_text">Checkout Page Order Done Button
+                                                    <label for="checkout_page_order_done_button_text">Checkout Page
+                                                        Order Done Button
                                                         Text</label>
                                                     <input type="text" class="form-control"
                                                         wire:model.lazy="checkout_page_order_done_button_text"
@@ -331,7 +324,8 @@
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="see_your_order_button_text">See Your Order Button Text</label>
+                                                    <label for="see_your_order_button_text">See Your Order Button
+                                                        Text</label>
                                                     <input type="text" class="form-control"
                                                         wire:model.lazy="see_your_order_button_text"
                                                         name="see_your_order_button_text"
@@ -339,7 +333,6 @@
                                                         placeholder="See Your Order Button Text">
                                                 </div>
                                             </div>
-
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="business_name_label">Business Name Label</label>
@@ -396,6 +389,11 @@
                                                 </div>
                                             </div>
 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="row" style="background-color: #bedac2;">
+
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="more_order_button_text">More Order Button Text</label>
@@ -405,9 +403,133 @@
                                                         placeholder="More Order Button Text">
                                                 </div>
                                             </div>
-
-
-
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="unit">Unit</label>
+                                                    <input type="text" class="form-control" wire:model.lazy="unit"
+                                                        name="unit" id="unit" placeholder="Unit">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="cart_page_header_title">Cart Page Header Title</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="cart_page_header_title"
+                                                        name="cart_page_header_title" id="cart_page_header_title"
+                                                        placeholder="Cart Page Header Title">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="checkout_page_header_title">Checkout Page Header
+                                                        Title</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="checkout_page_header_title"
+                                                        name="checkout_page_header_title"
+                                                        id="checkout_page_header_title"
+                                                        placeholder="Checkout Page Header Title">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="checkout_page_header_title">Ordered Product
+                                                        Title</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="ordered_product_title"
+                                                        name="ordered_product_title" id="ordered_product_title"
+                                                        placeholder="Ordered Product Title">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="checkout_page_header_title">Bill Total Title</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="bill_total_title"
+                                                        name="bill_total_title" id="bill_total_title"
+                                                        placeholder="Bill Total Title">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="business_name_placeholder">Business Name Placeholder</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="business_name_placeholder"
+                                                        name="business_name_placeholder" id="business_name_placeholder"
+                                                        placeholder="Business Name Placeholder">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="your_name_placeholder">Your Name Placeholder</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="your_name_placeholder"
+                                                        name="your_name_placeholder" id="your_name_placeholder"
+                                                        placeholder="Your Name Placeholder">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="your_mobile_number_placeholder">Your Mobile Number Placeholder</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="your_mobile_number_placeholder"
+                                                        name="your_mobile_number_placeholder" id="your_mobile_number_placeholder"
+                                                        placeholder="Your Mobile Number Placeholder">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="full_address_placeholder">Full Address Placeholder</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="full_address_placeholder"
+                                                        name="full_address_placeholder" id="full_address_placeholder"
+                                                        placeholder="Full Address Placeholder">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="delivery_address_placeholder">Delivery Address Placeholder</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="delivery_address_placeholder"
+                                                        name="delivery_address_placeholder" id="delivery_address_placeholder"
+                                                        placeholder="Delivery Address Placeholder">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="select_zila_option_text">Select Zila Option Text</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="select_zila_option_text"
+                                                        name="select_zila_option_text" id="select_zila_option_text"
+                                                        placeholder="Select Zila Option Text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="no_product_in_shopping_bag_alert_text">No Product In Shopping Bag Alert</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="no_product_in_shopping_bag_alert_text"
+                                                        name="no_product_in_shopping_bag_alert_text" id="no_product_in_shopping_bag_alert_text"
+                                                        placeholder="No Product In Shopping Bag Alert">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="no_product_alert">No Product Alert Text</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="no_product_alert"
+                                                        name="no_product_alert" id="no_product_alert"
+                                                        placeholder="No Product Alert Text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="cash_on_delivery_text">Cash On Delivery Text</label>
+                                                    <input type="text" class="form-control"
+                                                        wire:model.lazy="cash_on_delivery_text"
+                                                        name="cash_on_delivery_text" id="cash_on_delivery_text"
+                                                        placeholder="Cash On Delivery">
+                                                </div>
+                                            </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <input type="checkbox" name="is_default"
@@ -432,8 +554,8 @@
 
 </div>
 @push('scripts')
-    <script>
-        function callDelete(id) {
+<script>
+    function callDelete(id) {
             @this.call('languageDelete', id);
         }
         $(document).ready(function() {
@@ -467,5 +589,5 @@
                 datatable.draw(true);
             });
         });
-    </script>
+</script>
 @endpush

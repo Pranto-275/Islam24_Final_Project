@@ -120,7 +120,13 @@
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                    <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">Quick Checkout</span>
+                    <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">
+                        @if($language->checkout_page_header_title)
+                        {{$language->checkout_page_header_title}}
+                        @else
+                        Quick Checkout
+                        @endif
+                    </span>
                 </div>
                 {{-- <hr class="mb-0 mt-3">
                 <br>
@@ -136,18 +142,32 @@
                                     @if(!Auth::user())
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="business_name" style="color: black;">Business Name<span>*</span></label>
+                                            <label for="business_name" style="color: black;">
+                                                @if($language->business_name_label)
+                                                {{$language->business_name_label}}
+                                                @else
+                                                Business Name
+                                                @endif
+                                                <span>*</span></label>
                                             <input class="form-control" type="text" name="business_name" required
                                                 value="@if(Auth::user()){{Auth::user()->Contact->business_name}}@endif"
-                                                placeholder="আপনার দোকানের নাম লিখুন">
+                                                placeholder="@if($language->business_name_placeholder) {{$language->business_name_placeholder}} @else Name @endif
+                                                ">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="fName">Name<span>*</span></label>
+                                            <label for="fName">
+                                                @if($language->your_name_label)
+                                                {{$language->your_name_label}}
+                                                @else
+                                                Name
+                                                @endif
+                                                <span>*</span>
+                                            </label>
                                             <input type="text" name="fName" required
-                                                value="@if(Auth::user()){{Auth::user()->name}}@endif"
-                                                placeholder="আপনার নাম লিখুন">
+                                                value="@if(Auth::user()){{Auth::user()->name}}@endif" placeholder=" @if($language->your_name_placeholder) {{$language->your_name_placeholder}} @else Name @endif
+                                                ">
                                         </div>
                                     </div>
                                     {{-- <div class="col-sm-6">
@@ -158,10 +178,16 @@
                                     </div> --}}
                                     <div class="col-sm-12">
                                         <div class="form-grp">
-                                            <label for="mobile">Mobile Number<span>*</span></label>
+                                            <label for="mobile">
+                                                @if($language->mobile_number_label)
+                                                {{$language->mobile_number_label}}
+                                                @else
+                                                Mobile Number
+                                                @endif
+                                                <span>*</span></label>
                                             <input type="text" name="mobile" required
                                                 value="@if(Auth::user()){{Auth::user()->mobile}}@endif"
-                                                placeholder="মোবাইল নাম্বার লিখুন">
+                                                placeholder="@if($language->your_mobile_number_placeholder) {{$language->your_mobile_number_placeholder}} @else Your Mobile Number @endif ">
                                         </div>
                                     </div>
                                     {{-- <div class="col-sm-12">
@@ -178,9 +204,21 @@
                             </div> --}}
                             <div class="col-sm-12">
                                 <div class="form-grp">
-                                    <label>Zilla *</label>
+                                    <label>
+                                        @if($language->zilla_label)
+                                        {{$language->zilla_label}}
+                                        @else
+                                        Zila
+                                        @endif
+                                        *</label>
                                     <select class="custom-select district" name="district_id" required>
-                                        <option value="">সিলেক্ট করুন</option>
+                                        <option value="">
+                                            @if($language->select_zila_option_text)
+                                              --{{$language->select_zila_option_text}}--
+                                            @else
+                                              --Select--
+                                            @endif
+                                        </option>
                                         @foreach ($Districts as $zilla)
                                         <option value="{{$zilla->id}}"
                                             class="district-items division_id_{{$zilla->division_id}} " @if($zilla->
@@ -205,10 +243,17 @@
 
                     <div class="col-12">
                         <div class="form-grp">
-                            <label for="shipping_address">Full address*</label>
+                            <label for="shipping_address">
+                                @if($language->full_address_label)
+                                {{$language->full_address_label}}
+                                @else
+                                Full address
+                                @endif
+                                *
+                            </label>
 
                             <textarea id="shipping_address" name="shipping_address"
-                                placeholder="আপনার পূর্ণ ঠিকানা লিখুন"
+                                placeholder="@if($language->full_address_placeholder) {{$language->full_address_placeholder	}} @else Full Address @endif"
                                 required>@if(Auth::user()){{Auth::user()->address}}@endif</textarea>
                         </div>
                     </div>
@@ -216,17 +261,36 @@
                     @if(Auth::user())
                     <div class="col-12 mt-0 mb-0 pb-0 pt-3">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="business_name" style="font-weight: bold;">Business Name</label>
+                            <label for="business_name" style="font-weight: bold;">
+                                @if($language->business_name_label)
+                                {{$language->business_name_label}}
+                                @else
+                                Business Name
+                                @endif
+                            </label>
                             <input type="text" name="business_name" required
                                 value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->business_name}} @endif @endif"
-                                placeholder="দোকানের নাম" readonly>
+                                placeholder="@if($language->business_name_placeholder) {{$language->business_name_placeholder	}} @else Business Name @endif"
+                                readonly>
                         </div>
                     </div>
                     <div class="col-12 mt-0 mb-0 pb-0 pt-0">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="district_id" style="font-weight: bold;">Zilla</label>
+                            <label for="district_id" style="font-weight: bold;">
+                                @if($language->zilla_label)
+                                {{$language->zilla_label}}
+                                @else
+                                Zilla
+                                @endif
+                            </label>
                             <select class="custom-select district" name="district_id" required>
-                                <option value="">সিলেক্ট করুন</option>
+                                <option value="">
+                                    @if($language->select_zila_option_text)
+                                        --{{$language->select_zila_option_text}}--
+                                    @else
+                                        --Select--
+                                    @endif
+                                </option>
                                 @foreach ($Districts as $zilla)
                                 <option value="{{$zilla->id}}"
                                     class="district-items division_id_{{$zilla->division_id}} " @if(!Auth::user()->
@@ -241,7 +305,13 @@
 
                     <div class="col-12 mt-0 mb-0 pb-0 pt-0">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="shipping_address" style="font-weight: bold;">Delivery address</label>
+                            <label for="shipping_address" style="font-weight: bold;">
+                                @if($language->delivery_address_label)
+                                {{$language->delivery_address_label}}
+                                @else
+                                Delivery address
+                                @endif
+                            </label>
                             {{-- <input type="text" name="shipping_address" required
                                         value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}}
                             @endif @endif"
@@ -251,14 +321,21 @@
                             @endif @endif
                             </textarea> --}}
                             <textarea id="shipping_address" class="form-control" name="shipping_address"
-                                placeholder="আপনার পূর্ণ ঠিকানা লিখুন" required readonly
+                                placeholder="@if($language->full_address_placeholder) {{$language->full_address_placeholder	}} @else Full Address @endif"
+                                required readonly
                                 style="background-color: white;">@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif</textarea>
 
                         </div>
                     </div>
                     <div class="col-12 mt-0 pt-0">
                         <div class="form-grp mt-0 pt-0">
-                            <label for="mobile" style="font-weight: bold;">Mobile Address</label>
+                            <label for="mobile" style="font-weight: bold;">
+                                @if($language->mobile_number_label)
+                                {{$language->mobile_number_label}}
+                                @else
+                                Mobile
+                                @endif
+                            </label>
                             <input type="text" name="mobile" required
                                 value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif"
                                 placeholder="মোবাইল নাম্বার" readonly>
@@ -274,7 +351,13 @@
 
 <div class="container">
     {{-- Start Cart Product --}}
-    <h5 class="text-center" style="color: #ff5c00;">আপনার অর্ডারকৃত পণ্যসমূহ</h5>
+    <h5 class="text-center" style="color: #ff5c00;">
+        @if($language->ordered_product_title)
+        {{$language->ordered_product_title}}
+        @else
+        Ordered Product
+        @endif
+    </h5>
     <div class="table-responsive-xl">
         @php $totalPrice = 0; @endphp
         @if($cardBadge['data']['products'])
@@ -284,8 +367,8 @@
                 <tr>
                     <th class="product-thumbnail"></th>
                     {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
-                    <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
-                    <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
+                    <th scope="col" class="product-price" style="font-weight: bold;">Price</th>
+                    <th scope="col" class="product-quantity" style="font-weight: bold;">Quantity</th>
                     <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
                 </tr>
             </thead>
@@ -350,8 +433,13 @@
             </tbody>
         </table>
         @else
-        <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট শপিংব্যাগে যুক্ত
-            করেননি।</div>
+        <div class="alert alert-warning text-center">
+            @if($language->no_product_in_shopping_bag_alert_text)
+            {{$language->no_product_in_shopping_bag_alert_text}}
+            @else
+             There is no product added by you!
+            @endif
+        </div>
         @endif
     </div>
     {{-- End Cart Product --}}
@@ -359,7 +447,13 @@
 <div class="row p-0 m-0" style="width:100%;">
     <div class="col-12 pb-3">
         <div class="shop-cart-widget py-0 my-0 pt-1">
-            <h6 class="title text-center">শপিংব্যাগ সর্বমোট বিল</h6>
+            <h6 class="title text-center">
+                @if($language->bill_total_title)
+                {{$language->bill_total_title}}
+                @else
+                Bill Total
+                @endif
+            </h6>
             <ul>
                 {{-- <li style="color: black;"><span>SUBTOTAL:</span>
                                         @if($currencySymbol)
@@ -369,7 +463,13 @@
                 </li> --}}
                 <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
                     <center>
-                        <span>সাবটোটাল -</span>
+                        <span>
+                            @if($language->sub_total)
+                            {{$language->sub_total}} -
+                            @else
+                            Subtotal -
+                            @endif
+                        </span>
                         <span class="amount cart-total-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
@@ -406,7 +506,13 @@
                 </li>
                 <li class="cart-total-amount py-1" style="color: black; ">
                     <center>
-                        <span>ডিসকাউন্ট -</span>
+                        <span>
+                            @if($language->discount)
+                            {{$language->discount}} -
+                            @else
+                            Discount -
+                            @endif
+                        </span>
                         <span>
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
@@ -428,7 +534,13 @@
                         {{ $cardBadge['data']['total_price'] }}
                     </span> --}}
                     <center>
-                        <span>সর্বমোট -</span>
+                        <span>
+                            @if($language->total)
+                            {{$language->total}} -
+                            @else
+                            Total -
+                            @endif
+                        </span>
                         <span class="amount cart-total-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
@@ -459,22 +571,38 @@
                                         <label class="custom-control-label" for="customCheck3">Rocket</label>
                                     </div> --}}
                 <input type="checkbox" class="mb-3" id="customCheck4" checked>
-                <label class="mb-3" for="customCheck4" style="color: black;">ক্যাশ অন
-                    ডেলিভারি</label>
+                <label class="mb-3" for="customCheck4" style="color: black;">
+                    @if($language->cash_on_delivery_text)
+                       {{$language->cash_on_delivery_text}}
+                    @else
+                       Cash On Delivery
+                    @endif
+                </label>
             </div>
             <div class="payment-terms py-0 my-0" style="color: black; font-size: 12px;">
                 * I have read and agree to the website
                 <a href="{{route('terms-conditios')}}">terms
                     and conditions</a>
             </div>
-            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout">অর্ডার
-                সম্পন্ন করুন</button>
+            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout">
+                @if($language->checkout_page_order_done_button_text)
+                {{$language->checkout_page_order_done_button_text}}
+                @else
+                Place Order
+                @endif
+            </button>
             <br>
             <br>
         </div>
         <button class="btn btn-submit btn-hover" type="submit"
             style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
-            id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
+            id="orderFinishCheckoutMobile">
+            @if($language->checkout_page_order_done_button_text)
+            {{$language->checkout_page_order_done_button_text}}
+            @else
+            Place Order
+            @endif
+        </button>
 
         </aside>
     </div>

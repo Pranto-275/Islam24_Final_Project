@@ -107,15 +107,26 @@
                             </span>
                             &nbsp;
                             <span style="font-size: 16px;color: #ff0000;">{ {{ intval($productDetails->discount) }}%
-                                ছাড়ে }</span>
+                                @if($language->discount)
+                                {{$language->discount}}
+                                @else
+                                discount
+                                @endif
+                                }</span>
 
                         </h2>
                         <div>
                             <div class="mt-1">
-                                <span style="color: black;">সর্বনিম্ন অর্ডার: </span>
+                                <span style="color: black;">Minimum Order: </span>
                                 <span class="badge badge-light"
                                     style="color: red;font-weight: bold;font-size: 12px;">{{$productDetails->min_order_qty}}
-                                    &nbsp; পিছ</span>
+                                    &nbsp;
+                                    @if($language->unit)
+                                    {{$language->unit}}
+                                    @else
+                                    unit
+                                    @endif
+                                </span>
 
                                 <span class="stock-info m-0 mt-3 ml-2">{{ $productDetails->in_stock }}</span>
                             </div>
@@ -153,39 +164,56 @@
                             </form>
                         </div>
                         {{-- <a href="javascript:void(0)" class="btn add-card-btn add-to-card" data-product-id="{{ $productDetails->id }}">
-                            ক্রয় করুণ
+                        ক্রয় করুণ
                         </a> --}}
                         <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal"
-                        data-product-id="{{ $productDetails->id }}" style="color: #ff5c00;">
-                        @if($productDetails->in_stock=="Out of Stock")
-                        Sold Out
-                        @else
-                        ক্রয় করুণ
-                        @endif
-                    </a>
-                    @php
-                    $minimumQuantity = $productDetails->min_order_qty;
-                    $orderQuantity = 0;
-                    if(isset($cardBadge['data']['products'][$productDetails->id])) {
-                    $minimumQuantity = $cardBadge['data']['products'][$productDetails->id]['minimum_order_quantity'];
-                    $orderQuantity = $cardBadge['data']['products'][$productDetails->id]['quantity'];
-                    }
-                    @endphp
-                    <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
-                        data-product-id="{{ $productDetails->id }}" data-product-name="{{ $productDetails->name }}"
-                        data-product-price="{{ $productDetails->special_price }}"
-                        data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
-                        data-product-minimum-quantity="{{ $minimumQuantity }}"
-                        @if($productDetails->ProductImageFirst)
-                        data-product-image="{{ asset('storage/photo/'.$productDetails->ProductImageFirst->image) }}"
-                        @endif
-                        data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
-                        @if($productDetails->in_stock=="Out of Stock")
-                        Sold Out
-                        @else
-                        ক্রয় করুণ
-                        @endif
-                    </a>
+                            data-product-id="{{ $productDetails->id }}" style="color: #ff5c00;">
+                            @if($productDetails->in_stock=="Out of Stock")
+                            @if($language->sold_out_button_text)
+                            {{$language->sold_out_button_text}}
+                            @else
+                            Sold Out
+                            @endif
+                            @else
+                            @if($language->sell_button_text)
+                            {{$language->sell_button_text}}
+                            @else
+                            Buy Now
+                            @endif
+                            @endif
+                        </a>
+                        @php
+                        $minimumQuantity = $productDetails->min_order_qty;
+                        $orderQuantity = 0;
+                        if(isset($cardBadge['data']['products'][$productDetails->id])) {
+                        $minimumQuantity =
+                        $cardBadge['data']['products'][$productDetails->id]['minimum_order_quantity'];
+                        $orderQuantity = $cardBadge['data']['products'][$productDetails->id]['quantity'];
+                        }
+                        @endphp
+                        <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
+                            data-product-id="{{ $productDetails->id }}" data-product-name="{{ $productDetails->name }}"
+                            data-product-price="{{ $productDetails->special_price }}"
+                            data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
+                            data-product-minimum-quantity="{{ $minimumQuantity }}"
+                            @if($productDetails->ProductImageFirst)
+                            data-product-image="{{ asset('storage/photo/'.$productDetails->ProductImageFirst->image) }}"
+                            @endif
+                            data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
+                            @if($productDetails->in_stock=="Out of Stock")
+                            @if($language->sold_out_button_text)
+                            {{$language->sold_out_button_text}}
+                            @else
+                            Sold Out
+                            @endif
+                            @else
+                            @if($language->sell_button_text)
+                            {{$language->sell_button_text}}
+                            @else
+                            Buy Now
+                            @endif
+                            @endif
+                        </a>
                     </div>
                     @endif
                     <div class="shop-details-bottom">
@@ -412,19 +440,22 @@ alt=""></a>
             <div class="exclusive-item exclusive-item-three text-center mb-40">
                 <div class="exclusive-item-thumb">
                     <a href="{{route('product-details',['id'=>$product['id']])}}">
-                        <img
-                            @if($product['product_image_first'])
-                               src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
-                            @else
-                                src="{{ asset('image-not-available.jpg')}}"
-                            @endif
-                            style="width: 100%;height: auto;" alt="{{$product['name']}}">
+                        <img @if($product['product_image_first'])
+                            src="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}" @else
+                            src="{{ asset('image-not-available.jpg')}}" @endif style="width: 100%;height: auto;"
+                            alt="{{$product['name']}}">
                         {{-- <img class="overlay-product-thumb" @if($product['product_image_last'])
                             src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}" @endif
-                            style="width: 100%;height: auto;" alt="{{$product['name']}}"> --}}
+                        style="width: 100%;height: auto;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta" style="width:70px;">{{ intval($product['discount']) }}% ছাড়</span>
+                    <span class="sd-meta">{{ intval($product['discount']) }}%
+                        @if($language->discount)
+                        {{$language->discount}}
+                        @else
+                        discount
+                        @endif
+                    </span>
                     @endif
                     {{-- <ul class="action">
                                                     <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -480,24 +511,38 @@ alt=""></a>
                     <a href="javascript:void(0)" class="add-to-card buy-now buy-now-button cartModal"
                         data-product-id="{{ $product['id'] }}" style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
+                        @if($language->sold_out_button_text)
+                        {{$language->sold_out_button_text}}
+                        @else
                         Sold Out
+                        @endif
+                        @else
+                        @if($language->sell_button_text)
+                        {{$language->sell_button_text}}
                         @else
                         ক্রয় করুণ
+                        @endif
                         @endif
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                         data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}"
                         data-product-price="{{ $product['special_price'] }}"
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
-                        data-product-minimum-quantity="{{ $minimumQuantity }}"
-                        @if($product['product_image_first'])
-                           data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
-                        @endif
-                        data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
+                        data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
+                        data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
+                        @endif data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")
+                        @if($language->sold_out_button_text)
+                        {{$language->sold_out_button_text}}
+                        @else
                         Sold Out
+                        @endif
+                        @else
+                        @if($language->sell_button_text)
+                        {{$language->sell_button_text}}
                         @else
                         ক্রয় করুণ
+                        @endif
                         @endif
                     </a>
                 </div>
@@ -509,7 +554,13 @@ alt=""></a>
             <center>
                 @if(isset($product['category_id']))
                 <a class="btn text-center" style="background: #ff6000;color:white;"
-                    href="{{route('search-category-wise',['id'=>$product['category_id']])}}">আরও পণ্য দেখুন</a>
+                    href="{{route('search-category-wise',['id'=>$product['category_id']])}}">
+                    @if($language)
+                    {{$language->more_products}}
+                    @else
+                    আরও পণ্য দেখুন
+                    @endif
+                </a>
                 @endif
             </center>
         </div>
