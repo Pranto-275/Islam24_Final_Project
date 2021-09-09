@@ -214,9 +214,9 @@
                                     <select class="custom-select district" name="district_id" required>
                                         <option value="">
                                             @if($language->select_zila_option_text)
-                                              --{{$language->select_zila_option_text}}--
+                                            --{{$language->select_zila_option_text}}--
                                             @else
-                                              --Select--
+                                            --Select--
                                             @endif
                                         </option>
                                         @foreach ($Districts as $zilla)
@@ -286,9 +286,9 @@
                             <select class="custom-select district" name="district_id" required>
                                 <option value="">
                                     @if($language->select_zila_option_text)
-                                        --{{$language->select_zila_option_text}}--
+                                    --{{$language->select_zila_option_text}}--
                                     @else
-                                        --Select--
+                                    --Select--
                                     @endif
                                 </option>
                                 @foreach ($Districts as $zilla)
@@ -437,7 +437,7 @@
             @if($language->no_product_in_shopping_bag_alert_text)
             {{$language->no_product_in_shopping_bag_alert_text}}
             @else
-             There is no product added by you!
+            There is no product added by you!
             @endif
         </div>
         @endif
@@ -573,9 +573,9 @@
                 <input type="checkbox" class="mb-3" id="customCheck4" checked>
                 <label class="mb-3" for="customCheck4" style="color: black;">
                     @if($language->cash_on_delivery_text)
-                       {{$language->cash_on_delivery_text}}
+                    {{$language->cash_on_delivery_text}}
                     @else
-                       Cash On Delivery
+                    Cash On Delivery
                     @endif
                 </label>
             </div>
