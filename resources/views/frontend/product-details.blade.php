@@ -107,12 +107,12 @@
                             </span>
                             &nbsp;
                             <span style="font-size: 16px;color: #ff0000;">{ {{ intval($productDetails->discount) }}%
-                                ছাড়ে }</span>
+                                Discount }</span>
 
                         </h2>
                         <div>
                             <div class="mt-1">
-                                <span style="color: black;">সর্বনিম্ন অর্ডার: </span>
+                                <span style="color: black;">Minimum Order: </span>
                                 <span class="badge badge-light"
                                     style="color: red;font-weight: bold;font-size: 12px;">{{$productDetails->min_order_qty}}
                                     &nbsp; পিছ</span>
@@ -160,7 +160,7 @@
                         @if($productDetails->in_stock=="Out of Stock")
                         Sold Out
                         @else
-                        ক্রয় করুণ
+                        Buy Now
                         @endif
                     </a>
                     @php
@@ -183,7 +183,7 @@
                         @if($productDetails->in_stock=="Out of Stock")
                         Sold Out
                         @else
-                        ক্রয় করুণ
+                        Buy Now
                         @endif
                     </a>
                     </div>
@@ -424,7 +424,7 @@ alt=""></a>
                             style="width: 100%;height: auto;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta" style="width:70px;">{{ intval($product['discount']) }}% ছাড়</span>
+                    <span class="sd-meta">{{ intval($product['discount']) }}% discount</span>
                     @endif
                     {{-- <ul class="action">
                                                     <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>

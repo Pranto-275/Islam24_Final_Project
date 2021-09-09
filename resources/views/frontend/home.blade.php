@@ -55,7 +55,7 @@
                 @if($language)
                 {{$language->product_categories}}
                 @else
-                ক্যাটাগরি সমূহ
+                Categories
                 @endif
             </h5>
             @endif
@@ -175,7 +175,7 @@
                     </a>
                     @if($product['discount'])
                     <span class="sd-meta" style="background-color: #ff5c00;">{{ intval($product['discount']) }}%
-                        Discount</span>
+                        discount</span>
                     @endif
                     {{-- <span class="sd-meta">New!</span> --}}
                     {{-- <ul class="action">
@@ -299,7 +299,7 @@
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta">{{ intval($product['discount']) }}% Discount</span>
+                    <span class="sd-meta">{{ intval($product['discount']) }}% discount</span>
                     @endif
                 </div>
                 <div class="exclusive-item-content">

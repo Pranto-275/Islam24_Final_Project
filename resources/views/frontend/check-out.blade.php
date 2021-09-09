@@ -180,7 +180,7 @@
                                 <div class="form-grp">
                                     <label>Zilla *</label>
                                     <select class="custom-select district" name="district_id" required>
-                                        <option value="">সিলেক্ট করুন</option>
+                                        <option value="">--Select--</option>
                                         @foreach ($Districts as $zilla)
                                         <option value="{{$zilla->id}}"
                                             class="district-items division_id_{{$zilla->division_id}} " @if($zilla->
@@ -226,7 +226,7 @@
                         <div class="form-grp mt-0 pt-0">
                             <label for="district_id" style="font-weight: bold;">Zilla</label>
                             <select class="custom-select district" name="district_id" required>
-                                <option value="">সিলেক্ট করুন</option>
+                                <option value="">--Select--</option>
                                 @foreach ($Districts as $zilla)
                                 <option value="{{$zilla->id}}"
                                     class="district-items division_id_{{$zilla->division_id}} " @if(!Auth::user()->
@@ -284,8 +284,8 @@
                 <tr>
                     <th class="product-thumbnail"></th>
                     {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
-                    <th scope="col" class="product-price" style="font-weight: bold;">মূল্য</th>
-                    <th scope="col" class="product-quantity" style="font-weight: bold;">সংখ্যা</th>
+                    <th scope="col" class="product-price" style="font-weight: bold;">Price</th>
+                    <th scope="col" class="product-quantity" style="font-weight: bold;">Quantity</th>
                     <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
                 </tr>
             </thead>
@@ -369,7 +369,7 @@
                 </li> --}}
                 <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
                     <center>
-                        <span>সাবটোটাল -</span>
+                        <span>Subtotal -</span>
                         <span class="amount cart-total-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
@@ -406,7 +406,7 @@
                 </li>
                 <li class="cart-total-amount py-1" style="color: black; ">
                     <center>
-                        <span>ডিসকাউন্ট -</span>
+                        <span>Discount -</span>
                         <span>
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
@@ -428,7 +428,7 @@
                         {{ $cardBadge['data']['total_price'] }}
                     </span> --}}
                     <center>
-                        <span>সর্বমোট -</span>
+                        <span>Total -</span>
                         <span class="amount cart-total-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
@@ -459,22 +459,20 @@
                                         <label class="custom-control-label" for="customCheck3">Rocket</label>
                                     </div> --}}
                 <input type="checkbox" class="mb-3" id="customCheck4" checked>
-                <label class="mb-3" for="customCheck4" style="color: black;">ক্যাশ অন
-                    ডেলিভারি</label>
+                <label class="mb-3" for="customCheck4" style="color: black;">Cash On Delivery</label>
             </div>
             <div class="payment-terms py-0 my-0" style="color: black; font-size: 12px;">
                 * I have read and agree to the website
                 <a href="{{route('terms-conditios')}}">terms
                     and conditions</a>
             </div>
-            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout">অর্ডার
-                সম্পন্ন করুন</button>
+            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout">Place Order</button>
             <br>
             <br>
         </div>
         <button class="btn btn-submit btn-hover" type="submit"
             style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
-            id="orderFinishCheckoutMobile">অর্ডার সম্পন্ন করুন</button>
+            id="orderFinishCheckoutMobile">Place Order</button>
 
         </aside>
     </div>
