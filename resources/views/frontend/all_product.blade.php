@@ -250,8 +250,13 @@
                                             @endif style="height:200px;" alt="{{$product['name']}}"> --}}
                                         </a>
                                         @if($product['discount'])
-                                        <span class="sd-meta" style="width:70px;">{{ intval($product['discount']) }}%
-                                            discount</span>
+                                        <span class="sd-meta">{{ intval($product['discount']) }}%
+                                            @if($language->discount)
+                                            {{$language->discount}}
+                                            @else
+                                            discount
+                                            @endif
+                                        </span>
                                         @endif
                                         {{-- <ul class="action">
                                                 <li><a href="#"><i class="flaticon-shuffle-1"></i></a></li>
@@ -311,9 +316,17 @@
                                             class="add-to-card buy-now buy-now-button cartModal"
                                             data-product-id="{{ $product['id'] }}" style="color: #ff5c00;">
                                             @if($product['in_stock']=="Out of Stock")
+                                            @if($language->sold_out_button_text)
+                                            {{$language->sold_out_button_text}}
+                                            @else
                                             Sold Out
+                                            @endif
+                                            @else
+                                            @if($language->sell_button_text)
+                                            {{$language->sell_button_text}}
                                             @else
                                             Buy Now
+                                            @endif
                                             @endif
                                         </a>
                                         <a href="javascript:void(0)"
@@ -328,9 +341,17 @@
                                             @endif data-toggle="modal" data-target=".bd-example-modal-sm"
                                             style="color: #ff5c00;">
                                             @if($product['in_stock']=="Out of Stock")
+                                            @if($language->sold_out_button_text)
+                                            {{$language->sold_out_button_text}}
+                                            @else
                                             Sold Out
+                                            @endif
+                                            @else
+                                            @if($language->sell_button_text)
+                                            {{$language->sell_button_text}}
                                             @else
                                             Buy Now
+                                            @endif
                                             @endif
                                         </a>
                                     </div>

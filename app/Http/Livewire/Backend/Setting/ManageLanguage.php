@@ -51,8 +51,23 @@ class ManageLanguage extends Component
     public $delivery_address_label;
     public $mobile_number_label;
     public $full_address_label;
+    public $unit;
+    public $cart_page_header_title;
+    public $checkout_page_header_title;
+    public $ordered_product_title;
+    public $bill_total_title;
+    public $business_name_placeholder;
+    public $your_name_placeholder;
+    public $your_mobile_number_placeholder;
+    public $full_address_placeholder;
+    public $delivery_address_placeholder;
+    public $select_zila_option_text;
+    public $no_product_in_shopping_bag_alert_text;
+    public $no_product_alert;
+    public $cash_on_delivery_text;
     public $is_default;
     public $LanguageId;
+
     public function mount($id = NULL)
     {
         $QueryUpdate = Language::find($id);
@@ -99,9 +114,22 @@ class ManageLanguage extends Component
         $this->beaking_news = $QueryUpdate->beaking_news;
         $this->total = $QueryUpdate->total;
         $this->sub_total = $QueryUpdate->sub_total;
-
         $this->more_categories = $QueryUpdate->more_categories;
         $this->more_products = $QueryUpdate->more_products;
+        $this->unit = $QueryUpdate->unit;
+        $this->cart_page_header_title = $QueryUpdate->cart_page_header_title;
+        $this->checkout_page_header_title = $QueryUpdate->checkout_page_header_title;
+        $this->ordered_product_title = $QueryUpdate->ordered_product_title;
+        $this->bill_total_title = $QueryUpdate->bill_total_title;
+        $this->business_name_placeholder = $QueryUpdate->business_name_placeholder;
+        $this->your_name_placeholder = $QueryUpdate->your_name_placeholder;
+        $this->your_mobile_number_placeholder = $QueryUpdate->your_mobile_number_placeholder;
+        $this->full_address_placeholder = $QueryUpdate->full_address_placeholder;
+        $this->delivery_address_placeholder = $QueryUpdate->delivery_address_placeholder;
+        $this->select_zila_option_text = $QueryUpdate->select_zila_option_text;
+        $this->no_product_in_shopping_bag_alert_text = $QueryUpdate->no_product_in_shopping_bag_alert_text;
+        $this->no_product_alert = $QueryUpdate->no_product_alert;
+        $this->cash_on_delivery_text = $QueryUpdate->cash_on_delivery_text;
         $this->is_default = $QueryUpdate->is_default;
     }
 
@@ -158,6 +186,20 @@ class ManageLanguage extends Component
         $Query->delivery_address_label = $this->delivery_address_label;
         $Query->mobile_number_label = $this->mobile_number_label;
         $Query->full_address_label = $this->full_address_label;
+        $Query->unit = $this->unit;
+        $Query->cart_page_header_title = $this->cart_page_header_title;
+        $Query->checkout_page_header_title = $this->checkout_page_header_title;
+        $Query->ordered_product_title = $this->ordered_product_title;
+        $Query->bill_total_title = $this->bill_total_title;
+        $Query->business_name_placeholder = $this->business_name_placeholder;
+        $Query->your_name_placeholder = $this->your_name_placeholder;
+        $Query->your_mobile_number_placeholder = $this->your_mobile_number_placeholder;
+        $Query->full_address_placeholder = $this->full_address_placeholder;
+        $Query->delivery_address_placeholder = $this->delivery_address_placeholder;
+        $Query->select_zila_option_text = $this->select_zila_option_text;
+        $Query->no_product_in_shopping_bag_alert_text = $this->no_product_in_shopping_bag_alert_text;
+        $Query->no_product_alert = $this->no_product_alert;
+        $Query->cash_on_delivery_text = $this->cash_on_delivery_text;
 
         if ($this->is_default) {
             $Query->is_default = 1;

@@ -155,7 +155,13 @@
                         style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
-                    <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">Shopping Bag</span>
+                    <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">
+                        @if($language->cart_page_header_title)
+                        {{$language->cart_page_header_title}}
+                        @else
+                        Shopping Bag
+                        @endif
+                    </span>
                 </div>
                 <div class="container pt-50">
                     <div class="row justify-content-center">
@@ -189,13 +195,10 @@
                                                         style="font-weight: bold;"></i></a>
                                                 <a href="{{ route('product-details',['id'=>$productId]) }}"
                                                     style="float:left;">
-                                                    <img
-                                                    @if($product['Info']['image']!='blank-product-image.png')
-                                                     src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
-                                                    @else
-                                                     src="{{ asset('image-not-available.jpg') }}"
-                                                    @endif
-                                                    style="height: 90px;width:103px;129px;" alt="">
+                                                    <img @if($product['Info']['image']!='blank-product-image.png' )
+                                                        src="{{ asset('storage/photo/'.$product['Info']['image']) }}"
+                                                        @else src="{{ asset('image-not-available.jpg') }}" @endif
+                                                        style="height: 90px;width:103px;129px;" alt="">
                                                 </a>
                                                 {{-- </td>
                                                 <td class="product-name">
@@ -277,10 +280,23 @@
 <div class="col-lg-4 col-md-8">
     <aside class="shop-cart-sidebar pt-3">
         <div class="shop-cart-widget py-0 my-0 pt-1">
-            <h6 class="title text-center pt-3" style="font-size: 14px;">Bill Total</h6>
+            <h6 class="title text-center pt-3" style="font-size: 14px;">
+                @if($language->bill_total_title)
+                {{$language->bill_total_title}}
+                @else
+                Bill Total
+                @endif
+            </h6>
             <ul>
                 <li style="color: black;">
-                    <span>SUBTOTAL</span>
+                    <span>
+                        @if($language->sub_total)
+                        {{$language->sub_total}}
+                        @else
+                        SUBTOTAL
+                        @endif
+                        :
+                    </span>
                     <span class="cart-total-price">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
@@ -289,7 +305,14 @@
                     </span>
                 </li>
                 <li class="py-1" style="color: black;">
-                    <span>Discount</span>
+                    <span>
+                        @if($language->discount)
+                        {{$language->discount}}
+                        @else
+                        Discount
+                        @endif
+                        :
+                    </span>
                     <span class="">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
@@ -298,7 +321,14 @@
                     </span>
                 </li>
                 <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
-                    <span>Total</span>
+                    <span>
+                        @if($language->total)
+                        {{$language->total}}
+                        @else
+                        Total
+                        @endif
+                        :
+                    </span>
                     <span class="amount cart-total-price">
                         @if($currencySymbol)
                         {{ $currencySymbol->symbol }}
@@ -309,7 +339,13 @@
                     </span>
                 </li>
             </ul>
-            <button class="btn mb-3 btn-hover" id="orderFinishMobile">Finish Order</button>
+            <button class="btn mb-3 btn-hover" id="orderFinishMobile">
+                @if($language->cart_page_order_finish_button_text)
+                {{$language->cart_page_order_finish_button_text}}
+                @else
+                Finish Order
+                @endif
+            </button>
         </div>
     </aside>
 </div>
@@ -318,7 +354,13 @@
 </section>
 <!-- shop-cart-area-end -->
 <button class="btn btn-hover" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
-    id="orderFinish">Finish Order</button>
+    id="orderFinish">
+    @if($language->cart_page_order_finish_button_text)
+    {{$language->cart_page_order_finish_button_text}}
+    @else
+    Finish Order
+    @endif
+</button>
 </main>
 </form>
 @endsection

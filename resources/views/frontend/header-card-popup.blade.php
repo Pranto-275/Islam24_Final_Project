@@ -52,7 +52,7 @@
     <div class="total-price">
         <span class="f-left">
             @if($language)
-            {{$language->total_amount}}
+            {{$language->total}}
             @else
             Total:
             @endif
