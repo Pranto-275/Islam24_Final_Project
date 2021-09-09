@@ -3,7 +3,7 @@
 @endpush
 <div>
     <x-slot name="title">
-        BRANCH INFO
+        BRANCH INFOs
     </x-slot>
     <div class="row">
         <div class="col-12">
