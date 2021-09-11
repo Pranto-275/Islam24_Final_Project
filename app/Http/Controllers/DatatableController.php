@@ -28,11 +28,60 @@ use App\Models\Inventory\Category;
 use App\Models\Inventory\Currency;
 use App\Models\Inventory\DeliveryMethod;
 use App\Models\Setting\Slider;
+use App\Models\FrontEnd\Vendor;
 use App\Models\User as UserMm;
 use Yajra\Datatables\Datatables;
 
 class DatatableController extends Controller
 {
+    public function VendorCancelListTable(){
+        $Query = Vendor::query()->whereStatus('Cancel');
+
+        $this->i = 1;
+
+        return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
+        // ->addColumn('action', function ($data) {
+        //     return '<button class="btn btn-primary btn-sm" onclick="callApprove('.$data->id.')">Approve</button>
+        //             <button class="btn btn-danger btn-sm" onclick="callCancel('.$data->id.')">Cancel</button>';
+        // })
+        // ->rawColumns(['action'])
+        ->toJSON();
+    }
+    public function VendorApprovedListTable(){
+        $Query = Vendor::query()->whereStatus('Approved');
+
+        $this->i = 1;
+
+        return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
+        // ->addColumn('action', function ($data) {
+        //     return '<button class="btn btn-primary btn-sm" onclick="callApprove('.$data->id.')">Approve</button>
+        //             <button class="btn btn-danger btn-sm" onclick="callCancel('.$data->id.')">Cancel</button>';
+        // })
+        // ->rawColumns(['action'])
+        ->toJSON();
+    }
+    public function VendorListTable(){
+        $Query = Vendor::query()->whereStatus('Pending');
+
+        $this->i = 1;
+
+        return Datatables::of($Query)
+        ->addColumn('id', function ($data) {
+            return $this->i++;
+        })
+        ->addColumn('action', function ($data) {
+            return '<button class="btn btn-primary btn-sm" onclick="callApprove('.$data->id.')">Approve</button>
+                    <button class="btn btn-danger btn-sm" onclick="callCancel('.$data->id.')">Cancel</button>';
+        })
+        ->rawColumns(['action'])
+        ->toJSON();
+    }
     public function LanguageListTable(){
         $Query = Language::query()->orderBy('id', 'desc');
 

@@ -119,7 +119,8 @@
                                         @endif
                                     </a>
                                 </li>
-                                <li><a href="#">Orders History</a></li>
+                                <li><a href="{{route('seller-create')}}">Seller Create</a></li>
+                                {{-- <li><a href="#">Orders History</a></li> --}}
                                 <li><a href="#">Order Tracking</a></li>
                             </ul>
                         </div>

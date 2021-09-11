@@ -1,4 +1,3 @@
-
 <footer class="footer-area footer-style-two">
     <div class="footer-top pt-65 pb-25">
         <div class="custom-container-two">
@@ -24,7 +23,8 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-widget mb-50">
                         <div class="footer-logo mb-30">
-                            <a href="{{url('/')}}"><img src="{{ URL::asset('venam/') }}/img/logo/white_paikari_logo.png" alt=""></a>
+                            <a href="{{url('/')}}"><img src="{{ URL::asset('venam/') }}/img/logo/white_paikari_logo.png"
+                                    alt=""></a>
                         </div>
                         <div class="footer-text mb-35">
                             <h5 class="call-us">Got Question? Call us 24/7</h5>

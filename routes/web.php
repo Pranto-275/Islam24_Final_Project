@@ -66,6 +66,9 @@ use App\Http\Livewire\Backend\Transaction\Payment;
 use App\Http\Livewire\Backend\Transaction\SupplierPayment;
 use App\Http\Livewire\Backend\Transaction\SupplierPaymentReport;
 use App\Http\Livewire\Backend\ProductInfo\PreviewProduct;
+use App\Http\Livewire\Backend\Vendor\VendorList;
+use App\Http\Livewire\Backend\Vendor\VendorApprovedList;
+use App\Http\Livewire\Backend\Vendor\VendorCancelList;
 use App\Http\Livewire\Frontend\About as AboutUs;
 use App\Http\Livewire\Frontend\Category as FrontEndCategory;
 use App\Http\Livewire\Frontend\CategoryWiseProduct;
@@ -82,7 +85,6 @@ use App\Http\Livewire\Frontend\LogIn;
 use App\Http\Livewire\Frontend\TermsConditios;
 use App\Http\Livewire\Frontend\Wishlist;
 use App\Http\Livewire\Inventory\DelieveryMethod;
-// use App\Http\Livewire\Inventory\Language;
 use App\Http\Livewire\UserManagement\UserList;
 use App\Http\Livewire\UserProfile\AuthLockScreen;
 use App\Http\Livewire\UserProfile\ChangePassword;
@@ -106,18 +108,19 @@ Route::post('upazila-search', [HomeController::class, 'SearchUpazila'])->name('u
 Route::get('edit/{id?}', [HomeController::class, 'EditContact'])->name('edit');
 Route::post('edit', [HomeController::class, 'EditContactById']);
 Route::post('edit-shipping-address', [HomeController::class, 'EditShippingAddress'])->name('edit-shipping-address');
+Route::get('seller-create', [HomeController::class, 'SellerCreateForm'])->name('seller-create');
+Route::post('seller-create', [HomeController::class, 'CreateSeller']);
 
- Route::get('/', function () {
-     return view('auth.login');
- });
+Route::get('/', function () {
+    return view('auth.login');
+});
 Route::group(['prefix' => 'customer'], function () {
     Route::get('customer_login', Customer::class)->name('customer_login');
     Route::get('category_wise_product/{id?}', CategoryWiseProduct::class)->name('category_wise_product');
     Route::get('product_view/{id?}', ProductView::class)->name('product_view');
 });
 
-
-Route::get('privacy-policy',PrivacyPolicy::class)->name('privacy-policy');
+Route::get('privacy-policy', PrivacyPolicy::class)->name('privacy-policy');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/customer-login', [HomeController::class, 'CustomerLogin'])->name('customer-login');
@@ -141,7 +144,7 @@ Route::get('order-details/{id?}', [HomeController::class, 'OrderDetail'])->name(
 Route::get('category', FrontEndCategory::class)->name('category');
 Route::get('sign-in', SignIn::class)->name('sign-in');
 Route::get('sign-up', SignUp::class)->name('sign-up');
-Route::get('log-in',LogIn::class)->name('log-in');
+Route::get('log-in', LogIn::class)->name('log-in');
 //Route::get('cart', Cart::class)->name('cart');
 //Route::get('check-out', Checkout::class)->name('check-out');
 Route::get('contact-us', ContactUs::class)->name('contact-us');
@@ -253,6 +256,12 @@ Route::group(['middleware' => ['role:admin|user']], function () {
             Route::get('order-report', OrderReport::class)->name('order-report');
         });
 
+        Route::group(['prefix' => 'vendor', 'as' => 'vendor.'], function () {
+            Route::get('vendor-list', VendorList::class)->name('vendor-list');
+            Route::get('vendor-approved-list', VendorApprovedList::class)->name('vendor-approved-list');
+            Route::get('vendor-cancel-list', VendorCancelList::class)->name('vendor-cancel-list');
+        });
+
         Route::group(['prefix' => 'data', 'as' => 'data.'], function () {
             Route::get('index', [DatatableController::class, 'index'])->name('index');
 
@@ -300,6 +309,9 @@ Route::group(['middleware' => ['role:admin|user']], function () {
             Route::get('news_list', [DatatableController::class, 'NewsListTable'])->name('news_list');
             Route::get('language_list', [DatatableController::class, 'LanguageListTable'])->name('language_list');
             Route::get('manage_language_list', [DatatableController::class, 'LanguageListTable'])->name('manage_language_list');
+            Route::get('vendor_table', [DatatableController::class, 'VendorListTable'])->name('vendor_table');
+            Route::get('vendor_approved_table', [DatatableController::class, 'VendorApprovedListTable'])->name('vendor_approved_table');
+            Route::get('vendor_cancel_table', [DatatableController::class, 'VendorCancelListTable'])->name('vendor_cancel_table');
         });
     });
 });
