@@ -11,6 +11,93 @@
         #profile-submit-button {
             display: none;
         }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #fdfdfd;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td::before {
+                /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        /* general styling */
+        body {
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.25;
+        }
     </style>
     <x-slot name="title">
         Category
@@ -57,7 +144,8 @@
                                     {{ Auth::user()->mobile }}</div>
                                 <center>
                                     <div class="heder-top-guide">
-                                        <a class="log-out-btn text-danger border border-danger p-1 pt-2 rounded" href="#"
+                                        <a class="log-out-btn text-danger border border-danger p-1 pt-2 rounded"
+                                            href="#"
                                             onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                                 class="bx bx-power-off font-size-16 align-middle text-danger"></i>
                                             লগ আউট</a>
@@ -80,8 +168,8 @@
                                 <li class="list-group-item"><a class="text-dark" href="#change-password"
                                         data-toggle="tab">পাসওয়ার্ড পরিবর্তন</a></li>
                                 {{-- <li class="list-group-item"><a class="text-dark" href="#transaction" data-toggle="tab">Transactions</a></li> --}}
-                                <li class="list-group-item active"><a class="text-dark" href="#order" data-toggle="tab"><span
-                                    style="color: #ff5c00;">অর্ডার লিস্ট</span></a></li>
+                                <li class="list-group-item active"><a class="text-dark" href="#order"
+                                        data-toggle="tab"><span style="color: #ff5c00;">অর্ডার লিস্ট</span></a></li>
                             </ul>
                         </div>
                         {{-- End First Card --}}
@@ -127,14 +215,16 @@
                                 <div class="form-grp">
                                     <label style="color: black;">জেলা *</label>
                                     <select class="custom-select district" name="district_id" required>
-                                                <option value="">সিলেক্ট করুন</option>
-                                                @foreach ($Districts as $zilla)
-                                                <option value="{{$zilla->id}}"
-                                                    class="district-items division_id_{{$zilla->division_id}} "
-                                                    @if(!Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected @endif @elseif($zilla->name==Auth::user()->Contact->District->name) selected @endif style="color:black;">{{$zilla->name}}
-                                                </option>
-                                                @endforeach
-                                            </select>
+                                        <option value="">সিলেক্ট করুন</option>
+                                        @foreach ($Districts as $zilla)
+                                        <option value="{{$zilla->id}}"
+                                            class="district-items division_id_{{$zilla->division_id}} "
+                                            @if(!Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected
+                                            @endif @elseif($zilla->name==Auth::user()->Contact->District->name) selected
+                                            @endif style="color:black;">{{$zilla->name}}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             {{-- <div class="col-sm-6 mt-1">
@@ -152,13 +242,16 @@
                                     <label for="shipping_address" style="color: black;">পূর্ণ ঠিকানা*</label>
                                     {{-- <input class="form-control" type="text" name="shipping_address" required
                                         value="@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif"
-                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 50px;"> --}}
-                                        <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 100px;" required placeholder="আপনার পূর্ণ ঠিকানা লিখুন">@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif</textarea>
+                                    placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 50px;"> --}}
+                                    <textarea id="shipping_address" class="form-control" name="shipping_address"
+                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 100px;" required
+                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন">@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif</textarea>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <center>
-                                    <button type="submit" class="border py-2 px-5 mt-3 rounded text-info text-light px-3"
+                                    <button type="submit"
+                                        class="border py-2 px-5 mt-3 rounded text-info text-light px-3"
                                         style="background-color: #ff5c00;font-size: 14px;">Save</button>
                                 </center>
                             </div>
@@ -259,17 +352,21 @@
                             @endphp
                             @foreach ($contact->Order as $order)
                             <tr>
-                                <th scope="row">{{$order->code}}</th>
-                                <td>{{date('d F Y', strtotime($order->order_date))}}</td>
-                                <td>
+                                <td data-label="আইডি" scope="row">{{$order->code}}</td>
+                                <td data-label="তারিখ">{{date('d F Y', strtotime($order->order_date))}}</td>
+                                <td data-label="সর্বমোট">
                                     @if($currencySymbol)
-                                        <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>
+                                    <span style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>
                                     @endif
                                     {{$order->total_amount}}
                                 </td>
-                                <td>{{$order->status}}</td>
+                                <td data-label="অর্ডার স্ট্যাটাস">{{$order->status}}</td>
                                 <td>
-                                    <a href="{{ route('order-details', ['id'=>$order->id]) }}" class="btn btn-info" style="background-color: #ff5c00;;margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;font-weight:bold;"><i class="fa fa-eye font-size-18" aria-hidden="true"></i></a>
+                                    <center>
+                                        <a href="{{ route('order-details', ['id'=>$order->id]) }}" class="btn btn-info"
+                                            style="background-color: #ff5c00;;margin-top:5px;padding:0.35em 1.2em;border:0.1em solid #FFFFFF;font-weight:300;color:#FFFFFF;text-align:center;font-weight:bold;"><i
+                                                class="fa fa-eye font-size-18" aria-hidden="true"></i></a>
+                                    </center>
                                 </td>
                             </tr>
                             @endforeach
