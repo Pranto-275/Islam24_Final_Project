@@ -61,8 +61,22 @@ class HomeController extends Controller
             'account_type' => 'required',
             // 'profile_photo_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        DB::transaction(function() use($request){
 
+        // User Create
+        $UserQuery=new User();
+        $UserQuery->name=$request->name;
+        $UserQuery->mobile=$request->mobile;
+        $UserQuery->email=$request->email;
+        $UserQuery->type=$request->account_type;
+        $UserQuery->branch_id=1;
+        $UserQuery->upazila_id=$request->district_id;
+        $UserQuery->password=Hash::make($request->password);
+        $UserQuery->save();
+
+        // Vendor Create
         $Query=new Vendor();
+        $Query->user_id=$UserQuery->id;
         $Query->name=$request->name;
         $Query->business_name=$request->business_name;
         $Query->trade_license=$request->trade_license;
@@ -71,9 +85,23 @@ class HomeController extends Controller
         $Query->business_location=$request->business_location;
         $Query->district_id=$request->district_id;
         $Query->mobile=$request->mobile;
-        $Query->password=Hash::make($request->password);
         $Query->account_type=$request->account_type;
         $Query->save();
+
+        //  Create Contact
+        $ContactQuery=new Contact();
+        $ContactQuery->type='Customer';
+        $ContactQuery->user_id=$UserQuery->id;
+        $ContactQuery->first_name=$request->name;
+        $ContactQuery->mobile=$request->mobile;
+        $ContactQuery->email=$request->email;
+        $ContactQuery->business_name=$request->business_name;
+        $ContactQuery->district_id=$request->district_id;
+        $ContactQuery->branch_id=1;
+        $ContactQuery->created_by=1;
+        $ContactQuery->save();
+
+        });
 
         return redirect()->back();
     }
@@ -252,7 +280,12 @@ class HomeController extends Controller
             // Add To Order Details
             foreach ($AddToCart as $OrderProductDetail) {
                 $OrderProductDetails = json_decode($OrderProductDetail->data);
+                $ProductQuery=Product::find($OrderProductDetails->product_id);
+
                 $OrderDetails = new OrderDetail();
+                if($ProductQuery){
+                  $OrderDetails->vendor_id = $ProductQuery->vendor_id;
+                }
                 $OrderDetails->order_id = $Order->id;
                 $OrderDetails->product_id = $OrderProductDetails->product_id;
                 $OrderDetails->unit_price = $OrderProductDetail->unit_price;

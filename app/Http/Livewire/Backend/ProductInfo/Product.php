@@ -15,6 +15,7 @@ use App\Models\Backend\ProductInfo\SubCategory;
 use App\Models\Backend\ProductInfo\SubSubCategory;
 use App\Models\Backend\Setting\Vat;
 use App\Models\Backend\Setting\Warehouse;
+use App\Models\FrontEnd\Vendor;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -170,6 +171,11 @@ class Product extends Component
             } else {
                 $Query = new ProductTable();
                 $Query->created_by = Auth::user()->id;
+
+                $Vendor=Vendor::whereUserId(Auth::user()->id)->first();
+                if($Vendor){
+                    $Query->vendor_id = $Vendor->id;
+                }
             }
 
             $Query->code = $this->code;

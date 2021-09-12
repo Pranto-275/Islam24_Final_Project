@@ -199,7 +199,7 @@
                                 <div class="form-grp">
                                     <label for="fName" style="color: black;">দোকানের নাম<span>*</span></label>
                                     <input class="form-control" type="text" name="business_name" required
-                                        value="@if(Auth::user()){{Auth::user()->Contact->business_name}}@endif"
+                                        value="@if(Auth::user() && Auth::user()->Contact){{Auth::user()->Contact->business_name}}@endif"
                                         placeholder="আপনার দোকানের নাম লিখুন">
                                 </div>
                             </div>
@@ -207,7 +207,7 @@
                                 <div class="form-grp">
                                     <label for="mobile" style="color: black;">মোবাইল নাম্বার<span>*</span></label>
                                     <input class="form-control" type="text" name="mobile" required
-                                        value="@if(Auth::user()){{Auth::user()->Contact->mobile}}@endif"
+                                        value="@if(Auth::user() && Auth::user()->Contact){{Auth::user()->Contact->mobile}}@endif"
                                         placeholder="মোবাইল নাম্বার লিখুন">
                                 </div>
                             </div>
@@ -219,8 +219,8 @@
                                         @foreach ($Districts as $zilla)
                                         <option value="{{$zilla->id}}"
                                             class="district-items division_id_{{$zilla->division_id}} "
-                                            @if(!Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected
-                                            @endif @elseif($zilla->name==Auth::user()->Contact->District->name) selected
+                                            @if(Auth::user()->Contact && !Auth::user()->Contact->District) @if($zilla->name=='Dhaka') selected
+                                            @endif @elseif(Auth::user()->Contact && $zilla->name==Auth::user()->Contact->District->name) selected
                                             @endif style="color:black;">{{$zilla->name}}
                                         </option>
                                         @endforeach
@@ -245,7 +245,7 @@
                                     placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 50px;"> --}}
                                     <textarea id="shipping_address" class="form-control" name="shipping_address"
                                         placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="height: 100px;" required
-                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন">@if(Auth::user()){{Auth::user()->Contact->shipping_address}}@endif</textarea>
+                                        placeholder="আপনার পূর্ণ ঠিকানা লিখুন">@if(Auth::user() && Auth::user()->Contact){{Auth::user()->Contact->shipping_address}}@endif</textarea>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -350,6 +350,7 @@
                             @php
                             $i=0;
                             @endphp
+                            @if(isset($contact->Order))
                             @foreach ($contact->Order as $order)
                             <tr>
                                 <td data-label="আইডি" scope="row">{{$order->code}}</td>
@@ -370,7 +371,7 @@
                                 </td>
                             </tr>
                             @endforeach
-
+                             @endif
                         </tbody>
                     </table>
                 </div>

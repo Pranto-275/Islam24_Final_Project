@@ -15,6 +15,7 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vendor_id')->nullable();
             $table->foreignId('order_id')->nullable();
             $table->foreignId('product_id')->nullable();
             $table->double('unit_price')->nullable();
