@@ -15,6 +15,7 @@ class CreateVendorsTable extends Migration
     {
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('name', 191);
             $table->string('business_name', 191);
             $table->string('trade_license', 191);
@@ -24,7 +25,6 @@ class CreateVendorsTable extends Migration
             $table->string('business_location', 191);
             $table->foreignId('district_id');
             $table->string('mobile')->unique()->nullable();
-            $table->string('password');
             $table->enum('account_type',['Individual', 'Seller']);
             $table->enum('status', ['Pending', 'Approved', 'Cancel'])->default('Pending');
             $table->timestamps();

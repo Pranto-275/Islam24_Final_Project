@@ -15,7 +15,6 @@ use App\Models\Backend\Inventory\SalePayment;
 use App\Models\Backend\Setting\Warehouse;
 use App\Models\Backend\Setting\ShippingCharge;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 
