@@ -1,88 +1,44 @@
 @if($cardBadge['data']['products'])
-<div style="height: 300px;overflow-y: scroll;">
+<div class="products">
     @foreach($cardBadge['data']['products'] as $productId => $product)
-
-    <li class="d-flex align-items-start" id="li_row_{{ $productId }}" style="margin-left: 0px !important;">
-        <div class="cart-img">
-            <a href="#">
-                <img @if($product['Info']['image']!='blank-product-image.png' )
-                    src="{{ asset('storage/photo/'.$product['Info']['image']) }}" @else
-                    src="{{ asset('image-not-available.jpg') }}" @endif alt="">
+    <div class="product product-cart">
+        <div class="product-detail">
+            <a href="product-default.html" class="product-name">
+                @if(strlen($product['Info']['product_name'])>20)
+                {{ substr($product['Info']['product_name'], 0,19).'...' }}
+                @else
+                {{ $product['Info']['product_name'] }}
+                @endif
             </a>
-        </div>
-        <div class="cart-content">
-            <h4>
-                <a href="#" style="text-transform: capitalize;">
-                    @if(strlen($product['Info']['product_name'])>20)
-                    {{ substr($product['Info']['product_name'], 0,19).'...' }}
-                    @else
-                    {{ $product['Info']['product_name'] }}
-                    @endif
-                </a>
-            </h4>
-            <div class="cart-price">
-                <span class="new">{{ $product['Info']['special_price'] }}</span>
-                <span>
-                    <del>{{ $product['Info']['regular_price'] }}</del>
+            <div class="price-box">
+                <span class="product-quantity">{{ $product['quantity'] }}</span>
+                <span class="product-price">
+                    {{ $product['unit_price'] }}
                 </span>
             </div>
-            <div id="quantity_{{ $productId }}">
-                {{ $product['quantity'] }} X {{ $product['unit_price'] }} = {{ $product['total_price'] }}
-            </div>
         </div>
-        <div class="del-icon">
-            <a href="javascript:void(0)" class="btn-product-delete" data-product-id="{{ $productId }}">
-                <i class="far fa-trash-alt"></i>
+        <figure class="product-media">
+            <a href="product-default.html">
+                <img src="{{ asset('storage/photo/'.$product['Info']['image']) }}" alt="product" height="84"
+                    width="94" />
             </a>
-        </div>
-    </li>
+        </figure>
+        <button class="btn btn-link btn-close">
+            <i class="fas fa-times btn-product-delete"  data-product-id="{{ $productId }}"></i>
+        </button>
+    </div>
     @endforeach
 </div>
-{{-- @else --}}
-{{--<li class="d-flex align-items-start">
-
-        <div class="cart-content">
-            <h4>
-                <a href="#">Op's there is no product</a>
-            </h4>
-        </div>
-    </li>--}}
 @endif
-<li>
-    <div class="total-price">
-        <span class="f-left">
-            @if($language->total)
-            {{$language->total}}
-            @else
-            Total:
-            @endif
-        </span>
-        <span class="f-right" id="total_mini_cart_amount">
-            @if($currencySymbol)
-            {{ $currencySymbol->symbol }}
-            @endif
-            {{ $cardBadge['data']['total_price'] }}
-        </span>
-    </div>
-</li>
-<li>
-    <div class="checkout-link">
-        <a class="btn-hover" href="{{ route('cart') }}">
-            @if($language->shopping_cart)
-            {{$language->shopping_cart}}
-            @else
-            Shopping Cart
-            @endif
-        </a>
-        <a class="red-color btn-hover" href="{{ route('check-out') }}">
-            @if($language->checkout)
-            {{$language->checkout}}
-            @else
-            Checkout
-            @endif
-        </a>
-    </div>
-</li>
+<div class="cart-total">
+    <label>Subtotal:</label>
+    <span class="price">$58.67</span>
+</div>
+
+<div class="cart-action">
+    <a href="{{ asset('cart') }}" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
+    <a href="{{ asset('check-out') }}" class="btn btn-primary  btn-rounded">Checkout</a>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

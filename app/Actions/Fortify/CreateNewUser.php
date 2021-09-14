@@ -52,6 +52,7 @@ class CreateNewUser implements CreatesNewUsers
                 $contact->type = 'Customer';
                 $contact->mobile = $user->mobile;
                 $contact->district_id = $input['district_id'];
+                $contact->branch_id=1;
                 $contact->created_by = $user->id;
                 $contact->save();
             });
