@@ -49,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
             $view->with('newProducts', Product::whereFeatured('New Product')->whereIsActive(1)->orderBy('id', 'desc')->take(3)->get());
+            $view->with('bestSellingProducts', Product::whereFeatured('Best Selling Product')->whereIsActive(1)->orderBy('id', 'desc')->take(3)->get());
             $view->with('brands', Brand::get());
             $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
             $view->with('sliderImageLast', Slider::orderBy('id', 'desc')->whereIsActive(1)->first());
