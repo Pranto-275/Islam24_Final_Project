@@ -23,7 +23,8 @@
                         <i class="w-icon-angle-left"></i>
                     </a>
                     <span class="product-nav-popup">
-                        <img src="wolmart/assets/images/products/product-nav-prev.jpg" alt="Product" width="110" height="110" />
+                        <img src="wolmart/assets/images/products/product-nav-prev.jpg" alt="Product" width="110"
+                            height="110" />
                         <span class="product-name">Soft Sound Maker</span>
                     </span>
                 </li>
@@ -32,7 +33,8 @@
                         <i class="w-icon-angle-right"></i>
                     </a>
                     <span class="product-nav-popup">
-                        <img src="wolmart/assets/images/products/product-nav-next.jpg" alt="Product" width="110" height="110" />
+                        <img src="wolmart/assets/images/products/product-nav-next.jpg" alt="Product" width="110"
+                            height="110" />
                         <span class="product-name">Fabulous Sound Speaker</span>
                     </span>
                 </li>
@@ -181,7 +183,7 @@
                                             <i class="w-icon-cart"></i>
                                             <span>Add to Cart</span>
                                             </button> --}}
-                                            <a href="javascript:void(0)"
+                                            {{-- <a href="javascript:void(0)"
                                                 class="add-to-card buy-now buy-now-button cartModal"
                                                 data-product-id="{{ $productDetails->id }}" style="color: #ff5c00;">
                                                 @if($productDetails->in_stock=="Out of Stock")
@@ -197,7 +199,11 @@
                                                 Buy Now
                                                 @endif
                                                 @endif
-                                            </a>
+                                            </a> --}}
+                                            <button class="btn btn-primary btn-cart add-to-card buy-now buy-now-button cartModal" data-product-id="{{ $productDetails->id }}">
+                                                <i class="w-icon-cart"></i>
+                                                <span>Add to Cart</span>
+                                            </button>
                                         </div>
                                     </div>
 
@@ -227,8 +233,8 @@
                             <div class="bought-together-products row mt-8 pb-4">
                                 <div class="product product-wrap text-center">
                                     <figure class="product-media">
-                                        <img src="wolmart/assets/images/products/default/bought-1.jpg" alt="Product" width="138"
-                                            height="138" />
+                                        <img src="wolmart/assets/images/products/default/bought-1.jpg" alt="Product"
+                                            width="138" height="138" />
                                         <div class="product-checkbox">
                                             <input type="checkbox" class="custom-checkbox" id="product_check1"
                                                 name="product_check1">
@@ -244,8 +250,8 @@
                                 </div>
                                 <div class="product product-wrap text-center">
                                     <figure class="product-media">
-                                        <img src="wolmart/assets/images/products/default/bought-2.jpg" alt="Product" width="138"
-                                            height="138" />
+                                        <img src="wolmart/assets/images/products/default/bought-2.jpg" alt="Product"
+                                            width="138" height="138" />
                                         <div class="product-checkbox">
                                             <input type="checkbox" class="custom-checkbox" id="product_check2"
                                                 name="product_check2">
@@ -261,8 +267,8 @@
                                 </div>
                                 <div class="product product-wrap text-center">
                                     <figure class="product-media">
-                                        <img src="wolmart/assets/images/products/default/bought-3.jpg" alt="Product" width="138"
-                                            height="138" />
+                                        <img src="wolmart/assets/images/products/default/bought-3.jpg" alt="Product"
+                                            width="138" height="138" />
                                         <div class="product-checkbox">
                                             <input type="checkbox" class="custom-checkbox" id="product_check3"
                                                 name="product_check3">
@@ -375,8 +381,9 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6 mb-4">
                                             <figure class="vendor-banner br-sm">
-                                                <img src="wolmart/assets/images/products/vendor-banner.jpg" alt="Vendor Banner"
-                                                    width="610" height="295" style="background-color: #353B55;" />
+                                                <img src="wolmart/assets/images/products/vendor-banner.jpg"
+                                                    alt="Vendor Banner" width="610" height="295"
+                                                    style="background-color: #353B55;" />
                                             </figure>
                                         </div>
                                         <div class="col-md-6 pl-2 pl-md-6 mb-4">
@@ -1045,10 +1052,10 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/1-1.jpg" alt="Product" width="300"
-                                                height="338" />
-                                            <img src="wolmart/assets/images/products/default/1-2.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/1-1.jpg" alt="Product"
+                                                width="300" height="338" />
+                                            <img src="wolmart/assets/images/products/default/1-2.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1083,8 +1090,8 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/2.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/2.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1121,8 +1128,8 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/3.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/3.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1157,10 +1164,10 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/4-1.jpg" alt="Product" width="300"
-                                                height="338" />
-                                            <img src="wolmart/assets/images/products/default/4-2.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/4-1.jpg" alt="Product"
+                                                width="300" height="338" />
+                                            <img src="wolmart/assets/images/products/default/4-2.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1223,8 +1230,8 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/5.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/5.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1256,8 +1263,8 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/6.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/6.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1292,10 +1299,10 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/7-1.jpg" alt="Product" width="300"
-                                                height="338" />
-                                            <img src="wolmart/assets/images/products/default/7-2.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/7-1.jpg" alt="Product"
+                                                width="300" height="338" />
+                                            <img src="wolmart/assets/images/products/default/7-2.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1328,8 +1335,8 @@
                                 <div class="product">
                                     <figure class="product-media">
                                         <a href="product-default.html">
-                                            <img src="wolmart/assets/images/products/default/8.jpg" alt="Product" width="300"
-                                                height="338" />
+                                            <img src="wolmart/assets/images/products/default/8.jpg" alt="Product"
+                                                width="300" height="338" />
                                         </a>
                                         <div class="product-action-vertical">
                                             <a href="#" class="btn-product-icon btn-cart w-icon-cart"
@@ -1434,8 +1441,8 @@
                                             <div class="product product-widget">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="wolmart/assets/images/shop/13.jpg" alt="Product" width="100"
-                                                            height="113" />
+                                                        <img src="wolmart/assets/images/shop/13.jpg" alt="Product"
+                                                            width="100" height="113" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1454,8 +1461,8 @@
                                             <div class="product product-widget">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="wolmart/assets/images/shop/14.jpg" alt="Product" width="100"
-                                                            height="113" />
+                                                        <img src="wolmart/assets/images/shop/14.jpg" alt="Product"
+                                                            width="100" height="113" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1474,8 +1481,8 @@
                                             <div class="product product-widget">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="wolmart/assets/images/shop/15.jpg" alt="Product" width="100"
-                                                            height="113" />
+                                                        <img src="wolmart/assets/images/shop/15.jpg" alt="Product"
+                                                            width="100" height="113" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1496,8 +1503,8 @@
                                             <div class="product product-widget">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="wolmart/assets/images/shop/16.jpg" alt="Product" width="100"
-                                                            height="113" />
+                                                        <img src="wolmart/assets/images/shop/16.jpg" alt="Product"
+                                                            width="100" height="113" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1516,8 +1523,8 @@
                                             <div class="product product-widget">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="wolmart/assets/images/shop/17.jpg" alt="Product" width="100"
-                                                            height="113" />
+                                                        <img src="wolmart/assets/images/shop/17.jpg" alt="Product"
+                                                            width="100" height="113" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1536,8 +1543,8 @@
                                             <div class="product product-widget">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img src="wolmart/assets/images/shop/18.jpg" alt="Product" width="100"
-                                                            height="113" />
+                                                        <img src="wolmart/assets/images/shop/18.jpg" alt="Product"
+                                                            width="100" height="113" />
                                                     </a>
                                                 </figure>
                                                 <div class="product-details">
@@ -1569,10 +1576,3 @@
     <!-- End of Main -->
 </div>
 @endsection
-
-
-
-
-
-
-
