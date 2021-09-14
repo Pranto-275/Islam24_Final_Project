@@ -8,14 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\ContactInfo\Contact;
 use App\Models\Backend\ContactUs\Message;
 use App\Models\Backend\ProductInfo\Product;
-use App\Models\Backend\Setting\BreakingNews;
 use App\Models\Backend\Setting\ShippingCharge;
-use App\Models\District;
-use App\Models\Division;
 use App\Models\FrontEnd\AddToCard;
 use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
-use App\Models\Upazila;
+use App\Models\FrontEnd\Vendor;
 use App\Models\User;
 use App\Services\AddToCardService;
 use Carbon\Carbon;
@@ -49,6 +46,39 @@ class HomeController extends Controller
         $this->product = $product;
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
+    }
+    public function CreateSeller(Request $request){
+        $this->validate($request, [
+            'name' => 'required',
+            'business_name' => 'required',
+            'trade_license' => 'required',
+            'trn_number' => 'required',
+            'business_location' => 'required',
+            'district_id' => 'required',
+            'email' => 'required|unique:vendors',
+            'mobile' => 'required|unique:vendors',
+            'password' => 'required|min:6',
+            'account_type' => 'required',
+            // 'profile_photo_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $Query=new Vendor();
+        $Query->name=$request->name;
+        $Query->business_name=$request->business_name;
+        $Query->trade_license=$request->trade_license;
+        $Query->trn_number=$request->trn_number;
+        $Query->email=$request->email;
+        $Query->business_location=$request->business_location;
+        $Query->district_id=$request->district_id;
+        $Query->mobile=$request->mobile;
+        $Query->password=Hash::make($request->password);
+        $Query->account_type=$request->account_type;
+        $Query->save();
+
+        return redirect()->back();
+    }
+    public function SellerCreateForm(){
+        return view('frontend.seller-create');
     }
     public function OrderDetail($id=NULL){
         if (Auth::user()) {

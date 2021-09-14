@@ -253,11 +253,11 @@
                         title: 'SL',
                         data: 'id'
                     },
-                    {
-                        title: 'Code',
-                        data:   'code',
-                        name:   'code'
-                    },
+                    // {
+                    //     title: 'Code',
+                    //     data:   'code',
+                    //     name:   'code'
+                    // },
                     {
                         title: 'Name',
                         data:  'name',

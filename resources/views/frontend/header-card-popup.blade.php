@@ -51,7 +51,7 @@
 <li>
     <div class="total-price">
         <span class="f-left">
-            @if($language)
+            @if($language->total)
             {{$language->total}}
             @else
             Total:
@@ -68,14 +68,14 @@
 <li>
     <div class="checkout-link">
         <a class="btn-hover" href="{{ route('cart') }}">
-            @if($language)
+            @if($language->shopping_cart)
             {{$language->shopping_cart}}
             @else
             Shopping Cart
             @endif
         </a>
         <a class="red-color btn-hover" href="{{ route('check-out') }}">
-            @if($language)
+            @if($language->checkout)
             {{$language->checkout}}
             @else
             Checkout

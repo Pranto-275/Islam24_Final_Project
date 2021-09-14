@@ -253,8 +253,13 @@
                                     </tbody>
                                 </table>
                                 @else
-                                <div class="alert alert-warning text-center">প্রিয় কাস্টমার, আপনি এখনো কোন প্রডাক্ট
-                                    শপিংব্যাগে যুক্ত করেননি,দুঃখিত।</div>
+                                <div class="alert alert-warning text-center">
+                                    @if($language->no_product_in_shopping_bag_alert_text)
+                                    {{$language->no_product_in_shopping_bag_alert_text}}
+                                    @else
+                                    There is no product added by you!
+                                    @endif
+                                </div>
                                 @endif
                             </div>
                             {{-- <div class="shop-cart-bottom mt-20">
@@ -356,7 +361,7 @@
 <button class="btn btn-hover" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
     id="orderFinish">
     @if($language->cart_page_order_finish_button_text)
-    {{$language->cart_page_order_finish_button_text}}
+      {{$language->cart_page_order_finish_button_text}}
     @else
     Finish Order
     @endif

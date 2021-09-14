@@ -52,7 +52,7 @@
             {{-- Start Top Category Show Slider --}}
             @if(count($topFourCategories)>0)
             <h5 class="text-center">
-                @if($language)
+                @if($language->product_categories)
                 {{$language->product_categories}}
                 @else
                 Categories
@@ -149,7 +149,7 @@
             <div class="section-title text-center">
                 {{-- <span class="sub-title">exclusive collection</span> --}}
                 <h2 class="title">
-                    @if($language)
+                    @if($language->new_product)
                     {{$language->new_product}}
                     @else
                     New Electronics Products
@@ -302,7 +302,7 @@
         <div class="col-lg-8">
             <div class="section-title text-center mb-5">
                 <h2 class="title">
-                    @if($language)
+                    @if($language->best_selling_product)
                     {{$language->best_selling_product}}
                     @else
                     Best Selling Products
@@ -440,7 +440,7 @@
         <div class="col-md-12">
             <center>
                 <a class="btn text-center btn-hover" href="{{route('search-category-wise')}}">
-                    @if($language)
+                    @if($language->more_products)
                     {{$language->more_products}}
                     @else
                     See More
