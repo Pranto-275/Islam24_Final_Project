@@ -49,7 +49,7 @@
             <div class="header-left mr-md-4">
                 <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
                 </a>
-                <a href="{{url('/')}}" class="logo ml-lg-0">
+                <a href="demo2.html" class="logo ml-lg-0">
                     <img src="@if($companyInfo) {{ asset('storage/photo/'.$companyInfo->logo) }} @endif" alt="logo"
                         width="144" height="45" />
                 </a>
