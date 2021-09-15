@@ -129,7 +129,7 @@
                 </div>
                 <!-- End of Iocn Box Wrapper -->
 
-                {{-- <div class="title-link-wrapper mb-3 appear-animate">
+                <div class="title-link-wrapper mb-3 appear-animate">
                     <h2 class="title title-deals mb-1">Deals Of The Day</h2>
                     <div class="product-countdown-container font-size-sm text-dark align-items-center">
                         <label>Offer Ends in: </label>
@@ -138,10 +138,10 @@
                     </div>
                     <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">More Products<i
                             class="w-icon-long-arrow-right"></i></a>
-                </div> --}}
+                </div>
                 <!-- End of .title-link-wrapper -->
 
-                {{-- <div class="owl-carousel owl-theme row cols-lg-5 cols-md-4 cols-2 product-deals-wrapper appear-animate mb-7"
+                <div class="owl-carousel owl-theme row cols-lg-5 cols-md-4 cols-2 product-deals-wrapper appear-animate mb-7"
                     data-owl-options="{
                     'nav': false,
                     'dots': true,
@@ -338,7 +338,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <!-- End of Product Deals Warpper -->
 
                 <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
@@ -382,8 +382,8 @@
                 </div>
                 <!-- End of Category Wrapper -->
 
-                {{-- <h2 class="title mb-5 appear-animate">Top Weekly Vendors</h2> --}}
-                {{-- <div class="owl-carousel owl-theme vendor-wrapper row cols-lg-4 cols-md-3 cols-sm-2 cols-1 mb-4 appear-animate"
+                <h2 class="title mb-5 appear-animate">Top Weekly Vendors</h2>
+                <div class="owl-carousel owl-theme vendor-wrapper row cols-lg-4 cols-md-3 cols-sm-2 cols-1 mb-4 appear-animate"
                     data-owl-options="{
                     'nav': false,
                     'dots': true,
@@ -402,8 +402,8 @@
                             'items': 4
                         }
                     }
-                }"> --}}
-                    {{-- <div class="vendor-widget vendor-widget-1">
+                }">
+                    <div class="vendor-widget vendor-widget-1">
                         <div class="vendor-products grid-type">
                             <div class="vendor-product lg-item">
                                 <figure class="product-media">
@@ -450,9 +450,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <!-- End of Vendor Widget -->
-                    {{-- <div class="vendor-widget vendor-widget-1">
+                    <div class="vendor-widget vendor-widget-1">
                         <div class="vendor-products grid-type">
                             <div class="vendor-product lg-item">
                                 <figure class="product-media">
@@ -499,9 +499,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <!-- End of Vendor Widget -->
-                    {{-- <div class="vendor-widget vendor-widget-1">
+                    <div class="vendor-widget vendor-widget-1">
                         <div class="vendor-products grid-type">
                             <div class="vendor-product lg-item">
                                 <figure class="product-media">
@@ -548,9 +548,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <!-- End of Vendor Widget -->
-                    {{-- <div class="vendor-widget vendor-widget-1">
+                    <div class="vendor-widget vendor-widget-1">
                         <div class="vendor-products grid-type">
                             <div class="vendor-product lg-item">
                                 <figure class="product-media">
@@ -597,9 +597,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <!-- End of Vendor Widget -->
-                {{-- </div> --}}
+                </div>
                 <!-- End of Vendor Wrapper -->
                 <div class="tab tab-with-title tab-nav-boxed appear-animate">
                     <h2 class="title">Consumer Electronics</h2>
@@ -673,8 +673,8 @@
                                                 alt="Product" width="300" height="338">
                                         </a>
                                         <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart add-to-card buy-now buy-now-button cartModal"
-                                            data-product-id="{{ $newProduct->id }}"   title="Add to cart"></a>
+                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                                                title="Add to cart"></a>
                                             <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
                                                 title="Add to wishlist"></a>
                                             <a href="#" class="btn-product-icon btn-quickview w-icon-search"

@@ -1,7 +1,106 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
+    <style>
+        #headerOneCheckOut,
+        #sticky-header,
+        #headerThreeCheckout,
+        #footerOneCheckOut {
+            display: none;
+        }
+        }
 
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #fdfdfd;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td::before {
+                /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        /* general styling */
+        body {
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.25;
+        }
+
+        #mobileResponsiveFooter {
+            display: none;
+        }
+    </style>
     <x-slot name="title">
         Category
     </x-slot>
@@ -9,368 +108,510 @@
         Category
     </x-slot>
 
-       <!-- Start of Main -->
-       <main class="main checkout">
-        <!-- Start of Breadcrumb -->
-        <nav class="breadcrumb-nav">
-            <div class="container">
-                <ul class="breadcrumb shop-breadcrumb bb-no">
-                    <li class="passed"><a href="{{ route('cart') }}">Shopping Cart</a></li>
-                    <li class="active"><a href="{{ route('check-out') }}">Checkout</a></li>
-                    <li><a href="{{ route('order-completed') }}">Order Complete</a></li>
-                </ul>
-            </div>
-        </nav>
-        <!-- End of Breadcrumb -->
+    <main>
+        <form id="checkout" method="POST" action="{{ route('confirm-order') }}" enctype="multipart/form-data"
+            class="checkout-form" accept-charset="utf-8">
+            <!-- checkout-area -->
+            <section class="checkout-area pb-20">
+                <div class="text-center py-2 rounded"
+                    style="background-color: black;position: fixed;width: 100%;z-index: 2;">
+                    <a href="{{ route('home') }}" class="float-left">
+                        {{-- <i class="fas fa-backspace"
+                        style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
+                        <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+                    </a>
+                    <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">
+                        @if($language->checkout_page_header_title)
+                        {{$language->checkout_page_header_title}}
+                        @else
+                        Quick Checkout
+                        @endif
+                    </span>
+                </div>
+                {{-- <hr class="mb-0 mt-3">
+                <br>
+                <br> --}}
+                <div class="container pt-40">
 
-
-        <!-- Start of PageContent -->
-        <div class="page-content">
-            <div class="container">
-                <div class="login-toggle">
-                    Returning customer? <a href="#"
-                        class="show-login font-weight-bold text-uppercase text-dark">Login</a>
-                </div>
-                <form class="login-content">
-                    <p>If you have shopped with us before, please enter your details below.
-                        If you are a new customer, please proceed to the Billing section.</p>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <div class="form-group">
-                                <label>Username or email *</label>
-                                <input type="text" class="form-control form-control-md" name="name"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="form-group">
-                                <label>Password *</label>
-                                <input type="text" class="form-control form-control-md" name="password"
-                                    required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group checkbox">
-                        <input type="checkbox" class="custom-checkbox" id="remember" name="remember">
-                        <label for="remember" class="mb-0 lh-2">Remember me</label>
-                        <a href="#" class="ml-3">Last your password?</a>
-                    </div>
-                    <button class="btn btn-rounded btn-login">Login</button>
-                </form>
-                <div class="coupon-toggle">
-                    Have a coupon? <a href="#"
-                        class="show-coupon font-weight-bold text-uppercase text-dark">Enter your
-                        code</a>
-                </div>
-                <div class="coupon-content mb-4">
-                    <p>If you have a coupon code, please apply it below.</p>
-                    <div class="input-wrapper-inline">
-                        <input type="text" name="coupon_code" class="form-control form-control-md mr-1 mb-2" placeholder="Coupon code" id="coupon_code">
-                        <button type="submit" class="btn button btn-rounded btn-coupon mb-2" name="apply_coupon" value="Apply coupon">Apply Coupon</button>
-                    </div>
-                </div>
-                <form class="form checkout-form" action="#" method="post">
-                    <div class="row mb-9">
-                        <div class="col-lg-7 pr-lg-4 mb-4">
-                            <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
-                                Billing Details
-                            </h3>
-                            <div class="row gutter-sm">
-                                <div class="col-xs-6">
-                                    <div class="form-group">
-                                        <label>First name *</label>
-                                        <input type="text" class="form-control form-control-md" name="firstname"
-                                            required>
+                    @csrf
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="checkout-wrap">
+                                {{-- <h5 class="title text-center mt-2" style="color: #ff5c00;">কুইক চেকআউট</h5> --}}
+                                <div class="row mt-4">
+                                    @if(!Auth::user())
+                                    <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label for="business_name" style="color: black;">
+                                                @if($language->business_name_label)
+                                                {{$language->business_name_label}}
+                                                @else
+                                                Business Name
+                                                @endif
+                                                <span>*</span></label>
+                                            <input class="form-control" type="text" name="business_name" required
+                                                value="@if(Auth::user()){{Auth::user()->Contact->business_name}}@endif"
+                                                placeholder="@if($language->business_name_placeholder) {{$language->business_name_placeholder}} @else Name @endif
+                                                ">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="form-group">
-                                        <label>Last name *</label>
-                                        <input type="text" class="form-control form-control-md" name="lastname"
-                                            required>
+                                    <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label for="fName">
+                                                @if($language->your_name_label)
+                                                {{$language->your_name_label}}
+                                                @else
+                                                Name
+                                                @endif
+                                                <span>*</span>
+                                            </label>
+                                            <input type="text" name="fName" required
+                                                value="@if(Auth::user()){{Auth::user()->name}}@endif" placeholder=" @if($language->your_name_placeholder) {{$language->your_name_placeholder}} @else Name @endif
+                                                ">
+                                        </div>
                                     </div>
+                                    {{-- <div class="col-sm-6">
+                                        <div class="form-grp">
+                                            <label for="fName">Last Name <span>*</span></label>
+                                            <input type="text" name="lName" required>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label for="mobile">
+                                                @if($language->mobile_number_label)
+                                                {{$language->mobile_number_label}}
+                                                @else
+                                                Mobile Number
+                                                @endif
+                                                <span>*</span></label>
+                                            <input type="text" name="mobile" required
+                                                value="@if(Auth::user()){{Auth::user()->mobile}}@endif"
+                                                placeholder="@if($language->your_mobile_number_placeholder) {{$language->your_mobile_number_placeholder}} @else Your Mobile Number @endif ">
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label>বিভাগ *</label>
+                                            <select class="custom-select division" name="division_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Divisions as $item)
+                                                <option value="{{$item->id}}" @if($item->bn_name=='ঢাকা') selected
+                                    @endif>{{$item->bn_name}}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Company name (optional)</label>
-                                <input type="text" class="form-control form-control-md" name="company-name">
-                            </div>
-                            <div class="form-group">
-                                <label>Country / Region *</label>
-                                <div class="select-box">
-                                    <select name="country" class="form-control form-control-md">
-                                        <option value="default" selected="selected">United States
-                                            (US)
+                            </div> --}}
+                            <div class="col-sm-12">
+                                <div class="form-grp">
+                                    <label>
+                                        @if($language->zilla_label)
+                                        {{$language->zilla_label}}
+                                        @else
+                                        Zila
+                                        @endif
+                                        *</label>
+                                    <select class="custom-select district" name="district_id" required>
+                                        <option value="">
+                                            @if($language->select_zila_option_text)
+                                            --{{$language->select_zila_option_text}}--
+                                            @else
+                                            --Select--
+                                            @endif
                                         </option>
-                                        <option value="uk">United Kingdom (UK)</option>
-                                        <option value="us">United States</option>
-                                        <option value="fr">France</option>
-                                        <option value="aus">Australia</option>
+                                        @foreach ($Districts as $zilla)
+                                        <option value="{{$zilla->id}}"
+                                            class="district-items division_id_{{$zilla->division_id}} " @if($zilla->
+                                            name=='Dhaka') selected @endif style="color:black;">{{$zilla->name}}
+                                        </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Street address *</label>
-                                <input type="text" placeholder="House number and street name"
-                                    class="form-control form-control-md mb-2" name="street-address-1" required>
-                                <input type="text" placeholder="Apartment, suite, unit, etc. (optional)"
-                                    class="form-control form-control-md" name="street-address-2" required>
-                            </div>
-                            <div class="row gutter-sm">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Town / City *</label>
-                                        <input type="text" class="form-control form-control-md" name="town" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>ZIP *</label>
-                                        <input type="text" class="form-control form-control-md" name="zip" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>State *</label>
-                                        <div class="select-box">
-                                            <select name="country" class="form-control form-control-md">
-                                                <option value="default" selected="selected">California</option>
-                                                <option value="uk">United Kingdom (UK)</option>
-                                                <option value="us">United States</option>
-                                                <option value="fr">France</option>
-                                                <option value="aus">Australia</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone *</label>
-                                        <input type="text" class="form-control form-control-md" name="phone" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mb-7">
-                                <label>Email address *</label>
-                                <input type="email" class="form-control form-control-md" name="email" required>
-                            </div>
-                            <div class="form-group checkbox-toggle pb-2">
-                                <input type="checkbox" class="custom-checkbox" id="shipping-toggle"
-                                    name="shipping-toggle">
-                                <label for="shipping-toggle">Ship to a different address?</label>
-                            </div>
-                            <div class="checkbox-content">
-                                <div class="row gutter-sm">
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label>First name *</label>
-                                            <input type="text" class="form-control form-control-md" name="firstname"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label>Last name *</label>
-                                            <input type="text" class="form-control form-control-md" name="lastname"
-                                                required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Company name (optional)</label>
-                                    <input type="text" class="form-control form-control-md" name="company-name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country / Region *</label>
-                                    <div class="select-box">
-                                        <select name="country" class="form-control form-control-md">
-                                            <option value="default" selected="selected">United States
-                                                (US)
-                                            </option>
-                                            <option value="uk">United Kingdom (UK)</option>
-                                            <option value="us">United States</option>
-                                            <option value="fr">France</option>
-                                            <option value="aus">Australia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Street address *</label>
-                                    <input type="text" placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" name="street-address-1" required>
-                                    <input type="text" placeholder="Apartment, suite, unit, etc. (optional)"
-                                        class="form-control form-control-md" name="street-address-2" required>
-                                </div>
-                                <div class="row gutter-sm">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Town / City *</label>
-                                            <input type="text" class="form-control form-control-md" name="town" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Postcode *</label>
-                                            <input type="text" class="form-control form-control-md" name="postcode" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Country (optional)</label>
-                                            <input type="text" class="form-control form-control-md" name="zip" required>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group mt-3">
-                                <label for="order-notes">Order notes (optional)</label>
-                                <textarea class="form-control mb-0" id="order-notes" name="order-notes" cols="30"
-                                    rows="4"
-                                    placeholder="Notes about your order, e.g special notes for delivery"></textarea>
-                            </div>
+                            {{-- <div class="col-sm-12">
+                                        <div class="form-grp">
+                                            <label>উপজেলা *</label>
+                                            <select class="custom-select upazila" name="upazila_id" required>
+                                                <option value="">সিলেক্ট করুন</option>
+                                                @foreach ($Upazilas as $upazilla)
+                                                <option value="{{ $upazilla->id}}" class="upazila-items
+                            district_id_{{$upazilla->district_id}}">{{ $upazilla->bn_name}}</option>
+                            @endforeach
+                            </select>
                         </div>
-                        <div class="col-lg-5 mb-4 sticky-sidebar-wrapper">
-                            <div class="order-summary-wrapper sticky-sidebar">
-                                <h3 class="title text-uppercase ls-10">Your Order</h3>
-                                <div class="order-summary">
-                                    <table class="order-table">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">
-                                                    <b>Product</b>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="bb-no">
-                                                <td class="product-name">Palm Print Jacket <i
-                                                        class="fas fa-times"></i> <span
-                                                        class="product-quantity">1</span></td>
-                                                <td class="product-total">$40.00</td>
-                                            </tr>
-                                            <tr class="bb-no">
-                                                <td class="product-name">Brown Backpack <i class="fas fa-times"></i>
-                                                    <span class="product-quantity">1</span></td>
-                                                <td class="product-total">$60.00</td>
-                                            </tr>
-                                            <tr class="cart-subtotal bb-no">
-                                                <td>
-                                                    <b>Subtotal</b>
-                                                </td>
-                                                <td>
-                                                    <b>$100.00</b>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr class="shipping-methods">
-                                                <td colspan="2" class="text-left">
-                                                    <h4 class="title title-simple bb-no mb-1 pb-0 pt-3">Shipping
-                                                    </h4>
-                                                    <ul id="shipping-method" class="mb-4">
-                                                        <li>
-                                                            <div class="custom-radio">
-                                                                <input type="radio" id="free-shipping"
-                                                                    class="custom-control-input" name="shipping">
-                                                                <label for="free-shipping"
-                                                                    class="custom-control-label color-dark">Free
-                                                                    Shipping</label>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="custom-radio">
-                                                                <input type="radio" id="local-pickup"
-                                                                    class="custom-control-input" name="shipping">
-                                                                <label for="local-pickup"
-                                                                    class="custom-control-label color-dark">Local
-                                                                    Pickup</label>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="custom-radio">
-                                                                <input type="radio" id="flat-rate"
-                                                                    class="custom-control-input" name="shipping">
-                                                                <label for="flat-rate"
-                                                                    class="custom-control-label color-dark">Flat
-                                                                    rate: $5.00</label>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                            <tr class="order-total">
-                                                <th>
-                                                    <b>Total</b>
-                                                </th>
-                                                <td>
-                                                    <b>$100.00</b>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                    </div> --}}
 
-                                    <div class="payment-methods" id="payment_method">
-                                        <h4 class="title font-weight-bold ls-25 pb-0 mb-1">Payment Methods</h4>
-                                        <div class="accordion payment-accordion">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <a href="#cash-on-delivery" class="collapse">Direct Bank Transfor</a>
-                                                </div>
-                                                <div id="cash-on-delivery" class="card-body expanded">
-                                                    <p class="mb-0">
-                                                        Make your payment directly into our bank account.
-                                                        Please use your Order ID as the payment reference.
-                                                        Your order will not be shipped until the funds have cleared in our account.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <a href="#payment" class="expand">Check Payments</a>
-                                                </div>
-                                                <div id="payment" class="card-body collapsed">
-                                                    <p class="mb-0">
-                                                        Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <a href="#delivery" class="expand">Cash on delivery</a>
-                                                </div>
-                                                <div id="delivery" class="card-body collapsed">
-                                                    <p class="mb-0">
-                                                        Pay with cash upon delivery.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="card p-relative">
-                                                <div class="card-header">
-                                                    <a href="#paypal" class="expand">Paypal</a>
-                                                </div>
-                                                <a href="https://www.paypal.com/us/webapps/mpp/paypal-popup" class="text-primary paypal-que"
-                                                    onclick="javascript:window.open('https://www.paypal.com/us/webapps/mpp/paypal-popup','WIPaypal',
-                                                    'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700');
-                                                    return false;">What is PayPal?
-                                                </a>
-                                                <div id="paypal" class="card-body collapsed">
-                                                    <p class="mb-0">
-                                                        Pay via PayPal, you can pay with your credit cart if you
-                                                        don't have a PayPal account.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="col-12">
+                        <div class="form-grp">
+                            <label for="shipping_address">
+                                @if($language->full_address_label)
+                                {{$language->full_address_label}}
+                                @else
+                                Full address
+                                @endif
+                                *
+                            </label>
 
-                                    <div class="form-group place-order pt-6">
-                                        <button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <textarea id="shipping_address" name="shipping_address"
+                                placeholder="@if($language->full_address_placeholder) {{$language->full_address_placeholder	}} @else Full Address @endif"
+                                required>@if(Auth::user()){{Auth::user()->address}}@endif</textarea>
                         </div>
                     </div>
-                </form>
-            </div>
+                    @endif
+                    @if(Auth::user())
+                    <div class="col-12 mt-0 mb-0 pb-0 pt-3">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="business_name" style="font-weight: bold;">
+                                @if($language->business_name_label)
+                                {{$language->business_name_label}}
+                                @else
+                                Business Name
+                                @endif
+                            </label>
+                            <input type="text" name="business_name" required
+                                value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->business_name}} @endif @endif"
+                                placeholder="@if($language->business_name_placeholder) {{$language->business_name_placeholder	}} @else Business Name @endif"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-0 mb-0 pb-0 pt-0">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="district_id" style="font-weight: bold;">
+                                @if($language->zilla_label)
+                                {{$language->zilla_label}}
+                                @else
+                                Zilla
+                                @endif
+                            </label>
+                            <select class="custom-select district" name="district_id" required>
+                                <option value="">
+                                    @if($language->select_zila_option_text)
+                                    --{{$language->select_zila_option_text}}--
+                                    @else
+                                    --Select--
+                                    @endif
+                                </option>
+                                @foreach ($Districts as $zilla)
+                                <option value="{{$zilla->id}}"
+                                    class="district-items division_id_{{$zilla->division_id}} " @if(!Auth::user()->
+                                    Contact->District) @if($zilla->name=='Dhaka') selected @endif
+                                    @elseif($zilla->name==Auth::user()->Contact->District->name) selected @endif
+                                    style="color:black;">{{$zilla->name}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-0 mb-0 pb-0 pt-0">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="shipping_address" style="font-weight: bold;">
+                                @if($language->delivery_address_label)
+                                {{$language->delivery_address_label}}
+                                @else
+                                Delivery address
+                                @endif
+                            </label>
+                            {{-- <input type="text" name="shipping_address" required
+                                        value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}}
+                            @endif @endif"
+                            placeholder="ডেলিভারি এড্রেস" readonly> --}}
+                            {{-- <textarea id="shipping_address" class="form-control"  name="shipping_address"  placeholder="আপনার পূর্ণ ঠিকানা লিখুন" style="text-align: left;" required>
+                                            @if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}}
+                            @endif @endif
+                            </textarea> --}}
+                            <textarea id="shipping_address" class="form-control" name="shipping_address"
+                                placeholder="@if($language->full_address_placeholder) {{$language->full_address_placeholder	}} @else Full Address @endif"
+                                required readonly
+                                style="background-color: white;">@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif</textarea>
+
+                        </div>
+                    </div>
+                    <div class="col-12 mt-0 pt-0">
+                        <div class="form-grp mt-0 pt-0">
+                            <label for="mobile" style="font-weight: bold;">
+                                @if($language->mobile_number_label)
+                                {{$language->mobile_number_label}}
+                                @else
+                                Mobile
+                                @endif
+                            </label>
+                            <input type="text" name="mobile" required
+                                value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->mobile}} @endif @endif"
+                                placeholder="মোবাইল নাম্বার" readonly>
+                        </div>
+                    </div>
+
+                    @endif
+                </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+    {{-- Start Cart Product --}}
+    <h5 class="text-center" style="color: #ff5c00;">
+        @if($language->ordered_product_title)
+        {{$language->ordered_product_title}}
+        @else
+        Ordered Product
+        @endif
+    </h5>
+    <div class="table-responsive-xl">
+        @php $totalPrice = 0; @endphp
+        @if($cardBadge['data']['products'])
+        @php $totalPrice = $cardBadge['data']['total_price'] @endphp
+        <table class="" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th class="product-thumbnail"></th>
+                    {{-- <th scope="col" class="product-name" style="font-weight: bold;">পণ্য</th> --}}
+                    <th scope="col" class="product-price" style="font-weight: bold;">Price</th>
+                    <th scope="col" class="product-quantity" style="font-weight: bold;">Quantity</th>
+                    <th scope="col" class="product-subtotal" style="font-weight: bold;">SUBTOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($cardBadge['data']['products'] as $productId => $product)
+                <tr id="row_{{ $productId }}" style="color: black;">
+                    <td class="product-thumbnail" style="border-style: none;">
+                        <a href="javascript:void(0)" class="wishlist-remove" data-product-id="{{ $productId }}"><i
+                                class="flaticon-cancel-1 text-danger" style="font-weight: bold;"></i></a>
+                        <a href="{{ route('product-details',['id'=>$productId]) }}" style="float:left;">
+                            <img @if($product['Info']['image']!='blank-product-image.png' )
+                                src="{{ asset('storage/photo/'.$product['Info']['image']) }}" @else
+                                src="{{ asset('image-not-available.jpg') }}" @endif
+                                style="height: 90px;width:103px;129px;" alt="">
+                        </a>
+                        {{-- </td>
+                                 <td class="product-name">
+                                     <h4> --}}
+                        <a href="{{ route('product-details',['id'=>$productId]) }}"
+                            style="text-transform: capitalize;float: left;font-weight: bold;color: black;">
+                            @if(strlen($product['Info']['product_name'])>23)
+                            {{ substr($product['Info']['product_name'], 0,22).'...' }}
+                            @else
+                            {{ $product['Info']['product_name'] }}
+                            @endif
+                        </a>
+
+                        {{-- </h4> --}}
+                        {{-- <p>Cramond Leopard & Pythong Anorak</p>
+                                     <span>65% poly, 35% rayon</span> --}}
+                    </td>
+                    <td data-label="মূল্য" class="product-price" style="border-style: none;">
+                        @if($currencySymbol)
+                        {{ $currencySymbol->symbol }}
+                        @endif
+                        {{ $product['unit_price'] }}
+                    </td>
+                    <td data-label="সংখ্যা" class="product-quantity py-0 mt-3 pl-2" style="height: 50px;color: black;">
+                        <div class="cart-plus float-right">
+                            <form action="#">
+                                <div class="cart-plus-minus" data-product-id="{{ $productId }}" data-device="desktop">
+                                    <input type="text" class="product_quantity product-quantity-cart"
+                                        id="product_quantity_{{ $productId }}" data-product-id="{{ $productId }}"
+                                        data-minimum-quantity="{{ $product['minimum_order_quantity'] }}"
+                                        value="{{ $product['quantity'] }}">
+                                </div>
+                            </form>
+                        </div>
+                        <br>
+                    </td>
+                    <td data-label="SUBTOTAL" class="product-subtotal" id="product_subtotal_{{ $productId }}"
+                        style="font-weight: bold;">
+                        <span>
+                            @if($currencySymbol)
+                            {{ $currencySymbol->symbol }}
+                            @endif
+                            {{ $product['total_price'] }}
+                        </span>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @else
+        <div class="alert alert-warning text-center">
+            @if($language->no_product_in_shopping_bag_alert_text)
+            {{$language->no_product_in_shopping_bag_alert_text}}
+            @else
+            There is no product added by you!
+            @endif
         </div>
-        <!-- End of PageContent -->
-    </main>
-    <!-- End of Main -->
+        @endif
+    </div>
+    {{-- End Cart Product --}}
+</div>
+<div class="row p-0 m-0" style="width:100%;">
+    <div class="col-12 pb-3">
+        <div class="shop-cart-widget py-0 my-0 pt-1">
+            <h6 class="title text-center">
+                @if($language->bill_total_title)
+                {{$language->bill_total_title}}
+                @else
+                Bill Total
+                @endif
+            </h6>
+            <ul>
+                {{-- <li style="color: black;"><span>SUBTOTAL:</span>
+                                        @if($currencySymbol)
+                                            {{ $currencySymbol->symbol }}
+                @endif
+                {{ $cardBadge['data']['total_price'] }}
+                </li> --}}
+                <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
+                    <center>
+                        <span>
+                            @if($language->sub_total)
+                            {{$language->sub_total}} -
+                            @else
+                            Subtotal -
+                            @endif
+                        </span>
+                        <span class="amount cart-total-price">
+                            @if($currencySymbol)
+                            {{ $currencySymbol->symbol }}
+                            @endif
+                            {{ $totalPrice }}
+                            <br>
+                            <br>
+                        </span>
+                    </center>
+                </li>
+                <li style="display: none">
+                    <span>SHIPPING -</span>
+                    <div class="shop-check-wrap">
+                        @if($shipping_charge)
+                        @foreach ($shipping_charge as $shippingCharge )
+                        <div class="custom-control custom-radio">
+                            <input type="radio" name="shipping_charge" class="shipping-charge" id="customCheck_"
+                                value="{{$shippingCharge->shipping_fee}}">{{$shippingCharge->title}}:
+                            {{$shippingCharge->shipping_fee}}
+                            {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
+                                                <label class="custom-control-label" for="customCheck1">{{$shippingCharge->title}}:
+                            {{$shippingCharge->shipping_fee}}</label>--}}
+                        </div>
+                        @endforeach
+                        @else
+                        <div class="custom-control custom-radio">
+                            <input type="radio" name="shipping_charge" class="shipping-charge" id="customCheck_"
+                                value="0" checked> FREE SHIPPING
+                            {{--<input type="radio" name="shipping_charge" class="custom-control-input" id="customCheck_">
+                                                <label class="custom-control-label" for="customCheck2">FREE SHIPPING</label>--}}
+                        </div>
+                        @endif
+                    </div>
+                </li>
+                <li class="cart-total-amount py-1" style="color: black; ">
+                    <center>
+                        <span>
+                            @if($language->discount)
+                            {{$language->discount}} -
+                            @else
+                            Discount -
+                            @endif
+                        </span>
+                        <span>
+                            @if($currencySymbol)
+                            {{ $currencySymbol->symbol }}
+                            @endif
+                            0
+                        </span>
+                    </center>
+                </li>
+
+                <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
+                    {{-- <span>সর্বমোট বিল:</span>
+                                        <input type="hidden" name="check_out_total_amount"
+                                            class="check-out-total-amount"
+                                            value="{{ $cardBadge['data']['total_price'] }}">
+                    <span class="amount check-out-total-amount">
+                        @if($currencySymbol)
+                        {{ $currencySymbol->symbol }}
+                        @endif
+                        {{ $cardBadge['data']['total_price'] }}
+                    </span> --}}
+                    <center>
+                        <span>
+                            @if($language->total)
+                            {{$language->total}} -
+                            @else
+                            Total -
+                            @endif
+                        </span>
+                        <span class="amount cart-total-price">
+                            @if($currencySymbol)
+                            {{ $currencySymbol->symbol }}
+                            @endif
+                            {{ $totalPrice }}
+                            <br>
+                            <br>
+                        </span>
+                    </center>
+                </li>
+            </ul>
+            <div class="bank-transfer">
+                {{-- <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
+                                        <label class="custom-control-label" for="customCheck4">ক্যাশ অন
+                                            ডেলিভারি</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">bKash</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">Nagad</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">Rocket</label>
+                                    </div> --}}
+                <input type="checkbox" class="mb-3" id="customCheck4" checked>
+                <label class="mb-3" for="customCheck4" style="color: black;">
+                    @if($language->cash_on_delivery_text)
+                    {{$language->cash_on_delivery_text}}
+                    @else
+                    Cash On Delivery
+                    @endif
+                </label>
+            </div>
+            <div class="payment-terms py-0 my-0" style="color: black; font-size: 12px;">
+                * I have read and agree to the website
+                <a href="{{route('terms-conditios')}}">terms
+                    and conditions</a>
+            </div>
+            <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout">
+                @if($language->checkout_page_order_done_button_text)
+                {{$language->checkout_page_order_done_button_text}}
+                @else
+                Place Order
+                @endif
+            </button>
+            <br>
+            <br>
+        </div>
+        <button class="btn btn-submit btn-hover" type="submit"
+            style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
+            id="orderFinishCheckoutMobile">
+            @if($language->checkout_page_order_done_button_text)
+            {{$language->checkout_page_order_done_button_text}}
+            @else
+            Place Order
+            @endif
+        </button>
+
+        </aside>
+    </div>
+</div>
+</section>
+<!-- checkout-area-end -->
+</form>
+</main>
+<!-- end row -->
 
 </div>
 

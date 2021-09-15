@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <title>Zain Soft</title>
+    <title>Wolmart - Bootstrap eCommerce Template</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Wolmart - Bootstrap eCommerce Template">
@@ -35,11 +35,7 @@
     <link rel="preload" href="{{ URL::asset('wolmart/') }}/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2"
             crossorigin="anonymous">
     <link rel="preload" href="{{ URL::asset('wolmart/') }}/assets/fonts/wolmart.ttf?png09e" as="font" type="font/ttf" crossorigin="anonymous">
-    <!-- Vendor CSS -->
 
-
-    <!-- Default CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('wolmart/') }}/assets/css/style.min.css">
     <!-- Vendor CSS -->
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('wolmart/') }}/assets/vendor/fontawesome-free/css/all.min.css">
 
