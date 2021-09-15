@@ -9,8 +9,8 @@
         Category
     </x-slot>
 
-       <!-- Start of Main -->
-       <main class="main checkout">
+    <!-- Start of Main -->
+    <main class="main checkout">
         <!-- Start of Breadcrumb -->
         <nav class="breadcrumb-nav">
             <div class="container">
@@ -38,15 +38,13 @@
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label>Username or email *</label>
-                                <input type="text" class="form-control form-control-md" name="name"
-                                    required>
+                                <input type="text" class="form-control form-control-md" name="name" required>
                             </div>
                         </div>
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label>Password *</label>
-                                <input type="text" class="form-control form-control-md" name="password"
-                                    required>
+                                <input type="text" class="form-control form-control-md" name="password" required>
                             </div>
                         </div>
                     </div>
@@ -58,44 +56,48 @@
                     <button class="btn btn-rounded btn-login">Login</button>
                 </form>
                 <div class="coupon-toggle">
-                    Have a coupon? <a href="#"
-                        class="show-coupon font-weight-bold text-uppercase text-dark">Enter your
+                    Have a coupon? <a href="#" class="show-coupon font-weight-bold text-uppercase text-dark">Enter your
                         code</a>
                 </div>
                 <div class="coupon-content mb-4">
                     <p>If you have a coupon code, please apply it below.</p>
                     <div class="input-wrapper-inline">
-                        <input type="text" name="coupon_code" class="form-control form-control-md mr-1 mb-2" placeholder="Coupon code" id="coupon_code">
-                        <button type="submit" class="btn button btn-rounded btn-coupon mb-2" name="apply_coupon" value="Apply coupon">Apply Coupon</button>
+                        <input type="text" name="coupon_code" class="form-control form-control-md mr-1 mb-2"
+                            placeholder="Coupon code" id="coupon_code">
+                        <button type="submit" class="btn button btn-rounded btn-coupon mb-2" name="apply_coupon"
+                            value="Apply coupon">Apply Coupon</button>
                     </div>
                 </div>
-                <form class="form checkout-form" action="#" method="post">
+                <form id="checkout" method="POST" action="{{ route('confirm-order') }}" enctype="multipart/form-data"
+                    class="checkout-form" accept-charset="utf-8">
+                    @csrf
                     <div class="row mb-9">
                         <div class="col-lg-7 pr-lg-4 mb-4">
                             <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
                                 Billing Details
                             </h3>
+                            @if(!Auth::user())
                             <div class="row gutter-sm">
-                                <div class="col-xs-6">
+                                <div class="col-xs-12">
                                     <div class="form-group">
                                         <label>First name *</label>
-                                        <input type="text" class="form-control form-control-md" name="firstname"
-                                            required>
+                                        <input type="text" class="form-control form-control-md" name="fName" required
+                                            value="@if(Auth::user()){{Auth::user()->name}}@endif">
                                     </div>
                                 </div>
-                                <div class="col-xs-6">
+                                {{-- <div class="col-xs-6">
                                     <div class="form-group">
                                         <label>Last name *</label>
                                         <input type="text" class="form-control form-control-md" name="lastname"
                                             required>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="form-group">
                                 <label>Company name (optional)</label>
-                                <input type="text" class="form-control form-control-md" name="company-name">
+                                <input type="text" class="form-control form-control-md" name="business_name" required>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Country / Region *</label>
                                 <div class="select-box">
                                     <select name="country" class="form-control form-control-md">
@@ -115,9 +117,9 @@
                                     class="form-control form-control-md mb-2" name="street-address-1" required>
                                 <input type="text" placeholder="Apartment, suite, unit, etc. (optional)"
                                     class="form-control form-control-md" name="street-address-2" required>
-                            </div>
+                            </div> --}}
                             <div class="row gutter-sm">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Town / City *</label>
                                         <input type="text" class="form-control form-control-md" name="town" required>
@@ -126,9 +128,9 @@
                                         <label>ZIP *</label>
                                         <input type="text" class="form-control form-control-md" name="zip" required>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>State *</label>
                                         <div class="select-box">
                                             <select name="country" class="form-control form-control-md">
@@ -139,14 +141,15 @@
                                                 <option value="aus">Australia</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
-                                        <label>Phone *</label>
-                                        <input type="text" class="form-control form-control-md" name="phone" required>
+                                        <label>Mobile *</label>
+                                        <input type="text" class="form-control form-control-md" name="mobile" required
+                                            value="@if(Auth::user()){{Auth::user()->mobile}}@endif">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mb-7">
+                            {{-- <div class="form-group mb-7">
                                 <label>Email address *</label>
                                 <input type="email" class="form-control form-control-md" name="email" required>
                             </div>
@@ -215,14 +218,35 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group mt-3">
                                 <label for="order-notes">Order notes (optional)</label>
-                                <textarea class="form-control mb-0" id="order-notes" name="order-notes" cols="30"
-                                    rows="4"
-                                    placeholder="Notes about your order, e.g special notes for delivery"></textarea>
+                                <textarea class="form-control mb-0" id="shipping_address" name="shipping_address"
+                                    cols="30" rows="4"
+                                    placeholder="Notes about your order, e.g special notes for delivery"
+                                    required></textarea>
                             </div>
+                            @endif
+                            @if(Auth::user())
+                            <div class="form-group">
+                                <label>Company name (optional)</label>
+                                <input type="text" class="form-control form-control-md" name="business_name" required
+                                    value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->business_name}} @endif @endif"
+                                    readonly>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="order-notes">Order notes (optional)</label>
+                                <textarea class="form-control mb-0" name="shipping_address" value="@if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif" cols="30" rows="4" placeholder="Notes about your order, e.g special notes for delivery" required readonly>
+                                    @if(Auth::user()) @if(Auth::user()->Contact) {{Auth::user()->Contact->shipping_address}} @endif @endif
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile *</label>
+                                <input type="text" class="form-control form-control-md" name="mobile" required
+                                    value="@if(Auth::user()){{Auth::user()->mobile}}@endif">
+                            </div>
+                            @endif
                         </div>
                         <div class="col-lg-5 mb-4 sticky-sidebar-wrapper">
                             <div class="order-summary-wrapper sticky-sidebar">
@@ -237,23 +261,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($cardBadge['data']['products'] as $productId => $product)
                                             <tr class="bb-no">
-                                                <td class="product-name">Palm Print Jacket <i
-                                                        class="fas fa-times"></i> <span
-                                                        class="product-quantity">1</span></td>
-                                                <td class="product-total">$40.00</td>
+                                                <td class="product-name">
+                                                    @if(strlen($product['Info']['product_name'])>23)
+                                                    {{ substr($product['Info']['product_name'], 0,22).'...' }}
+                                                    @else
+                                                    {{ $product['Info']['product_name'] }}
+                                                    @endif
+                                                    <i class="fas fa-times"></i>
+                                                    <span class="product-quantity">
+                                                        {{ $product['quantity'] }}
+                                                    </span></td>
+                                                <td class="product-total">
+                                                    @if($currencySymbol)
+                                                    {{ $currencySymbol->symbol }}
+                                                    @endif
+                                                    {{ $product['unit_price'] }}
+                                                </td>
                                             </tr>
-                                            <tr class="bb-no">
-                                                <td class="product-name">Brown Backpack <i class="fas fa-times"></i>
-                                                    <span class="product-quantity">1</span></td>
-                                                <td class="product-total">$60.00</td>
-                                            </tr>
+                                            @endforeach
                                             <tr class="cart-subtotal bb-no">
                                                 <td>
                                                     <b>Subtotal</b>
                                                 </td>
                                                 <td>
-                                                    <b>$100.00</b>
+                                                    <b>
+                                                        @if($currencySymbol)
+                                                        {{ $currencySymbol->symbol }}
+                                                        @endif
+                                                        {{ $cardBadge['data']['total_price'] }}
+                                                    </b>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -309,13 +347,15 @@
                                         <div class="accordion payment-accordion">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <a href="#cash-on-delivery" class="collapse">Direct Bank Transfor</a>
+                                                    <a href="#cash-on-delivery" class="collapse">Direct Bank
+                                                        Transfor</a>
                                                 </div>
                                                 <div id="cash-on-delivery" class="card-body expanded">
                                                     <p class="mb-0">
                                                         Make your payment directly into our bank account.
                                                         Please use your Order ID as the payment reference.
-                                                        Your order will not be shipped until the funds have cleared in our account.
+                                                        Your order will not be shipped until the funds have cleared in
+                                                        our account.
                                                     </p>
                                                 </div>
                                             </div>
@@ -325,7 +365,8 @@
                                                 </div>
                                                 <div id="payment" class="card-body collapsed">
                                                     <p class="mb-0">
-                                                        Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+                                                        Please send a check to Store Name, Store Street, Store Town,
+                                                        Store State / County, Store Postcode.
                                                     </p>
                                                 </div>
                                             </div>
@@ -343,8 +384,8 @@
                                                 <div class="card-header">
                                                     <a href="#paypal" class="expand">Paypal</a>
                                                 </div>
-                                                <a href="https://www.paypal.com/us/webapps/mpp/paypal-popup" class="text-primary paypal-que"
-                                                    onclick="javascript:window.open('https://www.paypal.com/us/webapps/mpp/paypal-popup','WIPaypal',
+                                                <a href="https://www.paypal.com/us/webapps/mpp/paypal-popup"
+                                                    class="text-primary paypal-que" onclick="javascript:window.open('https://www.paypal.com/us/webapps/mpp/paypal-popup','WIPaypal',
                                                     'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700');
                                                     return false;">What is PayPal?
                                                 </a>
@@ -359,7 +400,8 @@
                                     </div>
 
                                     <div class="form-group place-order pt-6">
-                                        <button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
+                                        <button type="submit" class="btn btn-dark btn-block btn-rounded">Place
+                                            Order</button>
                                     </div>
                                 </div>
                             </div>

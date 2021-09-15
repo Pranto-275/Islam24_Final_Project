@@ -237,7 +237,6 @@ class HomeController extends Controller
 
     public function confirmOrder(Request $request)
     {
-        // dd($request->fName);
         $request->validate([
             'business_name' => 'required',
             'shipping_address' => 'required',
