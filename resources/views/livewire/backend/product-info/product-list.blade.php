@@ -204,13 +204,24 @@
                                 @endif</label>
                         </div>
                     </div>
-
                     <div class="col-lg-6 font">
                         <div class="form-group">
                             <label for="basicpill-firstname-input">Minium Order Quantity: @if($ProductDetail)
                                 {{$ProductDetail->min_order_qty}} @endif</label>
                         </div>
                     </div>
+                    @if($ProductDetail && $ProductDetail->guarantee>0)
+                    <div class="col-lg-6 font">
+                        <div class="form-group">
+                            <label for="basicpill-firstname-input">Guarantee:
+                                @if($ProductDetail)
+                                {{$ProductDetail->guarantee}}
+                                @endif
+                                Month
+                            </label>
+                        </div>
+                    </div>
+                    @endif
                     <div class="col-lg-6 font">
                         <div class="form-group">
                             <label for="basicpill-firstname-input">

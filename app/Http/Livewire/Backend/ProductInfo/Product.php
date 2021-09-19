@@ -42,6 +42,7 @@ class Product extends Component
     public $warehouse_id;
     public $stock_in_opening;
     public $min_order_qty = 1;
+    public $guarantee=0;
     public $featured = 'None';
     public $brand_id;
     public $contact_id;
@@ -81,6 +82,7 @@ class Product extends Component
             $this->brand_id = $this->QueryUpdate->brand_id;
             $this->featured = $this->QueryUpdate->featured;
             $this->min_order_qty = $this->QueryUpdate->min_order_qty;
+            $this->guarantee = $this->QueryUpdate->guarantee;
             // $this->contact_id=$this->QueryUpdate->contact_id;
             $this->low_alert = $this->QueryUpdate->low_alert;
             $this->in_stock = $this->QueryUpdate->in_stock;
@@ -194,6 +196,7 @@ class Product extends Component
             $Query->min_order_qty = $this->min_order_qty;
             // $Query->contact_id=$this->contact_id;
             $Query->low_alert = $this->low_alert;
+            $Query->guarantee = $this->guarantee;
             $Query->vat_id = $this->vat_id;
             $Query->is_active = $this->is_active;
             $Query->in_stock = $this->in_stock;
