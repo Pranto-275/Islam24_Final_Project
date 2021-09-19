@@ -130,7 +130,19 @@
 
                                 <span class="stock-info m-0 mt-3 ml-2">{{ $productDetails->in_stock }}</span>
                             </div>
+                            {{-- Start Guarantee --}}
+                            @if($productDetails->guarantee>0)
+                           <div class="mt-1">
+                                <span style="color: black;">গ্যারান্টি: </span>
+                                <span class="badge badge-light"
+                                    style="color: red;font-weight: bold;font-size: 12px;">{{$productDetails->guarantee}}
+                                    &nbsp;মাস
+                                </span>
+                            </div>
+                            @endif
+                        {{-- End Guarantee --}}
                         </div>
+                        
                     </div>
                     <p>@if($productDetails->ProductInfo) {{ $productDetails->ProductInfo->long_description }} @endif</p>
                     {{-- <div class="product-details-size mb-40">
