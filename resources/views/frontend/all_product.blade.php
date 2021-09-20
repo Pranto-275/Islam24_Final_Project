@@ -236,21 +236,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            @foreach ($data['products'] as $product)
-
+                            @foreach ($data['products'] as $productId=>$product)
                             <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                                 <div class="exclusive-item exclusive-item-three text-center mb-50">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                            <img @if($product['product_image_first'])
-                                                src="{{ asset('storage/photo/'.$product['product_image_first']['image'])}}"
+                                            <img @if($product)
+                                                src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}"
                                                 @else src="{{ asset('image-not-available.jpg')}}" @endif
                                                 style="width: 100%;height: auto;" alt="{{$product['name']}}">
                                             {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}"
                                             @endif style="height:200px;" alt="{{$product['name']}}"> --}}
                                         </a>
                                         @if($product['discount'])
-                                        <span class="sd-meta">{{ intval($product['discount']) }}%
+                                        <span
+                                            class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
                                             @if($language->discount)
                                             {{$language->discount}}
                                             @else
@@ -360,17 +360,16 @@
 
                             @endforeach
                         </div>
-                        <div class="pagination-wrap">
-                            <ul>
-                                <li class="prev"><a href="#"><i class="fas fa-long-arrow-alt-left"></i> Prev</a></li>
+                        <div>
+                                {{-- <li class="prev"><a href="#"><i class="fas fa-long-arrow-alt-left"></i> Prev</a></li>
                                 <li class="active"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a href="#">4</a></li>
                                 <li><a href="#">...</a></li>
                                 <li><a href="#">10</a></li>
-                                <li class="next"><a href="#">Next <i class="fas fa-long-arrow-alt-right"></i></a></li>
-                            </ul>
+                                <li class="next"><a href="#">Next <i class="fas fa-long-arrow-alt-right"></i></a></li> --}}
+                                {{$data['products']->links('pagination::bootstrap-4')}}
                         </div>
                     </div>
                 </div>

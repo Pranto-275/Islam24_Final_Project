@@ -274,6 +274,7 @@ class HomeController extends Controller
             // $Order->shipping_charge = $request->get('shipping_charge'); //$request->get('check_out_total_amount');
             $Order->payable_amount = ($AddToCart->sum('total_price')); //+ $request->get('shipping_charge')); //$request->get('check_out_total_amount');
             $Order->status = 'processing';
+            $Order->note = $request->note;
             $Order->is_active = 1;
             $Order->save();
 
@@ -313,7 +314,8 @@ class HomeController extends Controller
 
     public function searchByBrand($brandId = null)
     {
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereBrandId($brandId)->whereIsActive(1)->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereBrandId($brandId)->whereIsActive(1)->paginate(50);
+        // dd($data['products']);
 
         return view('frontend.all_product', [
             'data' => $data,
@@ -323,18 +325,16 @@ class HomeController extends Controller
 
     public function searchBySubSubCategory($subSubCatId = null)
     {
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($subSubCatId)->whereIsActive(1)->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubSubCategoryId($subSubCatId)->whereIsActive(1)->paginate(50);
 
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
         ]);
     }
-
     public function searchBySubCategory($subCatId = null)
     {
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->whereIsActive(1)->get()->toArray();
-
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->whereIsActive(1)->paginate(50);
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -344,11 +344,10 @@ class HomeController extends Controller
     public function searchByCategory($catId = null)
     {
         if ($catId) {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->whereIsActive(1)->limit(100)->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->whereIsActive(1)->paginate(100);
         } else {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->limit(100)->get()->toArray();
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->paginate(100);
         }
-
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -442,7 +441,7 @@ class HomeController extends Controller
             $query->where('sub_sub_category_id', $request->get('search_product_category'));
         }
 
-        $data['products'] = $query->whereIsActive(1)->get()->toArray();
+        $data['products'] = $query->whereIsActive(1)->paginate(50);
 
         return view('frontend.all_product', [
             'data' => $data,
