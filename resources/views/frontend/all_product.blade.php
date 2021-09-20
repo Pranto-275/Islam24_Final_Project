@@ -250,7 +250,7 @@
                                             @endif style="height:200px;" alt="{{$product['name']}}"> --}}
                                         </a>
                                         @if($product['discount'])
-                                        <span class="sd-meta">{{ intval($product['discount']) }}%
+                                        <span class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
                                             @if($language->discount)
                                             {{$language->discount}}
                                             @else

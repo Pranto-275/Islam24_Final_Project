@@ -174,7 +174,8 @@
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta" style="background-color: #ff5c00;">{{ intval($product['discount']) }}%
+                    <span class="sd-meta" style="background-color: #ff5c00;">
+                        {{ intval($product['discount']) }}@if($currencySymbol){{$currencySymbol->symbol}}@endif
                         @if($language->discount)
                         {{$language->discount}}
                         @else
@@ -326,7 +327,7 @@
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta">{{ intval($product['discount']) }}%
+                    <span class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
                         @if($language->discount)
                         {{$language->discount}}
                         @else
