@@ -30,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('brand_id')->nullable();
             $table->string('low_alert', 191)->nullable();
             $table->double('min_order_qty', 20, 4)->nullable();
+            $table->double('guarantee', 20, 4)->default(0);
             $table->enum('featured', ['None', 'New Product', 'Trending Product', 'Best Selling Product']);
             $table->enum('barcode_generate_state', ['Bulk', 'Single']);
             $table->enum('in_stock', ['In Stock', 'Out of Stock']);
