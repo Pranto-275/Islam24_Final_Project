@@ -137,6 +137,20 @@
                                     </h4>
                                 </td>
                             </tr>
+                            @if($OrderInvoice->note)
+                            <tr class="border px-2">
+                                <td colspan="7" class="border-0 text-right">
+                                    {{-- Start Note --}}
+                                    <div class="card">
+                                        <div class="card-body">
+                                          <h5 class="card-title" style="color: #ff5c00;;font-weight:bold;">রিপ্লেস প্রডাক্টের নাম & সংখ্যা</h5>
+                                          <p class="card-text">{{$OrderInvoice->note}}</p>
+                                        </div>
+                                      </div>
+                                    {{-- End Note --}}
+                                </td>
+                            </tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>

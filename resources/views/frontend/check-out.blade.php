@@ -504,7 +504,7 @@
                         @endif
                     </div>
                 </li>
-                <li class="cart-total-amount py-1" style="color: black; ">
+                <li class="cart-total-amount py-1" style="color: black;">
                     <center>
                         <span>
                             @if($language->discount)
@@ -553,23 +553,12 @@
                 </li>
             </ul>
             <div class="bank-transfer">
-                {{-- <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck4" checked>
-                                        <label class="custom-control-label" for="customCheck4">ক্যাশ অন
-                                            ডেলিভারি</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                        <label class="custom-control-label" for="customCheck3">bKash</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                        <label class="custom-control-label" for="customCheck3">Nagad</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                        <label class="custom-control-label" for="customCheck3">Rocket</label>
-                                    </div> --}}
+                <div class="form-group">
+                    <label for="basicpill-lastname-input" style="color: #ff5c00;;font-weight:bold;">রিপ্লেস প্রডাক্টের নাম & সংখ্যা</label>
+                    <textarea class="form-control" id="note" name="note" rows="3"
+                        wire:model.lazy="note"
+                        placeholder="এখানে আপনার পূর্বের অর্ডারের ড্যামেজ প্রডাক্টগুলির নাম এবং  সংখ্যা লিখুন!"></textarea>
+                </div>
                 <input type="checkbox" class="mb-3" id="customCheck4" checked>
                 <label class="mb-3" for="customCheck4" style="color: black;">
                     @if($language->cash_on_delivery_text)
