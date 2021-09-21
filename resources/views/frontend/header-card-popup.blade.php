@@ -105,7 +105,7 @@
             var productPrice = $(this).attr('data-product-price');
             var productImg = $(this).attr('data-product-image');
             var productMinQty = $(this).attr('data-product-minimum-quantity');
-            var guarantee = $(this).attr('data-product-guarantee');
+            var productGuarantee = $(this).attr('data-product-guarantee');
             var productOrderQty = $(this).attr('data-product-quantity');
             var requestQty = productOrderQty;
             if(! productOrderQty) {
@@ -120,7 +120,7 @@
             $(".mobile-modal-product-quantity").val(requestQty);
             $(".mobile-modal-product-price").html(grandTotal);
             $(".mobile-modal-product-min_qty").html(productMinQty);
-            $(".mobile-modal-product-guarantee").html(guarantee);
+            $(".mobile-modal-product-gurantee").html(productGuarantee);   
             $(".mobile-modal-product-quantity-label").html(requestQty);
             $(".mobile-modal-product-quantity").attr('id', 'mobile_modal_product_quantity_'+productId)
             $(".mobile-modal-product-quantity").attr('data-product-id', productId)

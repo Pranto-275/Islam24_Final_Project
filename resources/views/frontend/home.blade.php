@@ -254,6 +254,7 @@
                         data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}"
                         data-product-price="{{ $product['special_price'] }}"
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
+                        data-product-guarantee="{{ $product['guarantee'] }}"
                         data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
                         data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
                         @endif data-toggle="modal" data-target=".bd-example-modal-sm"
