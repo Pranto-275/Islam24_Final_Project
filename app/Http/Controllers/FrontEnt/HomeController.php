@@ -47,7 +47,9 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
-    public function CreateSeller(Request $request){
+
+    public function CreateSeller(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required',
             'business_name' => 'required',
@@ -61,63 +63,66 @@ class HomeController extends Controller
             'account_type' => 'required',
             // 'profile_photo_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        DB::transaction(function() use($request){
+        DB::transaction(function () use ($request) {
+            // User Create
+            $UserQuery = new User();
+            $UserQuery->name = $request->name;
+            $UserQuery->mobile = $request->mobile;
+            $UserQuery->email = $request->email;
+            $UserQuery->type = $request->account_type;
+            $UserQuery->branch_id = 1;
+            $UserQuery->upazila_id = $request->district_id;
+            $UserQuery->password = Hash::make($request->password);
+            $UserQuery->save();
 
-        // User Create
-        $UserQuery=new User();
-        $UserQuery->name=$request->name;
-        $UserQuery->mobile=$request->mobile;
-        $UserQuery->email=$request->email;
-        $UserQuery->type=$request->account_type;
-        $UserQuery->branch_id=1;
-        $UserQuery->upazila_id=$request->district_id;
-        $UserQuery->password=Hash::make($request->password);
-        $UserQuery->save();
+            // Vendor Create
+            $Query = new Vendor();
+            $Query->user_id = $UserQuery->id;
+            $Query->name = $request->name;
+            $Query->business_name = $request->business_name;
+            $Query->trade_license = $request->trade_license;
+            $Query->trn_number = $request->trn_number;
+            $Query->email = $request->email;
+            $Query->business_location = $request->business_location;
+            $Query->district_id = $request->district_id;
+            $Query->mobile = $request->mobile;
+            $Query->account_type = $request->account_type;
+            $Query->save();
 
-        // Vendor Create
-        $Query=new Vendor();
-        $Query->user_id=$UserQuery->id;
-        $Query->name=$request->name;
-        $Query->business_name=$request->business_name;
-        $Query->trade_license=$request->trade_license;
-        $Query->trn_number=$request->trn_number;
-        $Query->email=$request->email;
-        $Query->business_location=$request->business_location;
-        $Query->district_id=$request->district_id;
-        $Query->mobile=$request->mobile;
-        $Query->account_type=$request->account_type;
-        $Query->save();
-
-        //  Create Contact
-        $ContactQuery=new Contact();
-        $ContactQuery->type='Customer';
-        $ContactQuery->user_id=$UserQuery->id;
-        $ContactQuery->first_name=$request->name;
-        $ContactQuery->mobile=$request->mobile;
-        $ContactQuery->email=$request->email;
-        $ContactQuery->business_name=$request->business_name;
-        $ContactQuery->district_id=$request->district_id;
-        $ContactQuery->branch_id=1;
-        $ContactQuery->created_by=1;
-        $ContactQuery->save();
-
+            //  Create Contact
+            $ContactQuery = new Contact();
+            $ContactQuery->type = 'Customer';
+            $ContactQuery->user_id = $UserQuery->id;
+            $ContactQuery->first_name = $request->name;
+            $ContactQuery->mobile = $request->mobile;
+            $ContactQuery->email = $request->email;
+            $ContactQuery->business_name = $request->business_name;
+            $ContactQuery->district_id = $request->district_id;
+            $ContactQuery->branch_id = 1;
+            $ContactQuery->created_by = 1;
+            $ContactQuery->save();
         });
 
         return redirect()->back();
     }
-    public function SellerCreateForm(){
+
+    public function SellerCreateForm()
+    {
         return view('frontend.seller-create');
     }
-    public function OrderDetail($id=NULL){
+
+    public function OrderDetail($id = null)
+    {
         if (Auth::user()) {
             return view('frontend.order-details', [
-                'orderDetails'=>OrderDetail::whereOrderId($id)->get(),
-                'order'=>Order::whereId($id)->first(),
+                'orderDetails' => OrderDetail::whereOrderId($id)->get(),
+                'order' => Order::whereId($id)->first(),
             ]);
         } else {
             return view('frontend.sign-in');
         }
     }
+
     public function SearchUpazila(Request $request)
     {
         $data['products'] = $this->addToCardService::cardTotalProductAndAmount();
@@ -281,11 +286,11 @@ class HomeController extends Controller
             // Add To Order Details
             foreach ($AddToCart as $OrderProductDetail) {
                 $OrderProductDetails = json_decode($OrderProductDetail->data);
-                $ProductQuery=Product::find($OrderProductDetails->product_id);
+                $ProductQuery = Product::find($OrderProductDetails->product_id);
 
                 $OrderDetails = new OrderDetail();
-                if($ProductQuery){
-                  $OrderDetails->vendor_id = $ProductQuery->vendor_id;
+                if ($ProductQuery) {
+                    $OrderDetails->vendor_id = $ProductQuery->vendor_id;
                 }
                 $OrderDetails->order_id = $Order->id;
                 $OrderDetails->product_id = $OrderProductDetails->product_id;
@@ -332,9 +337,11 @@ class HomeController extends Controller
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
         ]);
     }
+
     public function searchBySubCategory($subCatId = null)
     {
         $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereSubCategoryId($subCatId)->whereIsActive(1)->paginate(50);
+
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
@@ -344,10 +351,11 @@ class HomeController extends Controller
     public function searchByCategory($catId = null)
     {
         if ($catId) {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->whereIsActive(1)->paginate(100);
+            $data['products'] = Product::with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->whereIsActive(1)->paginate(50);
         } else {
-            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->paginate(100);
+            $data['products'] = Product::with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->paginate(50);
         }
+
         return view('frontend.all_product', [
             'data' => $data,
             // 'productDetails'=>Product::whereCategoryId($catId)->get(),
