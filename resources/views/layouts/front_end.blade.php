@@ -199,7 +199,7 @@
 
 <body>
     <!-- preloader  -->
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div id="ctn-preloader" class="ctn-preloader">
             <div class="animation-preloader">
                 <div class="txt-loading">
@@ -255,7 +255,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- preloader end -->
 
 
