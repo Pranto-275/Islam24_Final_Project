@@ -24,7 +24,7 @@
                                     class="mobile-modal-product-min_qty"
                                     style="color: red;font-weight: bold;font-size: 12px;"></span> <span
                                     style="color: red;">পিছ</span><br>
-                                    <span style="color: rgb(8, 0, 0);">গেরান্টি: </span> <span
+                                    <span style="color: rgb(8, 0, 0);">গ্যারান্টি: </span> <span
                                     class="mobile-modal-product-gurantee"
                                     style="color: red;font-weight: bold;font-size: 12px;"></span>
                                     <span
