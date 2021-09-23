@@ -208,6 +208,7 @@
                             data-product-price="{{ $productDetails->special_price }}"
                             data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                             data-product-minimum-quantity="{{ $minimumQuantity }}"
+                            data-product-guarantee="{{ $productDetails->guarantee }}"
                             @if($productDetails->ProductImageFirst)
                             data-product-image="{{ asset('storage/photo/'.$productDetails->ProductImageFirst->image) }}"
                             @endif
@@ -541,6 +542,7 @@ alt=""></a>
                         data-product-price="{{ $product['special_price'] }}"
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                         data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
+                        data-product-guarantee="{{ $product['guarantee'] }}"
                         data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
                         @endif data-toggle="modal" data-target=".bd-example-modal-sm" style="color: #ff5c00;">
                         @if($product['in_stock']=="Out of Stock")

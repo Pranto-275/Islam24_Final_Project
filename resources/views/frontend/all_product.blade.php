@@ -241,7 +241,7 @@
                                 <div class="exclusive-item exclusive-item-three text-center mb-50">
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
-                                            <img @if($product)
+                                            <img @if(isset($product->ProductImageFirst))
                                                 src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}"
                                                 @else src="{{ asset('image-not-available.jpg')}}" @endif
                                                 style="width: 100%;height: auto;" alt="{{$product['name']}}">
@@ -336,6 +336,7 @@
                                             data-product-price="{{ $product['special_price'] }}"
                                             data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                                             data-product-minimum-quantity="{{ $minimumQuantity }}"
+                                            data-product-guarantee="{{ $product['guarantee'] }}"
                                             @if($product['product_image_first'])
                                             data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
                                             @endif data-toggle="modal" data-target=".bd-example-modal-sm"
