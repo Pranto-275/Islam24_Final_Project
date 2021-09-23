@@ -324,7 +324,7 @@
                                             @endif
                                             {{ $cardBadge['data']['total_price'] }}
                                         </span>
-                                        <ul class="minicart" style="height: 300px;overflow-y: scroll;">
+                                        <ul class="minicart">
                                             @include('frontend.header-card-popup')
                                         </ul>
                                     </li>
