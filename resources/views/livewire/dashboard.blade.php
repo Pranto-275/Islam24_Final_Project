@@ -135,16 +135,16 @@
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Line Chart</h4>
-                        <div id="line-chart" class="e-charts"></div>
+                        <h4 class="card-title mb-4">Bar charts</h4>
+                        <div id="bar-charts" dir="ltr"></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Mix Line-Bar</h4>
-                        <div id="mix-line-bar" class="e-charts"></div>
+                        <h4 class="card-title mb-4">Column charts</h4>
+                        <div id="column-charts" dir="ltr"></div>
                     </div>
                 </div>
             </div>
@@ -154,18 +154,13 @@
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Column charts</h4>
-                        <div id="column-charts" dir="ltr"></div>
+                        <h4 class="card-title mb-4">Pie charts</h4>
+                        <div id="pie-charts" dir="ltr"></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Pie Chart</h4>
-                        <div id="pie-chart" class="e-charts"></div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <!-- end row -->

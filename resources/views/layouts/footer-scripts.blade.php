@@ -9,24 +9,24 @@
 <script src="{{ URL::asset('assets/libs/datatables/datatables.min.js') }}"></script>
 <script src="{{ URL::asset('assets/libs/moment/moment.min.js') }}"></script>
 <script src="{{ URL::asset('assets/libs/tinymce/tinymce.min.js') }}"></script>
-
 {{-- charts script --}}
 <script src="{{ URL::asset('assets/libs/echarts/echarts.min.js') }}"></script>
 <!-- echarts init -->
 <script src="{{ URL::asset('assets/js/pages/echarts.init.js') }}"></script>
 
-<script src="{{ URL::asset('assets/js/app.js') }}"></script>
-
 <!-- tui charts plugins -->
 <script src="{{URL::asset('assets/libs/tui-chart/tui-chart.min.js')}}"></script>
 
 <!-- tui charts map -->
-<script src="{{ URL::asset('assets/libs/tui-chart/maps/usa.js') }}"></script>
+{{-- <script src="{{ URL::asset('assets/libs/tui-chart/maps/usa.js') }}"></script> --}}
 
 <!-- tui charts plugins -->
 <script src="{{ URL::asset('assets/js/pages/tui-charts.init.js') }}"></script>
 
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
 
 
