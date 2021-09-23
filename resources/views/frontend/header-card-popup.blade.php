@@ -51,7 +51,7 @@
 <li>
     <div class="total-price">
         <span class="f-left">
-            @if($language->total)
+            @if (isset($language->total))
             {{$language->total}}
             @else
             Total:
@@ -68,14 +68,14 @@
 <li>
     <div class="checkout-link">
         <a class="btn-hover" href="{{ route('cart') }}">
-            @if($language->shopping_cart)
+            @if (isset($language->shopping_cart))
             {{$language->shopping_cart}}
             @else
             Shopping Cart
             @endif
         </a>
         <a class="red-color btn-hover" href="{{ route('check-out') }}">
-            @if($language->checkout)
+            @if (isset($language->checkout))
             {{$language->checkout}}
             @else
             Checkout
@@ -120,7 +120,7 @@
             $(".mobile-modal-product-quantity").val(requestQty);
             $(".mobile-modal-product-price").html(grandTotal);
             $(".mobile-modal-product-min_qty").html(productMinQty);
-            $(".mobile-modal-product-gurantee").html(productGuarantee);   
+            $(".mobile-modal-product-gurantee").html(productGuarantee);
             $(".mobile-modal-product-quantity-label").html(requestQty);
             $(".mobile-modal-product-quantity").attr('id', 'mobile_modal_product_quantity_'+productId)
             $(".mobile-modal-product-quantity").attr('data-product-id', productId)
