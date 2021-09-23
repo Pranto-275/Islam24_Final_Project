@@ -111,7 +111,7 @@
 
                                         </ul>
                                     </div>
-                                    <div class="sidebar-product-list">
+                                    {{-- <div class="sidebar-product-list">
                                         <ul>
                                             <li>
                                                 <div class="sidebar-product-thumb">
@@ -165,7 +165,7 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="widget shop-widget mb-30" id="productBrandMobile">

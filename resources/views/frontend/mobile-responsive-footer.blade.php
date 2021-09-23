@@ -14,7 +14,7 @@
                 <hr class="m-0 p-0">
                 <div class="row">
                     <div class="col-4">
-                        <img src="{{ asset('img/logo/logo.png') }}" class="img img-thumbnail" />
+                        <img src="{{ asset('logo.png') }}" class="img img-thumbnail" />
                     </div>
                     <div class="col-8">
                         <div class="row">
