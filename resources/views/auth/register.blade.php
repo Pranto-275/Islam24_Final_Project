@@ -18,11 +18,9 @@
     <!-- main-area -->
     <main>
         <div class="text-center py-2 rounded" style="background-color: black;position: fixed;width: 100%;z-index: 2;">
-            <a href="{{ route('home') }}" class="float-left">
-                {{-- <i class="fas fa-backspace"
-                style="color: rgb(0, 0, 0);font-size: 30px;"></i> --}}
+            {{-- <a href="{{ route('home') }}" class="float-left">
                 <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
-            </a>
+            </a> --}}
             <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">
                 রেজিষ্ট্রেশন
             </span>

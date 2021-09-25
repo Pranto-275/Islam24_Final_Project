@@ -553,7 +553,7 @@
             </ul>
             <div class="bank-transfer">
                 <div class="form-group">
-                    <label for="basicpill-lastname-input" style="color: #ff5c00;;font-weight:bold;">রিপ্লেস প্রডাক্টের নাম & সংখ্যা</label>
+                    <label for="basicpill-lastname-input" style="color: #ff5c00;;font-weight:bold;"><i class="fas fa-star" style="color:  #ff5c00;"></i> রিপ্লেস প্রডাক্টের নাম & সংখ্যা লিখুন</label>
                     <textarea class="form-control" id="note" name="note" rows="3"
                         wire:model.lazy="note"
                         placeholder="এখানে আপনার পূর্বের অর্ডারের ড্যামেজ প্রডাক্টগুলির নাম এবং  সংখ্যা লিখুন!"></textarea>

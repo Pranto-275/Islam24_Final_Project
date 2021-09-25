@@ -1,7 +1,14 @@
 @extends('layouts.front_end')
 @section('content')
 <div>
-
+    <style>
+        #headerOneCheckOut,
+        #sticky-header,
+        #headerThreeCheckout,
+        #footerOneCheckOut {
+            display: none;
+        }
+    </style>
     <x-slot name="title">
         Category
     </x-slot>
@@ -10,6 +17,14 @@
     </x-slot>
     <!-- main-area -->
     <main>
+        <div class="text-center py-2 rounded" style="background-color: black;position: fixed;width: 100%;z-index: 2;">
+            {{-- <a href="{{ route('home') }}" class="float-left">
+                <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+            </a> --}}
+            <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">
+                লগইন
+            </span>
+        </div>
         <!-- my-account-area -->
         <section class="my-account-area pattern-bg pt-20 pb-20"
             data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg">
