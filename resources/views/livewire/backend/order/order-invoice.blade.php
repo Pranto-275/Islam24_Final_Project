@@ -144,7 +144,7 @@
                                     <div class="card">
                                         <div class="card-body">
                                           <h5 class="card-title" style="color: #ff5c00;;font-weight:bold;">রিপ্লেস প্রডাক্টের নাম & সংখ্যা</h5>
-                                          <p class="card-text">{{$OrderInvoice->note}}</p>
+                                          <p class="card-text">{!!$OrderInvoice->note!!}</p>
                                         </div>
                                       </div>
                                     {{-- End Note --}}

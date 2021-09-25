@@ -231,6 +231,15 @@
                                     </li>
                                     @endif
                                     @endif
+                                    @if(Auth::user())
+                                    @if(Auth::user()->hasAnyRole('admin') || Auth::user()->hasAnyRole('user'))
+                                    <li>
+                                        <a href="{{ route('dashboard') }}">
+                                           Admin Panel
+                                        </a>
+                                    </li>
+                                    @endif
+                                    @endif
                                     <li class="active">
                                         <a href="{{url('/')}}">
                                             @if($language->home)
