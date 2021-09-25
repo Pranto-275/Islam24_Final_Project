@@ -14,7 +14,7 @@
                 <hr class="m-0 p-0">
                 <div class="row">
                     <div class="col-4">
-                        <img src="{{ asset('img/logo/logo.png') }}" class="img img-thumbnail" />
+                        <img src="{{ asset('logo.png') }}" class="img img-thumbnail" />
                     </div>
                     <div class="col-8">
                         <div class="row">
@@ -24,9 +24,11 @@
                                     class="mobile-modal-product-min_qty"
                                     style="color: red;font-weight: bold;font-size: 12px;"></span> <span
                                     style="color: red;">পিছ</span><br>
-                                    <span style="color: rgb(8, 0, 0);">গেরান্টি: </span> <span
+                                    <span style="color: rgb(8, 0, 0);">গ্যারান্টি: </span> <span
                                     class="mobile-modal-product-gurantee"
-                                    style="color: red;font-weight: bold;font-size: 12px;"></span><br>
+                                    style="color: red;font-weight: bold;font-size: 12px;"></span>
+                                    <span
+                                    style="color: red;">মাস</span><br>
                                 @if($currencySymbol)
                                 {{ $currencySymbol->symbol }}
                                 @endif
