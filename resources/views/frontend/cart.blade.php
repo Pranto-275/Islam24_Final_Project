@@ -156,7 +156,7 @@
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
                     <span class="mt-1" style="color: white;font-weight: bold;font-size: 20px;">
-                        @if($language->cart_page_header_title)
+                        @if (isset($language->cart_page_header_title))
                         {{$language->cart_page_header_title}}
                         @else
                         Shopping Bag
@@ -254,7 +254,7 @@
                                 </table>
                                 @else
                                 <div class="alert alert-warning text-center">
-                                    @if($language->no_product_in_shopping_bag_alert_text)
+                                    @if (isset($language->no_product_in_shopping_bag_alert_text))
                                     {{$language->no_product_in_shopping_bag_alert_text}}
                                     @else
                                     There is no product added by you!
@@ -286,7 +286,7 @@
     <aside class="shop-cart-sidebar pt-3">
         <div class="shop-cart-widget py-0 my-0 pt-1">
             <h6 class="title text-center pt-3" style="font-size: 14px;">
-                @if($language->bill_total_title)
+                @if (isset($language->bill_total_title))
                 {{$language->bill_total_title}}
                 @else
                 Bill Total
@@ -295,7 +295,7 @@
             <ul>
                 <li style="color: black;">
                     <span>
-                        @if($language->sub_total)
+                        @if (isset($language->sub_total))
                         {{$language->sub_total}}
                         @else
                         SUBTOTAL
@@ -311,7 +311,7 @@
                 </li>
                 <li class="py-1" style="color: black;">
                     <span>
-                        @if($language->discount)
+                        @if (isset($language->discount))
                         {{$language->discount}}
                         @else
                         Discount
@@ -327,7 +327,7 @@
                 </li>
                 <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
                     <span>
-                        @if($language->total)
+                        @if (isset($language->total))
                         {{$language->total}}
                         @else
                         Total
@@ -345,7 +345,7 @@
                 </li>
             </ul>
             <button class="btn mb-3 btn-hover" id="orderFinishMobile">
-                @if($language->cart_page_order_finish_button_text)
+                @if (isset($language->cart_page_order_finish_button_text))
                 {{$language->cart_page_order_finish_button_text}}
                 @else
                 Finish Order
@@ -360,7 +360,7 @@
 <!-- shop-cart-area-end -->
 <button class="btn btn-hover" style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;"
     id="orderFinish">
-    @if($language->cart_page_order_finish_button_text)
+    @if (isset($language->cart_page_order_finish_button_text))
       {{$language->cart_page_order_finish_button_text}}
     @else
     Finish Order

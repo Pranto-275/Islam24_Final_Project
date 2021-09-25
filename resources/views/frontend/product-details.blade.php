@@ -107,7 +107,7 @@
                             </span>
                             &nbsp;
                             <span style="font-size: 16px;color: #ff0000;">{ {{intval($productDetails->discount)}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
-                                @if($language->discount)
+                                @if (isset($language->discount))
                                 {{$language->discount}}
                                 @else
                                 discount
@@ -121,7 +121,7 @@
                                 <span class="badge badge-light"
                                     style="color: red;font-weight: bold;font-size: 12px;">{{$productDetails->min_order_qty}}
                                     &nbsp;
-                                    @if($language->unit)
+                                    @if (isset($language->unit))
                                     {{$language->unit}}
                                     @else
                                     unit
@@ -187,7 +187,7 @@
                             Sold Out
                             @endif
                             @else
-                            @if($language->sell_button_text)
+                            @if (isset($language->sell_button_text))
                             {{$language->sell_button_text}}
                             @else
                             Buy Now
@@ -219,7 +219,7 @@
                             Sold Out
                             @endif
                             @else
-                            @if($language->sell_button_text)
+                            @if (isset($language->sell_button_text))
                             {{$language->sell_button_text}}
                             @else
                             Buy Now
@@ -462,7 +462,7 @@ alt=""></a>
                     </a>
                     @if($product['discount'])
                     <span class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
-                        @if($language->discount)
+                        @if (isset($language->discount))
                         {{$language->discount}}
                         @else
                         discount
@@ -529,7 +529,7 @@ alt=""></a>
                         Sold Out
                         @endif
                         @else
-                        @if($language->sell_button_text)
+                        @if (isset($language->sell_button_text))
                         {{$language->sell_button_text}}
                         @else
                         ক্রয় করুণ
@@ -550,7 +550,7 @@ alt=""></a>
                         Sold Out
                         @endif
                         @else
-                        @if($language->sell_button_text)
+                        @if (isset($language->sell_button_text))
                         {{$language->sell_button_text}}
                         @else
                         ক্রয় করুণ
