@@ -111,10 +111,10 @@
         <div class="col-3 pt-1 text-center">
             {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}
             <li class="header-shop-cart">
-                <a href="{{route('search-category-wise')}}"><i class="fas fa-bullhorn text-dark" style="font-size: 20px;"></i>
+                <a href="{{route('all-category-wise')}}"><i class="fas fa-bullhorn text-dark" style="font-size: 20px;"></i>
                 </a>
                 <br>
-                <span class="text-dark" style="font-size:10px; font-weight:bold;">সকল পণ্য</span>
+                <span class="text-dark" style="font-size:10px; font-weight:bold;">ক্যাটাগরি</span>
         </div>
         <div class="col-3 pt-1 text-center">
             {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}

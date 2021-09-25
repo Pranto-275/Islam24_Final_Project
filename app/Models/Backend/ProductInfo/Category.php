@@ -16,4 +16,7 @@ class Category extends Model
     public function CategoryCheck(){
         return $this->hasOne(Product::class);
     }
+    public function Product(){
+        return $this->hasMany(Product::class)->take(4);
+    }
 }

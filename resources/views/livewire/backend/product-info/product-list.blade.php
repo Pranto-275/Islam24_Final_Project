@@ -101,12 +101,10 @@
                                 </table>
 
                             </div> --}}
-                            <div wire:ignore class="table-responsive">
                                 <div wire:ignore class="table-responsive">
                                     <table class="table table-bordered dt-responsive nowrap" id="ProductTable"
                                         style="border-collapse: collapse; border-spacing: 0;"></table>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
