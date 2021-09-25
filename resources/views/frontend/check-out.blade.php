@@ -121,7 +121,7 @@
                         <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
                     </a>
                     <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">
-                        @if($language->checkout_page_header_title)
+                        @if (isset($language->checkout_page_header_title))
                         {{$language->checkout_page_header_title}}
                         @else
                         Quick Checkout
@@ -143,7 +143,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="business_name" style="color: black;">
-                                                @if($language->business_name_label)
+                                                @if (isset($language->business_name_label))
                                                 {{$language->business_name_label}}
                                                 @else
                                                 Business Name
@@ -151,14 +151,14 @@
                                                 <span>*</span></label>
                                             <input class="form-control" type="text" name="business_name" required
                                                 value="@if(Auth::user()){{Auth::user()->Contact->business_name}}@endif"
-                                                placeholder="@if($language->business_name_placeholder) {{$language->business_name_placeholder}} @else Name @endif
+                                                placeholder="@if (isset($language->business_name_placeholder)) {{$language->business_name_placeholder}} @else Name @endif
                                                 ">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="fName">
-                                                @if($language->your_name_label)
+                                                @if (isset($language->your_name_label))
                                                 {{$language->your_name_label}}
                                                 @else
                                                 Name
@@ -166,7 +166,7 @@
                                                 <span>*</span>
                                             </label>
                                             <input type="text" name="fName" required
-                                                value="@if(Auth::user()){{Auth::user()->name}}@endif" placeholder=" @if($language->your_name_placeholder) {{$language->your_name_placeholder}} @else Name @endif
+                                                value="@if(Auth::user()){{Auth::user()->name}}@endif" placeholder=" @if (isset($language->your_name_placeholder)) {{$language->your_name_placeholder}} @else Name @endif
                                                 ">
                                         </div>
                                     </div>
@@ -179,7 +179,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-grp">
                                             <label for="mobile">
-                                                @if($language->mobile_number_label)
+                                                @if (isset($language->mobile_number_label))
                                                 {{$language->mobile_number_label}}
                                                 @else
                                                 Mobile Number
@@ -187,7 +187,7 @@
                                                 <span>*</span></label>
                                             <input type="text" name="mobile" required
                                                 value="@if(Auth::user()){{Auth::user()->mobile}}@endif"
-                                                placeholder="@if($language->your_mobile_number_placeholder) {{$language->your_mobile_number_placeholder}} @else Your Mobile Number @endif ">
+                                                placeholder="@if (isset($language->your_mobile_number_placeholder)) {{$language->your_mobile_number_placeholder}} @else Your Mobile Number @endif ">
                                         </div>
                                     </div>
                                     {{-- <div class="col-sm-12">
@@ -205,7 +205,7 @@
                             <div class="col-sm-12">
                                 <div class="form-grp">
                                     <label>
-                                        @if($language->zilla_label)
+                                        @if (isset($language->zilla_label))
                                         {{$language->zilla_label}}
                                         @else
                                         Zila
@@ -213,7 +213,7 @@
                                         *</label>
                                     <select class="custom-select district" name="district_id" required>
                                         <option value="">
-                                            @if($language->select_zila_option_text)
+                                            @if (isset($language->select_zila_option_text))
                                             --{{$language->select_zila_option_text}}--
                                             @else
                                             --Select--
@@ -244,7 +244,7 @@
                     <div class="col-12">
                         <div class="form-grp">
                             <label for="shipping_address">
-                                @if($language->full_address_label)
+                                @if (isset($language->full_address_label))
                                 {{$language->full_address_label}}
                                 @else
                                 Full address
@@ -253,7 +253,7 @@
                             </label>
 
                             <textarea id="shipping_address" name="shipping_address"
-                                placeholder="@if($language->full_address_placeholder) {{$language->full_address_placeholder	}} @else Full Address @endif"
+                                placeholder="@if (isset($language->full_address_placeholder)) {{$language->full_address_placeholder	}} @else Full Address @endif"
                                 required>@if(Auth::user()){{Auth::user()->address}}@endif</textarea>
                         </div>
                     </div>
@@ -352,7 +352,7 @@
 <div class="container">
     {{-- Start Cart Product --}}
     <h5 class="text-center" style="color: #ff5c00;">
-        @if($language->ordered_product_title)
+        @if (isset($language->ordered_product_title))
         {{$language->ordered_product_title}}
         @else
         Ordered Product
@@ -448,7 +448,7 @@
     <div class="col-12 pb-3">
         <div class="shop-cart-widget py-0 my-0 pt-1">
             <h6 class="title text-center">
-                @if($language->bill_total_title)
+                @if (isset($language->bill_total_title))
                 {{$language->bill_total_title}}
                 @else
                 Bill Total
@@ -464,7 +464,7 @@
                 <li class="cart-total-amount pt-2" style="color: black;font-weight: bold;">
                     <center>
                         <span>
-                            @if($language->sub_total)
+                            @if (isset($language->sub_total))
                             {{$language->sub_total}} -
                             @else
                             Subtotal -
@@ -507,7 +507,7 @@
                 <li class="cart-total-amount py-1" style="color: black;">
                     <center>
                         <span>
-                            @if($language->discount)
+                            @if (isset($language->discount))
                             {{$language->discount}} -
                             @else
                             Discount -
@@ -535,7 +535,7 @@
                     </span> --}}
                     <center>
                         <span>
-                            @if($language->total)
+                            @if (isset($language->total))
                             {{$language->total}} -
                             @else
                             Total -
@@ -561,7 +561,7 @@
                 </div>
                 <input type="checkbox" class="mb-3" id="customCheck4" checked>
                 <label class="mb-3" for="customCheck4" style="color: black;">
-                    @if($language->cash_on_delivery_text)
+                    @if (isset($language->cash_on_delivery_text))
                     {{$language->cash_on_delivery_text}}
                     @else
                     Cash On Delivery
@@ -574,7 +574,7 @@
                     and conditions</a>
             </div>
             <button class="btn btn-submit mt-2 btn-hover" type="submit" id="orderFinishCheckout">
-                @if($language->checkout_page_order_done_button_text)
+                @if (isset($language->checkout_page_order_done_button_text))
                 {{$language->checkout_page_order_done_button_text}}
                 @else
                 Place Order
@@ -586,7 +586,7 @@
         <button class="btn btn-submit btn-hover" type="submit"
             style="position: fixed;bottom: 0px;right: 0px;width: 100%;background-color:red;z-index:2;"
             id="orderFinishCheckoutMobile">
-            @if($language->checkout_page_order_done_button_text)
+            @if (isset($language->checkout_page_order_done_button_text))
             {{$language->checkout_page_order_done_button_text}}
             @else
             Place Order
