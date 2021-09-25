@@ -351,9 +351,9 @@ class HomeController extends Controller
     public function searchByCategory($catId = null)
     {
         if ($catId) {
-            $data['products'] = Product::with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->whereIsActive(1)->paginate(50);
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereCategoryId($catId)->whereIsActive(1)->paginate(50);
         } else {
-            $data['products'] = Product::with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->paginate(50);
+            $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->whereIsActive(1)->paginate(50);
         }
 
         return view('frontend.all_product', [

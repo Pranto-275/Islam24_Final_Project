@@ -8,7 +8,6 @@
         #footerOneCheckOut {
             display: none;
         }
-        }
 
         table {
             border: 1px solid #ccc;
