@@ -14,6 +14,7 @@ use App\Models\FrontEnd\Order;
 use App\Models\FrontEnd\OrderDetail;
 use App\Models\FrontEnd\Vendor;
 use App\Models\User;
+use App\Models\ProductInfo\Category;
 use App\Services\AddToCardService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -47,7 +48,9 @@ class HomeController extends Controller
         $this->addToCard = $addToCard;
         $this->addToCardService = $addToCardService;
     }
-
+    public function allCategoryWise(){
+        return view('frontend.all-category-wise-product');
+    }
     public function CreateSeller(Request $request)
     {
         $this->validate($request, [

@@ -126,6 +126,7 @@ Route::get('/cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('/customer-login', [HomeController::class, 'CustomerLogin'])->name('customer-login');
 Route::get('/check-out', [HomeController::class, 'checkOut'])->name('check-out');
 Route::get('/product-search/', [HomeController::class, 'productSearch'])->name('product-search');
+Route::get('/all-category-wise/{id?}', [HomeController::class, 'allCategoryWise'])->name('all-category-wise');
 Route::get('/search-category-wise/{id?}', [HomeController::class, 'searchByCategory'])->name('search-category-wise');
 Route::get('/search-subCategory-wise/{id?}', [HomeController::class, 'searchBySubCategory'])->name('search-subCategory-wise');
 Route::get('/search-subSubCategory-wise/{id?}', [HomeController::class, 'searchBySubSubCategory'])->name('search-subSubCategory-wise');

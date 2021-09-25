@@ -235,7 +235,7 @@
                                     @if(Auth::user()->hasAnyRole('admin') || Auth::user()->hasAnyRole('user'))
                                     <li>
                                         <a href="{{ route('dashboard') }}">
-                                           Admin Panel
+                                            Admin Panel
                                         </a>
                                     </li>
                                     @endif
@@ -359,69 +359,24 @@
                             <div class="menu-outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                             </div>
-                            {{-- <div>
-                                <div class="row justify-content-center">
-                                    <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
-                                        <div class="core-features-item">
-                                            <div class="core-features-icon">
-                                                <img src="{{ URL::asset('venam/') }}/img/icon/core_features01.png"
-                            alt="">
+                            <div class="social-links">
+                                <ul class="clearfix">
+                                    {{-- <li><a href="#"><span class="fab fa-twitter"></span></a></li> --}}
+                                    <li><a href="{{$companyInfo->facebook_link}}" target="_blank"><span
+                                                class="fab fa-facebook-square" style="font-size: 30px;"></span></a></li>
+                                    {{-- <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li> --}}
+                                    {{-- <li><a href="#"><span class="fab fa-instagram"></span></a></li> --}}
+                                    <li><a href="{{$companyInfo->youtube_link}}" target="_blank"><span
+                                                class="fab fa-youtube" style="font-size: 30px;"></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
                     </div>
-                    <div class="core-features-content my-0 py-0">
-                        <div class="text-danger my-0 py-0">Free Shipping On Over $ 50</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
-                <div class="core-features-item">
-                    <div class="core-features-icon">
-                        <img src="{{ URL::asset('venam/') }}/img/icon/core_features02.png" alt="">
-                    </div>
-                    <div class="core-features-content my-0 py-0">
-                        <div class="text-danger my-0 py-0">Membership Discount</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 my-0 py-0" style="padding-bottom: 0px; margin-bottom: 0px;">
-                <div class="core-features-item">
-                    <div class="core-features-icon">
-                        <img src="{{ URL::asset('venam/') }}/img/icon/core_features03.png" alt="">
-                    </div>
-                    <div class="core-features-content my-0 py-0">
-                        <div class="text-danger my-0 py-0">Money Return</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 my-0 py-0">
-                <div class="core-features-item">
-                    <div class="core-features-icon">
-                        <img src="{{ URL::asset('venam/') }}/img/icon/core_features04.png" alt="">
-                    </div>
-                    <div class="core-features-content my-0 py-0">
-                        <div class="text-danger my-0 py-0">24/7 Support !</div>
-                    </div>
+                    <!-- End Mobile Menu -->
                 </div>
             </div>
         </div>
-    </div> --}}
-    <div class="social-links">
-        <ul class="clearfix">
-            {{-- <li><a href="#"><span class="fab fa-twitter"></span></a></li> --}}
-            <li><a href="{{$companyInfo->facebook_link}}" target="_blank"><span class="fab fa-facebook-square"
-                        style="font-size: 30px;"></span></a></li>
-            {{-- <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li> --}}
-            {{-- <li><a href="#"><span class="fab fa-instagram"></span></a></li> --}}
-            <li><a href="{{$companyInfo->youtube_link}}" target="_blank"><span class="fab fa-youtube"
-                        style="font-size: 30px;"></span></a>
-            </li>
-        </ul>
-    </div>
-    </nav>
-    </div>
-    <!-- End Mobile Menu -->
-    </div>
-    </div>
-    </div>
     </div>
     <!-- menu-area-end -->
     <!-- header-search-area -->

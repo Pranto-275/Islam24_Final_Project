@@ -198,65 +198,30 @@
 </head>
 
 <body>
-    <!-- preloader  -->
-    {{-- <div id="preloader">
-        <div id="ctn-preloader" class="ctn-preloader">
-            <div class="animation-preloader">
-                <div class="txt-loading">
-                    <span data-text-preloader="পা" class="letters-loading">
-                        পা
-                    </span>
-                    <span data-text-preloader="ই" class="letters-loading">
-                        ই
-                    </span>
-                    <span data-text-preloader="কা" class="letters-loading">
-                        কা
-                    </span>
-                    <span data-text-preloader="রী" class="letters-loading">
-                        রী
-                    </span>
-                </div>
-                <div class="spinner my-0 my-0" style="width: 80px; height: 80px;"></div>
-                <div class="txt-loading mt-2">
-                    <span data-text-preloader="ই" class="letters-loading">
-                        ই
-                    </span>
-                    <span data-text-preloader="লে" class="letters-loading">
-                        লে
-                    </span>
-                    <span data-text-preloader="ক" class="letters-loading">
-                        ক
-                    </span>
-                    <span data-text-preloader="ট্র" class="letters-loading">
-                        ট্র
-                    </span>
-                    <span data-text-preloader="নি" class="letters-loading">
-                        নি
-                    </span>
-                    <span data-text-preloader="ক্স" class="letters-loading">
-                        ক্স
-                    </span>
-                </div>
-            </div>
-            <div class="loader">
-                <div class="row">
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-left">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
-                    <div class="col-3 loader-section section-right">
-                        <div class="bg"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- preloader end -->
+
+      {{-- Start Messenger Plugin --}}
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "266866433725283");
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v12.0'
+          });
+        };
+
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/bn_IN/sdk/xfbml.customerchat.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
+      {{-- End Messenger Plugin --}}
 
 
     <!-- Scroll-top -->
@@ -281,6 +246,13 @@
     <!-- Start Mobile Responseive Footer -->
     @include('frontend.mobile-responsive-footer')
     <!-- Start Mobile Responseive Footer -->
+    {{-- Start Messenger Plugin --}}
+         <!-- Messenger Chat plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
     <br>
 
     <!-- JS here -->
