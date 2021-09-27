@@ -1,4 +1,69 @@
 <div>
+    <style>
+        #invoiceFoo{
+            text-align: right;
+        }
+   @media screen and (max-width: 600px) {
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+            #orderSummary{
+                text-align: center;
+            }
+            table td::before {
+                /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+            #billedTo{
+            display: none;
+        }
+        #individualOrder{
+             background: #eeefee;
+        }
+        #invoiceFoo{
+            text-align: center;
+        }
+        }
+
+    </style>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -14,7 +79,7 @@
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" id="billedTo">
                             <address style="font-size: 15px;">
                                 <strong>Billed To:</strong><br>
                                 {{$OrderInvoice->Contact->business_name}}<br>
@@ -48,14 +113,14 @@
                         </div>
                     </div> --}}
                     <div class="py-2 mt-3">
-                        <h3 class="font-size-15 font-weight-bold">Order summary</h3>
+                        <h3 class="font-size-15 font-weight-bold" id="orderSummary">Order summary</h3>
                     </div>
-                    <div class="table-responsive">
+                    <div class="table-responsive table-responsive-xl">
                         <table class="table table-nowrap" style="font-size: 15px;">
                             <thead>
                                 <tr>
                                     <th style="width: 70px;">Sr.</th>
-                                    <th>Image</th>
+                                    <th class="text-center">Image</th>
                                     <th>Product</th>
                                     <th>Quantity</th>
                                     <th class="text-right">MRP</th>
@@ -68,39 +133,53 @@
                                     $subTotal=0;
                                 @endphp
                              @foreach ($OrderInvoice->OrderDetail as $orderDetail)
-                                <tr>
-                                    <td>{{ ++$i }}</td>
+                                <tr id="individualOrder">
                                     <td>
-                                        <img class="rounded"
-                                         @if($orderDetail->Product->ProductImageFirst)
-                                           src="{{ asset('storage/photo/'.$orderDetail->Product->ProductImageFirst->image)}}"
-                                         @else
-                                           src="{{ asset('image-not-available.jpg')}}"
-                                         @endif
-                                         style="height:80px; weight:80px;" alt="Image2" class="img-circle img-fluid">
+                                        <span style="float: left;color: red;font-weight: bold;">
+                                            {{ ++$i }}.
+                                        </span>
+                                        <br>
                                     </td>
-                                    <td>{{$orderDetail->Product->name}}</td>
-                                    <td>{{$orderDetail->quantity}}</td>
-                                    <td class="text-right">{{$orderDetail->unit_price}}</td>
-                                    <td class="text-right">{{$orderDetail->unit_price * $orderDetail->quantity}}</td>
+                                    <td>
+                                       <center>
+                                        <img class="rounded"
+                                        @if($orderDetail->Product->ProductImageFirst)
+                                          src="{{ asset('storage/photo/'.$orderDetail->Product->ProductImageFirst->image)}}"
+                                        @else
+                                          src="{{ asset('image-not-available.jpg')}}"
+                                        @endif
+                                        style="height:80px; weight:80px;" alt="Image2" class="img-circle img-fluid">
+                                       </center>
+                                    </td>
+                                    <td>
+                                        <center>
+                                            <span style="color: black;float: left;">{{$orderDetail->Product->name}}</span>
+                                            <br>
+                                        </center>
+                                    </td>
+                                    <td data-label="Quantity">{{$orderDetail->quantity}}</td>
+                                    <td class="text-right" data-label="MRP">{{$orderDetail->unit_price}}</td>
+                                    <td class="text-right" data-label="Amount">{{$orderDetail->unit_price * $orderDetail->quantity}}</td>
                                     @php
                                         $subTotal += $orderDetail->unit_price * $orderDetail->quantity;
                                     @endphp
                                 </tr>
                               @endforeach
                               <tr>
-                                <td colspan="5" class="text-right">Sub Total</td>
-                                <td class="text-right">
+                                <td colspan="5" id="invoiceFoo">
+                                    <strong>Sub Total</strong>
+                                </td>
+                                <td id="invoiceFoo">
                                     @if($currencySymbol)
                                          {{ $currencySymbol->symbol }}
                                     @endif
                                     {{$subTotal}}
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="5" class="border-0 text-right">
+                            <tr id="invoiceFoo">
+                                <td colspan="5" class="border-0" id="invoiceFoo">
                                     <strong>Discount</strong></td>
-                                <td class="border-0 text-right">
+                                <td class="border-0" id="invoiceFoo">
                                     @if($currencySymbol)
                                         {{ $currencySymbol->symbol }}
                                     @endif
@@ -111,10 +190,10 @@
                                     @endif
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="5" class="border-0 text-right">
+                            {{-- <tr id="invoiceFoo">
+                                <td colspan="5" class="border-0" id="invoiceFoo">
                                     <strong>Shipping</strong></td>
-                                <td class="border-0 text-right">
+                                <td class="border-0" id="invoiceFoo">
                                     @if($currencySymbol)
                                        {{ $currencySymbol->symbol }}
                                     @endif
@@ -124,11 +203,11 @@
                                        0
                                        @endif
                                 </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5" class="border-0 text-right">
+                            </tr> --}}
+                            <tr id="invoiceFoo">
+                                <td colspan="5" class="border-0" id="invoiceFoo">
                                     <strong>Total</strong></td>
-                                <td class="border-0 text-right">
+                                <td class="border-0" id="invoiceFoo">
                                     <h4 class="m-0">
                                         @if($currencySymbol)
                                            {{ $currencySymbol->symbol }}
@@ -139,7 +218,7 @@
                             </tr>
                             @if($OrderInvoice->note)
                             <tr class="border px-2">
-                                <td colspan="7" class="border-0 text-right">
+                                <td colspan="7" class="border-0">
                                     {{-- Start Note --}}
                                     <div class="card">
                                         <div class="card-body">

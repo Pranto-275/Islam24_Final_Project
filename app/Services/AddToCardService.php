@@ -46,6 +46,7 @@ class AddToCardService extends Controller
                 'product_name' => $product['name'],
                 'regular_price' => $product['regular_price'],
                 'special_price' => $product['special_price'],
+                'wholesale_price' => $product['wholesale_price'],
                 'image' => $productImage ? $productImage : 'blank-product-image.png',
             ];
 

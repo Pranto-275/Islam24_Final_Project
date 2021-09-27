@@ -85,11 +85,27 @@
                                 </div> --}}
                     <div class="shop-details-price mt-2">
                         <h2 class="m-0 p-0">
+                            @if(!Auth::user())
                             @if($currencySymbol)
                             <span style="color: #ff0000;"><span
                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{$productDetails->special_price}}</span>
                             @else
                             <span style="color: #ff0000;">{{$productDetails->special_price}}</span>
+                            @endif
+                            @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type=='Wholesale')
+                            @if($currencySymbol)
+                            <span style="color: #ff0000;"><span
+                                    style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{$productDetails->wholesale_price}}</span>
+                            @else
+                            <span style="color: #ff0000;">{{$productDetails->wholesale_price}}</span>
+                            @endif
+                            @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type!='Wholesale')
+                            @if($currencySymbol)
+                            <span style="color: #ff0000;"><span
+                                    style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{$productDetails->special_price}}</span>
+                            @else
+                            <span style="color: #ff0000;">{{$productDetails->special_price}}</span>
+                            @endif
                             @endif
                             <span style="font-size: 10px;">
                                 <del class="text-danger">
@@ -106,7 +122,8 @@
                                 </del>
                             </span>
                             &nbsp;
-                            <span style="font-size: 16px;color: #ff0000;">{ {{intval($productDetails->discount)}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
+                            <span style="font-size: 16px;color: #ff0000;">{
+                                {{intval($productDetails->discount)}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
                                 @if($language->discount)
                                 {{$language->discount}}
                                 @else
@@ -132,7 +149,7 @@
                             </div>
                             {{-- Start Guarantee --}}
                             @if($productDetails->guarantee>0)
-                           <div class="mt-1">
+                            <div class="mt-1">
                                 <span style="color: black;">গ্যারান্টি: </span>
                                 <span class="badge badge-light"
                                     style="color: red;font-weight: bold;font-size: 12px;">{{$productDetails->guarantee}}
@@ -140,7 +157,7 @@
                                 </span>
                             </div>
                             @endif
-                        {{-- End Guarantee --}}
+                            {{-- End Guarantee --}}
                         </div>
 
                     </div>
@@ -462,7 +479,8 @@ alt=""></a>
                         style="width: 100%;height: auto;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
+                    <span
+                        class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
                         @if($language->discount)
                         {{$language->discount}}
                         @else
@@ -490,12 +508,28 @@ alt=""></a>
                         </a>
                     </h5>
                     <div class="exclusive--item--price pb-10">
+                        @if(!Auth::user())
                         <span class="new-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
                             @endif
                             {{ $product['special_price'] }}
                         </span>
+                        @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type=='Wholesale')
+                        <span class="wholesale-price">
+                            @if($currencySymbol)
+                            {{ $currencySymbol->symbol }}
+                            @endif
+                            {{ $product['wholesale_price'] }}
+                        </span>
+                        @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type!='Wholesale')
+                        <span class="new-price">
+                            @if($currencySymbol)
+                            {{ $currencySymbol->symbol }}
+                            @endif
+                            {{ $product['special_price'] }}
+                        </span>
+                        @endif
                         <del class="old-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}

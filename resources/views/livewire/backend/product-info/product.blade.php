@@ -90,6 +90,12 @@
                                 @error('special_price') <span class="error">{{ $message }}</span> @enderror
                             </div>
                             <div class="form-group">
+                                <label for="wholesale_price">Wholesale Price</label>
+                                <input id="wholesale_price" type="number" step="any" class="form-control"
+                                    wire:model.lazy="wholesale_price" placeholder="Wholesale Price">
+                                @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="min_order_qty">Minimum Order Quantity</label>
                                 <input id="min_order_qty" type="number" step="any" class="form-control"
                                     wire:model.lazy="min_order_qty" placeholder="Minimum Order Quantity">
@@ -174,12 +180,6 @@
                 <input id="purchase_price" type="number" step="any" class="form-control"
                     wire:model.lazy="purchase_price" placeholder="Purchase Price">
                 @error('purchase_price') <span class="error">{{ $message }}</span> @enderror
-            </div>
-            <div class="form-group">
-                <label for="wholesale_price">Wholesale Price</label>
-                <input id="wholesale_price" type="number" step="any" class="form-control"
-                    wire:model.lazy="wholesale_price" placeholder="Wholesale Price">
-                @error('wholesale_price') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
                 <label class="control-label">Warehouse</label>

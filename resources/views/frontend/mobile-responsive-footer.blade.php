@@ -106,7 +106,7 @@
                 <a href="{{url('/')}}">
                     <i class="fas fa-home" style="font-size: 20px;color: #ff5c00;"></i>
                 </a><br>
-                <span style="font-size:10px;font-weight:bold;color:#ff5c00;">PAIKARI</span>
+                <span style="font-size:10px;font-weight:bold;color:#ff5c00;">পাইকারী</span>
         </div>
         <div class="col-3 pt-1 text-center">
             {{-- <i class="fas fa-shopping-cart mt-2" style="font-size: 30px;"></i> --}}

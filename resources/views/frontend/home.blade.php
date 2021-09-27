@@ -204,22 +204,35 @@
                     </h5>
                     <div class="exclusive--item--price pb-10">
                         <span class="new-price" style="color:#ff0000;">
+                            @if(!Auth::user())
                             @if($currencySymbol)
                             <span
                                 style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
                             @else
                             {{ $product['special_price'] }}
                             @endif
-
+                            @elseif (isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type=='Wholesale')
+                            @if($currencySymbol)
+                            <span
+                                style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['wholesale_price'] }}
+                            @else
+                            {{ $product['wholesale_price'] }}
+                            @endif
+                            @elseif (isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type!='Wholesale')
+                            {{ $product['wholesale_price'] }}
+                            @endif
                         </span>
                         <del class="old-price">
+
+
+                            {{-- First Part --}}
                             @if($currencySymbol)
                             <span class="text-dark"><span
                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['regular_price'] }}</span>
                             @else
                             {{ $product['regular_price'] }}
                             @endif
-
+                            {{-- End Part --}}
                         </del>
                     </div>
                     @php
@@ -328,7 +341,8 @@
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                     </a>
                     @if($product['discount'])
-                    <span class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
+                    <span
+                        class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
                         @if($language->discount)
                         {{$language->discount}}
                         @else
@@ -351,22 +365,37 @@
                     </h5>
                     <div class="exclusive--item--price pb-10">
                         <span class="new-price" style="color:#ff0000;">
+                            @if(!Auth::user())
                             @if($currencySymbol)
                             <span
                                 style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
                             @else
                             {{ $product['special_price'] }}
                             @endif
-
+                            @elseif (isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type=='Wholesale')
+                            @if($currencySymbol)
+                            <span
+                                style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['wholesale_price'] }}
+                            @else
+                            {{ $product['wholesale_price'] }}
+                            @endif
+                            @elseif(isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type!='Wholesale')
+                            @if($currencySymbol)
+                            <span
+                                style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
+                            @else
+                            {{ $product['special_price'] }}
+                            @endif
+                            @endif
                         </span>
                         <del class="old-price">
+
                             @if($currencySymbol)
                             <span class="text-dark"><span
                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['regular_price'] }}</span>
                             @else
                             {{ $product['regular_price'] }}
                             @endif
-
                         </del>
                     </div>
                     {{-- <div class="rating">
@@ -437,7 +466,7 @@
                 @else
                 Op's there is no products
                 @endif
-             </div>
+            </div>
         </div>
         @endif
         <div class="col-md-12">

@@ -120,7 +120,7 @@
             $(".mobile-modal-product-quantity").val(requestQty);
             $(".mobile-modal-product-price").html(grandTotal);
             $(".mobile-modal-product-min_qty").html(productMinQty);
-            $(".mobile-modal-product-gurantee").html(productGuarantee);   
+            $(".mobile-modal-product-gurantee").html(productGuarantee);
             $(".mobile-modal-product-quantity-label").html(requestQty);
             $(".mobile-modal-product-quantity").attr('id', 'mobile_modal_product_quantity_'+productId)
             $(".mobile-modal-product-quantity").attr('data-product-id', productId)
