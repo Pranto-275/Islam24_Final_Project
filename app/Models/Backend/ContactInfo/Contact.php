@@ -13,7 +13,7 @@ class Contact extends Model
 {
     use HasFactory;
     public function Order(){
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class)->orderBy('id', 'DESC');
     }
     public function PaymentMethod(){
         return $this->belongsTo(PaymentMethod::class);
