@@ -37,10 +37,11 @@
                             </div>
                             <div class="col-5">
                                 <span class="text-danger" style="font-size: 16px;">
-                                    @if($currencySymbol)
-                                    {{ $currencySymbol->symbol }}
-                                    @endif
-                                    <span class="mobile-modal-product-price"></span>
+                                    <br>
+                                        @if($currencySymbol)
+                                        {{ $currencySymbol->symbol }}
+                                        @endif
+                                        <span class="mobile-modal-product-price"></span>
                                 </span>
                             </div>
                             {{-- <div class="col-12">
