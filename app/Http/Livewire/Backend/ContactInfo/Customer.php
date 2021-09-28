@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class Customer extends Component
 {
+    public $contact_type="Retailer";
     public $type;
     public $first_name;
     public $last_name;
@@ -33,6 +34,7 @@ class Customer extends Component
             'address' => 'required',
             'shipping_address' => 'required',
             'mobile' => 'required',
+            'contact_type' => 'required',
             'is_active' => 'required',
         ]);
         // dd($this->contact_category_id);
@@ -43,6 +45,7 @@ class Customer extends Component
             $Query->created_by  = Auth::id();
         }
         $Query->type = "Customer";
+        $Query->contact_type = $this->contact_type;
         $Query->first_name = $this->first_name;
         $Query->last_name = $this->last_name;
         $Query->address = $this->address;
@@ -77,6 +80,7 @@ class Customer extends Component
     {
         $this->QueryUpdate         = Contact::find($id);
         $this->CustomerCategoryId  = $this->QueryUpdate->id;
+        $this->contact_type                = $this->QueryUpdate->contact_type;
         $this->type                = $this->QueryUpdate->type;
         $this->first_name          = $this->QueryUpdate->first_name;
         $this->last_name           = $this->QueryUpdate->last_name;

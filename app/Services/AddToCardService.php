@@ -38,6 +38,7 @@ class AddToCardService extends Controller
     {
         $sessionId = Session::getId();
         $result = Product::with('ProductImageFirst')->find($productId);
+
         if($result) {
             $product = $result->toArray();
             $productImage = isset($product['product_image_first']['image']) ? $product['product_image_first']['image'] : '';
@@ -46,24 +47,31 @@ class AddToCardService extends Controller
                 'product_name' => $product['name'],
                 'regular_price' => $product['regular_price'],
                 'special_price' => $product['special_price'],
+                'wholesale_price' => $product['wholesale_price'],
                 'image' => $productImage ? $productImage : 'blank-product-image.png',
             ];
 
             $productCard = AddToCardModel::where(['session_id' => $sessionId,'product_id' => $productId])->with('getProduct')->first();
 
             if ($productCard) {
-                if ($quantity > 1) {
+                if ($quantity == 0) {
+                    $requestQuantity = ($productCard->quantity + $quantity);
+                } elseif ($quantity == 1) {
+                    $requestQuantity = 1;
+                } elseif ($quantity > 1) {
                     $requestQuantity = $quantity;
                 } else {
-                    $requestQuantity = ($productCard->quantity + $quantity);
+                    $requestQuantity = 0;
                 }
-                //dd($requestQuantity);
-                if(! ($requestQuantity >= $productCard['getProduct']['min_order_qty'])){
+
+                //if(! ($requestQuantity >= $productCard['getProduct']['min_order_qty'])){
+                if (! ($requestQuantity >= $result['min_order_qty'])){
+
                     return [
                         'errorStatus' => true,
-                        'message' => "You have to order minimum ".$productCard['getProduct']['min_order_qty']." quantity",
+                        'message' => "You have to order minimum ".$result['min_order_qty']." quantity",
                         'data' => [
-                            'quantity' => $productCard['getProduct']['min_order_qty']
+                            'quantity' => $result['min_order_qty']
                         ],
                         'errors' => [
                             'error' => ''
@@ -71,7 +79,8 @@ class AddToCardService extends Controller
                     ];
                 }
 
-                if(!($requestQuantity>0)){
+                if (!$quantity) {
+
                     return [
                         'errorStatus' => true,
                         'message' => "You can't zero quantity.",
@@ -83,7 +92,9 @@ class AddToCardService extends Controller
                         ]
                     ];
                 }
+
                 if ($requestQuantity > 0) {
+
                     $productCard->quantity = $requestQuantity;
                     $productCard->data = json_encode($productInfo);
                     $productCard->unit_price = $product['special_price'];

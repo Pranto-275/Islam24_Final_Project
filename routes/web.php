@@ -161,7 +161,7 @@ Route::get('error', Error::class)->name('error');
 
 Route::get('wish-list', Wishlist::class)->name('wish-list');
 Route::Post('customer_sign_in', [LoginController::class, 'authenticate'])->name('customer_sign_in');
-Route::group(['middleware' => ['role:admin|user']], function () {
+Route::group(['middleware' => ['role:admin|user|manager|editor']], function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function () {
         return view('livewire.dashboard');
     })->name('dashboard');

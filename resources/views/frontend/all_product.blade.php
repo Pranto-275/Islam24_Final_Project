@@ -242,9 +242,9 @@
                                     <div class="exclusive-item-thumb">
                                         <a href="{{route('product-details',['id'=>$product['id']])}}">
                                             <img @if(isset($product->ProductImageFirst))
-                                                src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}"
-                                                @else src="{{ asset('image-not-available.jpg')}}" @endif
-                                                style="width: 100%;height: auto;" alt="{{$product['name']}}">
+                                            src="{{ asset('storage/photo/'.$product->ProductImageFirst->image)}}"
+                                            @else src="{{ asset('image-not-available.jpg')}}" @endif
+                                            style="width: 100%;height: auto;" alt="{{$product['name']}}">
                                             {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}"
                                             @endif style="height:200px;" alt="{{$product['name']}}"> --}}
                                         </a>
@@ -278,22 +278,37 @@
                                         </h5>
                                         <div class="exclusive--item--price pb-10">
                                             <span class="new-price" style="color:#ff0000;">
+                                                @if(!Auth::user())
                                                 @if($currencySymbol)
                                                 <span
                                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
                                                 @else
                                                 {{ $product['special_price'] }}
                                                 @endif
-
+                                                @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type=='Wholesale')
+                                                @if($currencySymbol)
+                                                <span
+                                                    style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['wholesale_price'] }}
+                                                @else
+                                                {{ $product['wholesale_price'] }}
+                                                @endif
+                                                @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type!='Wholesale')
+                                                @if($currencySymbol)
+                                                <span
+                                                    style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
+                                                @else
+                                                {{ $product['special_price'] }}
+                                                @endif
+                                                @endif
                                             </span>
                                             <del class="old-price">
+
                                                 @if($currencySymbol)
                                                 <span class="text-dark"><span
                                                         style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['regular_price'] }}</span>
                                                 @else
                                                 {{ $product['regular_price'] }}
                                                 @endif
-
                                             </del>
                                         </div>
                                         {{-- <div class="rating">
@@ -362,7 +377,7 @@
                             @endforeach
                         </div>
                         <div>
-                                {{-- <li class="prev"><a href="#"><i class="fas fa-long-arrow-alt-left"></i> Prev</a></li>
+                            {{-- <li class="prev"><a href="#"><i class="fas fa-long-arrow-alt-left"></i> Prev</a></li>
                                 <li class="active"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
@@ -370,7 +385,7 @@
                                 <li><a href="#">...</a></li>
                                 <li><a href="#">10</a></li>
                                 <li class="next"><a href="#">Next <i class="fas fa-long-arrow-alt-right"></i></a></li> --}}
-                                {{$data['products']->links('pagination::bootstrap-4')}}
+                            {{$data['products']->links('pagination::bootstrap-4')}}
                         </div>
                     </div>
                 </div>

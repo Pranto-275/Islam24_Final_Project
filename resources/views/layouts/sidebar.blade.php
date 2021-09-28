@@ -22,13 +22,16 @@
                         {{-- <li><a href="{{route('order.order-pending')}}">Pending Order</a>
                 </li> --}}
                 <li><a href="{{route('order.order-processing')}}">Processing Order</a></li>
+                @if(!Auth::user()->hasAnyRole('manager'))
                 <li><a href="{{route('order.order-shipped')}}">Shipped Order</a></li>
                 <li><a href="{{route('order.order-delivered')}}">Delivered Order</a></li>
                 <li><a href="{{route('order.order-returned')}}">Returned Order</a></li>
                 <li><a href="{{route('order.order-cancel')}}">Cancelled Order</a></li>
                 <li><a href="{{route('order.order-list')}}">All Order</a></li>
+                @endif
             </ul>
             </li>
+            @if(!Auth::user()->hasAnyRole('manager'))
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="bx bx-list-ul"></i>
@@ -48,8 +51,8 @@
             {{-- <li><a href="{{route('product.size')}}">Size</a></li> --}}
             </ul>
             </li>
-
-
+            @endif
+            @if(!Auth::user()->hasAnyRole('manager') && !Auth::user()->hasAnyRole('editor'))
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                     <i class="bx bx-list-ul"></i>
@@ -158,6 +161,7 @@
                     <li><a href="{{route('message')}}">Messages</a></li>
                 </ul>
             </li>
+            @endif
             </ul>
         </div>
         <!-- Sidebar -->

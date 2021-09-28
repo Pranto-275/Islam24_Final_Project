@@ -158,6 +158,7 @@
 
             $('.cart-total-price').html('');
             $('.cart-count').html('');
+            loaderStart();
             $.ajax({
                 method:'POST',
                 url: '{{ route('ajax-add-to-card-store') }}',
@@ -180,7 +181,8 @@
                     $('.cart-total-price').html(result.data.total_price)
                     $('.cart-count').html(result.data.number_of_product)
                     //$("#clone_mini_cart").clone().appendTo(".minicart");
-                    cloneMiniCart(result.data)
+                    cloneMiniCart(result.data);
+                    loaderEnd();
                 },
                 error: function (request, status, error) {
                     var responseText = JSON.parse(request.responseText);
@@ -218,6 +220,7 @@
 
             $('.cart-total-price').html('');
             $('.cart-count').html('');
+            loaderStart();
             $.ajax({
                 method:'POST',
                 url: '{{ route('ajax-add-to-card-store') }}',
@@ -243,6 +246,7 @@
                     $('.cart-count').html(result.data.number_of_product)
                     //$("#clone_mini_cart").clone().appendTo(".minicart");
                     cloneMiniCart(result.data)
+                    loaderEnd();
                 },
                 error: function (request, status, error) {
                     var responseText = JSON.parse(request.responseText);
@@ -281,6 +285,7 @@
 
             $('.cart-total-price').html('');
             $('.cart-count').html('');
+            loaderStart();
             $.ajax({
                 method:'POST',
                 url: '{{ route('ajax-add-to-card-store') }}',
@@ -305,6 +310,7 @@
                     $('.cart-count').html(result.data.number_of_product)
                     //$("#clone_mini_cart").clone().appendTo(".minicart");
                     cloneMiniCart(result.data)
+                    loaderEnd();
                 },
                 error: function (request, status, error) {
                     var responseText = JSON.parse(request.responseText);
@@ -381,6 +387,7 @@
     }
 
     function productDeleteMiniCart(productId) {
+        loaderStart();
         $.ajax({
             method:'POST',
             url: '{{ route('ajax-add-to-card-product-delete') }}',
@@ -399,6 +406,7 @@
                 $('#total_mini_cart_amount').html(result.data.data.total_price)
                 $('.cart-total-price').html(result.data.data.total_price)
                 $('.cart-count').html(result.data.data.number_of_product)
+                loaderEnd();
             },
             error: function (request, status, error) {
                 var responseText = JSON.parse(request.responseText);
@@ -416,16 +424,16 @@
 
     function quantityUpdate(type, productId, device) {
         var productQuantity = 1;
-        if(device == 'desktop') {
+        if(device === 'desktop') {
             if ($("#product_quantity_"+productId).length) {
                 productQuantity = parseFloat($("#product_quantity_"+productId).val());
             }
-        } else if (device == 'mobile') {
+        } else if (device === 'mobile') {
             if ($("#mobile_modal_product_quantity_"+productId).length) {
                 productQuantity = parseFloat($("#mobile_modal_product_quantity_"+productId).val());
             }
         }
-
+        loaderStart()
         $.ajax({
             method:'POST',
             url: '{{ route('ajax-add-to-card-quantity-update') }}',
@@ -456,6 +464,7 @@
                 $('.mobile-modal-product-price').html(result.data.product_card.total_price)
                 $('.cart-count').html(result.data.number_of_product)
                 cloneMiniCart(result.data)
+                loaderEnd()
             },
             error: function (request, status, error) {
                 var responseText = JSON.parse(request.responseText);
@@ -472,6 +481,7 @@
     }
 
     function productDeleteCart(productId) {
+        loaderStart();
         $.ajax({
             method:'POST',
             url: '{{ route('ajax-add-to-card-product-delete') }}',
@@ -490,6 +500,7 @@
                 $('#total_mini_cart_amount').html(result.data.data.total_price)
                 $('.cart-total-price').html(result.data.data.total_price)
                 $('.cart-count').html(result.data.data.number_of_product)
+                loaderEnd();
             },
             error: function (request, status, error) {
                 var responseText = JSON.parse(request.responseText);
@@ -505,5 +516,12 @@
         })
     }
 
+    function loaderStart() {
+        alert('request start');
+    }
+
+    function loaderEnd() {
+        alert('request end');
+    }
 
 </script>

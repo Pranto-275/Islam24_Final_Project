@@ -61,6 +61,7 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-body">
+                                <a href="{{ route('order.order-processing') }}">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="avatar-xs mr-3">
                                         <span
@@ -77,6 +78,7 @@
                                             class="ml-2 text-truncate">From previous period</span>
                                     </div>
                                 </div>
+                            </a>
                             </div>
                         </div>
                     </div>

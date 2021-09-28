@@ -22,13 +22,16 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="text-sm-right">
-                                <button type="button" class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2" wire:click="UserModal"><i class="mdi mdi-plus mr-1"></i> New User</button>
+                                <button type="button"
+                                    class="btn btn-success btn-rounded waves-effect waves-light mb-2 mr-2"
+                                    wire:click="UserModal"><i class="mdi mdi-plus mr-1"></i> New User</button>
                             </div>
                         </div><!-- end col-->
                     </div>
                     <div wire:ignore class="table-responsive">
                         <div wire:ignore class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap" id="UserTable" style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
+                            <table class="table table-bordered dt-responsive nowrap" id="UserTable"
+                                style="border-collapse: collapse; border-spacing: 0; width: 100%;"></table>
                         </div>
                     </div>
                     {{-- <div wire:ignore class="table-responsive">
@@ -199,170 +202,183 @@
         </div>
     </div>
     <!--  Modal content for the above example -->
-        <div wire:ignore.self class="modal fade" id="UserPermission" tabindex="-1" role="dialog" aria-labelledby="userPermission" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title mt-0" id="userPermission">User Permission List</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>SL</th>
-                                                <th>Module Name</th>
-                                                <th>Restictions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Sales</td>
-                                                <td>
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> View &nbsp;&nbsp;
-                                                   </label>
-                                                   <label class="checkbox-inline">
-                                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> Edit &nbsp;&nbsp;
-                                                   </label>
-                                                   <label class="checkbox-inline">
-                                                        <input type="checkbox" id="inlineCheckbox3" value="option3"> Delete  &nbsp;&nbsp;
-                                                   </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Purchase</td>
-                                                <td>
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" id="inlineCheckbox1" value="option1"> View &nbsp;&nbsp;
-                                                   </label>
-                                                   <label class="checkbox-inline">
-                                                        <input type="checkbox" id="inlineCheckbox2" value="option2"> Edit &nbsp;&nbsp;
-                                                   </label>
-                                                   <label class="checkbox-inline">
-                                                        <input type="checkbox" id="inlineCheckbox3" value="option3"> Delete  &nbsp;&nbsp;
-                                                   </label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>User Manager</td>
-                                                <td>
-                                                    <label class="checkbox-inline">
-                                                         <input type="checkbox" id="inlineCheckbox1" value="option1"> View &nbsp;&nbsp;
-                                                    </label>
-                                                    <label class="checkbox-inline">
-                                                         <input type="checkbox" id="inlineCheckbox2" value="option2"> Edit &nbsp;&nbsp;
-                                                    </label>
-                                                    <label class="checkbox-inline">
-                                                         <input type="checkbox" id="inlineCheckbox3" value="option3"> Delete  &nbsp;&nbsp;
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+    <div wire:ignore.self class="modal fade" id="UserPermission" tabindex="-1" role="dialog"
+        aria-labelledby="userPermission" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="userPermission">User Permission List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>SL</th>
+                                            <th>Module Name</th>
+                                            <th>Restictions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Sales</td>
+                                            <td>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox1" value="option1"> View
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox2" value="option2"> Edit
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox3" value="option3"> Delete
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Purchase</td>
+                                            <td>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox1" value="option1"> View
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox2" value="option2"> Edit
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox3" value="option3"> Delete
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>User Manager</td>
+                                            <td>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox1" value="option1"> View
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox2" value="option2"> Edit
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="inlineCheckbox3" value="option3"> Delete
+                                                    &nbsp;&nbsp;
+                                                </label>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" >Update</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </div>
-        <div wire:ignore.self class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title mt-0" id="myLargeModalLabel">Create User</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form wire:submit.prevent="UserSave">
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="basicpill-lastname-input">Name</label>
-                                        <input class="form-control" type="text" wire:model.lazy="name"
-                                            placeholder="Enter Name">
-                                        @error('name') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
+    </div>
+    <div wire:ignore.self class="modal fade" id="UserModal" tabindex="-1" role="dialog"
+        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Create User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form wire:submit.prevent="UserSave">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="basicpill-lastname-input">Name</label>
+                                    <input class="form-control" type="text" wire:model.lazy="name"
+                                        placeholder="Enter Name">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
-                                {{-- <div class="col-lg-12">
+                            </div>
+                            {{-- <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="basicpill-firstname-input">Email</label>
                                         <input class="form-control" type="text" wire:model.lazy="email"
                                             placeholder="Enter Email">
                                         @error('email') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
-                                </div> --}}
+                        </div>
+                    </div> --}}
 
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="basicpill-firstname-input">Mobile</label>
-                                        <input class="form-control" type="text" wire:model.lazy="mobile"
-                                            placeholder="Enter mobile">
-                                        @error('mobile') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="basicpill-firstname-input">Mobile</label>
+                            <input class="form-control" type="text" wire:model.lazy="mobile" placeholder="Enter mobile">
+                            @error('mobile') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
 
 
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="basicpill-firstname-input">Password</label>
-                                        <input class="form-control" type="password" wire:model.lazy="password"
-                                            placeholder="Enter Password">
-                                        @error('password') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="basicpill-firstname-input"> Type</label>
-                                        <select class="form-control" wire:model.lazy="type">
-                                           <option value="">Select Type</option>
-                                               <option value="admin">Admin</option>
-                                               <option value="user">User</option>
-                                        </select>
-                                        @error('type') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                                {{-- <div class="col-lg-12">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="basicpill-firstname-input">Password</label>
+                            <input class="form-control" type="password" wire:model.lazy="password"
+                                placeholder="Enter Password">
+                            @error('password') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="basicpill-firstname-input"> Type</label>
+                            <select class="form-control" wire:model.lazy="type">
+                                <option value="">Select Type</option>
+                                <option value="admin">Admin</option>
+                                <option value="editor">Editor</option>
+                                <option value="manager">Manager</option>
+                                <option value="user">User</option>
+                            </select>
+                            @error('type') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    {{-- <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="state.password">Password</label>
                                         <input type="password" class="form-control" id="state.password" wire:model="state.password" placeholder="Password"/>
                                         @error('password') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="state.password_confirmation">Confirm Password</label>
-                                        <input type="password" class="form-control" id="state.password_confirmation" wire:model="state.password_confirmation" placeholder="Confirm Password"/>
-                                        @error('password_confirmation') <span class="error">{{ $message }}</span> @enderror
-                                    </div>
-                                </div> --}}
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" >Submit</button>
-                        </div>
-                    </form>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
+            </div>
         </div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label for="state.password_confirmation">Confirm Password</label>
+                <input type="password" class="form-control" id="state.password_confirmation"
+                    wire:model="state.password_confirmation" placeholder="Confirm Password" />
+                @error('password_confirmation') <span class="error">{{ $message }}</span> @enderror
+            </div>
+        </div> --}}
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>
 
-    <!-- /.modal -->
+<!-- /.modal -->
 
 </div>
 @push('scripts')
@@ -421,17 +437,17 @@
         });
     });
 </script>
-        <!-- Plugins js -->
-        <script src="{{ URL::asset('assets/libs/datatables/datatables.min.js')}}"></script>
-        <script src="{{ URL::asset('assets/libs/jszip/jszip.min.js')}}"></script>
-        <script src="{{ URL::asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
+<!-- Plugins js -->
+<script src="{{ URL::asset('assets/libs/datatables/datatables.min.js')}}"></script>
+<script src="{{ URL::asset('assets/libs/jszip/jszip.min.js')}}"></script>
+<script src="{{ URL::asset('assets/libs/pdfmake/pdfmake.min.js')}}"></script>
 
-        <!-- Init js-->
-        <script src="{{ URL::asset('assets/js/pages/datatables.init.js')}}"></script>
+<!-- Init js-->
+<script src="{{ URL::asset('assets/js/pages/datatables.init.js')}}"></script>
 
-        <!-- Sweet Alerts js -->
-        <script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+<!-- Sweet Alerts js -->
+<script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
-        <!-- Sweet alert init js -->
-        <script src="{{ URL::asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
+<!-- Sweet alert init js -->
+<script src="{{ URL::asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
 @endpush
