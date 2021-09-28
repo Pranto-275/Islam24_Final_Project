@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\UserManagement;
 
+use App\Models\Backend\ContactInfo\Contact;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -22,11 +23,14 @@ class UserList extends Component
             'name' => 'required',
             'mobile' => 'required',
             'type' => 'required',
-            'password' => 'required'
+            // 'password' => 'required'
         ]);
         if ($this->user_id) {
             $Query = User::find($this->user_id);
         } else {
+            $this->validate([
+                'password' => 'required'
+            ]);
             $Query = new User();
             $Query->current_team_id = Auth::id();
         }
@@ -36,6 +40,18 @@ class UserList extends Component
         $Query->type = $this->type;
         $Query->save();
         $Query->assignRole($this->type);
+
+        $contact = Contact::whereUserId($Query->id)->firstOrNew();
+        // $contact->business_name = $input['business_name'];
+        $contact->first_name = $Query->name;
+        // $contact->address = $user->address;
+        // $contact->shipping_address = $user->address;
+        $contact->user_id = $Query->id;
+        $contact->type = 'Customer';
+        $contact->mobile = $Query->mobile;
+        // $contact->district_id = $input['district_id'];
+        $contact->created_by = Auth::id();
+        $contact->save();
 
         $this->UserModal();
 
