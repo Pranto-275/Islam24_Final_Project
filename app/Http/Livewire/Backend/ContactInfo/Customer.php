@@ -30,7 +30,7 @@ class Customer extends Component
         $this->validate([
             'contact_category_id' => 'required',
             'first_name' => 'required',
-            'last_name' => 'required',
+            // 'last_name' => 'required',
             'address' => 'required',
             'shipping_address' => 'required',
             'mobile' => 'required',
