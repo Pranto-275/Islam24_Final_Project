@@ -250,8 +250,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/')}}">
-                                            @if (isset($language->more_categories))
+                                        <a href="{{route('all-category-wise')}}">
+                                            @if($language->more_categories)
                                             {{$language->more_categories}}
                                             @else
                                             Product Categories
