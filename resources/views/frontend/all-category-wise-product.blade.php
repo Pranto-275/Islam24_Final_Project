@@ -144,7 +144,7 @@
                                             class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                                             data-product-id="{{ $product->id }}"
                                             data-product-name="{{ $product->name }}"
-                                            @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @else data-product-price="{{ $product['special_price'] }}" @endif @endif
+                                            @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @endif @else data-product-price="{{ $product['special_price'] }}" @endif
                                             data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                                             data-product-minimum-quantity="{{ $minimumQuantity }}"
                                             data-product-guarantee="{{ $product->guarantee }}"
