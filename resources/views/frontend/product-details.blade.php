@@ -92,14 +92,14 @@
                             @else
                             <span style="color: #ff0000;">{{$productDetails->special_price}}</span>
                             @endif
-                            @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type=='Wholesale')
+                            @elseif(isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type=='Wholesale')
                             @if($currencySymbol)
                             <span style="color: #ff0000;"><span
                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{$productDetails->wholesale_price}}</span>
                             @else
                             <span style="color: #ff0000;">{{$productDetails->wholesale_price}}</span>
                             @endif
-                            @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type!='Wholesale')
+                            @elseif(isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type!='Wholesale')
                             @if($currencySymbol)
                             <span style="color: #ff0000;"><span
                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{$productDetails->special_price}}</span>
@@ -222,7 +222,8 @@
                         @endphp
                         <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                             data-product-id="{{ $productDetails->id }}" data-product-name="{{ $productDetails->name }}"
-                            data-product-price="{{ $productDetails->special_price }}"
+                            {{-- data-product-price="{{ $productDetails->special_price }}" --}}
+                            @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $productDetails->wholesale_price }}" @endif @else data-product-price="{{ $productDetails->special_price }}" @endif
                             data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                             data-product-minimum-quantity="{{ $minimumQuantity }}"
                             data-product-guarantee="{{ $productDetails->guarantee }}"
