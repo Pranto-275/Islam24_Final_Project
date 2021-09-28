@@ -40,7 +40,7 @@ display:none;
                 </a>
             </h4>
             <div class="cart-price">
-                <span class="new">{{ $product['Info']['special_price'] }}</span>
+                <span class="new">@if(Auth::user())@if(Auth::user()->Contact->contact_type=='Wholesale'){{ $product['Info']['wholesale_price'] }} @else {{ $product['Info']['special_price'] }} @endif @endif</span>
                 <span>
                     <del>{{ $product['Info']['regular_price'] }}</del>
                 </span>
