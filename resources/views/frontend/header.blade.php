@@ -138,7 +138,7 @@
 
 
                     <a href="{{route('register')}}"><i class="flaticon-user"></i>
-                        @if($language->sign_up)
+                        @if (isset($language->sign_up))
                         {{ $language->sign_up }}
                         @else
                         Sign Up
@@ -146,7 +146,7 @@
                     </a>
                     <span>Or</span>
                     <a href="{{route('sign-in')}}">
-                        @if($language->sign_in)
+                        @if (isset($language->sign_in))
                         {{ $language->sign_in }}
                         @else
                         Sign In
@@ -178,7 +178,7 @@
                                 <input type="text" class="form-control mb-2" name="search_product_name"
                                     id="search_product_category" style="border-radius: 30px 0px 0px 30px;"
                                     aria-label="Text input with dropdown button"
-                                    placeholder="@if($language->product_search) {{$language->product_search}} @else Product Search... @endif">
+                                    placeholder="@if (isset($language->product_search)) {{$language->product_search}} @else Product Search... @endif">
                                 <div class="input-group-append mb-2" style="width: 20px;">
                                     <button type="submit"
                                         style="border-radius: 0px 30px 30px 0px;background-color:rgb(27, 27, 29);"><i
@@ -192,7 +192,7 @@
                     <div id="breakingNews" class="news blue my-1 mx-0 px-0"
                         style="height: 38px;border-style: solid;border-color: brown">
                         <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">
-                            @if($language->beaking_news)
+                            @if (isset($language->beaking_news))
                             {{$language->beaking_news}}
                             @else
                             Breaking News
@@ -242,7 +242,7 @@
                                     @endif
                                     <li class="active">
                                         <a href="{{url('/')}}">
-                                            @if($language->home)
+                                            @if (isset($language->home))
                                             {{$language->home}}
                                             @else
                                             Home
@@ -251,7 +251,7 @@
                                     </li>
                                     <li>
                                         <a href="{{route('all-category-wise')}}">
-                                            @if($language->more_categories)
+                                            @if (isset($language->more_categories))
                                             {{$language->more_categories}}
                                             @else
                                             Product Categories
@@ -260,7 +260,7 @@
                                     </li>
                                     <li>
                                         <a href="{{route('search-category-wise')}}">
-                                            @if($language->shop_page)
+                                            @if (isset($language->shop_page))
                                             {{$language->shop_page}}
                                             @else
                                             Shop Page
@@ -270,7 +270,7 @@
                                     {{-- <li><a href="#">SPECIAL</a></li> --}}
                                     <li>
                                         <a href="{{route('contact-us')}}">
-                                            @if($language->complain_or_opinion)
+                                            @if (isset($language->complain_or_opinion))
                                             {{$language->complain_or_opinion}}
                                             @else
                                             Complain/Opinion
@@ -279,7 +279,7 @@
                                     </li>
                                     <li>
                                         <a href="{{route('contact-us')}}" id="contact-us">
-                                            @if($language->communication)
+                                            @if (isset($language->communication))
                                             {{$language->communication}}
                                             @else
                                             Contact
@@ -292,7 +292,7 @@
                                     @endif
                                     <li>
                                         <a href="{{route('privacy-policy')}}" id="privacyPolicy">
-                                            @if($language->privacy_policy)
+                                            @if (isset($language->privacy_policy))
                                             {{$language->privacy_policy}}
                                             @else
                                             Privacy Policy
@@ -301,7 +301,7 @@
                                     </li>
                                     <li>
                                         <a href="{{route('terms-conditios')}}" id="termCondition">
-                                            @if($language->terms_and_condition)
+                                            @if (isset($language->terms_and_condition))
                                             {{$language->terms_and_condition}}
                                             @else
                                             Rules & Regulations
@@ -310,7 +310,7 @@
                                     </li>
                                     <li>
                                         <a href="{{route('about')}}" id="aboutUs">
-                                            @if($language->mission_and_vision)
+                                            @if (isset($language->mission_and_vision))
                                             {{$language->mission_and_vision}}
                                             @else
                                             Mission & Vision
@@ -386,7 +386,7 @@
                 <div class="col-xl-3 col-lg-4 d-none d-lg-block">
                     <div class="header-category d-none d-lg-block">
                         <a href="#" class="cat-toggle"><i class="flaticon-menu"></i>
-                            @if($language->menu)
+                            @if (isset($language->menu))
                             {{$language->menu}}
                             @else
                             Menu
@@ -438,7 +438,7 @@
                                 </ul>
                             </li>
                             <li class="more_categories">
-                                @if($language->more_categories)
+                                @if (isset($language->more_categories))
                                 {{ $language->more_categories }}
                                 @else
                                 More Categories
@@ -453,7 +453,7 @@
                         <div class="header-search-wrap">
                             <form action="{{ route('product-search') }}" method="GET">
                                 <input type="text" name="search_product_name" id="search_product_name"
-                                    placeholder="@if($language->product_search) {{$language->product_search}} @else Product Search... @endif"
+                                    placeholder="@if (isset($language->product_search)) {{$language->product_search}} @else Product Search... @endif"
                                     style="width: 90%;">
                                 {{-- <select class="custom-select" name="search_product_category"
                                     id="search_product_category">
@@ -495,7 +495,7 @@
         </div> --}}
         <div id="breakingNews1" class="news blue my-1" style="height: 38px;border-style: solid;border-color: brown">
             <span class="pt-1 px-1" style="color: #FFF;background-color: brown;z-index:2;font-weight:bold;">
-                @if($language->beaking_news)
+                @if (isset($language->beaking_news))
                 {{$language->beaking_news}}
                 @else
                 Breaking News

@@ -52,7 +52,7 @@
             {{-- Start Top Category Show Slider --}}
             @if(count($topFourCategories)>0)
             <h5 class="text-center">
-                @if($language->product_categories)
+                @if (isset($language->product_categories))
                 {{$language->product_categories}}
                 @else
                 Categories
@@ -149,7 +149,7 @@
             <div class="section-title text-center">
                 {{-- <span class="sub-title">exclusive collection</span> --}}
                 <h2 class="title">
-                    @if($language->new_product)
+                    @if (isset($language->new_product))
                     {{$language->new_product}}
                     @else
                     New Electronics Products
@@ -173,10 +173,10 @@
                         {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}"
                         @endif style="height: 190px;" alt="{{$product['name']}}"> --}}
                     </a>
-                    @if($product['discount'])
+                    @if (isset($product['discount']))
                     <span class="sd-meta" style="background-color: #ff5c00;">
                         {{ intval($product['discount']) }}@if($currencySymbol){{$currencySymbol->symbol}}@endif
-                        @if($language->discount)
+                        @if (isset($language->discount))
                         {{$language->discount}}
                         @else
                         discount
@@ -256,7 +256,7 @@
                         Sold Out
                         @endif
                         @else
-                        @if($language->sell_button_text)
+                        @if (isset($language->sell_button_text))
                         {{$language->sell_button_text}}
                         @else
                         Buy Now
@@ -265,9 +265,9 @@
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                         data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}"
-                        data-product-price="{{ $product['special_price'] }}"
+                      @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @else data-product-price="{{ $product['special_price'] }}" @endif @endif
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
-                        data-product-guarantee="{{ $product['guarantee'] }}"
+                        {{-- data-product-guarantee="{{ $product['guarantee'] }}" --}}
                         data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
                         data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
                         @endif data-toggle="modal" data-target=".bd-example-modal-sm"
@@ -280,7 +280,7 @@
                         Sold Out
                         @endif
                         @else
-                        @if($language->sell_button_text)
+                        @if (isset($language->sell_button_text))
                         {{$language->sell_button_text}}
                         @else
                         Buy Now
@@ -317,7 +317,7 @@
         <div class="col-lg-8">
             <div class="section-title text-center mb-5">
                 <h2 class="title">
-                    @if($language->best_selling_product)
+                    @if (isset($language->best_selling_product))
                     {{$language->best_selling_product}}
                     @else
                     Best Selling Products
@@ -425,7 +425,7 @@
                         Sold Out
                         @endif
                         @else
-                        @if($language->sell_button_text)
+                        @if (isset($language->sell_button_text))
                         {{$language->sell_button_text}}
                         @else
                         Buy Now
@@ -435,7 +435,7 @@
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                         data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}"
                         data-product-price="{{ $product['special_price'] }}"
-                        data-product-guarantee="{{ $product['guarantee'] }}"
+                        {{-- data-product-guarantee="{{ $product['guarantee'] }}" --}}
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                         data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
                         data-product-image="{{ asset('storage/photo/'.$product['product_image_first']['image']) }}"
@@ -447,7 +447,7 @@
                         Sold Out
                         @endif
                         @else
-                        @if($language->sell_button_text)
+                        @if (isset($language->sell_button_text))
                         {{$language->sell_button_text}}
                         @else
                         Buy Now
@@ -472,7 +472,7 @@
         <div class="col-md-12">
             <center>
                 <a class="btn text-center btn-hover" href="{{route('search-category-wise')}}">
-                    @if($language->more_products)
+                    @if (isset($language->more_products))
                     {{$language->more_products}}
                     @else
                     See More

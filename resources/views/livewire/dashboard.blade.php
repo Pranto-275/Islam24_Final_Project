@@ -1,5 +1,6 @@
 @push('css')
 
+
 @endpush
 <x-app-layout>
     <x-slot name="title">
@@ -20,7 +21,8 @@
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0 mr-2">
-                            <li class="breadcrumb-item text-light font-size-16"><a href="javascript: void(0);" style="color:#fdfffe;">Dashboards</a></li>
+                            <li class="breadcrumb-item text-light font-size-16"><a href="javascript: void(0);"
+                                    style="color:#fdfffe;">Dashboards</a></li>
                             <li class="breadcrumb-item active font-size-16" style="color:#fdfffe;">Home</li>
                         </ol>
                     </div>
@@ -38,8 +40,8 @@
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-3">
-                                    <h5 class="text-primary">Welcome Back !</h5>
-                                    <p>Skote Saas Dashboard</p>
+                                    <h5 class="text-primary">Welcome Back</h5>
+                                    <p>paikari app Dashboard</p>
 
                                     <ul class="pl-3 mb-0">
                                         <li class="py-1">7 + Layouts</li>
@@ -62,16 +64,18 @@
                                 <a href="{{ route('order.order-processing') }}">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="avatar-xs mr-3">
-                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
+                                        <span
+                                            class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
                                             <i class="bx bx-copy-alt"></i>
                                         </span>
                                     </div>
                                     <h5 class="font-size-14 mb-0">Orders</h5>
                                 </div>
                                 <div class="text-muted mt-4">
-                                    <h4>{{$orders_count}} <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
+                                    <h4>{{ $orders_count }} <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
                                     <div class="d-flex">
-                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span class="ml-2 text-truncate">From previous period</span>
+                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
+                                            class="ml-2 text-truncate">From previous period</span>
                                     </div>
                                 </div>
                             </a>
@@ -83,7 +87,8 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="avatar-xs mr-3">
-                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
+                                        <span
+                                            class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
                                             <i class="bx bx-archive-in"></i>
                                         </span>
                                     </div>
@@ -92,7 +97,8 @@
                                 <div class="text-muted mt-4">
                                     <h4>$ 28,452 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
                                     <div class="d-flex">
-                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span class="ml-2 text-truncate">From previous period</span>
+                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
+                                            class="ml-2 text-truncate">From previous period</span>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +110,8 @@
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="avatar-xs mr-3">
-                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
+                                        <span
+                                            class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
                                             <i class="bx bx-purchase-tag-alt"></i>
                                         </span>
                                     </div>
@@ -114,7 +121,8 @@
                                     <h4>$ 16.2 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
 
                                     <div class="d-flex">
-                                        <span class="badge badge-soft-warning font-size-12"> 0% </span> <span class="ml-2 text-truncate">From previous period</span>
+                                        <span class="badge badge-soft-warning font-size-12"> 0% </span> <span
+                                            class="ml-2 text-truncate">From previous period</span>
                                     </div>
                                 </div>
                             </div>
@@ -126,88 +134,35 @@
         </div>
 
         <div class="row">
-            <div class="col-xl-8">
+            <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body">
-                        <div class="clearfix">
-                            <div class="float-right">
-                                <div class="input-group input-group-sm">
-                                    <select class="custom-select custom-select-sm">
-                                        <option selected>Jan</option>
-                                        <option value="1">Dec</option>
-                                        <option value="2">Nov</option>
-                                        <option value="3">Oct</option>
-                                    </select>
-                                    <div class="input-group-append">
-                                        <label class="input-group-text">Month</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 class="card-title mb-4">Earning</h4>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="text-muted">
-                                    <div class="mb-4">
-                                        <p>This month</p>
-                                        <h4>$2453.35</h4>
-                                        <div><span class="badge badge-soft-success font-size-12 mr-1"> + 0.2% </span> From previous period</div>
-                                    </div>
-
-                                    <div>
-                                        <a href="#" class="btn btn-primary waves-effect waves-light btn-sm">View Details <i class="mdi mdi-chevron-right ml-1"></i></a>
-                                    </div>
-
-                                    <div class="mt-4">
-                                        <p class="mb-2">Last month</p>
-                                        <h5>$2281.04</h5>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8">
-                                <div id="line-chart" class="apex-charts" dir="ltr"></div>
-                            </div>
-                        </div>
+                        <h4 class="card-title mb-4">Bar charts</h4>
+                        <div id="bar-charts" dir="ltr"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-xl-4">
+            <div class="col-xl-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Sales Analytics</h4>
-
-                        <div>
-                            <div id="donut-chart" class="apex-charts"></div>
-                        </div>
-
-                        <div class="text-center text-muted">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mt-4">
-                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-primary mr-1"></i> Product A</p>
-                                        <h5>$ 2,132</h5>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mt-4">
-                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-success mr-1"></i> Product B</p>
-                                        <h5>$ 1,763</h5>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mt-4">
-                                        <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-danger mr-1"></i> Product C</p>
-                                        <h5>$ 973</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h4 class="card-title mb-4">Column charts</h4>
+                        <div id="column-charts" dir="ltr"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Pie charts</h4>
+                        <div id="pie-charts" dir="ltr"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+
             </div>
         </div>
         <!-- end row -->
@@ -236,7 +191,8 @@
                         <div class="text-muted text-center">
                             <p class="mb-2">Product A</p>
                             <h4>$ 6385</h4>
-                            <p class="mt-4 mb-0"><span class="badge badge-soft-success font-size-11 mr-2"> 0.6% <i class="mdi mdi-arrow-up"></i> </span> From previous period</p>
+                            <p class="mt-4 mb-0"><span class="badge badge-soft-success font-size-11 mr-2"> 0.6%
+                                    <i class="mdi mdi-arrow-up"></i> </span> From previous period</p>
                         </div>
 
                         <div class="table-responsive mt-4">
@@ -314,22 +270,26 @@
                                             <tr>
                                                 <td style="width: 50px;">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck1" checked>
                                                         <label class="custom-control-label" for="customCheck1"></label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Skote Saas Dashboard</a></h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#"
+                                                            class="text-dark">Skote Saas Dashboard</a></h5>
                                                     <p class="text-muted mb-0">Assigned to Mark</p>
                                                 </td>
                                                 <td style="width: 90px;">
                                                     <div>
                                                         <ul class="list-inline mb-0 font-size-16">
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                <a href="#" class="text-success p-1"><i
+                                                                        class="bx bxs-edit-alt"></i></a>
                                                             </li>
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                <a href="#" class="text-danger p-1"><i
+                                                                        class="bx bxs-trash"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -339,22 +299,26 @@
                                             <tr>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck2">
                                                         <label class="custom-control-label" for="customCheck2"></label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">New Landing UI</a></h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#"
+                                                            class="text-dark">New Landing UI</a></h5>
                                                     <p class="text-muted mb-0">Assigned to Team A</p>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <ul class="list-inline mb-0 font-size-16">
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                <a href="#" class="text-success p-1"><i
+                                                                        class="bx bxs-edit-alt"></i></a>
                                                             </li>
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                <a href="#" class="text-danger p-1"><i
+                                                                        class="bx bxs-trash"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -364,22 +328,26 @@
                                             <tr>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck3">
                                                         <label class="custom-control-label" for="customCheck3"></label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Brand logo design</a></h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#"
+                                                            class="text-dark">Brand logo design</a></h5>
                                                     <p class="text-muted mb-0">Assigned to Janis</p>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <ul class="list-inline mb-0 font-size-16">
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                <a href="#" class="text-success p-1"><i
+                                                                        class="bx bxs-edit-alt"></i></a>
                                                             </li>
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                <a href="#" class="text-danger p-1"><i
+                                                                        class="bx bxs-trash"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -389,22 +357,26 @@
                                             <tr>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck4">
                                                         <label class="custom-control-label" for="customCheck4"></label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Blog Template UI</a></h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#"
+                                                            class="text-dark">Blog Template UI</a></h5>
                                                     <p class="text-muted mb-0">Assigned to Dianna</p>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <ul class="list-inline mb-0 font-size-16">
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                <a href="#" class="text-success p-1"><i
+                                                                        class="bx bxs-edit-alt"></i></a>
                                                             </li>
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                <a href="#" class="text-danger p-1"><i
+                                                                        class="bx bxs-trash"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -414,22 +386,26 @@
                                             <tr>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck5">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck5">
                                                         <label class="custom-control-label" for="customCheck5"></label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Multipurpose Landing</a></h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#"
+                                                            class="text-dark">Multipurpose Landing</a></h5>
                                                     <p class="text-muted mb-0">Assigned to Team B</p>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <ul class="list-inline mb-0 font-size-16">
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                <a href="#" class="text-success p-1"><i
+                                                                        class="bx bxs-edit-alt"></i></a>
                                                             </li>
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                <a href="#" class="text-danger p-1"><i
+                                                                        class="bx bxs-trash"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -438,22 +414,26 @@
                                             <tr>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck6">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck6">
                                                         <label class="custom-control-label" for="customCheck6"></label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Redesign - Landing page</a></h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#"
+                                                            class="text-dark">Redesign - Landing page</a></h5>
                                                     <p class="text-muted mb-0">Assigned to Jerry</p>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <ul class="list-inline mb-0 font-size-16">
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                <a href="#" class="text-success p-1"><i
+                                                                        class="bx bxs-edit-alt"></i></a>
                                                             </li>
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                <a href="#" class="text-danger p-1"><i
+                                                                        class="bx bxs-trash"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -462,22 +442,26 @@
                                             <tr>
                                                 <td>
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck7">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="customCheck7">
                                                         <label class="custom-control-label" for="customCheck7"></label>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#" class="text-dark">Skote Crypto Dashboard</a></h5>
+                                                    <h5 class="text-truncate font-size-14 mb-1"><a href="#"
+                                                            class="text-dark">Skote Crypto Dashboard</a></h5>
                                                     <p class="text-muted mb-0">Assigned to Eric</p>
                                                 </td>
                                                 <td>
                                                     <div>
                                                         <ul class="list-inline mb-0 font-size-16">
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-success p-1"><i class="bx bxs-edit-alt"></i></a>
+                                                                <a href="#" class="text-success p-1"><i
+                                                                        class="bx bxs-edit-alt"></i></a>
                                                             </li>
                                                             <li class="list-inline-item">
-                                                                <a href="#" class="text-danger p-1"><i class="bx bxs-trash"></i></a>
+                                                                <a href="#" class="text-danger p-1"><i
+                                                                        class="bx bxs-trash"></i></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -492,7 +476,8 @@
 
                     <div class="card-footer bg-transparent border-top">
                         <div class="text-center">
-                            <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light"> Add new Task</a>
+                            <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light"> Add new
+                                Task</a>
                         </div>
                     </div>
                 </div>
@@ -504,22 +489,27 @@
                         <div class="row">
                             <div class="col-md-4 col-9">
                                 <h5 class="font-size-15 mb-1">Steven Franklin</h5>
-                                <p class="text-muted mb-0"><i class="mdi mdi-circle text-success align-middle mr-1"></i> Active now</p>
+                                <p class="text-muted mb-0"><i
+                                        class="mdi mdi-circle text-success align-middle mr-1"></i> Active now</p>
                             </div>
                             <div class="col-md-8 col-3">
                                 <ul class="list-inline user-chat-nav text-right mb-0">
                                     <li class="list-inline-item d-none d-sm-inline-block">
                                         <div class="dropdown">
-                                            <button class="btn nav-btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn nav-btn dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="bx bx-search-alt-2"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-md">
                                                 <form class="p-3">
                                                     <div class="form-group m-0">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Search ..."
+                                                                aria-label="Recipient's username">
                                                             <div class="input-group-append">
-                                                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                                                <button class="btn btn-primary" type="submit"><i
+                                                                        class="mdi mdi-magnify"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -529,7 +519,8 @@
                                     </li>
                                     <li class="list-inline-item  d-none d-sm-inline-block">
                                         <div class="dropdown">
-                                            <button class="btn nav-btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn nav-btn dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="bx bx-cog"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
@@ -543,7 +534,8 @@
 
                                     <li class="list-inline-item">
                                         <div class="dropdown">
-                                            <button class="btn nav-btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn nav-btn dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="bx bx-dots-horizontal-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-right">
@@ -571,9 +563,10 @@
                                         <div class="conversation-list">
                                             <div class="dropdown">
 
-                                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="dropdown-toggle" href="#" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
-                                                  </a>
+                                                </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="#">Copy</a>
                                                     <a class="dropdown-item" href="#">Save</a>
@@ -586,7 +579,8 @@
                                                 <p>
                                                     Hello!
                                                 </p>
-                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle mr-1"></i> 10:00</p>
+                                                <p class="chat-time mb-0"><i
+                                                        class="bx bx-time-five align-middle mr-1"></i> 10:00</p>
                                             </div>
 
                                         </div>
@@ -596,9 +590,10 @@
                                         <div class="conversation-list">
                                             <div class="dropdown">
 
-                                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="dropdown-toggle" href="#" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
-                                                  </a>
+                                                </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="#">Copy</a>
                                                     <a class="dropdown-item" href="#">Save</a>
@@ -612,7 +607,8 @@
                                                     Hi, How are you? What about our next meeting?
                                                 </p>
 
-                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle mr-1"></i> 10:02</p>
+                                                <p class="chat-time mb-0"><i
+                                                        class="bx bx-time-five align-middle mr-1"></i> 10:02</p>
                                             </div>
                                         </div>
                                     </li>
@@ -621,9 +617,10 @@
                                         <div class="conversation-list">
                                             <div class="dropdown">
 
-                                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="dropdown-toggle" href="#" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
-                                                  </a>
+                                                </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="#">Copy</a>
                                                     <a class="dropdown-item" href="#">Save</a>
@@ -637,7 +634,8 @@
                                                     Yeah everything is fine
                                                 </p>
 
-                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle mr-1"></i> 10:06</p>
+                                                <p class="chat-time mb-0"><i
+                                                        class="bx bx-time-five align-middle mr-1"></i> 10:06</p>
                                             </div>
 
                                         </div>
@@ -647,9 +645,10 @@
                                         <div class="conversation-list">
                                             <div class="dropdown">
 
-                                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="dropdown-toggle" href="#" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
-                                                  </a>
+                                                </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="#">Copy</a>
                                                     <a class="dropdown-item" href="#">Save</a>
@@ -660,7 +659,8 @@
                                             <div class="ctext-wrap">
                                                 <div class="conversation-name">Steven Franklin</div>
                                                 <p>& Next meeting tomorrow 10.00AM</p>
-                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle mr-1"></i> 10:06</p>
+                                                <p class="chat-time mb-0"><i
+                                                        class="bx bx-time-five align-middle mr-1"></i> 10:06</p>
                                             </div>
 
                                         </div>
@@ -670,9 +670,10 @@
                                         <div class="conversation-list">
                                             <div class="dropdown">
 
-                                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a class="dropdown-toggle" href="#" role="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="bx bx-dots-vertical-rounded"></i>
-                                                  </a>
+                                                </a>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="#">Copy</a>
                                                     <a class="dropdown-item" href="#">Save</a>
@@ -686,7 +687,8 @@
                                                     Wow that's great
                                                 </p>
 
-                                                <p class="chat-time mb-0"><i class="bx bx-time-five align-middle mr-1"></i> 10:07</p>
+                                                <p class="chat-time mb-0"><i
+                                                        class="bx bx-time-five align-middle mr-1"></i> 10:07</p>
                                             </div>
                                         </div>
                                     </li>
@@ -702,18 +704,28 @@
                         <div class="row">
                             <div class="col">
                                 <div class="position-relative">
-                                    <input type="text" class="form-control rounded chat-input" placeholder="Enter Message...">
+                                    <input type="text" class="form-control rounded chat-input"
+                                        placeholder="Enter Message...">
                                     <div class="chat-input-links">
                                         <ul class="list-inline mb-0">
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip" data-placement="top" title="Emoji"><i class="mdi mdi-emoticon-happy-outline"></i></a></li>
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip" data-placement="top" title="Images"><i class="mdi mdi-file-image-outline"></i></a></li>
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip" data-placement="top" title="Add Files"><i class="mdi mdi-file-document-outline"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
+                                                    data-placement="top" title="Emoji"><i
+                                                        class="mdi mdi-emoticon-happy-outline"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
+                                                    data-placement="top" title="Images"><i
+                                                        class="mdi mdi-file-image-outline"></i></a></li>
+                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
+                                                    data-placement="top" title="Add Files"><i
+                                                        class="mdi mdi-file-document-outline"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary chat-send w-md waves-effect waves-light"><span class="d-none d-sm-inline-block mr-2">Send</span> <i class="mdi mdi-send"></i></button>
+                                <button type="submit"
+                                    class="btn btn-primary chat-send w-md waves-effect waves-light"><span
+                                        class="d-none d-sm-inline-block mr-2">Send</span> <i
+                                        class="mdi mdi-send"></i></button>
                             </div>
                         </div>
                     </div>
@@ -725,10 +737,10 @@
     </div>
 </x-app-layout>
 @push('scripts')
-          <!-- plugin js -->
-          <script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+    <!-- plugin js -->
+    <script src="{{ URL::asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-          <!-- Calendar init -->
-          <script src="{{ URL::asset('assets/js/pages/dashboard.init.js')}}"></script>
-          <!-- plugin js -->
+    <!-- Calendar init -->
+    <script src="{{ URL::asset('assets/js/pages/dashboard.init.js') }}"></script>
+    <!-- plugin js -->
 @endpush

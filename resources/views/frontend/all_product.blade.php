@@ -256,10 +256,10 @@
                                             {{-- <img class="overlay-product-thumb" @if($product['product_image_last']) src="{{ asset('storage/photo/'.$product['product_image_last']['image']) }}"
                                             @endif style="height:200px;" alt="{{$product['name']}}"> --}}
                                         </a>
-                                        @if($product['discount'])
+                                        @if (isset($product['discount']))
                                         <span
                                             class="sd-meta">{{intval($product['discount'])}}@if($currencySymbol){{$currencySymbol->symbol}}@endif
-                                            @if($language->discount)
+                                            @if (isset($language->discount))
                                             {{$language->discount}}
                                             @else
                                             discount
@@ -345,7 +345,7 @@
                                             Sold Out
                                             @endif
                                             @else
-                                            @if($language->sell_button_text)
+                                            @if (isset($language->sell_button_text))
                                             {{$language->sell_button_text}}
                                             @else
                                             Buy Now
@@ -371,7 +371,7 @@
                                             Sold Out
                                             @endif
                                             @else
-                                            @if($language->sell_button_text)
+                                            @if(isset($language->sell_button_text))
                                             {{$language->sell_button_text}}
                                             @else
                                             Buy Now

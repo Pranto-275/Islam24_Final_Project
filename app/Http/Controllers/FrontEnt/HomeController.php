@@ -433,7 +433,7 @@ class HomeController extends Controller
     public function productDetails($id = null)
     {
         $ProductDetail = Product::whereId($id)->first();
-        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->where('id', '!=', $id)->whereCategoryId($ProductDetail->category_id)->get()->toArray();
+        $data['products'] = $this->product->with(['ProductImageFirst', 'ProductImageLast'])->where('id', '!=', $id)->whereCategoryId($ProductDetail->category_id)->whereIsActive(1)->get()->toArray();
 
         return view('frontend.product-details', [
             'productDetails' => $ProductDetail,

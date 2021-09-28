@@ -12,6 +12,19 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js"></script>
 
+{{-- charts script --}}
+<script src="{{ URL::asset('assets/libs/echarts/echarts.min.js') }}"></script>
+<!-- echarts init -->
+<script src="{{ URL::asset('assets/js/pages/echarts.init.js') }}"></script>
+
+<!-- tui charts plugins -->
+<script src="{{URL::asset('assets/libs/tui-chart/tui-chart.min.js')}}"></script>
+
+<!-- tui charts map -->
+{{-- <script src="{{ URL::asset('assets/libs/tui-chart/maps/usa.js') }}"></script> --}}
+
+<!-- tui charts plugins -->
+<script src="{{ URL::asset('assets/js/pages/tui-charts.init.js') }}"></script>
 <!-- App js -->
 <script src="{{ URL::asset('assets/js/app.min.js')}}"></script>
 

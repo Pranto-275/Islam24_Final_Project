@@ -1,3 +1,22 @@
+<style>
+    .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+ }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hide-loader{
+display:none;
+}
+</style>
 @if($cardBadge['data']['products'])
 <div style="height: 300px;overflow-y: scroll;">
     @foreach($cardBadge['data']['products'] as $productId => $product)
@@ -21,7 +40,7 @@
                 </a>
             </h4>
             <div class="cart-price">
-                <span class="new">{{ $product['Info']['special_price'] }}</span>
+                <span class="new">@if(Auth::user())@if(Auth::user()->Contact->contact_type=='Wholesale'){{ $product['Info']['wholesale_price'] }} @else {{ $product['Info']['special_price'] }} @endif @endif</span>
                 <span>
                     <del>{{ $product['Info']['regular_price'] }}</del>
                 </span>
@@ -51,7 +70,7 @@
 <li>
     <div class="total-price">
         <span class="f-left">
-            @if($language->total)
+            @if (isset($language->total))
             {{$language->total}}
             @else
             Total:
@@ -68,14 +87,14 @@
 <li>
     <div class="checkout-link">
         <a class="btn-hover" href="{{ route('cart') }}">
-            @if($language->shopping_cart)
+            @if (isset($language->shopping_cart))
             {{$language->shopping_cart}}
             @else
             Shopping Cart
             @endif
         </a>
         <a class="red-color btn-hover" href="{{ route('check-out') }}">
-            @if($language->checkout)
+            @if (isset($language->checkout))
             {{$language->checkout}}
             @else
             Checkout
@@ -83,7 +102,8 @@
         </a>
     </div>
 </li>
-
+<div class="loader" id="loader">
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -517,11 +537,14 @@
     }
 
     function loaderStart() {
-        alert('request start');
+        // alert('request start');
+        $('#loader').addClass("hide-loader");
     }
 
     function loaderEnd() {
-        alert('request end');
+        // alert('request end');
+        $('#loader').addClass("hide-loader");
+        // console.log(true);
     }
 
 </script>

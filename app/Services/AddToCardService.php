@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\FrontEnd\AddToCard as AddToCardModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -97,8 +98,16 @@ class AddToCardService extends Controller
 
                     $productCard->quantity = $requestQuantity;
                     $productCard->data = json_encode($productInfo);
+
+                    if(Auth::user()->Contact->contact_type=='Wholesale'){
+                        $productCard->unit_price = $product['wholesale_price'];
+                         $productCard->total_price = ( $productCard->quantity * $product['wholesale_price'] );
+
+                }else{
                     $productCard->unit_price = $product['special_price'];
                     $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
+
+                }
                 }
             } else {
                 $productCard = new AddToCardModel();
@@ -106,8 +115,16 @@ class AddToCardService extends Controller
                 $productCard->product_id = $productId;
                 $productCard->data = json_encode($productInfo);
                 $productCard->quantity = $quantity;
-                $productCard->unit_price = $product['special_price'];
-                $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
+                if(Auth::user()->Contact->contact_type=='Wholesale'){
+                        $productCard->unit_price = $product['wholesale_price'];
+                         $productCard->total_price = ( $productCard->quantity * $product['wholesale_price'] );
+
+                }else{
+                    $productCard->unit_price = $product['special_price'];
+                    $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
+
+                }
+
             }
 
             $productCard->save();
