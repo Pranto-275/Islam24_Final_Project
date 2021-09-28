@@ -219,7 +219,7 @@
                             {{ $product['wholesale_price'] }}
                             @endif
                             @elseif (isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type!='Wholesale')
-                            {{ $product['wholesale_price'] }}
+                            {{ $product['special_price'] }}
                             @endif
                         </span>
                         <del class="old-price">

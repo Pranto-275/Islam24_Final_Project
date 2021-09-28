@@ -218,7 +218,15 @@
                     </div>
                     <div class="col-xl-9 col-lg-8">
                         <div class="shop-top-meta mb-40">
-                            <p class="show-result">Showing Products 1-12 Of 10 Result</p>
+                            <p class="show-result">
+                                <i class="fas fa-star"></i>
+                                Showing Products
+                                @if(count($data['products'])>=50)
+                                    {{count($data['products'])}}
+                                @else
+                                    {{count($data['products'])}}
+                                @endif
+                                Of {{count($data['products'])}} Result</p>
                             <div class="shop-meta-right" id="productSearchByCustomSelect">
                                 <ul>
                                     <li class="active"><a href="#"><i class="flaticon-grid"></i></a></li>

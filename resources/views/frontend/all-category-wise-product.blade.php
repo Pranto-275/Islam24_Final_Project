@@ -39,10 +39,10 @@
                             {{-- Start Category Show --}}
                             @if(count($category->Product)>0)
                             <div class="col-12">
-                                <h5>
+                                <h4 class="text-center pt-1" style="color: #ff6000;">
                                     {{ $category->name }}
                                     <hr class="m-0 p-0">
-                                </h5>
+                                </h4>
                             </div>
                             @endif
                             {{-- End Category Show --}}
@@ -157,11 +157,11 @@
                             @endforeach
                             {{-- End Product Show --}}
                             @if(count($category->Product)>0)
-                            <div class="col-12">
+                            <div class="col-12 pb-5">
                                 <center>
-                                    <a class="btn text-center btn-hover" href="{{ route('search-category-wise',['id'=>$category->id]) }}">
+                                    <a class="text-center border p-1 text-dark" style="font-size: 12px;" href="{{ route('search-category-wise',['id'=>$category->id]) }}">
                                         @if($language->more_products)
-                                        {{$language->more_products}}
+                                        {{$language->more_products}}...
                                         @else
                                         See More
                                         @endif

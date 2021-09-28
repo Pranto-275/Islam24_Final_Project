@@ -161,6 +161,17 @@
                                 </center>
                             </div>
                             <ul class="list-group list-group-flush" style="font-weight: bold;">
+                                <li>
+                                    @if(Auth::user())
+                                    @if(Auth::user()->hasAnyRole('admin') || Auth::user()->hasAnyRole('user'))
+                                    <li class="list-group-item">
+                                        <a href="{{ route('dashboard') }}" class="text-dark">
+                                            Admin Panel
+                                        </a>
+                                    </li>
+                                    @endif
+                                    @endif
+                                </li>
                                 <li class="list-group-item"><a class="text-dark" href="#delivery-address"
                                         data-toggle="tab">ডেলিভারি এড্রেস</a></li>
                                 {{-- <li class="list-group-item"><a href="#basic-information" class="text-dark"
