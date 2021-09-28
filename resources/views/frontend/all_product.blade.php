@@ -293,14 +293,14 @@
                                                 @else
                                                 {{ $product['special_price'] }}
                                                 @endif
-                                                @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type=='Wholesale')
+                                                @elseif(isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type=='Wholesale')
                                                 @if($currencySymbol)
                                                 <span
                                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['wholesale_price'] }}
                                                 @else
                                                 {{ $product['wholesale_price'] }}
                                                 @endif
-                                                @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type!='Wholesale')
+                                                @elseif(isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type!='Wholesale')
                                                 @if($currencySymbol)
                                                 <span
                                                     style="font-size: 14px;">{{ $currencySymbol->symbol }}</span>{{ $product['special_price'] }}
@@ -356,7 +356,7 @@
                                             class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                                             data-product-id="{{ $product['id'] }}"
                                             data-product-name="{{ $product['name'] }}"
-                                            data-product-price="{{ $product['special_price'] }}"
+                                            @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @else data-product-price="{{ $product['special_price'] }}" @endif @endif
                                             data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                                             data-product-minimum-quantity="{{ $minimumQuantity }}"
                                             data-product-guarantee="{{ $product['guarantee'] }}"
