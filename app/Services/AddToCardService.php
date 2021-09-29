@@ -1,15 +1,13 @@
-<?php declare(strict_types = 1);
+<?php
 
+declare(strict_types=1);
 
 namespace App\Services;
-
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\ProductInfo\Product;
 use App\Models\FrontEnd\AddToCard as AddToCardModel;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class AddToCardService extends Controller
@@ -25,12 +23,9 @@ class AddToCardService extends Controller
 
     /**
      * AddToCard constructor.
-     * @param Product $product
-     * @param AddToCardModel $addToCardModel
      */
     public function __construct(Product $product, AddToCardModel $addToCardModel)
     {
-
         $this->product = $product;
         $this->addToCardModel = $addToCardModel;
     }
@@ -40,7 +35,7 @@ class AddToCardService extends Controller
         $sessionId = Session::getId();
         $result = Product::with('ProductImageFirst')->find($productId);
 
-        if($result) {
+        if ($result) {
             $product = $result->toArray();
             $productImage = isset($product['product_image_first']['image']) ? $product['product_image_first']['image'] : '';
             $productInfo = [
@@ -52,7 +47,7 @@ class AddToCardService extends Controller
                 'image' => $productImage ? $productImage : 'blank-product-image.png',
             ];
 
-            $productCard = AddToCardModel::where(['session_id' => $sessionId,'product_id' => $productId])->with('getProduct')->first();
+            $productCard = AddToCardModel::where(['session_id' => $sessionId, 'product_id' => $productId])->with('getProduct')->first();
 
             if ($productCard) {
                 if ($quantity == 0) {
@@ -66,48 +61,44 @@ class AddToCardService extends Controller
                 }
 
                 //if(! ($requestQuantity >= $productCard['getProduct']['min_order_qty'])){
-                if (! ($requestQuantity >= $result['min_order_qty'])){
-
+                if (!($requestQuantity >= $result['min_order_qty'])) {
                     return [
                         'errorStatus' => true,
-                        'message' => "You have to order minimum ".$result['min_order_qty']." quantity",
+                        'message' => 'You have to order minimum '.$result['min_order_qty'].' quantity',
                         'data' => [
-                            'quantity' => $result['min_order_qty']
+                            'quantity' => $result['min_order_qty'],
                         ],
                         'errors' => [
-                            'error' => ''
-                        ]
+                            'error' => '',
+                        ],
                     ];
                 }
 
                 if (!$quantity) {
-
                     return [
                         'errorStatus' => true,
                         'message' => "You can't zero quantity.",
                         'data' => [
-                            'quantity' => 1
+                            'quantity' => 1,
                         ],
                         'errors' => [
-                            'error' => ''
-                        ]
+                            'error' => '',
+                        ],
                     ];
                 }
 
                 if ($requestQuantity > 0) {
-
                     $productCard->quantity = $requestQuantity;
                     $productCard->data = json_encode($productInfo);
-
-                    if(Auth::user()->Contact->contact_type=='Wholesale'){
-                        $productCard->unit_price = $product['wholesale_price'];
-                         $productCard->total_price = ( $productCard->quantity * $product['wholesale_price'] );
-
-                }else{
-                    $productCard->unit_price = $product['special_price'];
-                    $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
-
-                }
+                    if (Auth::user()) {
+                        if (Auth::user()->Contact->contact_type == 'Wholesale') {
+                            $productCard->unit_price = $product['wholesale_price'];
+                            $productCard->total_price = ($productCard->quantity * $product['wholesale_price']);
+                        }
+                    } else {
+                        $productCard->unit_price = $product['special_price'];
+                        $productCard->total_price = ($productCard->quantity * $product['special_price']);
+                    }
                 }
             } else {
                 $productCard = new AddToCardModel();
@@ -115,16 +106,15 @@ class AddToCardService extends Controller
                 $productCard->product_id = $productId;
                 $productCard->data = json_encode($productInfo);
                 $productCard->quantity = $quantity;
-                if(Auth::user()->Contact->contact_type=='Wholesale'){
+                if (Auth::user()) {
+                    if (Auth::user()->Contact->contact_type == 'Wholesale') {
                         $productCard->unit_price = $product['wholesale_price'];
-                         $productCard->total_price = ( $productCard->quantity * $product['wholesale_price'] );
-
-                }else{
+                        $productCard->total_price = ($productCard->quantity * $product['wholesale_price']);
+                    }
+                } else {
                     $productCard->unit_price = $product['special_price'];
-                    $productCard->total_price = ( $productCard->quantity * $product['special_price'] );
-
+                    $productCard->total_price = ($productCard->quantity * $product['special_price']);
                 }
-
             }
 
             $productCard->save();
@@ -139,18 +129,17 @@ class AddToCardService extends Controller
                 'message' => '',
                 'data' => $data,
                 'errors' => [
-                    'error' => ''
-                ]
+                    'error' => '',
+                ],
             ];
-
         } else {
             $response = [
                 'errorStatus' => true,
                 'message' => 'Invalid product',
                 'data' => [],
                 'errors' => [
-                    'error' => ''
-                ]
+                    'error' => '',
+                ],
             ];
         }
 
@@ -174,7 +163,7 @@ class AddToCardService extends Controller
 
         foreach ($results as $result) {
             $data['total_price'] += $result['total_price'];
-            $data['number_of_product'] += 1;
+            ++$data['number_of_product'];
             $data['products'][$result['product_id']] = [
                 'Info' => json_decode($result['data'], true),
                 'product_id' => $result['product_id'],
@@ -190,8 +179,8 @@ class AddToCardService extends Controller
             'message' => '',
             'data' => $data,
             'errors' => [
-                'error' => ''
-            ]
+                'error' => '',
+            ],
         ];
 
         return $response;
@@ -206,31 +195,29 @@ class AddToCardService extends Controller
     {
         $sessionId = Session::getId();
 
-        $result = AddToCardModel::where(['session_id' => $sessionId,'product_id'=>$productId])->delete();
+        $result = AddToCardModel::where(['session_id' => $sessionId, 'product_id' => $productId])->delete();
 
-        if($result) {
+        if ($result) {
             $data = self::cardTotalProductAndAmount();
             $response = [
                 'errorStatus' => false,
                 'message' => '',
                 'data' => $data,
                 'errors' => [
-                    'error' => ''
-                ]
+                    'error' => '',
+                ],
             ];
         } else {
             $response = [
                 'errorStatus' => true,
-                'message' => "Product delete not successful",
+                'message' => 'Product delete not successful',
                 'data' => [],
                 'errors' => [
-                    'error' => ''
-                ]
+                    'error' => '',
+                ],
             ];
         }
 
         return $response;
     }
-
-
 }
