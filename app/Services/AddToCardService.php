@@ -94,6 +94,9 @@ class AddToCardService extends Controller
                         if (Auth::user()->Contact->contact_type == 'Wholesale') {
                             $productCard->unit_price = $product['wholesale_price'];
                             $productCard->total_price = ($productCard->quantity * $product['wholesale_price']);
+                        } else {
+                            $productCard->unit_price = $product['special_price'];
+                            $productCard->total_price = ($productCard->quantity * $product['special_price']);
                         }
                     } else {
                         $productCard->unit_price = $product['special_price'];
@@ -110,6 +113,9 @@ class AddToCardService extends Controller
                     if (Auth::user()->Contact->contact_type == 'Wholesale') {
                         $productCard->unit_price = $product['wholesale_price'];
                         $productCard->total_price = ($productCard->quantity * $product['wholesale_price']);
+                    } else {
+                        $productCard->unit_price = $product['special_price'];
+                        $productCard->total_price = ($productCard->quantity * $product['special_price']);
                     }
                 } else {
                     $productCard->unit_price = $product['special_price'];
