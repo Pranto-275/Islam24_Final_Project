@@ -223,7 +223,7 @@
                         <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                             data-product-id="{{ $productDetails->id }}" data-product-name="{{ $productDetails->name }}"
                             {{-- data-product-price="{{ $productDetails->special_price }}" --}}
-                            @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $productDetails->wholesale_price }}" @endif @else data-product-price="{{ $productDetails->special_price }}" @endif
+                            @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale')  data-product-price="{{ $productDetails->wholesale_price }}" @else data-product-price="{{ $productDetails->special_price }}" @endif @else data-product-price="{{ $productDetails->special_price }}" @endif
                             data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                             data-product-minimum-quantity="{{ $minimumQuantity }}"
                             data-product-guarantee="{{ $productDetails->guarantee }}"
@@ -516,14 +516,14 @@ alt=""></a>
                             @endif
                             {{ $product['special_price'] }}
                         </span>
-                        @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type=='Wholesale')
+                        @elseif(isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type=='Wholesale')
                         <span class="wholesale-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
                             @endif
                             {{ $product['wholesale_price'] }}
                         </span>
-                        @elseif(isset(Auth::user()->Contact->contact_type) && Auth::user()->Contact->contact_type!='Wholesale')
+                        @elseif(isset(Auth::user()->Contact) && Auth::user()->Contact->contact_type!='Wholesale')
                         <span class="new-price">
                             @if($currencySymbol)
                             {{ $currencySymbol->symbol }}
@@ -574,7 +574,7 @@ alt=""></a>
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                         data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}"
-                        data-product-price="{{ $product['special_price'] }}"
+                        @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @else data-product-price="{{ $product['special_price'] }}" @endif @else data-product-price="{{ $product['special_price'] }}" @endif
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                         data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
                         data-product-guarantee="{{ $product['guarantee'] }}"

@@ -265,7 +265,8 @@
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                         data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}"
-                      @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}"@else data-product-price="{{ $product['special_price'] }}"@endif @else data-product-price="{{ $product['special_price'] }}"  @endif
+                        {{-- data-product-price=10 --}}
+                      @if(Auth::user()) @if(Auth::user()->Contact->contact_type='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @else data-product-price="{{ $product['special_price'] }}" @endif  @endif
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                         {{-- data-product-guarantee="{{ $product['guarantee'] }}" --}}
                         data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
@@ -434,7 +435,7 @@
                     </a>
                     <a href="javascript:void(0)" class=" buy-now buy-now-button cartModal1 btn-mobile-modal"
                         data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}"
-                        @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @endif @else data-product-price="{{ $product['special_price'] }}" @endif
+                        @if(Auth::user()) @if(Auth::user()->Contact->contact_type=='Wholesale') data-product-price="{{ $product['wholesale_price'] }}" @else data-product-price="{{ $product['special_price'] }}" @endif @else data-product-price="{{ $product['special_price'] }}" @endif
                         {{-- data-product-guarantee="{{ $product['guarantee'] }}" --}}
                         data-product-quantity="{{ $orderQuantity ? $orderQuantity : $minimumQuantity }}"
                         data-product-minimum-quantity="{{ $minimumQuantity }}" @if($product['product_image_first'])
