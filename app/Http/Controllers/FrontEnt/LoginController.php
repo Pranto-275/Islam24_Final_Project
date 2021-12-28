@@ -10,16 +10,18 @@ class LoginController extends Controller
 {
     public function authenticate(Request $request)
     {
-        // dd($request->mobile);
+        // dd($request->email);
         $credentials = $request->validate([
-            'mobile' => ['required'],
+            'email' => ['required'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()->hasAnyRole('admin|user')) {
-                return redirect('/admin');
+            if (Auth::user()->hasAnyRole('imam')) {
+                return redirect('/imam');
+            }else if (Auth::user()->hasAnyRole('user')) {
+                return redirect('/user1');
             } else {
                 return redirect(route('home'));
             }

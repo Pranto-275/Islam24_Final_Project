@@ -5,292 +5,254 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name') }} </title>
-    <meta name="keywords"
-        content="html5 template, best html5 template, best html template, html5 basic template, multipurpose html5 template, multipurpose html template, creative html templates, creative html5 templates" />
-    <meta name="description"
-        content="SuperMarket is a powerful Multi-purpose HTML5 Template with clean and user friendly design. It is definite a great starter for any eCommerce web project." />
-    <meta name="author" content="Magentech">
-    <meta name="robots" content="index, follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('venam/') }}/img/favicon.png">
-    <!-- CSS here -->
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/animate.min.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/jquery-ui.min.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/flaticon.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/odometer.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/aos.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/slick.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/default.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/style.css">
-    <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/responsive.css">
-
+    <title>Islam24</title>
+<link href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+<!-- App css -->
+<link href="{{ URL::asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    @livewireStyles
+    @livewireScripts
     <style>
-        @media only screen and (max-width: 768px) {
+        .container {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.navigation {
+  width: 100%;
+  height: 70px;
+  padding: 15px 0;
+  background-image: linear-gradient(-90deg, #fff, #eee);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  webkittransition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
 
-            #scrollTop,
-            #headerTop {
-                display: none;
-            }
+}
+.logo {
+  color: #888;
+  width: 20%;
+  float: left;
+  line-height: 40px;
+}
+.navigation-links {
+  text-align: right;
+  padding: 0;
+}
+.navigation-links li {
+  color: #888;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  -webkit-transition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+}
 
-            #desktopFooter {
-                display: none;
-            }
-        }
+.navigation-links li.active {
+  background-color: rgba(	83, 173, 203, .3);
+}
 
-        .super-deal-thumb span.sd-meta,
-        .exclusive-item-thumb .sd-meta,
-        .exclusive-item-thumb .discount,
-        .list-product-tag {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 21px;
-            background: #ff6000;
-            color: #fff;
-            font-size: 12px;
+.navigation-links li:hover {
+  background-color: rgba(	83, 173, 203, 1);
+  color: #fff;
+  cursor: pointer;
+}
+.icon {
+  display: none;
+  padding: 20px;
+  border-radius: 50%;
+}
 
-            line-height: 21px;
-            padding: 0 8px;
-            border-radius: 3px;
-            font-weight: 500;
-            text-transform: capitalize;
-            z-index: 1;
-        }
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .logo {
+    width: 100%;
+    padding: 0 20px;
+  }
 
-        .exclusive-item-thumb .discount {
-            top: 3px;
-            left: 3px;
-            background: #f7ba01;
-        }
+  .navigation-links li {display: none;}
+  .navigation-links a.icon {
+    float: right;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+  }
+  .navigation.responsive .navigation-links a.icon {
+    background-color: rgba(	83, 173, 203, 1);
+    color: #fff;
+    cursor: pointer;
 
-        .exclusive-item-thumb .sd-meta {
-            top: 3px;
-            right: 3px;
-            left: auto;
-        }
+  }
 
-        .buy-now {
-            border: 2px solid black;
-            background-color: white;
-            color: black;
-            padding: 7px 22px;
-            font-size: 16px;
-            border-radius: 25px;
-            cursor: pointer;
-        }
+  .navigation.responsive {
+    position: relative;
+    height: 200px;
+  }
+  .navigation.responsive .navigation-links li {
+    float: none;
+    display: block;
+    text-align: left;
+      -webkit-transition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+  }
+}
 
-        .buy-now-button:hover {
-            background: black;
-            color: white;
-            font-weight: bold;
-        }
-
-        .topCategoryImage {
-            width: 150px;
-            height: 177px;
-        }
-
-        @media only screen and (min-width: 768px) {
-            .slider-image {
-                height: 470px;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-
-            #paymentCard {
-                height: 100px;
-            }
-
-            .cartModal1,
-            #orderFinish,
-            #orderFinishCheckoutMobile {
-                display: none;
-            }
-        }
-
-        @media only screen and (max-width: 768px) {
-            .slider-image {
-                height: 200px;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-
-            .topCategoryImage {
-                height: 80px;
-                /* width: 20px; */
-            }
-
-            #categoryName {
-                font-size: 12px;
-            }
-
-            .cartModal,
-            #signInSignOut,
-            #footerTopMenu,
-            #footerDesktop,
-            #productCategoryMobile,
-            #productSearchMobile,
-            #productNewProductMobile,
-            #productBrandMobile,
-            #productSearchByCustomSelect,
-            #orderFinishMobile,
-            #orderFinishCheckout ,#headerTopbarLogo{
-                display: none;
-            }
-        }
-
-        /* .footer-area{
-                position:relative;
-            } */
-
-        .modal-dialog {
-            position: absolute;
-            /* top: 200px; */
-            right: 0px;
-            bottom: 0;
-            left: 0;
-            z-index: 10040;
-        }
-
-        .cart-button {
-            background-color: #4CAF50;
-            /* Green */
-            border: none;
-            color: rgb(12, 1, 1);
-            padding: 8px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 12px;
-            margin: 0px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
-
-        .cart-button1 {
-            background-color: white;
-            color: black;
-            border: 2px solid #e7e7e7;
-        }
-
-        .cart-button1:hover {
-            background-color: #555555;
-            color: white;
-        }
-
-        .cart-button2 {
-            background-color: white;
-            color: black;
-            border: 2px solid #4CAF50;
-        }
-
-        .cart-button2:hover {
-            background-color: #4CAF50;
-            color: white;
-        }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
     </style>
 </head>
 
 <body>
-
-      {{-- Start Messenger Plugin --}}
-
-    <!-- Messenger Chat Plugin Code -->
-    <div id="fb-root"></div>
-
-    <!-- Your Chat Plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
+      <div id="layout-wrapper">
+        <!-- Start Nav Bar -->
+        <nav class="navigation" id="navigation">
+  <div class="">
+    <div class="logo">
+      <img src="{{ asset('logo.png') }}" style="height: 45px;background-color:green;" alt="Logo"/>
     </div>
+    <ul class="navigation-links">
+      <li><a href="{{ route('imam') }}">Home</a></li>
+      <li><a href="{{ route('post') }}">Upload Post</a></li>
+      <li><a href="{{ route('quiz') }}">Add Quiz</a></li>
+      <li><a href="{{ route('add-hadis') }}">Add Hadis</a></li>
+      <li><a href="http://www.quran.gov.bd/" target="_blank">Al Quaran</a></li>
+      <li><a href="{{ route('appointment') }}">Appointment</a></li>
+      <li><a href="{{ route('donation') }}">Donation</a></li>
+      <li>
+      <a class="log-out-btn text-danger p-1 pt-2 rounded"
+                                            href="#"
+                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                                class="bx bx-power-off font-size-16 align-middle text-danger"></i>
+                                            Log Out</a>
 
-    <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "266866433725283");
-      chatbox.setAttribute("attribution", "biz_inbox");
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+      </li>
+      <a href="javascript:void(0);" class="icon" onclick="responsiveMenu()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </ul>
+  </div>
+</nav>
+        <!-- End Nav Bar -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    {{$slot}}
+                </div>
+                <!-- container-fluid -->
+            </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- JAVASCRIPT -->
+<script src="{{ URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v12.0'
+<!-- App js -->
+<script src="{{ URL::asset('assets/js/app.min.js')}}"></script>
+
+@stack('scripts')
+
+<script>
+    window.livewire.on('success', message => {
+        Swal.fire({
+            title: message.title || 'Success',
+            text: message.text,
+            type: 'success',
+            confirmButtonColor: '#3b5de7'
         });
-      };
+    });
 
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/bn_IN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-     <!-- Messenger Chat Plugin Code End -->
+    window.livewire.on('error', message => {
+        Swal.fire({
+            title: message.title || 'Error',
+            text: message.text,
+            type: 'error',
+            confirmButtonColor: '#3b5de7'
+        });
+    });
 
-    <!-- Scroll-top -->
-    <button class="scroll-top scroll-to-target" data-target="html" id="scrollTop">
-        <i class="fas fa-angle-up"></i>
-    </button>
-    <!-- Scroll-top-end-->
+    window.livewire.on('success_redirect', message => {
+        Swal.fire({
+            title: message.title || 'Success',
+            text: message.text,
+            type: 'success',
+            confirmButtonColor: '#3b5de7'
+        }).then(function () {
+            window.location = message.url;
+        });
+    });
+    window.livewire.on('success_redirect_href', message => {
+        Swal.fire({
+            title: message.title || 'Success',
+            text: message.text,
+            type: 'success',
+            confirmButtonColor: '#3b5de7'
+        }).then(function () {
+            window.open( message.url, '_blank');
+        });
+    });
+    window.livewire.on('reload', message => {
 
-    <!-- header-area -->
-    @include('frontend.header')
-    <!-- header-area-end -->
+        window.location = message.url;
 
-    <!-- main-area -->
+    });
 
-    @yield('content')
-    <!-- main-area-end -->
+    window.livewire.on('modal', message => {
+            $('#'+message).modal('toggle');
+    });
 
-    <!-- footer-area -->
-    @include('frontend.footer')
-    <!-- footer-area-end -->
 
-    <!-- Start Mobile Responseive Footer -->
-    @include('frontend.mobile-responsive-footer')
-    <!-- Start Mobile Responseive Footer -->
-    {{-- Start Messenger Plugin --}}
-         <!-- Messenger Chat plugin Code -->
-    <div id="fb-root"></div>
+    window.livewire.on('confirm', message  =>
+    {
+        $('#'+message).modal('hide');
+    });
+    function getDateFormat(date = null) {
+            if (date) {
+                var now = new Date(date);
+            } else {
+                var now = new Date();
+            }
+            var month = (now.getMonth() + 1);
+            var day = now.getDate();
+            if (month < 10)
+                month = "0" + month;
+            if (day < 10)
+                day = "0" + day;
+            var today = now.getFullYear() + '-' + month + '-' + day;
+            return today;
+        }
+            $(document).ready(function () {
 
-    <!-- Your Chat plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
-    <br>
+                $('.modal.printable').on('shown.bs.modal', function () {
+                    $('.modal-dialog', this).addClass('focused');
+                    $('body').addClass('modalprinter');
 
-    <!-- JS here -->
-    <script src="{{ URL::asset('venam/') }}/js/vendor/jquery-3.5.0.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/popper.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/bootstrap.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/isotope.pkgd.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/imagesloaded.pkgd.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/jquery.magnific-popup.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/owl.carousel.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/jquery.odometer.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/jquery.countdown.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/jquery.appear.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/slick.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/ajax-form.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/wow.min.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/aos.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/plugins.js"></script>
-    <script src="{{ URL::asset('venam/') }}/js/main.js"></script>
+                }).on('hidden.bs.modal', function () {
+                    $('.modal-dialog', this).removeClass('focused');
+                    $('body').removeClass('modalprinter');
+                });
 
-    <script>
-        $.ajaxSetup({
-                crossDomain: true,
-                xhrFields: {
-                    withCredentials: true
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
+                var date = new Date();
+                var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+                var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+                $('.currentDate').val(getDateFormat());
+                $('.firstDate').val(getDateFormat(firstDay));
+                $('.lastDate').val(getDateFormat(lastDay));
             });
 
-    </script>
+</script>
 </body>
 
 </html>

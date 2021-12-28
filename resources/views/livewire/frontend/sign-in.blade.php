@@ -1,85 +1,98 @@
-@push('css')
-
-@endpush
 <div>
+    <style>
+        #headerOneCheckOut,
+        #sticky-header,
+        #headerThreeCheckout,
+        #footerOneCheckOut {
+            display: none;
+        }
+    </style>
     <x-slot name="title">
-        Sign In
+        Category
     </x-slot>
     <x-slot name="header">
-        Sign In
+        Category
     </x-slot>
-        <!-- main-area -->
-        <main>
-
-            <!-- breadcrumb-area -->
-            <section class="breadcrumb-area breadcrumb-bg" data-background="{{ URL::asset('venam/') }}/img/bg/breadcrumb_bg.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="breadcrumb-content text-center">
-                                <h2>আপনার অ্যাকাউন্টে লগইন করুন</h2>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{url('/')}}">হোম</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">আমার অ্যাকাউন্ট</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- breadcrumb-area-end -->
-
-            <!-- my-account-area -->
-            <section class="my-account-area pattern-bg pt-100 pb-100" data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-8 col-lg-10">
-                            <div class="login-page-title">
-                                <h2 class="title"><span>লগইন করুন</span></h2>
-                            </div>
-                            <div class="my-account-bg" data-background="{{ URL::asset('venam/') }}/img/bg/my_account_bg.png">
-                                <div class="my-account-content">
-                                    <p>Welcome Vanam Please Login Your <span>Account</span></p>
-                                    <div class="direct-login">
-                                        <a href="#"><i class="fab fa-facebook-f"></i>Login with facebook</a>
-                                        <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a>
-                                    </div>
-                                    <span class="or">- OR -</span>
-                                    <form action="#" class="login-form">
-                                        <div class="form-grp">
-                                            <label for="uea">USERNAME OR EMAIL ADDRESS <span>*</span></label>
-                                            <input type="text" id="uea">
-                                        </div>
-                                        <div class="form-grp">
-                                            <label for="password">PASSWORD <span>*</span></label>
-                                            <input type="password" id="password">
-                                            <i class="far fa-eye"></i>
-                                        </div>
-                                        <div class="form-grp-bottom">
-                                            <div class="remember">
-                                                <input type="checkbox" id="check">
-                                                <label for="check">Remember me</label>
-                                            </div>
-                                            <div class="forget-pass">
-                                                <a href="#">forgot password</a>
-                                            </div>
-                                        </div>
-                                        <div class="form-grp-btn">
-                                            <a href="#" class="btn">Login</a>
-                                        </div>
-                                    </form>
+    <!-- main-area -->
+    <main>
+        <div class="text-center py-2 rounded" style="background-color: black;position: fixed;width: 100%;z-index: 2;">
+            {{-- <a href="{{ route('home') }}" class="float-left">
+                <i class="fas fa-arrow-left pl-1" style="color: white;font-size: 20px;"></i>
+            </a> --}}
+            <span class="mt-1" style="color: white;font-weight: bold; font-size: 20px;">
+                লগইন
+            </span>
+        </div>
+        <!-- my-account-area -->
+        <section class="my-account-area pattern-bg pt-20 pb-20"
+            data-background="{{ URL::asset('venam/') }}/img/bg/pattern_bg.jpg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-10">
+                        <div class="my-account-bg"
+                            data-background="{{ URL::asset('venam/') }}/img/bg/my_account_bg.png">
+                            <div class="my-account-content pb-150">
+                                <p style="color: #ff5c00;">আপনাকে স্বাগতম islam24 অ্যাপে</p>
+                                <div class="direct-login">
+                                    <a class="btn-hover" href="{{route('register')}}"
+                                        style="background-color: red;font-weight: bold;"><i
+                                            class="form-grp-btn"></i>রেজিষ্ট্রেশন করুন</a>
+                                    {{-- <a href="#" class="xing"><i class="fab fa-xing"></i>Login with xing</a> --}}
                                 </div>
+                                <form method="POST" action="{{ route('customer_sign_in') }}" class="login-form">
+                                    @csrf
+                                    <div class="form-grp">
+                                        <x-jet-label for="email" value="{{ __('মোবাইল নাম্বার') }}" />
+                                        <x-jet-input id="email" class="block mt-1 w-full" type="text" name="email"
+                                            :value="old('email')" required autofocus
+                                            placeholder="Email" />
+                                    </div>
+                                    <div class="form-grp">
+                                        <x-jet-label for="password" value="{{ __('পাসওয়ার্ড') }}" />
+                                        <x-jet-input id="password" class="block mt-1 w-full" type="password"
+                                            name="password" required autocomplete="current-password"
+                                            placeholder="Password" />
+                                        <i class="far fa-eye" aria-hidden="true" onclick="visibility()"></i>
+                                    </div>
+                                    <div class="form-grp-bottom">
+                                        <!-- <div class="remember">
+                                            <label for="remember_me" class="flex items-center">
+                                                <x-jet-checkbox id="remember_me" name="remember" />
+                                                <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                                            </label>
+                                        </div>
+                                        <div class="forget-pass">
+                                            <a href="#">forgot password</a>
+                                        </div> -->
+                                    </div>
+                                    <div class="form-grp-btn">
+                                        {{-- <a href="#" class="btn">Login</a> --}}
+                                        <center>
+                                            <button class="btn" type="submit" style="background: #ff6000;color:white;">
+                                                {{ __('Login') }}
+                                            </button>
+                                        </center>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- my-account-area-end -->
-        </main>
-        <!-- main-area-end -->
-</div>
-@push('scripts')
+            </div>
+        </section>
+        <!-- my-account-area-end -->
+        <br><br><br><br>
+    </main>
+    <!-- main-area-end -->
 
-@endpush
+</div>
+<script>
+    function visibility() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>

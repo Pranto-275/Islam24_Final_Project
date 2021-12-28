@@ -12,6 +12,7 @@ use App\Models\Backend\ContactInfo\Contact;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\FrontEnd\Imam\Like;
 
 class User extends Authenticatable
 {
@@ -30,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type', 'mobile', 'address',
+        'name', 'email', 'password', 'type', 'mobile', 'address', 'nid', 'mosque'
     ];
 
     /**
@@ -69,5 +70,8 @@ class User extends Authenticatable
     }
     public function Contact(){
         return $this->hasOne(Contact::class);
+    }
+    public function Like(){
+        return $this->hasOne(Like::class);
     }
 }

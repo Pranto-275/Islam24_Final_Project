@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Paikari Electronics') }}</title>
+        <title>{{ config('app.name', 'Islam24') }}</title>
         <meta name="keywords" content="html5 template, best html5 template, best html template, html5 basic template, multipurpose html5 template, multipurpose html template, creative html templates, creative html5 templates" />
         <meta name="description" content="SuperMarket is a powerful Multi-purpose HTML5 Template with clean and user friendly design. It is definite a great starter for any eCommerce web project." />
         <meta name="author" content="Magentech">
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('venam/') }}/img/favicon.png">
+		<!-- <link rel="shortcut icon" type="image/x-icon" href="{{ URL::asset('venam/') }}/img/favicon.png"> -->
 		<!-- CSS here -->
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ URL::asset('venam/') }}/css/animate.min.css">

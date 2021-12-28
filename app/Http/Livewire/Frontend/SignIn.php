@@ -10,6 +10,6 @@ class SignIn extends Component
     {
 
         return view('frontend.sign-in')
-        ->layout('layouts.front_end');
+        ->layout('layouts.auth_layout');
     }
 }

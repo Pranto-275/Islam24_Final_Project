@@ -22,36 +22,40 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        if($input['type']=="imam"){
+            Validator::make($input, [
+                'nid' => ['required'],
+                'mosque' => ['required'],
+            ])->validate();
+        }
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'business_name' => ['required', 'string', 'max:255'],
-            'district_id' => ['required'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'mobile' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'mobile' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            // 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-
         return DB::transaction(function () use ($input) {
             return tap(User::create([
                 'name' => $input['name'],
-                // 'email' => $input['email'],
+                'email' => $input['email'],
                 'address' => $input['address'],
-                'mobile' => $input['mobile'],
-                'type' => 'Customer',
+                'nid' => $input['nid'],
+                'mosque' => $input['mosque'],
+                // 'mobile' => '12233',
+                'type' => $input['type'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) use ($input) {
                 $this->createTeam($user);
-                $user->assignRole('customer');
+                $user->assignRole($input['type']);
                 $contact = Contact::whereUserId($user->id)->firstOrNew();
-                $contact->business_name = $input['business_name'];
                 $contact->first_name = $user->name;
                 $contact->address = $user->address;
                 $contact->shipping_address = $user->address;
                 $contact->user_id = $user->id;
                 $contact->type = 'Customer';
                 $contact->mobile = $user->mobile;
-                $contact->district_id = $input['district_id'];
+                $contact->district_id = 1;
                 $contact->created_by = $user->id;
                 $contact->save();
             });

@@ -1,21 +1,7 @@
 <?php
 
 namespace App\Providers;
-
-use App\Models\Backend\ProductInfo\Brand;
-use App\Models\Backend\ProductInfo\Category;
-use App\Models\Backend\ProductInfo\Product;
-use App\Models\Backend\ProductInfo\SubCategory;
-use App\Models\Backend\ProductInfo\SubSubCategory;
-use App\Models\Backend\Setting\BreakingNews;
-use App\Models\Backend\Setting\CompanyInfo;
-use App\Models\Backend\Setting\InvoiceSetting;
-use App\Models\Backend\Setting\Language;
-use App\Models\District;
-use App\Models\FrontEnd\Order;
-use App\Models\Inventory\Currency;
-use App\Models\Setting\Slider;
-use App\Services\AddToCardService;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -40,25 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Categories
         View::composer('*', function ($view) {
-            $view->with('language', Language::whereIsDefault(1)->first());
-            $view->with('categories', Category::orderBy('id', 'desc')->get());
-            $view->with('topFourCategories', Category::take(4)->get());
-            $view->with('topCategories', Category::skip(4)->take(200)->get());
-            $view->with('categoryImageLast', Category::whereTopShow(1)->orderBy('id', 'desc')->first());
-            $view->with('subCategories', SubCategory::orderBy('id', 'desc')->get());
-            $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
-            $view->with('subSubCategories', SubSubCategory::orderBy('id', 'desc')->get());
-            $view->with('newProducts', Product::whereFeatured('New Product')->whereIsActive(1)->orderBy('id', 'desc')->take(3)->get());
-            $view->with('brands', Brand::get());
-            $view->with('sliderImages', Slider::orderBy('position')->whereIsActive(1)->get());
-            $view->with('sliderImageLast', Slider::orderBy('id', 'desc')->whereIsActive(1)->first());
-            $view->with('companyInfo', CompanyInfo::first());
-            $view->with('InvoiceSetting', InvoiceSetting::first());
-            $view->with('currencySymbol', Currency::whereIsActive(1)->first());
-            $view->with('cardBadge', AddToCardService::cardTotalProductAndAmount());
-            $view->with('BreakingNews', BreakingNews::whereIsActive(1)->get());
-            $view->with('Districts', District::orderBy('name', 'asc')->get());
-            $view->with('orders_count', Order::whereStatus('processing')->count());
+            $view->with('users', User::where('type', '!=', 'Admin')->orderBy('id','DESC')->get());
         });
     }
 }
